@@ -17,7 +17,7 @@
 #define     HEIGHT_CONVERSATION_CELL        65.0f
 
 
-@interface TLConversationViewController () <SWTableViewCellDelegate, UISearchBarDelegate>
+@interface TLConversationViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSMutableArray *data;
 
@@ -59,11 +59,6 @@
 
 #pragma mark -
 #pragma mark UITableViewDataSource
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 3;
-}
-
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.data.count;
@@ -75,8 +70,6 @@
     TLConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLConversationCell"];
     [cell setConversation:conversation];
     [cell setBottomLineStyle:indexPath.row == self.data.count - 1 ? TLCellLineStyleFill : TLCellLineStyleDefault];
-    cell.rightUtilityButtons = [self p_getRightButtonsByConversationType:conversation.type];
-    cell.delegate = self;
     return cell;
 }
 
@@ -91,11 +84,27 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-#pragma mark SWTableViewCellDelegate
-- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+- (NSArray *) tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%ld", (long)index] message:nil delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
-    [alert show];
+    __weak typeof(self) weakSelf = self;
+    UITableViewRowAction *delAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
+                                                                         title:@"删除"
+                                                                       handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                                                                           [weakSelf.data removeObjectAtIndex:indexPath.row];
+                                                                           [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                                                           if (indexPath.row == self.data.count) {
+                                                                               NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
+                                                                               TLConversationCell *cell = [weakSelf.tableView cellForRowAtIndexPath:lastIndexPath];
+                                                                               [cell setBottomLineStyle:TLCellLineStyleFill];
+                                                                           }
+                                                                       }];
+    UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
+                                                                          title:@"标为未读"
+                                                                        handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                                                                        }];
+    moreAction.backgroundColor = [TLColorUtility colorCellMoreButton];
+    NSArray *arr = @[delAction, moreAction];
+    return arr;
 }
 
 #pragma mark UISearchBarDelegate
@@ -109,26 +118,6 @@
     [self.tabBarController.tabBar setHidden:NO];
 }
 
-#pragma mark - Private Methods
-- (NSArray *) p_getRightButtonsByConversationType:(TLConversationType)type
-{
-    NSMutableArray *cellRightButtons = [[NSMutableArray alloc] init];
-    switch (type) {
-        case TLConversationTypePersonal:
-        case TLConversationTypeGroup:
-            [cellRightButtons sw_addUtilityButtonWithColor:[TLColorUtility colorCellMoreButton] title:@"标为未读"];
-            [cellRightButtons sw_addUtilityButtonWithColor:[TLColorUtility colorCellDeleteButton] title:@"删除"];
-            break;
-        case TLConversationTypePublic:
-            [cellRightButtons sw_addUtilityButtonWithColor:[TLColorUtility colorCellMoreButton] title:@"取消关注"];
-            [cellRightButtons sw_addUtilityButtonWithColor:[TLColorUtility colorCellDeleteButton] title:@"删除"];
-            break;
-        default:
-            [cellRightButtons sw_addUtilityButtonWithColor:[TLColorUtility colorCellDeleteButton] title:@"删除"];
-            break;
-    }
-    return cellRightButtons;
-}
 
 #pragma mark - Getter
 - (UISearchController *) searchController

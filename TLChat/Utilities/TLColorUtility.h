@@ -23,7 +23,6 @@
 + (UIColor *) colorSearchBarBorder;
 
 + (UIColor *) colorCellLine;
-+ (UIColor *) colorCellDeleteButton;
 + (UIColor *) colorCellMoreButton;
 
 #pragma mark - Conversation

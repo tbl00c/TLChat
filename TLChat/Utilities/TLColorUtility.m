@@ -51,11 +51,6 @@
     return [UIColor colorWithWhite:0.5 alpha:0.3];
 }
 
-+ (UIColor *) colorCellDeleteButton
-{
-    return [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f];
-}
-
 + (UIColor *) colorCellMoreButton
 {
     return [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0];

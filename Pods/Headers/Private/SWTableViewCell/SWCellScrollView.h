@@ -1,1 +1,0 @@
-../../../SWTableViewCell/SWTableViewCell/PodFiles/SWCellScrollView.h

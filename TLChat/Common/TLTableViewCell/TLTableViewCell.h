@@ -6,7 +6,7 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <SWTableViewCell.h>
+#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, TLCellLineStyle) {
     TLCellLineStyleNone,
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, TLCellLineStyle) {
     TLCellLineStyleFill,
 };
 
-@interface TLTableViewCell : SWTableViewCell
+@interface TLTableViewCell : UITableViewCell
 
 @property (nonatomic, assign) CGFloat leftSeparatorSpace;
 

@@ -235,6 +235,7 @@
 		C2142E941C531EFD0030B29B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C2D500E81C565CC50088997C /* Vendors */,
 				C2142E951C531EFD0030B29B /* Category */,
 			);
 			path = Extensions;
@@ -551,6 +552,13 @@
 				C2D500E41C5612300088997C /* UIView+Frame.m */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		C2D500E81C565CC50088997C /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

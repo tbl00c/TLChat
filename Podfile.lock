@@ -1,0 +1,52 @@
+PODS:
+  - AFNetworking (3.0.4):
+    - AFNetworking/NSURLSession (= 3.0.4)
+    - AFNetworking/Reachability (= 3.0.4)
+    - AFNetworking/Security (= 3.0.4)
+    - AFNetworking/Serialization (= 3.0.4)
+    - AFNetworking/UIKit (= 3.0.4)
+  - AFNetworking/NSURLSession (3.0.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.0.4)
+  - AFNetworking/Security (3.0.4)
+  - AFNetworking/Serialization (3.0.4)
+  - AFNetworking/UIKit (3.0.4):
+    - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.4.2)
+  - FMDB (2.6):
+    - FMDB/standard (= 2.6)
+  - FMDB/standard (2.6)
+  - Masonry (0.6.4)
+  - MJExtension (3.0.10)
+  - MJRefresh (3.1.0)
+  - SDWebImage (3.7.4):
+    - SDWebImage/Core (= 3.7.4)
+  - SDWebImage/Core (3.7.4)
+  - SVProgressHUD (2.0-beta4)
+  - SWTableViewCell (0.3.7)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.0.4)
+  - CocoaAsyncSocket (~> 7.4.2)
+  - FMDB (~> 2.6)
+  - Masonry (~> 0.6.4)
+  - MJExtension (~> 3.0.10)
+  - MJRefresh (~> 3.1.0)
+  - SDWebImage (~> 3.7.4)
+  - SVProgressHUD (~> 2.0-beta4)
+  - SWTableViewCell (~> 0.3.7)
+
+SPEC CHECKSUMS:
+  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  CocoaAsyncSocket: f5783bdedd232d91b89769bc4b5a1580aed518ad
+  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
+  SVProgressHUD: c330ba31785dd2216827865aa45ab398bbf7ecf8
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
+
+COCOAPODS: 0.39.0

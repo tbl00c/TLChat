@@ -1,0 +1,996 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C2097EE81C52326500163B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097EE71C52326500163B5C /* main.m */; };
+		C2097F011C52326500163B5C /* TLChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F001C52326500163B5C /* TLChatTests.m */; };
+		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
+		C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EA61C531FA40030B29B /* TLAppDelegate.m */; };
+		C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2142ED91C53345C0030B29B /* Launch.xcassets */; };
+		C2142EE11C533A5D0030B29B /* TLColorUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EE01C533A5D0030B29B /* TLColorUtility.m */; };
+		C2142EF31C5376D40030B29B /* TLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EE91C5376D40030B29B /* TLNavigationController.m */; };
+		C2142EF41C5376D40030B29B /* TLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EEC1C5376D40030B29B /* TLTabBarController.m */; };
+		C2142EF51C5376D40030B29B /* TLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EEF1C5376D40030B29B /* TLTableViewController.m */; };
+		C2142EF61C5376D40030B29B /* TLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EF21C5376D40030B29B /* TLViewController.m */; };
+		C2142EFD1C5377320030B29B /* TLBaseDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EFC1C5377320030B29B /* TLBaseDataModel.m */; };
+		C2142F001C5377B60030B29B /* TLConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EFF1C5377B60030B29B /* TLConversation.m */; };
+		C2142F0D1C53864C0030B29B /* TLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142F0C1C53864C0030B29B /* TLUser.m */; };
+		C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142F101C53909C0030B29B /* TLTableViewCell.m */; };
+		C2D500A21C55BA3D0088997C /* TLFontUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500A11C55BA3D0088997C /* TLFontUtility.m */; };
+		C2D500A51C55BA630088997C /* TLUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500A41C55BA630088997C /* TLUIUtility.m */; };
+		C2D500CA1C55C08C0088997C /* TLConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500C71C55C08C0088997C /* TLConversationCell.m */; };
+		C2D500CB1C55C08C0088997C /* TLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500C91C55C08C0088997C /* TLConversationViewController.m */; };
+		C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500CF1C55C8F40088997C /* TLFriendsViewController.m */; };
+		C2D500D51C55C9350088997C /* TLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500D41C55C9350088997C /* TLMineViewController.m */; };
+		C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500D91C55C9A20088997C /* TLDiscoverViewController.m */; };
+		C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500DC1C55CA170088997C /* TLRootViewController.m */; };
+		C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500E01C55CA7B0088997C /* TLFriendSearchViewController.m */; };
+		C2D500E51C5612300088997C /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500E41C5612300088997C /* UIView+Frame.m */; };
+		C2D500E71C5639210088997C /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D500E61C5639210088997C /* Conversation.xcassets */; };
+		CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47069788539839E1FB073F9 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C2097EFD1C52326500163B5C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2097EDB1C52326500163B5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2097EE21C52326500163B5C;
+			remoteInfo = TLChat;
+		};
+		C2097F081C52326500163B5C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2097EDB1C52326500163B5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2097EE21C52326500163B5C;
+			remoteInfo = TLChat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		28C098D007CC6D63F81358AB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C2097EE31C52326500163B5C /* TLChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2097EE71C52326500163B5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C2097EF71C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2097EFC1C52326500163B5C /* TLChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TLChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2097F001C52326500163B5C /* TLChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLChatTests.m; sourceTree = "<group>"; };
+		C2097F021C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2097F071C52326500163B5C /* TLChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TLChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2097F0B1C52326500163B5C /* TLChatUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLChatUITests.m; sourceTree = "<group>"; };
+		C2097F0D1C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2142EA41C531F420030B29B /* TLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMacros.h; sourceTree = "<group>"; };
+		C2142EA51C531FA40030B29B /* TLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppDelegate.h; sourceTree = "<group>"; };
+		C2142EA61C531FA40030B29B /* TLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppDelegate.m; sourceTree = "<group>"; };
+		C2142EC61C5326C30030B29B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C2142ED91C53345C0030B29B /* Launch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Launch.xcassets; sourceTree = "<group>"; };
+		C2142EDF1C533A5D0030B29B /* TLColorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLColorUtility.h; sourceTree = "<group>"; };
+		C2142EE01C533A5D0030B29B /* TLColorUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLColorUtility.m; sourceTree = "<group>"; };
+		C2142EE81C5376D40030B29B /* TLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLNavigationController.h; sourceTree = "<group>"; };
+		C2142EE91C5376D40030B29B /* TLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLNavigationController.m; sourceTree = "<group>"; };
+		C2142EEB1C5376D40030B29B /* TLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTabBarController.h; sourceTree = "<group>"; };
+		C2142EEC1C5376D40030B29B /* TLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTabBarController.m; sourceTree = "<group>"; };
+		C2142EEE1C5376D40030B29B /* TLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTableViewController.h; sourceTree = "<group>"; };
+		C2142EEF1C5376D40030B29B /* TLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTableViewController.m; sourceTree = "<group>"; };
+		C2142EF11C5376D40030B29B /* TLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLViewController.h; sourceTree = "<group>"; };
+		C2142EF21C5376D40030B29B /* TLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLViewController.m; sourceTree = "<group>"; };
+		C2142EFB1C5377320030B29B /* TLBaseDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBaseDataModel.h; sourceTree = "<group>"; };
+		C2142EFC1C5377320030B29B /* TLBaseDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLBaseDataModel.m; sourceTree = "<group>"; };
+		C2142EFE1C5377B60030B29B /* TLConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversation.h; sourceTree = "<group>"; };
+		C2142EFF1C5377B60030B29B /* TLConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLConversation.m; sourceTree = "<group>"; };
+		C2142F011C5379E90030B29B /* TLEnumerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEnumerate.h; sourceTree = "<group>"; };
+		C2142F0B1C53864C0030B29B /* TLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUser.h; sourceTree = "<group>"; };
+		C2142F0C1C53864C0030B29B /* TLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUser.m; sourceTree = "<group>"; };
+		C2142F0F1C53909C0030B29B /* TLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTableViewCell.h; sourceTree = "<group>"; };
+		C2142F101C53909C0030B29B /* TLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTableViewCell.m; sourceTree = "<group>"; };
+		C2D500A01C55BA3D0088997C /* TLFontUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFontUtility.h; sourceTree = "<group>"; };
+		C2D500A11C55BA3D0088997C /* TLFontUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFontUtility.m; sourceTree = "<group>"; };
+		C2D500A31C55BA630088997C /* TLUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUIUtility.h; sourceTree = "<group>"; };
+		C2D500A41C55BA630088997C /* TLUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUIUtility.m; sourceTree = "<group>"; };
+		C2D500C61C55C08C0088997C /* TLConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversationCell.h; sourceTree = "<group>"; };
+		C2D500C71C55C08C0088997C /* TLConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLConversationCell.m; sourceTree = "<group>"; };
+		C2D500C81C55C08C0088997C /* TLConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversationViewController.h; sourceTree = "<group>"; };
+		C2D500C91C55C08C0088997C /* TLConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLConversationViewController.m; sourceTree = "<group>"; };
+		C2D500CE1C55C8F40088997C /* TLFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendsViewController.h; sourceTree = "<group>"; };
+		C2D500CF1C55C8F40088997C /* TLFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendsViewController.m; sourceTree = "<group>"; };
+		C2D500D31C55C9350088997C /* TLMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineViewController.h; sourceTree = "<group>"; };
+		C2D500D41C55C9350088997C /* TLMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineViewController.m; sourceTree = "<group>"; };
+		C2D500D81C55C9A20088997C /* TLDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDiscoverViewController.h; sourceTree = "<group>"; };
+		C2D500D91C55C9A20088997C /* TLDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDiscoverViewController.m; sourceTree = "<group>"; };
+		C2D500DB1C55CA170088997C /* TLRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLRootViewController.h; sourceTree = "<group>"; };
+		C2D500DC1C55CA170088997C /* TLRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLRootViewController.m; sourceTree = "<group>"; };
+		C2D500DF1C55CA7B0088997C /* TLFriendSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendSearchViewController.h; sourceTree = "<group>"; };
+		C2D500E01C55CA7B0088997C /* TLFriendSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendSearchViewController.m; sourceTree = "<group>"; };
+		C2D500E31C5612300088997C /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		C2D500E41C5612300088997C /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		C2D500E61C5639210088997C /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
+		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C2097EE01C52326500163B5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2097EF91C52326500163B5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2097F041C52326500163B5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08A21825AD082DD43B30E2DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */,
+				28C098D007CC6D63F81358AB /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		445936A105939B47A48F4E03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F47069788539839E1FB073F9 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C2097EDA1C52326500163B5C = {
+			isa = PBXGroup;
+			children = (
+				C2097EE51C52326500163B5C /* TLChat */,
+				C2097EFF1C52326500163B5C /* TLChatTests */,
+				C2097F0A1C52326500163B5C /* TLChatUITests */,
+				C2097EE41C52326500163B5C /* Products */,
+				08A21825AD082DD43B30E2DA /* Pods */,
+				445936A105939B47A48F4E03 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C2097EE41C52326500163B5C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2097EE31C52326500163B5C /* TLChat.app */,
+				C2097EFC1C52326500163B5C /* TLChatTests.xctest */,
+				C2097F071C52326500163B5C /* TLChatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2097EE51C52326500163B5C /* TLChat */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EA51C531FA40030B29B /* TLAppDelegate.h */,
+				C2142EA61C531FA40030B29B /* TLAppDelegate.m */,
+				C2142E931C531EFD0030B29B /* Config */,
+				C2142EA21C531EFD0030B29B /* Store */,
+				C2142E961C531EFD0030B29B /* Proxys */,
+				C2142EE61C5376D40030B29B /* Common */,
+				C2142E991C531EFD0030B29B /* SRC */,
+				C2142EDB1C5336C30030B29B /* Utilities */,
+				C2142E941C531EFD0030B29B /* Extensions */,
+				C2142E971C531EFD0030B29B /* Resources */,
+				C2097EE61C52326500163B5C /* Supporting Files */,
+			);
+			path = TLChat;
+			sourceTree = "<group>";
+		};
+		C2097EE61C52326500163B5C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EC61C5326C30030B29B /* PrefixHeader.pch */,
+				C2097EF71C52326500163B5C /* Info.plist */,
+				C2097EE71C52326500163B5C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2097EFF1C52326500163B5C /* TLChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				C2097F001C52326500163B5C /* TLChatTests.m */,
+				C2097F021C52326500163B5C /* Info.plist */,
+			);
+			path = TLChatTests;
+			sourceTree = "<group>";
+		};
+		C2097F0A1C52326500163B5C /* TLChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C2097F0B1C52326500163B5C /* TLChatUITests.m */,
+				C2097F0D1C52326500163B5C /* Info.plist */,
+			);
+			path = TLChatUITests;
+			sourceTree = "<group>";
+		};
+		C2142E931C531EFD0030B29B /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EA41C531F420030B29B /* TLMacros.h */,
+				C2142F011C5379E90030B29B /* TLEnumerate.h */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		C2142E941C531EFD0030B29B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C2142E951C531EFD0030B29B /* Category */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C2142E951C531EFD0030B29B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500E21C5612170088997C /* UIView */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		C2142E961C531EFD0030B29B /* Proxys */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EE21C5374CA0030B29B /* Conversation */,
+				C2142EE41C5374DD0030B29B /* Friends */,
+			);
+			path = Proxys;
+			sourceTree = "<group>";
+		};
+		C2142E971C531EFD0030B29B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C2142E981C531EFD0030B29B /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C2142E981C531EFD0030B29B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C2142ED91C53345C0030B29B /* Launch.xcassets */,
+				C2D500E61C5639210088997C /* Conversation.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C2142E991C531EFD0030B29B /* SRC */ = {
+			isa = PBXGroup;
+			children = (
+				C2142E9C1C531EFD0030B29B /* Common */,
+				C2142EC71C532E6E0030B29B /* Root */,
+				C2142E9D1C531EFD0030B29B /* Conversation */,
+				C2142E9F1C531EFD0030B29B /* Friends */,
+				C2142E9E1C531EFD0030B29B /* Discover */,
+				C2142EA01C531EFD0030B29B /* Mine */,
+				C2142E9B1C531EFD0030B29B /* Chat */,
+			);
+			path = SRC;
+			sourceTree = "<group>";
+		};
+		C2142E9B1C531EFD0030B29B /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		C2142E9C1C531EFD0030B29B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C2142E9D1C531EFD0030B29B /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500C41C55C08C0088997C /* ConversationViewController */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		C2142E9E1C531EFD0030B29B /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500D61C55C9A20088997C /* DiscoverViewController */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		C2142E9F1C531EFD0030B29B /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500DE1C55CA5F0088997C /* FriendsSearchViewController */,
+				C2D500CC1C55C8F40088997C /* FriendsViewController */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		C2142EA01C531EFD0030B29B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500D11C55C9350088997C /* MineViewController */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		C2142EA21C531EFD0030B29B /* Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		C2142EC71C532E6E0030B29B /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500DB1C55CA170088997C /* TLRootViewController.h */,
+				C2D500DC1C55CA170088997C /* TLRootViewController.m */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		C2142EDB1C5336C30030B29B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EDF1C533A5D0030B29B /* TLColorUtility.h */,
+				C2142EE01C533A5D0030B29B /* TLColorUtility.m */,
+				C2D500A01C55BA3D0088997C /* TLFontUtility.h */,
+				C2D500A11C55BA3D0088997C /* TLFontUtility.m */,
+				C2D500A31C55BA630088997C /* TLUIUtility.h */,
+				C2D500A41C55BA630088997C /* TLUIUtility.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C2142EE21C5374CA0030B29B /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EE31C5374CB0030B29B /* Models */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		C2142EE31C5374CB0030B29B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EFE1C5377B60030B29B /* TLConversation.h */,
+				C2142EFF1C5377B60030B29B /* TLConversation.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C2142EE41C5374DD0030B29B /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EE51C5374DD0030B29B /* Models */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		C2142EE51C5374DD0030B29B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2142F0B1C53864C0030B29B /* TLUser.h */,
+				C2142F0C1C53864C0030B29B /* TLUser.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C2142EE61C5376D40030B29B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EE71C5376D40030B29B /* TLNavigationController */,
+				C2142EEA1C5376D40030B29B /* TLTabBarController */,
+				C2142EED1C5376D40030B29B /* TLTableViewController */,
+				C2142EF01C5376D40030B29B /* TLViewController */,
+				C2142F0E1C53908D0030B29B /* TLTableViewCell */,
+				C2142EFA1C53771D0030B29B /* TLBaseDataModel */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C2142EE71C5376D40030B29B /* TLNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EE81C5376D40030B29B /* TLNavigationController.h */,
+				C2142EE91C5376D40030B29B /* TLNavigationController.m */,
+			);
+			path = TLNavigationController;
+			sourceTree = "<group>";
+		};
+		C2142EEA1C5376D40030B29B /* TLTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EEB1C5376D40030B29B /* TLTabBarController.h */,
+				C2142EEC1C5376D40030B29B /* TLTabBarController.m */,
+			);
+			path = TLTabBarController;
+			sourceTree = "<group>";
+		};
+		C2142EED1C5376D40030B29B /* TLTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EEE1C5376D40030B29B /* TLTableViewController.h */,
+				C2142EEF1C5376D40030B29B /* TLTableViewController.m */,
+			);
+			path = TLTableViewController;
+			sourceTree = "<group>";
+		};
+		C2142EF01C5376D40030B29B /* TLViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EF11C5376D40030B29B /* TLViewController.h */,
+				C2142EF21C5376D40030B29B /* TLViewController.m */,
+			);
+			path = TLViewController;
+			sourceTree = "<group>";
+		};
+		C2142EFA1C53771D0030B29B /* TLBaseDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				C2142EFB1C5377320030B29B /* TLBaseDataModel.h */,
+				C2142EFC1C5377320030B29B /* TLBaseDataModel.m */,
+			);
+			path = TLBaseDataModel;
+			sourceTree = "<group>";
+		};
+		C2142F0E1C53908D0030B29B /* TLTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C2142F0F1C53909C0030B29B /* TLTableViewCell.h */,
+				C2142F101C53909C0030B29B /* TLTableViewCell.m */,
+			);
+			path = TLTableViewCell;
+			sourceTree = "<group>";
+		};
+		C2D500C41C55C08C0088997C /* ConversationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500C51C55C08C0088997C /* ConversationViews */,
+				C2D500C81C55C08C0088997C /* TLConversationViewController.h */,
+				C2D500C91C55C08C0088997C /* TLConversationViewController.m */,
+			);
+			path = ConversationViewController;
+			sourceTree = "<group>";
+		};
+		C2D500C51C55C08C0088997C /* ConversationViews */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500C61C55C08C0088997C /* TLConversationCell.h */,
+				C2D500C71C55C08C0088997C /* TLConversationCell.m */,
+			);
+			path = ConversationViews;
+			sourceTree = "<group>";
+		};
+		C2D500CC1C55C8F40088997C /* FriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500CD1C55C8F40088997C /* FriendsViews */,
+				C2D500CE1C55C8F40088997C /* TLFriendsViewController.h */,
+				C2D500CF1C55C8F40088997C /* TLFriendsViewController.m */,
+			);
+			path = FriendsViewController;
+			sourceTree = "<group>";
+		};
+		C2D500CD1C55C8F40088997C /* FriendsViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FriendsViews;
+			sourceTree = "<group>";
+		};
+		C2D500D11C55C9350088997C /* MineViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500D21C55C9350088997C /* MineViews */,
+				C2D500D31C55C9350088997C /* TLMineViewController.h */,
+				C2D500D41C55C9350088997C /* TLMineViewController.m */,
+			);
+			path = MineViewController;
+			sourceTree = "<group>";
+		};
+		C2D500D21C55C9350088997C /* MineViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MineViews;
+			sourceTree = "<group>";
+		};
+		C2D500D61C55C9A20088997C /* DiscoverViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500D71C55C9A20088997C /* DiscoverViews */,
+				C2D500D81C55C9A20088997C /* TLDiscoverViewController.h */,
+				C2D500D91C55C9A20088997C /* TLDiscoverViewController.m */,
+			);
+			path = DiscoverViewController;
+			sourceTree = "<group>";
+		};
+		C2D500D71C55C9A20088997C /* DiscoverViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DiscoverViews;
+			sourceTree = "<group>";
+		};
+		C2D500DE1C55CA5F0088997C /* FriendsSearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500DF1C55CA7B0088997C /* TLFriendSearchViewController.h */,
+				C2D500E01C55CA7B0088997C /* TLFriendSearchViewController.m */,
+			);
+			path = FriendsSearchViewController;
+			sourceTree = "<group>";
+		};
+		C2D500E21C5612170088997C /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				C2D500E31C5612300088997C /* UIView+Frame.h */,
+				C2D500E41C5612300088997C /* UIView+Frame.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C2097EE21C52326500163B5C /* TLChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2097F101C52326500163B5C /* Build configuration list for PBXNativeTarget "TLChat" */;
+			buildPhases = (
+				CC8B46C7F9BB79BD1D1E97BD /* Check Pods Manifest.lock */,
+				C2097EDF1C52326500163B5C /* Sources */,
+				C2097EE01C52326500163B5C /* Frameworks */,
+				C2097EE11C52326500163B5C /* Resources */,
+				B46DBA6792C3E056B6484AA5 /* Embed Pods Frameworks */,
+				FF9F8C675570F5C5117DA386 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TLChat;
+			productName = TLChat;
+			productReference = C2097EE31C52326500163B5C /* TLChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C2097EFB1C52326500163B5C /* TLChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2097F131C52326500163B5C /* Build configuration list for PBXNativeTarget "TLChatTests" */;
+			buildPhases = (
+				C2097EF81C52326500163B5C /* Sources */,
+				C2097EF91C52326500163B5C /* Frameworks */,
+				C2097EFA1C52326500163B5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2097EFE1C52326500163B5C /* PBXTargetDependency */,
+			);
+			name = TLChatTests;
+			productName = TLChatTests;
+			productReference = C2097EFC1C52326500163B5C /* TLChatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C2097F061C52326500163B5C /* TLChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2097F161C52326500163B5C /* Build configuration list for PBXNativeTarget "TLChatUITests" */;
+			buildPhases = (
+				C2097F031C52326500163B5C /* Sources */,
+				C2097F041C52326500163B5C /* Frameworks */,
+				C2097F051C52326500163B5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2097F091C52326500163B5C /* PBXTargetDependency */,
+			);
+			name = TLChatUITests;
+			productName = TLChatUITests;
+			productReference = C2097F071C52326500163B5C /* TLChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2097EDB1C52326500163B5C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "李伯坤";
+				TargetAttributes = {
+					C2097EE21C52326500163B5C = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					C2097EFB1C52326500163B5C = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = C2097EE21C52326500163B5C;
+					};
+					C2097F061C52326500163B5C = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = C2097EE21C52326500163B5C;
+					};
+				};
+			};
+			buildConfigurationList = C2097EDE1C52326500163B5C /* Build configuration list for PBXProject "TLChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C2097EDA1C52326500163B5C;
+			productRefGroup = C2097EE41C52326500163B5C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C2097EE21C52326500163B5C /* TLChat */,
+				C2097EFB1C52326500163B5C /* TLChatTests */,
+				C2097F061C52326500163B5C /* TLChatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2097EE11C52326500163B5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D500E71C5639210088997C /* Conversation.xcassets in Resources */,
+				C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2097EFA1C52326500163B5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2097F051C52326500163B5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B46DBA6792C3E056B6484AA5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC8B46C7F9BB79BD1D1E97BD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FF9F8C675570F5C5117DA386 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2097EDF1C52326500163B5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2142EF61C5376D40030B29B /* TLViewController.m in Sources */,
+				C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */,
+				C2142EF51C5376D40030B29B /* TLTableViewController.m in Sources */,
+				C2D500E51C5612300088997C /* UIView+Frame.m in Sources */,
+				C2D500A51C55BA630088997C /* TLUIUtility.m in Sources */,
+				C2142F0D1C53864C0030B29B /* TLUser.m in Sources */,
+				C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */,
+				C2D500D51C55C9350088997C /* TLMineViewController.m in Sources */,
+				C2D500CA1C55C08C0088997C /* TLConversationCell.m in Sources */,
+				C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */,
+				C2097EE81C52326500163B5C /* main.m in Sources */,
+				C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */,
+				C2142EE11C533A5D0030B29B /* TLColorUtility.m in Sources */,
+				C2D500A21C55BA3D0088997C /* TLFontUtility.m in Sources */,
+				C2142F001C5377B60030B29B /* TLConversation.m in Sources */,
+				C2D500CB1C55C08C0088997C /* TLConversationViewController.m in Sources */,
+				C2142EF31C5376D40030B29B /* TLNavigationController.m in Sources */,
+				C2142EF41C5376D40030B29B /* TLTabBarController.m in Sources */,
+				C2142EFD1C5377320030B29B /* TLBaseDataModel.m in Sources */,
+				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,
+				C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2097EF81C52326500163B5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2097F011C52326500163B5C /* TLChatTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2097F031C52326500163B5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2097EFE1C52326500163B5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2097EE21C52326500163B5C /* TLChat */;
+			targetProxy = C2097EFD1C52326500163B5C /* PBXContainerItemProxy */;
+		};
+		C2097F091C52326500163B5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2097EE21C52326500163B5C /* TLChat */;
+			targetProxy = C2097F081C52326500163B5C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C2097F0E1C52326500163B5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C2097F0F1C52326500163B5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C2097F111C52326500163B5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TLChat/PrefixHeader.pch";
+				INFOPLIST_FILE = TLChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wuba.zhuanzhuan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C2097F121C52326500163B5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28C098D007CC6D63F81358AB /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TLChat/PrefixHeader.pch";
+				INFOPLIST_FILE = TLChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wuba.zhuanzhuan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C2097F141C52326500163B5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TLChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.58ganji.TLChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TLChat.app/TLChat";
+			};
+			name = Debug;
+		};
+		C2097F151C52326500163B5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TLChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.58ganji.TLChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TLChat.app/TLChat";
+			};
+			name = Release;
+		};
+		C2097F171C52326500163B5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TLChatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.58ganji.TLChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TLChat;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		C2097F181C52326500163B5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TLChatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.58ganji.TLChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TLChat;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2097EDE1C52326500163B5C /* Build configuration list for PBXProject "TLChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2097F0E1C52326500163B5C /* Debug */,
+				C2097F0F1C52326500163B5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2097F101C52326500163B5C /* Build configuration list for PBXNativeTarget "TLChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2097F111C52326500163B5C /* Debug */,
+				C2097F121C52326500163B5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2097F131C52326500163B5C /* Build configuration list for PBXNativeTarget "TLChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2097F141C52326500163B5C /* Debug */,
+				C2097F151C52326500163B5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2097F161C52326500163B5C /* Build configuration list for PBXNativeTarget "TLChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2097F171C52326500163B5C /* Debug */,
+				C2097F181C52326500163B5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C2097EDB1C52326500163B5C /* Project object */;
+}

@@ -1,0 +1,1 @@
+../../../SWTableViewCell/SWTableViewCell/PodFiles/SWUtilityButtonTapGestureRecognizer.h

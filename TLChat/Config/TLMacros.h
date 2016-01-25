@@ -1,0 +1,35 @@
+//
+//  TLMacros.h
+//  TLChat
+//
+//  Created by 李伯坤 on 16/1/23.
+//  Copyright © 2016年 李伯坤. All rights reserved.
+//
+
+#ifndef TLMacros_h
+#define TLMacros_h
+
+#pragma mark - SIZE
+#define     SIZE_SCREEN         [UIScreen mainScreen].bounds.size
+#define     WIDTH_SCREEN        [UIScreen mainScreen].bounds.size.width
+#define     HEIGHT_SCREEN       [UIScreen mainScreen].bounds.size.height
+#define     HEIGHT_STATUSBAR	20
+#define     HEIGHT_TABBAR       49
+#define     HEIGHT_NAVBAR       44
+
+
+#define mark - Default
+#define     DEFAULT_IMAGE_AVATAR    @"tabbar_contactsHL"
+
+#pragma mark - Methods
+#define     TLURL(urlString)    [NSURL URLWithString:urlString]
+#define     TLColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
+
+
+#pragma mark - Path
+#define     PATH_DOCUMENT       [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+
+
+
+
+#endif /* TLMacros_h */

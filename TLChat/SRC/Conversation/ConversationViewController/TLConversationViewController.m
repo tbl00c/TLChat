@@ -38,11 +38,29 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"微信"];
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
-
     [self.tableView setTableHeaderView:self.searchController.searchBar];
+    
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
+    [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
     
     [self.tableView registerClass:[TLConversationCell class] forCellReuseIdentifier:@"TLConversationCell"];
     
+    
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleClick)];
+    [tapGes setNumberOfTapsRequired:2];
+  
+    
+    [self initTestData];
+}
+
+- (void) doubleClick
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Double Click Tab Bar" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+}
+
+- (void) initTestData
+{
     NSArray *jsonData = @[@{
                               @"username":@"莫小贝",
                               @"messageDetail":@"帅哥你好啊!",
@@ -125,6 +143,12 @@
     [self.tabBarController.tabBar setHidden:NO];
 }
 
+#pragma mark - Event Response
+- (void) rightBarButtonDown:(UIBarButtonItem *)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Right Bar Button Down!" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+}
 
 #pragma mark - Getter
 - (UISearchController *) searchController

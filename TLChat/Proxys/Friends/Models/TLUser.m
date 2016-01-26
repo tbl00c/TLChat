@@ -11,4 +11,14 @@
 
 @implementation TLUser
 
+- (id) initWithUserID:(NSString *)userID avatarPath:(NSString *)avatarPath remarkName:(NSString *)remarkName
+{
+    if (self = [super init]) {
+        self.userID = userID;
+        self.avatarPath = avatarPath;
+        self.remarkName = remarkName;
+    }
+    return self;
+}
+
 @end

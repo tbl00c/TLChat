@@ -25,4 +25,9 @@
     return [UIFont systemFontOfSize:12.5f];
 }
 
++ (UIFont *) fontFriendsUsername
+{
+    return [UIFont systemFontOfSize:17.0f];
+}
+
 @end

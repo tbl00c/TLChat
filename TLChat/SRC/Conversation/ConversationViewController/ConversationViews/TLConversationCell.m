@@ -47,7 +47,7 @@
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SPACE_X);
         make.centerY.mas_equalTo(self.contentView);
-        make.width.and.height.mas_equalTo(self.contentView.mas_height).multipliedBy(0.7);
+        make.width.and.height.mas_equalTo(self.contentView.mas_height).multipliedBy(0.69);
     }];
     
     [self.usernameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
@@ -81,7 +81,12 @@
 {
     _conversation = conversation;
     
-    [self.avatarImageView sd_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_IMAGE_AVATAR]];
+    if (conversation.avatarPath) {
+        [self.avatarImageView setImage:[UIImage imageNamed:conversation.avatarPath]];
+    }
+    else {
+        [self.avatarImageView sd_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_IMAGE_AVATAR]];
+    }
     [self.usernameLabel setText:conversation.username];
     [self.detailLabel setText:conversation.messageDetail];
     [self.timeLabel setText:@"上午11:11"];

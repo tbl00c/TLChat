@@ -21,13 +21,29 @@
 @property (nonatomic, strong) NSString *username;
 
 /**
+ *  昵称
+ */
+@property (nonatomic, strong) NSString *nikeName;
+
+/**
  *  头像URL
  */
 @property (nonatomic, strong) NSString *avatarURL;
 
 /**
+ *  头像Path
+ */
+@property (nonatomic, strong) NSString *avatarPath;
+
+/**
  *  备注名
  */
 @property (nonatomic, strong) NSString *remarkName;
+
+@property (nonatomic, strong) NSString *pinyin;
+
+@property (nonatomic, strong) NSString *pinyinInitial;
+
+- (id) initWithUserID:(NSString *)userID avatarPath:(NSString *)avatarPath remarkName:(NSString *)remarkName;
 
 @end

@@ -31,11 +31,11 @@
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self addSubview:self.avatarImageView];
-        [self addSubview:self.usernameLabel];
-        [self addSubview:self.detailLabel];
-        [self addSubview:self.timeLabel];
-        [self addSubview:self.remindImageView];
+        [self.contentView addSubview:self.avatarImageView];
+        [self.contentView addSubview:self.usernameLabel];
+        [self.contentView addSubview:self.detailLabel];
+        [self.contentView addSubview:self.timeLabel];
+        [self.contentView addSubview:self.remindImageView];
         
         [self addMasonry];
     }
@@ -84,7 +84,7 @@
     [self.avatarImageView sd_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_IMAGE_AVATAR]];
     [self.usernameLabel setText:conversation.username];
     [self.detailLabel setText:conversation.messageDetail];
-    [self.timeLabel setText:@"11:11"];
+    [self.timeLabel setText:@"上午11:11"];
     switch (conversation.remindType) {
         case TLMessageRemindTypeNormal:
             [self.remindImageView setHidden:YES];

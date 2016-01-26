@@ -13,8 +13,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView setTableFooterView:[[UIView alloc] init]];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setTableFooterView:[UIView new]];
 }
 
 @end

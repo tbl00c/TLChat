@@ -30,9 +30,15 @@
 @implementation TLConversationViewController
 
 - (void)viewDidLoad {
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 10, 0, 0)];
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 10, 0, 0)];
+    [self.tableView setSeparatorColor:[TLColorUtility colorCellLine]];
+    
     [super viewDidLoad];
     [self.navigationItem setTitle:@"微信"];
-    
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
+
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     
     [self.tableView registerClass:[TLConversationCell class] forCellReuseIdentifier:@"TLConversationCell"];
@@ -69,7 +75,6 @@
     TLConversation *conversation = [self.data objectAtIndex:indexPath.row];
     TLConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLConversationCell"];
     [cell setConversation:conversation];
-    [cell setBottomLineStyle:indexPath.row == self.data.count - 1 ? TLCellLineStyleFill : TLCellLineStyleDefault];
     return cell;
 }
 
@@ -92,11 +97,6 @@
                                                                        handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
                                                                            [weakSelf.data removeObjectAtIndex:indexPath.row];
                                                                            [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                           if (indexPath.row == self.data.count) {
-                                                                               NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
-                                                                               TLConversationCell *cell = [weakSelf.tableView cellForRowAtIndexPath:lastIndexPath];
-                                                                               [cell setBottomLineStyle:TLCellLineStyleFill];
-                                                                           }
                                                                        }];
     UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
                                                                           title:@"标为未读"
@@ -107,6 +107,11 @@
     moreAction.backgroundColor = [TLColorUtility colorCellMoreButton];
     NSArray *arr = @[delAction, moreAction];
     return arr;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.5;
 }
 
 #pragma mark UISearchBarDelegate

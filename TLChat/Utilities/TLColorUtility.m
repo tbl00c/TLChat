@@ -43,7 +43,8 @@
 
 + (UIColor *) colorSearchBarBorder
 {
-    return TLColor(220, 220, 220, 1.0);
+    return [TLColorUtility colorSearchBarTint];
+//    return TLColor(220, 220, 220, 1.0);
 }
 
 + (UIColor *) colorCellLine
@@ -64,7 +65,7 @@
 
 + (UIColor *) colorConversationTime
 {
-    return [UIColor grayColor];
+    return TLColor(160, 160, 160, 1.0);
 }
 
 @end

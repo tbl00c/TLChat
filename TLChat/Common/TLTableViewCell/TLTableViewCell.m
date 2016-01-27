@@ -84,7 +84,7 @@
 {
     if (_topLine == nil) {
         _topLine = [[UIView alloc] init];
-        [_topLine setBackgroundColor:[TLColorUtility colorCellLine]];
+        [_topLine setBackgroundColor:[UIColor colorCellLine]];
     }
     return _topLine;
 }
@@ -93,7 +93,7 @@
 {
     if (_bottomLine == nil) {
         _bottomLine = [[UIView alloc] init];
-        [_bottomLine setBackgroundColor:[TLColorUtility colorCellLine]];
+        [_bottomLine setBackgroundColor:[UIColor colorCellLine]];
     }
     return _bottomLine;
 }

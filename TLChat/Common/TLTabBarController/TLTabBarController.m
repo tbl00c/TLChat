@@ -14,8 +14,8 @@
 {
     [super viewDidLoad];
 
-    [self.tabBar setBackgroundColor:[TLColorUtility colorTabBarBG]];
-    [self.tabBar setTintColor:[TLColorUtility colorTabBarTint]];
+    [self.tabBar setBackgroundColor:[UIColor colorTabBarBG]];
+    [self.tabBar setTintColor:[UIColor colorTabBarTint]];
 }
 
 @end

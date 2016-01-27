@@ -12,7 +12,6 @@
 		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
 		C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EA61C531FA40030B29B /* TLAppDelegate.m */; };
 		C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2142ED91C53345C0030B29B /* Launch.xcassets */; };
-		C2142EE11C533A5D0030B29B /* TLColorUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EE01C533A5D0030B29B /* TLColorUtility.m */; };
 		C2142EF31C5376D40030B29B /* TLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EE91C5376D40030B29B /* TLNavigationController.m */; };
 		C2142EF41C5376D40030B29B /* TLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EEC1C5376D40030B29B /* TLTabBarController.m */; };
 		C2142EF51C5376D40030B29B /* TLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EEF1C5376D40030B29B /* TLTableViewController.m */; };
@@ -25,8 +24,6 @@
 		C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A1BBC91C5753420046CA1C /* Friends.xcassets */; };
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
 		C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */; };
-		C2D500A21C55BA3D0088997C /* TLFontUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500A11C55BA3D0088997C /* TLFontUtility.m */; };
-		C2D500A51C55BA630088997C /* TLUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500A41C55BA630088997C /* TLUIUtility.m */; };
 		C2D500CA1C55C08C0088997C /* TLConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500C71C55C08C0088997C /* TLConversationCell.m */; };
 		C2D500CB1C55C08C0088997C /* TLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500C91C55C08C0088997C /* TLConversationViewController.m */; };
 		C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500CF1C55C8F40088997C /* TLFriendsViewController.m */; };
@@ -36,6 +33,9 @@
 		C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500E01C55CA7B0088997C /* TLFriendSearchViewController.m */; };
 		C2D500E51C5612300088997C /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500E41C5612300088997C /* UIView+Frame.m */; };
 		C2D500E71C5639210088997C /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D500E61C5639210088997C /* Conversation.xcassets */; };
+		C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E31C58C8CA005419E4 /* TLFriendHelper.m */; };
+		C2DD58E91C58CEF2005419E4 /* UIColor+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E61C58CEF2005419E4 /* UIColor+TLChat.m */; };
+		C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */; };
 		CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47069788539839E1FB073F9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,8 +73,6 @@
 		C2142EA61C531FA40030B29B /* TLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppDelegate.m; sourceTree = "<group>"; };
 		C2142EC61C5326C30030B29B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C2142ED91C53345C0030B29B /* Launch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Launch.xcassets; sourceTree = "<group>"; };
-		C2142EDF1C533A5D0030B29B /* TLColorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLColorUtility.h; sourceTree = "<group>"; };
-		C2142EE01C533A5D0030B29B /* TLColorUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLColorUtility.m; sourceTree = "<group>"; };
 		C2142EE81C5376D40030B29B /* TLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLNavigationController.h; sourceTree = "<group>"; };
 		C2142EE91C5376D40030B29B /* TLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLNavigationController.m; sourceTree = "<group>"; };
 		C2142EEB1C5376D40030B29B /* TLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTabBarController.h; sourceTree = "<group>"; };
@@ -99,10 +97,6 @@
 		C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserGroup.m; sourceTree = "<group>"; };
 		C2A1BBD51C5784340046CA1C /* TLFriendHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendHeaderView.h; sourceTree = "<group>"; };
 		C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendHeaderView.m; sourceTree = "<group>"; };
-		C2D500A01C55BA3D0088997C /* TLFontUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFontUtility.h; sourceTree = "<group>"; };
-		C2D500A11C55BA3D0088997C /* TLFontUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFontUtility.m; sourceTree = "<group>"; };
-		C2D500A31C55BA630088997C /* TLUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUIUtility.h; sourceTree = "<group>"; };
-		C2D500A41C55BA630088997C /* TLUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUIUtility.m; sourceTree = "<group>"; };
 		C2D500C61C55C08C0088997C /* TLConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversationCell.h; sourceTree = "<group>"; };
 		C2D500C71C55C08C0088997C /* TLConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLConversationCell.m; sourceTree = "<group>"; };
 		C2D500C81C55C08C0088997C /* TLConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversationViewController.h; sourceTree = "<group>"; };
@@ -120,6 +114,12 @@
 		C2D500E31C5612300088997C /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		C2D500E41C5612300088997C /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		C2D500E61C5639210088997C /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
+		C2DD58E21C58C8CA005419E4 /* TLFriendHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendHelper.h; sourceTree = "<group>"; };
+		C2DD58E31C58C8CA005419E4 /* TLFriendHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendHelper.m; sourceTree = "<group>"; };
+		C2DD58E51C58CEF2005419E4 /* UIColor+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TLChat.h"; sourceTree = "<group>"; };
+		C2DD58E61C58CEF2005419E4 /* UIColor+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TLChat.m"; sourceTree = "<group>"; };
+		C2DD58E71C58CEF2005419E4 /* UIFont+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TLChat.h"; sourceTree = "<group>"; };
+		C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+TLChat.m"; sourceTree = "<group>"; };
 		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -193,9 +193,10 @@
 			children = (
 				C2142EA51C531FA40030B29B /* TLAppDelegate.h */,
 				C2142EA61C531FA40030B29B /* TLAppDelegate.m */,
-				C2142E931C531EFD0030B29B /* Config */,
 				C2142EA21C531EFD0030B29B /* Store */,
 				C2142E961C531EFD0030B29B /* Proxys */,
+				C2DD58E01C58C821005419E4 /* Business */,
+				C2142E931C531EFD0030B29B /* Config */,
 				C2142EE61C5376D40030B29B /* Common */,
 				C2142E991C531EFD0030B29B /* SRC */,
 				C2142EDB1C5336C30030B29B /* Utilities */,
@@ -367,12 +368,10 @@
 		C2142EDB1C5336C30030B29B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				C2142EDF1C533A5D0030B29B /* TLColorUtility.h */,
-				C2142EE01C533A5D0030B29B /* TLColorUtility.m */,
-				C2D500A01C55BA3D0088997C /* TLFontUtility.h */,
-				C2D500A11C55BA3D0088997C /* TLFontUtility.m */,
-				C2D500A31C55BA630088997C /* TLUIUtility.h */,
-				C2D500A41C55BA630088997C /* TLUIUtility.m */,
+				C2DD58E51C58CEF2005419E4 /* UIColor+TLChat.h */,
+				C2DD58E61C58CEF2005419E4 /* UIColor+TLChat.m */,
+				C2DD58E71C58CEF2005419E4 /* UIFont+TLChat.h */,
+				C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -579,6 +578,23 @@
 			path = Vendors;
 			sourceTree = "<group>";
 		};
+		C2DD58E01C58C821005419E4 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				C2DD58E11C58C83F005419E4 /* Friends */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		C2DD58E11C58C83F005419E4 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C2DD58E21C58C8CA005419E4 /* TLFriendHelper.h */,
+				C2DD58E31C58C8CA005419E4 /* TLFriendHelper.m */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -762,11 +778,13 @@
 			files = (
 				C2142EF61C5376D40030B29B /* TLViewController.m in Sources */,
 				C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */,
+				C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */,
 				C2142EF51C5376D40030B29B /* TLTableViewController.m in Sources */,
 				C2D500E51C5612300088997C /* UIView+Frame.m in Sources */,
-				C2D500A51C55BA630088997C /* TLUIUtility.m in Sources */,
+				C2DD58E91C58CEF2005419E4 /* UIColor+TLChat.m in Sources */,
 				C2142F0D1C53864C0030B29B /* TLUser.m in Sources */,
 				C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */,
+				C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */,
 				C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */,
 				C2D500D51C55C9350088997C /* TLMineViewController.m in Sources */,
 				C2D500CA1C55C08C0088997C /* TLConversationCell.m in Sources */,
@@ -774,8 +792,6 @@
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */,
-				C2142EE11C533A5D0030B29B /* TLColorUtility.m in Sources */,
-				C2D500A21C55BA3D0088997C /* TLFontUtility.m in Sources */,
 				C2142F001C5377B60030B29B /* TLConversation.m in Sources */,
 				C2D500CB1C55C08C0088997C /* TLConversationViewController.m in Sources */,
 				C2142EF31C5376D40030B29B /* TLNavigationController.m in Sources */,

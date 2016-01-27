@@ -33,7 +33,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 10, 0, 0)];
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 10, 0, 0)];
-    [self.tableView setSeparatorColor:[TLColorUtility colorCellLine]];
+    [self.tableView setSeparatorColor:[UIColor colorCellLine]];
     
     [super viewDidLoad];
     [self.navigationItem setTitle:@"微信"];
@@ -57,28 +57,6 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Double Click Tab Bar" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
-}
-
-- (void) initTestData
-{
-    NSArray *jsonData = @[@{
-                              @"username":@"莫小贝",
-                              @"messageDetail":@"帅哥你好啊!",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201412/19/20141219143241_H3TYu.png",
-                              },
-                          @{
-                              @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
-                              @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
-                              },
-                          @{
-                              @"username":@"test2",
-                              @"messageDetail":@"This is a test. Hello world, hello everyone!",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201512/22/20151222132938_BRTcQ.png",
-                              }];
-    self.data = [TLConversation mj_objectArrayWithKeyValuesArray:jsonData];
-    TLConversation *conv = self.data[1];
-    conv.remindType = TLMessageRemindTypeClosed;
 }
 
 #pragma mark -
@@ -122,7 +100,7 @@
                                                                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"标为未读" message:nil delegate:nil cancelButtonTitle:@"确认" otherButtonTitles: nil];
                                                                             [alertView show];
                                                                         }];
-    moreAction.backgroundColor = [TLColorUtility colorCellMoreButton];
+    moreAction.backgroundColor = [UIColor colorCellMoreButton];
     NSArray *arr = @[delAction, moreAction];
     return arr;
 }
@@ -156,10 +134,10 @@
     if (_searchController == nil) {
         _searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchVC];
         [_searchController.searchBar setPlaceholder:@"搜索"];
-        [_searchController.searchBar setBarTintColor:[TLColorUtility colorSearchBarTint]];
+        [_searchController.searchBar setBarTintColor:[UIColor colorSearchBarTint]];
         [_searchController.searchBar setDelegate:self];
         [_searchController.searchBar.layer setBorderWidth:0.5f];
-        [_searchController.searchBar.layer setBorderColor:[TLColorUtility colorSearchBarBorder].CGColor];
+        [_searchController.searchBar.layer setBorderColor:[UIColor colorSearchBarBorder].CGColor];
     }
     return _searchController;
 }
@@ -170,6 +148,58 @@
         _searchVC = [[TLFriendSearchViewController alloc] init];
     }
     return _searchVC;
+}
+
+- (void) initTestData
+{
+    NSArray *jsonData = @[@{
+                              @"username":@"莫小贝",
+                              @"messageDetail":@"帅哥你好啊!",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201412/19/20141219143241_H3TYu.png",
+                              },
+                          @{
+                              @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
+                              @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
+                              },
+                          @{
+                              @"username":@"test2",
+                              @"messageDetail":@"This is a test. Hello world, hello everyone!",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201512/22/20151222132938_BRTcQ.png",
+                              },
+                          @{
+                              @"username":@"莫小贝",
+                              @"messageDetail":@"帅哥你好啊!",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201412/19/20141219143241_H3TYu.png",
+                              },
+                          @{
+                              @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
+                              @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
+                              },
+                          @{
+                              @"username":@"test2",
+                              @"messageDetail":@"This is a test. Hello world, hello everyone!",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201512/22/20151222132938_BRTcQ.png",
+                              },
+                          @{
+                              @"username":@"莫小贝",
+                              @"messageDetail":@"帅哥你好啊!",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201412/19/20141219143241_H3TYu.png",
+                              },
+                          @{
+                              @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
+                              @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
+                              },
+                          @{
+                              @"username":@"test2",
+                              @"messageDetail":@"This is a test. Hello world, hello everyone!",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201512/22/20151222132938_BRTcQ.png",
+                              }];
+    self.data = [TLConversation mj_objectArrayWithKeyValuesArray:jsonData];
+    TLConversation *conv = self.data[1];
+    conv.remindType = TLMessageRemindTypeClosed;
 }
 
 @end

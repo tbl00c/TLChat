@@ -11,6 +11,7 @@
 #import <UIImageView+WebCache.h>
 
 #define     SPACE_X         10.0f
+#define     SPACE_Y         10.0f
 
 @interface TLConversationCell()
 
@@ -46,8 +47,9 @@
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SPACE_X);
-        make.centerY.mas_equalTo(self.contentView);
-        make.width.and.height.mas_equalTo(self.contentView.mas_height).multipliedBy(0.69);
+        make.top.mas_equalTo(SPACE_Y);
+        make.bottom.mas_equalTo(- SPACE_Y + 0.5);
+        make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
     
     [self.usernameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
@@ -59,7 +61,7 @@
     
     [self.detailLabel setContentCompressionResistancePriority:110 forAxis:UILayoutConstraintAxisHorizontal];
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.avatarImageView).mas_offset(-1.5);
+        make.bottom.mas_equalTo(self.avatarImageView).mas_offset(-2.0);
         make.left.mas_equalTo(self.usernameLabel);
         make.right.mas_lessThanOrEqualTo(self.remindImageView.mas_left);
     }];
@@ -89,7 +91,7 @@
     }
     [self.usernameLabel setText:conversation.username];
     [self.detailLabel setText:conversation.messageDetail];
-    [self.timeLabel setText:@"上午11:11"];
+    [self.timeLabel setText:@"11:11"];
     switch (conversation.remindType) {
         case TLMessageRemindTypeNormal:
             [self.remindImageView setHidden:YES];
@@ -126,7 +128,7 @@
 {
     if (_usernameLabel == nil) {
         _usernameLabel = [[UILabel alloc] init];
-        [_usernameLabel setFont:[TLFontUtility fontConversationUsername]];
+        [_usernameLabel setFont:[UIFont fontConversationUsername]];
     }
     return _usernameLabel;
 }
@@ -135,8 +137,8 @@
 {
     if (_detailLabel == nil) {
         _detailLabel = [[UILabel alloc] init];
-        [_detailLabel setFont:[TLFontUtility fontConversationDetail]];
-        [_detailLabel setTextColor:[TLColorUtility colorConversationDetail]];
+        [_detailLabel setFont:[UIFont fontConversationDetail]];
+        [_detailLabel setTextColor:[UIColor colorConversationDetail]];
     }
     return _detailLabel;
 }
@@ -145,8 +147,8 @@
 {
     if (_timeLabel == nil) {
         _timeLabel = [[UILabel alloc] init];
-        [_timeLabel setFont:[TLFontUtility fontConversationTime]];
-        [_timeLabel setTextColor:[TLColorUtility colorConversationTime]];
+        [_timeLabel setFont:[UIFont fontConversationTime]];
+        [_timeLabel setTextColor:[UIColor colorConversationTime]];
     }
     return _timeLabel;
 }

@@ -1,4 +1,3 @@
-
 //
 //  TLFriendHeaderView.m
 //  TLChat
@@ -21,7 +20,7 @@
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         UIView *bgView = [UIView new];
-        [bgView setBackgroundColor:[TLColorUtility colorTableViewBG]];
+        [bgView setBackgroundColor:[UIColor colorTableViewBG]];
         [self setBackgroundView:bgView];
         [self addSubview:self.titleLabel];
     }

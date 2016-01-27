@@ -14,9 +14,9 @@
 {
     [super viewDidLoad];
     
-    [self.navigationBar setBarTintColor:[TLColorUtility colorNavBarBarTint]];
-    [self.navigationBar setTintColor:[TLColorUtility colorNavBarTint]];
-    [self.view setBackgroundColor:[TLColorUtility colorTableViewBG]];
+    [self.navigationBar setBarTintColor:[UIColor colorNavBarBarTint]];
+    [self.navigationBar setTintColor:[UIColor colorNavBarTint]];
+    [self.view setBackgroundColor:[UIColor colorTableViewBG]];
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }

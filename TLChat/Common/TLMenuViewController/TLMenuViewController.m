@@ -21,6 +21,7 @@
     [self.tableView setBackgroundColor:[UIColor colorTableViewBG]];
     [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 15, 0, 0)];
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
+    [self.tableView setSeparatorColor:[UIColor colorCellLine]];
 }
 
 - (void) viewDidLoad

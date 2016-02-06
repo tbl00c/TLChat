@@ -17,7 +17,7 @@
     return TLColor(239.0, 239.0, 244.0, 1.0);
 }
 
-+ (UIColor *) colorTabBarTint
++ (UIColor *) colorDefaultGreen
 {
     return TLColor(2.0, 187.0, 0.0, 1.0f);
 }

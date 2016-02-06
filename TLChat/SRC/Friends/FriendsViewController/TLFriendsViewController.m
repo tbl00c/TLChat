@@ -122,6 +122,11 @@
 }
 
 #pragma mark UISearchBarDelegate
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+}
+
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     [self.tabBarController.tabBar setHidden:YES];
@@ -130,6 +135,13 @@
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [self.tabBarController.tabBar setHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+}
+
+- (void) searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"语音搜索按钮" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [alert show];
 }
 
 #pragma mark - Event Response
@@ -149,6 +161,16 @@
     [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
     [self.tableView setSectionIndexColor:[UIColor colorNavBarBarTint]];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
+    [self.searchController.searchBar setTintColor:[UIColor colorDefaultGreen]];
+    [self.searchController.searchBar setShowsBookmarkButton:YES];
+    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
+    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice_HL"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateHighlighted];
+    UITextField *tf = [[[self.searchController.searchBar.subviews firstObject] subviews] lastObject];
+    [tf.layer setMasksToBounds:YES];
+    [tf.layer setBorderWidth:0.5f];
+    [tf.layer setBorderColor:[UIColor colorCellLine].CGColor];
+    [tf.layer setCornerRadius:5.0f];
+    
     self.footerLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 50.0f)];
     [self.footerLabel setTextAlignment:NSTextAlignmentCenter];
     [self.footerLabel setFont:[UIFont systemFontOfSize:17.0f]];

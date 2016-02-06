@@ -11,9 +11,16 @@
 @interface UIColor (TLChat)
 
 #pragma mark - Global
+/**
+ *  默认背景色
+ */
 + (UIColor *) colorTableViewBG;
 
-+ (UIColor *) colorTabBarTint;
+/**
+ *  默认的绿色
+ */
++ (UIColor *) colorDefaultGreen;
+
 + (UIColor *) colorTabBarBG;
 
 + (UIColor *) colorNavBarTint;

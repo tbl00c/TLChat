@@ -32,18 +32,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"微信"];
-    [self.tableView setBackgroundColor:[UIColor whiteColor]];
-    [self.tableView setTableHeaderView:self.searchController.searchBar];
     
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
-    [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
+    [self p_initUI];        // 初始化界面UI
     
     [self.tableView registerClass:[TLConversationCell class] forCellReuseIdentifier:@"TLConversationCell"];
     
     //TODO: Do not work
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleClick)];
     [tapGes setNumberOfTapsRequired:2];
-  
     
     [self initTestData];
 }
@@ -119,6 +115,11 @@
 }
 
 #pragma mark UISearchBarDelegate
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+}
+
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     [self.tabBarController.tabBar setHidden:YES];
@@ -127,6 +128,13 @@
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [self.tabBarController.tabBar setHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+}
+
+- (void) searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"语音搜索按钮" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [alert show];
 }
 
 #pragma mark - Event Response
@@ -134,6 +142,25 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Right Bar Button Down!" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
+}
+
+#pragma mark - Private Methods
+- (void) p_initUI
+{
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
+    [self.tableView setTableHeaderView:self.searchController.searchBar];
+    [self.searchController.searchBar setTintColor:[UIColor colorDefaultGreen]];
+    [self.searchController.searchBar setShowsBookmarkButton:YES];
+    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
+    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice_HL"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateHighlighted];
+    UITextField *tf = [[[self.searchController.searchBar.subviews firstObject] subviews] lastObject];
+    [tf.layer setMasksToBounds:YES];
+    [tf.layer setBorderWidth:0.5f];
+    [tf.layer setBorderColor:[UIColor colorCellLine].CGColor];
+    [tf.layer setCornerRadius:5.0f];
+    
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
+    [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
 }
 
 #pragma mark - Getter

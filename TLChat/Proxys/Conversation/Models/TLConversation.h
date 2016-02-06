@@ -14,7 +14,7 @@
 /**
  *  会话类型（个人，讨论组，企业号）
  */
-@property (nonatomic, assign) TLConversationType type;
+@property (nonatomic, assign) TLConversationType convType;
 
 /**
  *  消息提醒类型
@@ -60,6 +60,11 @@
  *  提示红点类型
  */
 @property (nonatomic, assign) TLClueType clueType;
+
+/**
+ *  是否已读
+ */
+@property (nonatomic, assign) BOOL isRead;
 
 /**
  *  提示数量

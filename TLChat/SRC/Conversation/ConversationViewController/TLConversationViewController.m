@@ -14,7 +14,7 @@
 
 #import <UIImageView+WebCache.h>
 
-#define     HEIGHT_CONVERSATION_CELL        65.0f
+#define     HEIGHT_CONVERSATION_CELL        63.0f
 
 
 @interface TLConversationViewController () <UISearchBarDelegate>
@@ -30,11 +30,6 @@
 @implementation TLConversationViewController
 
 - (void)viewDidLoad {
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 10, 0, 0)];
-    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 10, 0, 0)];
-    [self.tableView setSeparatorColor:[UIColor colorCellLine]];
-    
     [super viewDidLoad];
     [self.navigationItem setTitle:@"微信"];
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
@@ -45,7 +40,7 @@
     
     [self.tableView registerClass:[TLConversationCell class] forCellReuseIdentifier:@"TLConversationCell"];
     
-    
+    //TODO: Do not work
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleClick)];
     [tapGes setNumberOfTapsRequired:2];
   
@@ -71,6 +66,10 @@
     TLConversation *conversation = [self.data objectAtIndex:indexPath.row];
     TLConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLConversationCell"];
     [cell setConversation:conversation];
+    
+    [cell setTopLineStyle:indexPath.row == 0 ? TLCellLineStyleFill : TLCellLineStyleNone];
+    [cell setBottomLineStyle:indexPath.row == self.data.count - 1 ? TLCellLineStyleFill : TLCellLineStyleDefault];
+    
     return cell;
 }
 
@@ -83,22 +82,31 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    TLConversationCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [cell markAsRead];
 }
 
 - (NSArray *) tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    TLConversation *conversation = [self.data objectAtIndex:indexPath.row];
     __weak typeof(self) weakSelf = self;
     UITableViewRowAction *delAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
                                                                          title:@"删除"
                                                                        handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
                                                                            [weakSelf.data removeObjectAtIndex:indexPath.row];
                                                                            [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                                                           if (self.data.count > 0 && indexPath.row == self.data.count) {
+                                                                               NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
+                                                                               TLConversationCell *cell = [self.tableView cellForRowAtIndexPath:lastIndexPath];
+                                                                               [cell setBottomLineStyle:TLCellLineStyleFill];
+                                                                           }
                                                                        }];
     UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
-                                                                          title:@"标为未读"
+                                                                          title:conversation.isRead ? @"标为未读" : @"标为已读"
                                                                         handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                                                                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"标为未读" message:nil delegate:nil cancelButtonTitle:@"确认" otherButtonTitles: nil];
-                                                                            [alertView show];
+                                                                            TLConversationCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+                                                                            conversation.isRead ? [cell markAsUnread] : [cell markAsRead];
+                                                                            [tableView setEditing:NO animated:YES];
                                                                         }];
     moreAction.backgroundColor = [UIColor colorCellMoreButton];
     NSArray *arr = @[delAction, moreAction];
@@ -155,51 +163,18 @@
     NSArray *jsonData = @[@{
                               @"username":@"莫小贝",
                               @"messageDetail":@"帅哥你好啊!",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201412/19/20141219143241_H3TYu.png",
+                              @"avatarPath":@"10.jpeg",
                               },
                           @{
                               @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
                               @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
                               @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
-                              },
-                          @{
-                              @"username":@"test2",
-                              @"messageDetail":@"This is a test. Hello world, hello everyone!",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201512/22/20151222132938_BRTcQ.png",
-                              },
-                          @{
-                              @"username":@"莫小贝",
-                              @"messageDetail":@"帅哥你好啊!",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201412/19/20141219143241_H3TYu.png",
-                              },
-                          @{
-                              @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
-                              @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
-                              },
-                          @{
-                              @"username":@"test2",
-                              @"messageDetail":@"This is a test. Hello world, hello everyone!",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201512/22/20151222132938_BRTcQ.png",
-                              },
-                          @{
-                              @"username":@"莫小贝",
-                              @"messageDetail":@"帅哥你好啊!",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201412/19/20141219143241_H3TYu.png",
-                              },
-                          @{
-                              @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
-                              @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
-                              },
-                          @{
-                              @"username":@"test2",
-                              @"messageDetail":@"This is a test. Hello world, hello everyone!",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201512/22/20151222132938_BRTcQ.png",
-                              }];
+                              }
+                         ];
     self.data = [TLConversation mj_objectArrayWithKeyValuesArray:jsonData];
     TLConversation *conv = self.data[1];
     conv.remindType = TLMessageRemindTypeClosed;
+    conv.convType = TLConversationTypePublic;
 }
 
 @end

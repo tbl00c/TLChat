@@ -19,7 +19,7 @@
 
 
 #define mark - Default
-#define     DEFAULT_IMAGE_AVATAR    @"tabbar_contactsHL"
+#define     DEFAULT_IMAGE_AVATAR    @"default_head"
 
 #pragma mark - Methods
 #define     TLURL(urlString)    [NSURL URLWithString:urlString]

@@ -9,8 +9,7 @@
 #import "TLFriendCell.h"
 #import <UIImageView+WebCache.h>
 
-#define     SPACE_X         10.0f
-#define     SPACE_Y         10.0f
+#define     FRIENDS_SPACE_X         10.0f
 
 @interface TLFriendCell ()
 
@@ -25,6 +24,8 @@
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.leftSeparatorSpace = FRIENDS_SPACE_X;
+        
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.usernameLabel];
         
@@ -36,18 +37,20 @@
 - (void) addMasonry
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(SPACE_X);
-        make.top.mas_equalTo(SPACE_Y);
-        make.bottom.mas_equalTo(- SPACE_Y + 0.5);
+        make.left.mas_equalTo(FRIENDS_SPACE_X);
+        make.top.mas_equalTo(FRIENDS_SPACE_X);
+        make.bottom.mas_equalTo(- FRIENDS_SPACE_X + 0.5);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
     
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(SPACE_X);
+        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(FRIENDS_SPACE_X);
         make.centerY.mas_equalTo(self.avatarImageView);
     }];
 }
 
+
+#pragma mark - Public Methods
 - (void) setUser:(TLUser *)user
 {
     _user = user;

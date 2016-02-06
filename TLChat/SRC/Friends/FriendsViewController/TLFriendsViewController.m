@@ -31,14 +31,14 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"通讯录"];
     
-    [self p_initUI];
-    self.friendHelper = [[TLFriendHelper alloc] init];
+    [self p_initUI];        // 初始化界面UI
+    
+    self.friendHelper = [[TLFriendHelper alloc] init];      // 初始化好友数据业务类
     self.data = self.friendHelper.data;
     self.sectionHeaders = self.friendHelper.sectionHeaders;
     
     [self.tableView registerClass:[TLFriendHeaderView class] forHeaderFooterViewReuseIdentifier:@"TLFriendHeaderView"];
     [self.tableView registerClass:[TLFriendCell class] forCellReuseIdentifier:@"TLFriendCell"];
-
 }
 
 #pragma mark - Delegate
@@ -71,6 +71,15 @@
     TLUserGroup *group = [self.data objectAtIndex:indexPath.section];
     TLUser *user = [group objectAtIndex:indexPath.row];
     [cell setUser:user];
+    
+    [cell setTopLineStyle: (indexPath.section == 0 && indexPath.row == 0) ? TLCellLineStyleFill : TLCellLineStyleNone];     // cell顶部线
+    if (indexPath.section == self.data.count - 1 && indexPath.row == group.count - 1){  // 最后一个cell，底部全线
+        [cell setBottomLineStyle:TLCellLineStyleFill];
+    }
+    else {
+        [cell setBottomLineStyle:indexPath.row == group.count - 1 ? TLCellLineStyleNone : TLCellLineStyleDefault];
+    }
+    
     return cell;
 }
 

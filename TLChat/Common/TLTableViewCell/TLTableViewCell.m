@@ -17,36 +17,36 @@
 
 @implementation TLTableViewCell
 
-//- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-//{
-//    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-//        [self addSubview:self.topLine];
-//        [self addSubview:self.bottomLine];
-//        _leftSeparatorSpace = 10.0f;
-//        _topLineStyle = TLCellLineStyleNone;
-//        _bottomLineStyle = TLCellLineStyleDefault;
-//    }
-//    return self;
-//}
-//
-//- (void) layoutSubviews
-//{
-//    [super layoutSubviews];
-//    
-//    if (_topLineStyle == TLCellLineStyleDefault) {
-//        [_topLine setFrame:CGRectMake(_leftSeparatorSpace, 0, self.width - _leftSeparatorSpace, 0.5)];
-//    }
-//    else if (_topLineStyle == TLCellLineStyleFill) {
-//        [_topLine setFrame:CGRectMake(0, 0, self.width, 0.5)];
-//    }
-//    
-//    if (_bottomLineStyle == TLCellLineStyleDefault) {
-//        [_bottomLine setFrame:CGRectMake(_leftSeparatorSpace, self.height - 0.5, self.width - _leftSeparatorSpace, 0.5)];
-//    }
-//    else if (_bottomLineStyle == TLCellLineStyleFill) {
-//        [_bottomLine setFrame:CGRectMake(0, self.height - 0.5, self.width, 0.5)];
-//    }
-//}
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self addSubview:self.topLine];
+        [self addSubview:self.bottomLine];
+        _leftSeparatorSpace = 10.0f;
+        _topLineStyle = TLCellLineStyleNone;
+        _bottomLineStyle = TLCellLineStyleDefault;
+    }
+    return self;
+}
+
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (_topLineStyle == TLCellLineStyleDefault) {
+        [_topLine setFrame:CGRectMake(_leftSeparatorSpace, 0, self.width - _leftSeparatorSpace, 0.5)];
+    }
+    else if (_topLineStyle == TLCellLineStyleFill) {
+        [_topLine setFrame:CGRectMake(0, 0, self.width, 0.5)];
+    }
+    
+    if (_bottomLineStyle == TLCellLineStyleDefault) {
+        [_bottomLine setFrame:CGRectMake(_leftSeparatorSpace, self.height - 0.5, self.width - _leftSeparatorSpace, 0.5)];
+    }
+    else if (_bottomLineStyle == TLCellLineStyleFill) {
+        [_bottomLine setFrame:CGRectMake(0, self.height - 0.5, self.width, 0.5)];
+    }
+}
 
 #pragma mark - Setter
 - (void) setTopLineStyle:(TLCellLineStyle)topLineStyle

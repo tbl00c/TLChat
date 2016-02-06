@@ -12,6 +12,9 @@
 
 @interface TLFriendCell : TLTableViewCell
 
+/**
+ *  用户信息
+ */
 @property (nonatomic, strong) TLUser *user;
 
 @end

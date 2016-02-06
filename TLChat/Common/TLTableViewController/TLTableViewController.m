@@ -14,6 +14,7 @@
 {
     [super viewDidLoad];
     [self.tableView setTableFooterView:[UIView new]];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 @end

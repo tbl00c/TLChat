@@ -10,4 +10,21 @@
 
 @implementation TLConversation
 
+- (void) setConvType:(TLConversationType)convType
+{
+    _convType = convType;
+    switch (convType) {
+        case TLConversationTypePersonal:
+        case TLConversationTypeGroup:
+            self.clueType = TLClueTypePointWithNumber;
+            break;
+        case TLConversationTypePublic:
+        case TLConversationTypeServerGroup:
+            self.clueType = TLClueTypePoint;
+            break;
+        default:
+            break;
+    }
+}
+
 @end

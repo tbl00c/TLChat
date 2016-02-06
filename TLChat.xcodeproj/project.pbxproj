@@ -24,6 +24,15 @@
 		C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A1BBC91C5753420046CA1C /* Friends.xcassets */; };
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
 		C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */; };
+		C2B9E4211C65DA0900CEBA81 /* TLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4201C65DA0900CEBA81 /* TLMenuViewController.m */; };
+		C2B9E4231C65DD6C00CEBA81 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B9E4221C65DD6C00CEBA81 /* Discover.xcassets */; };
+		C2B9E4261C65E1A300CEBA81 /* TLMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4251C65E1A300CEBA81 /* TLMenuCell.m */; };
+		C2B9E4291C65E1BA00CEBA81 /* TLMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4281C65E1BA00CEBA81 /* TLMenuItem.m */; };
+		C2B9E42D1C65E6CF00CEBA81 /* TLDiscoverHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E42C1C65E6CF00CEBA81 /* TLDiscoverHelper.m */; };
+		C2B9E4311C65F53700CEBA81 /* TLMineHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4301C65F53700CEBA81 /* TLMineHelper.m */; };
+		C2B9E4331C65F5DA00CEBA81 /* Mine.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B9E4321C65F5DA00CEBA81 /* Mine.xcassets */; };
+		C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4351C663E8800CEBA81 /* TLMineHeaderCell.m */; };
+		C2B9E43A1C66451B00CEBA81 /* TLUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4391C66451B00CEBA81 /* TLUserHelper.m */; };
 		C2D500CA1C55C08C0088997C /* TLConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500C71C55C08C0088997C /* TLConversationCell.m */; };
 		C2D500CB1C55C08C0088997C /* TLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500C91C55C08C0088997C /* TLConversationViewController.m */; };
 		C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500CF1C55C8F40088997C /* TLFriendsViewController.m */; };
@@ -98,6 +107,22 @@
 		C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserGroup.m; sourceTree = "<group>"; };
 		C2A1BBD51C5784340046CA1C /* TLFriendHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendHeaderView.h; sourceTree = "<group>"; };
 		C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendHeaderView.m; sourceTree = "<group>"; };
+		C2B9E41F1C65DA0900CEBA81 /* TLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuViewController.h; sourceTree = "<group>"; };
+		C2B9E4201C65DA0900CEBA81 /* TLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuViewController.m; sourceTree = "<group>"; };
+		C2B9E4221C65DD6C00CEBA81 /* Discover.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Discover.xcassets; sourceTree = "<group>"; };
+		C2B9E4241C65E1A300CEBA81 /* TLMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuCell.h; sourceTree = "<group>"; };
+		C2B9E4251C65E1A300CEBA81 /* TLMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuCell.m; sourceTree = "<group>"; };
+		C2B9E4271C65E1BA00CEBA81 /* TLMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuItem.h; sourceTree = "<group>"; };
+		C2B9E4281C65E1BA00CEBA81 /* TLMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuItem.m; sourceTree = "<group>"; };
+		C2B9E42B1C65E6CF00CEBA81 /* TLDiscoverHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDiscoverHelper.h; sourceTree = "<group>"; };
+		C2B9E42C1C65E6CF00CEBA81 /* TLDiscoverHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDiscoverHelper.m; sourceTree = "<group>"; };
+		C2B9E42F1C65F53700CEBA81 /* TLMineHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineHelper.h; sourceTree = "<group>"; };
+		C2B9E4301C65F53700CEBA81 /* TLMineHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineHelper.m; sourceTree = "<group>"; };
+		C2B9E4321C65F5DA00CEBA81 /* Mine.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Mine.xcassets; sourceTree = "<group>"; };
+		C2B9E4341C663E8800CEBA81 /* TLMineHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineHeaderCell.h; sourceTree = "<group>"; };
+		C2B9E4351C663E8800CEBA81 /* TLMineHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineHeaderCell.m; sourceTree = "<group>"; };
+		C2B9E4381C66451B00CEBA81 /* TLUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserHelper.h; sourceTree = "<group>"; };
+		C2B9E4391C66451B00CEBA81 /* TLUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserHelper.m; sourceTree = "<group>"; };
 		C2D500C61C55C08C0088997C /* TLConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversationCell.h; sourceTree = "<group>"; };
 		C2D500C71C55C08C0088997C /* TLConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLConversationCell.m; sourceTree = "<group>"; };
 		C2D500C81C55C08C0088997C /* TLConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversationViewController.h; sourceTree = "<group>"; };
@@ -287,6 +312,8 @@
 				C2142ED91C53345C0030B29B /* Launch.xcassets */,
 				C2D500E61C5639210088997C /* Conversation.xcassets */,
 				C2A1BBC91C5753420046CA1C /* Friends.xcassets */,
+				C2B9E4221C65DD6C00CEBA81 /* Discover.xcassets */,
+				C2B9E4321C65F5DA00CEBA81 /* Mine.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -423,6 +450,8 @@
 				C2142EED1C5376D40030B29B /* TLTableViewController */,
 				C2142EF01C5376D40030B29B /* TLViewController */,
 				C2142F0E1C53908D0030B29B /* TLTableViewCell */,
+				C2B9E41B1C65D97400CEBA81 /* TLMenuViewController */,
+				C2B9E41D1C65D9A300CEBA81 /* TLSettingViewController */,
 				C2142EFA1C53771D0030B29B /* TLBaseDataModel */,
 			);
 			path = Common;
@@ -482,6 +511,53 @@
 			path = TLTableViewCell;
 			sourceTree = "<group>";
 		};
+		C2B9E41B1C65D97400CEBA81 /* TLMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2B9E4271C65E1BA00CEBA81 /* TLMenuItem.h */,
+				C2B9E4281C65E1BA00CEBA81 /* TLMenuItem.m */,
+				C2B9E4241C65E1A300CEBA81 /* TLMenuCell.h */,
+				C2B9E4251C65E1A300CEBA81 /* TLMenuCell.m */,
+				C2B9E41F1C65DA0900CEBA81 /* TLMenuViewController.h */,
+				C2B9E4201C65DA0900CEBA81 /* TLMenuViewController.m */,
+			);
+			path = TLMenuViewController;
+			sourceTree = "<group>";
+		};
+		C2B9E41D1C65D9A300CEBA81 /* TLSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TLSettingViewController;
+			sourceTree = "<group>";
+		};
+		C2B9E42A1C65E64B00CEBA81 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				C2B9E42B1C65E6CF00CEBA81 /* TLDiscoverHelper.h */,
+				C2B9E42C1C65E6CF00CEBA81 /* TLDiscoverHelper.m */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		C2B9E42E1C65F52300CEBA81 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				C2B9E42F1C65F53700CEBA81 /* TLMineHelper.h */,
+				C2B9E4301C65F53700CEBA81 /* TLMineHelper.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		C2B9E4371C66450D00CEBA81 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C2B9E4381C66451B00CEBA81 /* TLUserHelper.h */,
+				C2B9E4391C66451B00CEBA81 /* TLUserHelper.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		C2D500C41C55C08C0088997C /* ConversationViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +611,8 @@
 		C2D500D21C55C9350088997C /* MineViews */ = {
 			isa = PBXGroup;
 			children = (
+				C2B9E4341C663E8800CEBA81 /* TLMineHeaderCell.h */,
+				C2B9E4351C663E8800CEBA81 /* TLMineHeaderCell.m */,
 			);
 			path = MineViews;
 			sourceTree = "<group>";
@@ -542,18 +620,10 @@
 		C2D500D61C55C9A20088997C /* DiscoverViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C2D500D71C55C9A20088997C /* DiscoverViews */,
 				C2D500D81C55C9A20088997C /* TLDiscoverViewController.h */,
 				C2D500D91C55C9A20088997C /* TLDiscoverViewController.m */,
 			);
 			path = DiscoverViewController;
-			sourceTree = "<group>";
-		};
-		C2D500D71C55C9A20088997C /* DiscoverViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DiscoverViews;
 			sourceTree = "<group>";
 		};
 		C2D500DE1C55CA5F0088997C /* FriendsSearchViewController */ = {
@@ -584,7 +654,10 @@
 		C2DD58E01C58C821005419E4 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				C2B9E4371C66450D00CEBA81 /* User */,
 				C2DD58E11C58C83F005419E4 /* Friends */,
+				C2B9E42A1C65E64B00CEBA81 /* Discover */,
+				C2B9E42E1C65F52300CEBA81 /* Mine */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -705,6 +778,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2EDE3011C6210A4005646A2 /* 10.jpeg in Resources */,
+				C2B9E4231C65DD6C00CEBA81 /* Discover.xcassets in Resources */,
+				C2B9E4331C65F5DA00CEBA81 /* Mine.xcassets in Resources */,
 				C2D500E71C5639210088997C /* Conversation.xcassets in Resources */,
 				C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */,
 				C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */,
@@ -780,6 +855,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2B9E42D1C65E6CF00CEBA81 /* TLDiscoverHelper.m in Sources */,
 				C2142EF61C5376D40030B29B /* TLViewController.m in Sources */,
 				C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */,
 				C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */,
@@ -788,22 +864,28 @@
 				C2DD58E91C58CEF2005419E4 /* UIColor+TLChat.m in Sources */,
 				C2142F0D1C53864C0030B29B /* TLUser.m in Sources */,
 				C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */,
+				C2B9E4311C65F53700CEBA81 /* TLMineHelper.m in Sources */,
 				C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */,
 				C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */,
 				C2D500D51C55C9350088997C /* TLMineViewController.m in Sources */,
+				C2B9E43A1C66451B00CEBA81 /* TLUserHelper.m in Sources */,
 				C2D500CA1C55C08C0088997C /* TLConversationCell.m in Sources */,
 				C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */,
+				C2B9E4291C65E1BA00CEBA81 /* TLMenuItem.m in Sources */,
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
+				C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */,
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */,
 				C2142F001C5377B60030B29B /* TLConversation.m in Sources */,
 				C2D500CB1C55C08C0088997C /* TLConversationViewController.m in Sources */,
+				C2B9E4261C65E1A300CEBA81 /* TLMenuCell.m in Sources */,
 				C2142EF31C5376D40030B29B /* TLNavigationController.m in Sources */,
 				C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */,
 				C2142EF41C5376D40030B29B /* TLTabBarController.m in Sources */,
 				C2142EFD1C5377320030B29B /* TLBaseDataModel.m in Sources */,
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,
 				C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */,
+				C2B9E4211C65DA0900CEBA81 /* TLMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

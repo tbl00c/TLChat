@@ -104,5 +104,9 @@ static TLFriendHelper *friendHelper = nil;
     return _defaultGroup;
 }
 
+- (NSInteger) friendNumber
+{
+    return self.friendsData.count;
+}
 
 @end

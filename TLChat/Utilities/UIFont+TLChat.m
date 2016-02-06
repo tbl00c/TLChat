@@ -30,4 +30,14 @@
     return [UIFont systemFontOfSize:17.0f];
 }
 
++ (UIFont *) fontMineNikename
+{
+    return [UIFont systemFontOfSize:17.0f];
+}
+
++ (UIFont *) fontMineUsername
+{
+    return [UIFont systemFontOfSize:14.0f];
+}
+
 @end

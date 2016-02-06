@@ -7,8 +7,13 @@
 //
 
 #import "TLMineViewController.h"
+#import "TLMineHeaderCell.h"
+#import "TLMineHelper.h"
+#import "TLUserHelper.h"
 
 @interface TLMineViewController ()
+
+@property (nonatomic, strong) TLMineHelper *mineHelper;
 
 @end
 
@@ -17,6 +22,42 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"我"];
+    
+    self.mineHelper = [[TLMineHelper alloc] init];
+    self.data = self.mineHelper.mineMenuData;
+    
+    [self.tableView registerClass:[TLMineHeaderCell class] forCellReuseIdentifier:@"TLMineHeaderCell"];
+}
+
+#pragma mark -
+#pragma mark UITableViewDataSource
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1 + [super numberOfSectionsInTableView:tableView];
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return section == 0 ? 1 : [super tableView:tableView numberOfRowsInSection:section - 1];
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        TLMineHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMineHeaderCell"];
+        [cell setUser:[TLUserHelper sharedHelper].user];
+        return cell;
+    }
+    return [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1]];
+}
+
+#pragma mark UITableViewDelegate
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return 90;
+    }
+    return [super tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1]];
 }
 
 @end

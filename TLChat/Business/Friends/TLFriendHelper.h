@@ -31,6 +31,11 @@
  */
 @property (nonatomic, strong) NSMutableArray *sectionHeaders;
 
+/**
+ *  好友数量
+ */
+@property (nonatomic, assign, readonly) NSInteger friendNumber;
+
 
 + (TLFriendHelper *) sharedFriendHelper;
 

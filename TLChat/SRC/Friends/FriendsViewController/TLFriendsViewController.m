@@ -15,6 +15,8 @@
 
 @interface TLFriendsViewController () <UISearchBarDelegate>
 
+@property (nonatomic, strong) UILabel *footerLabel;
+
 @property (nonatomic, weak) NSMutableArray *data;
 @property (nonatomic, weak) NSMutableArray *sectionHeaders;
 
@@ -36,6 +38,7 @@
     self.friendHelper = [[TLFriendHelper alloc] init];      // 初始化好友数据业务类
     self.data = self.friendHelper.data;
     self.sectionHeaders = self.friendHelper.sectionHeaders;
+    [self.footerLabel setText:[NSString stringWithFormat:@"%ld位联系人", (long)self.friendHelper.friendNumber]];
     
     [self.tableView registerClass:[TLFriendHeaderView class] forHeaderFooterViewReuseIdentifier:@"TLFriendHeaderView"];
     [self.tableView registerClass:[TLFriendCell class] forCellReuseIdentifier:@"TLFriendCell"];
@@ -110,9 +113,7 @@
     if (section == 0) {
         return 0;
     }
-    else {
-        return 22.0f;
-    }
+    return 22.0f;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -148,6 +149,11 @@
     [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
     [self.tableView setSectionIndexColor:[UIColor colorNavBarBarTint]];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
+    self.footerLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 50.0f)];
+    [self.footerLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.footerLabel setFont:[UIFont systemFontOfSize:17.0f]];
+    [self.footerLabel setTextColor:[UIColor grayColor]];
+    [self.tableView setTableFooterView:self.footerLabel];
     
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add_friend"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButtonItem];

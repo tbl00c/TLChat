@@ -18,4 +18,8 @@
 #pragma mark - Friends
 + (UIFont *) fontFriendsUsername;
 
+#pragma mark - Mine
++ (UIFont *) fontMineNikename;
++ (UIFont *) fontMineUsername;
+
 @end

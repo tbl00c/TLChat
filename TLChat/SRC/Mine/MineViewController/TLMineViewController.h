@@ -6,8 +6,8 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewController.h"
+#import "TLMenuViewController.h"
 
-@interface TLMineViewController : TLTableViewController
+@interface TLMineViewController : TLMenuViewController
 
 @end

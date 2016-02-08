@@ -9,6 +9,8 @@
 #import "TLMineSettingViewController.h"
 #import "TLSettingHelper.h"
 
+#import "TLNewMessageSettingViewController.h"
+
 @interface TLMineSettingViewController ()
 
 @property (nonatomic, strong) TLSettingHelper *helper;
@@ -23,6 +25,19 @@
     
     self.helper = [[TLSettingHelper alloc] init];
     self.data = self.helper.mineSettingData;
+}
+
+#pragma mark - delegate
+#pragma mark UITableViewDelegate
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+    if ([item.title isEqualToString:@"新消息通知"]) {
+        TLNewMessageSettingViewController *newMessageSettingVC = [[TLNewMessageSettingViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:newMessageSettingVC animated:YES];
+    }
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 @end

@@ -30,6 +30,7 @@
 #define     PATH_DOCUMENT       [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
 
 
-
+#pragma mark - ThirdPart KEY
+#define     UMENG_APPKEY       @"56b8ba33e0f55a15480020b0"
 
 #endif /* TLMacros_h */

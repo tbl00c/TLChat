@@ -25,6 +25,7 @@ PODS:
     - SDWebImage/Core (= 3.7.4)
   - SDWebImage/Core (3.7.4)
   - SVProgressHUD (2.0-beta4)
+  - UMengAnalytics (3.6.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0.4)
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - MJRefresh (~> 3.1.0)
   - SDWebImage (~> 3.7.4)
   - SVProgressHUD (~> 2.0-beta4)
+  - UMengAnalytics (~> 3.6.6)
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -45,5 +47,6 @@ SPEC CHECKSUMS:
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
   SVProgressHUD: c330ba31785dd2216827865aa45ab398bbf7ecf8
+  UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 
 COCOAPODS: 0.39.0

@@ -7,14 +7,16 @@
 //
 
 #import "TLAppDelegate.h"
-
 #import "TLRootViewController.h"
+
+#import <MobClick.h>
 
 @implementation TLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initUI];
+    [self initThirdPartSDK];
     
     return YES;
 }
@@ -47,6 +49,11 @@
     [self.window setRootViewController:rootVC];
     [self.window addSubview:rootVC.view];
     [self.window makeKeyAndVisible];
+}
+
+- (void) initThirdPartSDK
+{
+    [MobClick startWithAppkey:UMENG_APPKEY];
 }
 
 @end

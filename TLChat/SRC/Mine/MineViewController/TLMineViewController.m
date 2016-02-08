@@ -6,6 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
+/*
+ *  注意：该类TableView重载并增加section（0， 0）
+ */
+
 #import "TLMineViewController.h"
 #import "TLMineHeaderCell.h"
 #import "TLMineHelper.h"
@@ -65,7 +69,7 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
         return;
     }
     TLMenuItem *item = [self.data[indexPath.section - 1] objectAtIndex:indexPath.row];
@@ -74,7 +78,6 @@
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:settingVC animated:YES];
         [self setHidesBottomBarWhenPushed:NO];
-        return;
     }
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }

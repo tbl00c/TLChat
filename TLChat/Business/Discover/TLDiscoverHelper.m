@@ -23,13 +23,13 @@
 
 - (void) p_initTestData
 {
-    TLMenuItem *item1 = [TLMenuItem createMenuWithIconPath:@"discover_album" title:@"朋友圈"];
-    TLMenuItem *item2 = [TLMenuItem createMenuWithIconPath:@"discover_QRcode" title:@"扫一扫"];
-    TLMenuItem *item3 = [TLMenuItem createMenuWithIconPath:@"discover_shake" title:@"摇一摇"];
-    TLMenuItem *item4 = [TLMenuItem createMenuWithIconPath:@"discover_location" title:@"附近的人"];
-    TLMenuItem *item5 = [TLMenuItem createMenuWithIconPath:@"discover_bottle" title:@"漂流瓶"];
-    TLMenuItem *item6 = [TLMenuItem createMenuWithIconPath:@"discover_shopping" title:@"购物"];
-    TLMenuItem *item7 = [TLMenuItem createMenuWithIconPath:@"discover_game" title:@"游戏"];
+    TLMenuItem *item1 = TLCreateMenuItem(@"discover_album", @"朋友圈");
+    TLMenuItem *item2 = TLCreateMenuItem(@"discover_QRcode", @"扫一扫");
+    TLMenuItem *item3 = TLCreateMenuItem(@"discover_shake", @"摇一摇");
+    TLMenuItem *item4 = TLCreateMenuItem(@"discover_location", @"附近的人");
+    TLMenuItem *item5 = TLCreateMenuItem(@"discover_bottle", @"漂流瓶");
+    TLMenuItem *item6 = TLCreateMenuItem(@"discover_shopping", @"购物");
+    TLMenuItem *item7 = TLCreateMenuItem(@"discover_game", @"游戏");
     [self.discoverMenuData addObjectsFromArray:@[@[item1], @[item2, item3], @[item4, item5], @[item6, item7]]];
 }
 

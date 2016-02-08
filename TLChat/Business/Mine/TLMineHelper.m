@@ -23,12 +23,12 @@
 
 - (void) p_initTestData
 {
-    TLMenuItem *item1 = [TLMenuItem createMenuWithIconPath:@"mine_album" title:@"相册"];
-    TLMenuItem *item2 = [TLMenuItem createMenuWithIconPath:@"mine_favorites" title:@"收藏"];
-    TLMenuItem *item3 = [TLMenuItem createMenuWithIconPath:@"mine_wallet" title:@"钱包"];
-    TLMenuItem *item4 = [TLMenuItem createMenuWithIconPath:@"mint_card" title:@"优惠券"];
-    TLMenuItem *item5 = [TLMenuItem createMenuWithIconPath:@"mine_expression" title:@"表情"];
-    TLMenuItem *item6 = [TLMenuItem createMenuWithIconPath:@"mine_setting" title:@"设置"];
+    TLMenuItem *item1 = TLCreateMenuItem(@"mine_album", @"相册");
+    TLMenuItem *item2 = TLCreateMenuItem(@"mine_favorites", @"收藏");
+    TLMenuItem *item3 = TLCreateMenuItem(@"mine_wallet", @"钱包");
+    TLMenuItem *item4 = TLCreateMenuItem(@"mint_card", @"优惠券");
+    TLMenuItem *item5 = TLCreateMenuItem(@"mine_expression", @"表情");
+    TLMenuItem *item6 = TLCreateMenuItem(@"mine_setting", @"设置");
     [self.mineMenuData addObjectsFromArray:@[@[item1, item2, item3, item4], @[item5], @[item6]]];
 }
 

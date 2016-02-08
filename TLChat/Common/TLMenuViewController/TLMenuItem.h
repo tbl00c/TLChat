@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define     TLCreateMenuItem(IconPath, Title) [TLMenuItem createMenuWithIconPath:IconPath title:Title]
+
 @interface TLMenuItem : NSObject
 
 /**

@@ -11,6 +11,8 @@
 #import "TLMineHelper.h"
 #import "TLUserHelper.h"
 
+#import "TLMineSettingViewController.h"
+
 @interface TLMineViewController ()
 
 @property (nonatomic, strong) TLMineHelper *mineHelper;
@@ -58,6 +60,23 @@
         return 90;
     }
     return [super tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1]];
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        
+        return;
+    }
+    TLMenuItem *item = [self.data[indexPath.section - 1] objectAtIndex:indexPath.row];
+    if ([item.title isEqualToString:@"设置"]) {
+        TLMineSettingViewController *settingVC = [[TLMineSettingViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:settingVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+        return;
+    }
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "TLSettingHelper.h"
 
 #import "TLNewMessageSettingViewController.h"
+#import "TLPrivacySettingViewController.h"
 
 @interface TLMineSettingViewController ()
 
@@ -36,6 +37,11 @@
         TLNewMessageSettingViewController *newMessageSettingVC = [[TLNewMessageSettingViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:newMessageSettingVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"隐私"]) {
+        TLPrivacySettingViewController *privacySettingVC = [[TLPrivacySettingViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:privacySettingVC animated:YES];
     }
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }

@@ -23,6 +23,12 @@
 		C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A1BBC91C5753420046CA1C /* Friends.xcassets */; };
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
 		C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */; };
+		C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */; };
+		C2B973071C6A4A56004B9B71 /* TLUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B973061C6A4A56004B9B71 /* TLUIUtility.m */; };
+		C2B9730C1C6A52BB004B9B71 /* TLPrivacySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9730B1C6A52BB004B9B71 /* TLPrivacySettingViewController.m */; };
+		C2B9730F1C6A52F0004B9B71 /* TLPrivacySettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9730E1C6A52F0004B9B71 /* TLPrivacySettingHelper.m */; };
+		C2B973121C6A5BF4004B9B71 /* TLSettingHeaderTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B973111C6A5BF4004B9B71 /* TLSettingHeaderTitleView.m */; };
+		C2B973151C6A5C51004B9B71 /* TLSettingFooterTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B973141C6A5C51004B9B71 /* TLSettingFooterTitleView.m */; };
 		C2B9E4211C65DA0900CEBA81 /* TLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4201C65DA0900CEBA81 /* TLMenuViewController.m */; };
 		C2B9E4231C65DD6C00CEBA81 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B9E4221C65DD6C00CEBA81 /* Discover.xcassets */; };
 		C2B9E4261C65E1A300CEBA81 /* TLMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4251C65E1A300CEBA81 /* TLMenuCell.m */; };
@@ -114,6 +120,18 @@
 		C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserGroup.m; sourceTree = "<group>"; };
 		C2A1BBD51C5784340046CA1C /* TLFriendHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendHeaderView.h; sourceTree = "<group>"; };
 		C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendHeaderView.m; sourceTree = "<group>"; };
+		C2B972FF1C6A33EB004B9B71 /* TLNewMessageSettingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLNewMessageSettingHelper.h; sourceTree = "<group>"; };
+		C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLNewMessageSettingHelper.m; sourceTree = "<group>"; };
+		C2B973051C6A4A56004B9B71 /* TLUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUIUtility.h; sourceTree = "<group>"; };
+		C2B973061C6A4A56004B9B71 /* TLUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUIUtility.m; sourceTree = "<group>"; };
+		C2B9730A1C6A52BB004B9B71 /* TLPrivacySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLPrivacySettingViewController.h; sourceTree = "<group>"; };
+		C2B9730B1C6A52BB004B9B71 /* TLPrivacySettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLPrivacySettingViewController.m; sourceTree = "<group>"; };
+		C2B9730D1C6A52F0004B9B71 /* TLPrivacySettingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLPrivacySettingHelper.h; sourceTree = "<group>"; };
+		C2B9730E1C6A52F0004B9B71 /* TLPrivacySettingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLPrivacySettingHelper.m; sourceTree = "<group>"; };
+		C2B973101C6A5BF4004B9B71 /* TLSettingHeaderTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingHeaderTitleView.h; sourceTree = "<group>"; };
+		C2B973111C6A5BF4004B9B71 /* TLSettingHeaderTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingHeaderTitleView.m; sourceTree = "<group>"; };
+		C2B973131C6A5C51004B9B71 /* TLSettingFooterTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingFooterTitleView.h; sourceTree = "<group>"; };
+		C2B973141C6A5C51004B9B71 /* TLSettingFooterTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingFooterTitleView.m; sourceTree = "<group>"; };
 		C2B9E41F1C65DA0900CEBA81 /* TLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuViewController.h; sourceTree = "<group>"; };
 		C2B9E4201C65DA0900CEBA81 /* TLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuViewController.m; sourceTree = "<group>"; };
 		C2B9E4221C65DD6C00CEBA81 /* Discover.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Discover.xcassets; sourceTree = "<group>"; };
@@ -431,6 +449,8 @@
 				C2DD58E61C58CEF2005419E4 /* UIColor+TLChat.m */,
 				C2DD58E71C58CEF2005419E4 /* UIFont+TLChat.h */,
 				C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */,
+				C2B973051C6A4A56004B9B71 /* TLUIUtility.h */,
+				C2B973061C6A4A56004B9B71 /* TLUIUtility.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -530,6 +550,15 @@
 			path = TLTableViewCell;
 			sourceTree = "<group>";
 		};
+		C2B973091C6A529E004B9B71 /* PrivacySettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2B9730A1C6A52BB004B9B71 /* TLPrivacySettingViewController.h */,
+				C2B9730B1C6A52BB004B9B71 /* TLPrivacySettingViewController.m */,
+			);
+			path = PrivacySettingViewController;
+			sourceTree = "<group>";
+		};
 		C2B9E41B1C65D97400CEBA81 /* TLMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +581,10 @@
 				C2D851451C672BC1007DD697 /* TLSettingItem.m */,
 				C2D851471C672BD2007DD697 /* TLSettingCell.h */,
 				C2D851481C672BD2007DD697 /* TLSettingCell.m */,
+				C2B973101C6A5BF4004B9B71 /* TLSettingHeaderTitleView.h */,
+				C2B973111C6A5BF4004B9B71 /* TLSettingHeaderTitleView.m */,
+				C2B973131C6A5C51004B9B71 /* TLSettingFooterTitleView.h */,
+				C2B973141C6A5C51004B9B71 /* TLSettingFooterTitleView.m */,
 				C2D8515A1C68E887007DD697 /* TLSettingButtonCell.h */,
 				C2D8515B1C68E887007DD697 /* TLSettingButtonCell.m */,
 				C2D8513E1C672B65007DD697 /* TLSettingViewController.h */,
@@ -685,6 +718,7 @@
 			children = (
 				C2D8514D1C68D652007DD697 /* SettingViewController */,
 				C2D8515D1C68ECF6007DD697 /* NewMessageSettingViewController */,
+				C2B973091C6A529E004B9B71 /* PrivacySettingViewController */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -703,6 +737,10 @@
 			children = (
 				C2D851531C68D811007DD697 /* TLSettingHelper.h */,
 				C2D851541C68D811007DD697 /* TLSettingHelper.m */,
+				C2B972FF1C6A33EB004B9B71 /* TLNewMessageSettingHelper.h */,
+				C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */,
+				C2B9730D1C6A52F0004B9B71 /* TLPrivacySettingHelper.h */,
+				C2B9730E1C6A52F0004B9B71 /* TLPrivacySettingHelper.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -933,6 +971,7 @@
 			files = (
 				C2B9E42D1C65E6CF00CEBA81 /* TLDiscoverHelper.m in Sources */,
 				C2142EF61C5376D40030B29B /* TLViewController.m in Sources */,
+				C2B973071C6A4A56004B9B71 /* TLUIUtility.m in Sources */,
 				C2D8515C1C68E887007DD697 /* TLSettingButtonCell.m in Sources */,
 				C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */,
 				C2D851431C672BB7007DD697 /* TLSettingGroup.m in Sources */,
@@ -941,8 +980,10 @@
 				C2D851501C68D67F007DD697 /* TLMineSettingViewController.m in Sources */,
 				C2D500E51C5612300088997C /* UIView+Frame.m in Sources */,
 				C2DD58E91C58CEF2005419E4 /* UIColor+TLChat.m in Sources */,
+				C2B9730C1C6A52BB004B9B71 /* TLPrivacySettingViewController.m in Sources */,
 				C2142F0D1C53864C0030B29B /* TLUser.m in Sources */,
 				C2D851591C68D952007DD697 /* TLBaseDataModel.m in Sources */,
+				C2B9730F1C6A52F0004B9B71 /* TLPrivacySettingHelper.m in Sources */,
 				C2D851461C672BC1007DD697 /* TLSettingItem.m in Sources */,
 				C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */,
 				C2B9E4311C65F53700CEBA81 /* TLMineHelper.m in Sources */,
@@ -955,9 +996,11 @@
 				C2B9E4291C65E1BA00CEBA81 /* TLMenuItem.m in Sources */,
 				C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */,
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
+				C2B973151C6A5C51004B9B71 /* TLSettingFooterTitleView.m in Sources */,
 				C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */,
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */,
+				C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */,
 				C2142F001C5377B60030B29B /* TLConversation.m in Sources */,
 				C2D500CB1C55C08C0088997C /* TLConversationViewController.m in Sources */,
 				C2D851551C68D811007DD697 /* TLSettingHelper.m in Sources */,
@@ -965,6 +1008,7 @@
 				C2D851601C68ED11007DD697 /* TLNewMessageSettingViewController.m in Sources */,
 				C2142EF31C5376D40030B29B /* TLNavigationController.m in Sources */,
 				C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */,
+				C2B973121C6A5BF4004B9B71 /* TLSettingHeaderTitleView.m in Sources */,
 				C2142EF41C5376D40030B29B /* TLTabBarController.m in Sources */,
 				C2D851491C672BD2007DD697 /* TLSettingCell.m in Sources */,
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,

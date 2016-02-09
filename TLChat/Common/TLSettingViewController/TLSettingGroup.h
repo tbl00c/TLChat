@@ -28,6 +28,10 @@
  */
 @property (nonatomic, strong) NSMutableArray *items;
 
+@property (nonatomic, assign, readonly) CGFloat headerHeight;
+
+@property (nonatomic, assign, readonly) CGFloat footerHeight;
+
 @property (nonatomic, assign, readonly) NSUInteger count;
 
 + (TLSettingGroup *) createGroupWithHeaderTitle:(NSString *)headerTitle

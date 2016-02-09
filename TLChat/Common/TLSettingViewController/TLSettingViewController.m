@@ -7,6 +7,8 @@
 //
 
 #import "TLSettingViewController.h"
+#import "TLSettingHeaderTitleView.h"
+#import "TLSettingFooterTitleView.h"
 #import "TLSettingCell.h"
 #import "TLSettingButtonCell.h"
 
@@ -20,6 +22,8 @@
 {
     self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN)];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 15.0f)]];
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 12.0f)]];
     [self.tableView setBackgroundColor:[UIColor colorTableViewBG]];
     [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 15, 0, 0)];
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
@@ -30,6 +34,8 @@
 {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[TLSettingHeaderTitleView class] forHeaderFooterViewReuseIdentifier:@"TLSettingHeaderTitleView"];
+    [self.tableView registerClass:[TLSettingFooterTitleView class] forHeaderFooterViewReuseIdentifier:@"TLSettingFooterTitleView"];
     [self.tableView registerClass:[TLSettingCell class] forCellReuseIdentifier:@"TLSettingCell"];
     [self.tableView registerClass:[TLSettingButtonCell class] forCellReuseIdentifier:@"TLSettingButtonCell"];
 }
@@ -55,6 +61,28 @@
 }
 
 #pragma mark UITableViewDelegate
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    TLSettingGroup *group = self.data[section];
+    if (group.headerTitle == nil) {
+        return nil;
+    }
+    TLSettingHeaderTitleView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TLSettingHeaderTitleView"];
+    [view setText:group.headerTitle];
+    return view;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    TLSettingGroup *group = self.data[section];
+    if (group.footerTitle == nil) {
+        return nil;
+    }
+    TLSettingFooterTitleView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TLSettingFooterTitleView"];
+    [view setText:group.footerTitle];
+    return view;
+}
+
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -67,12 +95,14 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 15.0f;
+    TLSettingGroup *group = self.data[section];
+    return 0.5 + (group.headerTitle == nil ? 0 : 5.0f + group.headerHeight);
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 5.0f;
+    TLSettingGroup *group = self.data[section];
+    return 20.0f + (group.footerTitle == nil ? 0 : 5.0f + group.footerHeight);
 }
 
 

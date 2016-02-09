@@ -40,4 +40,9 @@
     return [UIFont systemFontOfSize:14.0f];
 }
 
++ (UIFont *) fontSettingHeaderAndFooterTitle
+{
+    return [UIFont systemFontOfSize:14.0f];
+}
+
 @end

@@ -22,4 +22,7 @@
 + (UIFont *) fontMineNikename;
 + (UIFont *) fontMineUsername;
 
+#pragma mark - Setting
++ (UIFont *) fontSettingHeaderAndFooterTitle;
+
 @end

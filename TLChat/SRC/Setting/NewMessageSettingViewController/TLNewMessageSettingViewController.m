@@ -7,8 +7,11 @@
 //
 
 #import "TLNewMessageSettingViewController.h"
+#import "TLNewMessageSettingHelper.h"
 
 @interface TLNewMessageSettingViewController ()
+
+@property (nonatomic, strong) TLNewMessageSettingHelper *helper;
 
 @end
 
@@ -17,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"新消息通知"];
+    
+    self.helper = [[TLNewMessageSettingHelper alloc] init];
+    self.data = self.helper.mineNewMessageSettingData;
 }
 
 @end

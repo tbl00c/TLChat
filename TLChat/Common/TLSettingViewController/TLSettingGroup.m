@@ -27,6 +27,19 @@
     return [self.items objectAtIndex:index];
 }
 
+#pragma mark - Setter
+- (void) setHeaderTitle:(NSString *)headerTitle
+{
+    _headerTitle = headerTitle;
+    _headerHeight = [TLUIUtility getTextHeightOfText:headerTitle font:[UIFont fontSettingHeaderAndFooterTitle] width:WIDTH_SCREEN - 30];
+}
+
+- (void) setFooterTitle:(NSString *)footerTitle
+{
+    _footerTitle = footerTitle;
+    _footerHeight = [TLUIUtility getTextHeightOfText:footerTitle font:[UIFont fontSettingHeaderAndFooterTitle] width:WIDTH_SCREEN - 30];
+}
+
 #pragma mark - Getter
 - (NSUInteger) count
 {

@@ -15,6 +15,7 @@
 typedef NS_ENUM(NSInteger, TLSettingItemType) {
     TLSettingItemTypeDefalut = 0,
     TLSettingItemTypeTitleButton,
+    TLSettingItemTypeSwitch,
 };
 
 @property (nonatomic, strong) NSString *title;

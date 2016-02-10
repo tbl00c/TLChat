@@ -11,6 +11,7 @@
 #import "TLSettingFooterTitleView.h"
 #import "TLSettingCell.h"
 #import "TLSettingButtonCell.h"
+#import "TLSettingSwitchCell.h"
 
 @interface TLSettingViewController ()
 
@@ -38,6 +39,7 @@
     [self.tableView registerClass:[TLSettingFooterTitleView class] forHeaderFooterViewReuseIdentifier:@"TLSettingFooterTitleView"];
     [self.tableView registerClass:[TLSettingCell class] forCellReuseIdentifier:@"TLSettingCell"];
     [self.tableView registerClass:[TLSettingButtonCell class] forCellReuseIdentifier:@"TLSettingButtonCell"];
+    [self.tableView registerClass:[TLSettingSwitchCell class] forCellReuseIdentifier:@"TLSettingSwitchCell"];
 }
 
 #pragma mark -

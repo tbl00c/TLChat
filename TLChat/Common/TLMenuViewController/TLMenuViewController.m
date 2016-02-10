@@ -54,7 +54,17 @@
 #pragma mark UITableViewDelegate
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    TLMenuItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+
+    if (item.rightIconURL != nil || item.subTitle != nil) {
+        item.rightIconURL = nil;
+        item.subTitle = nil;
+        item.showRightRedPoint = NO;
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

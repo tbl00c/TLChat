@@ -26,6 +26,9 @@
         case TLSettingItemTypeTitleButton:
             return @"TLSettingButtonCell";
             break;
+        case TLSettingItemTypeSwitch:
+            return @"TLSettingSwitchCell";
+            break;
         default:
             break;
     }

@@ -17,7 +17,6 @@
 #define     HEIGHT_TABBAR       49
 #define     HEIGHT_NAVBAR       44
 
-
 #define mark - Default
 #define     DEFAULT_IMAGE_AVATAR    @"default_head"
 

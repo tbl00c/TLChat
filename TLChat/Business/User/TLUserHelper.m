@@ -26,7 +26,7 @@ static TLUserHelper *helper;
 {
     if (self = [super init]) {
         self.user = [[TLUser alloc] init];
-        self.user.avatarPath = @"10.jpeg";
+        self.user.avatarURL = @"http://img.jsqq.net/uploads/allimg/140903/1_140903051019_18.png";
         self.user.nikeName = @"李伯坤";
         self.user.username = @"li-bokun";
     }

@@ -37,16 +37,6 @@
 
 #pragma mark -
 #pragma mark UITableViewDataSource
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1 + [super numberOfSectionsInTableView:tableView];
-}
-
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return section == 0 ? 1 : [super tableView:tableView numberOfRowsInSection:section - 1];
-}
-
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -54,7 +44,7 @@
         [cell setUser:[TLUserHelper sharedHelper].user];
         return cell;
     }
-    return [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1]];
+    return [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
 }
 
 #pragma mark UITableViewDelegate
@@ -63,7 +53,7 @@
     if (indexPath.section == 0) {
         return 90;
     }
-    return [super tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1]];
+    return [super tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +62,7 @@
         [super tableView:tableView didSelectRowAtIndexPath:indexPath];
         return;
     }
-    TLMenuItem *item = [self.data[indexPath.section - 1] objectAtIndex:indexPath.row];
+    TLMenuItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     if ([item.title isEqualToString:@"设置"]) {
         TLMineSettingViewController *settingVC = [[TLMineSettingViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];

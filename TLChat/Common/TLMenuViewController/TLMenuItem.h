@@ -22,6 +22,21 @@
  */
 @property (nonatomic, strong) NSString *title;
 
+/**
+ *  副标题
+ */
+@property (nonatomic, strong) NSString *subTitle;
+
+/**
+ *  副图片URL
+ */
+@property (nonatomic, strong) NSString *rightIconURL;
+
+/**
+ *  是否显示红点
+ */
+@property (nonatomic, assign) BOOL showRightRedPoint;
+
 + (TLMenuItem *) createMenuWithIconPath:(NSString *)iconPath title:(NSString *)title;
 
 @end

@@ -24,6 +24,11 @@
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
 		C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */; };
 		C2AF1F8A1C6AE7F300617D98 /* TLSettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F891C6AE7F300617D98 /* TLSettingSwitchCell.m */; };
+		C2AF1F931C6B20C400617D98 /* TLMineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F921C6B20C400617D98 /* TLMineInfoViewController.m */; };
+		C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F991C6B538300617D98 /* TLAccountAndSafetySettingViewController.m */; };
+		C2AF1F9D1C6B539C00617D98 /* TLAccountAndSafetyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F9C1C6B539C00617D98 /* TLAccountAndSafetyHelper.m */; };
+		C2AF1FA01C6B603300617D98 /* TLMineInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F9F1C6B603300617D98 /* TLMineInfoHelper.m */; };
+		C2AF1FA41C6B708D00617D98 /* TLMineInfoAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1FA31C6B708D00617D98 /* TLMineInfoAvatarCell.m */; };
 		C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */; };
 		C2B973071C6A4A56004B9B71 /* TLUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B973061C6A4A56004B9B71 /* TLUIUtility.m */; };
 		C2B9730C1C6A52BB004B9B71 /* TLPrivacySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9730B1C6A52BB004B9B71 /* TLPrivacySettingViewController.m */; };
@@ -123,6 +128,16 @@
 		C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendHeaderView.m; sourceTree = "<group>"; };
 		C2AF1F881C6AE7F300617D98 /* TLSettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingSwitchCell.h; sourceTree = "<group>"; };
 		C2AF1F891C6AE7F300617D98 /* TLSettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingSwitchCell.m; sourceTree = "<group>"; };
+		C2AF1F911C6B20C400617D98 /* TLMineInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineInfoViewController.h; sourceTree = "<group>"; };
+		C2AF1F921C6B20C400617D98 /* TLMineInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineInfoViewController.m; sourceTree = "<group>"; };
+		C2AF1F981C6B538300617D98 /* TLAccountAndSafetySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountAndSafetySettingViewController.h; sourceTree = "<group>"; };
+		C2AF1F991C6B538300617D98 /* TLAccountAndSafetySettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountAndSafetySettingViewController.m; sourceTree = "<group>"; };
+		C2AF1F9B1C6B539C00617D98 /* TLAccountAndSafetyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountAndSafetyHelper.h; sourceTree = "<group>"; };
+		C2AF1F9C1C6B539C00617D98 /* TLAccountAndSafetyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountAndSafetyHelper.m; sourceTree = "<group>"; };
+		C2AF1F9E1C6B603300617D98 /* TLMineInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineInfoHelper.h; sourceTree = "<group>"; };
+		C2AF1F9F1C6B603300617D98 /* TLMineInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineInfoHelper.m; sourceTree = "<group>"; };
+		C2AF1FA21C6B708D00617D98 /* TLMineInfoAvatarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineInfoAvatarCell.h; sourceTree = "<group>"; };
+		C2AF1FA31C6B708D00617D98 /* TLMineInfoAvatarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineInfoAvatarCell.m; sourceTree = "<group>"; };
 		C2B972FF1C6A33EB004B9B71 /* TLNewMessageSettingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLNewMessageSettingHelper.h; sourceTree = "<group>"; };
 		C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLNewMessageSettingHelper.m; sourceTree = "<group>"; };
 		C2B973051C6A4A56004B9B71 /* TLUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUIUtility.h; sourceTree = "<group>"; };
@@ -425,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				C2D500D11C55C9350088997C /* MineViewController */,
+				C2AF1F901C6B209500617D98 /* MineInfoViewController */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -553,6 +569,34 @@
 			path = TLTableViewCell;
 			sourceTree = "<group>";
 		};
+		C2AF1F901C6B209500617D98 /* MineInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2AF1FA11C6B707800617D98 /* MineInfoViews */,
+				C2AF1F911C6B20C400617D98 /* TLMineInfoViewController.h */,
+				C2AF1F921C6B20C400617D98 /* TLMineInfoViewController.m */,
+			);
+			path = MineInfoViewController;
+			sourceTree = "<group>";
+		};
+		C2AF1F941C6B534A00617D98 /* AccountAndSafetyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2AF1F981C6B538300617D98 /* TLAccountAndSafetySettingViewController.h */,
+				C2AF1F991C6B538300617D98 /* TLAccountAndSafetySettingViewController.m */,
+			);
+			path = AccountAndSafetyViewController;
+			sourceTree = "<group>";
+		};
+		C2AF1FA11C6B707800617D98 /* MineInfoViews */ = {
+			isa = PBXGroup;
+			children = (
+				C2AF1FA21C6B708D00617D98 /* TLMineInfoAvatarCell.h */,
+				C2AF1FA31C6B708D00617D98 /* TLMineInfoAvatarCell.m */,
+			);
+			path = MineInfoViews;
+			sourceTree = "<group>";
+		};
 		C2B973091C6A529E004B9B71 /* PrivacySettingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +656,8 @@
 			children = (
 				C2B9E42F1C65F53700CEBA81 /* TLMineHelper.h */,
 				C2B9E4301C65F53700CEBA81 /* TLMineHelper.m */,
+				C2AF1F9E1C6B603300617D98 /* TLMineInfoHelper.h */,
+				C2AF1F9F1C6B603300617D98 /* TLMineInfoHelper.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -722,6 +768,7 @@
 			isa = PBXGroup;
 			children = (
 				C2D8514D1C68D652007DD697 /* SettingViewController */,
+				C2AF1F941C6B534A00617D98 /* AccountAndSafetyViewController */,
 				C2D8515D1C68ECF6007DD697 /* NewMessageSettingViewController */,
 				C2B973091C6A529E004B9B71 /* PrivacySettingViewController */,
 			);
@@ -742,6 +789,8 @@
 			children = (
 				C2D851531C68D811007DD697 /* TLSettingHelper.h */,
 				C2D851541C68D811007DD697 /* TLSettingHelper.m */,
+				C2AF1F9B1C6B539C00617D98 /* TLAccountAndSafetyHelper.h */,
+				C2AF1F9C1C6B539C00617D98 /* TLAccountAndSafetyHelper.m */,
 				C2B972FF1C6A33EB004B9B71 /* TLNewMessageSettingHelper.h */,
 				C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */,
 				C2B9730D1C6A52F0004B9B71 /* TLPrivacySettingHelper.h */,
@@ -979,6 +1028,7 @@
 				C2B973071C6A4A56004B9B71 /* TLUIUtility.m in Sources */,
 				C2D8515C1C68E887007DD697 /* TLSettingButtonCell.m in Sources */,
 				C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */,
+				C2AF1F931C6B20C400617D98 /* TLMineInfoViewController.m in Sources */,
 				C2D851431C672BB7007DD697 /* TLSettingGroup.m in Sources */,
 				C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */,
 				C2142EF51C5376D40030B29B /* TLTableViewController.m in Sources */,
@@ -986,8 +1036,10 @@
 				C2D500E51C5612300088997C /* UIView+Frame.m in Sources */,
 				C2DD58E91C58CEF2005419E4 /* UIColor+TLChat.m in Sources */,
 				C2B9730C1C6A52BB004B9B71 /* TLPrivacySettingViewController.m in Sources */,
+				C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetySettingViewController.m in Sources */,
 				C2142F0D1C53864C0030B29B /* TLUser.m in Sources */,
 				C2D851591C68D952007DD697 /* TLBaseDataModel.m in Sources */,
+				C2AF1FA01C6B603300617D98 /* TLMineInfoHelper.m in Sources */,
 				C2B9730F1C6A52F0004B9B71 /* TLPrivacySettingHelper.m in Sources */,
 				C2D851461C672BC1007DD697 /* TLSettingItem.m in Sources */,
 				C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */,
@@ -1017,7 +1069,9 @@
 				C2B973121C6A5BF4004B9B71 /* TLSettingHeaderTitleView.m in Sources */,
 				C2142EF41C5376D40030B29B /* TLTabBarController.m in Sources */,
 				C2D851491C672BD2007DD697 /* TLSettingCell.m in Sources */,
+				C2AF1F9D1C6B539C00617D98 /* TLAccountAndSafetyHelper.m in Sources */,
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,
+				C2AF1FA41C6B708D00617D98 /* TLMineInfoAvatarCell.m in Sources */,
 				C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */,
 				C2B9E4211C65DA0900CEBA81 /* TLMenuViewController.m in Sources */,
 			);

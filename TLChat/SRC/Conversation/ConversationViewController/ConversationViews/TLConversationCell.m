@@ -101,7 +101,7 @@
         [self.avatarImageView setImage:[UIImage imageNamed:conversation.avatarPath]];
     }
     else {
-        [self.avatarImageView sd_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_IMAGE_AVATAR]];
+        [self.avatarImageView sd_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     [self.usernameLabel setText:conversation.username];
     [self.detailLabel setText:conversation.messageDetail];

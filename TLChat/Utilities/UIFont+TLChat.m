@@ -10,6 +10,11 @@
 
 @implementation UIFont (TLChat)
 
++ (UIFont *) fontNavBarTitle
+{
+    return [UIFont boldSystemFontOfSize:18.5f];
+}
+
 + (UIFont *) fontConversationUsername
 {
     return [UIFont systemFontOfSize:16.0f];

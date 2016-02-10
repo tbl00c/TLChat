@@ -7,7 +7,6 @@
 //
 
 #import "TLUserHelper.h"
-#import "TLUser.h"
 
 static TLUserHelper *helper;
 

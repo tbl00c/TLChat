@@ -22,6 +22,8 @@
 - (void) p_initTestData
 {
     TLSettingItem *item1 = TLCreateSettingItem(@"接受新消息通知");
+    item1.subTitle = @"已开启";
+    item1.showDisclosureIndicator = NO;
     TLSettingGroup *group1 = TLCreateSettingGroup(nil, @"如果你要关闭或开启微信的新消息通知，请在iPhone的“设置” - “通知”功能中，找到应用程序“微信”更改。", @[item1]);
     
     TLSettingItem *item2 = TLCreateSettingItem(@"通知显示消息详情");

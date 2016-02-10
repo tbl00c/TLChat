@@ -19,7 +19,7 @@
     [self.view setBackgroundColor:[UIColor colorTableViewBG]];
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],
-                                                           NSFontAttributeName:[UIFont boldSystemFontOfSize:19.0f]}];
+                                                           NSFontAttributeName:[UIFont fontNavBarTitle]}];
 }
 
 @end

@@ -18,7 +18,7 @@
 #define     HEIGHT_NAVBAR       44
 
 #define mark - Default
-#define     DEFAULT_IMAGE_AVATAR    @"default_head"
+#define     DEFAULT_AVATAR_PATH    @"default_head"
 
 #pragma mark - Methods
 #define     TLURL(urlString)    [NSURL URLWithString:urlString]

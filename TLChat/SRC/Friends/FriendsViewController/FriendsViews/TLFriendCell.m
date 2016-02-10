@@ -58,7 +58,7 @@
         [self.avatarImageView setImage:[UIImage imageNamed:user.avatarPath]];
     }
     else {
-        [self.avatarImageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_IMAGE_AVATAR]];
+        [self.avatarImageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     
     [self.usernameLabel setText:user.remarkName ? user.remarkName : user.nikeName];

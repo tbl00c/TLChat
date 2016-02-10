@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TLUser.h"
 
-@class TLUser;
 @interface TLUserHelper : NSObject
 
 @property (nonatomic, strong) TLUser *user;

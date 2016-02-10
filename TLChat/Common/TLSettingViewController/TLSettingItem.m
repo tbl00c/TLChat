@@ -17,6 +17,14 @@
     return item;
 }
 
+- (id) init
+{
+    if (self = [super init]) {
+        self.showDisclosureIndicator = YES;
+    }
+    return self;
+}
+
 - (NSString *) cellClassName
 {
     switch (self.type) {

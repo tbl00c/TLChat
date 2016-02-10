@@ -9,6 +9,7 @@
 #import "TLMineSettingViewController.h"
 #import "TLSettingHelper.h"
 
+#import "TLAccountAndSafetySettingViewController.h"
 #import "TLNewMessageSettingViewController.h"
 #import "TLPrivacySettingViewController.h"
 
@@ -33,7 +34,12 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"新消息通知"]) {
+    if ([item.title isEqualToString:@"账号与安全"]) {
+        TLAccountAndSafetySettingViewController *accountAndSafetyVC = [[TLAccountAndSafetySettingViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:accountAndSafetyVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"新消息通知"]) {
         TLNewMessageSettingViewController *newMessageSettingVC = [[TLNewMessageSettingViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:newMessageSettingVC animated:YES];

@@ -10,6 +10,9 @@
 
 @interface UIFont (TLChat)
 
+#pragma mark - Common
++ (UIFont *) fontNavBarTitle;
+
 #pragma mark - Conversation
 + (UIFont *) fontConversationUsername;
 + (UIFont *) fontConversationDetail;

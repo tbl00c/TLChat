@@ -22,6 +22,8 @@
 - (void) p_initTestData
 {
     TLSettingItem *item1 = TLCreateSettingItem(@"账号与安全");
+    item1.subTitle = @"已保护";
+    item1.rightImagePath = @"setting_lockon";
     TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[item1]);
     
     TLSettingItem *item2 = TLCreateSettingItem(@"新消息通知");
@@ -33,7 +35,7 @@
     TLSettingItem *item6 = TLCreateSettingItem(@"关于微信");
     TLSettingGroup *group3 = TLCreateSettingGroup(nil, nil, (@[item5, item6]));
     
-    TLSettingItem *item7 = TLCreateSettingItem(@"退出微信");
+    TLSettingItem *item7 = TLCreateSettingItem(@"退出登录");
     item7.type = TLSettingItemTypeTitleButton;
     TLSettingGroup *group4 = TLCreateSettingGroup(nil, nil, @[item7]);
     

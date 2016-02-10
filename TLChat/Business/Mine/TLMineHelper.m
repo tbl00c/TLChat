@@ -27,7 +27,7 @@
     TLMenuItem *item1 = TLCreateMenuItem(@"mine_album", @"相册");
     TLMenuItem *item2 = TLCreateMenuItem(@"mine_favorites", @"收藏");
     TLMenuItem *item3 = TLCreateMenuItem(@"mine_wallet", @"钱包");
-    TLMenuItem *item4 = TLCreateMenuItem(@"mint_card", @"优惠券");
+    TLMenuItem *item4 = TLCreateMenuItem(@"mine_card", @"优惠券");
     TLMenuItem *item5 = TLCreateMenuItem(@"mine_expression", @"表情");
     TLMenuItem *item6 = TLCreateMenuItem(@"mine_setting", @"设置");
     [self.mineMenuData addObjectsFromArray:@[@[item0], @[item1, item2, item3, item4], @[item5], @[item6]]];

@@ -15,6 +15,7 @@
 #import "TLMineHelper.h"
 #import "TLUserHelper.h"
 
+#import "TLMineInfoViewController.h"
 #import "TLMineSettingViewController.h"
 
 @interface TLMineViewController ()
@@ -59,6 +60,10 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
+        TLMineInfoViewController *mineInfoVC = [[TLMineInfoViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:mineInfoVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
         [super tableView:tableView didSelectRowAtIndexPath:indexPath];
         return;
     }

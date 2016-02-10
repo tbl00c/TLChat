@@ -12,6 +12,7 @@
 #import "TLAccountAndSafetySettingViewController.h"
 #import "TLNewMessageSettingViewController.h"
 #import "TLPrivacySettingViewController.h"
+#import "TLHelpAndFeedbackViewController.h"
 
 @interface TLMineSettingViewController ()
 
@@ -48,6 +49,12 @@
         TLPrivacySettingViewController *privacySettingVC = [[TLPrivacySettingViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:privacySettingVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"帮助与反馈"]) {
+        TLHelpAndFeedbackViewController *helpAndFeedbackVC = [[TLHelpAndFeedbackViewController alloc] init];
+        helpAndFeedbackVC.url = @"http://kf.qq.com/touch/product/wechat_app.html";
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:helpAndFeedbackVC animated:YES];
     }
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }

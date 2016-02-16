@@ -10,6 +10,7 @@
 #import "TLRootViewController.h"
 
 #import <MobClick.h>
+#import <AFNetworking.h>
 
 @implementation TLAppDelegate
 
@@ -54,6 +55,8 @@
 - (void) initThirdPartSDK
 {
     [MobClick startWithAppkey:UMENG_APPKEY];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
 @end

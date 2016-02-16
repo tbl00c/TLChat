@@ -36,6 +36,11 @@
     [self.tableView registerClass:[TLMineHeaderCell class] forCellReuseIdentifier:@"TLMineHeaderCell"];
 }
 
+- (void) log
+{
+    NSLog(@"hello world!");
+}
+
 #pragma mark -
 #pragma mark UITableViewDataSource
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

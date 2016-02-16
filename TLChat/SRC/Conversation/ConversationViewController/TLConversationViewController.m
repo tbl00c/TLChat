@@ -7,12 +7,15 @@
 //
 
 #import "TLConversationViewController.h"
-
 #import "TLFriendSearchViewController.h"
+#import "TLChatViewController.h"
 
 #import "TLConversationCell.h"
 
+#import "TLUser.h"
+
 #import <UIImageView+WebCache.h>
+#import <AFNetworking.h>
 
 #define     HEIGHT_CONVERSATION_CELL        63.0f
 
@@ -40,6 +43,8 @@
     //TODO: Do not work
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleClick)];
     [tapGes setNumberOfTapsRequired:2];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
     
     [self initTestData];
 }
@@ -78,8 +83,16 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    TLConversationCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [cell markAsRead];
+    
+//    TLConversation *conversation = [self.data objectAtIndex:indexPath.row];
+
+    TLChatViewController *chatVC = [TLChatViewController sharedChatVC];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:chatVC animated:YES];
+    [self setHidesBottomBarWhenPushed:NO];
+    
+    // 标为已读
+    [(TLConversationCell *)[self.tableView cellForRowAtIndexPath:indexPath] markAsRead];
 }
 
 - (NSArray *) tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -161,6 +174,24 @@
     
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
+}
+
+#pragma mark - Event Response
+- (void) networkStatusChange:(NSNotification *)noti
+{
+    AFNetworkReachabilityStatus status = [noti.userInfo[@"AFNetworkingReachabilityNotificationStatusItem"] longValue];
+    switch (status) {
+        case AFNetworkReachabilityStatusReachableViaWiFi:
+        case AFNetworkReachabilityStatusReachableViaWWAN:
+        case AFNetworkReachabilityStatusUnknown:
+            self.title = @"微信";
+            break;
+        case AFNetworkReachabilityStatusNotReachable:
+            self.title = @"微信(未连接)";
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - Getter

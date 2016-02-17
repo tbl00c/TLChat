@@ -44,8 +44,12 @@
 
 #pragma mark - Private Methods
 - (void) initUI
-{ 
-    TLRootViewController *rootVC = [TLRootViewController sharedRootViewController];
+{
+    id vc = [[NSClassFromString(@"TLChatViewController") alloc] init];
+    [vc setTitle:@"Test"];
+    UIViewController *rootVC = [[NSClassFromString(@"TLNavigationController") alloc] initWithRootViewController: vc];
+    
+//    TLRootViewController *rootVC = [TLRootViewController sharedRootViewController];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window setRootViewController:rootVC];
     [self.window addSubview:rootVC.view];

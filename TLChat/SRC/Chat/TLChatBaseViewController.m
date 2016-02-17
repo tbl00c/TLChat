@@ -7,13 +7,23 @@
 //
 
 #import "TLChatBaseViewController.h"
-#import "TLChatToolBar.h"
+#import "TLChatBar.h"
+#import "TLChatMoreKeyboard.h"
+#import "TLChatEmojiKeyboard.h"
 
-@interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDelegate, TLChatKeyboardDelegate>
+{
+    TLChatBarStatus lastStatus;
+    TLChatBarStatus curStatus;
+}
 
 @property (nonatomic, strong) UITableView *chatTableView;
 
-@property (nonatomic, strong) TLChatToolBar *chatToolBar;
+@property (nonatomic, strong) TLChatBar *chatBar;
+
+@property (nonatomic, strong) TLChatMoreKeyboard *moreKeyboard;
+
+@property (nonatomic, strong) TLChatEmojiKeyboard *emojiKeyboard;
 
 @end
 
@@ -22,10 +32,15 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
+
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.chatTableView];
-    [self.view addSubview:self.chatToolBar];
+    [self.view addSubview:self.chatBar];
+
+    _moreKeyboard = [TLChatMoreKeyboard keyboard];
+    [_moreKeyboard setDelegate:self];
+    _emojiKeyboard = [TLChatEmojiKeyboard keyboard];
+    [_emojiKeyboard setDelegate:self];
     
     [self p_addMasonry];
 }
@@ -44,20 +59,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) p_addMasonry
-{
-    [self.chatTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.and.right.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(self.chatToolBar.mas_top);
-    }];
-    [self.chatToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(HEIGHT_TABBAR);
-    }];
-}
-
-#pragma mark - 
-#pragma mark UITableViewDataSouce
+#pragma mark - Delegate -
+//MARK: UITableViewDataSouce
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 20;
@@ -73,10 +76,86 @@
     return cell;
 }
 
+//MARK: TLChatBarDelegate
+- (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus
+{
+    if (curStatus == toStatus) {
+        return;
+    }
+    lastStatus = fromStatus;
+    curStatus = toStatus;
+    if (toStatus == TLChatBarStatusInit) {
+        if (fromStatus == TLChatBarStatusMore) {
+            [_moreKeyboard dismissWithAnimation:YES];
+        }
+        else if (fromStatus == TLChatBarStatusEmoji) {
+            [_emojiKeyboard dismissWithAnimation:YES];
+        }
+    }
+    else if (toStatus == TLChatBarStatusKeyboard) {
+        if (fromStatus == TLChatBarStatusMore) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [_moreKeyboard dismissWithAnimation:NO];
+            });
+        }
+        else if (fromStatus == TLChatBarStatusEmoji) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [_emojiKeyboard dismissWithAnimation:NO];
+            });
+        }
+    }
+    else if (toStatus == TLChatBarStatusVoice) {
+        if (fromStatus == TLChatBarStatusMore) {
+            [_moreKeyboard dismissWithAnimation:YES];
+        }
+        else if (fromStatus == TLChatBarStatusEmoji) {
+            [_emojiKeyboard dismissWithAnimation:YES];
+        }
+    }
+    else if (toStatus == TLChatBarStatusEmoji) {
+        if (fromStatus == TLChatBarStatusKeyboard) {
+            [_emojiKeyboard showInView:self.view withAnimation:YES];
+        }
+        else {
+            [_emojiKeyboard showInView:self.view withAnimation:YES];
+        }
+    }
+    else if (toStatus == TLChatBarStatusMore) {
+        if (fromStatus == TLChatBarStatusKeyboard) {
+            [_moreKeyboard showInView:self.view withAnimation:YES];
+        }
+        else {
+            [_moreKeyboard showInView:self.view withAnimation:YES];
+        }
+    }
+}
+
+//MARK: TLChatKeyboardDelegate
+- (void) chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
+{
+    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view).mas_offset(-height);
+    }];
+    [self.view layoutIfNeeded];
+}
+
+- (void) chatKeyboardDidShow:(id)keyboard
+{
+    if (curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji) {
+        [_emojiKeyboard dismissWithAnimation:NO];
+    }
+    else if (curStatus == TLChatBarStatusEmoji && lastStatus == TLChatBarStatusMore) {
+        [_moreKeyboard dismissWithAnimation:NO];
+    }
+}
+
 #pragma mark - Event Response
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    [self.chatToolBar mas_updateConstraints:^(MASConstraintMaker *make) {
+    if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
+        return;
+    }
+    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view);
     }];
     [self.view layoutIfNeeded];
@@ -85,15 +164,30 @@
 - (void)keyboardFrameWillChange:(NSNotification *)notification
 {
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    [self.chatToolBar mas_updateConstraints:^(MASConstraintMaker *make) {
+    if (curStatus == TLChatBarStatusMore || curStatus == TLChatBarStatusEmoji) {
+        return;
+    }
+    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view).mas_offset(-keyboardFrame.size.height);
     }];
     [self.view layoutIfNeeded];
 }
 
+#pragma mark - Private Methods -
+- (void) p_addMasonry
+{
+    [self.chatTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.left.and.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.chatBar.mas_top);
+    }];
+    [self.chatBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.and.bottom.mas_equalTo(self.view);
+        make.height.mas_equalTo(HEIGHT_TABBAR);
+    }];
+}
 
-#pragma mark - Getter
-- (UITableView *) chatTableView
+#pragma mark - Getter -
+- (UITableView *)chatTableView
 {
     if (_chatTableView == nil) {
         _chatTableView = [[UITableView alloc] init];
@@ -104,12 +198,13 @@
     return _chatTableView;
 }
 
-- (UIToolbar *) chatToolBar
+- (TLChatBar *)chatBar
 {
-    if (_chatToolBar == nil) {
-        _chatToolBar = [[TLChatToolBar alloc] init];
+    if (_chatBar == nil) {
+        _chatBar = [[TLChatBar alloc] init];
+        [_chatBar setDelegate:self];
     }
-    return _chatToolBar;
+    return _chatBar;
 }
 
 @end

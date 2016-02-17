@@ -19,5 +19,6 @@
 #import <Masonry.h>
 
 #import "UIView+Frame.h"
+#import "UIButton+TLChat.h"
 
 #endif /* PrefixHeader_pch */

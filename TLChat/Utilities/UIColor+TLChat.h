@@ -42,6 +42,7 @@
 #pragma mark - Chat
 + (UIColor *) colorChatTableViewBG;
 + (UIColor *) colorChatBar;
++ (UIColor *) colorChatBox;
 
 
 @end

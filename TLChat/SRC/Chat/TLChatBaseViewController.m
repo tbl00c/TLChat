@@ -55,6 +55,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -108,14 +109,10 @@
     }
     else if (toStatus == TLChatBarStatusKeyboard) {
         if (fromStatus == TLChatBarStatusMore) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [_moreKeyboard dismissWithAnimation:NO];
-            });
+            
         }
         else if (fromStatus == TLChatBarStatusEmoji) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [_emojiKeyboard dismissWithAnimation:NO];
-            });
+        
         }
     }
     else if (toStatus == TLChatBarStatusVoice) {
@@ -189,6 +186,15 @@
     [self.tableView scrollToBottomWithAnimation:NO];
 }
 
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    if (lastStatus == TLChatBarStatusMore) {
+        [_moreKeyboard dismissWithAnimation:NO];
+    }
+    else if (lastStatus == TLChatBarStatusEmoji) {
+        [_emojiKeyboard dismissWithAnimation:NO];
+    }
+}
 
 #pragma mark - Private Methods -
 - (void) p_addMasonry

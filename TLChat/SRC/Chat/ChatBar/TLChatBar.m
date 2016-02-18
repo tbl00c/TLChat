@@ -310,10 +310,8 @@
     CGContextSetLineWidth(context, 0.5);
     CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
-    
-    CGContextMoveToPoint(context, 0, 0);  //起点坐标
-    CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);   //终点坐标
-    
+    CGContextMoveToPoint(context, 0, 0);
+    CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);
     CGContextStrokePath(context);
 }
 

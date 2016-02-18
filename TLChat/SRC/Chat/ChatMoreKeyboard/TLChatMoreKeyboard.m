@@ -7,8 +7,21 @@
 //
 
 #import "TLChatMoreKeyboard.h"
+#import "TLChatMoreKeyboardCell.h"
+
+#define     HEIGHT_COLLECTIONVIEW       HEIGHT_CHAT_KEYBOARD * 0.87
+#define     HEIGHT_PAGECONTROL          HEIGHT_CHAT_KEYBOARD - HEIGHT_COLLECTIONVIEW
+#define     WIDTH_COLLECTION_CELL       62
 
 static TLChatMoreKeyboard *moreKB;
+
+@interface TLChatMoreKeyboard () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) UIPageControl *pageControl;
+
+@end
 
 @implementation TLChatMoreKeyboard
 
@@ -24,11 +37,15 @@ static TLChatMoreKeyboard *moreKB;
 - (id) init
 {
     if (self = [super init]) {
-        [self setBackgroundColor:[UIColor orangeColor]];
+        [self setBackgroundColor:[UIColor colorChatBox]];
+        [self addSubview:self.collectionView];
+        [self addSubview:self.pageControl];
+        [self.collectionView registerClass:[TLChatMoreKeyboardCell class] forCellWithReuseIdentifier:@"TLChatMoreKeyboardCell"];
     }
     return self;
 }
 
+#pragma mark - Public Methods -
 - (void) showInView:(UIView *)view withAnimation:(BOOL)animation;
 {
     if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
@@ -54,7 +71,6 @@ static TLChatMoreKeyboard *moreKB;
             [_delegate chatKeyboardDidShow:self];
         }
     }
-    
 }
 
 - (void) dismissWithAnimation:(BOOL)animation
@@ -81,6 +97,72 @@ static TLChatMoreKeyboard *moreKB;
             [_delegate chatKeyboardDidDismiss:self];
         }
     }
+}
+
+#pragma mark - Delegate -
+//MARK: UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 2;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 8;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLChatMoreKeyboardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLChatMoreKeyboardCell" forIndexPath:indexPath];
+    [cell setItem:[TLChatMoreKeyboardItem createByTitle:@"拍照" imagePath:@"sharemore_video"]];
+    return cell;
+}
+
+#pragma mark - Private Methods -
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 0.5);
+    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, 0, 0);
+    CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);
+    CGContextStrokePath(context);
+}
+
+#pragma mark - Getter -
+- (UICollectionView *)collectionView
+{
+    if (_collectionView == nil) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+        float h = HEIGHT_COLLECTIONVIEW / 2 * 0.89;
+        float spaceX = (WIDTH_SCREEN - WIDTH_COLLECTION_CELL * 4) / 5;
+        float spaceY = (HEIGHT_COLLECTIONVIEW - h * 2) / 2;
+        [layout setItemSize:CGSizeMake(WIDTH_COLLECTION_CELL, h)];
+        [layout setSectionInset:UIEdgeInsetsMake(spaceY, 0, 0, 0)];
+        [layout setMinimumLineSpacing:spaceX];
+        [layout setHeaderReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
+        [layout setFooterReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_COLLECTIONVIEW) collectionViewLayout:layout];
+        [_collectionView setBackgroundColor:[UIColor clearColor]];
+        [_collectionView setPagingEnabled:YES];
+        [_collectionView setDataSource:self];
+        [_collectionView setDelegate:self];
+        [_collectionView setShowsHorizontalScrollIndicator:NO];
+        [_collectionView setShowsHorizontalScrollIndicator:NO];
+    }
+    return _collectionView;
+}
+
+- (UIPageControl *)pageControl
+{
+    if (_pageControl == nil) {
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, HEIGHT_COLLECTIONVIEW, 100, HEIGHT_PAGECONTROL)];
+        _pageControl.centerX = self.centerX;
+    }
+    return _pageControl;
 }
 
 @end

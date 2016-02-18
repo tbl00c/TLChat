@@ -80,4 +80,9 @@
     return TLColor(235.0, 235.0, 235.0, 1.0);
 }
 
++ (UIColor *) colorChatBox
+{
+    return TLColor(244.0, 244.0, 246.0, 1.0);
+}
+
 @end

@@ -54,7 +54,6 @@ static TLChatEmojiKeyboard *emojiKB;
             [_delegate chatKeyboardDidShow:self];
         }
     }
-    
 }
 
 - (void) dismissWithAnimation:(BOOL)animation

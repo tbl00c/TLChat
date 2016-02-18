@@ -30,6 +30,7 @@
 		C282DF681C756648006924AE /* UITableView+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF671C756648006924AE /* UITableView+TLChat.m */; };
 		C282DF6B1C75744A006924AE /* TLChatMoreKeyboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF6A1C75744A006924AE /* TLChatMoreKeyboardCell.m */; };
 		C282DF6E1C7574FE006924AE /* TLChatMoreKeyboardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF6D1C7574FE006924AE /* TLChatMoreKeyboardItem.m */; };
+		C282DF721C75C7E7006924AE /* TLChatHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF711C75C7E7006924AE /* TLChatHelper.m */; };
 		C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBC71C5751210046CA1C /* TLFriendCell.m */; };
 		C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A1BBC91C5753420046CA1C /* Friends.xcassets */; };
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
@@ -158,6 +159,8 @@
 		C282DF6A1C75744A006924AE /* TLChatMoreKeyboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatMoreKeyboardCell.m; sourceTree = "<group>"; };
 		C282DF6C1C7574FE006924AE /* TLChatMoreKeyboardItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatMoreKeyboardItem.h; sourceTree = "<group>"; };
 		C282DF6D1C7574FE006924AE /* TLChatMoreKeyboardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatMoreKeyboardItem.m; sourceTree = "<group>"; };
+		C282DF701C75C7E7006924AE /* TLChatHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatHelper.h; sourceTree = "<group>"; };
+		C282DF711C75C7E7006924AE /* TLChatHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatHelper.m; sourceTree = "<group>"; };
 		C2A1BBC61C5751210046CA1C /* TLFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendCell.h; sourceTree = "<group>"; };
 		C2A1BBC71C5751210046CA1C /* TLFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendCell.m; sourceTree = "<group>"; };
 		C2A1BBC91C5753420046CA1C /* Friends.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Friends.xcassets; sourceTree = "<group>"; };
@@ -664,6 +667,15 @@
 			path = ChatBar;
 			sourceTree = "<group>";
 		};
+		C282DF6F1C75C7BE006924AE /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				C282DF701C75C7E7006924AE /* TLChatHelper.h */,
+				C282DF711C75C7E7006924AE /* TLChatHelper.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		C2AF1F901C6B209500617D98 /* MineInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -963,6 +975,7 @@
 		C2DD58E01C58C821005419E4 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				C282DF6F1C75C7BE006924AE /* Chat */,
 				C2B9E4371C66450D00CEBA81 /* User */,
 				C2DD58E11C58C83F005419E4 /* Friends */,
 				C2B9E42A1C65E64B00CEBA81 /* Discover */,
@@ -1172,6 +1185,7 @@
 				C2B973071C6A4A56004B9B71 /* TLUIUtility.m in Sources */,
 				C2CE0BCB1C717582006C5C2A /* TLMessage.m in Sources */,
 				C2D8515C1C68E887007DD697 /* TLSettingButtonCell.m in Sources */,
+				C282DF721C75C7E7006924AE /* TLChatHelper.m in Sources */,
 				C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */,
 				C2AF1F931C6B20C400617D98 /* TLMineInfoViewController.m in Sources */,
 				C282DF5D1C74545E006924AE /* TLChatMoreKeyboard.m in Sources */,

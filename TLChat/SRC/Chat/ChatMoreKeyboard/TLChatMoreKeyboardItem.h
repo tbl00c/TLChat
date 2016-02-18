@@ -10,10 +10,12 @@
 
 @interface TLChatMoreKeyboardItem : NSObject
 
+@property (nonatomic, assign) TLChatMoreKeyboardItemType type;
+
 @property (nonatomic, strong) NSString *title;
 
 @property (nonatomic, strong) NSString *imagePath;
 
-+ (TLChatMoreKeyboardItem *)createByTitle:(NSString *)title imagePath:(NSString *)imagePath;
++ (TLChatMoreKeyboardItem *)createByType:(TLChatMoreKeyboardItemType)type title:(NSString *)title imagePath:(NSString *)imagePath;
 
 @end

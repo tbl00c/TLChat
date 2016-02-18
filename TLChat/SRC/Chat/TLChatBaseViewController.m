@@ -64,6 +64,12 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - Public Methods -
+- (void) setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData
+{
+    [self.moreKeyboard setChatMoreKeyboardData:chatMoreKeyboardData];
+}
+
 #pragma mark - Delegate -
 //MARK: UITableViewDataSouce
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -185,6 +191,7 @@
     [self.view layoutIfNeeded];
     [self.tableView scrollToBottomWithAnimation:NO];
 }
+
 
 - (void)keyboardDidShow:(NSNotification *)notification
 {

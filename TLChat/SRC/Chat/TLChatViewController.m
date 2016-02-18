@@ -7,8 +7,15 @@
 //
 
 #import "TLChatViewController.h"
+#import "TLChatHelper.h"
 
 static TLChatViewController *chatVC;
+
+@interface TLChatViewController()
+
+@property (nonatomic, strong) TLChatHelper *helper;
+
+@end
 
 @implementation TLChatViewController
 
@@ -25,6 +32,10 @@ static TLChatViewController *chatVC;
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorTableViewBG]];
+    
+    self.helper = [[TLChatHelper alloc] init];
+    self.chatMoreKeyboardData = self.helper.chatMoreKeyboardData;
+    
 }
 
 @end

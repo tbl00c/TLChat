@@ -20,7 +20,6 @@
     return self;
 }
 
-
 - (void) p_initTestData
 {
     TLMenuItem *item1 = TLCreateMenuItem(@"discover_album", @"朋友圈");

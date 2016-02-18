@@ -10,9 +10,11 @@
 
 @implementation TLChatMoreKeyboardItem
 
-+ (TLChatMoreKeyboardItem *)createByTitle:(NSString *)title imagePath:(NSString *)imagePath
+
++ (TLChatMoreKeyboardItem *)createByType:(TLChatMoreKeyboardItemType)type title:(NSString *)title imagePath:(NSString *)imagePath
 {
     TLChatMoreKeyboardItem *item = [[TLChatMoreKeyboardItem alloc] init];
+    item.type = type;
     item.title = title;
     item.imagePath = imagePath;
     return item;

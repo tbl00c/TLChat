@@ -43,5 +43,19 @@ typedef NS_ENUM(NSInteger, TLMessageType) {
     TLMessageTypeUnknown,
 };
 
+typedef NS_ENUM(NSUInteger, TLChatMoreKeyboardItemType) {
+    TLChatMoreKeyboardItemTypeImage,
+    TLChatMoreKeyboardItemTypeCamera,
+    TLChatMoreKeyboardItemTypeVideo,
+    TLChatMoreKeyboardItemTypeVideoCall,
+    TLChatMoreKeyboardItemTypeWallet,
+    TLChatMoreKeyboardItemTypeTransfer,
+    TLChatMoreKeyboardItemTypePosition,
+    TLChatMoreKeyboardItemTypeFavorite,
+    TLChatMoreKeyboardItemTypeBusinessCard,
+    TLChatMoreKeyboardItemTypeVoice,
+    TLChatMoreKeyboardItemTypeCards,
+};
+
 
 #endif /* TLEnumerate_h */

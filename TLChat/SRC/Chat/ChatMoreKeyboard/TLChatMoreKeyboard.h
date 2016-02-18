@@ -13,6 +13,8 @@
 
 @property (nonatomic, assign) id<TLChatKeyboardDelegate> delegate;
 
+@property (nonatomic, strong) NSMutableArray *chatMoreKeyboardData;
+
 + (TLChatMoreKeyboard *)keyboard;
 
 - (void) showInView:(UIView *)view withAnimation:(BOOL)animation;

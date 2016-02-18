@@ -10,6 +10,12 @@
 
 @interface TLChatBaseViewController : UIViewController
 
+/// 聊天数据
 @property (nonatomic, strong) NSMutableArray *data;
+
+/**
+ *  设置“更多”键盘元素
+ */
+- (void) setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData;
 
 @end

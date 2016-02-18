@@ -31,6 +31,13 @@
 - (void)setItem:(TLChatMoreKeyboardItem *)item
 {
     _item = item;
+    if (item == nil) {
+        [self.titleLabel setHidden:YES];
+        [self.imageView setHidden:YES];
+        return;
+    }
+    [self.titleLabel setHidden:NO];
+    [self.imageView setHidden:NO];
     [self.titleLabel setText:item.title];
     [self.imageView setImage:[UIImage imageNamed:item.imagePath]];
 }

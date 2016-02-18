@@ -99,11 +99,17 @@ static TLChatMoreKeyboard *moreKB;
     }
 }
 
+- (void) setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData
+{
+    _chatMoreKeyboardData = chatMoreKeyboardData;
+    [self.collectionView reloadData];
+}
+
 #pragma mark - Delegate -
 //MARK: UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 2;
+    return self.chatMoreKeyboardData.count / 8 + (self.chatMoreKeyboardData.count % 8 == 0 ? 0 : 1);
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -114,7 +120,12 @@ static TLChatMoreKeyboard *moreKB;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TLChatMoreKeyboardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLChatMoreKeyboardCell" forIndexPath:indexPath];
-    [cell setItem:[TLChatMoreKeyboardItem createByTitle:@"拍照" imagePath:@"sharemore_video"]];
+    if (indexPath.section * 8 + indexPath.row >= self.chatMoreKeyboardData.count) {
+        [cell setItem:nil];
+    }
+    else {
+        [cell setItem:self.chatMoreKeyboardData[indexPath.section * 8 + indexPath.row]];
+    }
     return cell;
 }
 

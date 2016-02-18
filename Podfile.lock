@@ -14,17 +14,30 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - CocoaAsyncSocket (7.4.2)
+  - CocoaAsyncSocket (7.4.3):
+    - CocoaAsyncSocket/All (= 7.4.3)
+  - CocoaAsyncSocket/All (7.4.3):
+    - CocoaAsyncSocket/GCD
+    - CocoaAsyncSocket/RunLoop
+  - CocoaAsyncSocket/GCD (7.4.3)
+  - CocoaAsyncSocket/RunLoop (7.4.3)
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
   - Masonry (0.6.4)
   - MJExtension (3.0.10)
   - MJRefresh (3.1.0)
-  - SDWebImage (3.7.4):
-    - SDWebImage/Core (= 3.7.4)
-  - SDWebImage/Core (3.7.4)
-  - SVProgressHUD (2.0-beta4)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - SVProgressHUD (2.0-beta8)
   - UMengAnalytics (3.6.6)
 
 DEPENDENCIES:
@@ -34,19 +47,21 @@ DEPENDENCIES:
   - Masonry (~> 0.6.4)
   - MJExtension (~> 3.0.10)
   - MJRefresh (~> 3.1.0)
+  - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.7.4)
   - SVProgressHUD (~> 2.0-beta4)
   - UMengAnalytics (~> 3.6.6)
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  CocoaAsyncSocket: f5783bdedd232d91b89769bc4b5a1580aed518ad
+  CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
-  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
-  SVProgressHUD: c330ba31785dd2216827865aa45ab398bbf7ecf8
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SVProgressHUD: 6e48a1dda09ce3b58adc41d013baed3a8e8980ff
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 
 COCOAPODS: 0.39.0

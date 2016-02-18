@@ -17,7 +17,7 @@
     TLChatBarStatus curStatus;
 }
 
-@property (nonatomic, strong) UITableView *chatTableView;
+@property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) TLChatBar *chatBar;
 
@@ -32,9 +32,13 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    for (int i = 0; i < 12; i ++) {
+        [self.data addObject:[NSString stringWithFormat:@"%d", i]];
+    }
+    
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:self.chatTableView];
+    [self.view addSubview:self.tableView];
     [self.view addSubview:self.chatBar];
 
     _moreKeyboard = [TLChatMoreKeyboard keyboard];
@@ -63,7 +67,7 @@
 //MARK: UITableViewDataSouce
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.data.count;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,11 +76,21 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"1"];
     }
-    [cell.textLabel setText:[NSString stringWithFormat:@"%ld", (long)indexPath.row]];
+    [cell.textLabel setText:self.data[indexPath.row]];
     return cell;
 }
 
+//MARK: UITableViewDelegate
+
+
 //MARK: TLChatBarDelegate
+- (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
+{
+    [self.data addObject:text];
+    [self.tableView reloadData];
+    [self.tableView scrollToBottomWithAnimation:YES];
+}
+
 - (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus
 {
     if (curStatus == toStatus) {
@@ -137,6 +151,7 @@
         make.bottom.mas_equalTo(self.view).mas_offset(-height);
     }];
     [self.view layoutIfNeeded];
+    [self.tableView scrollToBottomWithAnimation:NO];
 }
 
 - (void) chatKeyboardDidShow:(id)keyboard
@@ -171,12 +186,14 @@
         make.bottom.mas_equalTo(self.view).mas_offset(-keyboardFrame.size.height);
     }];
     [self.view layoutIfNeeded];
+    [self.tableView scrollToBottomWithAnimation:NO];
 }
+
 
 #pragma mark - Private Methods -
 - (void) p_addMasonry
 {
-    [self.chatTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.chatBar.mas_top);
     }];
@@ -187,15 +204,16 @@
 }
 
 #pragma mark - Getter -
-- (UITableView *)chatTableView
+- (UITableView *)tableView
 {
-    if (_chatTableView == nil) {
-        _chatTableView = [[UITableView alloc] init];
-        [_chatTableView setTableFooterView:[[UIView alloc] init]];
-        [_chatTableView setDataSource:self];
-        [_chatTableView setDelegate:self];
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] init];
+        [_tableView setBackgroundColor:[UIColor colorChatTableViewBG]];
+        [_tableView setTableFooterView:[[UIView alloc] init]];
+        [_tableView setDataSource:self];
+        [_tableView setDelegate:self];
     }
-    return _chatTableView;
+    return _tableView;
 }
 
 - (TLChatBar *)chatBar
@@ -205,6 +223,14 @@
         [_chatBar setDelegate:self];
     }
     return _chatBar;
+}
+
+- (NSMutableArray *)data
+{
+    if (_data == nil) {
+        _data = [[NSMutableArray alloc] init];
+    }
+    return _data;
 }
 
 @end

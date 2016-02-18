@@ -39,4 +39,9 @@
 #pragma mark - Friends
 
 
+#pragma mark - Chat
++ (UIColor *) colorChatTableViewBG;
++ (UIColor *) colorChatBar;
+
+
 @end

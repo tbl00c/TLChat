@@ -10,4 +10,6 @@
 
 @interface TLChatBaseViewController : UIViewController
 
+@property (nonatomic, strong) NSMutableArray *data;
+
 @end

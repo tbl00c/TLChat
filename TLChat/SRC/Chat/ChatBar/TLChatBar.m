@@ -41,7 +41,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        [self setBackgroundColor:TLColor(245, 245, 247, 1)];
+        [self setBackgroundColor:[UIColor colorChatBar]];
         [self p_initImage];
         
         [self addSubview:self.modeButton];
@@ -343,6 +343,7 @@
     if (_textView == nil) {
         _textView = [[UITextView alloc] init];
         [_textView setFont:[UIFont systemFontOfSize:16.0f]];
+        [_textView setReturnKeyType:UIReturnKeySend];
         [_textView.layer setMasksToBounds:YES];
         [_textView.layer setBorderWidth:0.5f];
         [_textView.layer setBorderColor:[UIColor grayColor].CGColor];

@@ -69,4 +69,15 @@
     return TLColor(160, 160, 160, 1.0);
 }
 
+#pragma mark - Chat
++ (UIColor *) colorChatBar
+{
+    return TLColor(245, 245, 247, 1.0);
+}
+
++ (UIColor *) colorChatTableViewBG
+{
+    return TLColor(235.0, 235.0, 235.0, 1.0);
+}
+
 @end

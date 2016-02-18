@@ -27,6 +27,7 @@
 		C282DF5D1C74545E006924AE /* TLChatMoreKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF5C1C74545E006924AE /* TLChatMoreKeyboard.m */; };
 		C282DF611C74586E006924AE /* TLChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF601C74586E006924AE /* TLChatBar.m */; };
 		C282DF651C7486DC006924AE /* TLChatEmojiKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF641C7486DC006924AE /* TLChatEmojiKeyboard.m */; };
+		C282DF681C756648006924AE /* UITableView+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF671C756648006924AE /* UITableView+TLChat.m */; };
 		C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBC71C5751210046CA1C /* TLFriendCell.m */; };
 		C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A1BBC91C5753420046CA1C /* Friends.xcassets */; };
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
@@ -149,6 +150,8 @@
 		C282DF621C747551006924AE /* TLChatKeyboardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatKeyboardDelegate.h; sourceTree = "<group>"; };
 		C282DF631C7486DC006924AE /* TLChatEmojiKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatEmojiKeyboard.h; sourceTree = "<group>"; };
 		C282DF641C7486DC006924AE /* TLChatEmojiKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatEmojiKeyboard.m; sourceTree = "<group>"; };
+		C282DF661C756648006924AE /* UITableView+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TLChat.h"; sourceTree = "<group>"; };
+		C282DF671C756648006924AE /* UITableView+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TLChat.m"; sourceTree = "<group>"; };
 		C2A1BBC61C5751210046CA1C /* TLFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendCell.h; sourceTree = "<group>"; };
 		C2A1BBC71C5751210046CA1C /* TLFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendCell.m; sourceTree = "<group>"; };
 		C2A1BBC91C5753420046CA1C /* Friends.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Friends.xcassets; sourceTree = "<group>"; };
@@ -391,6 +394,8 @@
 				C282DF551C744352006924AE /* UIView+Frame.m */,
 				C282DF581C74498C006924AE /* UIButton+TLChat.h */,
 				C282DF591C74498C006924AE /* UIButton+TLChat.m */,
+				C282DF661C756648006924AE /* UITableView+TLChat.h */,
+				C282DF671C756648006924AE /* UITableView+TLChat.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1208,6 +1213,7 @@
 				C2142EF41C5376D40030B29B /* TLTabBarController.m in Sources */,
 				C2D851491C672BD2007DD697 /* TLSettingCell.m in Sources */,
 				C2AF1F9D1C6B539C00617D98 /* TLAccountAndSafetyHelper.m in Sources */,
+				C282DF681C756648006924AE /* UITableView+TLChat.m in Sources */,
 				C282DF561C744352006924AE /* UIImage+Color.m in Sources */,
 				C282DF611C74586E006924AE /* TLChatBar.m in Sources */,
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,

@@ -20,5 +20,6 @@
 
 #import "UIView+Frame.h"
 #import "UIButton+TLChat.h"
+#import "UITableView+TLChat.h"
 
 #endif /* PrefixHeader_pch */

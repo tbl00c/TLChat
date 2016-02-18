@@ -115,7 +115,7 @@
     }
     else if (toStatus == TLChatBarStatusKeyboard) {
         if (fromStatus == TLChatBarStatusMore) {
-            
+            // 加RAC
         }
         else if (fromStatus == TLChatBarStatusEmoji) {
         

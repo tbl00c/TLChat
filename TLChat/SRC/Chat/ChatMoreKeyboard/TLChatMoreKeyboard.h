@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TLChatKeyboardDelegate.h"
+#import "TLChatMoreKeyboardItem.h"
 
 @interface TLChatMoreKeyboard : UIView
 
@@ -17,8 +18,10 @@
 
 + (TLChatMoreKeyboard *)keyboard;
 
-- (void) showInView:(UIView *)view withAnimation:(BOOL)animation;
+- (void)reset;
 
-- (void) dismissWithAnimation:(BOOL)animation;
+- (void)showInView:(UIView *)view withAnimation:(BOOL)animation;
+
+- (void)dismissWithAnimation:(BOOL)animation;
 
 @end

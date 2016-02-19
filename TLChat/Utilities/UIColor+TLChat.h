@@ -43,6 +43,7 @@
 + (UIColor *) colorChatTableViewBG;
 + (UIColor *) colorChatBar;
 + (UIColor *) colorChatBox;
++ (UIColor *) colorChatBoxLine;
 
 
 @end

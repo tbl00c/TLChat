@@ -7,6 +7,7 @@
 //
 
 #import "TLChatEmojiKeyboard.h"
+#import "TLChatMacros.h"
 
 static TLChatEmojiKeyboard *emojiKB;
 
@@ -29,16 +30,25 @@ static TLChatEmojiKeyboard *emojiKB;
     return self;
 }
 
+#pragma mark - Public Methods -
 - (void) showInView:(UIView *)view withAnimation:(BOOL)animation;
 {
     if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
         [_delegate chatKeyboardWillShow:self];
     }
-    [self setFrame:CGRectMake(0, view.height, view.width, HEIGHT_CHAT_KEYBOARD)];
     [view addSubview:self];
+    [self mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.mas_equalTo(view);
+        make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
+        make.bottom.mas_equalTo(view).mas_offset(HEIGHT_CHAT_KEYBOARD);
+    }];
+    [view layoutIfNeeded];
     if (animation) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.y = view.height - self.height;
+            [self mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(view);
+            }];
+            [view layoutIfNeeded];
             if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
                 [_delegate chatKeyboard:self didChangeHeight:view.height - self.y];
             }
@@ -49,7 +59,10 @@ static TLChatEmojiKeyboard *emojiKB;
         }];
     }
     else {
-        self.y = view.height - self.height;
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(view);
+        }];
+        [view layoutIfNeeded];
         if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
             [_delegate chatKeyboardDidShow:self];
         }
@@ -63,7 +76,10 @@ static TLChatEmojiKeyboard *emojiKB;
     }
     if (animation) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.y = self.superview.height;
+            [self mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(self.superview).mas_offset(HEIGHT_CHAT_KEYBOARD);
+            }];
+            [self.superview layoutIfNeeded];
             if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
                 [_delegate chatKeyboard:self didChangeHeight:self.superview.height - self.y];
             }
@@ -81,5 +97,6 @@ static TLChatEmojiKeyboard *emojiKB;
         }
     }
 }
+
 
 @end

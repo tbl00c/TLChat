@@ -107,6 +107,7 @@
 /* Begin PBXFileReference section */
 		28C098D007CC6D63F81358AB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C203C0081C77270300883268 /* TLChatMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLChatMacros.h; sourceTree = "<group>"; };
 		C2097EE31C52326500163B5C /* TLChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2097EE71C52326500163B5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2097EF71C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -663,6 +664,7 @@
 			children = (
 				C282DF5F1C74586E006924AE /* TLChatBar.h */,
 				C282DF601C74586E006924AE /* TLChatBar.m */,
+				C203C0081C77270300883268 /* TLChatMacros.h */,
 			);
 			path = ChatBar;
 			sourceTree = "<group>";

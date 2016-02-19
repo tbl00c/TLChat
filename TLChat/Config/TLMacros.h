@@ -17,8 +17,6 @@
 #define     HEIGHT_TABBAR       49.0f
 #define     HEIGHT_NAVBAR       44.0f
 
-#define     HEIGHT_CHAT_KEYBOARD    215.0f
-
 #define mark - Default
 #define     DEFAULT_AVATAR_PATH    @"default_head"
 

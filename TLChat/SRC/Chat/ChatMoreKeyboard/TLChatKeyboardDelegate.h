@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class TLChatMoreKeyboardItem;
 @protocol TLChatKeyboardDelegate <NSObject>
 
 @optional
@@ -20,5 +21,7 @@
 - (void) chatKeyboardDidDismiss:(id)keyboard;
 
 - (void) chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height;
+
+- (void) chatKeyboard:(id)keyboard didSelectedFunctionItem:(TLChatMoreKeyboardItem *)funcItem;
 
 @end

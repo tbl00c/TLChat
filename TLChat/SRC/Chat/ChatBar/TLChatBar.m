@@ -180,8 +180,6 @@
         }
         if (self.status == TLChatBarStatusKeyboard) {
             [self.textView resignFirstResponder];
-            [self.talkButton setHidden:NO];
-            [self.textView setHidden:YES];
         }
         else if (self.status == TLChatBarStatusEmoji) {
             [self.emojiButton setImage:kEmojiImage imageHL:kEmojiImageHL];
@@ -189,7 +187,8 @@
         else if (self.status == TLChatBarStatusMore) {
             [self.moreButton setImage:kMoreImage imageHL:kMoreImageHL];
         }
-        
+        [self.talkButton setHidden:NO];
+        [self.textView setHidden:YES];
         [self.voiceButton setImage:kKeyboardImage imageHL:kKeyboardImageHL];
         self.status = TLChatBarStatusVoice;
     }

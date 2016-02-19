@@ -10,7 +10,7 @@
 
 @interface TLChatMoreKeyboardCell()
 
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIButton *iconButton;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
@@ -21,7 +21,7 @@
 - (id) initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        [self.contentView addSubview:self.imageView];
+        [self.contentView addSubview:self.iconButton];
         [self.contentView addSubview:self.titleLabel];
         [self p_addMasonry];
     }
@@ -33,42 +33,50 @@
     _item = item;
     if (item == nil) {
         [self.titleLabel setHidden:YES];
-        [self.imageView setHidden:YES];
+        [self.iconButton setHidden:YES];
+        [self setUserInteractionEnabled:NO];
         return;
     }
+    [self setUserInteractionEnabled:YES];
     [self.titleLabel setHidden:NO];
-    [self.imageView setHidden:NO];
+    [self.iconButton setHidden:NO];
     [self.titleLabel setText:item.title];
-    [self.imageView setImage:[UIImage imageNamed:item.imagePath]];
+    [self.iconButton setImage:[UIImage imageNamed:item.imagePath] forState:UIControlStateNormal];
+}
+
+#pragma mark - Event Response -
+- (void)iconButtonDown:(UIButton *)sender
+{
+    self.clickBlock(self.item);
 }
 
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
-    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.iconButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.contentView);
         make.centerX.mas_equalTo(self.contentView);
         make.width.mas_equalTo(self.contentView);
-        make.height.mas_equalTo(self.imageView.mas_width);
+        make.height.mas_equalTo(self.iconButton.mas_width);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.contentView);
-        make.top.mas_equalTo(self.imageView.mas_bottom).mas_offset(2.0);
         make.bottom.mas_equalTo(self.contentView);
     }];
 }
 
 #pragma mark - Getter -
-- (UIImageView *)imageView
+- (UIButton *)iconButton
 {
-    if (_imageView == nil) {
-        _imageView = [[UIImageView alloc] init];
-        [_imageView.layer setMasksToBounds:YES];
-        [_imageView.layer setCornerRadius:5.0f];
-        [_imageView.layer setBorderWidth:0.5f];
-        [_imageView.layer setBorderColor:[UIColor grayColor].CGColor];
+    if (_iconButton == nil) {
+        _iconButton = [[UIButton alloc] init];
+        [_iconButton.layer setMasksToBounds:YES];
+        [_iconButton.layer setCornerRadius:5.0f];
+        [_iconButton.layer setBorderWidth:0.5f];
+        [_iconButton.layer setBorderColor:[UIColor grayColor].CGColor];
+        [_iconButton addTarget:self action:@selector(iconButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _imageView;
+    return _iconButton;
 }
 
 - (UILabel *)titleLabel

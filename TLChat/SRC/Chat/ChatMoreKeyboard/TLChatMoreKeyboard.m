@@ -7,11 +7,12 @@
 //
 
 #import "TLChatMoreKeyboard.h"
+#import "TLChatMacros.h"
 #import "TLChatMoreKeyboardCell.h"
 
-#define     HEIGHT_COLLECTIONVIEW       HEIGHT_CHAT_KEYBOARD * 0.87
-#define     HEIGHT_PAGECONTROL          HEIGHT_CHAT_KEYBOARD - HEIGHT_COLLECTIONVIEW
-#define     WIDTH_COLLECTION_CELL       62
+#define     HEIGHT_COLLECTIONVIEW       HEIGHT_CHAT_KEYBOARD * 0.85
+#define     HEIGHT_PAGECONTROL          HEIGHT_CHAT_KEYBOARD * 0.14
+#define     WIDTH_COLLECTION_CELL       60
 
 static TLChatMoreKeyboard *moreKB;
 
@@ -40,6 +41,7 @@ static TLChatMoreKeyboard *moreKB;
         [self setBackgroundColor:[UIColor colorChatBox]];
         [self addSubview:self.collectionView];
         [self addSubview:self.pageControl];
+        [self p_addMasonry];
         [self.collectionView registerClass:[TLChatMoreKeyboardCell class] forCellWithReuseIdentifier:@"TLChatMoreKeyboardCell"];
     }
     return self;
@@ -51,11 +53,19 @@ static TLChatMoreKeyboard *moreKB;
     if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
         [_delegate chatKeyboardWillShow:self];
     }
-    [self setFrame:CGRectMake(0, view.height, view.width, HEIGHT_CHAT_KEYBOARD)];
     [view addSubview:self];
+    [self mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.mas_equalTo(view);
+        make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
+        make.bottom.mas_equalTo(view).mas_offset(HEIGHT_CHAT_KEYBOARD);
+    }];
+    [view layoutIfNeeded];
     if (animation) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.y = view.height - self.height;
+            [self mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(view);
+            }];
+            [view layoutIfNeeded];
             if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
                 [_delegate chatKeyboard:self didChangeHeight:view.height - self.y];
             }
@@ -66,7 +76,10 @@ static TLChatMoreKeyboard *moreKB;
         }];
     }
     else {
-        self.y = view.height - self.height;
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(view);
+        }];
+        [view layoutIfNeeded];
         if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
             [_delegate chatKeyboardDidShow:self];
         }
@@ -80,7 +93,10 @@ static TLChatMoreKeyboard *moreKB;
     }
     if (animation) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.y = self.superview.height;
+            [self mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(self.superview).mas_offset(HEIGHT_CHAT_KEYBOARD);
+            }];
+            [self.superview layoutIfNeeded];
             if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
                 [_delegate chatKeyboard:self didChangeHeight:self.superview.height - self.y];
             }
@@ -99,10 +115,17 @@ static TLChatMoreKeyboard *moreKB;
     }
 }
 
+- (void)reset
+{
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
+}
+
 - (void) setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData
 {
     _chatMoreKeyboardData = chatMoreKeyboardData;
     [self.collectionView reloadData];
+    NSUInteger pageNumber = chatMoreKeyboardData.count / 8 + (chatMoreKeyboardData.count % 8 == 0 ? 0 : 1);
+    [self.pageControl setNumberOfPages:pageNumber];
 }
 
 #pragma mark - Delegate -
@@ -120,22 +143,63 @@ static TLChatMoreKeyboard *moreKB;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TLChatMoreKeyboardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLChatMoreKeyboardCell" forIndexPath:indexPath];
-    if (indexPath.section * 8 + indexPath.row >= self.chatMoreKeyboardData.count) {
+    NSUInteger index = indexPath.section * 8 + indexPath.row;
+    NSUInteger tIndex = [self p_transformIndex:index];  // 矩阵坐标转置
+    if (tIndex >= self.chatMoreKeyboardData.count) {
         [cell setItem:nil];
     }
     else {
-        [cell setItem:self.chatMoreKeyboardData[indexPath.section * 8 + indexPath.row]];
+        [cell setItem:self.chatMoreKeyboardData[tIndex]];
     }
+    __weak typeof(self) weakSelf = self;
+    [cell setClickBlock:^(TLChatMoreKeyboardItem *sItem) {
+        if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didSelectedFunctionItem:)]) {
+            [_delegate chatKeyboard:weakSelf didSelectedFunctionItem:sItem];
+        }
+    }];
     return cell;
 }
 
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self.pageControl setCurrentPage:(int)(scrollView.contentOffset.x / WIDTH_SCREEN)];
+}
+
+#pragma mark - Event Response -
+- (void) pageControlChanged:(UIPageControl *)pageControl
+{
+    [self.collectionView scrollRectToVisible:CGRectMake(WIDTH_SCREEN * pageControl.currentPage, 0, WIDTH_SCREEN, HEIGHT_PAGECONTROL) animated:YES];
+}
+
 #pragma mark - Private Methods -
+- (NSUInteger)p_transformIndex:(NSUInteger)index
+{
+    NSUInteger page = index / 8;
+    index = index % 8;
+    NSUInteger x = index / 2;
+    NSUInteger y = index % 2;
+    return 4 * y + x + page * 8;
+}
+
+- (void)p_addMasonry
+{
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self).mas_offset(3);
+        make.left.and.right.mas_equalTo(self);
+        make.height.mas_equalTo(HEIGHT_COLLECTIONVIEW);
+    }];
+    [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.and.bottom.mas_equalTo(self);
+        make.height.mas_equalTo(HEIGHT_PAGECONTROL);
+    }];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorChatBoxLine].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
     CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);
@@ -148,7 +212,7 @@ static TLChatMoreKeyboard *moreKB;
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        float h = HEIGHT_COLLECTIONVIEW / 2 * 0.89;
+        float h = HEIGHT_COLLECTIONVIEW / 2 * 0.885;
         float spaceX = (WIDTH_SCREEN - WIDTH_COLLECTION_CELL * 4) / 5;
         float spaceY = (HEIGHT_COLLECTIONVIEW - h * 2) / 2;
         [layout setItemSize:CGSizeMake(WIDTH_COLLECTION_CELL, h)];
@@ -156,13 +220,14 @@ static TLChatMoreKeyboard *moreKB;
         [layout setMinimumLineSpacing:spaceX];
         [layout setHeaderReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
         [layout setFooterReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_COLLECTIONVIEW) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor clearColor]];
         [_collectionView setPagingEnabled:YES];
         [_collectionView setDataSource:self];
         [_collectionView setDelegate:self];
         [_collectionView setShowsHorizontalScrollIndicator:NO];
         [_collectionView setShowsHorizontalScrollIndicator:NO];
+        [_collectionView setScrollsToTop:YES];
     }
     return _collectionView;
 }
@@ -170,8 +235,11 @@ static TLChatMoreKeyboard *moreKB;
 - (UIPageControl *)pageControl
 {
     if (_pageControl == nil) {
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, HEIGHT_COLLECTIONVIEW, 100, HEIGHT_PAGECONTROL)];
+        _pageControl = [[UIPageControl alloc] init];
         _pageControl.centerX = self.centerX;
+        [_pageControl setPageIndicatorTintColor:[UIColor colorChatBoxLine]];
+        [_pageControl setCurrentPageIndicatorTintColor:[UIColor grayColor]];
+        [_pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
     }
     return _pageControl;
 }

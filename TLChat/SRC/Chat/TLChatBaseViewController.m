@@ -7,6 +7,7 @@
 //
 
 #import "TLChatBaseViewController.h"
+#import "TLChatMacros.h"
 #import "TLChatBar.h"
 #import "TLChatMoreKeyboard.h"
 #import "TLChatEmojiKeyboard.h"
@@ -115,10 +116,18 @@
     }
     else if (toStatus == TLChatBarStatusKeyboard) {
         if (fromStatus == TLChatBarStatusMore) {
-            // 加RAC
+            [self.moreKeyboard mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(self.chatBar.mas_bottom);
+                make.left.and.right.mas_equalTo(self.view);
+                make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
+            }];
         }
         else if (fromStatus == TLChatBarStatusEmoji) {
-        
+            [self.emojiKeyboard mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(self.chatBar.mas_bottom);
+                make.left.and.right.mas_equalTo(self.view);
+                make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
+            }];
         }
     }
     else if (toStatus == TLChatBarStatusVoice) {
@@ -148,7 +157,13 @@
 }
 
 //MARK: TLChatKeyboardDelegate
-- (void) chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
+- (void)chatKeyboard:(id)keyboard didSelectedFunctionItem:(TLChatMoreKeyboardItem *)funcItem
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"选中”%@“ 按钮", funcItem.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [alert show];
+}
+
+- (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
 {
     [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view).mas_offset(-height);
@@ -157,7 +172,7 @@
     [self.tableView scrollToBottomWithAnimation:NO];
 }
 
-- (void) chatKeyboardDidShow:(id)keyboard
+- (void)chatKeyboardDidShow:(id)keyboard
 {
     if (curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji) {
         [_emojiKeyboard dismissWithAnimation:NO];
@@ -182,7 +197,12 @@
 - (void)keyboardFrameWillChange:(NSNotification *)notification
 {
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    if (curStatus == TLChatBarStatusMore || curStatus == TLChatBarStatusEmoji) {
+    if (lastStatus == TLChatBarStatusMore || lastStatus == TLChatBarStatusEmoji) {
+        if (keyboardFrame.size.height <= HEIGHT_CHAT_KEYBOARD) {
+            return;
+        }
+    }
+    else if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
         return;
     }
     [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {

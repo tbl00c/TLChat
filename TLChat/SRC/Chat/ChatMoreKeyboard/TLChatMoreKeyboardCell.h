@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) TLChatMoreKeyboardItem *item;
 
+@property (nonatomic, strong) void(^clickBlock)(TLChatMoreKeyboardItem *item);
+
 @end

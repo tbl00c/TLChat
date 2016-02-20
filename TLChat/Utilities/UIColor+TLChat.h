@@ -14,36 +14,37 @@
 /**
  *  默认背景色
  */
-+ (UIColor *) colorTableViewBG;
++ (UIColor *)colorTableViewBG;
 
 /**
  *  默认的绿色
  */
-+ (UIColor *) colorDefaultGreen;
++ (UIColor *)colorDefaultGreen;
 
-+ (UIColor *) colorTabBarBG;
++ (UIColor *)colorTabBarBG;
 
-+ (UIColor *) colorNavBarTint;
-+ (UIColor *) colorNavBarBarTint;
++ (UIColor *)colorNavBarTint;
++ (UIColor *)colorNavBarBarTint;
 
-+ (UIColor *) colorSearchBarTint;
-+ (UIColor *) colorSearchBarBorder;
++ (UIColor *)colorSearchBarTint;
++ (UIColor *)colorSearchBarBorder;
 
-+ (UIColor *) colorCellLine;
-+ (UIColor *) colorCellMoreButton;
++ (UIColor *)colorCellLine;
++ (UIColor *)colorCellMoreButton;
 
 #pragma mark - Conversation
-+ (UIColor *) colorConversationDetail;
-+ (UIColor *) colorConversationTime;
++ (UIColor *)colorConversationDetail;
++ (UIColor *)colorConversationTime;
 
 #pragma mark - Friends
 
 
 #pragma mark - Chat
-+ (UIColor *) colorChatTableViewBG;
-+ (UIColor *) colorChatBar;
-+ (UIColor *) colorChatBox;
-+ (UIColor *) colorChatBoxLine;
++ (UIColor *)colorChatTableViewBG;
++ (UIColor *)colorChatBar;
++ (UIColor *)colorChatBox;
++ (UIColor *)colorChatBoxLine;
++ (UIColor *)colorChatEmojiSend;
 
 
 @end

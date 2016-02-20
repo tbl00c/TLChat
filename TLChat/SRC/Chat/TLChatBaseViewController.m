@@ -9,10 +9,10 @@
 #import "TLChatBaseViewController.h"
 #import "TLChatMacros.h"
 #import "TLChatBar.h"
-#import "TLChatMoreKeyboard.h"
-#import "TLChatEmojiKeyboard.h"
+#import "TLMoreKeyboard.h"
+#import "TLEmojiKeyboard.h"
 
-@interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDelegate, TLChatKeyboardDelegate>
+@interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDelegate, TLKeyboardDelegate>
 {
     TLChatBarStatus lastStatus;
     TLChatBarStatus curStatus;
@@ -22,9 +22,9 @@
 
 @property (nonatomic, strong) TLChatBar *chatBar;
 
-@property (nonatomic, strong) TLChatMoreKeyboard *moreKeyboard;
+@property (nonatomic, strong) TLMoreKeyboard *moreKeyboard;
 
-@property (nonatomic, strong) TLChatEmojiKeyboard *emojiKeyboard;
+@property (nonatomic, strong) TLEmojiKeyboard *emojiKeyboard;
 
 @end
 
@@ -42,10 +42,12 @@
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.chatBar];
 
-    _moreKeyboard = [TLChatMoreKeyboard keyboard];
+    _moreKeyboard = [TLMoreKeyboard keyboard];
+    [_moreKeyboard setKeyboardDelegate:self];
     [_moreKeyboard setDelegate:self];
-    _emojiKeyboard = [TLChatEmojiKeyboard keyboard];
-    [_emojiKeyboard setDelegate:self];
+    _emojiKeyboard = [TLEmojiKeyboard keyboard];
+    [_emojiKeyboard setKeyboardDelegate:self];
+    [_emojiKeyboard setDataSource:self];
     
     [self p_addMasonry];
 }
@@ -66,9 +68,14 @@
 }
 
 #pragma mark - Public Methods -
-- (void) setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData
+- (void) setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData
 {
-    [self.moreKeyboard setChatMoreKeyboardData:chatMoreKeyboardData];
+    [self.moreKeyboard setChatMoreKeyboardData:moreKeyboardData];
+}
+
+- (void) setChatEmojiKeyboardData:(NSMutableArray *)emojiKeyboardData
+{
+    [self.emojiKeyboard setEmojiGroupData:emojiKeyboardData];
 }
 
 #pragma mark - Delegate -
@@ -156,13 +163,7 @@
     }
 }
 
-//MARK: TLChatKeyboardDelegate
-- (void)chatKeyboard:(id)keyboard didSelectedFunctionItem:(TLChatMoreKeyboardItem *)funcItem
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"选中”%@“ 按钮", funcItem.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-    [alert show];
-}
-
+//MARK: TLKeyboardDelegate
 - (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
 {
     [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {

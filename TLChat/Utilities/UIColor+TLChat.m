@@ -90,4 +90,9 @@
     return TLColor(188.0, 188.0, 188.0, 0.7f);
 }
 
++ (UIColor *)colorChatEmojiSend
+{
+    return TLColor(25.5, 102.0, 204.0, 1.0);
+}
+
 @end

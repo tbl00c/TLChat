@@ -1,5 +1,5 @@
 //
-//  TLChatKeyboardDelegate.h
+//  TLKeyboardDelegate.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/17.
@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class TLChatMoreKeyboardItem;
-@protocol TLChatKeyboardDelegate <NSObject>
+@protocol TLKeyboardDelegate <NSObject>
 
 @optional
 - (void) chatKeyboardWillShow:(id)keyboard;
@@ -21,7 +20,5 @@
 - (void) chatKeyboardDidDismiss:(id)keyboard;
 
 - (void) chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height;
-
-- (void) chatKeyboard:(id)keyboard didSelectedFunctionItem:(TLChatMoreKeyboardItem *)funcItem;
 
 @end

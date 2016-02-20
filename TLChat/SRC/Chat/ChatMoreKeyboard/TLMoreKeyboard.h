@@ -1,5 +1,5 @@
 //
-//  TLChatMoreKeyboard.h
+//  TLMoreKeyboard.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/17.
@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLChatKeyboardDelegate.h"
-#import "TLChatMoreKeyboardItem.h"
+#import "TLKeyboardDelegate.h"
+#import "TLMoreKeyboardDelegate.h"
+#import "TLMoreKeyboardItem.h"
 
-@interface TLChatMoreKeyboard : UIView
+@interface TLMoreKeyboard : UIView
 
-@property (nonatomic, assign) id<TLChatKeyboardDelegate> delegate;
+@property (nonatomic, assign) id<TLKeyboardDelegate> keyboardDelegate;
+
+@property (nonatomic, assign) id<TLMoreKeyboardDelegate> delegate;
 
 @property (nonatomic, strong) NSMutableArray *chatMoreKeyboardData;
 
-+ (TLChatMoreKeyboard *)keyboard;
++ (TLMoreKeyboard *)keyboard;
 
 - (void)reset;
 

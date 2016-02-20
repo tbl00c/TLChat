@@ -1,14 +1,14 @@
 //
-//  TLChatMoreKeyboardCell.m
+//  TLMoreKeyboardCell.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/18.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLChatMoreKeyboardCell.h"
+#import "TLMoreKeyboardCell.h"
 
-@interface TLChatMoreKeyboardCell()
+@interface TLMoreKeyboardCell()
 
 @property (nonatomic, strong) UIButton *iconButton;
 
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation TLChatMoreKeyboardCell
+@implementation TLMoreKeyboardCell
 
 - (id) initWithFrame:(CGRect)frame
 {
@@ -28,7 +28,7 @@
     return self;
 }
 
-- (void)setItem:(TLChatMoreKeyboardItem *)item
+- (void)setItem:(TLMoreKeyboardItem *)item
 {
     _item = item;
     if (item == nil) {

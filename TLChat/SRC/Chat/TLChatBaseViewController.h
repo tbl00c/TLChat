@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLMoreKeyboardDelegate.h"
+#import "TLEmojiKeyboardDataSource.h"
 
-@interface TLChatBaseViewController : UIViewController
+@interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate, TLEmojiKeyboardDataSource>
 
 /// 聊天数据
 @property (nonatomic, strong) NSMutableArray *data;
@@ -16,6 +18,11 @@
 /**
  *  设置“更多”键盘元素
  */
-- (void) setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData;
+- (void) setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData;
+
+/**
+ *  设置“表情”键盘元素
+ */
+- (void) setChatEmojiKeyboardData:(NSMutableArray *)emojiKeyboardData;
 
 @end

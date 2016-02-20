@@ -16,8 +16,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self initUI];
-    [self initThirdPartSDK];
+    [self p_initUI];
+//    [self p_initTestUI];
+    [self p_initThirdPartSDK];
     
     return YES;
 }
@@ -43,12 +44,19 @@
 }
 
 #pragma mark - Private Methods
-- (void) initUI
+- (void)p_initTestUI
 {
-//    id vc = [[NSClassFromString(@"TLChatViewController") alloc] init];
-//    [vc setTitle:@"Test"];
-//    UIViewController *rootVC = [[NSClassFromString(@"TLNavigationController") alloc] initWithRootViewController: vc];
-    
+    id vc = [[NSClassFromString(@"TLChatViewController") alloc] init];
+    [vc setTitle:@"Test"];
+    UIViewController *rootVC = [[NSClassFromString(@"TLNavigationController") alloc] initWithRootViewController: vc];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.window setRootViewController:rootVC];
+    [self.window addSubview:rootVC.view];
+    [self.window makeKeyAndVisible];
+}
+
+- (void)p_initUI
+{
     TLRootViewController *rootVC = [TLRootViewController sharedRootViewController];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window setRootViewController:rootVC];
@@ -56,7 +64,7 @@
     [self.window makeKeyAndVisible];
 }
 
-- (void) initThirdPartSDK
+- (void)p_initThirdPartSDK
 {
     [MobClick startWithAppkey:UMENG_APPKEY];
     

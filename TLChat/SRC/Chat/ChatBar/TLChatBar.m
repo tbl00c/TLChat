@@ -346,6 +346,7 @@
         [_textView.layer setBorderColor:[UIColor grayColor].CGColor];
         [_textView.layer setCornerRadius:4.0f];
         [_textView setDelegate:self];
+        [_textView setScrollsToTop:NO];
     }
     return _textView;
 }

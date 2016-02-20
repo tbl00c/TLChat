@@ -1,5 +1,5 @@
 //
-//  TLChatHelper.h
+//  TLMoreKBHelper.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/18.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TLChatHelper : NSObject
+@interface TLMoreKBHelper : NSObject
 
 @property (nonatomic, strong) NSMutableArray *chatMoreKeyboardData;
 

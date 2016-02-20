@@ -1,22 +1,22 @@
 //
-//  TLChatMoreKeyboard.m
+//  TLMoreKeyboard.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/17.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLChatMoreKeyboard.h"
+#import "TLMoreKeyboard.h"
 #import "TLChatMacros.h"
-#import "TLChatMoreKeyboardCell.h"
+#import "TLMoreKeyboardCell.h"
 
-#define     HEIGHT_COLLECTIONVIEW       HEIGHT_CHAT_KEYBOARD * 0.85
-#define     HEIGHT_PAGECONTROL          HEIGHT_CHAT_KEYBOARD * 0.14
-#define     WIDTH_COLLECTION_CELL       60
+#define     HEIGHT_TOP_SPACE            15
+#define     HEIGHT_COLLECTIONVIEW       (HEIGHT_CHAT_KEYBOARD * 0.85 - HEIGHT_TOP_SPACE)
+#define     WIDTH_COLLECTION_CELL       58
 
-static TLChatMoreKeyboard *moreKB;
+static TLMoreKeyboard *moreKB;
 
-@interface TLChatMoreKeyboard () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface TLMoreKeyboard () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -24,13 +24,13 @@ static TLChatMoreKeyboard *moreKB;
 
 @end
 
-@implementation TLChatMoreKeyboard
+@implementation TLMoreKeyboard
 
-+ (TLChatMoreKeyboard *)keyboard
++ (TLMoreKeyboard *)keyboard
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        moreKB = [[TLChatMoreKeyboard alloc] init];
+        moreKB = [[TLMoreKeyboard alloc] init];
     });
     return moreKB;
 }
@@ -42,7 +42,7 @@ static TLChatMoreKeyboard *moreKB;
         [self addSubview:self.collectionView];
         [self addSubview:self.pageControl];
         [self p_addMasonry];
-        [self.collectionView registerClass:[TLChatMoreKeyboardCell class] forCellWithReuseIdentifier:@"TLChatMoreKeyboardCell"];
+        [self.collectionView registerClass:[TLMoreKeyboardCell class] forCellWithReuseIdentifier:@"TLMoreKeyboardCell"];
     }
     return self;
 }
@@ -50,8 +50,8 @@ static TLChatMoreKeyboard *moreKB;
 #pragma mark - Public Methods -
 - (void) showInView:(UIView *)view withAnimation:(BOOL)animation;
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
-        [_delegate chatKeyboardWillShow:self];
+    if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
+        [_keyboardDelegate chatKeyboardWillShow:self];
     }
     [view addSubview:self];
     [self mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -66,12 +66,12 @@ static TLChatMoreKeyboard *moreKB;
                 make.bottom.mas_equalTo(view);
             }];
             [view layoutIfNeeded];
-            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_delegate chatKeyboard:self didChangeHeight:view.height - self.y];
+            if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
+                [_keyboardDelegate chatKeyboard:self didChangeHeight:view.height - self.y];
             }
         } completion:^(BOOL finished) {
-            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
-                [_delegate chatKeyboardDidShow:self];
+            if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
+                [_keyboardDelegate chatKeyboardDidShow:self];
             }
         }];
     }
@@ -80,16 +80,16 @@ static TLChatMoreKeyboard *moreKB;
             make.bottom.mas_equalTo(view);
         }];
         [view layoutIfNeeded];
-        if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
-            [_delegate chatKeyboardDidShow:self];
+        if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
+            [_keyboardDelegate chatKeyboardDidShow:self];
         }
     }
 }
 
 - (void) dismissWithAnimation:(BOOL)animation
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardWillDismiss:)]) {
-        [_delegate chatKeyboardWillDismiss:self];
+    if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardWillDismiss:)]) {
+        [_keyboardDelegate chatKeyboardWillDismiss:self];
     }
     if (animation) {
         [UIView animateWithDuration:0.3 animations:^{
@@ -97,20 +97,20 @@ static TLChatMoreKeyboard *moreKB;
                 make.bottom.mas_equalTo(self.superview).mas_offset(HEIGHT_CHAT_KEYBOARD);
             }];
             [self.superview layoutIfNeeded];
-            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_delegate chatKeyboard:self didChangeHeight:self.superview.height - self.y];
+            if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
+                [_keyboardDelegate chatKeyboard:self didChangeHeight:self.superview.height - self.y];
             }
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
-            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
-                [_delegate chatKeyboardDidDismiss:self];
+            if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
+                [_keyboardDelegate chatKeyboardDidDismiss:self];
             }
         }];
     }
     else {
         [self removeFromSuperview];
-        if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
-            [_delegate chatKeyboardDidDismiss:self];
+        if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
+            [_keyboardDelegate chatKeyboardDidDismiss:self];
         }
     }
 }
@@ -142,7 +142,7 @@ static TLChatMoreKeyboard *moreKB;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    TLChatMoreKeyboardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLChatMoreKeyboardCell" forIndexPath:indexPath];
+    TLMoreKeyboardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLMoreKeyboardCell" forIndexPath:indexPath];
     NSUInteger index = indexPath.section * 8 + indexPath.row;
     NSUInteger tIndex = [self p_transformIndex:index];  // 矩阵坐标转置
     if (tIndex >= self.chatMoreKeyboardData.count) {
@@ -152,9 +152,9 @@ static TLChatMoreKeyboard *moreKB;
         [cell setItem:self.chatMoreKeyboardData[tIndex]];
     }
     __weak typeof(self) weakSelf = self;
-    [cell setClickBlock:^(TLChatMoreKeyboardItem *sItem) {
-        if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didSelectedFunctionItem:)]) {
-            [_delegate chatKeyboard:weakSelf didSelectedFunctionItem:sItem];
+    [cell setClickBlock:^(TLMoreKeyboardItem *sItem) {
+        if (_delegate && [_delegate respondsToSelector:@selector(moreKeyboard:didSelectedFunctionItem:)]) {
+            [_delegate moreKeyboard:weakSelf didSelectedFunctionItem:sItem];
         }
     }];
     return cell;
@@ -168,7 +168,7 @@ static TLChatMoreKeyboard *moreKB;
 #pragma mark - Event Response -
 - (void) pageControlChanged:(UIPageControl *)pageControl
 {
-    [self.collectionView scrollRectToVisible:CGRectMake(WIDTH_SCREEN * pageControl.currentPage, 0, WIDTH_SCREEN, HEIGHT_PAGECONTROL) animated:YES];
+    [self.collectionView scrollRectToVisible:CGRectMake(self.collectionView.width * pageControl.currentPage, 0, self.collectionView.width, self.collectionView.height) animated:YES];
 }
 
 #pragma mark - Private Methods -
@@ -184,13 +184,14 @@ static TLChatMoreKeyboard *moreKB;
 - (void)p_addMasonry
 {
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self).mas_offset(3);
+        make.top.mas_equalTo(self).mas_offset(HEIGHT_TOP_SPACE);
         make.left.and.right.mas_equalTo(self);
         make.height.mas_equalTo(HEIGHT_COLLECTIONVIEW);
     }];
     [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.bottom.mas_equalTo(self);
-        make.height.mas_equalTo(HEIGHT_PAGECONTROL);
+        make.left.and.right.mas_equalTo(self);
+        make.top.mas_equalTo(self.collectionView.mas_bottom);
+        make.bottom.mas_equalTo(self).mas_offset(-2);
     }];
 }
 
@@ -212,11 +213,11 @@ static TLChatMoreKeyboard *moreKB;
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        float h = HEIGHT_COLLECTIONVIEW / 2 * 0.885;
+        float h = HEIGHT_COLLECTIONVIEW / 2 * 0.93;
         float spaceX = (WIDTH_SCREEN - WIDTH_COLLECTION_CELL * 4) / 5;
-        float spaceY = (HEIGHT_COLLECTIONVIEW - h * 2) / 2;
+        float spaceY = HEIGHT_COLLECTIONVIEW - h * 2;
         [layout setItemSize:CGSizeMake(WIDTH_COLLECTION_CELL, h)];
-        [layout setSectionInset:UIEdgeInsetsMake(spaceY, 0, 0, 0)];
+        [layout setMinimumInteritemSpacing:spaceY];
         [layout setMinimumLineSpacing:spaceX];
         [layout setHeaderReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
         [layout setFooterReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
@@ -227,7 +228,7 @@ static TLChatMoreKeyboard *moreKB;
         [_collectionView setDelegate:self];
         [_collectionView setShowsHorizontalScrollIndicator:NO];
         [_collectionView setShowsHorizontalScrollIndicator:NO];
-        [_collectionView setScrollsToTop:YES];
+        [_collectionView setScrollsToTop:NO];
     }
     return _collectionView;
 }

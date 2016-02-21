@@ -16,8 +16,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self p_initUI];
-//    [self p_initTestUI];
+//    [self p_initUI];
+    [self p_initTestUI];
     [self p_initThirdPartSDK];
     
     return YES;

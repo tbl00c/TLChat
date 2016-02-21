@@ -40,7 +40,10 @@ static TLChatViewController *chatVC;
     [self setChatMoreKeyboardData:self.moreKBhelper.chatMoreKeyboardData];
     self.emojiKBHelper = [[TLEmojiKBHelper alloc] init];
     [self setChatEmojiKeyboardData:self.emojiKBHelper.emojiGroupData];
-    
+ 
+    for (int i = 0; i < 12; i ++) {
+        [self.data addObject:[NSString stringWithFormat:@"%d", i]];
+    }
 }
 
 #pragma mark - Delegate -

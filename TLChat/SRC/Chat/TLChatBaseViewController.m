@@ -34,10 +34,6 @@
 {
     [super viewDidLoad];
     
-    for (int i = 0; i < 12; i ++) {
-        [self.data addObject:[NSString stringWithFormat:@"%d", i]];
-    }
-    
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.chatBar];

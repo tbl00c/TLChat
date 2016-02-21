@@ -8,94 +8,61 @@
 
 #import "TLTableViewCell.h"
 
-@interface TLTableViewCell ()
-
-@property (nonatomic, strong) UIView *topLine;
-@property (nonatomic, strong) UIView *bottomLine;
-
-@end
-
 @implementation TLTableViewCell
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self addSubview:self.topLine];
-        [self addSubview:self.bottomLine];
         _leftSeparatorSpace = 10.0f;
         _topLineStyle = TLCellLineStyleNone;
         _bottomLineStyle = TLCellLineStyleDefault;
+        [self setNeedsDisplay];
     }
     return self;
 }
 
-- (void) layoutSubviews
-{
-    [super layoutSubviews];
-    
-    if (_topLineStyle == TLCellLineStyleDefault) {
-        [_topLine setFrame:CGRectMake(_leftSeparatorSpace, 0, self.width - _leftSeparatorSpace, 0.5)];
-    }
-    else if (_topLineStyle == TLCellLineStyleFill) {
-        [_topLine setFrame:CGRectMake(0, 0, self.width, 0.5)];
-    }
-    
-    if (_bottomLineStyle == TLCellLineStyleDefault) {
-        [_bottomLine setFrame:CGRectMake(_leftSeparatorSpace, self.height - 0.5, self.width - _leftSeparatorSpace, 0.5)];
-    }
-    else if (_bottomLineStyle == TLCellLineStyleFill) {
-        [_bottomLine setFrame:CGRectMake(0, self.height - 0.5, self.width, 0.5)];
-    }
-}
-
-#pragma mark - Setter
 - (void) setTopLineStyle:(TLCellLineStyle)topLineStyle
 {
     _topLineStyle = topLineStyle;
-    if (topLineStyle == TLCellLineStyleNone) {
-        [self.topLine setHidden:YES];
-        return;
-    }
-    
-    [self.topLine setHidden:NO];
-    [self layoutSubviews];
+    [self setNeedsDisplay];
 }
 
 - (void) setBottomLineStyle:(TLCellLineStyle)bottomLineStyle
 {
     _bottomLineStyle = bottomLineStyle;
-    if (_bottomLineStyle == TLCellLineStyleNone) {
-        [self.bottomLine setHidden:YES];
-        return;
-    }
-    
-    [self.bottomLine setHidden:NO];
-    [self layoutSubviews];
+    [self setNeedsDisplay];
 }
 
 - (void) setLeftSeparatorSpace:(CGFloat)leftSeparatorSpace
 {
     _leftSeparatorSpace = leftSeparatorSpace;
-    [self layoutSubviews];
+    [self setNeedsDisplay];
 }
 
-#pragma mark - Getter
-- (UIView *) topLine
+- (void)drawRect:(CGRect)rect
 {
-    if (_topLine == nil) {
-        _topLine = [[UIView alloc] init];
-        [_topLine setBackgroundColor:[UIColor colorCellLine]];
+    [super drawRect:rect];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 1.0);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorCellLine].CGColor);
+    if (self.topLineStyle != TLCellLineStyleNone) {
+        CGContextBeginPath(context);
+        CGFloat startX = (self.topLineStyle == TLCellLineStyleFill ? 0 : _leftSeparatorSpace);
+        CGFloat endX = WIDTH_SCREEN;
+        CGFloat y = 0;
+        CGContextMoveToPoint(context, startX, y);
+        CGContextAddLineToPoint(context, endX, y);
+        CGContextStrokePath(context);
     }
-    return _topLine;
-}
-
-- (UIView *) bottomLine
-{
-    if (_bottomLine == nil) {
-        _bottomLine = [[UIView alloc] init];
-        [_bottomLine setBackgroundColor:[UIColor colorCellLine]];
+    if (self.bottomLineStyle != TLCellLineStyleNone) {
+        CGContextBeginPath(context);
+        CGFloat startX = (self.bottomLineStyle == TLCellLineStyleFill ? 0 : _leftSeparatorSpace);
+        CGFloat endX = WIDTH_SCREEN;
+        CGFloat y = self.height;
+        CGContextMoveToPoint(context, startX, y);
+        CGContextAddLineToPoint(context, endX, y);
+        CGContextStrokePath(context);
     }
-    return _bottomLine;
 }
 
 @end

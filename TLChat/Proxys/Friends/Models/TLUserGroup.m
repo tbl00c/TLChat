@@ -32,6 +32,11 @@
     return self.users.count;
 }
 
+- (void)addObject:(id)anObject
+{
+    [self.users addObject:anObject];
+}
+
 - (id) objectAtIndex:(NSUInteger)index
 {
     return [self.users objectAtIndex:index];

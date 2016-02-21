@@ -40,6 +40,11 @@
  */
 @property (nonatomic, strong) NSString *remarkName;
 
+/**
+ *  拼音  
+ *
+ *  来源：备注 > 昵称 > 用户名
+ */
 @property (nonatomic, strong) NSString *pinyin;
 
 @property (nonatomic, strong) NSString *pinyinInitial;

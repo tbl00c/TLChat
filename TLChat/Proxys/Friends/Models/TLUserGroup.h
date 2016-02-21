@@ -19,6 +19,8 @@
 
 - (id) initWithGroupName:(NSString *)groupName users:(NSMutableArray *)users;
 
+- (void)addObject:(id)anObject;
+
 - (id) objectAtIndex:(NSUInteger)index;
 
 @end

@@ -38,6 +38,12 @@
     self.friendHelper = [[TLFriendHelper alloc] init];      // 初始化好友数据业务类
     self.data = self.friendHelper.data;
     self.sectionHeaders = self.friendHelper.sectionHeaders;
+    __weak typeof(self) weakSelf = self;
+    [self.friendHelper setDataChangedBlock:^(NSMutableArray *data, NSMutableArray *headers) {
+        weakSelf.data = data;
+        weakSelf.sectionHeaders = headers;
+        [weakSelf.tableView reloadData];
+    }];
     [self.footerLabel setText:[NSString stringWithFormat:@"%ld位联系人", (long)self.friendHelper.friendNumber]];
     
     [self.tableView registerClass:[TLFriendHeaderView class] forHeaderFooterViewReuseIdentifier:@"TLFriendHeaderView"];

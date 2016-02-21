@@ -36,6 +36,8 @@
  */
 @property (nonatomic, assign, readonly) NSInteger friendNumber;
 
+@property (nonatomic, strong) void(^dataChangedBlock)(NSMutableArray *friends, NSMutableArray *headers);
+
 
 + (TLFriendHelper *) sharedFriendHelper;
 

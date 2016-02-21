@@ -92,6 +92,7 @@
 		C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */; };
 		C2EDE3011C6210A4005646A2 /* 10.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C2EDE3001C6210A4005646A2 /* 10.jpeg */; };
 		C2F0EBEE1C78F1A60090843C /* TLEmojiImageTitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */; };
+		C2F0EBF11C7A061D0090843C /* NSString+PinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF01C7A061D0090843C /* NSString+PinYin.m */; };
 		CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47069788539839E1FB073F9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -287,6 +288,8 @@
 		C2EDE3001C6210A4005646A2 /* 10.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpeg; sourceTree = "<group>"; };
 		C2F0EBEC1C78F1A60090843C /* TLEmojiImageTitleItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiImageTitleItemCell.h; sourceTree = "<group>"; };
 		C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiImageTitleItemCell.m; sourceTree = "<group>"; };
+		C2F0EBEF1C7A061D0090843C /* NSString+PinYin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin.h"; sourceTree = "<group>"; };
+		C2F0EBF01C7A061D0090843C /* NSString+PinYin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin.m"; sourceTree = "<group>"; };
 		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -425,6 +428,8 @@
 		C2142E951C531EFD0030B29B /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				C2F0EBEF1C7A061D0090843C /* NSString+PinYin.h */,
+				C2F0EBF01C7A061D0090843C /* NSString+PinYin.m */,
 				C282DF521C744352006924AE /* UIImage+Color.h */,
 				C282DF531C744352006924AE /* UIImage+Color.m */,
 				C282DF541C744352006924AE /* UIView+Frame.h */,
@@ -1272,6 +1277,7 @@
 				C282DF6B1C75744A006924AE /* TLMoreKeyboardCell.m in Sources */,
 				C2D851461C672BC1007DD697 /* TLSettingItem.m in Sources */,
 				C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */,
+				C2F0EBF11C7A061D0090843C /* NSString+PinYin.m in Sources */,
 				C2B9E4311C65F53700CEBA81 /* TLMineHelper.m in Sources */,
 				C2AF1FA81C6B773000617D98 /* TLWebViewController.m in Sources */,
 				C2CAA3731C7762B800B8152B /* TLEmojiGroupCell.m in Sources */,

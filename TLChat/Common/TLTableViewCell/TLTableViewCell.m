@@ -16,7 +16,6 @@
         _leftSeparatorSpace = 10.0f;
         _topLineStyle = TLCellLineStyleNone;
         _bottomLineStyle = TLCellLineStyleDefault;
-        [self setNeedsDisplay];
     }
     return self;
 }

@@ -2,7 +2,7 @@
 //  UIImage+Color.h
 //  WhichBank
 //
-//  Created by h1r0 on 15/9/6.
+//  Created by libokun on 15/9/6.
 //  Copyright (c) 2015年 lettai. All rights reserved.
 //
 

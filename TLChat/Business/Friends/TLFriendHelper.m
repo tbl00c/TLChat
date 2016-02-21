@@ -12,7 +12,7 @@ static TLFriendHelper *friendHelper = nil;
 
 @implementation TLFriendHelper
 
-+ (TLFriendHelper *) sharedFriendHelper
++ (TLFriendHelper *)sharedFriendHelper
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
@@ -21,7 +21,7 @@ static TLFriendHelper *friendHelper = nil;
     return friendHelper;
 }
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.friendsData = [[NSMutableArray alloc] init];
@@ -33,66 +33,125 @@ static TLFriendHelper *friendHelper = nil;
     return self;
 }
 
-- (void) p_initTestData
+#pragma mark - Private Methods -
+- (void)p_resetFriendData
 {
-    NSMutableArray *arr1 = [[NSMutableArray alloc] initWithCapacity:3];
+    // 1、排序
+    NSArray *serializeArray = [self.friendsData sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        int i;
+        NSString *strA = ((TLUser *)obj1).pinyin;
+        NSString *strB = ((TLUser *)obj2).pinyin;
+        for (i = 0; i < strA.length && i < strB.length; i ++) {
+            char a = toupper([strA characterAtIndex:i]);
+            char b = toupper([strB characterAtIndex:i]);
+            if (a > b) {
+                return (NSComparisonResult)NSOrderedDescending;
+            }
+            else if (a < b) {
+                return (NSComparisonResult)NSOrderedAscending;
+            }
+        }
+        if (strA.length > strB.length) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        else if (strA.length < strB.length){
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        return (NSComparisonResult)NSOrderedSame;
+    }];
+    
+    // 2、分组
+    NSMutableArray *ansData = [[NSMutableArray alloc] initWithObjects:self.defaultGroup, nil];
+    NSMutableArray *ansSectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
+    char lastC = '1';
+    TLUserGroup *curGroup;
+    TLUserGroup *othGroup = [[TLUserGroup alloc] init];
+    [othGroup setGroupName:@"#"];
+    for (TLUser *user in serializeArray) {
+        // 获取拼音失败
+        if (user.pinyin == nil || user.pinyin.length == 0) {
+            [othGroup addObject:user];
+            continue;
+        }
+        
+        char c = toupper([user.pinyin characterAtIndex:0]);
+        if (!isalpha(c)) {      // #组
+            [othGroup addObject:user];
+        }
+        else if (c != lastC){
+            if (curGroup && curGroup.count > 0) {
+                [ansData addObject:curGroup];
+                [ansSectionHeaders addObject:curGroup.groupName];
+            }
+            lastC = c;
+            curGroup = [[TLUserGroup alloc] init];
+            [curGroup setGroupName:[NSString stringWithFormat:@"%c", c]];
+            [curGroup addObject:user];
+        }
+        else {
+            [curGroup addObject:user];
+        }
+    }
+    if (curGroup && curGroup.count > 0) {
+        [ansData addObject:curGroup];
+        [ansSectionHeaders addObject:curGroup.groupName];
+    }
+    if (othGroup.count > 0) {
+        [ansData addObject:othGroup];
+        [ansSectionHeaders addObject:othGroup.groupName];
+    }
+    
+    [self.data removeAllObjects];
+    [self.data addObjectsFromArray:ansData];
+    [self.sectionHeaders removeAllObjects];
+    [self.sectionHeaders addObjectsFromArray:ansSectionHeaders];
+    if (self.dataChangedBlock) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.dataChangedBlock(self.data, self.sectionHeaders);
+        });
+    }
+}
+
+- (void)p_initTestData
+{
     TLUser *user1 = [[TLUser alloc] init];
     user1.nikeName = @"吕轻侯";
     user1.userID = @"yun";
     user1.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    [arr1 addObject:user1];
     TLUser *user2 = [[TLUser alloc] init];
     user2.nikeName = @"白展堂";
     user2.userID = @"小白2";
     user2.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    [arr1 addObject:user2];
     TLUser *user3 = [[TLUser alloc] init];
     user3.remarkName = @"李秀莲";
     user3.userID = @"xiulian";
     user3.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    [arr1 addObject:user3];
-    
-    TLUserGroup *defaultGroup = [[TLUserGroup alloc] initWithGroupName:@"A" users:arr1];
-    [_data addObject:defaultGroup];
-    
-    NSMutableArray *arr2 = [[NSMutableArray alloc] init];
     TLUser *user4 = [[TLUser alloc] init];
     user4.remarkName = @"燕小六";
     user4.userID = @"xiao6";
     user4.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    [arr2 addObject:user4];
-    TLUserGroup *defaultGroup2 = [[TLUserGroup alloc] initWithGroupName:@"B" users:arr2];
-    [_data addObject:defaultGroup2];
-    
-    NSMutableArray *arr3 = [[NSMutableArray alloc] init];
     TLUser *user5 = [[TLUser alloc] init];
     user5.remarkName = @"郭芙蓉";
     user5.userID = @"furongMM";
     user5.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    [arr3 addObject:user5];
     TLUser *user6 = [[TLUser alloc] init];
     user6.nikeName = @"佟湘玉";
     user6.userID = @"yu";
     user6.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    [arr3 addObject:user6];
     TLUser *user7 = [[TLUser alloc] init];
     user7.nikeName = @"莫小贝";
     user7.userID = @"XB";
     user7.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    [arr3 addObject:user7];
     
-    TLUserGroup *defaultGroup3 = [[TLUserGroup alloc] initWithGroupName:@"C" users:arr3];
-    [_data addObject:defaultGroup3];
-    
-    for (int i = 1; i < _data.count; i ++) {
-        TLUserGroup *group = _data[i];
-        [_sectionHeaders addObject:group.groupName];
-    }
+    [self.friendsData removeAllObjects];
+    [self.friendsData addObjectsFromArray:@[user1, user2, user3, user4, user5, user6, user7]];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self p_resetFriendData];
+    });
 }
 
-
 #pragma mark - Getter
-- (TLUserGroup *) defaultGroup
+- (TLUserGroup *)defaultGroup
 {
     if (_defaultGroup == nil) {
         TLUser *item_new = [[TLUser alloc] initWithUserID:@"-1" avatarPath:@"friends_new" remarkName:@"新的朋友"];
@@ -104,7 +163,7 @@ static TLFriendHelper *friendHelper = nil;
     return _defaultGroup;
 }
 
-- (NSInteger) friendNumber
+- (NSInteger)friendNumber
 {
     return self.friendsData.count;
 }

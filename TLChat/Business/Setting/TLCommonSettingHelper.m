@@ -47,5 +47,4 @@
     [self.commonSettingData addObjectsFromArray:@[group1, group2, group3, group4, group5, group6]];
 }
 
-
 @end

@@ -46,7 +46,8 @@
 #pragma mark - Private Methods
 - (void)p_initTestUI
 {
-    id vc = [[NSClassFromString(@"TLChatViewController") alloc] init];
+    NSString *className = @"TLAboutViewController";
+    id vc = [[NSClassFromString(className) alloc] init];
     [vc setTitle:@"Test"];
     UIViewController *rootVC = [[NSClassFromString(@"TLNavigationController") alloc] initWithRootViewController: vc];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

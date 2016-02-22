@@ -14,6 +14,7 @@
 #import "TLPrivacySettingViewController.h"
 #import "TLCommonSettingViewController.h"
 #import "TLHelpAndFeedbackViewController.h"
+#import "TLAboutViewController.h"
 
 @interface TLMineSettingViewController ()
 
@@ -60,6 +61,11 @@
         TLHelpAndFeedbackViewController *helpAndFeedbackVC = [[TLHelpAndFeedbackViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:helpAndFeedbackVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"关于微信"]) {
+        TLAboutViewController *aboutVC = [[TLAboutViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:aboutVC animated:YES];
     }
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }

@@ -12,7 +12,7 @@
 
 + (UIFont *) fontNavBarTitle
 {
-    return [UIFont boldSystemFontOfSize:18.5f];
+    return [UIFont boldSystemFontOfSize:17.5f];
 }
 
 + (UIFont *) fontConversationUsername

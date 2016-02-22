@@ -10,4 +10,10 @@
 
 @implementation TLHelpAndFeedbackViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setUrl:@"http://kf.qq.com/touch/product/wechat_app.html"];
+}
+
 @end

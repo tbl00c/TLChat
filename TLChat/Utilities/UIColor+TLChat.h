@@ -39,6 +39,11 @@
 #pragma mark - Friends
 
 
+#pragma mark - Discover
+//MARK: Shake
++ (UIColor *)colorShakeBG;
+
+
 #pragma mark - Chat
 + (UIColor *)colorChatTableViewBG;
 + (UIColor *)colorChatBar;

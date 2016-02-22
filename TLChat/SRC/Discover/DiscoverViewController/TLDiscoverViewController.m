@@ -9,6 +9,8 @@
 #import "TLDiscoverViewController.h"
 #import "TLDiscoverHelper.h"
 
+#import "TLShakeViewController.h"
+#import "TLBottleViewController.h"
 #import "TLShoppingViewController.h"
 
 @interface TLDiscoverViewController ()
@@ -32,11 +34,22 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLMenuItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"购物"]) {
-        TLShoppingViewController *webVC = [[TLShoppingViewController alloc] init];
-        webVC.url = @"http://wq.jd.com/";
+    if ([item.title isEqualToString:@"摇一摇"]) {
+        TLShakeViewController *shakeVC = [[TLShakeViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:webVC animated:YES];
+        [self.navigationController pushViewController:shakeVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+    }
+    else if ([item.title isEqualToString:@"漂流瓶"]) {
+        TLBottleViewController *bottleVC = [[TLBottleViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:bottleVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+    }
+    else if ([item.title isEqualToString:@"购物"]) {
+        TLShoppingViewController *shoppingVC = [[TLShoppingViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:shoppingVC animated:YES];
         [self setHidesBottomBarWhenPushed:NO];
     }
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];

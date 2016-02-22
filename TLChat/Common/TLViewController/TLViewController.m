@@ -10,4 +10,10 @@
 
 @implementation TLViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorTableViewBG]];
+}
+
 @end

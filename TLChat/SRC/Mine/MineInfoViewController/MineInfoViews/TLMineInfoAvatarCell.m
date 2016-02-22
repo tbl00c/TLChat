@@ -48,8 +48,8 @@
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.contentView);
-        make.top.mas_equalTo(self.contentView).mas_offset(8);
-        make.bottom.mas_equalTo(self.contentView).mas_offset(-8);
+        make.top.mas_equalTo(self.contentView).mas_offset(9);
+        make.bottom.mas_equalTo(self.contentView).mas_offset(-9);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
 }

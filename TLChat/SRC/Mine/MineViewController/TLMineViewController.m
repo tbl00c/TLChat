@@ -16,6 +16,7 @@
 #import "TLUserHelper.h"
 
 #import "TLMineInfoViewController.h"
+#import "TLExpressionViewController.h"
 #import "TLMineSettingViewController.h"
 
 @interface TLMineViewController ()
@@ -34,11 +35,6 @@
     self.data = self.mineHelper.mineMenuData;
     
     [self.tableView registerClass:[TLMineHeaderCell class] forCellReuseIdentifier:@"TLMineHeaderCell"];
-}
-
-- (void) log
-{
-    NSLog(@"hello world!");
 }
 
 #pragma mark -
@@ -73,7 +69,13 @@
         return;
     }
     TLMenuItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"设置"]) {
+    if ([item.title isEqualToString:@"表情"]) {
+        TLExpressionViewController *expressionVC = [[TLExpressionViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:expressionVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+    }
+    else if ([item.title isEqualToString:@"设置"]) {
         TLMineSettingViewController *settingVC = [[TLMineSettingViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:settingVC animated:YES];

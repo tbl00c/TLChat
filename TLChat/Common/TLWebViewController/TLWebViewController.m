@@ -19,23 +19,36 @@
 
 @implementation TLWebViewController
 
-- (void) loadView
+- (void)loadView
 {
     [super loadView];
     [self.view addSubview:self.webView];
     [self.view addSubview:self.progressView];
 }
 
-- (void) viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
-    [self.progressView setProgress:0.0f];
 }
 
-- (void) dealloc
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.progressView setProgress:0.0f];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
+}
+
+- (void)setUrl:(NSString *)url
+{
+    _url = url;
+    if ([self.view isFirstResponder]) {
+        [self.progressView setProgress:0.0f];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
+    }
+}
+
+- (void)dealloc
 {
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
 }

@@ -93,6 +93,15 @@
 		C2EDE3011C6210A4005646A2 /* 10.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C2EDE3001C6210A4005646A2 /* 10.jpeg */; };
 		C2F0EBEE1C78F1A60090843C /* TLEmojiImageTitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */; };
 		C2F0EBF11C7A061D0090843C /* NSString+PinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF01C7A061D0090843C /* NSString+PinYin.m */; };
+		C2F0EBF51C7A0DA80090843C /* TLCommonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */; };
+		C2F0EBF81C7A0DC90090843C /* TLCommonSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF71C7A0DC90090843C /* TLCommonSettingHelper.m */; };
+		C2F0EBFC1C7A11480090843C /* TLExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBFB1C7A11480090843C /* TLExpressionViewController.m */; };
+		C2F0EC001C7A17300090843C /* TLBottleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBFF1C7A17300090843C /* TLBottleViewController.m */; };
+		C2F0EC021C7A1BAF0090843C /* Discover_Bottle.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2F0EC011C7A1BAF0090843C /* Discover_Bottle.xcassets */; };
+		C2F0EC051C7A1F480090843C /* TLBottleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC041C7A1F480090843C /* TLBottleButton.m */; };
+		C2F0EC091C7A2BD20090843C /* TLShakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC081C7A2BD20090843C /* TLShakeViewController.m */; };
+		C2F0EC0B1C7A31F70090843C /* Discover_Shake.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2F0EC0A1C7A31F70090843C /* Discover_Shake.xcassets */; };
+		C2F0EC0E1C7A394A0090843C /* TLShakeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC0D1C7A394A0090843C /* TLShakeButton.m */; };
 		CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47069788539839E1FB073F9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -290,6 +299,22 @@
 		C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiImageTitleItemCell.m; sourceTree = "<group>"; };
 		C2F0EBEF1C7A061D0090843C /* NSString+PinYin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin.h"; sourceTree = "<group>"; };
 		C2F0EBF01C7A061D0090843C /* NSString+PinYin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin.m"; sourceTree = "<group>"; };
+		C2F0EBF31C7A0DA80090843C /* TLCommonSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCommonSettingViewController.h; sourceTree = "<group>"; };
+		C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCommonSettingViewController.m; sourceTree = "<group>"; };
+		C2F0EBF61C7A0DC90090843C /* TLCommonSettingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCommonSettingHelper.h; sourceTree = "<group>"; };
+		C2F0EBF71C7A0DC90090843C /* TLCommonSettingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCommonSettingHelper.m; sourceTree = "<group>"; };
+		C2F0EBFA1C7A11480090843C /* TLExpressionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionViewController.h; sourceTree = "<group>"; };
+		C2F0EBFB1C7A11480090843C /* TLExpressionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionViewController.m; sourceTree = "<group>"; };
+		C2F0EBFE1C7A17300090843C /* TLBottleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBottleViewController.h; sourceTree = "<group>"; };
+		C2F0EBFF1C7A17300090843C /* TLBottleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLBottleViewController.m; sourceTree = "<group>"; };
+		C2F0EC011C7A1BAF0090843C /* Discover_Bottle.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Discover_Bottle.xcassets; sourceTree = "<group>"; };
+		C2F0EC031C7A1F480090843C /* TLBottleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBottleButton.h; sourceTree = "<group>"; };
+		C2F0EC041C7A1F480090843C /* TLBottleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLBottleButton.m; sourceTree = "<group>"; };
+		C2F0EC071C7A2BD20090843C /* TLShakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLShakeViewController.h; sourceTree = "<group>"; };
+		C2F0EC081C7A2BD20090843C /* TLShakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShakeViewController.m; sourceTree = "<group>"; };
+		C2F0EC0A1C7A31F70090843C /* Discover_Shake.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Discover_Shake.xcassets; sourceTree = "<group>"; };
+		C2F0EC0C1C7A394A0090843C /* TLShakeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLShakeButton.h; sourceTree = "<group>"; };
+		C2F0EC0D1C7A394A0090843C /* TLShakeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShakeButton.m; sourceTree = "<group>"; };
 		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -470,6 +495,8 @@
 				C2D500E61C5639210088997C /* Conversation.xcassets */,
 				C2A1BBC91C5753420046CA1C /* Friends.xcassets */,
 				C2B9E4221C65DD6C00CEBA81 /* Discover.xcassets */,
+				C2F0EC011C7A1BAF0090843C /* Discover_Bottle.xcassets */,
+				C2F0EC0A1C7A31F70090843C /* Discover_Shake.xcassets */,
 				C2B9E4321C65F5DA00CEBA81 /* Mine.xcassets */,
 				C2B9E43B1C665AC700CEBA81 /* Common.xcassets */,
 			);
@@ -524,8 +551,10 @@
 		C2142E9E1C531EFD0030B29B /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				C246F10D1C6B866400A5AFB2 /* ShopingViewController */,
 				C2D500D61C55C9A20088997C /* DiscoverViewController */,
+				C2F0EC061C7A2BB90090843C /* ShakeViewController */,
+				C2F0EBFD1C7A17180090843C /* DriftBottleViewController */,
+				C246F10D1C6B866400A5AFB2 /* ShopingViewController */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -544,6 +573,7 @@
 			children = (
 				C2D500D11C55C9350088997C /* MineViewController */,
 				C2AF1F901C6B209500617D98 /* MineInfoViewController */,
+				C2F0EBF91C7A11230090843C /* ExpressionViewController */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -994,6 +1024,7 @@
 				C2AF1F941C6B534A00617D98 /* AccountAndSafetyViewController */,
 				C2D8515D1C68ECF6007DD697 /* NewMessageSettingViewController */,
 				C2B973091C6A529E004B9B71 /* PrivacySettingViewController */,
+				C2F0EBF21C7A0D7F0090843C /* CommonSettingViewController */,
 				C246F1111C6B895F00A5AFB2 /* HelpAndFeedbackViewController */,
 			);
 			path = Setting;
@@ -1019,6 +1050,8 @@
 				C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */,
 				C2B9730D1C6A52F0004B9B71 /* TLPrivacySettingHelper.h */,
 				C2B9730E1C6A52F0004B9B71 /* TLPrivacySettingHelper.m */,
+				C2F0EBF61C7A0DC90090843C /* TLCommonSettingHelper.h */,
+				C2F0EBF71C7A0DC90090843C /* TLCommonSettingHelper.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1061,6 +1094,46 @@
 				C2DD58E31C58C8CA005419E4 /* TLFriendHelper.m */,
 			);
 			path = Friends;
+			sourceTree = "<group>";
+		};
+		C2F0EBF21C7A0D7F0090843C /* CommonSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2F0EBF31C7A0DA80090843C /* TLCommonSettingViewController.h */,
+				C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */,
+			);
+			path = CommonSettingViewController;
+			sourceTree = "<group>";
+		};
+		C2F0EBF91C7A11230090843C /* ExpressionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2F0EBFA1C7A11480090843C /* TLExpressionViewController.h */,
+				C2F0EBFB1C7A11480090843C /* TLExpressionViewController.m */,
+			);
+			path = ExpressionViewController;
+			sourceTree = "<group>";
+		};
+		C2F0EBFD1C7A17180090843C /* DriftBottleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2F0EBFE1C7A17300090843C /* TLBottleViewController.h */,
+				C2F0EBFF1C7A17300090843C /* TLBottleViewController.m */,
+				C2F0EC031C7A1F480090843C /* TLBottleButton.h */,
+				C2F0EC041C7A1F480090843C /* TLBottleButton.m */,
+			);
+			path = DriftBottleViewController;
+			sourceTree = "<group>";
+		};
+		C2F0EC061C7A2BB90090843C /* ShakeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2F0EC071C7A2BD20090843C /* TLShakeViewController.h */,
+				C2F0EC081C7A2BD20090843C /* TLShakeViewController.m */,
+				C2F0EC0C1C7A394A0090843C /* TLShakeButton.h */,
+				C2F0EC0D1C7A394A0090843C /* TLShakeButton.m */,
+			);
+			path = ShakeViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1171,7 +1244,9 @@
 			files = (
 				C2EDE3011C6210A4005646A2 /* 10.jpeg in Resources */,
 				C2B9E4231C65DD6C00CEBA81 /* Discover.xcassets in Resources */,
+				C2F0EC021C7A1BAF0090843C /* Discover_Bottle.xcassets in Resources */,
 				C2B9E4331C65F5DA00CEBA81 /* Mine.xcassets in Resources */,
+				C2F0EC0B1C7A31F70090843C /* Discover_Shake.xcassets in Resources */,
 				C2D500E71C5639210088997C /* Conversation.xcassets in Resources */,
 				C2CE0BD41C718702006C5C2A /* Chat.xcassets in Resources */,
 				C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */,
@@ -1260,9 +1335,12 @@
 				C2AF1F931C6B20C400617D98 /* TLMineInfoViewController.m in Sources */,
 				C282DF5D1C74545E006924AE /* TLMoreKeyboard.m in Sources */,
 				C2D851431C672BB7007DD697 /* TLSettingGroup.m in Sources */,
+				C2F0EBF81C7A0DC90090843C /* TLCommonSettingHelper.m in Sources */,
 				C2CE0BC61C717514006C5C2A /* TLChatBaseViewController.m in Sources */,
 				C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */,
 				C2142EF51C5376D40030B29B /* TLTableViewController.m in Sources */,
+				C2F0EC001C7A17300090843C /* TLBottleViewController.m in Sources */,
+				C2F0EC0E1C7A394A0090843C /* TLShakeButton.m in Sources */,
 				C2CE0BC31C7173B2006C5C2A /* TLChatViewController.m in Sources */,
 				C282DF651C7486DC006924AE /* TLEmojiKeyboard.m in Sources */,
 				C2D851501C68D67F007DD697 /* TLMineSettingViewController.m in Sources */,
@@ -1288,6 +1366,8 @@
 				C2B9E43A1C66451B00CEBA81 /* TLUserHelper.m in Sources */,
 				C2F0EBEE1C78F1A60090843C /* TLEmojiImageTitleItemCell.m in Sources */,
 				C2D500CA1C55C08C0088997C /* TLConversationCell.m in Sources */,
+				C2F0EC091C7A2BD20090843C /* TLShakeViewController.m in Sources */,
+				C2F0EBFC1C7A11480090843C /* TLExpressionViewController.m in Sources */,
 				C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */,
 				C2B9E4291C65E1BA00CEBA81 /* TLMenuItem.m in Sources */,
 				C282DF5A1C74498C006924AE /* UIButton+TLChat.m in Sources */,
@@ -1321,9 +1401,11 @@
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,
 				C282DF6E1C7574FE006924AE /* TLMoreKeyboardItem.m in Sources */,
 				C2AF1FA41C6B708D00617D98 /* TLMineInfoAvatarCell.m in Sources */,
+				C2F0EBF51C7A0DA80090843C /* TLCommonSettingViewController.m in Sources */,
 				C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */,
 				C2CAA3821C7787C400B8152B /* TLEmojiItemCell.m in Sources */,
 				C2B9E4211C65DA0900CEBA81 /* TLMenuViewController.m in Sources */,
+				C2F0EC051C7A1F480090843C /* TLBottleButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

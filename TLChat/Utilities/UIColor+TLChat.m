@@ -12,80 +12,86 @@
 
 
 #pragma mark - Global
-+ (UIColor *) colorTableViewBG
++ (UIColor *)colorTableViewBG
 {
     return TLColor(239.0, 239.0, 244.0, 1.0);
 }
 
-+ (UIColor *) colorDefaultGreen
++ (UIColor *)colorDefaultGreen
 {
     return TLColor(2.0, 187.0, 0.0, 1.0f);
 }
 
-+ (UIColor *) colorTabBarBG
++ (UIColor *)colorTabBarBG
 {
     return TLColor(239.0, 239.0, 244.0, 1.0);
 }
 
-+ (UIColor *) colorNavBarTint
++ (UIColor *)colorNavBarTint
 {
     return [UIColor whiteColor];
 }
 
-+ (UIColor *) colorNavBarBarTint
++ (UIColor *)colorNavBarBarTint
 {
     return TLColor(20.0, 20.0, 20.0, 0.9);
 }
 
-+ (UIColor *) colorSearchBarTint
++ (UIColor *)colorSearchBarTint
 {
     return TLColor(239.0, 239.0, 244.0, 1.0);
 }
 
-+ (UIColor *) colorSearchBarBorder
++ (UIColor *)colorSearchBarBorder
 {
     return [UIColor colorSearchBarTint];
     //    return TLColor(220, 220, 220, 1.0);
 }
 
-+ (UIColor *) colorCellLine
++ (UIColor *)colorCellLine
 {
     return [UIColor colorWithWhite:0.5 alpha:0.3];
 }
 
-+ (UIColor *) colorCellMoreButton
++ (UIColor *)colorCellMoreButton
 {
     return [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0];
 }
 
 #pragma mark - Conversation
-+ (UIColor *) colorConversationDetail
++ (UIColor *)colorConversationDetail
 {
     return [UIColor grayColor];
 }
 
-+ (UIColor *) colorConversationTime
++ (UIColor *)colorConversationTime
 {
     return TLColor(160, 160, 160, 1.0);
 }
 
+#pragma mark - Discover
++ (UIColor *)colorShakeBG
+{
+    return TLColor(42, 45, 46, 1.0);
+}
+
 #pragma mark - Chat
-+ (UIColor *) colorChatBar
++ (UIColor *)colorChatBar
 {
     return TLColor(245, 245, 247, 1.0);
 }
 
-+ (UIColor *) colorChatTableViewBG
++ (UIColor *)colorChatTableViewBG
 {
     return TLColor(235.0, 235.0, 235.0, 1.0);
 }
 
-+ (UIColor *) colorChatBox
++ (UIColor *)colorChatBox
 {
     return TLColor(244.0, 244.0, 246.0, 1.0);
 }
 
-+ (UIColor *) colorChatBoxLine
++ (UIColor *)colorChatBoxLine
 {
     return TLColor(188.0, 188.0, 188.0, 0.7f);
 }

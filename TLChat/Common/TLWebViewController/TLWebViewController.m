@@ -29,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setAutomaticallyAdjustsScrollViewInsets:NO];
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
@@ -83,7 +84,7 @@
 - (WKWebView *) webView
 {
     if (_webView == nil) {
-        _webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, HEIGHT_SCREEN - HEIGHT_NAVBAR - HEIGHT_STATUSBAR)];
         [_webView setAllowsBackForwardNavigationGestures:YES];
         [_webView setNavigationDelegate:self];
     }

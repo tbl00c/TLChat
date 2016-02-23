@@ -11,7 +11,7 @@
 #import "TLAppHelper.h"
 #import "TLAboutHeaderView.h"
 
-#define     HEIGHT_TOPVIEW      100.0f
+#define     HEIGHT_TOPVIEW      110.0f
 
 @interface TLAboutViewController ()
 

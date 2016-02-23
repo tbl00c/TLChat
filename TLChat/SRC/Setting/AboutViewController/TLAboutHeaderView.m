@@ -49,7 +49,7 @@
         make.width.mas_equalTo(self.imageView.mas_height);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.contentView).mas_offset(-7);
+        make.bottom.mas_equalTo(self.contentView).mas_offset(-10);
         make.left.and.right.mas_equalTo(self.contentView);
         make.height.mas_equalTo(25);
     }];

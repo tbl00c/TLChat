@@ -7,7 +7,7 @@
 //
 
 #import "TLChatBar.h"
-
+#import "TLChatMacros.h"
 #import "UIImage+Color.h"
 
 @interface TLChatBar () <UITextViewDelegate>
@@ -119,24 +119,24 @@
 
 - (void) textViewDidChange:(UITextView *)textView
 {
-//    CGFloat height = [textView sizeThatFits:CGSizeMake(self.textView.frameWidth, MAXFLOAT)].height;
-//    height = height > HEIGHT_TEXTVIEW ? height : HEIGHT_TEXTVIEW;
-//    height = height < MAX_TEXTVIEW_HEIGHT ? height : textView.frameHeight;
-//    _curHeight = height + HEIGHT_TABBAR - HEIGHT_TEXTVIEW;
-//    if (_curHeight != self.frameHeight) {
-//        [UIView animateWithDuration:0.05 animations:^{
-//            [self setFrameHeight:_curHeight];
-//            if (_delegate && [_delegate respondsToSelector:@selector(chatBox:changeChatBoxHeight:)]) {
-//                [_delegate chatBox:self changeChatBoxHeight:_curHeight];
-//            }
-//        }];
-//    }
-//    if (height != textView.frameHeight) {
-//        [UIView animateWithDuration:0.05 animations:^{
-//            [textView setFrameHeight:height];
-//        }];
-//    }
-//    
+    CGFloat height = [textView sizeThatFits:CGSizeMake(self.textView.width, MAXFLOAT)].height;
+    height = height > HEIGHT_CHATBAR_TEXTVIEW ? height : HEIGHT_CHATBAR_TEXTVIEW;
+    height = (height <= HEIGHT_MAX_CHATBAR_TEXTVIEW ? height : textView.height);
+    if (height != textView.height) {
+        [UIView animateWithDuration:0.2 animations:^{
+            [textView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(height);
+            }];
+            [self.superview layoutIfNeeded];
+            if (_delegate && [_delegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
+                [_delegate chatBar:self didChangeTextViewHeight:textView.height];
+            }
+        } completion:^(BOOL finished) {
+            if (_delegate && [_delegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
+                [_delegate chatBar:self didChangeTextViewHeight:textView.height];
+            }
+        }];
+    }
 }
 
 #pragma mark - Event Response
@@ -272,6 +272,7 @@
         make.bottom.mas_equalTo(self).mas_offset(-7);
         make.left.mas_equalTo(self.voiceButton.mas_right).mas_offset(4);
         make.right.mas_equalTo(self.emojiButton.mas_left).mas_offset(-4);
+        make.height.mas_equalTo(HEIGHT_CHATBAR_TEXTVIEW);
     }];
     
     [self.talkButton mas_makeConstraints:^(MASConstraintMaker *make) {

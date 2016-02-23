@@ -159,6 +159,11 @@
     }
 }
 
+- (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height
+{
+    [self.tableView scrollToBottomWithAnimation:NO];
+}
+
 //MARK: TLKeyboardDelegate
 - (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
 {
@@ -229,7 +234,6 @@
     }];
     [self.chatBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(HEIGHT_TABBAR);
     }];
 }
 

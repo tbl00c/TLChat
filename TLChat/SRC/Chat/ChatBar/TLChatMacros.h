@@ -10,7 +10,9 @@
 #define TLChatMacros_h
 #import <UIKit/UIKit.h>
 
-#define     HEIGHT_CHAT_KEYBOARD    215.0f
+#define     HEIGHT_CHATBAR_TEXTVIEW         36.0f
+#define     HEIGHT_MAX_CHATBAR_TEXTVIEW     111.5f
+#define     HEIGHT_CHAT_KEYBOARD            215.0f
 
 typedef NS_ENUM(NSInteger, TLEmojiGroupType) {
     TLEmojiGroupTypeEmoji,

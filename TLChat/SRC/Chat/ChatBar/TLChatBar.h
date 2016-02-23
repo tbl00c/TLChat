@@ -25,6 +25,11 @@ typedef NS_ENUM(NSInteger, TLChatBarStatus) {
 - (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus;
 
 /**
+ *  输入框高度改变
+ */
+- (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height;
+
+/**
  *  发送文字
  */
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text;

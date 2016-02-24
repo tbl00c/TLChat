@@ -7,6 +7,7 @@
 //
 
 #import "TLMenuViewController.h"
+#import <MobClick.h>
 
 @interface TLMenuViewController ()
 
@@ -29,6 +30,18 @@
     [super viewDidLoad];
 
     [self.tableView registerClass:[TLMenuCell class] forCellReuseIdentifier:@"TLMenuCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:self.title];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:self.title];
 }
 
 #pragma mark - 

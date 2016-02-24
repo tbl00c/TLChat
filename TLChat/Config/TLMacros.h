@@ -9,6 +9,8 @@
 #ifndef TLMacros_h
 #define TLMacros_h
 
+#define     APP_CHANNEL         @"Github"
+
 #pragma mark - SIZE
 #define     SIZE_SCREEN         [UIScreen mainScreen].bounds.size
 #define     WIDTH_SCREEN        [UIScreen mainScreen].bounds.size.width

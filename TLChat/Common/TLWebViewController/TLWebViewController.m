@@ -7,6 +7,7 @@
 //
 
 #import "TLWebViewController.h"
+#import <MobClick.h>
 #import <WebKit/WebKit.h>
 
 @interface TLWebViewController () <WKNavigationDelegate>
@@ -36,9 +37,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"WebView"];
     [self.progressView setProgress:0.0f];
     [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"WebView"];
+}
+
 
 - (void)setUrl:(NSString *)url
 {

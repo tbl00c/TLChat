@@ -67,7 +67,7 @@
 
 - (void)p_initThirdPartSDK
 {
-    [MobClick startWithAppkey:UMENG_APPKEY];
+    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:APP_CHANNEL];
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }

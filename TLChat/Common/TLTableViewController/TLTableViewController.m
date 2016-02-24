@@ -7,6 +7,7 @@
 //
 
 #import "TLTableViewController.h"
+#import <MobClick.h>
 
 @implementation TLTableViewController
 
@@ -16,6 +17,18 @@
     [self.view setBackgroundColor:[UIColor colorTableViewBG]];
     [self.tableView setTableFooterView:[UIView new]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:self.title];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:self.title];
 }
 
 @end

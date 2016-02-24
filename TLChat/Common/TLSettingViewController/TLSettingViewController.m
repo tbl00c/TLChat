@@ -7,6 +7,7 @@
 //
 
 #import "TLSettingViewController.h"
+#import <MobClick.h>
 #import "TLSettingHeaderTitleView.h"
 #import "TLSettingFooterTitleView.h"
 #import "TLSettingCell.h"
@@ -40,6 +41,18 @@
     [self.tableView registerClass:[TLSettingCell class] forCellReuseIdentifier:@"TLSettingCell"];
     [self.tableView registerClass:[TLSettingButtonCell class] forCellReuseIdentifier:@"TLSettingButtonCell"];
     [self.tableView registerClass:[TLSettingSwitchCell class] forCellReuseIdentifier:@"TLSettingSwitchCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:self.title];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:self.title];
 }
 
 #pragma mark -

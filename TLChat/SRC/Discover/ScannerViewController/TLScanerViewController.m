@@ -17,12 +17,18 @@ static const float kReaderViewHeight = 200;
 @interface TLScanerViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UILabel *introudctionLabel;
+@property (nonatomic, strong) UIView *scannerView;
+@property (nonatomic, strong) UIImageView *scannerLine;
+
+@property (nonatomic, strong) UIView *bgTopView;
+@property (nonatomic, strong) UIView *bgBtmView;
+@property (nonatomic, strong) UIView *bgLeftView;
+@property (nonatomic, strong) UIView *bgRightView;
 
 @property (nonatomic, strong) AVCaptureSession *scannerSession;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
-@property (nonatomic, strong) UIImageView *line;
-@property (nonatomic, strong) NSTimer *lineTimer;
 
+@property (nonatomic, strong) NSTimer *lineTimer;
 
 @end
 
@@ -31,10 +37,21 @@ static const float kReaderViewHeight = 200;
 {
     [super viewDidLoad];
     [self setTitle:@"二维码/条码"];
-    [self.view setBackgroundColor:[UIColor blackColor]];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
+    [self.view addSubview:self.bgTopView];
+    [self.view addSubview:self.bgLeftView];
+    [self.view addSubview:self.bgRightView];
+    [self.view addSubview:self.bgBtmView];
+    
+    [self.view addSubview:self.introudctionLabel];
+    [self.view addSubview:self.scannerView];
+    [self.scannerView addSubview:self.scannerLine];
     [self.view.layer insertSublayer:self.videoPreviewLayer atIndex:0];
-    [self setOverlayPickerView];
+    
+    [self.introudctionLabel setText:@"将二维码/条码放入框内，即可自动扫描"];
+    
+    [self p_addMasonry];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -42,7 +59,7 @@ static const float kReaderViewHeight = 200;
     [super viewWillAppear:animated];
     if (self.scannerSession == nil) {
         [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
-            [self.navigationController popViewControllerAnimated:YES];
+//            [self.navigationController popViewControllerAnimated:YES];
         } title:@"错误" message:@"相机初始化失败" cancelButtonName:@"确定" otherButtonTitles: nil];
     }
 }
@@ -70,79 +87,6 @@ static const float kReaderViewHeight = 200;
     return CGRectMake(kLineMinY / HEIGHT_SCREEN, ((WIDTH_SCREEN - asize.width) / 2.0) / WIDTH_SCREEN, asize.height / HEIGHT_SCREEN, asize.width / WIDTH_SCREEN);
 }
 
-- (void)setOverlayPickerView
-{
-    //画中间的基准线
-    _line = [[UIImageView alloc] initWithFrame:CGRectMake((WIDTH_SCREEN - 300) / 2.0, kLineMinY, 300, 12 * 300 / 320.0)];
-    [_line setImage:[UIImage imageNamed:@"scanner_line"]];
-    [self.view addSubview:_line];
-    
-    //最上部view
-    UIView* upView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, kLineMinY)];//80
-    upView.alpha = 0.3;
-    upView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:upView];
-    
-    //左侧的view
-    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, kLineMinY, (WIDTH_SCREEN - kReaderViewWidth) / 2.0, kReaderViewHeight)];
-    leftView.alpha = 0.3;
-    leftView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:leftView];
-    
-    //右侧的view
-    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(WIDTH_SCREEN - CGRectGetMaxX(leftView.frame), kLineMinY, CGRectGetMaxX(leftView.frame), kReaderViewHeight)];
-    rightView.alpha = 0.3;
-    rightView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:rightView];
-    
-    CGFloat space_h = HEIGHT_SCREEN - kLineMaxY;
-    
-    //底部view
-    UIView *downView = [[UIView alloc] initWithFrame:CGRectMake(0, kLineMaxY, WIDTH_SCREEN, space_h)];
-    downView.alpha = 0.3;
-    downView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:downView];
-    
-    //四个边角
-    UIImage *cornerImage = [UIImage imageNamed:@"scanner_top_left"];
-    
-    //左侧的view
-    UIImageView *leftView_image = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftView.frame) - cornerImage.size.width / 2.0, CGRectGetMaxY(upView.frame) - cornerImage.size.height / 2.0, cornerImage.size.width, cornerImage.size.height)];
-    leftView_image.image = cornerImage;
-    [self.view addSubview:leftView_image];
-    
-    cornerImage = [UIImage imageNamed:@"scanner_top_right"];
-    
-    //右侧的view
-    UIImageView *rightView_image = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(rightView.frame) - cornerImage.size.width / 2.0, CGRectGetMaxY(upView.frame) - cornerImage.size.height / 2.0, cornerImage.size.width, cornerImage.size.height)];
-    rightView_image.image = cornerImage;
-    [self.view addSubview:rightView_image];
-    
-    cornerImage = [UIImage imageNamed:@"scanner_bottom_left"];
-    
-    //底部view
-    UIImageView *downView_image = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftView.frame) - cornerImage.size.width / 2.0, CGRectGetMinY(downView.frame) - cornerImage.size.height / 2.0, cornerImage.size.width, cornerImage.size.height)];
-    downView_image.image = cornerImage;
-    [self.view addSubview:downView_image];
-    
-    cornerImage = [UIImage imageNamed:@"scanner_bottom_right"];
-    
-    UIImageView *downViewRight_image = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(rightView.frame) - cornerImage.size.width / 2.0, CGRectGetMinY(downView.frame) - cornerImage.size.height / 2.0, cornerImage.size.width, cornerImage.size.height)];
-    downViewRight_image.image = cornerImage;
-    [self.view addSubview:downViewRight_image];
-    
-    //说明label
-    [self.introudctionLabel setFrame:CGRectMake(CGRectGetMaxX(leftView.frame), CGRectGetMinY(downView.frame) + 25, kReaderViewWidth, 20)];
-    [self.introudctionLabel setText:@"将二维码/条码放入框内,即可自动扫描"];
-    [self.view addSubview:self.introudctionLabel];
-    
-    UIView *scanCropView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftView.frame) - 1,kLineMinY,self.view.frame.size.width - 2 * CGRectGetMaxX(leftView.frame) + 2, kReaderViewHeight + 2)];
-    scanCropView.layer.borderColor = [UIColor greenColor].CGColor;
-    scanCropView.layer.borderWidth = 2.0;
-    [self.view addSubview:scanCropView];
-}
-
-
 #pragma mark - Delegate -
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
@@ -165,35 +109,11 @@ static const float kReaderViewHeight = 200;
 #pragma mark - Event Response -
 - (void)updateScannerLineStatus
 {
-    __block CGRect frame = _line.frame;
-    static BOOL flag = YES;
-    if (flag) {
-        frame.origin.y = kLineMinY;
-        flag = NO;
-        
-        [UIView animateWithDuration:1.0 / 20 animations:^{
-            frame.origin.y += 2.5;
-            _line.frame = frame;
-        } completion:nil];
+    if (self.scannerLine.y + self.scannerLine.height >= self.scannerView.height) {
+        self.scannerLine.y = 0;
     }
     else {
-        if (_line.frame.origin.y >= kLineMinY) {
-            if (_line.frame.origin.y >= kLineMaxY - 12) {
-                frame.origin.y = kLineMinY;
-                _line.frame = frame;
-                
-                flag = YES;
-            }
-            else {
-                [UIView animateWithDuration:1.0 / 40 animations:^{
-                    frame.origin.y += 2.5;
-                    _line.frame = frame;
-                } completion:nil];
-            }
-        }
-        else {
-            flag = !flag;
-        }
+        self.scannerLine.y ++;
     }
 }
 
@@ -203,7 +123,7 @@ static const float kReaderViewHeight = 200;
     if ([_lineTimer isValid]) {
         [_lineTimer invalidate];
     }
-    _lineTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 40 target:self selector:@selector(updateScannerLineStatus) userInfo:nil repeats:YES];
+    _lineTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60 target:self selector:@selector(updateScannerLineStatus) userInfo:nil repeats:YES];
     [self.scannerSession startRunning];
 }
 
@@ -214,6 +134,66 @@ static const float kReaderViewHeight = 200;
         _lineTimer = nil;
     }
     [self.scannerSession stopRunning];
+}
+
+- (void)p_addMasonry
+{
+    [self.scannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.centerY.mas_equalTo(self.view).mas_offset(-60);
+        make.width.and.height.mas_equalTo(200);
+    }];
+    [self.bgTopView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.left.and.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.scannerView.mas_top);
+    }];
+    [self.bgBtmView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.and.bottom.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.scannerView.mas_bottom);
+    }];
+    [self.bgLeftView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view);
+        make.right.mas_equalTo(self.scannerView.mas_left);
+        make.top.mas_equalTo(self.bgTopView.mas_bottom);
+        make.bottom.mas_equalTo(self.bgBtmView.mas_top);
+    }];
+    [self.bgRightView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.scannerView.mas_right);
+        make.right.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.bgTopView.mas_bottom);
+        make.bottom.mas_equalTo(self.bgBtmView.mas_top);
+    }];
+    
+    [self.introudctionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.width.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.scannerView.mas_bottom).mas_offset(30);
+    }];
+    
+    [self.scannerLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.centerX.mas_equalTo(self.scannerView);
+        make.top.mas_equalTo(self.scannerView);
+    }];
+    
+    UIImageView *topLeftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_top_left"]];
+    [self.view addSubview:topLeftView];
+    [topLeftView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.top.mas_equalTo(_scannerView);
+    }];
+    UIImageView *topRightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_top_right"]];
+    [self.view addSubview:topRightView];
+    [topRightView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.and.top.mas_equalTo(_scannerView);
+    }];
+    UIImageView *btmLeftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_bottom_left"]];
+    [self.view addSubview:btmLeftView];
+    [btmLeftView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.bottom.mas_equalTo(_scannerView);
+    }];
+    UIImageView *btmRightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_bottom_right"]];
+    [self.view addSubview:btmRightView];
+    [btmRightView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.and.bottom.mas_equalTo(_scannerView);
+    }];
 }
 
 #pragma mark - Getter -
@@ -272,10 +252,68 @@ static const float kReaderViewHeight = 200;
         _introudctionLabel = [[UILabel alloc] init];
         [_introudctionLabel setBackgroundColor:[UIColor clearColor]];
         [_introudctionLabel setTextAlignment:NSTextAlignmentCenter];
-        [_introudctionLabel setFont:[UIFont boldSystemFontOfSize:13.0]];
+        [_introudctionLabel setFont:[UIFont systemFontOfSize:12.0]];
         [_introudctionLabel setTextColor:[UIColor whiteColor]];
     }
     return _introudctionLabel;
+}
+
+- (UIImageView *)scannerLine
+{
+    if (_scannerLine == nil) {
+        _scannerLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_line"]];
+    }
+    return _scannerLine;
+}
+
+- (UIView *)scannerView
+{
+    if (_scannerView == nil) {
+        _scannerView = [[UIView alloc] init];
+        [_scannerView.layer setBorderColor:[UIColor whiteColor].CGColor];
+        [_scannerView.layer setBorderWidth:0.5f];
+    }
+    return _scannerView;
+}
+
+- (UIView *)bgTopView
+{
+    if (_bgTopView == nil) {
+        _bgTopView = [[UIView alloc] init];
+        [_bgTopView setBackgroundColor:[UIColor blackColor]];
+        [_bgTopView setAlpha:0.5];
+    }
+    return _bgTopView;
+}
+
+- (UIView *)bgBtmView
+{
+    if (_bgBtmView == nil) {
+        _bgBtmView = [[UIView alloc] init];
+        [_bgBtmView setBackgroundColor:[UIColor blackColor]];
+        [_bgBtmView setAlpha:0.5];
+    }
+    return _bgBtmView;
+}
+
+- (UIView *)bgLeftView
+{
+    if (_bgLeftView == nil) {
+        _bgLeftView = [[UIView alloc] init];
+        [_bgLeftView setBackgroundColor:[UIColor blackColor]];
+        [_bgLeftView setAlpha:0.5];
+    }
+    return _bgLeftView;
+}
+
+- (UIView *)bgRightView
+{
+    if (_bgRightView == nil) {
+        _bgRightView = [[UIView alloc] init];
+        [_bgRightView setBackgroundColor:[UIColor blackColor]];
+        [_bgRightView setAlpha:0.5];
+    }
+    return _bgRightView;
 }
 
 @end

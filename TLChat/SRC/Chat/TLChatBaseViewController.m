@@ -37,13 +37,6 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.chatBar];
-
-    _moreKeyboard = [TLMoreKeyboard keyboard];
-    [_moreKeyboard setKeyboardDelegate:self];
-    [_moreKeyboard setDelegate:self];
-    _emojiKeyboard = [TLEmojiKeyboard keyboard];
-    [_emojiKeyboard setKeyboardDelegate:self];
-    [_emojiKeyboard setDataSource:self];
     
     [self p_addMasonry];
 }
@@ -111,10 +104,10 @@
     curStatus = toStatus;
     if (toStatus == TLChatBarStatusInit) {
         if (fromStatus == TLChatBarStatusMore) {
-            [_moreKeyboard dismissWithAnimation:YES];
+            [self.moreKeyboard dismissWithAnimation:YES];
         }
         else if (fromStatus == TLChatBarStatusEmoji) {
-            [_emojiKeyboard dismissWithAnimation:YES];
+            [self.emojiKeyboard dismissWithAnimation:YES];
         }
     }
     else if (toStatus == TLChatBarStatusKeyboard) {
@@ -135,26 +128,26 @@
     }
     else if (toStatus == TLChatBarStatusVoice) {
         if (fromStatus == TLChatBarStatusMore) {
-            [_moreKeyboard dismissWithAnimation:YES];
+            [self.moreKeyboard dismissWithAnimation:YES];
         }
         else if (fromStatus == TLChatBarStatusEmoji) {
-            [_emojiKeyboard dismissWithAnimation:YES];
+            [self.emojiKeyboard dismissWithAnimation:YES];
         }
     }
     else if (toStatus == TLChatBarStatusEmoji) {
         if (fromStatus == TLChatBarStatusKeyboard) {
-            [_emojiKeyboard showInView:self.view withAnimation:YES];
+            [self.emojiKeyboard showInView:self.view withAnimation:YES];
         }
         else {
-            [_emojiKeyboard showInView:self.view withAnimation:YES];
+            [self.emojiKeyboard showInView:self.view withAnimation:YES];
         }
     }
     else if (toStatus == TLChatBarStatusMore) {
         if (fromStatus == TLChatBarStatusKeyboard) {
-            [_moreKeyboard showInView:self.view withAnimation:YES];
+            [self.moreKeyboard showInView:self.view withAnimation:YES];
         }
         else {
-            [_moreKeyboard showInView:self.view withAnimation:YES];
+            [self.moreKeyboard showInView:self.view withAnimation:YES];
         }
     }
 }
@@ -177,10 +170,10 @@
 - (void)chatKeyboardDidShow:(id)keyboard
 {
     if (curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji) {
-        [_emojiKeyboard dismissWithAnimation:NO];
+        [self.emojiKeyboard dismissWithAnimation:NO];
     }
     else if (curStatus == TLChatBarStatusEmoji && lastStatus == TLChatBarStatusMore) {
-        [_moreKeyboard dismissWithAnimation:NO];
+        [self.moreKeyboard dismissWithAnimation:NO];
     }
 }
 
@@ -218,10 +211,10 @@
 - (void)keyboardDidShow:(NSNotification *)notification
 {
     if (lastStatus == TLChatBarStatusMore) {
-        [_moreKeyboard dismissWithAnimation:NO];
+        [self.moreKeyboard dismissWithAnimation:NO];
     }
     else if (lastStatus == TLChatBarStatusEmoji) {
-        [_emojiKeyboard dismissWithAnimation:NO];
+        [self.emojiKeyboard dismissWithAnimation:NO];
     }
 }
 
@@ -265,6 +258,26 @@
         _data = [[NSMutableArray alloc] init];
     }
     return _data;
+}
+
+- (TLEmojiKeyboard *)emojiKeyboard
+{
+    if (_emojiKeyboard == nil) {
+        _emojiKeyboard = [TLEmojiKeyboard keyboard];
+        [_emojiKeyboard setKeyboardDelegate:self];
+        [_emojiKeyboard setDataSource:self];
+    }
+    return _emojiKeyboard;
+}
+
+- (TLMoreKeyboard *)moreKeyboard
+{
+    if (_moreKeyboard == nil) {
+        _moreKeyboard = [TLMoreKeyboard keyboard];
+        [_moreKeyboard setKeyboardDelegate:self];
+        [_moreKeyboard setDelegate:self];
+    }
+    return _moreKeyboard;
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "TLDiscoverViewController.h"
 #import "TLDiscoverHelper.h"
 
+#import "TLScanerViewController.h"
 #import "TLShakeViewController.h"
 #import "TLBottleViewController.h"
 #import "TLShoppingViewController.h"
@@ -34,7 +35,13 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLMenuItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"摇一摇"]) {
+    if ([item.title isEqualToString:@"扫一扫"]) {
+        TLScanerViewController *scannerVC = [[TLScanerViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:scannerVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+    }
+    else if ([item.title isEqualToString:@"摇一摇"]) {
         TLShakeViewController *shakeVC = [[TLShakeViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:shakeVC animated:YES];

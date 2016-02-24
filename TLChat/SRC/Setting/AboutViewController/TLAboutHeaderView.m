@@ -43,10 +43,10 @@
 - (void)p_addMasonry
 {
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.contentView).mas_offset(2);
+        make.top.mas_equalTo(self.contentView).mas_offset(4);
         make.centerX.mas_equalTo(self.contentView);
         make.bottom.mas_equalTo(self.titleLabel.mas_top).mas_equalTo(1);
-        make.width.mas_equalTo(self.imageView.mas_height);
+        make.width.mas_equalTo(self.imageView.mas_height).multipliedBy(1.13);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.contentView).mas_offset(-10);

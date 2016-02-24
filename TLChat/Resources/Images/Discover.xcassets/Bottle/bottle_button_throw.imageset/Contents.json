@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "bottleButtonThrow.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoginBackground@2x.png",
+      "filename" : "bottleButtonThrow@2x.png",
       "scale" : "2x"
     },
     {

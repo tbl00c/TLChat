@@ -9,11 +9,6 @@
 #import "TLScanerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-static const float kLineMinY = 185;
-static const float kLineMaxY = 385;
-static const float kReaderViewWidth = 200;
-static const float kReaderViewHeight = 200;
-
 @interface TLScanerViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UILabel *introudctionLabel;
@@ -49,8 +44,6 @@ static const float kReaderViewHeight = 200;
     [self.scannerView addSubview:self.scannerLine];
     [self.view.layer insertSublayer:self.videoPreviewLayer atIndex:0];
     
-    [self.introudctionLabel setText:@"将二维码/条码放入框内，即可自动扫描"];
-    
     [self p_addMasonry];
 }
 
@@ -59,7 +52,7 @@ static const float kReaderViewHeight = 200;
     [super viewWillAppear:animated];
     if (self.scannerSession == nil) {
         [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
-//            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
         } title:@"错误" message:@"相机初始化失败" cancelButtonName:@"确定" otherButtonTitles: nil];
     }
 }
@@ -82,11 +75,6 @@ static const float kReaderViewHeight = 200;
     }
 }
 
-- (CGRect)getReaderViewBoundsWithSize:(CGSize)asize
-{
-    return CGRectMake(kLineMinY / HEIGHT_SCREEN, ((WIDTH_SCREEN - asize.width) / 2.0) / WIDTH_SCREEN, asize.height / HEIGHT_SCREEN, asize.width / WIDTH_SCREEN);
-}
-
 #pragma mark - Delegate -
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
@@ -96,8 +84,9 @@ static const float kReaderViewHeight = 200;
         if (self.SYQRCodeSuncessBlock) {
             self.SYQRCodeSuncessBlock(self, obj.stringValue);
         }
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"扫描结果" message:obj.stringValue delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alert show];
+        [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
+            [self p_startCodeReading];
+        } title:@"扫描结果" message:obj.stringValue cancelButtonName:@"确定" otherButtonTitles:nil];
     }
     else {
         if (self.SYQRCodeFailBlock) {
@@ -120,18 +109,26 @@ static const float kReaderViewHeight = 200;
 #pragma mark - Private Methods -
 - (void)p_startCodeReading
 {
-    if ([_lineTimer isValid]) {
-        [_lineTimer invalidate];
+    if ([self.lineTimer isValid]) {
+        [self.lineTimer invalidate];
     }
-    _lineTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60 target:self selector:@selector(updateScannerLineStatus) userInfo:nil repeats:YES];
+    
+    [self.introudctionLabel setText:@"将二维码/条码放入框内，即可自动扫描"];
+    
+    self.lineTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60 target:self selector:@selector(updateScannerLineStatus) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.lineTimer forMode:NSRunLoopCommonModes];
+    
+    // rect值范围0-1，基准点在右上角
+    CGRect rect = CGRectMake(self.scannerView.y / HEIGHT_SCREEN, self.scannerView.x / WIDTH_SCREEN, self.scannerView.height / HEIGHT_SCREEN, self.scannerView.width / WIDTH_SCREEN);
+    [self.scannerSession.outputs[0] setRectOfInterest:rect];
     [self.scannerSession startRunning];
 }
 
 - (void)p_stopCodeReading
 {
-    if (_lineTimer) {
-        [_lineTimer invalidate];
-        _lineTimer = nil;
+    if (self.lineTimer) {
+        [self.lineTimer invalidate];
+        self.lineTimer = nil;
     }
     [self.scannerSession stopRunning];
 }
@@ -210,7 +207,6 @@ static const float kReaderViewHeight = 200;
 
         AVCaptureMetadataOutput *output = [[AVCaptureMetadataOutput alloc] init];
         [output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
-        [output setRectOfInterest:[self getReaderViewBoundsWithSize:CGSizeMake(kReaderViewWidth, kReaderViewHeight)]];
 
         AVCaptureSession *session = [[AVCaptureSession alloc] init];
         if ([session canSetSessionPreset:AVCaptureSessionPreset1920x1080]) {

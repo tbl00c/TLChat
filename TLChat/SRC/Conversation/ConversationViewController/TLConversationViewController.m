@@ -118,8 +118,7 @@
                                                                             [tableView setEditing:NO animated:YES];
                                                                         }];
     moreAction.backgroundColor = [UIColor colorCellMoreButton];
-    NSArray *arr = @[delAction, moreAction];
-    return arr;
+    return @[delAction, moreAction];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

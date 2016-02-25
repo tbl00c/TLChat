@@ -35,13 +35,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [MobClick beginLogPageView:self.title];
+    [MobClick beginLogPageView:self.navigationItem.title];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [MobClick endLogPageView:self.title];
+    [MobClick endLogPageView:self.navigationItem.title];
 }
 
 #pragma mark - 

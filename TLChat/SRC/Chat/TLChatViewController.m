@@ -7,6 +7,7 @@
 //
 
 #import "TLChatViewController.h"
+#import <MobClick.h>
 #import "TLMoreKBHelper.h"
 #import "TLEmojiKBHelper.h"
 
@@ -44,6 +45,18 @@ static TLChatViewController *chatVC;
     for (int i = 0; i < 12; i ++) {
         [self.data addObject:[NSString stringWithFormat:@"%d", i]];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"ChatVC"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"ChatVC"];
 }
 
 #pragma mark - Delegate -

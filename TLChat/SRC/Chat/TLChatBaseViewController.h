@@ -6,11 +6,11 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLViewController.h"
+#import <UIKit/UIKit.h>
 #import "TLMoreKeyboardDelegate.h"
 #import "TLEmojiKeyboardDataSource.h"
 
-@interface TLChatBaseViewController : TLViewController <TLMoreKeyboardDelegate, TLEmojiKeyboardDataSource>
+@interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate, TLEmojiKeyboardDataSource>
 
 /// 聊天数据
 @property (nonatomic, strong) NSMutableArray *data;

@@ -9,11 +9,9 @@
 #import "TLConversationViewController.h"
 #import "TLFriendSearchViewController.h"
 #import "TLChatViewController.h"
-
 #import "TLConversationCell.h"
-
 #import "TLUser.h"
-
+#import "TLFriendHelper.h"
 #import <UIImageView+WebCache.h>
 #import <AFNetworking.h>
 
@@ -129,6 +127,7 @@
 #pragma mark UISearchBarDelegate
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
+    [self.searchVC setFriendsData:[TLFriendHelper sharedFriendHelper].friendsData];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
@@ -198,6 +197,7 @@
 {
     if (_searchController == nil) {
         _searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchVC];
+        [_searchController setSearchResultsUpdater:self.searchVC];
         [_searchController.searchBar setPlaceholder:@"搜索"];
         [_searchController.searchBar setBarTintColor:[UIColor colorSearchBarTint]];
         [_searchController.searchBar setDelegate:self];

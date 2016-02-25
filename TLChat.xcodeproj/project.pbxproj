@@ -24,6 +24,7 @@
 		C2142F0D1C53864C0030B29B /* TLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142F0C1C53864C0030B29B /* TLUser.m */; };
 		C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142F101C53909C0030B29B /* TLTableViewCell.m */; };
 		C220EF2B1C7EB89300DE3B86 /* TLScanerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C220EF2A1C7EB89300DE3B86 /* TLScanerViewController.m */; };
+		C220EF321C7EEF0600DE3B86 /* TLScannerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C220EF311C7EEF0600DE3B86 /* TLScannerButton.m */; };
 		C246F1101C6B867C00A5AFB2 /* TLShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */; };
 		C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F1131C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m */; };
 		C282DF561C744352006924AE /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF531C744352006924AE /* UIImage+Color.m */; };
@@ -170,6 +171,8 @@
 		C2142F101C53909C0030B29B /* TLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTableViewCell.m; sourceTree = "<group>"; };
 		C220EF291C7EB89300DE3B86 /* TLScanerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScanerViewController.h; sourceTree = "<group>"; };
 		C220EF2A1C7EB89300DE3B86 /* TLScanerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScanerViewController.m; sourceTree = "<group>"; };
+		C220EF301C7EEF0600DE3B86 /* TLScannerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScannerButton.h; sourceTree = "<group>"; };
+		C220EF311C7EEF0600DE3B86 /* TLScannerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScannerButton.m; sourceTree = "<group>"; };
 		C246F10E1C6B867C00A5AFB2 /* TLShoppingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLShoppingViewController.h; sourceTree = "<group>"; };
 		C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShoppingViewController.m; sourceTree = "<group>"; };
 		C246F1121C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLHelpAndFeedbackViewController.h; sourceTree = "<group>"; };
@@ -456,6 +459,8 @@
 				C209F4371C7D5AAA001B9825 /* TLScanViewController.m */,
 				C220EF291C7EB89300DE3B86 /* TLScanerViewController.h */,
 				C220EF2A1C7EB89300DE3B86 /* TLScanerViewController.m */,
+				C220EF301C7EEF0600DE3B86 /* TLScannerButton.h */,
+				C220EF311C7EEF0600DE3B86 /* TLScannerButton.m */,
 			);
 			path = ScannerViewController;
 			sourceTree = "<group>";
@@ -1415,6 +1420,7 @@
 				C2AF1FA81C6B773000617D98 /* TLWebViewController.m in Sources */,
 				C2CAA3731C7762B800B8152B /* TLEmojiGroupCell.m in Sources */,
 				C2F0EC1C1C7ABF190090843C /* TLAppHelper.m in Sources */,
+				C220EF321C7EEF0600DE3B86 /* TLScannerButton.m in Sources */,
 				C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */,
 				C203C00E1C7731CF00883268 /* TLEmojiGroupControl.m in Sources */,
 				C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */,

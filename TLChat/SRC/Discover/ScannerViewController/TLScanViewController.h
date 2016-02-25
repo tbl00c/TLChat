@@ -10,12 +10,13 @@
 
 @interface TLScanViewController : UIViewController
 
-@property (nonatomic, strong) void (^scannerSuncessBlock) (TLScanViewController *, NSString *);
+@property (nonatomic, assign) TLScannerType scannerType;
 
-@property (nonatomic, strong) void (^scannerFailedBlock) (TLScanViewController *);
+@property (nonatomic, assign, readonly) BOOL isRunning;
 
 - (void)startCodeReading;
 
 - (void)stopCodeReading;
+
 
 @end

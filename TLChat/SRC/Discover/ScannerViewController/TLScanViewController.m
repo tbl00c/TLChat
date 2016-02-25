@@ -46,56 +46,67 @@
     [self p_addMasonry];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if (self.scannerSession == nil) {
-        if (self.scannerFailedBlock) {
-            self.scannerFailedBlock(self);
-        }
-        [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
-            [self.navigationController popViewControllerAnimated:YES];
-        } title:@"错误" message:@"相机初始化失败" cancelButtonName:@"确定" otherButtonTitles: nil];
-    }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self startCodeReading];
-}
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     if ([self.scannerSession isRunning]) {
         [self stopCodeReading];
     }
-    if ([self.lineTimer isValid]) {
-        [self.lineTimer invalidate];
-    }
 }
 
 #pragma mark - Public Methods -
+- (void)setScannerType:(TLScannerType)scannerType
+{
+    if (_scannerType == scannerType) {
+        return;
+    }
+    [self stopCodeReading];
+    _scannerType = scannerType;
+    
+    CGFloat width = 0;
+    CGFloat height = 0;
+    if (scannerType == TLScannerTypeQR) {
+        [self.introudctionLabel setText:@"将二维码/条码放入框内，即可自动扫描"];
+        width = height = WIDTH_SCREEN * 0.7;
+    }
+    else if (scannerType == TLScannerTypeCover) {
+        [self.introudctionLabel setText:@"将书、CD、电影海报放入框内，即可自动扫描"];
+        width = height = WIDTH_SCREEN * 0.85;
+    }
+    else if (scannerType == TLScannerTypeStreet) {
+        [self.introudctionLabel setText:@"扫一下周围环境，寻找附近街景"];
+        width = height = WIDTH_SCREEN * 0.85;
+    }
+    else if (scannerType == TLScannerTypeTranslate) {
+        width = WIDTH_SCREEN * 0.7;
+        height = 55;
+        [self.introudctionLabel setText:@"将英文单词放入框内"];
+    }
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.scannerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(height);
+        }];
+        [self.view layoutIfNeeded];
+    }];
+    
+    // rect值范围0-1，基准点在右上角
+    CGRect rect = CGRectMake(self.scannerView.y / HEIGHT_SCREEN, self.scannerView.x / WIDTH_SCREEN, self.scannerView.height / HEIGHT_SCREEN, self.scannerView.width / WIDTH_SCREEN);
+    [self.scannerSession.outputs[0] setRectOfInterest:rect];
+    if (!self.isRunning) {
+        [self startCodeReading];
+    }
+}
+
 - (void)startCodeReading
 {
     if ([self.lineTimer isValid]) {
         [self.lineTimer invalidate];
     }
     
-    [self.introudctionLabel setText:@"将二维码/条码放入框内，即可自动扫描"];
-    
     self.lineTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60 target:self selector:@selector(updateScannerLineStatus) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.lineTimer forMode:NSRunLoopCommonModes];
     
-    // rect值范围0-1，基准点在右上角
-    [self.scannerView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.and.height.mas_equalTo(210);
-    }];
-    [self.scannerView layoutIfNeeded];
-    CGRect rect = CGRectMake(self.scannerView.y / HEIGHT_SCREEN, self.scannerView.x / WIDTH_SCREEN, self.scannerView.height / HEIGHT_SCREEN, self.scannerView.width / WIDTH_SCREEN);
-    [self.scannerSession.outputs[0] setRectOfInterest:rect];
     [self.scannerSession startRunning];
 }
 
@@ -105,7 +116,13 @@
         [self.lineTimer invalidate];
         self.lineTimer = nil;
     }
+    self.scannerLine.y = 0;
     [self.scannerSession stopRunning];
+}
+
+- (BOOL)isRunning
+{
+    return [self.scannerSession isRunning];
 }
 
 #pragma mark - Delegate -
@@ -114,9 +131,6 @@
     if (metadataObjects.count > 0) {
         [self stopCodeReading];
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
-        if (self.scannerSuncessBlock) {
-            self.scannerSuncessBlock(self, obj.stringValue);
-        }
         [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
             [self startCodeReading];
         } title:@"扫描结果" message:obj.stringValue cancelButtonName:@"确定" otherButtonTitles:nil];

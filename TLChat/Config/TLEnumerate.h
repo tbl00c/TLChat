@@ -57,5 +57,11 @@ typedef NS_ENUM(NSUInteger, TLMoreKeyboardItemType) {
     TLMoreKeyboardItemTypeCards,
 };
 
+typedef NS_ENUM(NSUInteger, TLScannerType) {
+    TLScannerTypeQR = 1,        // 扫一扫 - 二维码
+    TLScannerTypeCover,         // 扫一扫 - 封面
+    TLScannerTypeStreet,        // 扫一扫 - 街景
+    TLScannerTypeTranslate,     // 扫一扫 - 翻译
+};
 
 #endif /* TLEnumerate_h */

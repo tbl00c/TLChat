@@ -62,7 +62,7 @@
 {
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self);
-        make.bottom.mas_equalTo(self.textLabel.mas_top).mas_offset(-10);
+        make.bottom.mas_equalTo(self.textLabel.mas_top).mas_offset(-8);
     }];
     [self.textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self);

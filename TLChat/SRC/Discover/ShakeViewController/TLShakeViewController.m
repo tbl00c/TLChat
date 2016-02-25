@@ -133,12 +133,11 @@
     }];
     
     // bottom
-    CGFloat widthButton = 45;
+    CGFloat widthButton = 40;
     CGFloat space = (WIDTH_SCREEN - widthButton * 3) / 4 * 1.2;
     [self.songButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(self.view).mas_offset(-13);
-        make.width.mas_equalTo(widthButton);
+        make.bottom.mas_equalTo(self.view).mas_offset(-15);
     }];
     [self.peopleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.songButton);

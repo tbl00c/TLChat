@@ -10,9 +10,7 @@
 #import <MobClick.h>
 #import "TLSettingHeaderTitleView.h"
 #import "TLSettingFooterTitleView.h"
-#import "TLSettingCell.h"
 #import "TLSettingButtonCell.h"
-#import "TLSettingSwitchCell.h"
 
 @interface TLSettingViewController ()
 
@@ -79,6 +77,9 @@
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     id cell = [tableView dequeueReusableCellWithIdentifier:item.cellClassName];
     [cell setItem:item];
+    if (item.type == TLSettingItemTypeSwitch) {
+        [cell setDelegate:self];
+    }
     return cell;
 }
 
@@ -125,6 +126,13 @@
 {
     TLSettingGroup *group = self.data[section];
     return 20.0f + (group.footerTitle == nil ? 0 : 5.0f + group.footerHeight);
+}
+
+//MARK: TLSettingSwitchCellDelegate
+- (void)settingSwitchCellForItem:(TLSettingItem *)settingItem didChangeStatus:(BOOL)on
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Switch事件未被子类处理" message:[NSString stringWithFormat:@"Title: %@\nStatus: %@", settingItem.title, (on ? @"on" : @"off")] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
 }
 
 

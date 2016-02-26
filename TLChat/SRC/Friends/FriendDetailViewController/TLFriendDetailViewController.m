@@ -9,12 +9,6 @@
 #import "TLFriendDetailViewController.h"
 #import "TLUser.h"
 
-@interface TLFriendDetailViewController ()
-
-@property (nonatomic, strong) NSMutableArray *data;
-
-@end
-
 @implementation TLFriendDetailViewController
 
 - (void)viewDidLoad
@@ -24,11 +18,10 @@
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_more"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
-}
-
-- (void)setUser:(TLUser *)user
-{
-    _user = user;
+    
+    self.data = @[@[[TLInfo createInfoWithTitle:@"测试 0-0" subTitle:nil]],
+                  @[[TLInfo createInfoWithTitle:@"测试 1-0" subTitle:nil],
+                    [TLInfo createInfoWithTitle:@"测试 1-1" subTitle:nil]]];
 }
 
 

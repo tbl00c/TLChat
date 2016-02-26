@@ -50,8 +50,8 @@
     [self.tableView registerClass:[TLFriendCell class] forCellReuseIdentifier:@"TLFriendCell"];
 }
 
-#pragma mark - Delegate
-#pragma mark - UITableViewDataSource
+#pragma mark - Delegate -
+//MARK: UITableViewDataSource
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.data.count;
@@ -108,7 +108,7 @@
     return index;
 }
 
-#pragma mark - UITableViewDelegate
+//MARK: UITableViewDelegate
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 55.0f;
@@ -138,7 +138,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-#pragma mark UISearchBarDelegate
+//MARK: UISearchBarDelegate
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     [self.searchVC setFriendsData:[TLFriendHelper sharedFriendHelper].friendsData];
@@ -162,14 +162,14 @@
     [alert show];
 }
 
-#pragma mark - Event Response
+#pragma mark - Event Response -
 - (void) rightBarButtonDown:(UIBarButtonItem *)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Right Bar Button Down!" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
 }
 
-#pragma mark - Private Methods
+#pragma mark - Private Methods -
 - (void) p_initUI
 {
     [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 10, 0, 0)];
@@ -199,7 +199,7 @@
     [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
 }
 
-#pragma mark - Getter
+#pragma mark - Getter -
 - (UISearchController *) searchController
 {
     if (_searchController == nil) {

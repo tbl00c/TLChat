@@ -33,7 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitle:@"二维码/条码"];
     [self.view setBackgroundColor:[UIColor blackColor]];
     
     [self.view addSubview:self.scanVC.view];
@@ -49,13 +48,12 @@
     [self p_addMasonry];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+#pragma mark - TLScannerDelegate -
+- (void)scannerViewControllerInitSuccess:(TLScannerViewController *)scannerVC
 {
-    [super viewDidAppear:animated];
     [self scannerButtonDown:self.qrButton];    // 初始化
 }
 
-#pragma mark - TLScannerDelegate -
 - (void)scannerViewController:(TLScannerViewController *)scannerVC initFailed:(NSString *)errorString
 {
     [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
@@ -88,19 +86,19 @@
     if (sender.type == TLScannerTypeQR) {
         [self.navigationItem setRightBarButtonItem:self.rightBarButton];
         [self.myQRButton setHidden:NO];
-        [self setTitle:@"二维码/条码"];
+        [self.navigationItem  setTitle:@"二维码/条码"];
     }
     else {
         [self.navigationItem setRightBarButtonItem:nil];
         [self.myQRButton setHidden:YES];
         if (sender.type == TLScannerTypeCover) {
-            [self setTitle:@"封面"];
+            [self.navigationItem  setTitle:@"封面"];
         }
         else if (sender.type == TLScannerTypeStreet) {
-            [self setTitle:@"街景"];
+            [self.navigationItem  setTitle:@"街景"];
         }
         else if (sender.type == TLScannerTypeTranslate) {
-            [self setTitle:@"翻译"];
+            [self.navigationItem  setTitle:@"翻译"];
         }
     }
     [self.scanVC setScannerType:sender.type];

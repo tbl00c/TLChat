@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "TLSettingItem.h"
 
+@protocol TLSettingSwitchCellDelegate <NSObject>
+@optional
+- (void)settingSwitchCellForItem:(TLSettingItem *)settingItem didChangeStatus:(BOOL)on;
+@end
+
 @interface TLSettingSwitchCell : UITableViewCell
+
+@property (nonatomic, assign) id<TLSettingSwitchCellDelegate>delegate;
 
 @property (nonatomic, strong) TLSettingItem *item;
 

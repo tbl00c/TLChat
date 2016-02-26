@@ -46,7 +46,7 @@
 #pragma mark - Private Methods
 - (void)p_initTestUI
 {
-    NSString *className = @"TLAboutViewController";
+    NSString *className = @"TLChatViewController";
     id vc = [[NSClassFromString(className) alloc] init];
     [vc setTitle:@"Test"];
     UIViewController *rootVC = [[NSClassFromString(@"TLNavigationController") alloc] initWithRootViewController: vc];

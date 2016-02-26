@@ -28,4 +28,12 @@
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:self.navigationItem.title];
 }
+
+- (void)dealloc
+{
+#ifdef DEBUG_MEMERY
+    NSLog(@"dealloc %@", self.navigationItem.title);
+#endif
+}
+
 @end

@@ -44,6 +44,13 @@
     [MobClick endLogPageView:self.navigationItem.title];
 }
 
+- (void)dealloc
+{
+#ifdef DEBUG_MEMERY
+    NSLog(@"dealloc %@", self.navigationItem.title);
+#endif
+}
+
 #pragma mark - 
 #pragma mark - UITableViewDataSource
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView

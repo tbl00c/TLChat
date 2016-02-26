@@ -41,6 +41,11 @@
 @property (nonatomic, strong) NSString *remarkName;
 
 /**
+ *  界面显示名称
+ */
+@property (nonatomic, strong, readonly) NSString *showName;
+
+/**
  *  拼音  
  *
  *  来源：备注 > 昵称 > 用户名

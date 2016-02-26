@@ -56,4 +56,10 @@
     self.pinyinInitial = remarkName.pinyinInitial;
 }
 
+#pragma mark - Getter
+- (NSString *)showName
+{
+    return self.remarkName ? self.remarkName : (self.nikeName ? self.nikeName : self.username);
+}
+
 @end

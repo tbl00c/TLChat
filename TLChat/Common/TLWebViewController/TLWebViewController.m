@@ -37,7 +37,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [MobClick beginLogPageView:@"WebView"];
+    [MobClick beginLogPageView:@"WebVC"];
     [self.progressView setProgress:0.0f];
     [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
 }
@@ -45,10 +45,18 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [MobClick endLogPageView:@"WebView"];
+    [MobClick endLogPageView:@"WebVC"];
 }
 
+- (void)dealloc
+{
+    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+#ifdef DEBUG_MEMERY
+    NSLog(@"dealloc WebVC");
+#endif
+}
 
+#pragma mark - Public Methods -
 - (void)setUrl:(NSString *)url
 {
     _url = url;
@@ -58,11 +66,7 @@
     }
 }
 
-- (void)dealloc
-{
-    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
-}
-
+#pragma mark - Event Response -
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
     if ([keyPath isEqualToString:@"estimatedProgress"] && object == self.webView) {
@@ -82,14 +86,14 @@
     }
 }
 
-#pragma mark - Delegate
-#pragma mark WKNavigationDelegate
+#pragma mark - Delegate -
+//MARK: WKNavigationDelegate
 - (void) webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     [self.navigationItem setTitle:webView.title];
 }
 
-#pragma mark - Getter
+#pragma mark - Getter -
 - (WKWebView *) webView
 {
     if (_webView == nil) {

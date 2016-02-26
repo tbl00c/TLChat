@@ -7,10 +7,10 @@
 //
 
 #import "TLFriendsViewController.h"
+#import "TLFriendDetailViewController.h"
 #import "TLFriendSearchViewController.h"
 #import "TLFriendHeaderView.h"
 #import "TLFriendCell.h"
-
 #import "TLFriendHelper.h"
 
 @interface TLFriendsViewController () <UISearchBarDelegate>
@@ -124,6 +124,17 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0) {
+        
+    }
+    else {
+        TLUser *user = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+        TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
+        [detailVC setUser:user];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:detailVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

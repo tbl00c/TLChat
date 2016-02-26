@@ -59,6 +59,14 @@ static TLChatViewController *chatVC;
     [MobClick endLogPageView:@"ChatVC"];
 }
 
+- (void)dealloc
+{
+#ifdef DEBUG_MEMERY
+    NSLog(@"dealloc ChatVC");
+#endif
+}
+
+
 #pragma mark - Delegate -
 //MARK: TLMoreKeyboardDelegate
 - (void)moreKeyboard:(id)keyboard didSelectedFunctionItem:(TLMoreKeyboardItem *)funcItem

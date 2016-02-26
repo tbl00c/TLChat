@@ -11,6 +11,9 @@
 
 #define     APP_CHANNEL         @"Github"
 
+#pragma mark - Debug
+//#define     DEBUG_MEMERY
+
 #pragma mark - SIZE
 #define     SIZE_SCREEN         [UIScreen mainScreen].bounds.size
 #define     WIDTH_SCREEN        [UIScreen mainScreen].bounds.size.width

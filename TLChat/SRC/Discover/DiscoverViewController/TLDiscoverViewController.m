@@ -9,7 +9,7 @@
 #import "TLDiscoverViewController.h"
 #import "TLDiscoverHelper.h"
 
-#import "TLScanerViewController.h"
+#import "TLScanningViewController.h"
 #import "TLShakeViewController.h"
 #import "TLBottleViewController.h"
 #import "TLShoppingViewController.h"
@@ -36,7 +36,7 @@
 {
     TLMenuItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     if ([item.title isEqualToString:@"扫一扫"]) {
-        TLScanerViewController *scannerVC = [[TLScanerViewController alloc] init];
+        TLScanningViewController *scannerVC = [[TLScanningViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:scannerVC animated:YES];
         [self setHidesBottomBarWhenPushed:NO];

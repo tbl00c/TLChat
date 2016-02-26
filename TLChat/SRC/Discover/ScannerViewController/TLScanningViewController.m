@@ -1,22 +1,22 @@
 //
-//  TLScanerViewController.m
+//  TLScanningViewController.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/25.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLScanerViewController.h"
-#import "TLScanViewController.h"
+#import "TLScanningViewController.h"
+#import "TLScannerViewController.h"
 #import "TLScannerButton.h"
 
 #define     HEIGHT_BOTTOM_VIEW      80
 
-@interface TLScanerViewController ()
+@interface TLScanningViewController () <TLScannerDelegate>
 
 @property (nonatomic, assign) TLScannerType curType;
 
-@property (nonatomic, strong) TLScanViewController *scanVC;
+@property (nonatomic, strong) TLScannerViewController *scanVC;
 @property (nonatomic, strong) UIBarButtonItem *rightBarButton;
 @property (nonatomic, strong) UIButton *myQRButton;
 
@@ -28,7 +28,7 @@
 
 @end
 
-@implementation TLScanerViewController
+@implementation TLScanningViewController
 
 - (void)viewDidLoad
 {
@@ -55,10 +55,28 @@
     [self scannerButtonDown:self.qrButton];    // 初始化
 }
 
+#pragma mark - TLScannerDelegate -
+- (void)scannerViewController:(TLScannerViewController *)scannerVC initFailed:(NSString *)errorString
+{
+    [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } title:@"错误" message:errorString cancelButtonName:@"确定" otherButtonTitles:nil];
+}
+
+- (void)scannerViewController:(TLScannerViewController *)scannerVC scanAnswer:(NSString *)ansStr
+{
+    [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
+        [scannerVC startCodeReading];
+    } title:@"扫描结果" message:ansStr cancelButtonName:@"确定" otherButtonTitles:nil];
+}
+
 #pragma mark - Event Response -
 - (void)scannerButtonDown:(TLScannerButton *)sender
 {
     if (sender.isSelected) {
+        if (![self.scanVC isRunning]) {
+            [self.scanVC startCodeReading];
+        }
         return;
     }
     self.curType = sender.type;
@@ -134,10 +152,11 @@
 }
 
 #pragma mark - Getter -
-- (TLScanViewController *)scanVC
+- (TLScannerViewController *)scanVC
 {
     if (_scanVC == nil) {
-        _scanVC = [[TLScanViewController alloc] init];
+        _scanVC = [[TLScannerViewController alloc] init];
+        [_scanVC setDelegate:self];
     }
     return _scanVC;
 }

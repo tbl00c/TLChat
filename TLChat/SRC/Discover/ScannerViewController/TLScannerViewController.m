@@ -1,15 +1,15 @@
 //
-//  TLScanViewController.m
+//  TLScannerViewController.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/24.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLScanViewController.h"
+#import "TLScannerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface TLScanViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
+@interface TLScannerViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UILabel *introudctionLabel;
 @property (nonatomic, strong) UIView *scannerView;
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation TLScanViewController
+@implementation TLScannerViewController
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,6 +44,20 @@
     [self.view.layer insertSublayer:self.videoPreviewLayer atIndex:0];
     
     [self p_addMasonry];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.scannerSession) {
+        if (_delegate && [_delegate respondsToSelector:@selector(scannerViewControllerInitSuccess:)]) {
+            [_delegate scannerViewControllerInitSuccess:self];
+        }
+    }
+    else {
+        if (_delegate && [_delegate respondsToSelector:@selector(scannerViewController:initFailed:)]) {
+            [_delegate scannerViewController:self initFailed:@"相机初始化失败"];
+        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -131,9 +145,9 @@
     if (metadataObjects.count > 0) {
         [self stopCodeReading];
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
-        [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
-            [self startCodeReading];
-        } title:@"扫描结果" message:obj.stringValue cancelButtonName:@"确定" otherButtonTitles:nil];
+        if (_delegate && [_delegate respondsToSelector:@selector(scannerViewController:scanAnswer:)]) {
+            [_delegate scannerViewController:self scanAnswer:obj.stringValue];
+        }
     }
 }
 
@@ -245,7 +259,7 @@
         if ([session canAddOutput:output]) {
             [session addOutput:output];
         }
-        [output setMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]];
+        [output setMetadataObjectTypes:@[AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeQRCode]];
         
         _scannerSession = session;
     }

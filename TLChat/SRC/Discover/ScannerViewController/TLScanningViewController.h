@@ -1,5 +1,5 @@
 //
-//  TLScanerViewController.h
+//  TLScanningViewController.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/25.
@@ -8,6 +8,6 @@
 
 #import "TLViewController.h"
 
-@interface TLScanerViewController : TLViewController
+@interface TLScanningViewController : TLViewController
 
 @end

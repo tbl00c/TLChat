@@ -6,10 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewController.h"
+#import "TLInfoViewController.h"
 
 @class TLUser;
-@interface TLFriendDetailViewController : TLTableViewController
+@interface TLFriendDetailViewController : TLInfoViewController
 
 @property (nonatomic, strong) TLUser *user;
 

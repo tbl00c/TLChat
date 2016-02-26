@@ -58,6 +58,12 @@
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self setNeedsDisplay];
+}
+
 #pragma mark - Public Methods
 - (void) sendCurrentText
 {

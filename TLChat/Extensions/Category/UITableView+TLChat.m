@@ -20,7 +20,7 @@
     if ([self.dataSource respondsToSelector:@selector(tableView:numberOfRowsInSection:)]) {
         NSUInteger row = [self.dataSource tableView:self numberOfRowsInSection:section];
         if (row > 0) {
-            [self selectRowAtIndexPath:[NSIndexPath indexPathForRow:row - 1 inSection:section] animated:animation scrollPosition:UITableViewScrollPositionBottom];
+            [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row - 1 inSection:section] atScrollPosition:UITableViewScrollPositionBottom animated:animation];
         }
     }
 }

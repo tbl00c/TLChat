@@ -15,16 +15,16 @@
 #import <UIImageView+WebCache.h>
 #import <AFNetworking.h>
 
-#define     HEIGHT_CONVERSATION_CELL        63.0f
-
+#define     HEIGHT_CONVERSATION_CELL        65.0f
 
 @interface TLConversationViewController () <UISearchBarDelegate>
+
+@property (nonatomic, strong) UIImageView *scrollTopView;
 
 @property (nonatomic, strong) NSMutableArray *data;
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) TLFriendSearchViewController *searchVC;
-
 
 @end
 
@@ -53,8 +53,8 @@
     [alert show];
 }
 
-#pragma mark -
-#pragma mark UITableViewDataSource
+#pragma mark - Delegate -
+//MARK: UITableViewDataSource
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.data.count;
@@ -72,7 +72,7 @@
     return cell;
 }
 
-#pragma mark UITableViewDelegate
+//MARK: UITableViewDelegate
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return HEIGHT_CONVERSATION_CELL;
@@ -99,22 +99,24 @@
     __weak typeof(self) weakSelf = self;
     UITableViewRowAction *delAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
                                                                          title:@"删除"
-                                                                       handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                                                                           [weakSelf.data removeObjectAtIndex:indexPath.row];
-                                                                           [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                           if (self.data.count > 0 && indexPath.row == self.data.count) {
-                                                                               NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
-                                                                               TLConversationCell *cell = [self.tableView cellForRowAtIndexPath:lastIndexPath];
-                                                                               [cell setBottomLineStyle:TLCellLineStyleFill];
-                                                                           }
-                                                                       }];
+                                                                       handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
+    {
+        [weakSelf.data removeObjectAtIndex:indexPath.row];
+        [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if (self.data.count > 0 && indexPath.row == self.data.count) {
+            NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
+            TLConversationCell *cell = [self.tableView cellForRowAtIndexPath:lastIndexPath];
+            [cell setBottomLineStyle:TLCellLineStyleFill];
+        }
+    }];
     UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
                                                                           title:conversation.isRead ? @"标为未读" : @"标为已读"
-                                                                        handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                                                                            TLConversationCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-                                                                            conversation.isRead ? [cell markAsUnread] : [cell markAsRead];
-                                                                            [tableView setEditing:NO animated:YES];
-                                                                        }];
+                                                                        handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
+    {
+        TLConversationCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        conversation.isRead ? [cell markAsUnread] : [cell markAsRead];
+        [tableView setEditing:NO animated:YES];
+    }];
     moreAction.backgroundColor = [UIColor colorCellMoreButton];
     return @[delAction, moreAction];
 }
@@ -124,7 +126,7 @@
     return 0.5;
 }
 
-#pragma mark UISearchBarDelegate
+//MARK: UISearchBarDelegate
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     [self.searchVC setFriendsData:[TLFriendHelper sharedFriendHelper].friendsData];
@@ -155,26 +157,6 @@
     [alert show];
 }
 
-#pragma mark - Private Methods
-- (void) p_initUI
-{
-    [self.tableView setBackgroundColor:[UIColor whiteColor]];
-    [self.tableView setTableHeaderView:self.searchController.searchBar];
-    [self.searchController.searchBar setTintColor:[UIColor colorDefaultGreen]];
-    [self.searchController.searchBar setShowsBookmarkButton:YES];
-    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
-    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice_HL"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateHighlighted];
-    UITextField *tf = [[[self.searchController.searchBar.subviews firstObject] subviews] lastObject];
-    [tf.layer setMasksToBounds:YES];
-    [tf.layer setBorderWidth:0.5f];
-    [tf.layer setBorderColor:[UIColor colorCellLine].CGColor];
-    [tf.layer setCornerRadius:5.0f];
-    
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
-    [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
-}
-
-#pragma mark - Event Response
 - (void) networkStatusChange:(NSNotification *)noti
 {
     AFNetworkReachabilityStatus status = [noti.userInfo[@"AFNetworkingReachabilityNotificationStatusItem"] longValue];
@@ -192,7 +174,51 @@
     }
 }
 
-#pragma mark - Getter
+#pragma mark - Private Methods -
+- (void) p_initUI
+{
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
+    [self.tableView setTableHeaderView:self.searchController.searchBar];
+    [self.searchController.searchBar setTintColor:[UIColor colorDefaultGreen]];
+    [self.searchController.searchBar setShowsBookmarkButton:YES];
+    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
+    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice_HL"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateHighlighted];
+    UITextField *tf = [[[self.searchController.searchBar.subviews firstObject] subviews] lastObject];
+    [tf.layer setMasksToBounds:YES];
+    [tf.layer setBorderWidth:0.5f];
+    [tf.layer setBorderColor:[UIColor colorCellLine].CGColor];
+    [tf.layer setCornerRadius:5.0f];
+    
+    [self.tableView addSubview:self.scrollTopView];
+    [self.scrollTopView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.tableView);
+        make.bottom.mas_equalTo(self.tableView.mas_top).mas_offset(-35);
+    }];
+    
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
+    [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
+}
+
+- (void) initTestData
+{
+    NSArray *jsonData = @[@{
+                              @"username":@"莫小贝",
+                              @"messageDetail":@"帅哥你好啊!",
+                              @"avatarPath":@"10.jpeg",
+                              },
+                          @{
+                              @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
+                              @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
+                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
+                              }
+                          ];
+    self.data = [TLConversation mj_objectArrayWithKeyValuesArray:jsonData];
+    TLConversation *conv = self.data[1];
+    conv.remindType = TLMessageRemindTypeClosed;
+    conv.convType = TLConversationTypePublic;
+}
+
+#pragma mark - Getter -
 - (UISearchController *) searchController
 {
     if (_searchController == nil) {
@@ -215,23 +241,12 @@
     return _searchVC;
 }
 
-- (void) initTestData
+- (UIImageView *)scrollTopView
 {
-    NSArray *jsonData = @[@{
-                              @"username":@"莫小贝",
-                              @"messageDetail":@"帅哥你好啊!",
-                              @"avatarPath":@"10.jpeg",
-                              },
-                          @{
-                              @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
-                              @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
-                              }
-                         ];
-    self.data = [TLConversation mj_objectArrayWithKeyValuesArray:jsonData];
-    TLConversation *conv = self.data[1];
-    conv.remindType = TLMessageRemindTypeClosed;
-    conv.convType = TLConversationTypePublic;
+    if (_scrollTopView == nil) {
+        _scrollTopView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"conv_wechat_icon"]];
+    }
+    return _scrollTopView;
 }
 
 @end

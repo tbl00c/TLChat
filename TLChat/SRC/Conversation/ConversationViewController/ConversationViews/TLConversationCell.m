@@ -62,7 +62,7 @@
     [self.usernameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(CONV_SPACE_X);
-        make.top.mas_equalTo(self.avatarImageView).mas_offset(2.0);
+        make.top.mas_equalTo(self.avatarImageView).mas_offset(1.5);
         make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5);
     }];
     

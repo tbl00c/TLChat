@@ -18,4 +18,12 @@
     return info;
 }
 
+- (id)init
+{
+    if (self = [super init]) {
+        self.showDisclosureIndicator = YES;
+    }
+    return self;
+}
+
 @end

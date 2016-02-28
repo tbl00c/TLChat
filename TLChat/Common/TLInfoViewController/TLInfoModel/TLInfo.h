@@ -8,13 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, TLInfoType) {
+    TLInfoTypeDefault,
+    TLInfoTypeTitleOnly,
+    TLInfoTypeImages,
+    TLInfoTypeMutirow,
+    TLInfoTypeOther,
+};
+
 @interface TLInfo : NSObject
+
+@property (nonatomic, assign) TLInfoType type;
 
 @property (nonatomic, strong) NSString *title;
 
 @property (nonatomic, strong) NSString *subTitle;
 
 @property (nonatomic, strong) NSMutableArray *subImageArray;
+
+/**
+ *  是否显示箭头（默认YES）
+ */
+@property (nonatomic, assign) BOOL showDisclosureIndicator;
 
 + (TLInfo *)createInfoWithTitle:(NSString *)title subTitle:(NSString *)subTitle;
 

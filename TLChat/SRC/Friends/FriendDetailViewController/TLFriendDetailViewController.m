@@ -19,9 +19,11 @@
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_more"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
     
-    self.data = @[@[[TLInfo createInfoWithTitle:@"测试 0-0" subTitle:nil]],
-                  @[[TLInfo createInfoWithTitle:@"测试 1-0" subTitle:nil],
-                    [TLInfo createInfoWithTitle:@"测试 1-1" subTitle:nil]]];
+    self.data = @[@[[TLInfo createInfoWithTitle:@"电话号码" subTitle:@"18888888888"],
+                    [TLInfo createInfoWithTitle:@"标签" subTitle:@"同学"]],
+                  @[[TLInfo createInfoWithTitle:@"地区" subTitle:@"山东 青岛"],
+                    [TLInfo createInfoWithTitle:@"个人相册" subTitle:nil],
+                    [TLInfo createInfoWithTitle:@"更多" subTitle:nil]]];
 }
 
 

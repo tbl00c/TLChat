@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) NSMutableArray *data;
 
+@property (nonatomic, strong) NSString *analyzeTitle;
+
 @end

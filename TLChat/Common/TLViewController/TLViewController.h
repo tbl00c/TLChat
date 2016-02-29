@@ -10,4 +10,6 @@
 
 @interface TLViewController : UIViewController
 
+@property (nonatomic, strong) NSString *analyzeTitle;
+
 @end

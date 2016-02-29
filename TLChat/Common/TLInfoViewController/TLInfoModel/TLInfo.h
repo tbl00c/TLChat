@@ -13,6 +13,7 @@ typedef NS_ENUM(NSUInteger, TLInfoType) {
     TLInfoTypeTitleOnly,
     TLInfoTypeImages,
     TLInfoTypeMutirow,
+    TLInfoTypeButton,
     TLInfoTypeOther,
 };
 
@@ -25,6 +26,16 @@ typedef NS_ENUM(NSUInteger, TLInfoType) {
 @property (nonatomic, strong) NSString *subTitle;
 
 @property (nonatomic, strong) NSMutableArray *subImageArray;
+
+@property (nonatomic, strong) id userInfo;
+
+@property (nonatomic, strong) UIColor *titleColor;
+
+@property (nonatomic, strong) UIColor *buttonColor;
+
+@property (nonatomic, strong) UIColor *buttonHLColor;
+
+@property (nonatomic, strong) UIColor *buttonBorderColor;
 
 /**
  *  是否显示箭头（默认YES）

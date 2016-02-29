@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TLInfo.h"
 
-#define     HEIGHT_INFO_TOP_SPACE        15.0f
-#define     HEIGHT_INFO_BOTTOM_SPACE     12.0f
+#define     HEIGHT_INFO_CELL                44.0f
+#define     HEIGHT_INFO_TOP_SPACE           15.0f
+#define     HEIGHT_INFO_BOTTOM_SPACE        12.0f
 
 @interface TLInfoViewController : UITableViewController
 

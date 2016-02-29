@@ -26,4 +26,36 @@
     return self;
 }
 
+- (UIColor *)buttonColor
+{
+    if (_buttonColor == nil) {
+        return [UIColor colorDefaultGreen];
+    }
+    return _buttonColor;
+}
+
+- (UIColor *)buttonHLColor
+{
+    if (_buttonHLColor == nil) {
+        return [self buttonColor];
+    }
+    return _buttonHLColor;
+}
+
+- (UIColor *)titleColor
+{
+    if (_titleColor == nil) {
+        return [UIColor blackColor];
+    }
+    return _titleColor;
+}
+
+- (UIColor *)buttonBorderColor
+{
+    if (_buttonBorderColor == nil) {
+        return [UIColor colorCellLine];
+    }
+    return _buttonBorderColor;
+}
+
 @end

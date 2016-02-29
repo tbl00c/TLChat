@@ -10,4 +10,6 @@
 
 @interface TLTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSString *analyzeTitle;
+
 @end

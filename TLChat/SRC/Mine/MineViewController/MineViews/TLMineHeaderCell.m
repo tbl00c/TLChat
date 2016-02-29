@@ -120,5 +120,4 @@
     return _QRImageView;
 }
 
-
 @end

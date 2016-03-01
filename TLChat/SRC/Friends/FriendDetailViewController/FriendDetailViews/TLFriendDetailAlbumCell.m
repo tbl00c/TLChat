@@ -8,6 +8,7 @@
 
 #import "TLFriendDetailAlbumCell.h"
 #import <UIImageView+WebCache.h>
+#import "TLInfoMacros.h"
 
 @interface TLFriendDetailAlbumCell ()
 
@@ -32,7 +33,13 @@
     _info = info;
     [self.textLabel setText:info.title];
     NSArray *arr = info.userInfo;
-    for (int i = 0; i < arr.count; i ++) {
+    
+    CGFloat spaceY = 12;
+    NSUInteger count = (WIDTH_SCREEN - LEFT_INFOCELL_SUBTITLE_SPACE - 28) / (80 - spaceY * 2 + 3);
+    count = arr.count <= count ? arr.count : count;
+    CGFloat spaceX = (WIDTH_SCREEN - LEFT_INFOCELL_SUBTITLE_SPACE - 28 - count * (80 - spaceY * 2)) / count;
+    spaceX = spaceX > 7 ? 7 : spaceX;
+    for (int i = 0; i < count; i ++) {
         NSString *imageURL = arr[i];
         UIImageView *imageView;
         if (self.imageViewsArray.count <= i) {
@@ -44,6 +51,17 @@
         }
         [self.contentView addSubview:imageView];
         [imageView sd_setImageWithURL:TLURL(imageURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.contentView).mas_offset(spaceY);
+            make.bottom.mas_equalTo(self.contentView).mas_offset(-spaceY);
+            make.width.mas_equalTo(imageView.mas_height);
+            if (i == 0) {
+                make.left.mas_equalTo(LEFT_INFOCELL_SUBTITLE_SPACE);
+            }
+            else {
+                make.left.mas_equalTo([self.imageViewsArray[i - 1] mas_right]).mas_offset(spaceX);
+            }
+        }];
     }
 }
 

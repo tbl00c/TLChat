@@ -21,6 +21,9 @@
 
 - (NSString *) pinyinInitial
 {
+    if (self.length == 0) {
+        return nil;
+    }
     NSMutableString *str = [self mutableCopy];
     CFStringTransform((CFMutableStringRef)str, NULL, kCFStringTransformMandarinLatin, NO);
     CFStringTransform((CFMutableStringRef)str, NULL, kCFStringTransformStripDiacritics, NO);

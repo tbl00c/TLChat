@@ -7,6 +7,7 @@
 //
 
 #import "TLFriendHelper.h"
+#import "TLInfo.h"
 
 static TLFriendHelper *friendHelper = nil;
 
@@ -19,6 +20,39 @@ static TLFriendHelper *friendHelper = nil;
         friendHelper = [[TLFriendHelper alloc] init];
     });
     return friendHelper;
+}
+
++ (NSArray *)transformFriendDetailArrayFromUserInfo:(TLUser *)userInfo
+{
+    TLInfo *user = [TLInfo createInfoWithTitle:@"个人" subTitle:nil];
+    user.type = TLInfoTypeOther;
+    user.userInfo = userInfo;
+    
+    TLInfo *remark = [TLInfo createInfoWithTitle:@"设置备注和标签" subTitle:nil];
+    
+    TLInfo *tel = [TLInfo createInfoWithTitle:@"电话号码" subTitle:userInfo.phoneNumber];
+    tel.showDisclosureIndicator = NO;
+    
+    TLInfo *location = [TLInfo createInfoWithTitle:@"地区" subTitle:userInfo.location];
+    location.showDisclosureIndicator = NO;
+    
+    TLInfo *album = [TLInfo createInfoWithTitle:@"个人相册" subTitle:nil];
+    album.userInfo = userInfo.albumArray;
+    album.type = TLInfoTypeOther;
+    
+    TLInfo *more = [TLInfo createInfoWithTitle:@"更多" subTitle:nil];
+    
+    TLInfo *sendMsg = [TLInfo createInfoWithTitle:@"发消息" subTitle:nil];
+    sendMsg.type = TLInfoTypeButton;
+    sendMsg.titleColor = [UIColor whiteColor];
+    sendMsg.buttonBorderColor = [UIColor colorCellLine];
+    
+    TLInfo *video = [TLInfo createInfoWithTitle:@"视频聊天" subTitle:nil];
+    video.type = TLInfoTypeButton;
+    video.buttonBorderColor = [UIColor colorCellLine];
+    video.buttonColor = [UIColor whiteColor];
+    
+    return @[@[user], @[remark, tel], @[location, album, more], @[sendMsg, video]];
 }
 
 - (id)init
@@ -114,38 +148,12 @@ static TLFriendHelper *friendHelper = nil;
 
 - (void)p_initTestData
 {
-    TLUser *user1 = [[TLUser alloc] init];
-    user1.nikeName = @"吕秀才";
-    user1.username = @"lv-qinghou";
-    user1.remarkName = @"吕轻侯";
-    user1.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    TLUser *user2 = [[TLUser alloc] init];
-    user2.nikeName = @"白展堂";
-    user2.username = @"tangtang";
-    user2.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    TLUser *user3 = [[TLUser alloc] init];
-    user3.remarkName = @"李秀莲";
-    user3.username = @"xiulian";
-    user3.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    TLUser *user4 = [[TLUser alloc] init];
-    user4.remarkName = @"燕小六";
-    user4.username = @"xiao6";
-    user4.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    TLUser *user5 = [[TLUser alloc] init];
-    user5.remarkName = @"郭芙蓉";
-    user5.username = @"furongMM";
-    user5.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    TLUser *user6 = [[TLUser alloc] init];
-    user6.nikeName = @"佟湘玉";
-    user6.username = @"yu";
-    user6.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    TLUser *user7 = [[TLUser alloc] init];
-    user7.nikeName = @"莫小贝";
-    user7.username = @"XB";
-    user7.avatarURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
-    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"FriendList" ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:path];
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+    NSArray *arr = [TLUser mj_objectArrayWithKeyValuesArray:jsonArray];
     [self.friendsData removeAllObjects];
-    [self.friendsData addObjectsFromArray:@[user1, user2, user3, user4, user5, user6, user7]];
+    [self.friendsData addObjectsFromArray:arr];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self p_resetFriendData];
     });

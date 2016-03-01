@@ -39,6 +39,8 @@
 @property (nonatomic, strong) void(^dataChangedBlock)(NSMutableArray *friends, NSMutableArray *headers);
 
 
-+ (TLFriendHelper *) sharedFriendHelper;
++ (TLFriendHelper *)sharedFriendHelper;
+
++ (NSArray *)transformFriendDetailArrayFromUserInfo:(TLUser *)userInfo;
 
 @end

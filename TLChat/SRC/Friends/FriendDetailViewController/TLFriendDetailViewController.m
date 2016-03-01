@@ -9,7 +9,7 @@
 #import "TLFriendDetailViewController.h"
 #import "TLFriendDetailUserCell.h"
 #import "TLFriendDetailAlbumCell.h"
-#import "TLUser.h"
+#import "TLFriendHelper.h"
 
 #define     HEIGHT_USER_CELL           90.0f
 #define     HEIGHT_ALBUM_CELL          80.0f
@@ -26,39 +26,14 @@
     
     [self.tableView registerClass:[TLFriendDetailUserCell class] forCellReuseIdentifier:@"TLFriendDetailUserCell"];
     [self.tableView registerClass:[TLFriendDetailAlbumCell class] forCellReuseIdentifier:@"TLFriendDetailAlbumCell"];
-    
-    
-    TLInfo *usr = [[TLInfo alloc] init];
-    [usr setType:TLInfoTypeOther];
-    usr.userInfo = self.user;
-    
-    TLInfo *tel = [TLInfo createInfoWithTitle:@"电话号码" subTitle:@"18888888888"];
-    [tel setShowDisclosureIndicator:NO];
-    
-    TLInfo *pos = [TLInfo createInfoWithTitle:@"地区" subTitle:@"山东 青岛"];
-    [pos setShowDisclosureIndicator:NO];
-    
-    TLInfo *btn1 = [[TLInfo alloc] init];
-    btn1.title = @"发消息";
-    btn1.type = TLInfoTypeButton;
-    btn1.titleColor = [UIColor whiteColor];
-    TLInfo *btn2 = [[TLInfo alloc] init];
-    btn2.type = TLInfoTypeButton;
-    btn2.title = @"视频聊天";
-    btn2.buttonColor = [UIColor whiteColor];
-    
-    TLInfo *album = [[TLInfo alloc] init];
-    album.title = @"个人相册";
-    album.type = TLInfoTypeOther;
-    
-    NSArray *arr = @[@[usr],
-                     @[tel,
-                       [TLInfo createInfoWithTitle:@"标签" subTitle:@"同学"]],
-                     @[pos,
-                       album,
-                       [TLInfo createInfoWithTitle:@"更多" subTitle:nil]],
-                     @[btn1, btn2]];
-    self.data = [NSMutableArray arrayWithArray:arr];
+}
+
+- (void)setUser:(TLUser *)user
+{
+    _user = user;
+    NSArray *array = [TLFriendHelper transformFriendDetailArrayFromUserInfo:self.user];
+    self.data = [NSMutableArray arrayWithArray:array];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Delegate -

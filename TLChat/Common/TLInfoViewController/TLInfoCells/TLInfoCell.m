@@ -7,8 +7,7 @@
 //
 
 #import "TLInfoCell.h"
-
-#define     LEFT_SUBTITLE_SPACE     (WIDTH_SCREEN * 0.3)
+#import "TLInfoMacros.h"
 
 @interface TLInfoCell ()
 
@@ -41,7 +40,7 @@
 {
     [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView);
-        make.left.mas_equalTo(self.contentView).mas_offset(LEFT_SUBTITLE_SPACE);
+        make.left.mas_equalTo(self.contentView).mas_offset(LEFT_INFOCELL_SUBTITLE_SPACE);
         make.right.mas_lessThanOrEqualTo(self.contentView);
     }];
 }

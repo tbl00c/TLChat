@@ -116,6 +116,7 @@
 		C2F0EC151C7AB1BB0090843C /* TLAboutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC141C7AB1BB0090843C /* TLAboutHelper.m */; };
 		C2F0EC181C7AB6E30090843C /* TLAboutHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC171C7AB6E30090843C /* TLAboutHeaderView.m */; };
 		C2F0EC1C1C7ABF190090843C /* TLAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */; };
+		C2F9F6811C854F94000EE9ED /* FriendList.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F9F6801C854F94000EE9ED /* FriendList.json */; };
 		CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47069788539839E1FB073F9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -359,6 +360,8 @@
 		C2F0EC171C7AB6E30090843C /* TLAboutHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAboutHeaderView.m; sourceTree = "<group>"; };
 		C2F0EC1A1C7ABF190090843C /* TLAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppHelper.h; sourceTree = "<group>"; };
 		C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppHelper.m; sourceTree = "<group>"; };
+		C2F9F67D1C854BDE000EE9ED /* TLInfoMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLInfoMacros.h; sourceTree = "<group>"; };
+		C2F9F6801C854F94000EE9ED /* FriendList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendList.json; sourceTree = "<group>"; };
 		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -541,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				C2142E981C531EFD0030B29B /* Images */,
+				C2F9F67E1C854F67000EE9ED /* TestData */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1006,6 +1010,7 @@
 		C2CF4C711C804B440054637A /* TLInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C2F9F67D1C854BDE000EE9ED /* TLInfoMacros.h */,
 				C2CF4C971C80655D0054637A /* TLInfoModel */,
 				C2CF4C8D1C804D580054637A /* TLInfoCells */,
 				C2CF4C721C804B5A0054637A /* TLInfoViewController.h */,
@@ -1298,6 +1303,22 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		C2F9F67E1C854F67000EE9ED /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				C2F9F67F1C854F77000EE9ED /* Friends */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		C2F9F67F1C854F77000EE9ED /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C2F9F6801C854F94000EE9ED /* FriendList.json */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1411,6 +1432,7 @@
 				C2CE0BD41C718702006C5C2A /* Chat.xcassets in Resources */,
 				C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */,
 				C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */,
+				C2F9F6811C854F94000EE9ED /* FriendList.json in Resources */,
 				C2B9E43C1C665AC700CEBA81 /* Common.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

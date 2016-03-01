@@ -40,11 +40,20 @@
  */
 @property (nonatomic, strong) NSString *remarkName;
 
+
 /**
  *  界面显示名称
  */
 @property (nonatomic, strong, readonly) NSString *showName;
 
+#pragma mark - 详细信息
+@property (nonatomic, strong) NSString *location;
+
+@property (nonatomic, strong) NSString *phoneNumber;
+
+@property (nonatomic, strong) NSArray *albumArray;
+
+#pragma mark - 列表用
 /**
  *  拼音  
  *

@@ -28,7 +28,7 @@
         return;
     }
     _username = username;
-    if (self.remarkName.length == 0 && self.nikeName.length == 0) {
+    if (self.remarkName.length == 0 && self.nikeName.length == 0 && self.username.length > 0) {
         self.pinyin = username.pinyin;
         self.pinyinInitial = username.pinyinInitial;
     }
@@ -40,7 +40,7 @@
         return;
     }
     _nikeName = nikeName;
-    if (self.remarkName.length == 0) {
+    if (self.remarkName.length == 0 && self.nikeName.length > 0) {
         self.pinyin = nikeName.pinyin;
         self.pinyinInitial = nikeName.pinyinInitial;
     }
@@ -52,14 +52,16 @@
         return;
     }
     _remarkName = remarkName;
-    self.pinyin = remarkName.pinyin;
-    self.pinyinInitial = remarkName.pinyinInitial;
+    if (_remarkName.length > 0) {
+        self.pinyin = remarkName.pinyin;
+        self.pinyinInitial = remarkName.pinyinInitial;
+    }
 }
 
 #pragma mark - Getter
 - (NSString *)showName
 {
-    return self.remarkName ? self.remarkName : (self.nikeName ? self.nikeName : self.username);
+    return self.remarkName.length > 0 ? self.remarkName : (self.nikeName.length > 0 ? self.nikeName : self.username);
 }
 
 @end

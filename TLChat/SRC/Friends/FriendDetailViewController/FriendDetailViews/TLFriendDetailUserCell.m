@@ -54,12 +54,12 @@
     [self.shownameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     [self.shownameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(MINE_SPACE_Y);
-        make.top.mas_equalTo(self.avatarImageView.mas_top).mas_offset(4);
+        make.top.mas_equalTo(self.avatarImageView.mas_top).mas_offset(3);
     }];
     
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.shownameLabel);
-        make.top.mas_equalTo(self.shownameLabel.mas_bottom).mas_offset(6);
+        make.top.mas_equalTo(self.shownameLabel.mas_bottom).mas_offset(5);
     }];
     
     [self.nikenameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,13 +79,13 @@
         [self.avatarImageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     [self.shownameLabel setText:user.showName];
-    if (user.username) {
+    if (user.username.length > 0) {
         [self.usernameLabel setText:[@"微信号：" stringByAppendingString:user.username]];
-        if (user.nikeName) {
+        if (user.nikeName.length > 0) {
             [self.nikenameLabel setText:[@"昵称：" stringByAppendingString:user.nikeName]];
         }
     }
-    else if (user.nikeName){
+    else if (user.nikeName.length > 0){
         [self.nikenameLabel setText:[@"昵称：" stringByAppendingString:user.nikeName]];
     }
 }

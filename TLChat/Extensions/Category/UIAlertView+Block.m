@@ -30,6 +30,13 @@ static NSString *UIAlertViewKey = @"UIAlertViewKey";
     alert.alertViewCallBackBlock = alertViewCallBackBlock;
 }
 
++ (void)alertWithTitle:(NSString *)title
+               message:(NSString *)message
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+}
+
 
 - (void)setAlertViewCallBackBlock:(UIAlertViewCallBackBlock)alertViewCallBackBlock {
     

@@ -67,6 +67,20 @@ static TLFriendHelper *friendHelper = nil;
     return self;
 }
 
+#pragma mark - Public Methods -
+- (TLUser *)getFriendInfoByUserID:(NSString *)userID
+{
+    if (userID == nil) {
+        return nil;
+    }
+    for (TLUser *user in self.friendsData) {
+        if ([user.userID isEqualToString:userID]) {
+            return user;
+        }
+    }
+    return nil;
+}
+
 #pragma mark - Private Methods -
 - (void)p_resetFriendData
 {

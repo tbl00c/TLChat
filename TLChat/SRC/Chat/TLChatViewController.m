@@ -10,6 +10,7 @@
 #import <MobClick.h>
 #import "TLMoreKBHelper.h"
 #import "TLEmojiKBHelper.h"
+#import "TLUser.h"
 
 static TLChatViewController *chatVC;
 
@@ -64,6 +65,12 @@ static TLChatViewController *chatVC;
 #ifdef DEBUG_MEMERY
     NSLog(@"dealloc ChatVC");
 #endif
+}
+
+- (void)setUser:(TLUser *)user
+{
+    _user = user;
+    [self.navigationItem setTitle:user.showName];
 }
 
 

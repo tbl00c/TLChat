@@ -30,7 +30,8 @@
     TLSettingItem *item5 = TLCreateSettingItem(@"朋友圈小视频");
     TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[item2, item3, item4, item5]));
     
-    TLSettingItem *item6 = TLCreateSettingItem(@"可通过手机号搜索到我");
+    TLSettingItem *item6 = TLCreateSettingItem(@"听筒模式");
+    item6.type = TLSettingItemTypeSwitch;
     TLSettingGroup *group3 = TLCreateSettingGroup(nil, nil, @[item6]);
     
     TLSettingItem *item7 = TLCreateSettingItem(@"功能");

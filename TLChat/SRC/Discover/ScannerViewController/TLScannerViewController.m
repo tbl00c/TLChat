@@ -46,8 +46,9 @@
     [self p_addMasonry];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     if (self.scannerSession) {
         if (_delegate && [_delegate respondsToSelector:@selector(scannerViewControllerInitSuccess:)]) {
             [_delegate scannerViewControllerInitSuccess:self];
@@ -74,7 +75,6 @@
     if (_scannerType == scannerType) {
         return;
     }
-    [self stopCodeReading];
     _scannerType = scannerType;
     
     CGFloat width = 0;

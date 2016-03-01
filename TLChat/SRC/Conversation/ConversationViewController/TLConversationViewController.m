@@ -82,9 +82,20 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-//    TLConversation *conversation = [self.data objectAtIndex:indexPath.row];
-
     TLChatViewController *chatVC = [TLChatViewController sharedChatVC];
+    
+    TLConversation *conversation = [self.data objectAtIndex:indexPath.row];
+    if (conversation.convType == TLConversationTypePersonal) {
+        TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:conversation.userID];
+        if (user == nil) {
+            [UIAlertView alertWithTitle:@"错误" message:@"您不存在此好友"];
+            return;
+        }
+        [chatVC setUser:user];
+    }
+    else {
+        [chatVC setUser:nil];
+    }
     [self setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:chatVC animated:YES];
     [self setHidesBottomBarWhenPushed:NO];
@@ -202,11 +213,13 @@
 - (void) initTestData
 {
     NSArray *jsonData = @[@{
+                              @"userID":@"u1007",
                               @"username":@"莫小贝",
                               @"messageDetail":@"帅哥你好啊!",
-                              @"avatarPath":@"10.jpeg",
+                              @"avatarURL":@"http://d.hiphotos.baidu.com/zhidao/pic/item/b8014a90f603738dfa989413b51bb051f819ec35.jpg",
                               },
                           @{
+                              @"userID":@"g001",
                               @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
                               @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
                               @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",

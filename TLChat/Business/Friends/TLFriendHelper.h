@@ -43,4 +43,6 @@
 
 + (NSArray *)transformFriendDetailArrayFromUserInfo:(TLUser *)userInfo;
 
+- (TLUser *)getFriendInfoByUserID:(NSString *)userID;
+
 @end

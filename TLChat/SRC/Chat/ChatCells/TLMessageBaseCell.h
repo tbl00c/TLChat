@@ -17,4 +17,9 @@
 
 @property (nonatomic, strong) UILabel *usernameLabel;
 
+@property (nonatomic, strong) UIImageView *messageBackgroundView;
+
+
+@property (nonatomic, strong) TLMessage *message;
+
 @end

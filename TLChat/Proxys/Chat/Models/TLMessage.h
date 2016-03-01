@@ -7,6 +7,7 @@
 //
 
 #import "TLBaseDataModel.h"
+#import "TLUser.h"
 #import <MapKit/MapKit.h>
 
 /**
@@ -39,7 +40,7 @@ typedef NS_ENUM(NSUInteger, TLMessageReadState) {
 
 @property (nonatomic, strong) NSString *fromID;                     // 发送者ID
 @property (nonatomic, strong) NSString *toID;                       // 接收者ID
-@property (nonatomic, strong) NSString *username;                   // 用户名
+@property (nonatomic, strong) TLUser *fromUser;                     // 用户名
 
 @property (nonatomic, strong) NSDate *date;                         // 发送时间
 

@@ -5,14 +5,42 @@
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 54
+        },
+        "cap-insets" : {
+          "bottom" : 25,
+          "top" : 17,
+          "right" : 53,
+          "left" : 60
+        }
+      },
       "idiom" : "iphone",
-      "scale" : "2x",
-      "filename" : "message_sender_background_highlight@2x.png"
+      "filename" : "message_sender_background_highlight@2x.png",
+      "scale" : "2x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 72
+        },
+        "cap-insets" : {
+          "bottom" : 48,
+          "top" : 26,
+          "right" : 88,
+          "left" : 99
+        }
+      },
       "idiom" : "iphone",
-      "scale" : "3x",
-      "filename" : "message_sender_background_highlight@3x.png"
+      "filename" : "message_sender_background_highlight@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

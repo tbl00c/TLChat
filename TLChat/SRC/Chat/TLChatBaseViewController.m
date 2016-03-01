@@ -20,7 +20,7 @@
 
 @implementation TLChatBaseViewController
 
-- (void) viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     
@@ -33,7 +33,7 @@
     [self p_addMasonry];
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.chatKeyboardController setChatBaseVC:self];
@@ -43,7 +43,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self.chatKeyboardController selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
 }
 
-- (void) viewWillDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -56,24 +56,24 @@
     [self.navigationItem setTitle:user.showName];
 }
 
-- (void) setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData
+- (void)setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData
 {
     [self.moreKeyboard setChatMoreKeyboardData:moreKeyboardData];
 }
 
-- (void) setChatEmojiKeyboardData:(NSMutableArray *)emojiKeyboardData
+- (void)setChatEmojiKeyboardData:(NSMutableArray *)emojiKeyboardData
 {
     [self.emojiKeyboard setEmojiGroupData:emojiKeyboardData];
 }
 
 #pragma mark - Delegate -
 //MARK: UITableViewDataSouce
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.data.count;
 }
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLMessage *message = self.data[indexPath.row];
     if (message.messageType == TLMessageTypeText) {
@@ -84,25 +84,41 @@
     return nil;
 }
 
+//MARK: UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100.0f;
+}
+
 //MARK: TLChatBarDataDelegate
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
     TLMessage *message = [[TLMessage alloc] init];
     message.fromID = [TLUserHelper sharedHelper].user.userID;
     message.toID = self.user.userID;
-    message.username = self.user.showName;
+    message.fromUser = [TLUserHelper sharedHelper].user;
     message.messageType = TLMessageTypeText;
     message.ownerTyper = TLMessageOwnerTypeSelf;
     message.text = text;
     message.showTime = YES;
-    message.showName = YES;
+    message.showName = NO;
     [self.data addObject:message];
+    TLMessage *message1 = [[TLMessage alloc] init];
+    message1.fromID = self.user.userID;
+    message1.toID = [TLUserHelper sharedHelper].user.userID;
+    message1.fromUser = self.user;
+    message1.messageType = TLMessageTypeText;
+    message1.ownerTyper = TLMessageOwnerTypeOther;
+    message1.text = text;
+    message1.showTime = NO;
+    message1.showName = NO;
+    [self.data addObject:message1];
     [self.tableView reloadData];
     [self.tableView scrollToBottomWithAnimation:YES];
 }
 
 #pragma mark - Private Methods -
-- (void) p_addMasonry
+- (void)p_addMasonry
 {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.mas_equalTo(self.view);
@@ -122,6 +138,7 @@
         [_tableView setTableFooterView:[[UIView alloc] init]];
         [_tableView setDataSource:self];
         [_tableView setDelegate:self];
+        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     }
     return _tableView;
 }

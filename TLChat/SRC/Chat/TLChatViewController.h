@@ -8,10 +8,7 @@
 
 #import "TLChatBaseViewController.h"
 
-@class TLUser;
 @interface TLChatViewController : TLChatBaseViewController
-
-@property (nonatomic, strong) TLUser *user;
 
 + (TLChatViewController *) sharedChatVC;
 

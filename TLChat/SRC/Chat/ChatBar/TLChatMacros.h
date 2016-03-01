@@ -22,4 +22,13 @@ typedef NS_ENUM(NSInteger, TLEmojiGroupType) {
     TLEmojiGroupTypeImageWithTitle,
 };
 
+typedef NS_ENUM(NSInteger, TLChatBarStatus) {
+    TLChatBarStatusInit,
+    TLChatBarStatusVoice,
+    TLChatBarStatusEmoji,
+    TLChatBarStatusMore,
+    TLChatBarStatusKeyboard,
+};
+
+
 #endif /* TLChatMacros_h */

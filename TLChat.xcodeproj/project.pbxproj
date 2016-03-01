@@ -29,7 +29,7 @@
 		C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F1131C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m */; };
 		C26B50CE1C859D0D00210467 /* TLMessageBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C26B50CD1C859D0D00210467 /* TLMessageBaseCell.m */; };
 		C26B50D11C85A6E000210467 /* TLTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C26B50D01C85A6E000210467 /* TLTextMessageCell.m */; };
-		C26B50D41C85A8E300210467 /* TLChatBaseViewControllerKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C26B50D31C85A8E300210467 /* TLChatBaseViewControllerKeyboard.m */; };
+		C26B50D41C85A8E300210467 /* TLChatKeyboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26B50D31C85A8E300210467 /* TLChatKeyboardController.m */; };
 		C271A4FF1C83D6F9004372D4 /* TLInfoButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A4FE1C83D6F9004372D4 /* TLInfoButtonCell.m */; };
 		C271A5021C83FA0B004372D4 /* TLInfoHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5011C83FA0B004372D4 /* TLInfoHeaderFooterView.m */; };
 		C271A5061C83FEC8004372D4 /* TLFriendDetailUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5051C83FEC8004372D4 /* TLFriendDetailUserCell.m */; };
@@ -193,8 +193,9 @@
 		C26B50CD1C859D0D00210467 /* TLMessageBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessageBaseCell.m; sourceTree = "<group>"; };
 		C26B50CF1C85A6E000210467 /* TLTextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTextMessageCell.h; sourceTree = "<group>"; };
 		C26B50D01C85A6E000210467 /* TLTextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTextMessageCell.m; sourceTree = "<group>"; };
-		C26B50D21C85A8E300210467 /* TLChatBaseViewControllerKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBaseViewControllerKeyboard.h; sourceTree = "<group>"; };
-		C26B50D31C85A8E300210467 /* TLChatBaseViewControllerKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatBaseViewControllerKeyboard.m; sourceTree = "<group>"; };
+		C26B50D21C85A8E300210467 /* TLChatKeyboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatKeyboardController.h; sourceTree = "<group>"; };
+		C26B50D31C85A8E300210467 /* TLChatKeyboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatKeyboardController.m; sourceTree = "<group>"; };
+		C26B50D51C85B25400210467 /* TLChatBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBarDelegate.h; sourceTree = "<group>"; };
 		C271A4FD1C83D6F9004372D4 /* TLInfoButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfoButtonCell.h; sourceTree = "<group>"; };
 		C271A4FE1C83D6F9004372D4 /* TLInfoButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfoButtonCell.m; sourceTree = "<group>"; };
 		C271A5001C83FA0B004372D4 /* TLInfoHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfoHeaderFooterView.h; sourceTree = "<group>"; };
@@ -597,8 +598,8 @@
 				C2CE0BBC1C717384006C5C2A /* ChatCells */,
 				C2CE0BC41C717514006C5C2A /* TLChatBaseViewController.h */,
 				C2CE0BC51C717514006C5C2A /* TLChatBaseViewController.m */,
-				C26B50D21C85A8E300210467 /* TLChatBaseViewControllerKeyboard.h */,
-				C26B50D31C85A8E300210467 /* TLChatBaseViewControllerKeyboard.m */,
+				C26B50D21C85A8E300210467 /* TLChatKeyboardController.h */,
+				C26B50D31C85A8E300210467 /* TLChatKeyboardController.m */,
 				C2CE0BC11C7173B2006C5C2A /* TLChatViewController.h */,
 				C2CE0BC21C7173B2006C5C2A /* TLChatViewController.m */,
 			);
@@ -810,9 +811,10 @@
 		C282DF5E1C74586E006924AE /* ChatBar */ = {
 			isa = PBXGroup;
 			children = (
+				C203C0081C77270300883268 /* TLChatMacros.h */,
 				C282DF5F1C74586E006924AE /* TLChatBar.h */,
 				C282DF601C74586E006924AE /* TLChatBar.m */,
-				C203C0081C77270300883268 /* TLChatMacros.h */,
+				C26B50D51C85B25400210467 /* TLChatBarDelegate.h */,
 			);
 			path = ChatBar;
 			sourceTree = "<group>";
@@ -1549,7 +1551,7 @@
 				C2DD58E91C58CEF2005419E4 /* UIColor+TLChat.m in Sources */,
 				C2B9730C1C6A52BB004B9B71 /* TLPrivacySettingViewController.m in Sources */,
 				C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetySettingViewController.m in Sources */,
-				C26B50D41C85A8E300210467 /* TLChatBaseViewControllerKeyboard.m in Sources */,
+				C26B50D41C85A8E300210467 /* TLChatKeyboardController.m in Sources */,
 				C2142F0D1C53864C0030B29B /* TLUser.m in Sources */,
 				C2D851591C68D952007DD697 /* TLBaseDataModel.m in Sources */,
 				C2AF1FA01C6B603300617D98 /* TLMineInfoHelper.m in Sources */,

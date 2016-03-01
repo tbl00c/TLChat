@@ -7,26 +7,14 @@
 //
 
 #import "TLChatBaseViewController.h"
-#import "TLChatMacros.h"
-#import "TLChatBar.h"
-#import "TLMoreKeyboard.h"
-#import "TLEmojiKeyboard.h"
+#import "TLChatKeyboardController.h"
+#import "TLUserHelper.h"
 
 #import "TLTextMessageCell.h"
 
-@interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDelegate, TLKeyboardDelegate>
-{
-    TLChatBarStatus lastStatus;
-    TLChatBarStatus curStatus;
-}
+@interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDataDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
-
-@property (nonatomic, strong) TLChatBar *chatBar;
-
-@property (nonatomic, strong) TLMoreKeyboard *moreKeyboard;
-
-@property (nonatomic, strong) TLEmojiKeyboard *emojiKeyboard;
+@property (nonatomic, strong) TLChatKeyboardController *chatKeyboardController;
 
 @end
 
@@ -48,10 +36,11 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.chatKeyboardController setChatBaseVC:self];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self.chatKeyboardController selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self.chatKeyboardController selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self.chatKeyboardController selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -61,6 +50,12 @@
 }
 
 #pragma mark - Public Methods -
+- (void)setUser:(TLUser *)user
+{
+    _user = user;
+    [self.navigationItem setTitle:user.showName];
+}
+
 - (void) setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData
 {
     [self.moreKeyboard setChatMoreKeyboardData:moreKeyboardData];
@@ -89,138 +84,21 @@
     return nil;
 }
 
-//MARK: UITableViewDelegate
-
-
-//MARK: TLChatBarDelegate
+//MARK: TLChatBarDataDelegate
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
-    [self.data addObject:text];
+    TLMessage *message = [[TLMessage alloc] init];
+    message.fromID = [TLUserHelper sharedHelper].user.userID;
+    message.toID = self.user.userID;
+    message.username = self.user.showName;
+    message.messageType = TLMessageTypeText;
+    message.ownerTyper = TLMessageOwnerTypeSelf;
+    message.text = text;
+    message.showTime = YES;
+    message.showName = YES;
+    [self.data addObject:message];
     [self.tableView reloadData];
     [self.tableView scrollToBottomWithAnimation:YES];
-}
-
-- (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus
-{
-    if (curStatus == toStatus) {
-        return;
-    }
-    lastStatus = fromStatus;
-    curStatus = toStatus;
-    if (toStatus == TLChatBarStatusInit) {
-        if (fromStatus == TLChatBarStatusMore) {
-            [self.moreKeyboard dismissWithAnimation:YES];
-        }
-        else if (fromStatus == TLChatBarStatusEmoji) {
-            [self.emojiKeyboard dismissWithAnimation:YES];
-        }
-    }
-    else if (toStatus == TLChatBarStatusKeyboard) {
-        if (fromStatus == TLChatBarStatusMore) {
-            [self.moreKeyboard mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.chatBar.mas_bottom);
-                make.left.and.right.mas_equalTo(self.view);
-                make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
-            }];
-        }
-        else if (fromStatus == TLChatBarStatusEmoji) {
-            [self.emojiKeyboard mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.chatBar.mas_bottom);
-                make.left.and.right.mas_equalTo(self.view);
-                make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
-            }];
-        }
-    }
-    else if (toStatus == TLChatBarStatusVoice) {
-        if (fromStatus == TLChatBarStatusMore) {
-            [self.moreKeyboard dismissWithAnimation:YES];
-        }
-        else if (fromStatus == TLChatBarStatusEmoji) {
-            [self.emojiKeyboard dismissWithAnimation:YES];
-        }
-    }
-    else if (toStatus == TLChatBarStatusEmoji) {
-        if (fromStatus == TLChatBarStatusKeyboard) {
-            [self.emojiKeyboard showInView:self.view withAnimation:YES];
-        }
-        else {
-            [self.emojiKeyboard showInView:self.view withAnimation:YES];
-        }
-    }
-    else if (toStatus == TLChatBarStatusMore) {
-        if (fromStatus == TLChatBarStatusKeyboard) {
-            [self.moreKeyboard showInView:self.view withAnimation:YES];
-        }
-        else {
-            [self.moreKeyboard showInView:self.view withAnimation:YES];
-        }
-    }
-}
-
-- (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height
-{
-    [self.tableView scrollToBottomWithAnimation:NO];
-}
-
-//MARK: TLKeyboardDelegate
-- (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
-{
-    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view).mas_offset(-height);
-    }];
-    [self.view layoutIfNeeded];
-    [self.tableView scrollToBottomWithAnimation:NO];
-}
-
-- (void)chatKeyboardDidShow:(id)keyboard
-{
-    if (curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji) {
-        [self.emojiKeyboard dismissWithAnimation:NO];
-    }
-    else if (curStatus == TLChatBarStatusEmoji && lastStatus == TLChatBarStatusMore) {
-        [self.moreKeyboard dismissWithAnimation:NO];
-    }
-}
-
-#pragma mark - Event Response
-- (void)keyboardWillHide:(NSNotification *)notification
-{
-    if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
-        return;
-    }
-    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view);
-    }];
-    [self.view layoutIfNeeded];
-}
-
-- (void)keyboardFrameWillChange:(NSNotification *)notification
-{
-    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    if (lastStatus == TLChatBarStatusMore || lastStatus == TLChatBarStatusEmoji) {
-        if (keyboardFrame.size.height <= HEIGHT_CHAT_KEYBOARD) {
-            return;
-        }
-    }
-    else if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
-        return;
-    }
-    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view).mas_offset(-keyboardFrame.size.height);
-    }];
-    [self.view layoutIfNeeded];
-    [self.tableView scrollToBottomWithAnimation:NO];
-}
-
-
-- (void)keyboardDidShow:(NSNotification *)notification
-{
-    if (lastStatus == TLChatBarStatusMore) {
-        [self.moreKeyboard dismissWithAnimation:NO];
-    }
-    else if (lastStatus == TLChatBarStatusEmoji) {
-        [self.emojiKeyboard dismissWithAnimation:NO];
-    }
 }
 
 #pragma mark - Private Methods -
@@ -252,7 +130,8 @@
 {
     if (_chatBar == nil) {
         _chatBar = [[TLChatBar alloc] init];
-        [_chatBar setDelegate:self];
+        [_chatBar setDelegate:self.chatKeyboardController];
+        [_chatBar setDataDelegate:self];
     }
     return _chatBar;
 }
@@ -269,7 +148,7 @@
 {
     if (_emojiKeyboard == nil) {
         _emojiKeyboard = [TLEmojiKeyboard keyboard];
-        [_emojiKeyboard setKeyboardDelegate:self];
+        [_emojiKeyboard setKeyboardDelegate:self.chatKeyboardController];
         [_emojiKeyboard setDataSource:self];
     }
     return _emojiKeyboard;
@@ -279,10 +158,18 @@
 {
     if (_moreKeyboard == nil) {
         _moreKeyboard = [TLMoreKeyboard keyboard];
-        [_moreKeyboard setKeyboardDelegate:self];
+        [_moreKeyboard setKeyboardDelegate:self.chatKeyboardController];
         [_moreKeyboard setDelegate:self];
     }
     return _moreKeyboard;
+}
+
+- (TLChatKeyboardController *)chatKeyboardController
+{
+    if (_chatKeyboardController == nil) {
+        _chatKeyboardController = [[TLChatKeyboardController alloc] init];
+    }
+    return _chatKeyboardController;
 }
 
 @end

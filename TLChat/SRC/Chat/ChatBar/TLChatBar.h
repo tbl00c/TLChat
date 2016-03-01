@@ -7,38 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef NS_ENUM(NSInteger, TLChatBarStatus) {
-    TLChatBarStatusInit,
-    TLChatBarStatusVoice,
-    TLChatBarStatusEmoji,
-    TLChatBarStatusMore,
-    TLChatBarStatusKeyboard,
-};
+#import "TLChatBarDelegate.h"
 
 @class TLChatBar;
-@protocol TLChatBarDelegate <NSObject>
-
-/**
- *  键盘状态改变
- */
-- (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus;
-
-/**
- *  输入框高度改变
- */
-- (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height;
-
+@protocol TLChatBarDataDelegate <NSObject>
 /**
  *  发送文字
  */
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text;
-
 @end
 
 @interface TLChatBar : UIView
 
 @property (nonatomic, assign) id<TLChatBarDelegate> delegate;
+
+@property (nonatomic, assign) id<TLChatBarDataDelegate> dataDelegate;
 
 @property (nonatomic, assign) TLChatBarStatus status;
 

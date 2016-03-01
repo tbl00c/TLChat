@@ -10,10 +10,28 @@
 #import "TLMoreKeyboardDelegate.h"
 #import "TLEmojiKeyboardDataSource.h"
 
+#import "TLChatBar.h"
+#import "TLMoreKeyboard.h"
+#import "TLEmojiKeyboard.h"
+
+#import "TLUser.h"
+
 @interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate, TLEmojiKeyboardDataSource>
+
+@property (nonatomic, strong) TLUser *user;
 
 /// 聊天数据
 @property (nonatomic, strong) NSMutableArray *data;
+
+/// UI
+@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) TLChatBar *chatBar;
+
+@property (nonatomic, strong) TLMoreKeyboard *moreKeyboard;
+
+@property (nonatomic, strong) TLEmojiKeyboard *emojiKeyboard;
+
 
 /**
  *  设置“更多”键盘元素

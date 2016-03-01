@@ -10,4 +10,10 @@
 
 @implementation TLTextMessageCell
 
+- (void)setMessage:(TLMessage *)message
+{
+    _message = message;
+    [self.textLabel setText:message.text];
+}
+
 @end

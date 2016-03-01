@@ -10,4 +10,12 @@
 
 @implementation TLMessage
 
+- (id)init
+{
+    if (self = [super init]) {
+        self.date = [NSDate date];
+    }
+    return self;
+}
+
 @end

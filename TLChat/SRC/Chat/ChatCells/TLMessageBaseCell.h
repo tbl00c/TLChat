@@ -11,8 +11,6 @@
 
 @interface TLMessageBaseCell : UITableViewCell
 
-@property (nonatomic, strong) TLMessage *message;
-
 @property (nonatomic, strong) UILabel *timeLabel;
 
 @property (nonatomic, strong) UIButton *avatarButton;

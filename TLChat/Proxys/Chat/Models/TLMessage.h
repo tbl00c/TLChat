@@ -38,6 +38,7 @@ typedef NS_ENUM(NSUInteger, TLMessageReadState) {
 @interface TLMessage : TLBaseDataModel
 
 @property (nonatomic, strong) NSString *fromID;                     // 发送者ID
+@property (nonatomic, strong) NSString *toID;                       // 接收者ID
 @property (nonatomic, strong) NSString *username;                   // 用户名
 
 @property (nonatomic, strong) NSDate *date;                         // 发送时间

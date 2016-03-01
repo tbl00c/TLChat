@@ -10,7 +10,6 @@
 #import <MobClick.h>
 #import "TLMoreKBHelper.h"
 #import "TLEmojiKBHelper.h"
-#import "TLUser.h"
 
 static TLChatViewController *chatVC;
 
@@ -42,10 +41,6 @@ static TLChatViewController *chatVC;
     [self setChatMoreKeyboardData:self.moreKBhelper.chatMoreKeyboardData];
     self.emojiKBHelper = [[TLEmojiKBHelper alloc] init];
     [self setChatEmojiKeyboardData:self.emojiKBHelper.emojiGroupData];
- 
-    for (int i = 0; i < 12; i ++) {
-        [self.data addObject:[NSString stringWithFormat:@"%d", i]];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -66,13 +61,6 @@ static TLChatViewController *chatVC;
     NSLog(@"dealloc ChatVC");
 #endif
 }
-
-- (void)setUser:(TLUser *)user
-{
-    _user = user;
-    [self.navigationItem setTitle:user.showName];
-}
-
 
 #pragma mark - Delegate -
 //MARK: TLMoreKeyboardDelegate

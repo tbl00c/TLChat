@@ -68,8 +68,8 @@
 - (void) sendCurrentText
 {
     if (self.textView.text.length > 0) {     // send Text
-        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:sendText:)]) {
-            [_delegate chatBar:self sendText:self.textView.text];
+        if (_dataDelegate && [_dataDelegate respondsToSelector:@selector(chatBar:sendText:)]) {
+            [_dataDelegate chatBar:self sendText:self.textView.text];
         }
     }
     [self.textView setText:@""];

@@ -10,4 +10,6 @@
 
 @interface TLTextMessageCell : TLMessageBaseCell
 
+@property (nonatomic, strong) TLMessage *message;
+
 @end

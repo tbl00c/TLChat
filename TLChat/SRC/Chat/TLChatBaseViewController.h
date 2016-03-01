@@ -18,11 +18,11 @@
 /**
  *  设置“更多”键盘元素
  */
-- (void) setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData;
+- (void)setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData;
 
 /**
  *  设置“表情”键盘元素
  */
-- (void) setChatEmojiKeyboardData:(NSMutableArray *)emojiKeyboardData;
+- (void)setChatEmojiKeyboardData:(NSMutableArray *)emojiKeyboardData;
 
 @end

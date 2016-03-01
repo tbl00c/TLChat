@@ -12,6 +12,8 @@
 #import "TLMoreKeyboard.h"
 #import "TLEmojiKeyboard.h"
 
+#import "TLTextMessageCell.h"
+
 @interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDelegate, TLKeyboardDelegate>
 {
     TLChatBarStatus lastStatus;
@@ -37,6 +39,8 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.chatBar];
+    
+    [self.tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
     
     [self p_addMasonry];
 }
@@ -76,12 +80,13 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"1"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"1"];
+    TLMessage *message = self.data[indexPath.row];
+    if (message.messageType == TLMessageTypeText) {
+        TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell"];
+        [cell setMessage:message];
+        return cell;
     }
-    [cell.textLabel setText:self.data[indexPath.row]];
-    return cell;
+    return nil;
 }
 
 //MARK: UITableViewDelegate

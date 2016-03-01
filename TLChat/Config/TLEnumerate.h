@@ -31,7 +31,11 @@ typedef NS_ENUM(NSInteger, TLMessageRemindType) {
     TLMessageRemindTypeUnlike,    // 不喜欢
 };
 
+/**
+ *  消息类型
+ */
 typedef NS_ENUM(NSInteger, TLMessageType) {
+    TLMessageTypeUnknown,
     TLMessageTypeText,          // 文字
     TLMessageTypeImage,         // 图片
     TLMessageTypeVoice,         // 语音
@@ -40,7 +44,7 @@ typedef NS_ENUM(NSInteger, TLMessageType) {
     TLMessageTypePosition,      // 位置
     TLMessageTypeBusinessCard,  // 名片
     TLMessageTypeSystem,        // 系统
-    TLMessageTypeUnknown,
+    TLMessageTypeOther,
 };
 
 typedef NS_ENUM(NSUInteger, TLMoreKeyboardItemType) {

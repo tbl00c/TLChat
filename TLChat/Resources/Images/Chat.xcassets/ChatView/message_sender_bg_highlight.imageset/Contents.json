@@ -10,17 +10,17 @@
         "center" : {
           "mode" : "tile",
           "width" : 1,
-          "height" : 54
+          "height" : 1
         },
         "cap-insets" : {
-          "bottom" : 25,
-          "top" : 17,
-          "right" : 53,
-          "left" : 60
+          "bottom" : 39,
+          "top" : 66,
+          "right" : 75,
+          "left" : 53
         }
       },
       "idiom" : "iphone",
-      "filename" : "message_sender_background_highlight@2x.png",
+      "filename" : "SenderTextNodeBkgHL@2x.png",
       "scale" : "2x"
     },
     {
@@ -29,17 +29,17 @@
         "center" : {
           "mode" : "tile",
           "width" : 1,
-          "height" : 72
+          "height" : 1
         },
         "cap-insets" : {
-          "bottom" : 48,
-          "top" : 26,
-          "right" : 88,
-          "left" : 99
+          "bottom" : 65,
+          "top" : 96,
+          "right" : 106,
+          "left" : 91
         }
       },
       "idiom" : "iphone",
-      "filename" : "message_sender_background_highlight@3x.png",
+      "filename" : "SenderTextNodeBkgHL@3x.png",
       "scale" : "3x"
     }
   ],

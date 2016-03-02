@@ -8,6 +8,8 @@
 
 #import "TLMessageBaseCell.h"
 
+#define     MAX_MESSAGE_WIDTH       200
+
 @interface TLTextMessageCell : TLMessageBaseCell
 
 

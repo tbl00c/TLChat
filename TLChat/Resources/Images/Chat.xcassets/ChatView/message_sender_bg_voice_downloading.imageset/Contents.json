@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "idiom" : "iphone",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
@@ -9,18 +9,18 @@
         "mode" : "9-part",
         "center" : {
           "mode" : "tile",
-          "width" : 36,
+          "width" : 1,
           "height" : 1
         },
         "cap-insets" : {
-          "bottom" : 25,
+          "bottom" : 42,
           "top" : 65,
-          "right" : 39,
-          "left" : 24
+          "right" : 60,
+          "left" : 66
         }
       },
-      "idiom" : "iphone",
-      "filename" : "message_sender_background_normal@2x.png",
+      "idiom" : "universal",
+      "filename" : "SenderVoiceNodeDownloading@2x.png",
       "scale" : "2x"
     },
     {
@@ -28,18 +28,18 @@
         "mode" : "9-part",
         "center" : {
           "mode" : "tile",
-          "width" : 47,
+          "width" : 1,
           "height" : 1
         },
         "cap-insets" : {
-          "bottom" : 35,
-          "top" : 100,
-          "right" : 86,
-          "left" : 36
+          "bottom" : 67,
+          "top" : 94,
+          "right" : 114,
+          "left" : 83
         }
       },
-      "idiom" : "iphone",
-      "filename" : "message_sender_background_normal@3x.png",
+      "idiom" : "universal",
+      "filename" : "SenderVoiceNodeDownloading@3x.png",
       "scale" : "3x"
     }
   ],

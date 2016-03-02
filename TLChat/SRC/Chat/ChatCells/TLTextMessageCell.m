@@ -8,10 +8,10 @@
 
 #import "TLTextMessageCell.h"
 
-#define     MSG_SPACE_TOP       12
-#define     MSG_SPACE_BTM       10
-#define     MSG_SPACE_LEFT      10
-#define     MSG_SPACE_RIGHT     15
+#define     MSG_SPACE_TOP       9
+#define     MSG_SPACE_BTM       16
+#define     MSG_SPACE_LEFT      18
+#define     MSG_SPACE_RIGHT     18
 
 @interface TLTextMessageCell ()
 
@@ -34,14 +34,16 @@
     [super setMessage:message];
     [self.messageLabel setText:message.text];
     
+    [self.messageLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     if (message.ownerTyper == TLMessageOwnerTypeSelf) {
         [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT);
             make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
-            make.width.mas_lessThanOrEqualTo(200);
+            make.width.mas_lessThanOrEqualTo(MAX_MESSAGE_WIDTH);
         }];
         [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.messageLabel).mas_offset(-MSG_SPACE_RIGHT);
+            make.left.mas_equalTo(self.messageLabel).mas_offset(-MSG_SPACE_LEFT);
             make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM);
         }];
     }
@@ -49,7 +51,7 @@
         [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_RIGHT);
             make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
-            make.width.mas_lessThanOrEqualTo(200);
+            make.width.mas_lessThanOrEqualTo(MAX_MESSAGE_WIDTH);
         }];
         [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_LEFT);
@@ -63,7 +65,7 @@
 {
     if (_messageLabel == nil) {
         _messageLabel = [[UILabel alloc] init];
-        [_messageLabel setFont:[UIFont systemFontOfSize:14.0f]];
+        [_messageLabel setFont:[UIFont systemFontOfSize:16.0f]];
         [_messageLabel setNumberOfLines:0];
     }
     return _messageLabel;

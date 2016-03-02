@@ -9,19 +9,18 @@
 #import "TLMessageBaseCell.h"
 #import <UIButton+WebCache.h>
 
-#define     TIMELABEL_HEIGHT    18.0f
-#define     TIMELABEL_SPACE_Y   5.0f
+#define     TIMELABEL_HEIGHT    20.0f
+#define     TIMELABEL_SPACE_Y   10.0f
 
-#define     NAMELABEL_HEIGHT    13.0f
 #define     NAMELABEL_SPACE_X   12.0f
 #define     NAMELABEL_SPACE_Y   1.0f
 
-#define     AVATAR_WIDTH        38.0f
+#define     AVATAR_WIDTH        40.0f
 #define     AVATAR_SPACE_X      8.0f
-#define     AVATAR_SPACE_Y      8.0f
+#define     AVATAR_SPACE_Y      12.0f
 
 #define     MSGBG_SPACE_X       3.0f
-#define     MSGBG_SPACE_Y       4.0f
+#define     MSGBG_SPACE_Y       1.0f
 
 @interface TLMessageBaseCell ()
 {
@@ -78,11 +77,11 @@
                 make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(- NAMELABEL_SPACE_X);
             }];
     
-            [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_background_normal"]];
-            [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_background_highlight"]];
+            [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_bg"]];
+            [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_bgHL"]];
             [self.messageBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X);
-                make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y);
+                make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(message.showName ? 0 : -MSGBG_SPACE_Y);
             }];
         }
         else {
@@ -97,11 +96,11 @@
                 make.left.mas_equalTo(self.avatarButton.mas_right).mas_equalTo(NAMELABEL_SPACE_X);
             }];
             
-            [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_receiver_background_normal"]];
-            [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_receiver_background_highlight"]];
+            [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_receiver_bg"]];
+            [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_receiver_bgHL"]];
             [self.messageBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.left.mas_equalTo(self.avatarButton.mas_right).mas_offset(MSGBG_SPACE_X);
-                make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y);
+                make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(message.showName ? 0 : -MSGBG_SPACE_Y);
             }];
         }
     }
@@ -133,8 +132,8 @@
         make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y);
     }];
     
-    [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_background_normal"]];
-    [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_background_highlight"]];
+    [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_bg"]];
+    [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_bgHL"]];
     [self.messageBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X);
         make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y);
@@ -150,7 +149,7 @@
         [_timeLabel setTextColor:[UIColor whiteColor]];
         [_timeLabel setBackgroundColor:[UIColor grayColor]];
         [_timeLabel.layer setMasksToBounds:YES];
-        [_timeLabel.layer setCornerRadius:3.0f];
+        [_timeLabel.layer setCornerRadius:5.0f];
     }
     return _timeLabel;
 }
@@ -159,7 +158,9 @@
 {
     if (_avatarButton == nil) {
         _avatarButton = [[UIButton alloc] init];
-        [_avatarButton setBackgroundColor:[UIColor blueColor]];
+        [_avatarButton.layer setMasksToBounds:YES];
+        [_avatarButton.layer setBorderWidth:0.5f];
+        [_avatarButton.layer setBorderColor:[UIColor colorWithWhite:0.7 alpha:1.0].CGColor];
     }
     return _avatarButton;
 }
@@ -168,7 +169,8 @@
 {
     if (_usernameLabel == nil) {
         _usernameLabel = [[UILabel alloc] init];
-        [_usernameLabel setFont:[UIFont systemFontOfSize:10.0f]];
+        [_usernameLabel setTextColor:[UIColor grayColor]];
+        [_usernameLabel setFont:[UIFont systemFontOfSize:12.0f]];
     }
     return _usernameLabel;
 }

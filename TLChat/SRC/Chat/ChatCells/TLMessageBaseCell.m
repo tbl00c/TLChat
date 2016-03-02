@@ -23,7 +23,7 @@
 #define     MSGBG_SPACE_X       3.0f
 #define     MSGBG_SPACE_Y       1.0f
 
-#define     BOTTOM_SPACE        5.0f
+#define     BOTTOM_SPACE        0.0f
 
 @interface TLMessageBaseCell ()
 
@@ -47,7 +47,8 @@
 
 - (void)setMessage:(TLMessage *)message
 {
-    [self.timeLabel setText:[NSString stringWithFormat:@"%@", message.date]];
+    _message = message;
+    [self.timeLabel setText:[NSString stringWithFormat:@"  %@  ", message.date]];
     [self.usernameLabel setText:message.fromUser.showName];
     [self.avatarButton sd_setImageWithURL:TLURL(message.fromUser.avatarURL) forState:UIControlStateNormal];
     
@@ -121,6 +122,14 @@
     }];
 }
 
+#pragma mark - Event Response -
+- (void)avatarButtonDown:(UIButton *)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(messageCellDidClickAvatarForUser:)]) {
+        [_delegate messageCellDidClickAvatarForUser:self.message.fromUser];
+    }
+}
+
 #pragma mark - Getter -
 - (UILabel *)timeLabel
 {
@@ -142,6 +151,7 @@
         [_avatarButton.layer setMasksToBounds:YES];
         [_avatarButton.layer setBorderWidth:0.5f];
         [_avatarButton.layer setBorderColor:[UIColor colorWithWhite:0.7 alpha:1.0].CGColor];
+        [_avatarButton addTarget:self action:@selector(avatarButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _avatarButton;
 }

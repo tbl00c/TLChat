@@ -10,6 +10,8 @@
 #import "TLFriendDetailUserCell.h"
 #import "TLFriendDetailAlbumCell.h"
 #import "TLFriendHelper.h"
+#import "TLChatViewController.h"
+#import "TLRootViewController.h"
 
 #define     HEIGHT_USER_CELL           90.0f
 #define     HEIGHT_ALBUM_CELL          80.0f
@@ -69,6 +71,43 @@
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
+
+
+//MARK: TLInfoButtonCellDelegate
+- (void)infoButtonCellClicked:(TLInfo *)info
+{
+    if ([info.title isEqualToString:@"发消息"]) {
+        TLChatViewController *chatVC = [TLChatViewController sharedChatVC];
+        if ([self.navigationController findViewController:@"TLChatViewController"]) {
+            if ([chatVC.user.userID isEqualToString:self.user.userID]) {
+                [self.navigationController popToViewControllerWithClassName:@"TLChatViewController" animated:YES];
+            }
+            else {
+                [chatVC setUser:self.user];
+                __block id navController = self.navigationController;
+                [self.navigationController popToRootViewControllerAnimated:YES completion:^(BOOL finished) {
+                    if (finished) {
+                        [navController pushViewController:chatVC animated:YES];
+                    }
+                }];
+            }
+        }
+        else {
+            [chatVC setUser:self.user];
+            UIViewController *vc = [[TLRootViewController sharedRootViewController] childViewControllerAtIndex:0];
+            [[TLRootViewController sharedRootViewController] setSelectedIndex:0];
+            [vc setHidesBottomBarWhenPushed:YES];
+            [vc.navigationController pushViewController:chatVC animated:YES completion:^(BOOL finished) {
+                [self.navigationController popViewControllerAnimated:NO];
+            }];
+            [vc setHidesBottomBarWhenPushed:NO];
+        }
+    }
+    else {
+        [super infoButtonCellClicked:info];
+    }
+}
+
 
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender

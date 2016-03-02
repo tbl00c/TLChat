@@ -13,7 +13,6 @@
 		C2097F011C52326500163B5C /* TLChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F001C52326500163B5C /* TLChatTests.m */; };
 		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
 		C209F4381C7D5AAA001B9825 /* TLScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C209F4371C7D5AAA001B9825 /* TLScannerViewController.m */; };
-		C209F6731C7D9FCB001B9825 /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = C209F6721C7D9FCB001B9825 /* UIAlertView+Block.m */; };
 		C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EA61C531FA40030B29B /* TLAppDelegate.m */; };
 		C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2142ED91C53345C0030B29B /* Launch.xcassets */; };
 		C2142EF31C5376D40030B29B /* TLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EE91C5376D40030B29B /* TLNavigationController.m */; };
@@ -34,13 +33,9 @@
 		C271A5021C83FA0B004372D4 /* TLInfoHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5011C83FA0B004372D4 /* TLInfoHeaderFooterView.m */; };
 		C271A5061C83FEC8004372D4 /* TLFriendDetailUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5051C83FEC8004372D4 /* TLFriendDetailUserCell.m */; };
 		C271A5091C83FEF2004372D4 /* TLFriendDetailAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5081C83FEF2004372D4 /* TLFriendDetailAlbumCell.m */; };
-		C282DF561C744352006924AE /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF531C744352006924AE /* UIImage+Color.m */; };
-		C282DF571C744352006924AE /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF551C744352006924AE /* UIView+Frame.m */; };
-		C282DF5A1C74498C006924AE /* UIButton+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF591C74498C006924AE /* UIButton+TLChat.m */; };
 		C282DF5D1C74545E006924AE /* TLMoreKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF5C1C74545E006924AE /* TLMoreKeyboard.m */; };
 		C282DF611C74586E006924AE /* TLChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF601C74586E006924AE /* TLChatBar.m */; };
 		C282DF651C7486DC006924AE /* TLEmojiKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF641C7486DC006924AE /* TLEmojiKeyboard.m */; };
-		C282DF681C756648006924AE /* UITableView+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF671C756648006924AE /* UITableView+TLChat.m */; };
 		C282DF6B1C75744A006924AE /* TLMoreKeyboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF6A1C75744A006924AE /* TLMoreKeyboardCell.m */; };
 		C282DF6E1C7574FE006924AE /* TLMoreKeyboardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF6D1C7574FE006924AE /* TLMoreKeyboardItem.m */; };
 		C282DF721C75C7E7006924AE /* TLMoreKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF711C75C7E7006924AE /* TLMoreKBHelper.m */; };
@@ -69,6 +64,15 @@
 		C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4351C663E8800CEBA81 /* TLMineHeaderCell.m */; };
 		C2B9E43A1C66451B00CEBA81 /* TLUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9E4391C66451B00CEBA81 /* TLUserHelper.m */; };
 		C2B9E43C1C665AC700CEBA81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B9E43B1C665AC700CEBA81 /* Common.xcassets */; };
+		C2BF17D01C86DB50003318CB /* NSString+PinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17BD1C86DB50003318CB /* NSString+PinYin.m */; };
+		C2BF17D11C86DB50003318CB /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17C01C86DB50003318CB /* UIAlertView+Block.m */; };
+		C2BF17D21C86DB50003318CB /* UIButton+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17C31C86DB50003318CB /* UIButton+TLChat.m */; };
+		C2BF17D31C86DB50003318CB /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17C61C86DB50003318CB /* UIImage+Color.m */; };
+		C2BF17D41C86DB50003318CB /* UINavigationController+StackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17C91C86DB50003318CB /* UINavigationController+StackManager.m */; };
+		C2BF17D51C86DB50003318CB /* UITableView+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17CC1C86DB50003318CB /* UITableView+TLChat.m */; };
+		C2BF17D61C86DB50003318CB /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17CF1C86DB50003318CB /* UIView+Frame.m */; };
+		C2BF17D91C86DCD0003318CB /* UINavigationController+JZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17D81C86DCD0003318CB /* UINavigationController+JZExtension.m */; };
+		C2BF17DD1C86E08F003318CB /* NSFileManager+Paths.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17DC1C86E08F003318CB /* NSFileManager+Paths.m */; };
 		C2CAA3731C7762B800B8152B /* TLEmojiGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CAA3721C7762B800B8152B /* TLEmojiGroupCell.m */; };
 		C2CAA3771C77773D00B8152B /* TLEmojiKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CAA3761C77773D00B8152B /* TLEmojiKBHelper.m */; };
 		C2CAA3821C7787C400B8152B /* TLEmojiItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CAA3811C7787C400B8152B /* TLEmojiItemCell.m */; };
@@ -107,7 +111,6 @@
 		C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */; };
 		C2EDE3011C6210A4005646A2 /* 10.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C2EDE3001C6210A4005646A2 /* 10.jpeg */; };
 		C2F0EBEE1C78F1A60090843C /* TLEmojiImageTitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */; };
-		C2F0EBF11C7A061D0090843C /* NSString+PinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF01C7A061D0090843C /* NSString+PinYin.m */; };
 		C2F0EBF51C7A0DA80090843C /* TLCommonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */; };
 		C2F0EBF81C7A0DC90090843C /* TLCommonSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF71C7A0DC90090843C /* TLCommonSettingHelper.m */; };
 		C2F0EBFC1C7A11480090843C /* TLExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBFB1C7A11480090843C /* TLExpressionViewController.m */; };
@@ -159,8 +162,6 @@
 		C2097F0D1C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C209F4361C7D5AAA001B9825 /* TLScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScannerViewController.h; sourceTree = "<group>"; };
 		C209F4371C7D5AAA001B9825 /* TLScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScannerViewController.m; sourceTree = "<group>"; };
-		C209F6711C7D9FCB001B9825 /* UIAlertView+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Block.h"; sourceTree = "<group>"; };
-		C209F6721C7D9FCB001B9825 /* UIAlertView+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Block.m"; sourceTree = "<group>"; };
 		C2142EA41C531F420030B29B /* TLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMacros.h; sourceTree = "<group>"; };
 		C2142EA51C531FA40030B29B /* TLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppDelegate.h; sourceTree = "<group>"; };
 		C2142EA61C531FA40030B29B /* TLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppDelegate.m; sourceTree = "<group>"; };
@@ -204,12 +205,6 @@
 		C271A5051C83FEC8004372D4 /* TLFriendDetailUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailUserCell.m; sourceTree = "<group>"; };
 		C271A5071C83FEF2004372D4 /* TLFriendDetailAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailAlbumCell.h; sourceTree = "<group>"; };
 		C271A5081C83FEF2004372D4 /* TLFriendDetailAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailAlbumCell.m; sourceTree = "<group>"; };
-		C282DF521C744352006924AE /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
-		C282DF531C744352006924AE /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
-		C282DF541C744352006924AE /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
-		C282DF551C744352006924AE /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
-		C282DF581C74498C006924AE /* UIButton+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TLChat.h"; sourceTree = "<group>"; };
-		C282DF591C74498C006924AE /* UIButton+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TLChat.m"; sourceTree = "<group>"; };
 		C282DF5B1C74545E006924AE /* TLMoreKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKeyboard.h; sourceTree = "<group>"; };
 		C282DF5C1C74545E006924AE /* TLMoreKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKeyboard.m; sourceTree = "<group>"; };
 		C282DF5F1C74586E006924AE /* TLChatBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBar.h; sourceTree = "<group>"; };
@@ -217,8 +212,6 @@
 		C282DF621C747551006924AE /* TLKeyboardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLKeyboardDelegate.h; sourceTree = "<group>"; };
 		C282DF631C7486DC006924AE /* TLEmojiKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiKeyboard.h; sourceTree = "<group>"; };
 		C282DF641C7486DC006924AE /* TLEmojiKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiKeyboard.m; sourceTree = "<group>"; };
-		C282DF661C756648006924AE /* UITableView+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TLChat.h"; sourceTree = "<group>"; };
-		C282DF671C756648006924AE /* UITableView+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TLChat.m"; sourceTree = "<group>"; };
 		C282DF691C75744A006924AE /* TLMoreKeyboardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKeyboardCell.h; sourceTree = "<group>"; };
 		C282DF6A1C75744A006924AE /* TLMoreKeyboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKeyboardCell.m; sourceTree = "<group>"; };
 		C282DF6C1C7574FE006924AE /* TLMoreKeyboardItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKeyboardItem.h; sourceTree = "<group>"; };
@@ -270,6 +263,25 @@
 		C2B9E4381C66451B00CEBA81 /* TLUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserHelper.h; sourceTree = "<group>"; };
 		C2B9E4391C66451B00CEBA81 /* TLUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserHelper.m; sourceTree = "<group>"; };
 		C2B9E43B1C665AC700CEBA81 /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
+		C2BF17B91C86CEC0003318CB /* TLMessageCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageCellDelegate.h; sourceTree = "<group>"; };
+		C2BF17BC1C86DB50003318CB /* NSString+PinYin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin.h"; sourceTree = "<group>"; };
+		C2BF17BD1C86DB50003318CB /* NSString+PinYin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin.m"; sourceTree = "<group>"; };
+		C2BF17BF1C86DB50003318CB /* UIAlertView+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Block.h"; sourceTree = "<group>"; };
+		C2BF17C01C86DB50003318CB /* UIAlertView+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Block.m"; sourceTree = "<group>"; };
+		C2BF17C21C86DB50003318CB /* UIButton+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TLChat.h"; sourceTree = "<group>"; };
+		C2BF17C31C86DB50003318CB /* UIButton+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TLChat.m"; sourceTree = "<group>"; };
+		C2BF17C51C86DB50003318CB /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		C2BF17C61C86DB50003318CB /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		C2BF17C81C86DB50003318CB /* UINavigationController+StackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StackManager.h"; sourceTree = "<group>"; };
+		C2BF17C91C86DB50003318CB /* UINavigationController+StackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StackManager.m"; sourceTree = "<group>"; };
+		C2BF17CB1C86DB50003318CB /* UITableView+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TLChat.h"; sourceTree = "<group>"; };
+		C2BF17CC1C86DB50003318CB /* UITableView+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TLChat.m"; sourceTree = "<group>"; };
+		C2BF17CE1C86DB50003318CB /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		C2BF17CF1C86DB50003318CB /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		C2BF17D71C86DCD0003318CB /* UINavigationController+JZExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+JZExtension.h"; sourceTree = "<group>"; };
+		C2BF17D81C86DCD0003318CB /* UINavigationController+JZExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JZExtension.m"; sourceTree = "<group>"; };
+		C2BF17DB1C86E08F003318CB /* NSFileManager+Paths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Paths.h"; sourceTree = "<group>"; };
+		C2BF17DC1C86E08F003318CB /* NSFileManager+Paths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Paths.m"; sourceTree = "<group>"; };
 		C2CAA3711C7762B800B8152B /* TLEmojiGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiGroupCell.h; sourceTree = "<group>"; };
 		C2CAA3721C7762B800B8152B /* TLEmojiGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiGroupCell.m; sourceTree = "<group>"; };
 		C2CAA3751C77773D00B8152B /* TLEmojiKBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiKBHelper.h; sourceTree = "<group>"; };
@@ -346,8 +358,6 @@
 		C2EDE3001C6210A4005646A2 /* 10.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpeg; sourceTree = "<group>"; };
 		C2F0EBEC1C78F1A60090843C /* TLEmojiImageTitleItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiImageTitleItemCell.h; sourceTree = "<group>"; };
 		C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiImageTitleItemCell.m; sourceTree = "<group>"; };
-		C2F0EBEF1C7A061D0090843C /* NSString+PinYin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin.h"; sourceTree = "<group>"; };
-		C2F0EBF01C7A061D0090843C /* NSString+PinYin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin.m"; sourceTree = "<group>"; };
 		C2F0EBF31C7A0DA80090843C /* TLCommonSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCommonSettingViewController.h; sourceTree = "<group>"; };
 		C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCommonSettingViewController.m; sourceTree = "<group>"; };
 		C2F0EBF61C7A0DC90090843C /* TLCommonSettingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCommonSettingHelper.h; sourceTree = "<group>"; };
@@ -514,29 +524,10 @@
 		C2142E941C531EFD0030B29B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C2BF17BA1C86DB50003318CB /* Categories */,
 				C2D500E81C565CC50088997C /* Vendors */,
-				C2142E951C531EFD0030B29B /* Category */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		C2142E951C531EFD0030B29B /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				C2F0EBEF1C7A061D0090843C /* NSString+PinYin.h */,
-				C2F0EBF01C7A061D0090843C /* NSString+PinYin.m */,
-				C282DF521C744352006924AE /* UIImage+Color.h */,
-				C282DF531C744352006924AE /* UIImage+Color.m */,
-				C282DF541C744352006924AE /* UIView+Frame.h */,
-				C282DF551C744352006924AE /* UIView+Frame.m */,
-				C282DF581C74498C006924AE /* UIButton+TLChat.h */,
-				C282DF591C74498C006924AE /* UIButton+TLChat.m */,
-				C282DF661C756648006924AE /* UITableView+TLChat.h */,
-				C282DF671C756648006924AE /* UITableView+TLChat.m */,
-				C209F6711C7D9FCB001B9825 /* UIAlertView+Block.h */,
-				C209F6721C7D9FCB001B9825 /* UIAlertView+Block.m */,
-			);
-			path = Category;
 			sourceTree = "<group>";
 		};
 		C2142E961C531EFD0030B29B /* Proxys */ = {
@@ -930,6 +921,95 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		C2BF17BA1C86DB50003318CB /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF17DA1C86E08F003318CB /* NSFileManager */,
+				C2BF17BB1C86DB50003318CB /* NSString */,
+				C2BF17BE1C86DB50003318CB /* UIAlertView */,
+				C2BF17C11C86DB50003318CB /* UIButton */,
+				C2BF17C41C86DB50003318CB /* UIImage */,
+				C2BF17C71C86DB50003318CB /* UINavigationController */,
+				C2BF17CA1C86DB50003318CB /* UITableView */,
+				C2BF17CD1C86DB50003318CB /* UIView */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		C2BF17BB1C86DB50003318CB /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF17BC1C86DB50003318CB /* NSString+PinYin.h */,
+				C2BF17BD1C86DB50003318CB /* NSString+PinYin.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		C2BF17BE1C86DB50003318CB /* UIAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF17BF1C86DB50003318CB /* UIAlertView+Block.h */,
+				C2BF17C01C86DB50003318CB /* UIAlertView+Block.m */,
+			);
+			path = UIAlertView;
+			sourceTree = "<group>";
+		};
+		C2BF17C11C86DB50003318CB /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF17C21C86DB50003318CB /* UIButton+TLChat.h */,
+				C2BF17C31C86DB50003318CB /* UIButton+TLChat.m */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		C2BF17C41C86DB50003318CB /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF17C51C86DB50003318CB /* UIImage+Color.h */,
+				C2BF17C61C86DB50003318CB /* UIImage+Color.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		C2BF17C71C86DB50003318CB /* UINavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF17D71C86DCD0003318CB /* UINavigationController+JZExtension.h */,
+				C2BF17D81C86DCD0003318CB /* UINavigationController+JZExtension.m */,
+				C2BF17C81C86DB50003318CB /* UINavigationController+StackManager.h */,
+				C2BF17C91C86DB50003318CB /* UINavigationController+StackManager.m */,
+			);
+			path = UINavigationController;
+			sourceTree = "<group>";
+		};
+		C2BF17CA1C86DB50003318CB /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF17CB1C86DB50003318CB /* UITableView+TLChat.h */,
+				C2BF17CC1C86DB50003318CB /* UITableView+TLChat.m */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		C2BF17CD1C86DB50003318CB /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF17CE1C86DB50003318CB /* UIView+Frame.h */,
+				C2BF17CF1C86DB50003318CB /* UIView+Frame.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		C2BF17DA1C86E08F003318CB /* NSFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF17DB1C86E08F003318CB /* NSFileManager+Paths.h */,
+				C2BF17DC1C86E08F003318CB /* NSFileManager+Paths.m */,
+			);
+			path = NSFileManager;
+			sourceTree = "<group>";
+		};
 		C2CAA37E1C77876D00B8152B /* EmojiGroupControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -961,6 +1041,7 @@
 		C2CE0BBC1C717384006C5C2A /* ChatCells */ = {
 			isa = PBXGroup;
 			children = (
+				C2BF17B91C86CEC0003318CB /* TLMessageCellDelegate.h */,
 				C26B50CC1C859D0D00210467 /* TLMessageBaseCell.h */,
 				C26B50CD1C859D0D00210467 /* TLMessageBaseCell.m */,
 				C26B50CF1C85A6E000210467 /* TLTextMessageCell.h */,
@@ -1523,12 +1604,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BF17D51C86DB50003318CB /* UITableView+TLChat.m in Sources */,
 				C2CF4C7C1C804BF30054637A /* TLSettingButtonCell.m in Sources */,
 				C2B9E42D1C65E6CF00CEBA81 /* TLDiscoverHelper.m in Sources */,
 				C2142EF61C5376D40030B29B /* TLViewController.m in Sources */,
 				C2F0EC151C7AB1BB0090843C /* TLAboutHelper.m in Sources */,
 				C2B973071C6A4A56004B9B71 /* TLUIUtility.m in Sources */,
 				C2CE0BCB1C717582006C5C2A /* TLMessage.m in Sources */,
+				C2BF17D01C86DB50003318CB /* NSString+PinYin.m in Sources */,
 				C282DF721C75C7E7006924AE /* TLMoreKBHelper.m in Sources */,
 				C2CAA3771C77773D00B8152B /* TLEmojiKBHelper.m in Sources */,
 				C2F0EC181C7AB6E30090843C /* TLAboutHeaderView.m in Sources */,
@@ -1541,7 +1624,6 @@
 				C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */,
 				C271A5061C83FEC8004372D4 /* TLFriendDetailUserCell.m in Sources */,
 				C2142EF51C5376D40030B29B /* TLTableViewController.m in Sources */,
-				C209F6731C7D9FCB001B9825 /* UIAlertView+Block.m in Sources */,
 				C2F0EC001C7A17300090843C /* TLBottleViewController.m in Sources */,
 				C2F0EC0E1C7A394A0090843C /* TLShakeButton.m in Sources */,
 				C2CE0BC31C7173B2006C5C2A /* TLChatViewController.m in Sources */,
@@ -1553,17 +1635,17 @@
 				C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetySettingViewController.m in Sources */,
 				C26B50D41C85A8E300210467 /* TLChatKeyboardController.m in Sources */,
 				C2142F0D1C53864C0030B29B /* TLUser.m in Sources */,
+				C2BF17DD1C86E08F003318CB /* NSFileManager+Paths.m in Sources */,
 				C2D851591C68D952007DD697 /* TLBaseDataModel.m in Sources */,
 				C2AF1FA01C6B603300617D98 /* TLMineInfoHelper.m in Sources */,
 				C2CF4C701C802DBD0054637A /* TLFriendDetailViewController.m in Sources */,
 				C2B9730F1C6A52F0004B9B71 /* TLPrivacySettingHelper.m in Sources */,
-				C282DF571C744352006924AE /* UIView+Frame.m in Sources */,
 				C2CF4C851C804BF90054637A /* TLSettingItem.m in Sources */,
 				C2CF4C8B1C804BFE0054637A /* TLSettingFooterTitleView.m in Sources */,
 				C282DF6B1C75744A006924AE /* TLMoreKeyboardCell.m in Sources */,
 				C209F4381C7D5AAA001B9825 /* TLScannerViewController.m in Sources */,
 				C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */,
-				C2F0EBF11C7A061D0090843C /* NSString+PinYin.m in Sources */,
+				C2BF17D21C86DB50003318CB /* UIButton+TLChat.m in Sources */,
 				C2CF4C8C1C804BFE0054637A /* TLSettingHeaderTitleView.m in Sources */,
 				C2B9E4311C65F53700CEBA81 /* TLMineHelper.m in Sources */,
 				C2AF1FA81C6B773000617D98 /* TLWebViewController.m in Sources */,
@@ -1571,9 +1653,11 @@
 				C2F0EC1C1C7ABF190090843C /* TLAppHelper.m in Sources */,
 				C220EF321C7EEF0600DE3B86 /* TLScannerButton.m in Sources */,
 				C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */,
+				C2BF17D61C86DB50003318CB /* UIView+Frame.m in Sources */,
 				C203C00E1C7731CF00883268 /* TLEmojiGroupControl.m in Sources */,
 				C2CF4C741C804B5A0054637A /* TLInfoViewController.m in Sources */,
 				C2CF4C7D1C804BF30054637A /* TLSettingCell.m in Sources */,
+				C2BF17D41C86DB50003318CB /* UINavigationController+StackManager.m in Sources */,
 				C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */,
 				C2D500D51C55C9350088997C /* TLMineViewController.m in Sources */,
 				C2B9E43A1C66451B00CEBA81 /* TLUserHelper.m in Sources */,
@@ -1583,7 +1667,6 @@
 				C2F0EBFC1C7A11480090843C /* TLExpressionViewController.m in Sources */,
 				C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */,
 				C2B9E4291C65E1BA00CEBA81 /* TLMenuItem.m in Sources */,
-				C282DF5A1C74498C006924AE /* UIButton+TLChat.m in Sources */,
 				C2CAA38B1C7787F800B8152B /* TLEmoji.m in Sources */,
 				C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */,
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
@@ -1592,6 +1675,7 @@
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */,
 				C271A5091C83FEF2004372D4 /* TLFriendDetailAlbumCell.m in Sources */,
+				C2BF17D11C86DB50003318CB /* UIAlertView+Block.m in Sources */,
 				C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */,
 				C2142F001C5377B60030B29B /* TLConversation.m in Sources */,
 				C2D500CB1C55C08C0088997C /* TLConversationViewController.m in Sources */,
@@ -1611,9 +1695,8 @@
 				C2F0EC121C7AB01A0090843C /* TLAboutViewController.m in Sources */,
 				C271A5021C83FA0B004372D4 /* TLInfoHeaderFooterView.m in Sources */,
 				C2AF1F9D1C6B539C00617D98 /* TLAccountAndSafetyHelper.m in Sources */,
-				C282DF681C756648006924AE /* UITableView+TLChat.m in Sources */,
 				C2CF4C931C8062CD0054637A /* TLInfoCell.m in Sources */,
-				C282DF561C744352006924AE /* UIImage+Color.m in Sources */,
+				C2BF17D91C86DCD0003318CB /* UINavigationController+JZExtension.m in Sources */,
 				C282DF611C74586E006924AE /* TLChatBar.m in Sources */,
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,
 				C282DF6E1C7574FE006924AE /* TLMoreKeyboardItem.m in Sources */,
@@ -1622,6 +1705,7 @@
 				C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */,
 				C26B50D11C85A6E000210467 /* TLTextMessageCell.m in Sources */,
 				C2CAA3821C7787C400B8152B /* TLEmojiItemCell.m in Sources */,
+				C2BF17D31C86DB50003318CB /* UIImage+Color.m in Sources */,
 				C2B9E4211C65DA0900CEBA81 /* TLMenuViewController.m in Sources */,
 				C2F0EC051C7A1F480090843C /* TLBottleButton.m in Sources */,
 			);

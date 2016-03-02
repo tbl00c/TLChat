@@ -22,5 +22,8 @@
 #import "UIButton+TLChat.h"
 #import "UITableView+TLChat.h"
 #import "UIAlertView+Block.h"
+#import "UINavigationController+StackManager.h"
+#import "UINavigationController+JZExtension.h"
+#import "NSFileManager+Paths.h"
 
 #endif /* PrefixHeader_pch */

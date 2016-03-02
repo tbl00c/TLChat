@@ -9,7 +9,15 @@
 #import "TLTableViewCell.h"
 #import "TLInfo.h"
 
+@protocol TLInfoButtonCellDelegate <NSObject>
+
+- (void)infoButtonCellClicked:(TLInfo *)info;
+
+@end
+
 @interface TLInfoButtonCell : TLTableViewCell
+
+@property (nonatomic, assign) id<TLInfoButtonCellDelegate>delegate;
 
 @property (nonatomic, strong) TLInfo *info;
 

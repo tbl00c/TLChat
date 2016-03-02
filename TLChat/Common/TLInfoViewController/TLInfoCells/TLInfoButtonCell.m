@@ -41,6 +41,14 @@
     [self.button.layer setBorderColor:info.buttonBorderColor.CGColor];
 }
 
+#pragma mark - Event Response -
+- (void)cellButtonDown:(UIButton *)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(infoButtonCellClicked:)]) {
+        [_delegate infoButtonCellClicked:self.info];
+    }
+}
+
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
@@ -60,6 +68,7 @@
         [_button.layer setCornerRadius:4.0f];
         [_button.layer setBorderWidth:0.5f];
         [_button.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        [_button addTarget:self action:@selector(cellButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;
 }

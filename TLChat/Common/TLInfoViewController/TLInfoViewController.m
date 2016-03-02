@@ -8,8 +8,6 @@
 
 #import "TLInfoViewController.h"
 #import "TLInfoHeaderFooterView.h"
-#import "TLInfoCell.h"
-#import "TLInfoButtonCell.h"
 #import <MobClick.h>
 
 @implementation TLInfoViewController
@@ -59,6 +57,7 @@
     id cell;
     if (info.type == TLInfoTypeButton) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TLInfoButtonCell"];
+        [cell setDelegate:self];
     }
     else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TLInfoCell"];
@@ -116,6 +115,12 @@
         return 50.0f;
     }
     return HEIGHT_INFO_CELL;
+}
+
+//MARK: TLInfoButtonCellDelegate
+- (void)infoButtonCellClicked:(TLInfo *)info
+{
+    [UIAlertView alertWithTitle:@"子类未处理按钮点击事件" message:[NSString stringWithFormat:@"Title: %@", info.title]];
 }
 
 @end

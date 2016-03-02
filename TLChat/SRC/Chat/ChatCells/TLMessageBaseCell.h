@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLMessageCellDelegate.h"
 #import "TLMessage.h"
 
 @interface TLMessageBaseCell : UITableViewCell
+
+@property (nonatomic, assign) id<TLMessageCellDelegate>delegate;
 
 @property (nonatomic, strong) UILabel *timeLabel;
 

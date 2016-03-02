@@ -45,6 +45,11 @@ static TLRootViewController *rootVC = nil;
     [self setViewControllers:self.childVCArray];       // 初始化子控制器
 }
 
+- (id)childViewControllerAtIndex:(NSUInteger)index
+{
+    return [[self.childViewControllers objectAtIndex:index] rootViewController];
+}
+
 #pragma mark - Getters
 - (NSArray *) childVCArray
 {

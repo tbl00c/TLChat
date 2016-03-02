@@ -7,6 +7,7 @@
 //
 
 #import "TLFriendHelper.h"
+#import "TLUserHelper.h"
 #import "TLInfo.h"
 
 static TLFriendHelper *friendHelper = nil;
@@ -24,35 +25,65 @@ static TLFriendHelper *friendHelper = nil;
 
 + (NSArray *)transformFriendDetailArrayFromUserInfo:(TLUser *)userInfo
 {
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    
+    // 1
     TLInfo *user = [TLInfo createInfoWithTitle:@"个人" subTitle:nil];
     user.type = TLInfoTypeOther;
     user.userInfo = userInfo;
+    [arr addObject:user];
+    [data addObject:arr];
     
-    TLInfo *remark = [TLInfo createInfoWithTitle:@"设置备注和标签" subTitle:nil];
+    // 2
+    arr = [[NSMutableArray alloc] init];
+    if (userInfo.phoneNumber.length > 0) {
+        TLInfo *tel = [TLInfo createInfoWithTitle:@"电话号码" subTitle:userInfo.phoneNumber];
+        tel.showDisclosureIndicator = NO;
+        [arr addObject:tel];
+    }
+    if (userInfo.remarkName.length == 0) {
+        TLInfo *remark = [TLInfo createInfoWithTitle:@"设置备注和标签" subTitle:nil];
+        [arr insertObject:remark atIndex:0];
+    }
+    else {
+        TLInfo *remark = [TLInfo createInfoWithTitle:@"标签" subTitle:@"武林外传"];
+        [arr addObject:remark];
+    }
+    [data addObject:arr];
+    arr = [[NSMutableArray alloc] init];
     
-    TLInfo *tel = [TLInfo createInfoWithTitle:@"电话号码" subTitle:userInfo.phoneNumber];
-    tel.showDisclosureIndicator = NO;
-    
-    TLInfo *location = [TLInfo createInfoWithTitle:@"地区" subTitle:userInfo.location];
-    location.showDisclosureIndicator = NO;
-    
+    // 3
+    if (userInfo.location.length > 0) {
+        TLInfo *location = [TLInfo createInfoWithTitle:@"地区" subTitle:userInfo.location];
+        location.showDisclosureIndicator = NO;
+        [arr addObject:location];
+    }
     TLInfo *album = [TLInfo createInfoWithTitle:@"个人相册" subTitle:nil];
     album.userInfo = userInfo.albumArray;
     album.type = TLInfoTypeOther;
-    
+    [arr addObject:album];
     TLInfo *more = [TLInfo createInfoWithTitle:@"更多" subTitle:nil];
+    [arr addObject:more];
+    [data addObject:arr];
+    arr = [[NSMutableArray alloc] init];
     
+    // 4
     TLInfo *sendMsg = [TLInfo createInfoWithTitle:@"发消息" subTitle:nil];
     sendMsg.type = TLInfoTypeButton;
     sendMsg.titleColor = [UIColor whiteColor];
     sendMsg.buttonBorderColor = [UIColor colorCellLine];
+    [arr addObject:sendMsg];
+    if (![userInfo.userID isEqualToString:[TLUserHelper sharedHelper].user.userID]) {
+        TLInfo *video = [TLInfo createInfoWithTitle:@"视频聊天" subTitle:nil];
+        video.type = TLInfoTypeButton;
+        video.buttonBorderColor = [UIColor colorCellLine];
+        video.buttonColor = [UIColor whiteColor];
+        [arr addObject:video];
+    }
+    [data addObject:arr];
     
-    TLInfo *video = [TLInfo createInfoWithTitle:@"视频聊天" subTitle:nil];
-    video.type = TLInfoTypeButton;
-    video.buttonBorderColor = [UIColor colorCellLine];
-    video.buttonColor = [UIColor whiteColor];
-    
-    return @[@[user], @[remark, tel], @[location, album, more], @[sendMsg, video]];
+    return data;
 }
 
 - (id)init

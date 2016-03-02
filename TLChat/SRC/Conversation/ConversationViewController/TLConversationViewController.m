@@ -175,10 +175,10 @@
         case AFNetworkReachabilityStatusReachableViaWiFi:
         case AFNetworkReachabilityStatusReachableViaWWAN:
         case AFNetworkReachabilityStatusUnknown:
-            self.title = @"微信";
+            self.navigationItem.title = @"微信";
             break;
         case AFNetworkReachabilityStatusNotReachable:
-            self.title = @"微信(未连接)";
+            self.navigationItem.title = @"微信(未连接)";
             break;
         default:
             break;

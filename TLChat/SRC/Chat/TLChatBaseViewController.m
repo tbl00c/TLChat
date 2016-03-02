@@ -8,11 +8,12 @@
 
 #import "TLChatBaseViewController.h"
 #import "TLChatKeyboardController.h"
+#import "TLFriendDetailViewController.h"
 #import "TLUserHelper.h"
 
 #import "TLTextMessageCell.h"
 
-@interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDataDelegate>
+@interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDataDelegate, TLMessageCellDelegate>
 
 @property (nonatomic, strong) TLChatKeyboardController *chatKeyboardController;
 
@@ -52,6 +53,10 @@
 #pragma mark - Public Methods -
 - (void)setUser:(TLUser *)user
 {
+    if (_user && ![_user.userID isEqualToString:user.userID]) {
+        [self.data removeAllObjects];
+        [self.tableView reloadData];
+    }
     _user = user;
     [self.navigationItem setTitle:user.showName];
 }
@@ -79,6 +84,7 @@
     if (message.messageType == TLMessageTypeText) {
         TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell"];
         [cell setMessage:message];
+        [cell setDelegate:self];
         return cell;
     }
     return nil;
@@ -88,6 +94,15 @@
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     return 60.0f;
+}
+
+//MARK: TLMessageCellDelegate
+- (void)messageCellDidClickAvatarForUser:(TLUser *)user
+{
+    TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
+    [detailVC setUser:user];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 //MARK: TLChatBarDataDelegate
@@ -103,6 +118,16 @@
     message.showTime = YES;
     message.showName = NO;
     [self.data addObject:message];
+    TLMessage *message0 = [[TLMessage alloc] init];
+    message0.fromID = [TLUserHelper sharedHelper].user.userID;
+    message0.toID = self.user.userID;
+    message0.fromUser = [TLUserHelper sharedHelper].user;
+    message0.messageType = TLMessageTypeText;
+    message0.ownerTyper = TLMessageOwnerTypeSelf;
+    message0.text = text;
+    message0.showTime = NO;
+    message0.showName = NO;
+    [self.data addObject:message0];
     TLMessage *message1 = [[TLMessage alloc] init];
     message1.fromID = self.user.userID;
     message1.toID = [TLUserHelper sharedHelper].user.userID;
@@ -113,6 +138,16 @@
     message1.showTime = NO;
     message1.showName = NO;
     [self.data addObject:message1];
+    TLMessage *message2 = [[TLMessage alloc] init];
+    message2.fromID = self.user.userID;
+    message2.toID = [TLUserHelper sharedHelper].user.userID;
+    message2.fromUser = self.user;
+    message2.messageType = TLMessageTypeText;
+    message2.ownerTyper = TLMessageOwnerTypeOther;
+    message2.text = text;
+    message2.showTime = YES;
+    message2.showName = NO;
+    [self.data addObject:message2];
     [self.tableView reloadData];
     [self.tableView scrollToBottomWithAnimation:YES];
 }

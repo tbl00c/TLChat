@@ -12,4 +12,6 @@
 
 + (TLRootViewController *) sharedRootViewController;
 
+- (id)childViewControllerAtIndex:(NSUInteger)index;
+
 @end

@@ -35,7 +35,7 @@
     
     [self p_initUI];        // 初始化界面UI
     
-    self.friendHelper = [[TLFriendHelper alloc] init];      // 初始化好友数据业务类
+    self.friendHelper = [TLFriendHelper sharedFriendHelper];      // 初始化好友数据业务类
     self.data = self.friendHelper.data;
     self.sectionHeaders = self.friendHelper.sectionHeaders;
     __weak typeof(self) weakSelf = self;

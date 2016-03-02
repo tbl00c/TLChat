@@ -12,6 +12,9 @@
 #import <MobClick.h>
 #import <AFNetworking.h>
 
+#import "TLUserHelper.h"
+#import "TLFriendHelper.h"
+
 @implementation TLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,6 +22,7 @@
     [self p_initUI];
 //    [self p_initTestUI];
     [self p_initThirdPartSDK];
+    [self p_initUserData];
     
     return YES;
 }
@@ -70,6 +74,12 @@
     [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:APP_CHANNEL];
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+}
+
+- (void)p_initUserData
+{
+    [TLUserHelper sharedHelper];
+    [TLFriendHelper sharedFriendHelper];
 }
 
 @end

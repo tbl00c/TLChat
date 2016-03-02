@@ -10,7 +10,6 @@
 #import "TLFriendSearchViewController.h"
 #import "TLChatViewController.h"
 #import "TLConversationCell.h"
-#import "TLUser.h"
 #import "TLFriendHelper.h"
 #import <UIImageView+WebCache.h>
 #import <AFNetworking.h>

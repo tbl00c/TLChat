@@ -37,6 +37,9 @@
     [self.messageLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
     [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     if (message.ownerTyper == TLMessageOwnerTypeSelf) {
+        [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_bg"]];
+        [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_bgHL"]];
+        
         [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT);
             make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
@@ -48,6 +51,9 @@
         }];
     }
     else if (message.ownerTyper == TLMessageOwnerTypeOther){
+        [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_receiver_bg"]];
+        [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_receiver_bgHL"]];
+        
         [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_RIGHT);
             make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);

@@ -85,9 +85,9 @@
 }
 
 //MARK: UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    return 100.0f;
+    return 60.0f;
 }
 
 //MARK: TLChatBarDataDelegate

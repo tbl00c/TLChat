@@ -58,6 +58,7 @@
         [self.tableView reloadData];
     }
     _user = user;
+    lastDate = nil;
     [self.navigationItem setTitle:user.showName];
 }
 
@@ -71,6 +72,10 @@
     [self.emojiKeyboard setEmojiGroupData:emojiKeyboardData];
 }
 
+- (void)sendImageMessage:(NSString *)imagePath
+{
+    [self chatBar:nil sendText:@"[图片消息，即将支持]"];
+}
 
 
 #pragma mark - Delegate -
@@ -120,16 +125,6 @@
     message.showTime = YES;
     message.showName = NO;
     [self.data addObject:message];
-    TLMessage *message0 = [[TLMessage alloc] init];
-    message0.fromID = [TLUserHelper sharedHelper].user.userID;
-    message0.toID = self.user.userID;
-    message0.fromUser = [TLUserHelper sharedHelper].user;
-    message0.messageType = TLMessageTypeText;
-    message0.ownerTyper = TLMessageOwnerTypeSelf;
-    message0.text = text;
-    message0.showTime = NO;
-    message0.showName = NO;
-    [self.data addObject:message0];
     TLMessage *message1 = [[TLMessage alloc] init];
     message1.fromID = self.user.userID;
     message1.toID = [TLUserHelper sharedHelper].user.userID;
@@ -140,21 +135,9 @@
     message1.showTime = NO;
     message1.showName = NO;
     [self.data addObject:message1];
-    TLMessage *message2 = [[TLMessage alloc] init];
-    message2.fromID = self.user.userID;
-    message2.toID = [TLUserHelper sharedHelper].user.userID;
-    message2.fromUser = self.user;
-    message2.messageType = TLMessageTypeText;
-    message2.ownerTyper = TLMessageOwnerTypeOther;
-    message2.text = text;
-    message2.showTime = YES;
-    message2.showName = NO;
-    [self.data addObject:message2];
     [self.tableView reloadData];
     [self.tableView scrollToBottomWithAnimation:YES];
 }
-
-
 
 #pragma mark - Private Methods -
 - (void)p_addMasonry
@@ -168,6 +151,15 @@
     }];
 }
 
+static NSDate *lastDate = nil;
+- (BOOL)p_needShowTime:(NSDate *)date
+{
+    if (lastDate == nil) {
+        date = lastDate;
+        return YES;
+    }
+    return NO;
+}
 
 
 #pragma mark - Getter -

@@ -8,7 +8,6 @@
 
 #import "TLShakeSettingViewController.h"
 #import "TLShakeHelper.h"
-#import <ReactiveCocoa.h>
 
 @interface TLShakeSettingViewController ()
 
@@ -37,12 +36,16 @@
     }
     else if ([item.title isEqualToString:@"换张背景图片"]) {
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-        [imagePickerController setEditing:YES];
+        [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        [imagePickerController setAllowsEditing:YES];
         [self presentViewController:imagePickerController animated:YES completion:nil];
         [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
             [imagePickerController dismissViewControllerAnimated:YES completion:^{
-                UIImage *image = [x objectForKey:@"UIImagePickerControllerOriginalImage"];
-                NSData *imageData = (UIImagePNGRepresentation(image) == nil ? UIImageJPEGRepresentation(image, 1) : UIImagePNGRepresentation(image));
+                UIImage *image = [x objectForKey:UIImagePickerControllerEditedImage];
+                if (image == nil) {
+                    image = [x objectForKey:UIImagePickerControllerOriginalImage];
+                }
+                NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
                 NSString *path = [NSFileManager pathUserSettingImage:[TLUserHelper sharedHelper].user.userID];
                 NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
                 NSString *imagePath = [NSString stringWithFormat:@"%@%@", path, imageName];

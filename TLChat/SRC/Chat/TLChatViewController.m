@@ -66,8 +66,39 @@ static TLChatViewController *chatVC;
 //MARK: TLMoreKeyboardDelegate
 - (void)moreKeyboard:(id)keyboard didSelectedFunctionItem:(TLMoreKeyboardItem *)funcItem
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"选中”%@“ 按钮", funcItem.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-    [alert show];
+    if (funcItem.type == TLMoreKeyboardItemTypeCamera || funcItem.type == TLMoreKeyboardItemTypeImage) {
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        if (funcItem.type == TLMoreKeyboardItemTypeCamera) {
+            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+            }
+            else {
+                [UIAlertView alertWithTitle:@"错误" message:@"相机初始化失败"];
+                return;
+            }
+        }
+        else {
+            [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        }
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+        [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
+            [imagePickerController dismissViewControllerAnimated:YES completion:^{
+                UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
+                NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
+                NSString *path = [NSFileManager pathUserChatImage:[TLUserHelper sharedHelper].user.userID];
+                NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
+                NSString *imagePath = [NSString stringWithFormat:@"%@%@", path, imageName];
+                [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
+                [self sendImageMessage:imagePath];
+            }];
+        } completed:^{
+            [imagePickerController dismissViewControllerAnimated:YES completion:nil];
+        }];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"选中”%@“ 按钮", funcItem.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+    }
 }
 
 //MARK: TLEmojiKeyboardDataSource

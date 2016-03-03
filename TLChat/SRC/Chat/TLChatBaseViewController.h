@@ -43,4 +43,9 @@
  */
 - (void)setChatEmojiKeyboardData:(NSMutableArray *)emojiKeyboardData;
 
+/**
+ *  发送图片信息
+ */
+- (void)sendImageMessage:(NSString *)imagePath;
+
 @end

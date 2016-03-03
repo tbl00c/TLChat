@@ -13,5 +13,6 @@
 
 + (NSString *)pathUserSettingImage:(NSString *)userID;
 
++ (NSString *)pathUserChatImage:(NSString *)userID;
 
 @end

@@ -7,8 +7,8 @@
 //
 
 #import "TLConversationCell.h"
-
 #import <UIImageView+WebCache.h>
+#import "NSDate+TLChat.h"
 
 #define     CONV_SPACE_X            10.0f
 #define     REDPOINT_WIDTH          10.0f
@@ -105,7 +105,7 @@
     }
     [self.usernameLabel setText:conversation.username];
     [self.detailLabel setText:conversation.messageDetail];
-    [self.timeLabel setText:@"11:11"];
+    [self.timeLabel setText:conversation.date.conversaionTimeInfo];
     switch (conversation.remindType) {
         case TLMessageRemindTypeNormal:
             [self.remindImageView setHidden:YES];

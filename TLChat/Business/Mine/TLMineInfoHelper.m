@@ -7,7 +7,6 @@
 //
 
 #import "TLMineInfoHelper.h"
-#import "TLUserHelper.h"
 
 @implementation TLMineInfoHelper
 

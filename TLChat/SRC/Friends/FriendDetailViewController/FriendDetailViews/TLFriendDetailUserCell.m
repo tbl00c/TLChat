@@ -31,6 +31,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        self.leftSeparatorSpace = 15.0f;
         
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.shownameLabel];

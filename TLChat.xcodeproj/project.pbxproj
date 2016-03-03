@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C203C00B1C772BB600883268 /* TLEmojiGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C203C00A1C772BB600883268 /* TLEmojiGroup.m */; };
 		C203C00E1C7731CF00883268 /* TLEmojiGroupControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C203C00D1C7731CF00883268 /* TLEmojiGroupControl.m */; };
+		C20829171C88113600034998 /* TLImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20829161C88113600034998 /* TLImagePickerController.m */; };
 		C2097EE81C52326500163B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097EE71C52326500163B5C /* main.m */; };
 		C2097F011C52326500163B5C /* TLChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F001C52326500163B5C /* TLChatTests.m */; };
 		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
@@ -39,6 +40,13 @@
 		C282DF6B1C75744A006924AE /* TLMoreKeyboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF6A1C75744A006924AE /* TLMoreKeyboardCell.m */; };
 		C282DF6E1C7574FE006924AE /* TLMoreKeyboardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF6D1C7574FE006924AE /* TLMoreKeyboardItem.m */; };
 		C282DF721C75C7E7006924AE /* TLMoreKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C282DF711C75C7E7006924AE /* TLMoreKBHelper.m */; };
+		C28C445E1C8818FD005975FF /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C445B1C8818FD005975FF /* NSDate+Extension.m */; };
+		C28C445F1C8818FD005975FF /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C445D1C8818FD005975FF /* NSDate+Utilities.m */; };
+		C28C44621C881B51005975FF /* NSDate+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C44611C881B51005975FF /* NSDate+TLChat.m */; };
+		C28C44661C883717005975FF /* TLShakeSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C44651C883717005975FF /* TLShakeSettingViewController.m */; };
+		C28C446A1C883827005975FF /* TLShakeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C44691C883827005975FF /* TLShakeHelper.m */; };
+		C28C446D1C884166005975FF /* NSFileManager+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C446C1C884166005975FF /* NSFileManager+TLChat.m */; };
+		C28C44711C8855CB005975FF /* UIImagePickerController+Fixed.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C44701C8855CB005975FF /* UIImagePickerController+Fixed.m */; };
 		C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBC71C5751210046CA1C /* TLFriendCell.m */; };
 		C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A1BBC91C5753420046CA1C /* Friends.xcassets */; };
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
@@ -151,6 +159,8 @@
 		C203C00A1C772BB600883268 /* TLEmojiGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiGroup.m; sourceTree = "<group>"; };
 		C203C00C1C7731CF00883268 /* TLEmojiGroupControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiGroupControl.h; sourceTree = "<group>"; };
 		C203C00D1C7731CF00883268 /* TLEmojiGroupControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiGroupControl.m; sourceTree = "<group>"; };
+		C20829151C88113600034998 /* TLImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImagePickerController.h; sourceTree = "<group>"; };
+		C20829161C88113600034998 /* TLImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImagePickerController.m; sourceTree = "<group>"; };
 		C2097EE31C52326500163B5C /* TLChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2097EE71C52326500163B5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2097EF71C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -218,6 +228,20 @@
 		C282DF6D1C7574FE006924AE /* TLMoreKeyboardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKeyboardItem.m; sourceTree = "<group>"; };
 		C282DF701C75C7E7006924AE /* TLMoreKBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKBHelper.h; sourceTree = "<group>"; };
 		C282DF711C75C7E7006924AE /* TLMoreKBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKBHelper.m; sourceTree = "<group>"; };
+		C28C445A1C8818FD005975FF /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		C28C445B1C8818FD005975FF /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		C28C445C1C8818FD005975FF /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
+		C28C445D1C8818FD005975FF /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
+		C28C44601C881B51005975FF /* NSDate+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TLChat.h"; sourceTree = "<group>"; };
+		C28C44611C881B51005975FF /* NSDate+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TLChat.m"; sourceTree = "<group>"; };
+		C28C44641C883717005975FF /* TLShakeSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLShakeSettingViewController.h; sourceTree = "<group>"; };
+		C28C44651C883717005975FF /* TLShakeSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShakeSettingViewController.m; sourceTree = "<group>"; };
+		C28C44681C883827005975FF /* TLShakeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLShakeHelper.h; sourceTree = "<group>"; };
+		C28C44691C883827005975FF /* TLShakeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShakeHelper.m; sourceTree = "<group>"; };
+		C28C446B1C884166005975FF /* NSFileManager+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TLChat.h"; sourceTree = "<group>"; };
+		C28C446C1C884166005975FF /* NSFileManager+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TLChat.m"; sourceTree = "<group>"; };
+		C28C446F1C8855CB005975FF /* UIImagePickerController+Fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+Fixed.h"; sourceTree = "<group>"; };
+		C28C44701C8855CB005975FF /* UIImagePickerController+Fixed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+Fixed.m"; sourceTree = "<group>"; };
 		C2A1BBC61C5751210046CA1C /* TLFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendCell.h; sourceTree = "<group>"; };
 		C2A1BBC71C5751210046CA1C /* TLFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendCell.m; sourceTree = "<group>"; };
 		C2A1BBC91C5753420046CA1C /* Friends.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Friends.xcassets; sourceTree = "<group>"; };
@@ -430,6 +454,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C20829141C88111100034998 /* TLImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				C20829151C88113600034998 /* TLImagePickerController.h */,
+				C20829161C88113600034998 /* TLImagePickerController.m */,
+			);
+			path = TLImagePicker;
+			sourceTree = "<group>";
+		};
 		C2097EDA1C52326500163B5C = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +633,7 @@
 		C2142E9C1C531EFD0030B29B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C20829141C88111100034998 /* TLImagePicker */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -669,6 +703,10 @@
 				C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */,
 				C2B973051C6A4A56004B9B71 /* TLUIUtility.h */,
 				C2B973061C6A4A56004B9B71 /* TLUIUtility.m */,
+				C28C44601C881B51005975FF /* NSDate+TLChat.h */,
+				C28C44611C881B51005975FF /* NSDate+TLChat.m */,
+				C28C446B1C884166005975FF /* NSFileManager+TLChat.h */,
+				C28C446C1C884166005975FF /* NSFileManager+TLChat.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -821,6 +859,44 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		C28C44561C8817BF005975FF /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				C28C445A1C8818FD005975FF /* NSDate+Extension.h */,
+				C28C445B1C8818FD005975FF /* NSDate+Extension.m */,
+				C28C445C1C8818FD005975FF /* NSDate+Utilities.h */,
+				C28C445D1C8818FD005975FF /* NSDate+Utilities.m */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
+		C28C44631C8836FE005975FF /* ShakeSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C28C44641C883717005975FF /* TLShakeSettingViewController.h */,
+				C28C44651C883717005975FF /* TLShakeSettingViewController.m */,
+			);
+			path = ShakeSettingViewController;
+			sourceTree = "<group>";
+		};
+		C28C44671C883814005975FF /* Shake */ = {
+			isa = PBXGroup;
+			children = (
+				C28C44681C883827005975FF /* TLShakeHelper.h */,
+				C28C44691C883827005975FF /* TLShakeHelper.m */,
+			);
+			path = Shake;
+			sourceTree = "<group>";
+		};
+		C28C446E1C8855BA005975FF /* UIImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				C28C446F1C8855CB005975FF /* UIImagePickerController+Fixed.h */,
+				C28C44701C8855CB005975FF /* UIImagePickerController+Fixed.m */,
+			);
+			path = UIImagePickerController;
+			sourceTree = "<group>";
+		};
 		C2AF1F901C6B209500617D98 /* MineInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,6 +971,7 @@
 		C2B9E42A1C65E64B00CEBA81 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				C28C44671C883814005975FF /* Shake */,
 				C2B9E42B1C65E6CF00CEBA81 /* TLDiscoverHelper.h */,
 				C2B9E42C1C65E6CF00CEBA81 /* TLDiscoverHelper.m */,
 			);
@@ -924,6 +1001,8 @@
 		C2BF17BA1C86DB50003318CB /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C28C446E1C8855BA005975FF /* UIImagePickerController */,
+				C28C44561C8817BF005975FF /* NSDate */,
 				C2BF17DA1C86E08F003318CB /* NSFileManager */,
 				C2BF17BB1C86DB50003318CB /* NSString */,
 				C2BF17BE1C86DB50003318CB /* UIAlertView */,
@@ -1373,6 +1452,7 @@
 		C2F0EC061C7A2BB90090843C /* ShakeViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C28C44631C8836FE005975FF /* ShakeSettingViewController */,
 				C2F0EC071C7A2BD20090843C /* TLShakeViewController.h */,
 				C2F0EC081C7A2BD20090843C /* TLShakeViewController.m */,
 				C2F0EC0C1C7A394A0090843C /* TLShakeButton.h */,
@@ -1604,14 +1684,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C28C44621C881B51005975FF /* NSDate+TLChat.m in Sources */,
 				C2BF17D51C86DB50003318CB /* UITableView+TLChat.m in Sources */,
+				C28C44661C883717005975FF /* TLShakeSettingViewController.m in Sources */,
 				C2CF4C7C1C804BF30054637A /* TLSettingButtonCell.m in Sources */,
 				C2B9E42D1C65E6CF00CEBA81 /* TLDiscoverHelper.m in Sources */,
 				C2142EF61C5376D40030B29B /* TLViewController.m in Sources */,
 				C2F0EC151C7AB1BB0090843C /* TLAboutHelper.m in Sources */,
 				C2B973071C6A4A56004B9B71 /* TLUIUtility.m in Sources */,
+				C28C44711C8855CB005975FF /* UIImagePickerController+Fixed.m in Sources */,
 				C2CE0BCB1C717582006C5C2A /* TLMessage.m in Sources */,
 				C2BF17D01C86DB50003318CB /* NSString+PinYin.m in Sources */,
+				C20829171C88113600034998 /* TLImagePickerController.m in Sources */,
 				C282DF721C75C7E7006924AE /* TLMoreKBHelper.m in Sources */,
 				C2CAA3771C77773D00B8152B /* TLEmojiKBHelper.m in Sources */,
 				C2F0EC181C7AB6E30090843C /* TLAboutHeaderView.m in Sources */,
@@ -1636,6 +1720,7 @@
 				C26B50D41C85A8E300210467 /* TLChatKeyboardController.m in Sources */,
 				C2142F0D1C53864C0030B29B /* TLUser.m in Sources */,
 				C2BF17DD1C86E08F003318CB /* NSFileManager+Paths.m in Sources */,
+				C28C446D1C884166005975FF /* NSFileManager+TLChat.m in Sources */,
 				C2D851591C68D952007DD697 /* TLBaseDataModel.m in Sources */,
 				C2AF1FA01C6B603300617D98 /* TLMineInfoHelper.m in Sources */,
 				C2CF4C701C802DBD0054637A /* TLFriendDetailViewController.m in Sources */,
@@ -1655,6 +1740,7 @@
 				C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */,
 				C2BF17D61C86DB50003318CB /* UIView+Frame.m in Sources */,
 				C203C00E1C7731CF00883268 /* TLEmojiGroupControl.m in Sources */,
+				C28C445E1C8818FD005975FF /* NSDate+Extension.m in Sources */,
 				C2CF4C741C804B5A0054637A /* TLInfoViewController.m in Sources */,
 				C2CF4C7D1C804BF30054637A /* TLSettingCell.m in Sources */,
 				C2BF17D41C86DB50003318CB /* UINavigationController+StackManager.m in Sources */,
@@ -1670,6 +1756,7 @@
 				C2CAA38B1C7787F800B8152B /* TLEmoji.m in Sources */,
 				C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */,
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
+				C28C446A1C883827005975FF /* TLShakeHelper.m in Sources */,
 				C2CAA3881C7787E500B8152B /* TLEmojiImageItemCell.m in Sources */,
 				C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */,
 				C2097EE81C52326500163B5C /* main.m in Sources */,
@@ -1703,6 +1790,7 @@
 				C2AF1FA41C6B708D00617D98 /* TLMineInfoAvatarCell.m in Sources */,
 				C2F0EBF51C7A0DA80090843C /* TLCommonSettingViewController.m in Sources */,
 				C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */,
+				C28C445F1C8818FD005975FF /* NSDate+Utilities.m in Sources */,
 				C26B50D11C85A6E000210467 /* TLTextMessageCell.m in Sources */,
 				C2CAA3821C7787C400B8152B /* TLEmojiItemCell.m in Sources */,
 				C2BF17D31C86DB50003318CB /* UIImage+Color.m in Sources */,

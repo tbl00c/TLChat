@@ -9,7 +9,6 @@
 #import "TLChatBaseViewController.h"
 #import "TLChatKeyboardController.h"
 #import "TLFriendDetailViewController.h"
-#import "TLUserHelper.h"
 
 #import "TLTextMessageCell.h"
 
@@ -50,6 +49,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
 #pragma mark - Public Methods -
 - (void)setUser:(TLUser *)user
 {
@@ -70,6 +70,8 @@
 {
     [self.emojiKeyboard setEmojiGroupData:emojiKeyboardData];
 }
+
+
 
 #pragma mark - Delegate -
 //MARK: UITableViewDataSouce
@@ -152,6 +154,8 @@
     [self.tableView scrollToBottomWithAnimation:YES];
 }
 
+
+
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
@@ -163,6 +167,8 @@
         make.left.and.right.and.bottom.mas_equalTo(self.view);
     }];
 }
+
+
 
 #pragma mark - Getter -
 - (UITableView *)tableView

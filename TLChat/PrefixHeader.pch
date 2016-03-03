@@ -18,12 +18,15 @@
 
 #import <Masonry.h>
 
+#import "TLUserHelper.h"
+
 #import "UIView+Frame.h"
 #import "UIButton+TLChat.h"
 #import "UITableView+TLChat.h"
 #import "UIAlertView+Block.h"
 #import "UINavigationController+StackManager.h"
 #import "UINavigationController+JZExtension.h"
-#import "NSFileManager+Paths.h"
+#import "NSFileManager+TLChat.h"
+#import "UIImagePickerController+Fixed.h"
 
 #endif /* PrefixHeader_pch */

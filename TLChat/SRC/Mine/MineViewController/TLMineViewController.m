@@ -13,7 +13,6 @@
 #import "TLMineViewController.h"
 #import "TLMineHeaderCell.h"
 #import "TLMineHelper.h"
-#import "TLUserHelper.h"
 
 #import "TLMineInfoViewController.h"
 #import "TLExpressionViewController.h"

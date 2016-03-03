@@ -228,6 +228,9 @@
     TLConversation *conv = self.data[1];
     conv.remindType = TLMessageRemindTypeClosed;
     conv.convType = TLConversationTypePublic;
+    conv.date = [NSDate date];
+    
+    [self.data[0] setDate:[NSDate date]];
 }
 
 #pragma mark - Getter -

@@ -11,8 +11,6 @@
 
 #import <MobClick.h>
 #import <AFNetworking.h>
-
-#import "TLUserHelper.h"
 #import "TLFriendHelper.h"
 
 @implementation TLAppDelegate

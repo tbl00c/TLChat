@@ -7,7 +7,6 @@
 //
 
 #import "TLFriendHelper.h"
-#import "TLUserHelper.h"
 #import "TLInfo.h"
 
 static TLFriendHelper *friendHelper = nil;

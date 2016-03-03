@@ -8,6 +8,7 @@
 //
 
 #import "TLShakeViewController.h"
+#import "TLShakeSettingViewController.h"
 #import "TLShakeButton.h"
 
 #define     SHAKE_HEIGHT    90
@@ -57,6 +58,19 @@
     [self p_addMasonry];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSString *centreImageName = [[NSUserDefaults standardUserDefaults] objectForKey:@"Shake_Image_Path"];
+    if (centreImageName) {
+        NSString *path = [[NSFileManager pathUserSettingImage:[TLUserHelper sharedHelper].user.userID] stringByAppendingString:centreImageName];
+        [self.centerLogoView setImage:[UIImage imageNamed:path]];
+    }
+    else {
+        [self.centerLogoView setImage:[UIImage imageNamed:@"shake_logo_center"]];
+    }
+}
+
 #pragma mark - Event Response
 - (void)controlButtonDown:(TLShakeButton *)sender
 {
@@ -73,7 +87,9 @@
 
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
-    
+    TLShakeSettingViewController *shakeSettingVC = [[TLShakeSettingViewController alloc] init];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:shakeSettingVC animated:YES];
 }
 
 // 摇动手机
@@ -114,14 +130,20 @@
 {
     [self.centerLogoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.view);
+        make.width.mas_equalTo(self.view);
+        make.height.mas_equalTo(200);
     }];
     [self.topLogoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view.mas_centerY).mas_offset(-10);
         make.centerX.mas_equalTo(self.view);
+        make.width.mas_equalTo(self.view);
+        make.height.mas_equalTo(150);
     }];
     [self.bottomLogoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_centerY).mas_offset(-10);
         make.centerX.mas_equalTo(self.view);
+        make.width.mas_equalTo(self.view);
+        make.height.mas_equalTo(150);
     }];
     [self.topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(self.view);
@@ -154,6 +176,8 @@
 {
     if (_topLogoView == nil) {
         _topLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shake_logo_top"]];
+        [_topLogoView setBackgroundColor:[UIColor colorShakeBG]];
+        [_topLogoView setContentMode:UIViewContentModeBottom];
     }
     return _topLogoView;
 }
@@ -162,6 +186,8 @@
 {
     if (_bottomLogoView == nil) {
         _bottomLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shake_logo_bottom"]];
+        [_bottomLogoView setBackgroundColor:[UIColor colorShakeBG]];
+        [_bottomLogoView setContentMode:UIViewContentModeTop];
     }
     return _bottomLogoView;
 }
@@ -170,6 +196,8 @@
 {
     if (_centerLogoView == nil) {
         _centerLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shake_logo_center"]];
+        [_centerLogoView setContentMode:UIViewContentModeScaleAspectFill];
+        [_centerLogoView setClipsToBounds:YES];
     }
     return _centerLogoView;
 }

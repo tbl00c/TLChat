@@ -46,6 +46,7 @@
 		C28C446A1C883827005975FF /* TLShakeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C44691C883827005975FF /* TLShakeHelper.m */; };
 		C28C446D1C884166005975FF /* NSFileManager+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C446C1C884166005975FF /* NSFileManager+TLChat.m */; };
 		C28C44711C8855CB005975FF /* UIImagePickerController+Fixed.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C44701C8855CB005975FF /* UIImagePickerController+Fixed.m */; };
+		C29C08E31C89CEE400F8EE82 /* UIBarButtonItem+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = C29C08E21C89CEE400F8EE82 /* UIBarButtonItem+Action.m */; };
 		C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBC71C5751210046CA1C /* TLFriendCell.m */; };
 		C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A1BBC91C5753420046CA1C /* Friends.xcassets */; };
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
@@ -116,7 +117,6 @@
 		C2DD58E91C58CEF2005419E4 /* UIColor+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E61C58CEF2005419E4 /* UIColor+TLChat.m */; };
 		C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */; };
 		C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FF21C8936DE009662AB /* TLGameViewController.m */; };
-		C2E56FF71C895706009662AB /* UIBarButtonItem+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FF61C895706009662AB /* UIBarButtonItem+Action.m */; };
 		C2E56FFB1C896233009662AB /* UINavigationItem+Fixed.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FFA1C896233009662AB /* UINavigationItem+Fixed.m */; };
 		C2E56FFE1C897418009662AB /* TLAccountAndSafetyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FFD1C897418009662AB /* TLAccountAndSafetyHelper.m */; };
 		C2E570021C898305009662AB /* TLScannerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E570011C898305009662AB /* TLScannerButton.m */; };
@@ -245,6 +245,8 @@
 		C28C446C1C884166005975FF /* NSFileManager+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TLChat.m"; sourceTree = "<group>"; };
 		C28C446F1C8855CB005975FF /* UIImagePickerController+Fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+Fixed.h"; sourceTree = "<group>"; };
 		C28C44701C8855CB005975FF /* UIImagePickerController+Fixed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+Fixed.m"; sourceTree = "<group>"; };
+		C29C08E11C89CEE400F8EE82 /* UIBarButtonItem+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Action.h"; sourceTree = "<group>"; };
+		C29C08E21C89CEE400F8EE82 /* UIBarButtonItem+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Action.m"; sourceTree = "<group>"; };
 		C2A1BBC61C5751210046CA1C /* TLFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendCell.h; sourceTree = "<group>"; };
 		C2A1BBC71C5751210046CA1C /* TLFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendCell.m; sourceTree = "<group>"; };
 		C2A1BBC91C5753420046CA1C /* Friends.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Friends.xcassets; sourceTree = "<group>"; };
@@ -382,8 +384,6 @@
 		C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+TLChat.m"; sourceTree = "<group>"; };
 		C2E56FF11C8936DE009662AB /* TLGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLGameViewController.h; sourceTree = "<group>"; };
 		C2E56FF21C8936DE009662AB /* TLGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGameViewController.m; sourceTree = "<group>"; };
-		C2E56FF51C895706009662AB /* UIBarButtonItem+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Action.h"; sourceTree = "<group>"; };
-		C2E56FF61C895706009662AB /* UIBarButtonItem+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Action.m"; sourceTree = "<group>"; };
 		C2E56FF91C896233009662AB /* UINavigationItem+Fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Fixed.h"; sourceTree = "<group>"; };
 		C2E56FFA1C896233009662AB /* UINavigationItem+Fixed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Fixed.m"; sourceTree = "<group>"; };
 		C2E56FFC1C897418009662AB /* TLAccountAndSafetyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountAndSafetyHelper.h; sourceTree = "<group>"; };
@@ -912,6 +912,15 @@
 			path = UIImagePickerController;
 			sourceTree = "<group>";
 		};
+		C29C08E01C89CEE400F8EE82 /* UIBarButtonItem */ = {
+			isa = PBXGroup;
+			children = (
+				C29C08E11C89CEE400F8EE82 /* UIBarButtonItem+Action.h */,
+				C29C08E21C89CEE400F8EE82 /* UIBarButtonItem+Action.m */,
+			);
+			path = UIBarButtonItem;
+			sourceTree = "<group>";
+		};
 		C2AF1F901C6B209500617D98 /* MineInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1016,8 +1025,8 @@
 		C2BF17BA1C86DB50003318CB /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C29C08E01C89CEE400F8EE82 /* UIBarButtonItem */,
 				C2E56FF81C896224009662AB /* UINavigationItem */,
-				C2E56FF41C895706009662AB /* UIBarButtonItem */,
 				C28C446E1C8855BA005975FF /* UIImagePickerController */,
 				C28C44561C8817BF005975FF /* NSDate */,
 				C2BF17DA1C86E08F003318CB /* NSFileManager */,
@@ -1446,16 +1455,6 @@
 			path = GameViewController;
 			sourceTree = "<group>";
 		};
-		C2E56FF41C895706009662AB /* UIBarButtonItem */ = {
-			isa = PBXGroup;
-			children = (
-				C2E56FF51C895706009662AB /* UIBarButtonItem+Action.h */,
-				C2E56FF61C895706009662AB /* UIBarButtonItem+Action.m */,
-			);
-			name = UIBarButtonItem;
-			path = "../../../../../../Desktop/iOS-Categories-master/Categories/UIKit/UIBarButtonItem";
-			sourceTree = "<group>";
-		};
 		C2E56FF81C896224009662AB /* UINavigationItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -1838,6 +1837,7 @@
 				C220EF2B1C7EB89300DE3B86 /* TLScanningViewController.m in Sources */,
 				C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */,
 				C203C00B1C772BB600883268 /* TLEmojiGroup.m in Sources */,
+				C29C08E31C89CEE400F8EE82 /* UIBarButtonItem+Action.m in Sources */,
 				C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */,
 				C246F1101C6B867C00A5AFB2 /* TLShoppingViewController.m in Sources */,
 				C2142EF41C5376D40030B29B /* TLTabBarController.m in Sources */,
@@ -1847,7 +1847,6 @@
 				C2CF4C931C8062CD0054637A /* TLInfoCell.m in Sources */,
 				C2BF17D91C86DCD0003318CB /* UINavigationController+JZExtension.m in Sources */,
 				C282DF611C74586E006924AE /* TLChatBar.m in Sources */,
-				C2E56FF71C895706009662AB /* UIBarButtonItem+Action.m in Sources */,
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,
 				C282DF6E1C7574FE006924AE /* TLMoreKeyboardItem.m in Sources */,
 				C2AF1FA41C6B708D00617D98 /* TLMineInfoAvatarCell.m in Sources */,

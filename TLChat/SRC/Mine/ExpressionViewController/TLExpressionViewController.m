@@ -8,6 +8,8 @@
 
 #import "TLExpressionViewController.h"
 
+#define     WIDTH_EXPRESSION_SEGMENT    WIDTH_SCREEN * 0.55
+
 @interface TLExpressionViewController ()
 
 @property (nonatomic, strong) UISegmentedControl *segmentedControl;
@@ -41,7 +43,7 @@
 {
     if (_segmentedControl == nil) {
         _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"精选表情", @"投稿表情"]];
-        [_segmentedControl setWidth:WIDTH_SCREEN * 0.6];
+        [_segmentedControl setWidth:WIDTH_EXPRESSION_SEGMENT];
         [_segmentedControl setSelectedSegmentIndex:0];
         [_segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventEditingChanged];
     }

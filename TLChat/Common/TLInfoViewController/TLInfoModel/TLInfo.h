@@ -42,6 +42,11 @@ typedef NS_ENUM(NSUInteger, TLInfoType) {
  */
 @property (nonatomic, assign) BOOL showDisclosureIndicator;
 
+/**
+ *  停用高亮（默认NO）
+ */
+@property (nonatomic, assign) BOOL disableHighlight;
+
 + (TLInfo *)createInfoWithTitle:(NSString *)title subTitle:(NSString *)subTitle;
 
 @end

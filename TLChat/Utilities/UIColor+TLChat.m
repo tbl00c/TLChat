@@ -75,6 +75,11 @@
     return TLColor(42, 45, 46, 1.0);
 }
 
++ (UIColor *)colorScannerBG
+{
+    return [UIColor colorWithWhite:0 alpha:0.6];
+}
+
 #pragma mark - Chat
 + (UIColor *)colorChatBar
 {

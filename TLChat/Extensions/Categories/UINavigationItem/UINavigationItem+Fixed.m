@@ -15,7 +15,10 @@
 
 - (void)setLeftBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated
 {
-    if (item.title != nil) {
+    if (item == nil) {
+        [self setRightBarButtonItems:nil animated:animated];
+    }
+    else if (item.title != nil) {
         [self setLeftBarButtonItems:@[item] animated:animated];
     }
     else {
@@ -25,7 +28,10 @@
 
 - (void)setRightBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated
 {
-    if (item.title != nil) {
+    if (item == nil) {
+        [self setRightBarButtonItems:nil animated:animated];
+    }
+    else if (item.title != nil) {
         [self setRightBarButtonItems:@[item] animated:animated];
     }
     else {

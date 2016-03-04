@@ -56,6 +56,7 @@ static TLFriendHelper *friendHelper = nil;
     if (userInfo.location.length > 0) {
         TLInfo *location = [TLInfo createInfoWithTitle:@"地区" subTitle:userInfo.location];
         location.showDisclosureIndicator = NO;
+        location.disableHighlight = YES;
         [arr addObject:location];
     }
     TLInfo *album = [TLInfo createInfoWithTitle:@"个人相册" subTitle:nil];

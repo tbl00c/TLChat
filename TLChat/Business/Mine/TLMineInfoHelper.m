@@ -29,7 +29,7 @@
     TLSettingItem *avatar = TLCreateSettingItem(@"头像");
     avatar.rightImageURL = userInfo.avatarURL;
     TLSettingItem *nikename = TLCreateSettingItem(@"名字");
-    nikename.subTitle = userInfo.nikeName;
+    nikename.subTitle = userInfo.nikeName.length > 0 ? userInfo.nikeName : @"未设置";
     TLSettingItem *username = TLCreateSettingItem(@"微信号");
     if (userInfo.username.length > 0) {
         username.subTitle = userInfo.username;
@@ -50,7 +50,7 @@
     TLSettingItem *city = TLCreateSettingItem(@"地区");
     city.subTitle = userInfo.location;
     TLSettingItem *motto = TLCreateSettingItem(@"个性签名");
-    motto.subTitle = userInfo.motto;
+    motto.subTitle = userInfo.motto.length > 0 ? userInfo.motto : @"未填写";
     TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[sex, city, motto]));
     
     [_mineInfoData removeAllObjects];

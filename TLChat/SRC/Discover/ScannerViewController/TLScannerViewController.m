@@ -7,23 +7,18 @@
 //
 
 #import "TLScannerViewController.h"
+#import "TLScannerView.h"
+#import "TLScannerBackgroundView.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface TLScannerViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UILabel *introudctionLabel;
-@property (nonatomic, strong) UIView *scannerView;
-@property (nonatomic, strong) UIImageView *scannerLine;
-
-@property (nonatomic, strong) UIView *bgTopView;
-@property (nonatomic, strong) UIView *bgBtmView;
-@property (nonatomic, strong) UIView *bgLeftView;
-@property (nonatomic, strong) UIView *bgRightView;
+@property (nonatomic, strong) TLScannerView *scannerView;
+@property (nonatomic, strong) TLScannerBackgroundView *scannerBGView;
 
 @property (nonatomic, strong) AVCaptureSession *scannerSession;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
-
-@property (nonatomic, strong) NSTimer *lineTimer;
 
 @end
 
@@ -33,14 +28,9 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor blackColor]];
     
-    [self.view addSubview:self.bgTopView];
-    [self.view addSubview:self.bgLeftView];
-    [self.view addSubview:self.bgRightView];
-    [self.view addSubview:self.bgBtmView];
-    
     [self.view addSubview:self.introudctionLabel];
     [self.view addSubview:self.scannerView];
-    [self.scannerView addSubview:self.scannerLine];
+    [self.view addSubview:self.scannerBGView];
     [self.view.layer insertSublayer:self.videoPreviewLayer atIndex:0];
     
     [self p_addMasonry];
@@ -96,6 +86,7 @@
         height = 55;
         [self.introudctionLabel setText:@"将英文单词放入框内"];
     }
+    [self.scannerView setHiddenScannerIndicator:scannerType == TLScannerTypeTranslate];
     [UIView animateWithDuration:0.3 animations:^{
         [self.scannerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(width);
@@ -114,29 +105,43 @@
 
 - (void)startCodeReading
 {
-    if ([self.lineTimer isValid]) {
-        [self.lineTimer invalidate];
-    }
-    
-    self.lineTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60 target:self selector:@selector(updateScannerLineStatus) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.lineTimer forMode:NSRunLoopCommonModes];
-    
+    [self.scannerView startScanner];
     [self.scannerSession startRunning];
 }
 
 - (void)stopCodeReading
 {
-    if (self.lineTimer) {
-        [self.lineTimer invalidate];
-        self.lineTimer = nil;
-    }
-    self.scannerLine.y = 0;
+    [self.scannerView stopScanner];
     [self.scannerSession stopRunning];
 }
 
 - (BOOL)isRunning
 {
     return [self.scannerSession isRunning];
+}
+
++ (void)scannerQRCodeFromImage:(UIImage *)image ans:(void (^)(NSString *ansStr))ans
+{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
+        CIImage *ciImage = [CIImage imageWithData:imageData];
+        NSString  *ansStr = nil;
+        if (ciImage) {
+            CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:[CIContext contextWithOptions:nil] options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+            NSArray *features = [detector featuresInImage:ciImage];
+            if (features.count) {
+                for (CIFeature *feature in features) {
+                    if ([feature isKindOfClass:[CIQRCodeFeature class]]) {
+                        ansStr = ((CIQRCodeFeature *)feature).messageString;
+                        break;
+                    }
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ans(ansStr);
+        });
+    });
 }
 
 #pragma mark - Delegate -
@@ -151,17 +156,6 @@
     }
 }
 
-#pragma mark - Event Response -
-- (void)updateScannerLineStatus
-{
-    if (self.scannerLine.y + self.scannerLine.height >= self.scannerView.height) {
-        self.scannerLine.y = 0;
-    }
-    else {
-        self.scannerLine.y ++;
-    }
-}
-
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
@@ -170,60 +164,16 @@
         make.centerY.mas_equalTo(self.view).mas_offset(-55);
         make.width.and.height.mas_equalTo(0);
     }];
-    [self.bgTopView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.and.right.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(self.scannerView.mas_top);
+    
+    [self.scannerBGView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
     }];
-    [self.bgBtmView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.bottom.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.scannerView.mas_bottom);
-    }];
-    [self.bgLeftView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view);
-        make.right.mas_equalTo(self.scannerView.mas_left);
-        make.top.mas_equalTo(self.bgTopView.mas_bottom);
-        make.bottom.mas_equalTo(self.bgBtmView.mas_top);
-    }];
-    [self.bgRightView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.scannerView.mas_right);
-        make.right.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.bgTopView.mas_bottom);
-        make.bottom.mas_equalTo(self.bgBtmView.mas_top);
-    }];
+    
+    [_scannerBGView addMasonryWithContainView:self.scannerView];
     
     [self.introudctionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.width.mas_equalTo(self.view);
         make.top.mas_equalTo(self.scannerView.mas_bottom).mas_offset(30);
-    }];
-    
-    [self.scannerLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.centerX.mas_equalTo(self.scannerView);
-        make.top.mas_equalTo(self.scannerView);
-    }];
-    
-    UIImageView *topLeftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_top_left"]];
-    [self.view addSubview:topLeftView];
-    [topLeftView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.top.mas_equalTo(_scannerView);
-        make.width.and.height.mas_lessThanOrEqualTo(_scannerView);
-    }];
-    UIImageView *topRightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_top_right"]];
-    [self.view addSubview:topRightView];
-    [topRightView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.and.top.mas_equalTo(_scannerView);
-        make.width.and.height.mas_lessThanOrEqualTo(_scannerView);
-    }];
-    UIImageView *btmLeftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_bottom_left"]];
-    [self.view addSubview:btmLeftView];
-    [btmLeftView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.bottom.mas_equalTo(_scannerView);
-        make.width.and.height.mas_lessThanOrEqualTo(_scannerView);
-    }];
-    UIImageView *btmRightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_bottom_right"]];
-    [self.view addSubview:btmRightView];
-    [btmRightView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.and.bottom.mas_equalTo(_scannerView);
-        make.width.and.height.mas_lessThanOrEqualTo(_scannerView);
     }];
 }
 
@@ -288,62 +238,20 @@
     return _introudctionLabel;
 }
 
-- (UIImageView *)scannerLine
-{
-    if (_scannerLine == nil) {
-        _scannerLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanner_line"]];
-    }
-    return _scannerLine;
-}
-
-- (UIView *)scannerView
+- (TLScannerView *)scannerView
 {
     if (_scannerView == nil) {
-        _scannerView = [[UIView alloc] init];
-        [_scannerView.layer setBorderColor:[UIColor whiteColor].CGColor];
-        [_scannerView.layer setBorderWidth:0.5f];
+        _scannerView = [[TLScannerView alloc] init];
     }
     return _scannerView;
 }
 
-- (UIView *)bgTopView
+- (TLScannerBackgroundView *)scannerBGView
 {
-    if (_bgTopView == nil) {
-        _bgTopView = [[UIView alloc] init];
-        [_bgTopView setBackgroundColor:[UIColor blackColor]];
-        [_bgTopView setAlpha:0.5];
+    if (_scannerBGView == nil) {
+        _scannerBGView = [[TLScannerBackgroundView alloc] init];
     }
-    return _bgTopView;
-}
-
-- (UIView *)bgBtmView
-{
-    if (_bgBtmView == nil) {
-        _bgBtmView = [[UIView alloc] init];
-        [_bgBtmView setBackgroundColor:[UIColor blackColor]];
-        [_bgBtmView setAlpha:0.5];
-    }
-    return _bgBtmView;
-}
-
-- (UIView *)bgLeftView
-{
-    if (_bgLeftView == nil) {
-        _bgLeftView = [[UIView alloc] init];
-        [_bgLeftView setBackgroundColor:[UIColor blackColor]];
-        [_bgLeftView setAlpha:0.5];
-    }
-    return _bgLeftView;
-}
-
-- (UIView *)bgRightView
-{
-    if (_bgRightView == nil) {
-        _bgRightView = [[UIView alloc] init];
-        [_bgRightView setBackgroundColor:[UIColor blackColor]];
-        [_bgRightView setAlpha:0.5];
-    }
-    return _bgRightView;
+    return _scannerBGView;
 }
 
 @end

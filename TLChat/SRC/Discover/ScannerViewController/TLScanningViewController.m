@@ -8,6 +8,7 @@
 
 #import "TLScanningViewController.h"
 #import "TLScannerViewController.h"
+#import "TLWebViewController.h"
 #import "TLScannerButton.h"
 
 #define     HEIGHT_BOTTOM_VIEW      80
@@ -17,7 +18,7 @@
 @property (nonatomic, assign) TLScannerType curType;
 
 @property (nonatomic, strong) TLScannerViewController *scanVC;
-@property (nonatomic, strong) UIBarButtonItem *rightBarButton;
+@property (nonatomic, strong) UIBarButtonItem *albumBarButton;
 @property (nonatomic, strong) UIButton *myQRButton;
 
 @property (nonatomic, strong) UIView *bottomView;
@@ -63,9 +64,7 @@
 
 - (void)scannerViewController:(TLScannerViewController *)scannerVC scanAnswer:(NSString *)ansStr
 {
-    [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
-        [scannerVC startCodeReading];
-    } title:@"扫描结果" message:ansStr cancelButtonName:@"确定" otherButtonTitles:nil];
+    [self p_analysisQRAnswer:ansStr];
 }
 
 #pragma mark - Event Response -
@@ -84,7 +83,7 @@
     [self.translateButton setSelected:self.translateButton.type == sender.type];
 
     if (sender.type == TLScannerTypeQR) {
-        [self.navigationItem setRightBarButtonItem:self.rightBarButton];
+        [self.navigationItem setRightBarButtonItem:self.albumBarButton];
         [self.myQRButton setHidden:NO];
         [self.navigationItem  setTitle:@"二维码/条码"];
     }
@@ -92,21 +91,43 @@
         [self.navigationItem setRightBarButtonItem:nil];
         [self.myQRButton setHidden:YES];
         if (sender.type == TLScannerTypeCover) {
-            [self.navigationItem  setTitle:@"封面"];
+            [self.navigationItem setTitle:@"封面"];
         }
         else if (sender.type == TLScannerTypeStreet) {
-            [self.navigationItem  setTitle:@"街景"];
+            [self.navigationItem setTitle:@"街景"];
         }
         else if (sender.type == TLScannerTypeTranslate) {
-            [self.navigationItem  setTitle:@"翻译"];
+            [self.navigationItem setTitle:@"翻译"];
         }
     }
     [self.scanVC setScannerType:sender.type];
 }
 
-- (void)rightBarButtonDown:(UIBarButtonItem *)sender
+- (void)albumBarButtonDown:(UIBarButtonItem *)sender
 {
-
+    [self.scanVC stopCodeReading];
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+    [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
+        [imagePickerController dismissViewControllerAnimated:YES completion:^{
+            UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
+            [SVProgressHUD showInfoWithStatus:@"扫描中，请稍候"];
+            [TLScannerViewController scannerQRCodeFromImage:image ans:^(NSString *ansStr) {
+                [SVProgressHUD dismiss];
+                if (ansStr == nil) {
+                    [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
+                        [self.scanVC startCodeReading];
+                    } title:@"扫描失败" message:@"请换张图片，或换个设备重试~" cancelButtonName:@"确定" otherButtonTitles:nil];
+                }
+                else {
+                    [self p_analysisQRAnswer:ansStr];
+                }
+            }];
+        }];
+    } completed:^{
+        [imagePickerController dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (void)myQRButtonDown
@@ -115,6 +136,29 @@
 }
 
 #pragma mark - Private Methods -
+- (void)p_analysisQRAnswer:(NSString *)ansStr
+{
+    if ([ansStr hasPrefix:@"http"]) {
+        TLWebViewController *webVC = [[TLWebViewController alloc] init];
+        [webVC setUrl:ansStr];
+        __block id vc = self.navigationController.rootViewController;
+        [self.navigationController popViewControllerAnimated:NO completion:^(BOOL finished) {
+            if (finished) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [vc setHidesBottomBarWhenPushed:YES];
+                    [[vc navigationController] pushViewController:webVC animated:YES];
+                    [vc setHidesBottomBarWhenPushed:NO];
+                });
+            }
+        }];
+    }
+    else {
+        [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
+            [self.scanVC startCodeReading];
+        } title:@"扫描结果" message:ansStr cancelButtonName:@"确定" otherButtonTitles:nil];
+    }
+}
+
 - (void)p_addMasonry
 {
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -205,12 +249,12 @@
     return _translateButton;
 }
 
-- (UIBarButtonItem *)rightBarButton
+- (UIBarButtonItem *)albumBarButton
 {
-    if (_rightBarButton == nil) {
-        _rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
+    if (_albumBarButton == nil) {
+        _albumBarButton = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:UIBarButtonItemStylePlain target:self action:@selector(albumBarButtonDown:)];
     }
-    return _rightBarButton;
+    return _albumBarButton;
 }
 
 - (UIButton *)myQRButton

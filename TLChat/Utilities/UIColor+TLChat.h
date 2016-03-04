@@ -41,6 +41,8 @@
 #pragma mark - Discover
 //MARK: Shake
 + (UIColor *)colorShakeBG;
+//MARK: Scanner
++ (UIColor *)colorScannerBG;
 
 
 #pragma mark - Chat

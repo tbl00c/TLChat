@@ -33,6 +33,7 @@
     [self.textLabel setText:info.title];
     [self.subTitleLabel setText:info.subTitle];
     [self setAccessoryType:info.showDisclosureIndicator ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone];
+    [self setSelectionStyle:info.disableHighlight ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault];
 }
 
 #pragma mark - Private Methods -

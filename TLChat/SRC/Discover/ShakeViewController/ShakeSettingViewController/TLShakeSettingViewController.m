@@ -56,9 +56,7 @@
             [imagePickerController dismissViewControllerAnimated:YES completion:nil];
         }];
     }
-    else {
-        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 @end

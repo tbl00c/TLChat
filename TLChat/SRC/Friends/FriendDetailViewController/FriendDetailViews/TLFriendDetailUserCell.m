@@ -30,7 +30,7 @@
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         self.leftSeparatorSpace = 15.0f;
         
         [self.contentView addSubview:self.avatarImageView];

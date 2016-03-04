@@ -34,5 +34,6 @@
 
 - (void)stopCodeReading;
 
++ (void)scannerQRCodeFromImage:(UIImage *)image ans:(void (^)(NSString *ansStr))ans;
 
 @end

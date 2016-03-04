@@ -81,8 +81,6 @@
     [self.peopleButton setSelected:self.peopleButton.type == sender.type];
     [self.songButton setSelected:self.songButton.type == sender.type];
     [self.tvButton setSelected:self.tvButton.type == sender.type];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:sender.title message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-    [alert show];
 }
 
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender

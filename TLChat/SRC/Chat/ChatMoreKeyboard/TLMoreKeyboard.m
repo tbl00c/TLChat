@@ -35,7 +35,7 @@ static TLMoreKeyboard *moreKB;
     return moreKB;
 }
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         [self setBackgroundColor:[UIColor colorChatBox]];
@@ -48,7 +48,7 @@ static TLMoreKeyboard *moreKB;
 }
 
 #pragma mark - Public Methods -
-- (void) showInView:(UIView *)view withAnimation:(BOOL)animation;
+- (void)showInView:(UIView *)view withAnimation:(BOOL)animation;
 {
     if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
         [_keyboardDelegate chatKeyboardWillShow:self];
@@ -86,7 +86,7 @@ static TLMoreKeyboard *moreKB;
     }
 }
 
-- (void) dismissWithAnimation:(BOOL)animation
+- (void)dismissWithAnimation:(BOOL)animation
 {
     if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardWillDismiss:)]) {
         [_keyboardDelegate chatKeyboardWillDismiss:self];
@@ -120,7 +120,7 @@ static TLMoreKeyboard *moreKB;
     [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
 }
 
-- (void) setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData
+- (void)setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData
 {
     _chatMoreKeyboardData = chatMoreKeyboardData;
     [self.collectionView reloadData];

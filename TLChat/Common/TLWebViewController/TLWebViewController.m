@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) UIBarButtonItem *closeButtonItem;
 
+@property (nonatomic, strong) UILabel *authLabel;
+
 @end
 
 @implementation TLWebViewController
@@ -38,6 +40,7 @@
 - (void)loadView
 {
     [super loadView];
+    [self.view addSubview:self.authLabel];
     [self.view addSubview:self.webView];
     [self.view addSubview:self.progressView];
 }
@@ -46,7 +49,15 @@
 {
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    
+    [self.view setBackgroundColor:[UIColor colorDefaultGray]];
+    [self.webView.scrollView setBackgroundColor:[UIColor clearColor]];
+    for (id vc in self.webView.scrollView.subviews) {
+        NSString *className = NSStringFromClass([vc class]);
+        if ([className isEqualToString:@"WKContentView"]) {
+            [vc setBackgroundColor:[UIColor whiteColor]];
+            break;
+        }
+    }
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
@@ -133,6 +144,8 @@
 {
     if (self.useMPageTitleAsNavTitle) {
         [self.navigationItem setTitle:webView.title];
+        [self.authLabel setText:[NSString stringWithFormat:@"网页由 %@ 提供", webView.URL.host]];
+        [self.authLabel setHeight:[self.authLabel sizeThatFits:CGSizeMake(self.authLabel.width, MAXFLOAT)].height];
     }
 }
 
@@ -154,7 +167,6 @@
         [_progressView setTransform: CGAffineTransformMakeScale(1.0f, 2.0f)];
         [_progressView setProgressTintColor:[UIColor colorDefaultGreen]];
         [_progressView setTrackTintColor:[UIColor clearColor]];
-        
     }
     return _progressView;
 }
@@ -173,6 +185,18 @@
         _closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(navCloseButtonDown)];
     }
     return _closeButtonItem;
+}
+
+- (UILabel *)authLabel
+{
+    if (_authLabel == nil) {
+        _authLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, HEIGHT_NAVBAR + HEIGHT_STATUSBAR + 13, WIDTH_SCREEN - 40, 0)];
+        [_authLabel setFont:[UIFont systemFontOfSize:12.0f]];
+        [_authLabel setTextAlignment:NSTextAlignmentCenter];
+        [_authLabel setTextColor:[UIColor colorWebViewAuthText]];
+        [_authLabel setNumberOfLines:0];
+    }
+    return _authLabel;
 }
 
 @end

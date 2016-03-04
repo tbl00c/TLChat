@@ -21,6 +21,11 @@
  */
 + (UIColor *)colorDefaultGreen;
 
+/**
+ *  默认的灰色
+ */
++ (UIColor *)colorDefaultGray;
+
 + (UIColor *)colorTabBarBG;
 
 + (UIColor *)colorNavBarTint;
@@ -52,5 +57,6 @@
 + (UIColor *)colorChatBoxLine;
 + (UIColor *)colorChatEmojiSend;
 
-
+#pragma mark - WebView
++ (UIColor *)colorWebViewAuthText;
 @end

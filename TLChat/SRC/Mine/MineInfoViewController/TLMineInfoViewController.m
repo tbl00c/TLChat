@@ -8,8 +8,8 @@
 
 #import "TLMineInfoViewController.h"
 #import "TLMineInfoHelper.h"
-
 #import "TLMineInfoAvatarCell.h"
+#import "TLMyQRCodeViewController.h"
 
 @interface TLMineInfoViewController ()
 
@@ -43,6 +43,17 @@
 }
 
 #pragma mark UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+    if ([item.title isEqualToString:@"我的二维码"]) {
+        TLMyQRCodeViewController *myQRCodeVC = [[TLMyQRCodeViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:myQRCodeVC animated:YES];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];

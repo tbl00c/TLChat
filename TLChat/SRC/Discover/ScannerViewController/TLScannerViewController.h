@@ -36,4 +36,6 @@
 
 + (void)scannerQRCodeFromImage:(UIImage *)image ans:(void (^)(NSString *ansStr))ans;
 
++ (void)createQRCodeImageForString:(NSString *)str ans:(void (^)(UIImage *ansImage))ans;
+
 @end

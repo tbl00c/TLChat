@@ -51,6 +51,7 @@
 		C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A1BBC91C5753420046CA1C /* Friends.xcassets */; };
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
 		C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */; };
+		C2A98BC51C89D57300029AD5 /* TLMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A98BC41C89D57300029AD5 /* TLMyQRCodeViewController.m */; };
 		C2AF1F931C6B20C400617D98 /* TLMineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F921C6B20C400617D98 /* TLMineInfoViewController.m */; };
 		C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F991C6B538300617D98 /* TLAccountAndSafetyViewController.m */; };
 		C2AF1FA01C6B603300617D98 /* TLMineInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F9F1C6B603300617D98 /* TLMineInfoHelper.m */; };
@@ -254,6 +255,8 @@
 		C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserGroup.m; sourceTree = "<group>"; };
 		C2A1BBD51C5784340046CA1C /* TLFriendHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendHeaderView.h; sourceTree = "<group>"; };
 		C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendHeaderView.m; sourceTree = "<group>"; };
+		C2A98BC31C89D57300029AD5 /* TLMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMyQRCodeViewController.h; sourceTree = "<group>"; };
+		C2A98BC41C89D57300029AD5 /* TLMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMyQRCodeViewController.m; sourceTree = "<group>"; };
 		C2AF1F911C6B20C400617D98 /* TLMineInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineInfoViewController.h; sourceTree = "<group>"; };
 		C2AF1F921C6B20C400617D98 /* TLMineInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineInfoViewController.m; sourceTree = "<group>"; };
 		C2AF1F981C6B538300617D98 /* TLAccountAndSafetyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountAndSafetyViewController.h; sourceTree = "<group>"; };
@@ -921,9 +924,19 @@
 			path = UIBarButtonItem;
 			sourceTree = "<group>";
 		};
+		C2A98BC21C89D55700029AD5 /* MyQRCodeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2A98BC31C89D57300029AD5 /* TLMyQRCodeViewController.h */,
+				C2A98BC41C89D57300029AD5 /* TLMyQRCodeViewController.m */,
+			);
+			path = MyQRCodeViewController;
+			sourceTree = "<group>";
+		};
 		C2AF1F901C6B209500617D98 /* MineInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C2A98BC21C89D55700029AD5 /* MyQRCodeViewController */,
 				C2AF1FA11C6B707800617D98 /* MineInfoViews */,
 				C2AF1F911C6B20C400617D98 /* TLMineInfoViewController.h */,
 				C2AF1F921C6B20C400617D98 /* TLMineInfoViewController.m */,
@@ -1819,6 +1832,7 @@
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
 				C2E56FFE1C897418009662AB /* TLAccountAndSafetyHelper.m in Sources */,
 				C28C446A1C883827005975FF /* TLShakeHelper.m in Sources */,
+				C2A98BC51C89D57300029AD5 /* TLMyQRCodeViewController.m in Sources */,
 				C2CAA3881C7787E500B8152B /* TLEmojiImageItemCell.m in Sources */,
 				C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */,
 				C2097EE81C52326500163B5C /* main.m in Sources */,

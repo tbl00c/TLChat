@@ -8,6 +8,7 @@
 
 #import "TLAccountAndSafetyViewController.h"
 #import "TLAccountAndSafetyHelper.h"
+#import "TLWebViewController.h"
 
 @interface TLAccountAndSafetyViewController ()
 
@@ -23,6 +24,19 @@
 
     self.helper = [[TLAccountAndSafetyHelper alloc] init];
     self.data = [self.helper mineAccountAndSafetyDataByUserInfo:[TLUserHelper sharedHelper].user];
+}
+
+#pragma mark - Delegate -
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+    if ([item.title isEqualToString:@"微信安全中心"]) {
+        TLWebViewController *webVC = [[TLWebViewController alloc] init];
+        [webVC setUrl:@"http://weixin110.qq.com/"];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:webVC animated:YES];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 @end

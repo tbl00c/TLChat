@@ -87,7 +87,7 @@
     }
     self.scannerLine.centerX = self.bgView.centerX;
     self.scannerLine.width = self.bgView.width * 1.4;
-    self.scannerLine.height = 5;
+    self.scannerLine.height = 10;
     if (self.scannerLine.y + self.scannerLine.height >= self.height) {
         self.scannerLine.y = 0;
     }

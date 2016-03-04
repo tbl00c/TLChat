@@ -22,6 +22,11 @@
     return TLColor(2.0, 187.0, 0.0, 1.0f);
 }
 
++ (UIColor *)colorDefaultGray
+{
+    return TLColor(46, 49, 50, 1.0);
+}
+
 + (UIColor *)colorTabBarBG
 {
     return TLColor(239.0, 239.0, 244.0, 1.0);
@@ -104,6 +109,12 @@
 + (UIColor *)colorChatEmojiSend
 {
     return TLColor(25.5, 102.0, 204.0, 1.0);
+}
+
+#pragma mark - WebView
++ (UIColor *)colorWebViewAuthText
+{
+    return TLColor(107, 111, 113, 1.0);
 }
 
 @end

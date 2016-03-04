@@ -10,6 +10,7 @@
 #import "TLScannerViewController.h"
 #import "TLWebViewController.h"
 #import "TLScannerButton.h"
+#import "TLMyQRCodeViewController.h"
 
 #define     HEIGHT_BOTTOM_VIEW      80
 
@@ -41,12 +42,18 @@
     [self.view addSubview:self.bottomView];
     [self.view addSubview:self.myQRButton];
     
-    [self.view addSubview:self.qrButton];
-    [self.view addSubview:self.coverButton];
-    [self.view addSubview:self.streetButton];
-    [self.view addSubview:self.translateButton];
+    [self.bottomView addSubview:self.qrButton];
+    [self.bottomView addSubview:self.coverButton];
+    [self.bottomView addSubview:self.streetButton];
+    [self.bottomView addSubview:self.translateButton];
     
     [self p_addMasonry];
+}
+
+- (void)setDisableFunctionBar:(BOOL)disableFunctionBar
+{
+    _disableFunctionBar = disableFunctionBar;
+    [self.bottomView setHidden:disableFunctionBar];
 }
 
 #pragma mark - TLScannerDelegate -
@@ -132,7 +139,9 @@
 
 - (void)myQRButtonDown
 {
-
+    TLMyQRCodeViewController *myQRCodeVC = [[TLMyQRCodeViewController alloc] init];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:myQRCodeVC animated:YES];
 }
 
 #pragma mark - Private Methods -

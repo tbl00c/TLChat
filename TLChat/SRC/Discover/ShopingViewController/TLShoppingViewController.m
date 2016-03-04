@@ -18,6 +18,7 @@
     [self.navigationItem setRightBarButtonItem:rightBarButton];
     
     [self setUrl:@"http://wq.jd.com/"];
+//    [self setUrl:@"http://m.zhuanzhuan.com"];
 }
 
 #pragma mark - Event Response

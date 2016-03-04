@@ -117,6 +117,9 @@
 		C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E31C58C8CA005419E4 /* TLFriendHelper.m */; };
 		C2DD58E91C58CEF2005419E4 /* UIColor+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E61C58CEF2005419E4 /* UIColor+TLChat.m */; };
 		C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */; };
+		C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FF21C8936DE009662AB /* TLGameViewController.m */; };
+		C2E56FF71C895706009662AB /* UIBarButtonItem+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FF61C895706009662AB /* UIBarButtonItem+Action.m */; };
+		C2E56FFB1C896233009662AB /* UINavigationItem+Fixed.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FFA1C896233009662AB /* UINavigationItem+Fixed.m */; };
 		C2EDE3011C6210A4005646A2 /* 10.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C2EDE3001C6210A4005646A2 /* 10.jpeg */; };
 		C2F0EBEE1C78F1A60090843C /* TLEmojiImageTitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */; };
 		C2F0EBF51C7A0DA80090843C /* TLCommonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */; };
@@ -379,6 +382,12 @@
 		C2DD58E61C58CEF2005419E4 /* UIColor+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TLChat.m"; sourceTree = "<group>"; };
 		C2DD58E71C58CEF2005419E4 /* UIFont+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TLChat.h"; sourceTree = "<group>"; };
 		C2DD58E81C58CEF2005419E4 /* UIFont+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+TLChat.m"; sourceTree = "<group>"; };
+		C2E56FF11C8936DE009662AB /* TLGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLGameViewController.h; sourceTree = "<group>"; };
+		C2E56FF21C8936DE009662AB /* TLGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGameViewController.m; sourceTree = "<group>"; };
+		C2E56FF51C895706009662AB /* UIBarButtonItem+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Action.h"; sourceTree = "<group>"; };
+		C2E56FF61C895706009662AB /* UIBarButtonItem+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Action.m"; sourceTree = "<group>"; };
+		C2E56FF91C896233009662AB /* UINavigationItem+Fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Fixed.h"; sourceTree = "<group>"; };
+		C2E56FFA1C896233009662AB /* UINavigationItem+Fixed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Fixed.m"; sourceTree = "<group>"; };
 		C2EDE3001C6210A4005646A2 /* 10.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpeg; sourceTree = "<group>"; };
 		C2F0EBEC1C78F1A60090843C /* TLEmojiImageTitleItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiImageTitleItemCell.h; sourceTree = "<group>"; };
 		C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiImageTitleItemCell.m; sourceTree = "<group>"; };
@@ -654,6 +663,7 @@
 				C2F0EC061C7A2BB90090843C /* ShakeViewController */,
 				C2F0EBFD1C7A17180090843C /* DriftBottleViewController */,
 				C246F10D1C6B866400A5AFB2 /* ShopingViewController */,
+				C2E56FF01C8936C6009662AB /* GameViewController */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -1001,6 +1011,8 @@
 		C2BF17BA1C86DB50003318CB /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C2E56FF81C896224009662AB /* UINavigationItem */,
+				C2E56FF41C895706009662AB /* UIBarButtonItem */,
 				C28C446E1C8855BA005975FF /* UIImagePickerController */,
 				C28C44561C8817BF005975FF /* NSDate */,
 				C2BF17DA1C86E08F003318CB /* NSFileManager */,
@@ -1420,6 +1432,34 @@
 			path = Friends;
 			sourceTree = "<group>";
 		};
+		C2E56FF01C8936C6009662AB /* GameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2E56FF11C8936DE009662AB /* TLGameViewController.h */,
+				C2E56FF21C8936DE009662AB /* TLGameViewController.m */,
+			);
+			path = GameViewController;
+			sourceTree = "<group>";
+		};
+		C2E56FF41C895706009662AB /* UIBarButtonItem */ = {
+			isa = PBXGroup;
+			children = (
+				C2E56FF51C895706009662AB /* UIBarButtonItem+Action.h */,
+				C2E56FF61C895706009662AB /* UIBarButtonItem+Action.m */,
+			);
+			name = UIBarButtonItem;
+			path = "../../../../../../Desktop/iOS-Categories-master/Categories/UIKit/UIBarButtonItem";
+			sourceTree = "<group>";
+		};
+		C2E56FF81C896224009662AB /* UINavigationItem */ = {
+			isa = PBXGroup;
+			children = (
+				C2E56FF91C896233009662AB /* UINavigationItem+Fixed.h */,
+				C2E56FFA1C896233009662AB /* UINavigationItem+Fixed.m */,
+			);
+			path = UINavigationItem;
+			sourceTree = "<group>";
+		};
 		C2F0EBF21C7A0D7F0090843C /* CommonSettingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1740,6 +1780,7 @@
 				C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */,
 				C2BF17D61C86DB50003318CB /* UIView+Frame.m in Sources */,
 				C203C00E1C7731CF00883268 /* TLEmojiGroupControl.m in Sources */,
+				C2E56FFB1C896233009662AB /* UINavigationItem+Fixed.m in Sources */,
 				C28C445E1C8818FD005975FF /* NSDate+Extension.m in Sources */,
 				C2CF4C741C804B5A0054637A /* TLInfoViewController.m in Sources */,
 				C2CF4C7D1C804BF30054637A /* TLSettingCell.m in Sources */,
@@ -1755,6 +1796,7 @@
 				C2B9E4291C65E1BA00CEBA81 /* TLMenuItem.m in Sources */,
 				C2CAA38B1C7787F800B8152B /* TLEmoji.m in Sources */,
 				C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */,
+				C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */,
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
 				C28C446A1C883827005975FF /* TLShakeHelper.m in Sources */,
 				C2CAA3881C7787E500B8152B /* TLEmojiImageItemCell.m in Sources */,
@@ -1785,6 +1827,7 @@
 				C2CF4C931C8062CD0054637A /* TLInfoCell.m in Sources */,
 				C2BF17D91C86DCD0003318CB /* UINavigationController+JZExtension.m in Sources */,
 				C282DF611C74586E006924AE /* TLChatBar.m in Sources */,
+				C2E56FF71C895706009662AB /* UIBarButtonItem+Action.m in Sources */,
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,
 				C282DF6E1C7574FE006924AE /* TLMoreKeyboardItem.m in Sources */,
 				C2AF1FA41C6B708D00617D98 /* TLMineInfoAvatarCell.m in Sources */,

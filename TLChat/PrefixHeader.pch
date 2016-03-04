@@ -29,5 +29,7 @@
 #import "UINavigationController+JZExtension.h"
 #import "NSFileManager+TLChat.h"
 #import "UIImagePickerController+Fixed.h"
+#import "UIBarButtonItem+Action.h"
+#import "UINavigationItem+Fixed.h"
 
 #endif /* PrefixHeader_pch */

@@ -10,15 +10,30 @@
 #import <MobClick.h>
 #import <WebKit/WebKit.h>
 
+#define     WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE    9
+
 @interface TLWebViewController () <WKNavigationDelegate>
 
 @property (nonatomic, strong) WKWebView *webView;
 
 @property (nonatomic, strong) UIProgressView *progressView;
 
+@property (nonatomic, strong) UIBarButtonItem *backButtonItem;
+
+@property (nonatomic, strong) UIBarButtonItem *closeButtonItem;
+
 @end
 
 @implementation TLWebViewController
+
+- (id)init
+{
+    if (self = [super init]) {
+        self.useMPageTitleAsNavTitle = YES;
+        self.showLoadingProgress = YES;
+    }
+    return self;
+}
 
 - (void)loadView
 {
@@ -31,6 +46,7 @@
 {
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
+    
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
@@ -40,6 +56,9 @@
     [MobClick beginLogPageView:@"WebVC"];
     [self.progressView setProgress:0.0f];
     [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
+    if (!self.disableBackButton && self.navigationItem.leftBarButtonItems.count <= 2) {
+        [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem fixItemSpace:-WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE], self.backButtonItem]];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -56,6 +75,7 @@
 #endif
 }
 
+
 #pragma mark - Public Methods -
 - (void)setUrl:(NSString *)url
 {
@@ -66,10 +86,17 @@
     }
 }
 
+- (void)setShowLoadingProgress:(BOOL)showLoadingProgress
+{
+    _showLoadingProgress = showLoadingProgress;
+    [self.progressView setHidden:!showLoadingProgress];
+}
+
+
 #pragma mark - Event Response -
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
-    if ([keyPath isEqualToString:@"estimatedProgress"] && object == self.webView) {
+    if (self.showLoadingProgress && [keyPath isEqualToString:@"estimatedProgress"] && object == self.webView) {
         [self.progressView setAlpha:1.0f];
         [self.progressView setProgress:self.webView.estimatedProgress animated:YES];
         
@@ -81,16 +108,32 @@
             }];
         }
     }
+}
+
+- (void)navBackButotnDown
+{
+    if (self.webView.canGoBack) {
+        [self.webView goBack];
+        [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem fixItemSpace:-WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE], self.backButtonItem, self.closeButtonItem]];
+    }
     else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
+
+- (void)navCloseButtonDown
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 #pragma mark - Delegate -
 //MARK: WKNavigationDelegate
 - (void) webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
-    [self.navigationItem setTitle:webView.title];
+    if (self.useMPageTitleAsNavTitle) {
+        [self.navigationItem setTitle:webView.title];
+    }
 }
 
 #pragma mark - Getter -
@@ -114,6 +157,22 @@
         
     }
     return _progressView;
+}
+
+- (UIBarButtonItem *)backButtonItem
+{
+    if (_backButtonItem == nil) {
+        _backButtonItem = [[UIBarButtonItem alloc] initWithBackTitle:@"返回" target:self action:@selector(navBackButotnDown)];
+    }
+    return _backButtonItem;
+}
+
+- (UIBarButtonItem *)closeButtonItem
+{
+    if (_closeButtonItem == nil) {
+        _closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(navCloseButtonDown)];
+    }
+    return _closeButtonItem;
 }
 
 @end

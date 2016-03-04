@@ -13,6 +13,7 @@
 #import "TLShakeViewController.h"
 #import "TLBottleViewController.h"
 #import "TLShoppingViewController.h"
+#import "TLGameViewController.h"
 
 @interface TLDiscoverViewController ()
 
@@ -57,6 +58,12 @@
         TLShoppingViewController *shoppingVC = [[TLShoppingViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:shoppingVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+    }
+    else if ([item.title isEqualToString:@"游戏"]) {
+        TLGameViewController *gameVC = [[TLGameViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:gameVC animated:YES];
         [self setHidesBottomBarWhenPushed:NO];
     }
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];

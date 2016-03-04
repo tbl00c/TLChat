@@ -15,12 +15,13 @@
 //#define     DEBUG_MEMERY
 
 #pragma mark - SIZE
-#define     SIZE_SCREEN         [UIScreen mainScreen].bounds.size
-#define     WIDTH_SCREEN        [UIScreen mainScreen].bounds.size.width
-#define     HEIGHT_SCREEN       [UIScreen mainScreen].bounds.size.height
-#define     HEIGHT_STATUSBAR	20.0f
-#define     HEIGHT_TABBAR       49.0f
-#define     HEIGHT_NAVBAR       44.0f
+#define     SIZE_SCREEN                 [UIScreen mainScreen].bounds.size
+#define     WIDTH_SCREEN                [UIScreen mainScreen].bounds.size.width
+#define     HEIGHT_SCREEN               [UIScreen mainScreen].bounds.size.height
+#define     HEIGHT_STATUSBAR            20.0f
+#define     HEIGHT_TABBAR               49.0f
+#define     HEIGHT_NAVBAR               44.0f
+#define     NAVBAR_ITEM_FIXED_SPACE     5.0f
 
 #define mark - Default
 #define     DEFAULT_AVATAR_PATH    @"default_head"

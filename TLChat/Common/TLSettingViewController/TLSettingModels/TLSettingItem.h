@@ -44,6 +44,11 @@ typedef NS_ENUM(NSInteger, TLSettingItemType) {
 @property (nonatomic, assign) BOOL showDisclosureIndicator;
 
 /**
+ *  停用高亮（默认NO）
+ */
+@property (nonatomic, assign) BOOL disableHighlight;
+
+/**
  *  cell类型，默认default
  */
 @property (nonatomic, assign) TLSettingItemType type;

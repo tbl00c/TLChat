@@ -2,46 +2,60 @@
 //  TLAccountAndSafetyHelper.m
 //  TLChat
 //
-//  Created by 李伯坤 on 16/2/10.
+//  Created by 李伯坤 on 16/3/4.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
 #import "TLAccountAndSafetyHelper.h"
 
+@interface TLAccountAndSafetyHelper ()
+
+@property (nonatomic, strong) NSMutableArray *data;
+
+@end
+
 @implementation TLAccountAndSafetyHelper
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
-        self.mineAccountAndSafetySettingData = [[NSMutableArray alloc] init];
-        [self p_initTestData];
+        self.data = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-- (void) p_initTestData
+- (NSMutableArray *)mineAccountAndSafetyDataByUserInfo:(TLUser *)userInfo
 {
-    TLSettingItem *item1 = TLCreateSettingItem(@"微信号");
-    item1.subTitle = @"li-bokun";
-    item1.showDisclosureIndicator = NO;
-    TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[item1]);
+    TLSettingItem *username = TLCreateSettingItem(@"微信号");
+    if (userInfo.username.length > 0) {
+        username.subTitle = userInfo.username;
+        username.showDisclosureIndicator = NO;
+        username.disableHighlight = YES;
+    }
+    else {
+        username.subTitle = @"未设置";
+    }
+    TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[username]);
     
-    TLSettingItem *item2 = TLCreateSettingItem(@"QQ号");
-    item2.subTitle = @"123456";
-    TLSettingItem *item3 = TLCreateSettingItem(@"手机号");
-    item3.subTitle = @"18888888888";
-    TLSettingItem *item4 = TLCreateSettingItem(@"邮箱地址");
-    item4.subTitle = @"libokun@126.com";
-    TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[item2, item3, item4]));
+    TLSettingItem *qqNumber = TLCreateSettingItem(@"QQ号");
+    qqNumber.subTitle = userInfo.qqNumber;
+    TLSettingItem *phoneNumber = TLCreateSettingItem(@"手机号");
+    phoneNumber.subTitle = userInfo.phoneNumber;
+    TLSettingItem *email = TLCreateSettingItem(@"邮箱地址");
+    email.subTitle = userInfo.email;
+    TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[qqNumber, phoneNumber, email]));
     
-    TLSettingItem *item5 = TLCreateSettingItem(@"声音锁");
-    TLSettingItem *item6 = TLCreateSettingItem(@"微信密码");
-    TLSettingItem *item7 = TLCreateSettingItem(@"账号保护");
-    item7.subTitle = @"已保护";
-    item7.rightImagePath = @"setting_lockon";
-    TLSettingItem *item8 = TLCreateSettingItem(@"微信安全中心");
-    TLSettingGroup *group3 = TLCreateSettingGroup(nil, @"如果遇到账号信息泄露、忘记密码、诈骗等账号问题，可前往微信安全中心。", (@[item5, item6, item7, item8]));
+    TLSettingItem *voiceLock = TLCreateSettingItem(@"声音锁");
+    TLSettingItem *password = TLCreateSettingItem(@"微信密码");
+    TLSettingItem *idProtect = TLCreateSettingItem(@"账号保护");
+    idProtect.subTitle = @"已保护";
+    idProtect.rightImagePath = @"setting_lockon";
+    TLSettingItem *safetyCenter = TLCreateSettingItem(@"微信安全中心");
+    TLSettingGroup *group3 = TLCreateSettingGroup(nil, @"如果遇到账号信息泄露、忘记密码、诈骗等账号问题，可前往微信安全中心。", (@[voiceLock, password, idProtect, safetyCenter]));
     
-    [self.mineAccountAndSafetySettingData addObjectsFromArray:@[group1, group2, group3]];
+    [_data removeAllObjects];
+    [_data addObjectsFromArray:@[group1, group2, group3]];
+    return _data;
 }
+
 @end

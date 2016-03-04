@@ -9,7 +9,7 @@
 #import "TLMineSettingViewController.h"
 #import "TLSettingHelper.h"
 
-#import "TLAccountAndSafetySettingViewController.h"
+#import "TLAccountAndSafetyViewController.h"
 #import "TLNewMessageSettingViewController.h"
 #import "TLPrivacySettingViewController.h"
 #import "TLCommonSettingViewController.h"
@@ -38,7 +38,7 @@
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     if ([item.title isEqualToString:@"账号与安全"]) {
-        TLAccountAndSafetySettingViewController *accountAndSafetyVC = [[TLAccountAndSafetySettingViewController alloc] init];
+        TLAccountAndSafetyViewController *accountAndSafetyVC = [[TLAccountAndSafetyViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:accountAndSafetyVC animated:YES];
     }

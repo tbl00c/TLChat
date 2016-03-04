@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "TLSettingGroup.h"
 
+typedef void (^ CompleteBlock)(NSMutableArray *data);
+
 @interface TLSettingHelper : NSObject
 
 @property (nonatomic, strong) NSMutableArray *mineSettingData;

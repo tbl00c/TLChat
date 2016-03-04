@@ -56,6 +56,13 @@
             make.right.mas_equalTo(self.contentView);
         }];
     }
+    
+    if (item.disableHighlight) {
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    else {
+        [self setSelectionStyle:UITableViewCellSelectionStyleDefault];
+    }
 }
 
 #pragma mark - Private Methods

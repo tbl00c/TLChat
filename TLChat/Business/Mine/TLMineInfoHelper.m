@@ -8,40 +8,54 @@
 
 #import "TLMineInfoHelper.h"
 
+@interface TLMineInfoHelper ()
+
+@property (nonatomic, strong) NSMutableArray *mineInfoData;
+
+@end
+
 @implementation TLMineInfoHelper
 
 - (id) init
 {
     if (self = [super init]) {
-        self.mineInfoData = [[NSMutableArray alloc] init];
-        [self p_initTestData];
+        _mineInfoData = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-- (void) p_initTestData
+- (NSMutableArray *)mineInfoDataByUserInfo:(TLUser *)userInfo
 {
-    TLSettingItem *item1 = TLCreateSettingItem(@"头像");
-    item1.rightImageURL = [TLUserHelper sharedHelper].user.avatarURL;
-    TLSettingItem *item2 = TLCreateSettingItem(@"名字");
-    item2.subTitle = @"李伯坤";
-    TLSettingItem *item3 = TLCreateSettingItem(@"微信号");
-    item3.subTitle = @"li-bokun";
-    item3.showDisclosureIndicator = NO;
-    TLSettingItem *item4 = TLCreateSettingItem(@"我的二维码");
-    item4.rightImagePath = @"mine_cell_myQR";
-    TLSettingItem *item5 = TLCreateSettingItem(@"我的地址");
-    TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, (@[item1, item2, item3, item4, item5]));
+    TLSettingItem *avatar = TLCreateSettingItem(@"头像");
+    avatar.rightImageURL = userInfo.avatarURL;
+    TLSettingItem *nikename = TLCreateSettingItem(@"名字");
+    nikename.subTitle = userInfo.nikeName;
+    TLSettingItem *username = TLCreateSettingItem(@"微信号");
+    if (userInfo.username.length > 0) {
+        username.subTitle = userInfo.username;
+        username.showDisclosureIndicator = NO;
+        username.disableHighlight = YES;
+    }
+    else {
+        username.subTitle = @"未设置";
+    }
     
-    TLSettingItem *item6 = TLCreateSettingItem(@"性别");
-    item6.subTitle = @"男";
-    TLSettingItem *item7 = TLCreateSettingItem(@"地区");
-    item7.subTitle = @"山东 滨州";
-    TLSettingItem *item8 = TLCreateSettingItem(@"个性签名");
-    item8.subTitle = @"新年快乐~";
-    TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[item6, item7, item8]));
+    TLSettingItem *qrCode = TLCreateSettingItem(@"我的二维码");
+    qrCode.rightImagePath = @"mine_cell_myQR";
+    TLSettingItem *location = TLCreateSettingItem(@"我的地址");
+    TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, (@[avatar, nikename, username, qrCode, location]));
     
-    [self.mineInfoData addObjectsFromArray:@[group1, group2]];
+    TLSettingItem *sex = TLCreateSettingItem(@"性别");
+    sex.subTitle = userInfo.sex;
+    TLSettingItem *city = TLCreateSettingItem(@"地区");
+    city.subTitle = userInfo.location;
+    TLSettingItem *motto = TLCreateSettingItem(@"个性签名");
+    motto.subTitle = userInfo.motto;
+    TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[sex, city, motto]));
+    
+    [_mineInfoData removeAllObjects];
+    [_mineInfoData addObjectsFromArray:@[group1, group2]];
+    return _mineInfoData;
 }
 
 @end

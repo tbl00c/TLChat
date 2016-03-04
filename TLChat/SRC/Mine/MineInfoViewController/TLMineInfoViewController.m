@@ -26,7 +26,7 @@
     [self.tableView registerClass:[TLMineInfoAvatarCell class] forCellReuseIdentifier:@"TLMineInfoAvatarCell"];
     
     self.helper = [[TLMineInfoHelper alloc] init];
-    self.data = self.helper.mineInfoData;
+    self.data = [self.helper mineInfoDataByUserInfo:[TLUserHelper sharedHelper].user];
 }
 
 #pragma mark - Delegate

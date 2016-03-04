@@ -1,5 +1,5 @@
 //
-//  TLAccountAndSafetySettingViewController.h
+//  TLAccountAndSafetyViewController.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/10.
@@ -8,6 +8,6 @@
 
 #import "TLSettingViewController.h"
 
-@interface TLAccountAndSafetySettingViewController : TLSettingViewController
+@interface TLAccountAndSafetyViewController : TLSettingViewController
 
 @end

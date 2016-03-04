@@ -11,6 +11,6 @@
 
 @interface TLMineInfoHelper : NSObject
 
-@property (nonatomic, strong) NSMutableArray *mineInfoData;
+- (NSMutableArray *)mineInfoDataByUserInfo:(TLUser *)userInfo;
 
 @end

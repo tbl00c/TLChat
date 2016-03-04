@@ -47,11 +47,19 @@
 @property (nonatomic, strong, readonly) NSString *showName;
 
 #pragma mark - 详细信息
+@property (nonatomic, strong) NSString *sex;
+
 @property (nonatomic, strong) NSString *location;
 
 @property (nonatomic, strong) NSString *phoneNumber;
 
+@property (nonatomic, strong) NSString *qqNumber;
+
+@property (nonatomic, strong) NSString *email;
+
 @property (nonatomic, strong) NSArray *albumArray;
+
+@property (nonatomic, strong) NSString *motto;
 
 #pragma mark - 列表用
 /**

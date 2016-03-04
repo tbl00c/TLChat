@@ -52,8 +52,7 @@
 		C2A1BBD11C5768D60046CA1C /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD01C5768D60046CA1C /* TLUserGroup.m */; };
 		C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */; };
 		C2AF1F931C6B20C400617D98 /* TLMineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F921C6B20C400617D98 /* TLMineInfoViewController.m */; };
-		C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F991C6B538300617D98 /* TLAccountAndSafetySettingViewController.m */; };
-		C2AF1F9D1C6B539C00617D98 /* TLAccountAndSafetyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F9C1C6B539C00617D98 /* TLAccountAndSafetyHelper.m */; };
+		C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F991C6B538300617D98 /* TLAccountAndSafetyViewController.m */; };
 		C2AF1FA01C6B603300617D98 /* TLMineInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1F9F1C6B603300617D98 /* TLMineInfoHelper.m */; };
 		C2AF1FA41C6B708D00617D98 /* TLMineInfoAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1FA31C6B708D00617D98 /* TLMineInfoAvatarCell.m */; };
 		C2AF1FA81C6B773000617D98 /* TLWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AF1FA71C6B773000617D98 /* TLWebViewController.m */; };
@@ -120,6 +119,7 @@
 		C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FF21C8936DE009662AB /* TLGameViewController.m */; };
 		C2E56FF71C895706009662AB /* UIBarButtonItem+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FF61C895706009662AB /* UIBarButtonItem+Action.m */; };
 		C2E56FFB1C896233009662AB /* UINavigationItem+Fixed.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FFA1C896233009662AB /* UINavigationItem+Fixed.m */; };
+		C2E56FFE1C897418009662AB /* TLAccountAndSafetyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FFD1C897418009662AB /* TLAccountAndSafetyHelper.m */; };
 		C2EDE3011C6210A4005646A2 /* 10.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C2EDE3001C6210A4005646A2 /* 10.jpeg */; };
 		C2F0EBEE1C78F1A60090843C /* TLEmojiImageTitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */; };
 		C2F0EBF51C7A0DA80090843C /* TLCommonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */; };
@@ -254,10 +254,8 @@
 		C2A1BBD61C5784340046CA1C /* TLFriendHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendHeaderView.m; sourceTree = "<group>"; };
 		C2AF1F911C6B20C400617D98 /* TLMineInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineInfoViewController.h; sourceTree = "<group>"; };
 		C2AF1F921C6B20C400617D98 /* TLMineInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineInfoViewController.m; sourceTree = "<group>"; };
-		C2AF1F981C6B538300617D98 /* TLAccountAndSafetySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountAndSafetySettingViewController.h; sourceTree = "<group>"; };
-		C2AF1F991C6B538300617D98 /* TLAccountAndSafetySettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountAndSafetySettingViewController.m; sourceTree = "<group>"; };
-		C2AF1F9B1C6B539C00617D98 /* TLAccountAndSafetyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountAndSafetyHelper.h; sourceTree = "<group>"; };
-		C2AF1F9C1C6B539C00617D98 /* TLAccountAndSafetyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountAndSafetyHelper.m; sourceTree = "<group>"; };
+		C2AF1F981C6B538300617D98 /* TLAccountAndSafetyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountAndSafetyViewController.h; sourceTree = "<group>"; };
+		C2AF1F991C6B538300617D98 /* TLAccountAndSafetyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountAndSafetyViewController.m; sourceTree = "<group>"; };
 		C2AF1F9E1C6B603300617D98 /* TLMineInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineInfoHelper.h; sourceTree = "<group>"; };
 		C2AF1F9F1C6B603300617D98 /* TLMineInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineInfoHelper.m; sourceTree = "<group>"; };
 		C2AF1FA21C6B708D00617D98 /* TLMineInfoAvatarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineInfoAvatarCell.h; sourceTree = "<group>"; };
@@ -388,6 +386,8 @@
 		C2E56FF61C895706009662AB /* UIBarButtonItem+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Action.m"; sourceTree = "<group>"; };
 		C2E56FF91C896233009662AB /* UINavigationItem+Fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Fixed.h"; sourceTree = "<group>"; };
 		C2E56FFA1C896233009662AB /* UINavigationItem+Fixed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Fixed.m"; sourceTree = "<group>"; };
+		C2E56FFC1C897418009662AB /* TLAccountAndSafetyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountAndSafetyHelper.h; sourceTree = "<group>"; };
+		C2E56FFD1C897418009662AB /* TLAccountAndSafetyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountAndSafetyHelper.m; sourceTree = "<group>"; };
 		C2EDE3001C6210A4005646A2 /* 10.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpeg; sourceTree = "<group>"; };
 		C2F0EBEC1C78F1A60090843C /* TLEmojiImageTitleItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiImageTitleItemCell.h; sourceTree = "<group>"; };
 		C2F0EBED1C78F1A60090843C /* TLEmojiImageTitleItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiImageTitleItemCell.m; sourceTree = "<group>"; };
@@ -920,8 +920,8 @@
 		C2AF1F941C6B534A00617D98 /* AccountAndSafetyViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C2AF1F981C6B538300617D98 /* TLAccountAndSafetySettingViewController.h */,
-				C2AF1F991C6B538300617D98 /* TLAccountAndSafetySettingViewController.m */,
+				C2AF1F981C6B538300617D98 /* TLAccountAndSafetyViewController.h */,
+				C2AF1F991C6B538300617D98 /* TLAccountAndSafetyViewController.m */,
 			);
 			path = AccountAndSafetyViewController;
 			sourceTree = "<group>";
@@ -1377,8 +1377,8 @@
 			children = (
 				C2D851531C68D811007DD697 /* TLSettingHelper.h */,
 				C2D851541C68D811007DD697 /* TLSettingHelper.m */,
-				C2AF1F9B1C6B539C00617D98 /* TLAccountAndSafetyHelper.h */,
-				C2AF1F9C1C6B539C00617D98 /* TLAccountAndSafetyHelper.m */,
+				C2E56FFC1C897418009662AB /* TLAccountAndSafetyHelper.h */,
+				C2E56FFD1C897418009662AB /* TLAccountAndSafetyHelper.m */,
 				C2B972FF1C6A33EB004B9B71 /* TLNewMessageSettingHelper.h */,
 				C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */,
 				C2B9730D1C6A52F0004B9B71 /* TLPrivacySettingHelper.h */,
@@ -1756,7 +1756,7 @@
 				C2D851501C68D67F007DD697 /* TLMineSettingViewController.m in Sources */,
 				C2DD58E91C58CEF2005419E4 /* UIColor+TLChat.m in Sources */,
 				C2B9730C1C6A52BB004B9B71 /* TLPrivacySettingViewController.m in Sources */,
-				C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetySettingViewController.m in Sources */,
+				C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetyViewController.m in Sources */,
 				C26B50D41C85A8E300210467 /* TLChatKeyboardController.m in Sources */,
 				C2142F0D1C53864C0030B29B /* TLUser.m in Sources */,
 				C2BF17DD1C86E08F003318CB /* NSFileManager+Paths.m in Sources */,
@@ -1798,6 +1798,7 @@
 				C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */,
 				C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */,
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
+				C2E56FFE1C897418009662AB /* TLAccountAndSafetyHelper.m in Sources */,
 				C28C446A1C883827005975FF /* TLShakeHelper.m in Sources */,
 				C2CAA3881C7787E500B8152B /* TLEmojiImageItemCell.m in Sources */,
 				C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */,
@@ -1823,7 +1824,6 @@
 				C271A4FF1C83D6F9004372D4 /* TLInfoButtonCell.m in Sources */,
 				C2F0EC121C7AB01A0090843C /* TLAboutViewController.m in Sources */,
 				C271A5021C83FA0B004372D4 /* TLInfoHeaderFooterView.m in Sources */,
-				C2AF1F9D1C6B539C00617D98 /* TLAccountAndSafetyHelper.m in Sources */,
 				C2CF4C931C8062CD0054637A /* TLInfoCell.m in Sources */,
 				C2BF17D91C86DCD0003318CB /* UINavigationController+JZExtension.m in Sources */,
 				C282DF611C74586E006924AE /* TLChatBar.m in Sources */,

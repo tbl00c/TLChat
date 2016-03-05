@@ -59,6 +59,7 @@
         }
     }
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
+    [self.webView.scrollView addObserver:self forKeyPath:@"backgroundColor" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,6 +82,7 @@
 - (void)dealloc
 {
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+    [self.webView.scrollView removeObserver:self forKeyPath:@"backgroundColor"];
 #ifdef DEBUG_MEMERY
     NSLog(@"dealloc WebVC");
 #endif
@@ -119,6 +121,12 @@
             }];
         }
     }
+    else if ([keyPath isEqualToString:@"backgroundColor"] && object == self.webView.scrollView) {
+        UIColor *color = [change objectForKey:@"new"];
+        if (!CGColorEqualToColor(color.CGColor, [UIColor clearColor].CGColor)) {
+            [object setBackgroundColor:[UIColor clearColor]];
+        }
+    }
 }
 
 - (void)navBackButotnDown
@@ -140,7 +148,7 @@
 
 #pragma mark - Delegate -
 //MARK: WKNavigationDelegate
-- (void) webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     if (self.useMPageTitleAsNavTitle) {
         [self.navigationItem setTitle:webView.title];
@@ -150,7 +158,7 @@
 }
 
 #pragma mark - Getter -
-- (WKWebView *) webView
+- (WKWebView *)webView
 {
     if (_webView == nil) {
         _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, HEIGHT_SCREEN - HEIGHT_NAVBAR - HEIGHT_STATUSBAR)];
@@ -160,7 +168,7 @@
     return _webView;
 }
 
-- (UIProgressView *) progressView
+- (UIProgressView *)progressView
 {
     if (_progressView == nil) {
         _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, 10.0f)];

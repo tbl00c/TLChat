@@ -10,6 +10,7 @@
 #import <MobClick.h>
 #import "TLMoreKBHelper.h"
 #import "TLEmojiKBHelper.h"
+#import "TLChatDetailViewController.h"
 
 static TLChatViewController *chatVC;
 
@@ -18,6 +19,8 @@ static TLChatViewController *chatVC;
 @property (nonatomic, strong) TLMoreKBHelper *moreKBhelper;
 
 @property (nonatomic, strong) TLEmojiKBHelper *emojiKBHelper;
+
+@property (nonatomic, strong) UIBarButtonItem *rightBarButton;
 
 @end
 
@@ -36,6 +39,8 @@ static TLChatViewController *chatVC;
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorTableViewBG]];
+    
+    [self.navigationItem setRightBarButtonItem:self.rightBarButton];
     
     self.moreKBhelper = [[TLMoreKBHelper alloc] init];
     [self setChatMoreKeyboardData:self.moreKBhelper.chatMoreKeyboardData];
@@ -60,6 +65,13 @@ static TLChatViewController *chatVC;
 #ifdef DEBUG_MEMERY
     NSLog(@"dealloc ChatVC");
 #endif
+}
+
+#pragma mark - Public Methods -
+- (void)setUser:(TLUser *)user
+{
+    [super setUser:user];
+    [self.rightBarButton setImage:[UIImage imageNamed:@"nav_chat_single"]];
 }
 
 #pragma mark - Delegate -
@@ -115,4 +127,22 @@ static TLChatViewController *chatVC;
     return arr;
 }
 
+#pragma mark - Event Response -
+- (void)rightBarButtonDown:(UINavigationBar *)sender
+{
+    TLChatDetailViewController *chatDetailVC = [[TLChatDetailViewController alloc] init];
+    [chatDetailVC setUser:self.user];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:chatDetailVC animated:YES];
+}
+
+
+#pragma mark - Getter -
+- (UIBarButtonItem *)rightBarButton
+{
+    if (_rightBarButton == nil) {
+        _rightBarButton = [[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
+    }
+    return _rightBarButton;
+}
 @end

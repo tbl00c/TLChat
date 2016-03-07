@@ -215,7 +215,7 @@
                               @"userID":@"u1007",
                               @"username":@"莫小贝",
                               @"messageDetail":@"帅哥你好啊!",
-                              @"avatarURL":@"http://d.hiphotos.baidu.com/zhidao/pic/item/b8014a90f603738dfa989413b51bb051f819ec35.jpg",
+                              @"avatarURL":@"http://tx.haiqq.com/uploads/allimg/150323/1513261b8-0.jpg",
                               },
                           @{
                               @"userID":@"g001",

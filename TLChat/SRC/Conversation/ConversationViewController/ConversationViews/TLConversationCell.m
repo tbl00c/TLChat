@@ -11,6 +11,7 @@
 #import "NSDate+TLChat.h"
 
 #define     CONV_SPACE_X            10.0f
+#define     CONV_SPACE_Y            9.0f
 #define     REDPOINT_WIDTH          10.0f
 
 @interface TLConversationCell()
@@ -54,21 +55,21 @@
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(CONV_SPACE_X);
-        make.top.mas_equalTo(CONV_SPACE_X);
-        make.bottom.mas_equalTo(- CONV_SPACE_X);
+        make.top.mas_equalTo(CONV_SPACE_Y);
+        make.bottom.mas_equalTo(- CONV_SPACE_Y);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
     
     [self.usernameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(CONV_SPACE_X);
-        make.top.mas_equalTo(self.avatarImageView).mas_offset(1.5);
+        make.top.mas_equalTo(self.avatarImageView).mas_offset(2.0);
         make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5);
     }];
     
     [self.detailLabel setContentCompressionResistancePriority:110 forAxis:UILayoutConstraintAxisHorizontal];
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.avatarImageView).mas_offset(-1.3);
+        make.bottom.mas_equalTo(self.avatarImageView).mas_offset(-2.0);
         make.left.mas_equalTo(self.usernameLabel);
         make.right.mas_lessThanOrEqualTo(self.remindImageView.mas_left);
     }];

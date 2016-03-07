@@ -17,7 +17,7 @@
 
 + (UIFont *) fontConversationUsername
 {
-    return [UIFont systemFontOfSize:16.0f];
+    return [UIFont systemFontOfSize:17.0f];
 }
 
 + (UIFont *) fontConversationDetail

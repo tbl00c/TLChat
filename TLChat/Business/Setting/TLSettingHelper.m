@@ -22,8 +22,14 @@
 - (void) p_initTestData
 {
     TLSettingItem *item1 = TLCreateSettingItem(@"账号与安全");
-    item1.subTitle = @"已保护";
-    item1.rightImagePath = @"setting_lockon";
+//    if () {
+        item1.subTitle = @"已保护";
+        item1.rightImagePath = @"setting_lockon";
+//    }
+//    else {
+//        item1.subTitle = @"为保护";
+//        item1.rightImagePath = @"setting_lockoff";
+//    }
     TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[item1]);
     
     TLSettingItem *item2 = TLCreateSettingItem(@"新消息通知");

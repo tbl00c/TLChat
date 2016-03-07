@@ -60,13 +60,14 @@
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark - Delegate -
+//MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 55.0f;
 }
 
-#pragma mark - UISearchResultsUpdating
+//MARK: UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     NSString *searchText = searchController.searchBar.text;
     [self.data removeAllObjects];

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define     TLCreateInfo(t, st) [TLInfo createInfoWithTitle:t subTitle:st]
+
 typedef NS_ENUM(NSUInteger, TLInfoType) {
     TLInfoTypeDefault,
     TLInfoTypeTitleOnly,

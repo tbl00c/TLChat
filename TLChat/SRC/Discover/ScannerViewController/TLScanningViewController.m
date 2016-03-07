@@ -42,10 +42,10 @@
     [self.view addSubview:self.bottomView];
     [self.view addSubview:self.myQRButton];
     
-    [self.bottomView addSubview:self.qrButton];
-    [self.bottomView addSubview:self.coverButton];
-    [self.bottomView addSubview:self.streetButton];
-    [self.bottomView addSubview:self.translateButton];
+    [self.view addSubview:self.qrButton];
+    [self.view addSubview:self.coverButton];
+    [self.view addSubview:self.streetButton];
+    [self.view addSubview:self.translateButton];
     
     [self p_addMasonry];
 }

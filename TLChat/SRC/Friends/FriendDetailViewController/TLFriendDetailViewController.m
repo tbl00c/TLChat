@@ -9,9 +9,10 @@
 #import "TLFriendDetailViewController.h"
 #import "TLFriendDetailUserCell.h"
 #import "TLFriendDetailAlbumCell.h"
-#import "TLFriendHelper.h"
+#import "TLFriendHelper+Detail.h"
 #import "TLChatViewController.h"
 #import "TLRootViewController.h"
+#import "TLFriendDetailSettingViewController.h"
 
 #define     HEIGHT_USER_CELL           90.0f
 #define     HEIGHT_ALBUM_CELL          80.0f
@@ -33,7 +34,7 @@
 - (void)setUser:(TLUser *)user
 {
     _user = user;
-    NSArray *array = [TLFriendHelper transformFriendDetailArrayFromUserInfo:self.user];
+    NSArray *array = [[TLFriendHelper sharedFriendHelper] friendDetailArrayByUserInfo:self.user];
     self.data = [NSMutableArray arrayWithArray:array];
     [self.tableView reloadData];
 }
@@ -112,7 +113,10 @@
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
-
+    TLFriendDetailSettingViewController *detailSetiingVC = [[TLFriendDetailSettingViewController alloc] init];
+    [detailSetiingVC setUser:self.user];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:detailSetiingVC animated:YES];
 }
 
 @end

@@ -53,13 +53,26 @@
 #pragma mark - Public Methods -
 - (void)setUser:(TLUser *)user
 {
-    if (_user && ![_user.userID isEqualToString:user.userID]) {
+    if (_group || (_user && ![_user.userID isEqualToString:user.userID])) {
+        _group = nil;
         [self.data removeAllObjects];
         [self.tableView reloadData];
     }
     _user = user;
     lastDate = nil;
     [self.navigationItem setTitle:user.showName];
+}
+
+- (void)setGroup:(TLGroup *)group
+{
+    if (_user || (_group && [_group.groupID isEqualToString:group.groupID])) {
+        _user = nil;
+        [self.data removeAllObjects];
+        [self.tableView reloadData];
+    }
+    _group = group;
+    lastDate = nil;
+    [self.navigationItem setTitle:group.groupName];
 }
 
 - (void)setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData

@@ -7,7 +7,6 @@
 //
 
 #import "TLFriendHelper.h"
-#import "TLInfo.h"
 
 static TLFriendHelper *friendHelper = nil;
 
@@ -22,77 +21,14 @@ static TLFriendHelper *friendHelper = nil;
     return friendHelper;
 }
 
-+ (NSArray *)transformFriendDetailArrayFromUserInfo:(TLUser *)userInfo
-{
-    NSMutableArray *data = [[NSMutableArray alloc] init];
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
-    
-    // 1
-    TLInfo *user = [TLInfo createInfoWithTitle:@"个人" subTitle:nil];
-    user.type = TLInfoTypeOther;
-    user.userInfo = userInfo;
-    [arr addObject:user];
-    [data addObject:arr];
-    
-    // 2
-    arr = [[NSMutableArray alloc] init];
-    if (userInfo.phoneNumber.length > 0) {
-        TLInfo *tel = [TLInfo createInfoWithTitle:@"电话号码" subTitle:userInfo.phoneNumber];
-        tel.showDisclosureIndicator = NO;
-        [arr addObject:tel];
-    }
-    if (userInfo.remarkName.length == 0) {
-        TLInfo *remark = [TLInfo createInfoWithTitle:@"设置备注和标签" subTitle:nil];
-        [arr insertObject:remark atIndex:0];
-    }
-    else {
-        TLInfo *remark = [TLInfo createInfoWithTitle:@"标签" subTitle:@"武林外传"];
-        [arr addObject:remark];
-    }
-    [data addObject:arr];
-    arr = [[NSMutableArray alloc] init];
-    
-    // 3
-    if (userInfo.location.length > 0) {
-        TLInfo *location = [TLInfo createInfoWithTitle:@"地区" subTitle:userInfo.location];
-        location.showDisclosureIndicator = NO;
-        location.disableHighlight = YES;
-        [arr addObject:location];
-    }
-    TLInfo *album = [TLInfo createInfoWithTitle:@"个人相册" subTitle:nil];
-    album.userInfo = userInfo.albumArray;
-    album.type = TLInfoTypeOther;
-    [arr addObject:album];
-    TLInfo *more = [TLInfo createInfoWithTitle:@"更多" subTitle:nil];
-    [arr addObject:more];
-    [data addObject:arr];
-    arr = [[NSMutableArray alloc] init];
-    
-    // 4
-    TLInfo *sendMsg = [TLInfo createInfoWithTitle:@"发消息" subTitle:nil];
-    sendMsg.type = TLInfoTypeButton;
-    sendMsg.titleColor = [UIColor whiteColor];
-    sendMsg.buttonBorderColor = [UIColor colorCellLine];
-    [arr addObject:sendMsg];
-    if (![userInfo.userID isEqualToString:[TLUserHelper sharedHelper].user.userID]) {
-        TLInfo *video = [TLInfo createInfoWithTitle:@"视频聊天" subTitle:nil];
-        video.type = TLInfoTypeButton;
-        video.buttonBorderColor = [UIColor colorCellLine];
-        video.buttonColor = [UIColor whiteColor];
-        [arr addObject:video];
-    }
-    [data addObject:arr];
-    
-    return data;
-}
-
 - (id)init
 {
     if (self = [super init]) {
         self.friendsData = [[NSMutableArray alloc] init];
         self.data = [[NSMutableArray alloc] initWithObjects:self.defaultGroup, nil];
         self.sectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
-        
+        self.tagsData = [[NSMutableArray alloc] init];
+        self.groupData = [[NSMutableArray alloc] init];
         [self p_initTestData];
     }
     return self;
@@ -142,6 +78,7 @@ static TLFriendHelper *friendHelper = nil;
     // 2、分组
     NSMutableArray *ansData = [[NSMutableArray alloc] initWithObjects:self.defaultGroup, nil];
     NSMutableArray *ansSectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
+    NSMutableDictionary *tagsDic = [[NSMutableDictionary alloc] init];
     char lastC = '1';
     TLUserGroup *curGroup;
     TLUserGroup *othGroup = [[TLUserGroup alloc] init];
@@ -169,6 +106,20 @@ static TLFriendHelper *friendHelper = nil;
         }
         else {
             [curGroup addObject:user];
+        }
+        
+        // TAGs
+        if (user.tags.count > 0) {
+            for (NSString *tag in user.tags) {
+                TLUserGroup *group = [tagsDic objectForKey:tag];
+                if (group == nil) {
+                    group = [[TLUserGroup alloc] init];
+                    group.groupName = tag;
+                    [tagsDic setObject:group forKey:tag];
+                    [self.tagsData addObject:group];
+                }
+                [group.users addObject:user];
+            }
         }
     }
     if (curGroup && curGroup.count > 0) {
@@ -202,6 +153,13 @@ static TLFriendHelper *friendHelper = nil;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self p_resetFriendData];
     });
+    
+    path = [[NSBundle mainBundle] pathForResource:@"FriendGroupList" ofType:@"json"];
+    jsonData = [NSData dataWithContentsOfFile:path];
+    jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+    arr = [TLGroup mj_objectArrayWithKeyValuesArray:jsonArray];
+    [self.groupData removeAllObjects];
+    [self.groupData addObjectsFromArray:arr];
 }
 
 #pragma mark - Getter

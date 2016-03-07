@@ -1,18 +1,17 @@
 //
-//  TLFriendCell.m
+//  TLGroupCell.m
 //  TLChat
 //
-//  Created by 李伯坤 on 16/1/26.
+//  Created by 李伯坤 on 16/3/7.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLFriendCell.h"
-#import <UIImageView+WebCache.h>
+#import "TLGroupCell.h"
 
 #define     FRIENDS_SPACE_X         10.0f
 #define     FRIENDS_SPACE_Y         9.5f
 
-@interface TLFriendCell ()
+@interface TLGroupCell ()
 
 @property (nonatomic, strong) UIImageView *avatarImageView;
 
@@ -20,7 +19,7 @@
 
 @end
 
-@implementation TLFriendCell
+@implementation TLGroupCell
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -35,21 +34,20 @@
     return self;
 }
 
-#pragma mark - Public Methods
-- (void) setUser:(TLUser *)user
+- (void) setGroup:(TLGroup *)group
 {
-    _user = user;
-    if (user.avatarPath) {
-        [self.avatarImageView setImage:[UIImage imageNamed:user.avatarPath]];
+    _group = group;
+    if (group.groupAvatarPath.length == 0) {
+        [self.avatarImageView setImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     else {
-        [self.avatarImageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        
     }
-    
-    [self.usernameLabel setText:user.showName];
+
+    [self.usernameLabel setText:group.groupName];
 }
 
-#pragma mark - Prvate Methods -
+#pragma mark - Private Methods -
 - (void) p_addMasonry
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,5 +81,6 @@
     }
     return _usernameLabel;
 }
+
 
 @end

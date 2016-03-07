@@ -72,6 +72,9 @@
     [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:APP_CHANNEL];
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
 }
 
 - (void)p_initUserData

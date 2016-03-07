@@ -40,6 +40,10 @@
  */
 @property (nonatomic, strong) NSString *remarkName;
 
+/**
+ *  标签
+ */
+@property (nonatomic, strong) NSMutableArray *tags;
 
 /**
  *  界面显示名称

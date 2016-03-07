@@ -7,6 +7,9 @@
         "remarkName" : "吕轻侯",
         "location" : "陕西 西安",
         "phoneNumber" : "11111111111",
+        "tags" : [
+            "武林外传",
+        ],
         "albumArray" : [
             "http://a.hiphotos.baidu.com/zhidao/pic/item/3ac79f3df8dcdu10002f7c850748b4710b9122f53.jpg",
             "http://img4.duitang.com/uploads/item/201511/17/20151117130657_j3T4s.png",
@@ -21,6 +24,9 @@
         "remarkName" : "",
         "location" : "山西 大同",
         "phoneNumber" : "122222222222",
+        "tags" : [
+           "武林外传",
+        ],
         "albumArray" : [
             "http://img02.store.sogou.com/app/a/u100u10016/2193345d8f4c3c551d30b8fdf7087d2e",
             "http://ww1.sinaimg.cn/crop.278.0.1448.1448.1024/5a22e1e7jw8eo10kpdkanj21kw148gsh.jpg",
@@ -36,6 +42,9 @@
         "remarkName" : "李秀莲",
         "location" : "山东 济南",
         "phoneNumber" : "13333333333",
+        "tags" : [
+           "武林外传",
+        ],
         "albumArray" : [
             "http://wanzao2.b0.upaiyun.com/system/avatars/5762080/original/20140724124127782.png",
             "http://ww1.sinaimg.cn/crop.0.0.1080.1080.1024/69679492jw8etju0d877bj20u00u0770.jpg",
@@ -51,6 +60,9 @@
         "remarkName" : "燕小六",
         "location" : "河南 郑州",
         "phoneNumber" : "110",
+        "tags" : [
+           "武林外传",
+        ],
         "albumArray" : [
             "http://img4.duitang.com/uploads/item/201602/22/20160222200011_RjLh4.png",
             "http://img4.duitang.com/uploads/item/201409/16/20140916103102_RVECy.jpeg",
@@ -66,6 +78,9 @@
         "remarkName" : "郭芙蓉",
         "location" : "江苏 杭州",
         "phoneNumber" : "15555555555",
+        "tags" : [
+            "武林外传",
+        ],
         "albumArray" : [
             "http://d.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=8154f242978fa0ec7f926c0b16a775d6/d043ad4bd11373f061865feea20f4bfbfbed0401.jpg",
             "http://a.hiphotos.baidu.com/zhidao/pic/item/3ac79f3df8dcdu10002f7c850748b4710b9122f53.jpg",
@@ -81,6 +96,9 @@
         "remarkName" : "佟湘玉",
         "location" : "山西 大同",
         "phoneNumber" : "18888888888",
+        "tags" : [
+            "武林外传",
+        ],
         "albumArray" : [
             "http://ww1.sinaimg.cn/crop.95.235.u1000.u1000.1024/d71a5054jw8euqdybnb1ij20xc1e0tht.jpg",
             "http://e.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=d2590444c81b9d168a929267c3ee98b7/8644ebf81a4c510f7d6674816659252dd52aa58f.jpg",
@@ -96,6 +114,10 @@
         "remarkName" : "莫小贝",
         "location" : "山西 大同",
         "phoneNumber" : "16666666666",
+        "tags" : [
+           "武林外传",
+           "好友",
+        ],
         "albumArray" : [
             "http://d.hiphotos.baidu.com/zhidao/pic/item/b8014a90f603738dfa989413b51bb051f819ec35.jpg",
             "http://img4.duitang.com/uploads/item/201206/03/20120603185827_Qm5Rr.jpeg",

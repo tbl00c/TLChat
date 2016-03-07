@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
-@interface TLWebViewController : UIViewController
+@interface TLWebViewController : UIViewController <WKNavigationDelegate>
 
 /// 是否使用网页标题作为nav标题，默认YES
 @property (nonatomic, assign) BOOL useMPageTitleAsNavTitle;

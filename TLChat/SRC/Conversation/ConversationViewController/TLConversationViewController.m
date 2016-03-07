@@ -10,6 +10,7 @@
 #import "TLFriendSearchViewController.h"
 #import "TLChatViewController.h"
 #import "TLConversationCell.h"
+#import "TLSearchController.h"
 #import "TLFriendHelper.h"
 #import <UIImageView+WebCache.h>
 #import <AFNetworking.h>
@@ -22,7 +23,7 @@
 
 @property (nonatomic, strong) NSMutableArray *data;
 
-@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) TLSearchController *searchController;
 @property (nonatomic, strong) TLFriendSearchViewController *searchVC;
 
 @end
@@ -189,15 +190,6 @@
 {
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
-    [self.searchController.searchBar setTintColor:[UIColor colorDefaultGreen]];
-    [self.searchController.searchBar setShowsBookmarkButton:YES];
-    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
-    [self.searchController.searchBar setImage:[UIImage imageNamed:@"searchBar_voice_HL"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateHighlighted];
-    UITextField *tf = [[[self.searchController.searchBar.subviews firstObject] subviews] lastObject];
-    [tf.layer setMasksToBounds:YES];
-    [tf.layer setBorderWidth:0.5f];
-    [tf.layer setBorderColor:[UIColor colorCellLine].CGColor];
-    [tf.layer setCornerRadius:5.0f];
     
     [self.tableView addSubview:self.scrollTopView];
     [self.scrollTopView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -234,16 +226,14 @@
 }
 
 #pragma mark - Getter -
-- (UISearchController *) searchController
+- (TLSearchController *) searchController
 {
     if (_searchController == nil) {
-        _searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchVC];
+        _searchController = [[TLSearchController alloc] initWithSearchResultsController:self.searchVC];
         [_searchController setSearchResultsUpdater:self.searchVC];
         [_searchController.searchBar setPlaceholder:@"搜索"];
-        [_searchController.searchBar setBarTintColor:[UIColor colorSearchBarTint]];
         [_searchController.searchBar setDelegate:self];
-        [_searchController.searchBar.layer setBorderWidth:0.5f];
-        [_searchController.searchBar.layer setBorderColor:[UIColor colorSearchBarBorder].CGColor];
+        [_searchController setShowVoiceButton:YES];
     }
     return _searchController;
 }

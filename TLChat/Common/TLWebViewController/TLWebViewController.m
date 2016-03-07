@@ -8,11 +8,10 @@
 
 #import "TLWebViewController.h"
 #import <MobClick.h>
-#import <WebKit/WebKit.h>
 
 #define     WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE    9
 
-@interface TLWebViewController () <WKNavigationDelegate>
+@interface TLWebViewController ()
 
 @property (nonatomic, strong) WKWebView *webView;
 

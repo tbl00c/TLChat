@@ -15,10 +15,13 @@
 #import "TLEmojiKeyboard.h"
 
 #import "TLUser.h"
+#import "TLGroup.h"
 
 @interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate, TLEmojiKeyboardDataSource>
 
 @property (nonatomic, strong) TLUser *user;
+
+@property (nonatomic, strong) TLGroup *group;
 
 /// 聊天数据
 @property (nonatomic, strong) NSMutableArray *data;

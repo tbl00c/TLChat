@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TLUserGroup.h"
+#import "TLGroup.h"
 
 @interface TLFriendHelper : NSObject
 
@@ -36,13 +37,23 @@
  */
 @property (nonatomic, assign, readonly) NSInteger friendNumber;
 
+/**
+ *  标签数据
+ */
+@property (nonatomic, strong) NSMutableArray *tagsData;
+
+/**
+ *  群
+ */
+@property (nonatomic, strong) NSMutableArray *groupData;
+
 @property (nonatomic, strong) void(^dataChangedBlock)(NSMutableArray *friends, NSMutableArray *headers);
 
 
 + (TLFriendHelper *)sharedFriendHelper;
 
-+ (NSArray *)transformFriendDetailArrayFromUserInfo:(TLUser *)userInfo;
-
 - (TLUser *)getFriendInfoByUserID:(NSString *)userID;
+
+
 
 @end

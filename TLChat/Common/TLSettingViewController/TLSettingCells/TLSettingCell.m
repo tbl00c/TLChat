@@ -11,6 +11,8 @@
 
 @interface TLSettingCell ()
 
+@property (nonatomic, strong) UILabel *titleLabel;
+
 @property (nonatomic, strong) UILabel *rightLabel;
 
 @property (nonatomic, strong) UIImageView *rightImageView;
@@ -22,6 +24,7 @@
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.rightLabel];
         [self.contentView addSubview:self.rightImageView];
         [self p_addMasonry];
@@ -32,7 +35,7 @@
 - (void) setItem:(TLSettingItem *)item
 {
     _item = item;
-    [self.textLabel setText:item.title];
+    [self.titleLabel setText:item.title];
     [self.rightLabel setText:item.subTitle];
     if (item.rightImagePath) {
         [self.rightImageView setImage: [UIImage imageNamed:item.rightImagePath]];
@@ -66,11 +69,19 @@
 }
 
 #pragma mark - Private Methods
-- (void) p_addMasonry
+- (void)p_addMasonry
 {
+    [self.titleLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.contentView);
+        make.left.mas_equalTo(self.contentView).mas_offset(15);
+    }];
+    
+    [self.rightLabel setContentCompressionResistancePriority:200 forAxis:UILayoutConstraintAxisHorizontal];
     [self.rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.contentView);
-        make.centerY.mas_equalTo(self.contentView);
+        make.centerY.mas_equalTo(self.titleLabel);
+        make.left.mas_greaterThanOrEqualTo(self.titleLabel.mas_right).mas_offset(20);
     }];
 
     [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -80,7 +91,15 @@
 }
 
 #pragma mark - Getter
-- (UILabel *) rightLabel
+- (UILabel *)titleLabel
+{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] init];
+    }
+    return _titleLabel;
+}
+
+- (UILabel *)rightLabel
 {
     if (_rightLabel == nil) {
         _rightLabel = [[UILabel alloc] init];
@@ -90,7 +109,7 @@
     return _rightLabel;
 }
 
-- (UIImageView *) rightImageView
+- (UIImageView *)rightImageView
 {
     if (_rightImageView == nil) {
         _rightImageView = [[UIImageView alloc] init];

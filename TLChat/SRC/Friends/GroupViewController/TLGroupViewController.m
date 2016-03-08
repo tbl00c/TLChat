@@ -32,7 +32,7 @@
     
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     [self.tableView registerClass:[TLGroupCell class] forCellReuseIdentifier:@"TLGroupCell"];
-    self.data = [TLFriendHelper sharedFriendHelper].groupData;
+    self.data = [TLFriendHelper sharedFriendHelper].groupsData;
 }
 
 #pragma mark - Delegate -

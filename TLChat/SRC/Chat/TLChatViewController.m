@@ -11,6 +11,7 @@
 #import "TLMoreKBHelper.h"
 #import "TLEmojiKBHelper.h"
 #import "TLChatDetailViewController.h"
+#import "TLChatGroupDetailViewController.h"
 
 static TLChatViewController *chatVC;
 
@@ -74,6 +75,12 @@ static TLChatViewController *chatVC;
     [self.rightBarButton setImage:[UIImage imageNamed:@"nav_chat_single"]];
 }
 
+- (void)setGroup:(TLGroup *)group
+{
+    [super setGroup:group];
+    [self.rightBarButton setImage:[UIImage imageNamed:@"nav_chat_multi"]];
+}
+
 #pragma mark - Delegate -
 //MARK: TLMoreKeyboardDelegate
 - (void)moreKeyboard:(id)keyboard didSelectedFunctionItem:(TLMoreKeyboardItem *)funcItem
@@ -130,10 +137,18 @@ static TLChatViewController *chatVC;
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UINavigationBar *)sender
 {
-    TLChatDetailViewController *chatDetailVC = [[TLChatDetailViewController alloc] init];
-    [chatDetailVC setUser:self.user];
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:chatDetailVC animated:YES];
+    if (self.curChatType == TLChatVCTypeFriend) {
+        TLChatDetailViewController *chatDetailVC = [[TLChatDetailViewController alloc] init];
+        [chatDetailVC setUser:self.user];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:chatDetailVC animated:YES];
+    }
+    else if (self.curChatType == TLChatVCTypeGroup) {
+        TLChatGroupDetailViewController *chatGroupDetailVC = [[TLChatGroupDetailViewController alloc] init];
+        [chatGroupDetailVC setGroup:self.group];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:chatGroupDetailVC animated:YES];
+    }
 }
 
 

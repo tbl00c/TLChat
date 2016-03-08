@@ -23,6 +23,31 @@
 @end
 
 @implementation TLScannerViewController
+
++ (void)scannerQRCodeFromImage:(UIImage *)image ans:(void (^)(NSString *ansStr))ans
+{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
+        CIImage *ciImage = [CIImage imageWithData:imageData];
+        NSString  *ansStr = nil;
+        if (ciImage) {
+            CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:[CIContext contextWithOptions:nil] options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+            NSArray *features = [detector featuresInImage:ciImage];
+            if (features.count) {
+                for (CIFeature *feature in features) {
+                    if ([feature isKindOfClass:[CIQRCodeFeature class]]) {
+                        ansStr = ((CIQRCodeFeature *)feature).messageString;
+                        break;
+                    }
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ans(ansStr);
+        });
+    });
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -118,65 +143,6 @@
 - (BOOL)isRunning
 {
     return [self.scannerSession isRunning];
-}
-
-+ (void)scannerQRCodeFromImage:(UIImage *)image ans:(void (^)(NSString *ansStr))ans
-{
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
-        CIImage *ciImage = [CIImage imageWithData:imageData];
-        NSString  *ansStr = nil;
-        if (ciImage) {
-            CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:[CIContext contextWithOptions:nil] options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
-            NSArray *features = [detector featuresInImage:ciImage];
-            if (features.count) {
-                for (CIFeature *feature in features) {
-                    if ([feature isKindOfClass:[CIQRCodeFeature class]]) {
-                        ansStr = ((CIQRCodeFeature *)feature).messageString;
-                        break;
-                    }
-                }
-            }
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            ans(ansStr);
-        });
-    });
-}
-
-+ (void)createQRCodeImageForString:(NSString *)str ans:(void (^)(UIImage *))ans
-{
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSData *stringData = [str dataUsingEncoding:NSUTF8StringEncoding];
-        CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-        [qrFilter setValue:stringData forKey:@"inputMessage"];
-        [qrFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
-        CIImage *image = qrFilter.outputImage;
-        CGFloat size = 300.0f;
-        
-        CGRect extent = CGRectIntegral(image.extent);
-        CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
-        
-        size_t width = CGRectGetWidth(extent) * scale;
-        size_t height = CGRectGetHeight(extent) * scale;
-        
-        CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
-        CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
-        CIContext *context = [CIContext contextWithOptions:nil];
-        CGImageRef bitmapImage = [context createCGImage:image fromRect:extent];
-        CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
-        CGContextScaleCTM(bitmapRef, scale, scale);
-        CGContextDrawImage(bitmapRef, extent, bitmapImage);
-        
-        CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
-        CGContextRelease(bitmapRef);
-        CGImageRelease(bitmapImage);
-        
-        UIImage *ansImage = [UIImage imageWithCGImage:scaledImage];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            ans(ansImage);
-        });
-    });
 }
 
 #pragma mark - Delegate -

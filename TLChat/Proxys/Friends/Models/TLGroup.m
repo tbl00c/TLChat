@@ -55,4 +55,12 @@
     return _groupAvatarPath;
 }
 
+- (NSString *)myNikeName
+{
+    if (_myNikeName.length == 0) {
+        _myNikeName = [TLUserHelper sharedHelper].user.showName;
+    }
+    return _myNikeName;
+}
+
 @end

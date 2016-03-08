@@ -42,10 +42,10 @@
     [self.view addSubview:self.bottomView];
     [self.view addSubview:self.myQRButton];
     
-    [self.view addSubview:self.qrButton];
-    [self.view addSubview:self.coverButton];
-    [self.view addSubview:self.streetButton];
-    [self.view addSubview:self.translateButton];
+    [self.bottomView addSubview:self.qrButton];
+    [self.bottomView addSubview:self.coverButton];
+    [self.bottomView addSubview:self.streetButton];
+    [self.bottomView addSubview:self.translateButton];
     
     [self p_addMasonry];
 }
@@ -215,9 +215,11 @@
 - (UIView *)bottomView
 {
     if (_bottomView == nil) {
+        UIView *blackView = [[UIView alloc] init];
+        [blackView setBackgroundColor:[UIColor blackColor]];
+        [blackView setAlpha:0.5f];
         _bottomView = [[UIView alloc] init];
-        [_bottomView setBackgroundColor:[UIColor blackColor]];
-        [_bottomView setAlpha:0.5f];
+        [_bottomView addSubview:blackView];
     }
     return _bottomView;
 }

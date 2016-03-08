@@ -93,8 +93,13 @@
         }
         [chatVC setUser:user];
     }
-    else {
-        [chatVC setUser:nil];
+    else if (conversation.convType == TLConversationTypeGroup){
+        TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.userID];
+        if (group == nil) {
+            [UIAlertView alertWithTitle:@"错误" message:@"您不存在该讨论组"];
+            return;
+        }
+        [chatVC setGroup:group];
     }
     [self setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:chatVC animated:YES];
@@ -203,26 +208,25 @@
 
 - (void) initTestData
 {
-    NSArray *jsonData = @[@{
-                              @"userID":@"u1007",
-                              @"username":@"莫小贝",
-                              @"messageDetail":@"帅哥你好啊!",
-                              @"avatarURL":@"http://tx.haiqq.com/uploads/allimg/150323/1513261b8-0.jpg",
-                              },
-                          @{
-                              @"userID":@"g001",
-                              @"username":@"刘亦菲、IU、汤唯、刘诗诗、杨幂、Baby",
-                              @"messageDetail":@"凤姐：什么鬼，我为什么会在这个群组里面？?",
-                              @"avatarURL":@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
-                              }
-                          ];
-    self.data = [TLConversation mj_objectArrayWithKeyValuesArray:jsonData];
-    TLConversation *conv = self.data[1];
-    conv.remindType = TLMessageRemindTypeClosed;
-    conv.convType = TLConversationTypePublic;
-    conv.date = [NSDate date];
+    TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:@"u1007"];
+    TLConversation *conv1 = [[TLConversation alloc] init];
+    conv1.convType = TLConversationTypePersonal;
+    conv1.userID = user.userID;
+    conv1.username = user.showName;
+    conv1.avatarURL = user.avatarURL;
+    conv1.messageDetail = @"你好啊";
+    conv1.date = [NSDate date];
     
-    [self.data[0] setDate:[NSDate date]];
+    TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:@"g1001"];
+    TLConversation *conv2 = [[TLConversation alloc] init];
+    conv2.convType = TLConversationTypeGroup;
+    conv2.userID = group.groupID;
+    conv2.username = group.groupName;
+    conv2.avatarPath = group.groupAvatarPath;
+    conv2.messageDetail = @"掌柜的：开工了~~";
+    conv2.date = [NSDate date];
+    
+    self.data = [NSMutableArray arrayWithObjects:conv1, conv2, nil];
 }
 
 #pragma mark - Getter -

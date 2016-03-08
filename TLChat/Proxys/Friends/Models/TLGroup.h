@@ -28,6 +28,16 @@
  */
 @property (nonatomic, strong) NSMutableArray *users;
 
+/**
+ *  群公告
+ */
+@property (nonatomic, strong) NSString *post;
+
+/**
+ *  我的群昵称
+ */
+@property (nonatomic, strong) NSString *myNikeName;
+
 @property (nonatomic, assign, readonly) NSInteger count;
 
 - (void)addObject:(id)anObject;

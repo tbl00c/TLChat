@@ -6,9 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseDataModel.h"
+#import <Foundation/Foundation.h>
 
-@interface TLConversation : TLBaseDataModel
+@interface TLConversation : NSObject
 
 
 /**

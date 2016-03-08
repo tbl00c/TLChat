@@ -51,7 +51,7 @@
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:myQRCodeVC animated:YES];
     }
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

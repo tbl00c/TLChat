@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "TLSettingGroup.h"
+#import "TLGroup.h"
 
 @interface TLChatDetailHelper : NSObject
 
 - (NSMutableArray *)chatDetailDataByUserInfo:(TLUser *)userInfo;
+
+- (NSMutableArray *)chatDetailDataByGroupInfo:(TLGroup *)groupInfo;
 
 @end

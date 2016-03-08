@@ -13,7 +13,7 @@
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _leftSeparatorSpace = 10.0f;
+        _leftSeparatorSpace = 15.0f;
         _topLineStyle = TLCellLineStyleNone;
         _bottomLineStyle = TLCellLineStyleDefault;
     }

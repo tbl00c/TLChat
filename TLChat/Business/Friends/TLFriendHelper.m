@@ -28,7 +28,7 @@ static TLFriendHelper *friendHelper = nil;
         self.data = [[NSMutableArray alloc] initWithObjects:self.defaultGroup, nil];
         self.sectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
         self.tagsData = [[NSMutableArray alloc] init];
-        self.groupData = [[NSMutableArray alloc] init];
+        self.groupsData = [[NSMutableArray alloc] init];
         [self p_initTestData];
     }
     return self;
@@ -43,6 +43,19 @@ static TLFriendHelper *friendHelper = nil;
     for (TLUser *user in self.friendsData) {
         if ([user.userID isEqualToString:userID]) {
             return user;
+        }
+    }
+    return nil;
+}
+
+- (TLGroup *)getGroupInfoByGroupID:(NSString *)groupID
+{
+    if (groupID == nil) {
+        return nil;
+    }
+    for (TLGroup *group in self.groupsData) {
+        if ([group.groupID isEqualToString:groupID]) {
+            return group;
         }
     }
     return nil;
@@ -158,8 +171,8 @@ static TLFriendHelper *friendHelper = nil;
     jsonData = [NSData dataWithContentsOfFile:path];
     jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
     arr = [TLGroup mj_objectArrayWithKeyValuesArray:jsonArray];
-    [self.groupData removeAllObjects];
-    [self.groupData addObjectsFromArray:arr];
+    [self.groupsData removeAllObjects];
+    [self.groupsData addObjectsFromArray:arr];
 }
 
 #pragma mark - Getter

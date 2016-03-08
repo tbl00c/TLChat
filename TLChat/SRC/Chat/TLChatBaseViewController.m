@@ -53,7 +53,8 @@
 #pragma mark - Public Methods -
 - (void)setUser:(TLUser *)user
 {
-    if (_group || (_user && ![_user.userID isEqualToString:user.userID])) {
+    if (_curChatType != TLChatVCTypeFriend || (_user && ![_user.userID isEqualToString:user.userID])) {
+        _curChatType = TLChatVCTypeFriend;
         _group = nil;
         [self.data removeAllObjects];
         [self.tableView reloadData];
@@ -65,7 +66,8 @@
 
 - (void)setGroup:(TLGroup *)group
 {
-    if (_user || (_group && [_group.groupID isEqualToString:group.groupID])) {
+    if (_curChatType != TLChatVCTypeGroup || (_group && [_group.groupID isEqualToString:group.groupID])) {
+        _curChatType = TLChatVCTypeGroup;
         _user = nil;
         [self.data removeAllObjects];
         [self.tableView reloadData];

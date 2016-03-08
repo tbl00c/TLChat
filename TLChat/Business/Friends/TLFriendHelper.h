@@ -23,6 +23,11 @@
 @property (nonatomic, strong) NSMutableArray *friendsData;
 
 /**
+ *  群数据（原始）
+ */
+@property (nonatomic, strong) NSMutableArray *groupsData;
+
+/**
  *  好友数据（列表）
  */
 @property (nonatomic, strong) NSMutableArray *data;
@@ -42,10 +47,6 @@
  */
 @property (nonatomic, strong) NSMutableArray *tagsData;
 
-/**
- *  群
- */
-@property (nonatomic, strong) NSMutableArray *groupData;
 
 @property (nonatomic, strong) void(^dataChangedBlock)(NSMutableArray *friends, NSMutableArray *headers);
 
@@ -54,6 +55,6 @@
 
 - (TLUser *)getFriendInfoByUserID:(NSString *)userID;
 
-
+- (TLGroup *)getGroupInfoByGroupID:(NSString *)groupID;
 
 @end

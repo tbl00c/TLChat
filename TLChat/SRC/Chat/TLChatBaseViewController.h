@@ -17,7 +17,17 @@
 #import "TLUser.h"
 #import "TLGroup.h"
 
+typedef NS_ENUM(NSUInteger, TLChatVCType) {
+    TLChatVCTypeFriend,
+    TLChatVCTypeGroup,
+};
+
 @interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate, TLEmojiKeyboardDataSource>
+
+/**
+ *  当前聊天类型 （赋值User或Group时自动设置）
+ */
+@property (nonatomic, assign, readonly) TLChatVCType curChatType;
 
 @property (nonatomic, strong) TLUser *user;
 

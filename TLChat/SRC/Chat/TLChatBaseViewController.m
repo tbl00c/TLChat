@@ -7,10 +7,13 @@
 //
 
 #import "TLChatBaseViewController.h"
+#import "TLTextMessageCell.h"
+
 #import "TLChatKeyboardController.h"
 #import "TLFriendDetailViewController.h"
 
-#import "TLTextMessageCell.h"
+#import "TLFriendHelper.h"
+
 
 @interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDataDelegate, TLMessageCellDelegate>
 
@@ -140,16 +143,34 @@
     message.showTime = YES;
     message.showName = NO;
     [self.data addObject:message];
-    TLMessage *message1 = [[TLMessage alloc] init];
-    message1.fromID = self.user.userID;
-    message1.toID = [TLUserHelper sharedHelper].user.userID;
-    message1.fromUser = self.user;
-    message1.messageType = TLMessageTypeText;
-    message1.ownerTyper = TLMessageOwnerTypeOther;
-    message1.text = text;
-    message1.showTime = NO;
-    message1.showName = NO;
-    [self.data addObject:message1];
+    if (self.curChatType == TLChatVCTypeFriend) {
+        TLMessage *message1 = [[TLMessage alloc] init];
+        message1.fromID = self.user.userID;
+        message1.toID = [TLUserHelper sharedHelper].user.userID;
+        message1.fromUser = self.user;
+        message1.messageType = TLMessageTypeText;
+        message1.ownerTyper = TLMessageOwnerTypeOther;
+        message1.text = text;
+        message1.showTime = NO;
+        message1.showName = NO;
+        [self.data addObject:message1];
+    }
+    else {
+        for (NSString *userID in self.group.users) {
+            TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
+            TLMessage *message1 = [[TLMessage alloc] init];
+            message1.fromID = user.userID;
+            message1.toID = [TLUserHelper sharedHelper].user.userID;
+            message1.fromUser = user;
+            message1.messageType = TLMessageTypeText;
+            message1.ownerTyper = TLMessageOwnerTypeOther;
+            message1.text = text;
+            message1.showTime = NO;
+            message1.showName = NO;
+            [self.data addObject:message1];
+        }
+    }
+    
     [self.tableView reloadData];
     [self.tableView scrollToBottomWithAnimation:YES];
 }

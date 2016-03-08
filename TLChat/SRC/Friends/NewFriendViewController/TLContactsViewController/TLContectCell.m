@@ -65,7 +65,7 @@
     
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(FRIENDS_SPACE_X);
-        make.top.mas_equalTo(self.avatarImageView).mas_offset(2);
+        make.top.mas_equalTo(self.avatarImageView);
         make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-20);
     }];
     

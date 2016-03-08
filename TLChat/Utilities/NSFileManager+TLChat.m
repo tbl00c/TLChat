@@ -10,7 +10,7 @@
 
 @implementation NSFileManager (TLChat)
 
-+ (NSString *)pathUserSettingImage:(NSString *)userID
++ (NSString *)pathUserSettingImage:(NSString *)imageName forUser:(NSString *)userID;
 {
     NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/Images/", [NSFileManager documentsPath], userID];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -20,12 +20,38 @@
             NSLog(@"File Create Failed: %@", path);
         }
     }
-    return path;
+    return [path stringByAppendingString:imageName];
 }
 
-+ (NSString *)pathUserChatImage:(NSString *)userID
++ (NSString *)pathUserChatImage:(NSString*)imageName forUser:(NSString *)userID
 {
     NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Images/", [NSFileManager documentsPath], userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            NSLog(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathUserChatAvatarImage:(NSString *)imageName forUser:(NSString *)userID;
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Avatar/", [NSFileManager documentsPath], userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            NSLog(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathContactsAvatar
+{
+    NSString *path = [NSString stringWithFormat:@"%@/Contacts/", [NSFileManager cachesPath]];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];

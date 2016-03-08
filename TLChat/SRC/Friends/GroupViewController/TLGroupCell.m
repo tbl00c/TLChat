@@ -41,7 +41,8 @@
         [self.avatarImageView setImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     else {
-        
+        NSString *path = [NSFileManager pathUserChatAvatarImage:group.groupAvatarPath forUser:[TLUserHelper sharedHelper].user.userID];
+        [self.avatarImageView setImage:[UIImage imageNamed:path]];
     }
 
     [self.usernameLabel setText:group.groupName];

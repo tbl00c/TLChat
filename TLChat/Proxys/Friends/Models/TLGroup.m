@@ -44,17 +44,6 @@
     return _groupName;
 }
 
-- (NSString *)groupAvatarPath
-{
-    if (_groupAvatarPath == nil || _groupAvatarPath.length == 0) {
-//        for (NSString *userID in self.users) {
-//            TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
-//          
-//        }
-    }
-    return _groupAvatarPath;
-}
-
 - (NSString *)myNikeName
 {
     if (_myNikeName.length == 0) {

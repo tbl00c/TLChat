@@ -18,6 +18,7 @@
 #import "TLTagsViewController.h"
 #import "TLPublicServerViewController.h"
 #import "TLFriendDetailViewController.h"
+#import "TLAddFriendViewController.h"
 
 @interface TLFriendsViewController () <UISearchBarDelegate>
 
@@ -194,8 +195,10 @@
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Right Bar Button Down!" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alert show];
+    TLAddFriendViewController *addFriendVC = [[TLAddFriendViewController alloc] init];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:addFriendVC animated:YES];
+    [self setHidesBottomBarWhenPushed:NO];
 }
 
 #pragma mark - Private Methods -

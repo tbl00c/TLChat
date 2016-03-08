@@ -11,6 +11,7 @@
 #import "TLSearchController.h"
 #import "TLAddThirdPartFriendCell.h"
 #import "TLContactsViewController.h"
+#import "TLAddFriendViewController.h"
 
 @interface TLNewFriendViewController () <UISearchBarDelegate, TLAddThirdPartFriendCellDelegate>
 
@@ -38,7 +39,9 @@
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
-    
+    TLAddFriendViewController *addFriendVC = [[TLAddFriendViewController alloc] init];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:addFriendVC animated:YES];
 }
 
 #pragma mark - Delegate -

@@ -11,8 +11,12 @@
 
 @interface NSFileManager (TLChat)
 
-+ (NSString *)pathUserSettingImage:(NSString *)userID;
++ (NSString *)pathUserSettingImage:(NSString *)imageName forUser:(NSString *)userID;
 
-+ (NSString *)pathUserChatImage:(NSString *)userID;
++ (NSString *)pathUserChatImage:(NSString*)imageName forUser:(NSString *)userID;
+
++ (NSString *)pathUserChatAvatarImage:(NSString *)imageName forUser:(NSString *)userID;
+
++ (NSString *)pathContactsAvatar;
 
 @end

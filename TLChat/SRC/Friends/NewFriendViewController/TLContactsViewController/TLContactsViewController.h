@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) NSArray *data;
 
-+ (void)tryToGetAllContactsSuccess:(void (^)(NSArray *data))success
-                            failed:(void (^)())failed;
+@property (nonatomic, strong) NSArray *headers;
 
 @end

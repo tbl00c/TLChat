@@ -63,7 +63,7 @@
     [super viewWillAppear:animated];
     NSString *centreImageName = [[NSUserDefaults standardUserDefaults] objectForKey:@"Shake_Image_Path"];
     if (centreImageName) {
-        NSString *path = [[NSFileManager pathUserSettingImage:[TLUserHelper sharedHelper].user.userID] stringByAppendingString:centreImageName];
+        NSString *path = [NSFileManager pathUserSettingImage:centreImageName forUser:[TLUserHelper sharedHelper].user.userID];
         [self.centerLogoView setImage:[UIImage imageNamed:path]];
     }
     else {

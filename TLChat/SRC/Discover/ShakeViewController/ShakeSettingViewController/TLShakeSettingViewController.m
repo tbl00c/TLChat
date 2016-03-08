@@ -46,9 +46,8 @@
                     image = [x objectForKey:UIImagePickerControllerOriginalImage];
                 }
                 NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
-                NSString *path = [NSFileManager pathUserSettingImage:[TLUserHelper sharedHelper].user.userID];
                 NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
-                NSString *imagePath = [NSString stringWithFormat:@"%@%@", path, imageName];
+                NSString *imagePath = [NSFileManager pathUserSettingImage:imageName forUser:[TLUserHelper sharedHelper].user.userID];;
                 [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
                 [[NSUserDefaults standardUserDefaults] setObject:imageName forKey:@"Shake_Image_Path"];
             }];

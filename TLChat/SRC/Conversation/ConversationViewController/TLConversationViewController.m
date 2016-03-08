@@ -222,9 +222,18 @@
     conv2.convType = TLConversationTypeGroup;
     conv2.userID = group.groupID;
     conv2.username = group.groupName;
-    conv2.avatarPath = group.groupAvatarPath;
     conv2.messageDetail = @"掌柜的：开工了~~";
     conv2.date = [NSDate date];
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    for (int i = 0; i < group.users.count && i < 9; i++) {
+        NSString *userID = group.users[i];
+        TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
+        [data addObject:user];
+    }
+    [TLUIUtility getGroupAvatarByGroupUsers:data success:^(NSString *avatarPath) {
+        conv2.avatarPath = group.groupAvatarPath = avatarPath;
+        [self.tableView reloadData];
+    }];
     
     self.data = [NSMutableArray arrayWithObjects:conv1, conv2, nil];
 }

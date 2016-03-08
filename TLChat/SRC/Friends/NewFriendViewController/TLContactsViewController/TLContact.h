@@ -1,5 +1,5 @@
 //
-//  TLContect.h
+//  TLContact.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/8.
@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, TLContectStatus) {
+typedef NS_ENUM(NSInteger, TLContactStatus) {
+    TLContactStatusStranger,
     TLContactStatusFriend,
     TLContactStatusWait,
-    TLContactStatusStranger,
 };
 
-@interface TLContect : NSObject
+@interface TLContact : NSObject
 
 @property (nonatomic, strong) NSString *name;
 
@@ -24,10 +24,12 @@ typedef NS_ENUM(NSInteger, TLContectStatus) {
 
 @property (nonatomic, strong) NSString *tel;
 
-@property (nonatomic, assign) TLContectStatus status;
+@property (nonatomic, assign) TLContactStatus status;
 
 @property (nonatomic, assign) int recordID;
 
 @property (nonatomic, assign) NSString *email;
+
+@property (nonatomic, assign) NSString *pinyin;
 
 @end

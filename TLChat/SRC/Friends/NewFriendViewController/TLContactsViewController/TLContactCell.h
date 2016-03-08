@@ -1,5 +1,5 @@
 //
-//  TLContectCell.h
+//  TLContactCell.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/8.
@@ -7,10 +7,10 @@
 //
 
 #import "TLTableViewCell.h"
-#import "TLContect.h"
+#import "TLContact.h"
 
-@interface TLContectCell : TLTableViewCell
+@interface TLContactCell : TLTableViewCell
 
-@property (nonatomic, strong) TLContect *contect;
+@property (nonatomic, strong) TLContact *contact;
 
 @end

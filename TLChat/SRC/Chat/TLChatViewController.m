@@ -104,9 +104,8 @@ static TLChatViewController *chatVC;
             [imagePickerController dismissViewControllerAnimated:YES completion:^{
                 UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
                 NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
-                NSString *path = [NSFileManager pathUserChatImage:[TLUserHelper sharedHelper].user.userID];
                 NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
-                NSString *imagePath = [NSString stringWithFormat:@"%@%@", path, imageName];
+                NSString *imagePath = [NSFileManager pathUserChatAvatarImage:imageName forUser:[TLUserHelper sharedHelper].user.userID];
                 [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
                 [self sendImageMessage:imagePath];
             }];

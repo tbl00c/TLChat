@@ -41,6 +41,11 @@
 @property (nonatomic, strong) NSString *remarkName;
 
 /**
+ *  备注信息
+ */
+@property (nonatomic, strong) NSString *remarkInfo;
+
+/**
  *  标签
  */
 @property (nonatomic, strong) NSMutableArray *tags;

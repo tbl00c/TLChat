@@ -1,18 +1,18 @@
 //
-//  TLFriendCell.m
+//  TLContectCell.m
 //  TLChat
 //
-//  Created by 李伯坤 on 16/1/26.
+//  Created by 李伯坤 on 16/3/8.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLFriendCell.h"
+#import "TLContectCell.h"
 #import <UIImageView+WebCache.h>
 
 #define     FRIENDS_SPACE_X         10.0f
 #define     FRIENDS_SPACE_Y         9.5f
 
-@interface TLFriendCell ()
+@interface TLContectCell ()
 
 @property (nonatomic, strong) UIImageView *avatarImageView;
 
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation TLFriendCell
+@implementation TLContectCell
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -39,29 +39,18 @@
 }
 
 #pragma mark - Public Methods
-- (void) setUser:(TLUser *)user
+- (void) setContect:(TLContect *)contect
 {
-    _user = user;
-    if (user.avatarPath) {
-        [self.avatarImageView setImage:[UIImage imageNamed:user.avatarPath]];
+    _contect = contect;
+    if (contect.avatarPath) {
+        [self.avatarImageView setImage:[UIImage imageNamed:contect.avatarPath]];
     }
     else {
-        [self.avatarImageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarImageView sd_setImageWithURL:TLURL(contect.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     
-    [self.usernameLabel setText:user.showName];
-    [self.subTitleLabel setText:user.remarkInfo];
-    if (user.remarkInfo.length > 0 && self.subTitleLabel.isHidden) {
-        [self.subTitleLabel setHidden:NO];
-        [self.usernameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(self.avatarImageView).mas_offset(-9.5);
-        }];
-    }
-    else if (user.remarkInfo.length == 0 && !self.subTitleLabel.isHidden){
-        [self.usernameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(self.avatarImageView);
-        }];
-    }
+    [self.usernameLabel setText:contect.name];
+    [self.subTitleLabel setText:contect.tel];
 }
 
 #pragma mark - Prvate Methods -
@@ -76,7 +65,7 @@
     
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(FRIENDS_SPACE_X);
-        make.centerY.mas_equalTo(self.avatarImageView);
+        make.top.mas_equalTo(self.avatarImageView).mas_offset(2);
         make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-20);
     }];
     
@@ -111,7 +100,6 @@
         _subTitleLabel = [[UILabel alloc] init];
         [_subTitleLabel setFont:[UIFont systemFontOfSize:14.0f]];
         [_subTitleLabel setTextColor:[UIColor grayColor]];
-        [_subTitleLabel setHidden:YES];
     }
     return _subTitleLabel;
 }

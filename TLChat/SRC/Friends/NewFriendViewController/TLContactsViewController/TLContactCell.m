@@ -46,7 +46,7 @@
 {
     _contact = contact;
     if (contact.avatarPath) {
-        NSString *path = [NSString stringWithFormat:@"%@%@", [NSFileManager pathContactsAvatar], contact.avatarPath];
+        NSString *path = [NSFileManager pathContactsAvatar:contact.avatarPath];
         [self.avatarImageView setImage:[UIImage imageNamed:path]];
     }
     else {
@@ -100,7 +100,7 @@
         make.right.mas_equalTo(self.contentView);
         make.centerY.mas_equalTo(self.contentView);
         make.height.mas_equalTo(30);
-        make.width.mas_greaterThanOrEqualTo(49);
+        make.width.mas_greaterThanOrEqualTo(45);
     }];
 }
 

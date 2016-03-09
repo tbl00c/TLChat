@@ -15,8 +15,10 @@
 
 + (NSString *)pathUserChatImage:(NSString*)imageName forUser:(NSString *)userID;
 
-+ (NSString *)pathUserChatAvatarImage:(NSString *)imageName forUser:(NSString *)userID;
++ (NSString *)pathUserChatAvatar:(NSString *)imageName forUser:(NSString *)userID;
 
-+ (NSString *)pathContactsAvatar;
++ (NSString *)pathScreenshotImage:(NSString *)imageName;
+
++ (NSString *)pathContactsAvatar:(NSString *)imageName;
 
 @end

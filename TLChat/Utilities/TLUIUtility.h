@@ -15,6 +15,10 @@
                          width:(CGFloat)width;
 
 + (void)getGroupAvatarByGroupUsers:(NSArray *)users
-                           success:(void (^)(NSString *avatarPath))success;
+                          finished:(void (^)(NSString *avatarPath))finished;
+
++ (void)captureScreenshotFromView:(UIView *)view
+                             rect:(CGRect)rect
+                         finished:(void (^)(NSString *avatarPath))finished;
 
 @end

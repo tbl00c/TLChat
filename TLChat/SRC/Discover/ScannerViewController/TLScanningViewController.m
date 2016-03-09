@@ -119,7 +119,7 @@
     [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
         [imagePickerController dismissViewControllerAnimated:YES completion:^{
             UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
-            [SVProgressHUD showInfoWithStatus:@"扫描中，请稍候"];
+            [SVProgressHUD showWithStatus:@"扫描中，请稍候"];
             [TLScannerViewController scannerQRCodeFromImage:image ans:^(NSString *ansStr) {
                 [SVProgressHUD dismiss];
                 if (ansStr == nil) {

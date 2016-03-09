@@ -53,6 +53,9 @@
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:scannerVC animated:YES];
     }
+    else if (buttonIndex == 1) {
+        [self.qrCodeVC saveQRCodeToSystemAlbum];
+    }
 }
 
 #pragma mark - Event Response -

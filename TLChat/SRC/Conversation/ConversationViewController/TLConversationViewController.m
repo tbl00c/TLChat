@@ -230,7 +230,7 @@
         TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
         [data addObject:user];
     }
-    [TLUIUtility getGroupAvatarByGroupUsers:data success:^(NSString *avatarPath) {
+    [TLUIUtility getGroupAvatarByGroupUsers:data finished:^(NSString *avatarPath) {
         conv2.avatarPath = group.groupAvatarPath = avatarPath;
         [self.tableView reloadData];
     }];

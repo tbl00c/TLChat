@@ -56,7 +56,7 @@
             if(ABPersonHasImageData(person)) {
                 NSData *imageData = (__bridge NSData *)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail);
                 NSString *imageName = [NSString stringWithFormat:@"%.0lf.jpg", [NSDate date].timeIntervalSince1970 * 10000];
-                NSString *imagePath = [NSString stringWithFormat:@"%@%@", [NSFileManager pathContactsAvatar], imageName];
+                NSString *imagePath = [NSFileManager pathContactsAvatar:imageName];
                 [imageData writeToFile:imagePath atomically:YES];
                 contact.avatarPath = imageName;
             }

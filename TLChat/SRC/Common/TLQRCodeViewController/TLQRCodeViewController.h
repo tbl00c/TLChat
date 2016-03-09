@@ -24,4 +24,6 @@
 
 + (void)createQRCodeImageForString:(NSString *)str ans:(void (^)(UIImage *ansImage))ans;
 
+- (void)saveQRCodeToSystemAlbum;
+
 @end

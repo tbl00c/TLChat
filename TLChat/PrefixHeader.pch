@@ -20,6 +20,8 @@
 #import <ReactiveCocoa.h>
 #import <SVProgressHUD.h>
 
+#import "TLNavigationController.h"
+
 #import "TLUserHelper.h"
 
 #import "UIView+Frame.h"

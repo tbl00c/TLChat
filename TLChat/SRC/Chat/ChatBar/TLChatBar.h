@@ -25,4 +25,8 @@
 
 @property (nonatomic, assign) TLChatBarStatus status;
 
+- (void)addEmojiString:(NSString *)emojiString;
+
+- (void)sendCurrentText;
+
 @end

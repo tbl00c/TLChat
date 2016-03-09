@@ -27,7 +27,7 @@
 
 - (void)setEmojiItem:(TLEmoji *)emojiItem
 {
-    _emojiItem = emojiItem;
+    [super setEmojiItem:emojiItem];
     [self.label setText:emojiItem.title];
 }
 

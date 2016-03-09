@@ -14,6 +14,10 @@
 
 - (void)emojiGroupControl:(TLEmojiGroupControl*)emojiGroupControl didSelectedGroup:(TLEmojiGroup *)group;
 
+- (void)emojiGroupControlEditButtonDown:(TLEmojiGroupControl *)emojiGroupControl;
+
+- (void)emojiGroupControlSendButtonDown:(TLEmojiGroupControl *)emojiGroupControl;
+
 @end
 
 @interface TLEmojiGroupControl : UIView

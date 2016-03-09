@@ -175,6 +175,22 @@
     [self.tableView scrollToBottomWithAnimation:YES];
 }
 
+//MARK: TLEmojiKeyboardDelegate
+- (void)sendButtonDown
+{
+    [self.chatBar sendCurrentText];
+}
+
+- (void)touchInEmojiItem:(TLEmoji *)emoji point:(CGPoint)point
+{
+    NSLog(@"touch in %@, path %@", emoji.title, emoji.path);
+}
+
+- (void)cancelTouchEmojiItem:(TLEmoji *)emoji
+{
+    NSLog(@"cancel touch %@, path %@", emoji.title, emoji.path);
+}
+
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
@@ -199,15 +215,12 @@ static NSDate *lastDate = nil;
 
 
 #pragma mark - Getter -
-- (UITableView *)tableView
+- (TLChatTableView *)tableView
 {
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] init];
-        [_tableView setBackgroundColor:[UIColor colorChatTableViewBG]];
-        [_tableView setTableFooterView:[[UIView alloc] init]];
+        _tableView = [[TLChatTableView alloc] init];
         [_tableView setDataSource:self];
         [_tableView setDelegate:self];
-        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     }
     return _tableView;
 }
@@ -235,6 +248,7 @@ static NSDate *lastDate = nil;
     if (_emojiKeyboard == nil) {
         _emojiKeyboard = [TLEmojiKeyboard keyboard];
         [_emojiKeyboard setKeyboardDelegate:self.chatKeyboardController];
+        [_emojiKeyboard setDelegate:self];
     }
     return _emojiKeyboard;
 }

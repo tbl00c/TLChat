@@ -1,13 +1,13 @@
 //
-//  TLEmojiItemCell.h
+//  TLEmojiFaceItemCell.h
 //  TLChat
 //
-//  Created by 李伯坤 on 16/2/20.
+//  Created by 李伯坤 on 16/3/9.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
 #import "TLEmojiBaseCell.h"
 
-@interface TLEmojiItemCell : TLEmojiBaseCell
+@interface TLEmojiFaceItemCell : TLEmojiBaseCell
 
 @end

@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "TLChatMacros.h"
-#import "tlemoji.h"
+#import "TLEmoji.h"
 
 @interface TLEmojiGroup : NSObject
 
-@property (nonatomic, assign) TLEmojiGroupType type;
+@property (nonatomic, assign) TLEmojiType type;
 
 @property (nonatomic, strong) NSString *groupIconPath;
 

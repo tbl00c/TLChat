@@ -7,8 +7,11 @@
 //
 
 #import "TLBaseDataModel.h"
+#import "TLChatMacros.h"
 
 @interface TLEmoji : TLBaseDataModel
+
+@property (nonatomic, assign) TLEmojiType type;
 
 @property (nonatomic, strong) NSString *title;
 

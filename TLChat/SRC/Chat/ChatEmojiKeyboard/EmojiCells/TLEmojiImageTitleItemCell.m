@@ -7,6 +7,7 @@
 //
 
 #import "TLEmojiImageTitleItemCell.h"
+#import "UIImage+Color.h"
 
 @interface TLEmojiImageTitleItemCell ()
 
@@ -21,6 +22,7 @@
 - (id) initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        [self.bgView setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0.7 alpha:0.7]] forState:UIControlStateHighlighted];
         [self.contentView addSubview:self.imageView];
         [self.contentView addSubview:self.label];
         [self p_addMasonry];
@@ -30,7 +32,7 @@
 
 - (void)setEmojiItem:(TLEmoji *)emojiItem
 {
-    _emojiItem = emojiItem;
+    [super setEmojiItem:emojiItem];
     [self.imageView setImage:emojiItem.path == nil ? nil : [UIImage imageNamed:emojiItem.path]];
     [self.label setText:emojiItem.title];
 }
@@ -38,8 +40,13 @@
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
-    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.bgView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.top.mas_equalTo(self.contentView);
+        make.height.mas_equalTo(self.bgView.mas_width);
+    }];
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.top.mas_equalTo(self.contentView).mas_offset(3);
+        make.right.mas_equalTo(self.contentView).mas_offset(-3);
         make.height.mas_equalTo(self.imageView.mas_width);
     }];
     [self.label mas_makeConstraints:^(MASConstraintMaker *make) {

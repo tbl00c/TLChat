@@ -147,7 +147,6 @@
 		C2E570021C898305009662AB /* TLScannerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E570011C898305009662AB /* TLScannerButton.m */; };
 		C2E570051C89831A009662AB /* TLScannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E570041C89831A009662AB /* TLScannerView.m */; };
 		C2E570081C898FB2009662AB /* TLScannerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E570071C898FB2009662AB /* TLScannerBackgroundView.m */; };
-		C2EDE3011C6210A4005646A2 /* 10.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C2EDE3001C6210A4005646A2 /* 10.jpeg */; };
 		C2F0EBF51C7A0DA80090843C /* TLCommonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */; };
 		C2F0EBF81C7A0DC90090843C /* TLCommonSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBF71C7A0DC90090843C /* TLCommonSettingHelper.m */; };
 		C2F0EBFC1C7A11480090843C /* TLExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EBFB1C7A11480090843C /* TLExpressionViewController.m */; };
@@ -170,6 +169,10 @@
 		C2F617661C8FD88E00A8D9E6 /* FaceEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F617651C8FD88E00A8D9E6 /* FaceEmoji.json */; };
 		C2F6176A1C8FE29900A8D9E6 /* TusijiEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F617691C8FE29900A8D9E6 /* TusijiEmoji.json */; };
 		C2F6176C1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F6176B1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json */; };
+		C2F617701C8FEDAC00A8D9E6 /* emoji_dapigu.gif in Resources */ = {isa = PBXBuildFile; fileRef = C2F6176F1C8FEDAC00A8D9E6 /* emoji_dapigu.gif */; };
+		C2F617741C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F617731C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m */; };
+		C2F617771C8FFB9500A8D9E6 /* TLEmojiBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F617761C8FFB9500A8D9E6 /* TLEmojiBaseCell.m */; };
+		C2F6177B1C9018E800A8D9E6 /* TLChatTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F6177A1C9018E800A8D9E6 /* TLChatTableView.m */; };
 		C2F9F6811C854F94000EE9ED /* FriendList.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F9F6801C854F94000EE9ED /* FriendList.json */; };
 		CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47069788539839E1FB073F9 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -477,7 +480,6 @@
 		C2E570041C89831A009662AB /* TLScannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScannerView.m; sourceTree = "<group>"; };
 		C2E570061C898FB2009662AB /* TLScannerBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScannerBackgroundView.h; sourceTree = "<group>"; };
 		C2E570071C898FB2009662AB /* TLScannerBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScannerBackgroundView.m; sourceTree = "<group>"; };
-		C2EDE3001C6210A4005646A2 /* 10.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpeg; sourceTree = "<group>"; };
 		C2F0EBF31C7A0DA80090843C /* TLCommonSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCommonSettingViewController.h; sourceTree = "<group>"; };
 		C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCommonSettingViewController.m; sourceTree = "<group>"; };
 		C2F0EBF61C7A0DC90090843C /* TLCommonSettingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCommonSettingHelper.h; sourceTree = "<group>"; };
@@ -518,6 +520,13 @@
 		C2F617651C8FD88E00A8D9E6 /* FaceEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FaceEmoji.json; sourceTree = "<group>"; };
 		C2F617691C8FE29900A8D9E6 /* TusijiEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiEmoji.json; sourceTree = "<group>"; };
 		C2F6176B1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiTitleEmoji.json; sourceTree = "<group>"; };
+		C2F6176F1C8FEDAC00A8D9E6 /* emoji_dapigu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = emoji_dapigu.gif; path = ../../../../../../../Pictures/emoji_dapigu.gif; sourceTree = "<group>"; };
+		C2F617721C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiFaceItemCell.h; sourceTree = "<group>"; };
+		C2F617731C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiFaceItemCell.m; sourceTree = "<group>"; };
+		C2F617751C8FFB9500A8D9E6 /* TLEmojiBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiBaseCell.h; sourceTree = "<group>"; };
+		C2F617761C8FFB9500A8D9E6 /* TLEmojiBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiBaseCell.m; sourceTree = "<group>"; };
+		C2F617791C9018E800A8D9E6 /* TLChatTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatTableView.h; sourceTree = "<group>"; };
+		C2F6177A1C9018E800A8D9E6 /* TLChatTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatTableView.m; sourceTree = "<group>"; };
 		C2F9F67D1C854BDE000EE9ED /* TLInfoMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLInfoMacros.h; sourceTree = "<group>"; };
 		C2F9F6801C854F94000EE9ED /* FriendList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendList.json; sourceTree = "<group>"; };
 		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -775,7 +784,7 @@
 		C2142E981C531EFD0030B29B /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				C2EDE3001C6210A4005646A2 /* 10.jpeg */,
+				C2F6176E1C8FED8900A8D9E6 /* Others */,
 				C2142ED91C53345C0030B29B /* Launch.xcassets */,
 				C2D500E61C5639210088997C /* Conversation.xcassets */,
 				C2A1BBC91C5753420046CA1C /* Friends.xcassets */,
@@ -805,6 +814,7 @@
 		C2142E9B1C531EFD0030B29B /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				C2F617781C9016ED00A8D9E6 /* ChatTableView */,
 				C293E5C91C8BC5AB002A84D6 /* ChatDetailViewController */,
 				C282DF5E1C74586E006924AE /* ChatBar */,
 				C2CE0BBF1C717384006C5C2A /* ChatMoreKeyboard */,
@@ -1813,12 +1823,16 @@
 		C2F6174C1C8FD50F00A8D9E6 /* EmojiCells */ = {
 			isa = PBXGroup;
 			children = (
+				C2F617751C8FFB9500A8D9E6 /* TLEmojiBaseCell.h */,
+				C2F617761C8FFB9500A8D9E6 /* TLEmojiBaseCell.m */,
 				C2F6174D1C8FD50F00A8D9E6 /* TLEmojiImageItemCell.h */,
 				C2F6174E1C8FD50F00A8D9E6 /* TLEmojiImageItemCell.m */,
 				C2F6174F1C8FD50F00A8D9E6 /* TLEmojiImageTitleItemCell.h */,
 				C2F617501C8FD50F00A8D9E6 /* TLEmojiImageTitleItemCell.m */,
 				C2F617511C8FD50F00A8D9E6 /* TLEmojiItemCell.h */,
 				C2F617521C8FD50F00A8D9E6 /* TLEmojiItemCell.m */,
+				C2F617721C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.h */,
+				C2F617731C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m */,
 			);
 			path = EmojiCells;
 			sourceTree = "<group>";
@@ -1850,6 +1864,23 @@
 				C2F6175D1C8FD50F00A8D9E6 /* TLEmojiGroup.m */,
 			);
 			path = EmojiModels;
+			sourceTree = "<group>";
+		};
+		C2F6176E1C8FED8900A8D9E6 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6176F1C8FEDAC00A8D9E6 /* emoji_dapigu.gif */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		C2F617781C9016ED00A8D9E6 /* ChatTableView */ = {
+			isa = PBXGroup;
+			children = (
+				C2F617791C9018E800A8D9E6 /* TLChatTableView.h */,
+				C2F6177A1C9018E800A8D9E6 /* TLChatTableView.m */,
+			);
+			path = ChatTableView;
 			sourceTree = "<group>";
 		};
 		C2F9F67E1C854F67000EE9ED /* TestData */ = {
@@ -1978,7 +2009,6 @@
 			files = (
 				C21C6E1E1C8D7B6B0018C570 /* FriendGroupList.json in Resources */,
 				C2F617661C8FD88E00A8D9E6 /* FaceEmoji.json in Resources */,
-				C2EDE3011C6210A4005646A2 /* 10.jpeg in Resources */,
 				C2B9E4231C65DD6C00CEBA81 /* Discover.xcassets in Resources */,
 				C2B9E4331C65F5DA00CEBA81 /* Mine.xcassets in Resources */,
 				C2F6176A1C8FE29900A8D9E6 /* TusijiEmoji.json in Resources */,
@@ -1990,6 +2020,7 @@
 				C2F9F6811C854F94000EE9ED /* FriendList.json in Resources */,
 				C2B9E43C1C665AC700CEBA81 /* Common.xcassets in Resources */,
 				C2F6176C1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json in Resources */,
+				C2F617701C8FEDAC00A8D9E6 /* emoji_dapigu.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2084,6 +2115,7 @@
 				C2AF1F931C6B20C400617D98 /* TLMineInfoViewController.m in Sources */,
 				C282DF5D1C74545E006924AE /* TLMoreKeyboard.m in Sources */,
 				C2F0EBF81C7A0DC90090843C /* TLCommonSettingHelper.m in Sources */,
+				C2F617771C8FFB9500A8D9E6 /* TLEmojiBaseCell.m in Sources */,
 				C2CF4C9A1C80655D0054637A /* TLInfo.m in Sources */,
 				C21C6E211C8D88700018C570 /* TLGroupCell.m in Sources */,
 				C2CE0BC61C717514006C5C2A /* TLChatBaseViewController.m in Sources */,
@@ -2184,6 +2216,7 @@
 				C29C08E31C89CEE400F8EE82 /* UIBarButtonItem+Action.m in Sources */,
 				C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */,
 				C246F1101C6B867C00A5AFB2 /* TLShoppingViewController.m in Sources */,
+				C2F617741C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m in Sources */,
 				C2142EF41C5376D40030B29B /* TLTabBarController.m in Sources */,
 				C2F6175E1C8FD50F00A8D9E6 /* TLEmojiImageItemCell.m in Sources */,
 				C271A4FF1C83D6F9004372D4 /* TLInfoButtonCell.m in Sources */,
@@ -2195,6 +2228,7 @@
 				C2BF17D91C86DCD0003318CB /* UINavigationController+JZExtension.m in Sources */,
 				C282DF611C74586E006924AE /* TLChatBar.m in Sources */,
 				C2A5AC961C8EB04D007A4574 /* TLUserGroupCell.m in Sources */,
+				C2F6177B1C9018E800A8D9E6 /* TLChatTableView.m in Sources */,
 				C2028D2B1C8D2D0C0060E271 /* TLGroupViewController.m in Sources */,
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,
 				C2A5ACAD1C8EC4AD007A4574 /* TLAddThirdPartFriendItem.m in Sources */,

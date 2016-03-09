@@ -10,18 +10,18 @@
 
 @implementation TLEmojiGroup
 
-- (void)setType:(TLEmojiGroupType)type
+- (void)setType:(TLEmojiType)type
 {
     _type = type;
     switch (type) {
-        case TLEmojiGroupTypeFace:
-        case TLEmojiGroupTypeEmoji:
+        case TLEmojiTypeFace:
+        case TLEmojiTypeEmoji:
             self.lineNumber = 3;
             self.rowNumber = 7;
             break;
-        case TLEmojiGroupTypeImage:
-        case TLEmojiGroupTypeFavorite:
-        case TLEmojiGroupTypeImageWithTitle:
+        case TLEmojiTypeImage:
+        case TLEmojiTypeFavorite:
+        case TLEmojiTypeImageWithTitle:
             self.lineNumber = 2;
             self.rowNumber = 4;
             break;

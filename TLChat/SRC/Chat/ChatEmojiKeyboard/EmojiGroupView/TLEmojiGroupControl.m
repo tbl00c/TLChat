@@ -116,12 +116,28 @@
     CGContextStrokePath(context);
 }
 
+#pragma mark - Event Response -
+- (void)emojiAddButtonDown
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControlEditButtonDown:)]) {
+        [_delegate emojiGroupControlEditButtonDown:self];
+    }
+}
+
+- (void)sendButtonDown
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControlSendButtonDown:)]) {
+        [_delegate emojiGroupControlSendButtonDown:self];
+    }
+}
+
 #pragma mark - Getter -
 - (UIButton *)addButton
 {
     if (_addButton == nil) {
         _addButton = [[UIButton alloc] init];
         [_addButton setImage:[UIImage imageNamed:@"emojiKB_groupControl_add"] forState:UIControlStateNormal];
+        [_addButton addTarget:self action:@selector(emojiAddButtonDown) forControlEvents:UIControlEventTouchUpInside];
     }
     return _addButton;
 }
@@ -151,6 +167,7 @@
         [_sendButton.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
         [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
         [_sendButton setBackgroundColor:[UIColor colorChatEmojiSend]];
+        [_sendButton addTarget:self action:@selector(sendButtonDown) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sendButton;
 }

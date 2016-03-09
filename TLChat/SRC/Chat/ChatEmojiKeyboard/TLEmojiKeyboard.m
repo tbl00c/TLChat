@@ -11,6 +11,7 @@
 #import "TLEmojiKBHelper.h"
 #import "TLEmojiGroupControl.h"
 #import "TLEmojiItemCell.h"
+#import "TLEmojiFaceItemCell.h"
 #import "TLEmojiImageItemCell.h"
 #import "TLEmojiImageTitleItemCell.h"
 
@@ -62,6 +63,7 @@ static TLEmojiKeyboard *emojiKB;
         [self p_addMasonry];
         
         [self.collectionView registerClass:[TLEmojiItemCell class] forCellWithReuseIdentifier:@"TLEmojiItemCell"];
+        [self.collectionView registerClass:[TLEmojiFaceItemCell class] forCellWithReuseIdentifier:@"TLEmojiFaceItemCell"];
         [self.collectionView registerClass:[TLEmojiImageItemCell class] forCellWithReuseIdentifier:@"TLEmojiImageItemCell"];
         [self.collectionView registerClass:[TLEmojiImageTitleItemCell class] forCellWithReuseIdentifier:@"TLEmojiImageTitleItemCell"];
     }
@@ -161,16 +163,20 @@ static TLEmojiKeyboard *emojiKB;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger index = indexPath.section * self.curGroup.pageItemNumber + indexPath.row;
-    id cell;
-    if (self.curGroup.type == TLEmojiGroupTypeEmoji) {
+    TLEmojiBaseCell *cell;
+    if (self.curGroup.type == TLEmojiTypeEmoji) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiItemCell" forIndexPath:indexPath];
     }
-    else if (self.curGroup.type == TLEmojiGroupTypeImageWithTitle) {
+    else if (self.curGroup.type == TLEmojiTypeFace) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiFaceItemCell" forIndexPath:indexPath];
+    }
+    else if (self.curGroup.type == TLEmojiTypeImageWithTitle) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiImageTitleItemCell" forIndexPath:indexPath];
     }
     else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiImageItemCell" forIndexPath:indexPath];
     }
+    [cell setDelegate:self.delegate];
     NSUInteger tIndex = [self p_transformIndex:index];  // 矩阵坐标转置
     TLEmoji *emojiItem = self.curGroup.count > tIndex ? [self.curGroup objectAtIndex:tIndex] : nil;
     [cell setEmojiItem:emojiItem];
@@ -227,6 +233,20 @@ static TLEmojiKeyboard *emojiKB;
     [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
 }
 
+- (void)emojiGroupControlEditButtonDown:(TLEmojiGroupControl *)emojiGroupControl
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiEditButtonDown)]) {
+        [_delegate emojiEditButtonDown];
+    }
+}
+
+- (void)emojiGroupControlSendButtonDown:(TLEmojiGroupControl *)emojiGroupControl
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(sendButtonDown)]) {
+        [_delegate sendButtonDown];
+    }
+}
+
 #pragma mark - Event Response -
 - (void) pageControlChanged:(UIPageControl *)pageControl
 {
@@ -241,15 +261,15 @@ static TLEmojiKeyboard *emojiKB;
     float topSpace = 0;
     float btmSpace = 0;
     float hfSpace = 0;
-    if (self.curGroup.type == TLEmojiGroupTypeFace || self.curGroup.type == TLEmojiGroupTypeEmoji) {
+    if (self.curGroup.type == TLEmojiTypeFace || self.curGroup.type == TLEmojiTypeEmoji) {
         cellWidth = cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.lineNumber) * 0.55;
         topSpace = 11;
         btmSpace = 19;
         hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.rowNumber) / (self.curGroup.rowNumber + 1) * 1.4;
     }
-    else if (self.curGroup.type == TLEmojiGroupTypeImageWithTitle){
+    else if (self.curGroup.type == TLEmojiTypeImageWithTitle){
         cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.lineNumber) * 0.96;
-        cellWidth = cellHeight * 0.75;
+        cellWidth = cellHeight * 0.8;
         hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.rowNumber) / (self.curGroup.rowNumber + 1) * 1.2;
     }
     else {

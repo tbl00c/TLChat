@@ -6,11 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "TLEmoji.h"
+#import "TLEmojiBaseCell.h"
 
-@interface TLEmojiImageItemCell : UICollectionViewCell
+@interface TLEmojiImageItemCell : TLEmojiBaseCell
 
-@property (nonatomic, strong) TLEmoji *emojiItem;
 
 @end

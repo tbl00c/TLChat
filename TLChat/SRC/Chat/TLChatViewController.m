@@ -12,6 +12,7 @@
 #import "TLEmojiKBHelper.h"
 #import "TLChatDetailViewController.h"
 #import "TLChatGroupDetailViewController.h"
+#import "TLExpressionViewController.h"
 
 static TLChatViewController *chatVC;
 
@@ -119,6 +120,21 @@ static TLChatViewController *chatVC;
     }
 }
 
+//MARK: TLEmojiKeyboardDelegate
+- (void)selectedEmojiItem:(TLEmoji *)emoji
+{
+    if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
+        [self.chatBar addEmojiString:emoji.title];
+    }
+}
+
+- (void)emojiEditButtonDown
+{
+    TLExpressionViewController *expressionVC = [[TLExpressionViewController alloc] init];
+    TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:expressionVC];
+    [self presentViewController:navC animated:YES completion:nil];
+}
+
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UINavigationBar *)sender
 {
@@ -135,7 +151,6 @@ static TLChatViewController *chatVC;
         [self.navigationController pushViewController:chatGroupDetailVC animated:YES];
     }
 }
-
 
 #pragma mark - Getter -
 - (UIBarButtonItem *)rightBarButton

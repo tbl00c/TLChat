@@ -25,6 +25,13 @@
     
     [self.navigationItem setTitleView:self.segmentedControl];
     [self.navigationItem setRightBarButtonItem:self.rightBarButtonItem];
+    
+    if (self.navigationController.rootViewController == self) {
+        UIBarButtonItem *dismissBarButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain actionBlick:^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [self.navigationItem setLeftBarButtonItem:dismissBarButton];
+    }
 }
 
 #pragma mark - Event Response

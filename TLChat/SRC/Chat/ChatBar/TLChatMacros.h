@@ -14,12 +14,12 @@
 #define     HEIGHT_MAX_CHATBAR_TEXTVIEW     111.5f
 #define     HEIGHT_CHAT_KEYBOARD            215.0f
 
-typedef NS_ENUM(NSInteger, TLEmojiGroupType) {
-    TLEmojiGroupTypeEmoji,
-    TLEmojiGroupTypeFavorite,
-    TLEmojiGroupTypeFace,
-    TLEmojiGroupTypeImage,
-    TLEmojiGroupTypeImageWithTitle,
+typedef NS_ENUM(NSInteger, TLEmojiType) {
+    TLEmojiTypeEmoji,
+    TLEmojiTypeFavorite,
+    TLEmojiTypeFace,
+    TLEmojiTypeImage,
+    TLEmojiTypeImageWithTitle,
 };
 
 typedef NS_ENUM(NSInteger, TLChatBarStatus) {

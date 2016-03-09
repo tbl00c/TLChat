@@ -65,7 +65,7 @@
 }
 
 #pragma mark - Public Methods
-- (void) sendCurrentText
+- (void)sendCurrentText
 {
     if (self.textView.text.length > 0) {     // send Text
         if (_dataDelegate && [_dataDelegate respondsToSelector:@selector(chatBar:sendText:)]) {
@@ -73,6 +73,13 @@
         }
     }
     [self.textView setText:@""];
+    [self textViewDidChange:self.textView];
+}
+
+- (void)addEmojiString:(NSString *)emojiString
+{
+    NSString *str = [NSString stringWithFormat:@"%@%@", self.textView.text, emojiString];
+    [self.textView setText:str];
     [self textViewDidChange:self.textView];
 }
 
@@ -123,7 +130,7 @@
     return YES;
 }
 
-- (void) textViewDidChange:(UITextView *)textView
+- (void)textViewDidChange:(UITextView *)textView
 {
     CGFloat height = [textView sizeThatFits:CGSizeMake(self.textView.width, MAXFLOAT)].height;
     height = height > HEIGHT_CHATBAR_TEXTVIEW ? height : HEIGHT_CHATBAR_TEXTVIEW;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TLMoreKeyboardDelegate.h"
+#import "TLChatTableView.h"
 
 #import "TLChatBar.h"
 #import "TLMoreKeyboard.h"
@@ -21,7 +22,7 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
     TLChatVCTypeGroup,
 };
 
-@interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate>
+@interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate, TLEmojiKeyboardDelegate>
 
 /**
  *  当前聊天类型 （赋值User或Group时自动设置）
@@ -36,7 +37,7 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 @property (nonatomic, strong) NSMutableArray *data;
 
 /// UI
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) TLChatTableView *tableView;
 
 @property (nonatomic, strong) TLChatBar *chatBar;
 

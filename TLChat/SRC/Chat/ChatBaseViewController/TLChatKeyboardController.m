@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) UIView *view;
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) TLChatTableViewController *chatTableVC;
 
 @property (nonatomic, strong) TLChatBar *chatBar;
 
@@ -56,7 +56,7 @@
         make.bottom.mas_equalTo(self.view).mas_offset(-keyboardFrame.size.height);
     }];
     [self.view layoutIfNeeded];
-    [self.tableView scrollToBottomWithAnimation:NO];
+    [self.chatTableVC scrollToBottomWithAnimation:NO];
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification
@@ -129,7 +129,7 @@
 
 - (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height
 {
-    [self.tableView scrollToBottomWithAnimation:NO];
+    [self.chatTableVC scrollToBottomWithAnimation:NO];
 }
 
 //MARK: TLKeyboardDelegate
@@ -139,7 +139,7 @@
         make.bottom.mas_equalTo(self.view).mas_offset(-height);
     }];
     [self.view layoutIfNeeded];
-    [self.tableView scrollToBottomWithAnimation:NO];
+    [self.chatTableVC scrollToBottomWithAnimation:NO];
 }
 
 - (void)chatKeyboardDidShow:(id)keyboard
@@ -154,14 +154,14 @@
 
 
 #pragma mark - 
+- (TLChatTableViewController *)chatTableVC
+{
+    return self.chatBaseVC.chatTableVC;
+}
+
 - (UIView *)view
 {
     return self.chatBaseVC.view;
-}
-
-- (UITableView *)tableView
-{
-    return self.chatBaseVC.tableView;
 }
 
 - (TLChatBar *)chatBar

@@ -7,15 +7,10 @@
 //
 
 #import "TLChatBaseViewController.h"
-#import "TLTextMessageCell.h"
-
 #import "TLChatKeyboardController.h"
-#import "TLFriendDetailViewController.h"
-
 #import "TLFriendHelper.h"
 
-
-@interface TLChatBaseViewController () <UITableViewDataSource, UITableViewDelegate, TLChatBarDataDelegate, TLMessageCellDelegate>
+@interface TLChatBaseViewController () <TLChatBarDataDelegate, TLChatTableViewControllerDelegate>
 
 @property (nonatomic, strong) TLChatKeyboardController *chatKeyboardController;
 
@@ -28,10 +23,9 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.chatTableVC.tableView];
+    [self addChildViewController:self.chatTableVC];
     [self.view addSubview:self.chatBar];
-    
-    [self.tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
     
     [self p_addMasonry];
 }
@@ -59,8 +53,7 @@
     if (_curChatType != TLChatVCTypeFriend || (_user && ![_user.userID isEqualToString:user.userID])) {
         _curChatType = TLChatVCTypeFriend;
         _group = nil;
-        [self.data removeAllObjects];
-        [self.tableView reloadData];
+        [self.chatTableVC clearData];
     }
     _user = user;
     lastDate = nil;
@@ -72,8 +65,7 @@
     if (_curChatType != TLChatVCTypeGroup || (_group && [_group.groupID isEqualToString:group.groupID])) {
         _curChatType = TLChatVCTypeGroup;
         _user = nil;
-        [self.data removeAllObjects];
-        [self.tableView reloadData];
+        [self.chatTableVC clearData];
     }
     _group = group;
     lastDate = nil;
@@ -97,37 +89,13 @@
 
 
 #pragma mark - Delegate -
-//MARK: UITableViewDataSouce
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//MARK: TLChatTableViewControllerDelegate
+- (void)chatTableViewControllerDidTouched:(TLChatTableViewController *)chatTVC
 {
-    return self.data.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TLMessage *message = self.data[indexPath.row];
-    if (message.messageType == TLMessageTypeText) {
-        TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell"];
-        [cell setMessage:message];
-        [cell setDelegate:self];
-        return cell;
+    NSLog(@"Tap ChatVC");
+    if ([self.chatBar isFirstResponder]) {
+        [self.chatBar resignFirstResponder];
     }
-    return nil;
-}
-
-//MARK: UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-    return 60.0f;
-}
-
-//MARK: TLMessageCellDelegate
-- (void)messageCellDidClickAvatarForUser:(TLUser *)user
-{
-    TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
-    [detailVC setUser:user];
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 //MARK: TLChatBarDataDelegate
@@ -142,7 +110,7 @@
     message.text = text;
     message.showTime = YES;
     message.showName = NO;
-    [self.data addObject:message];
+    [self.chatTableVC sendMessage:message];
     if (self.curChatType == TLChatVCTypeFriend) {
         TLMessage *message1 = [[TLMessage alloc] init];
         message1.fromID = self.user.userID;
@@ -153,7 +121,7 @@
         message1.text = text;
         message1.showTime = NO;
         message1.showName = NO;
-        [self.data addObject:message1];
+        [self.chatTableVC sendMessage:message1];
     }
     else {
         for (NSString *userID in self.group.users) {
@@ -167,12 +135,11 @@
             message1.text = text;
             message1.showTime = NO;
             message1.showName = NO;
-            [self.data addObject:message1];
+            [self.chatTableVC sendMessage:message1];
         }
     }
-    
-    [self.tableView reloadData];
-    [self.tableView scrollToBottomWithAnimation:YES];
+
+    [self.chatTableVC scrollToBottomWithAnimation:YES];
 }
 
 //MARK: TLEmojiKeyboardDelegate
@@ -194,7 +161,7 @@
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.chatTableVC.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.chatBar.mas_top);
     }];
@@ -215,17 +182,13 @@ static NSDate *lastDate = nil;
 
 
 #pragma mark - Getter -
-- (UITableView *)tableView
+- (TLChatTableViewController *)chatTableVC
 {
-    if (_tableView == nil) {
-        _tableView = [[UITableView alloc] init];
-        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        [_tableView setBackgroundColor:[UIColor colorChatTableViewBG]];
-        [_tableView setTableFooterView:[[UIView alloc] init]];
-        [_tableView setDataSource:self];
-        [_tableView setDelegate:self];
+    if (_chatTableVC == nil) {
+        _chatTableVC = [[TLChatTableViewController alloc] init];
+        [_chatTableVC setDelegate:self];
     }
-    return _tableView;
+    return _chatTableVC;
 }
 
 - (TLChatBar *)chatBar
@@ -236,14 +199,6 @@ static NSDate *lastDate = nil;
         [_chatBar setDataDelegate:self];
     }
     return _chatBar;
-}
-
-- (NSMutableArray *)data
-{
-    if (_data == nil) {
-        _data = [[NSMutableArray alloc] init];
-    }
-    return _data;
 }
 
 - (TLEmojiKeyboard *)emojiKeyboard

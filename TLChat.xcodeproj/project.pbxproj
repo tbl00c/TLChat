@@ -1873,10 +1873,10 @@
 		C2F6177C1C902F6000A8D9E6 /* ChatBaseViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C2F617831C902F8300A8D9E6 /* TLChatTableViewController.h */,
-				C2F617841C902F8300A8D9E6 /* TLChatTableViewController.m */,
 				C2F6177F1C902F6000A8D9E6 /* TLChatKeyboardController.h */,
 				C2F617801C902F6000A8D9E6 /* TLChatKeyboardController.m */,
+				C2F617831C902F8300A8D9E6 /* TLChatTableViewController.h */,
+				C2F617841C902F8300A8D9E6 /* TLChatTableViewController.m */,
 				C2F6177D1C902F6000A8D9E6 /* TLChatBaseViewController.h */,
 				C2F6177E1C902F6000A8D9E6 /* TLChatBaseViewController.m */,
 			);

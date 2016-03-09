@@ -7,7 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLMessage.h"
+
+@class TLChatTableViewController;
+@protocol TLChatTableViewControllerDelegate <NSObject>
+
+- (void)chatTableViewControllerDidTouched:(TLChatTableViewController *)chatTVC;
+
+@end
 
 @interface TLChatTableViewController : UITableViewController
+
+@property (nonatomic, assign) id<TLChatTableViewControllerDelegate>delegate;
+
+@property (nonatomic, strong) NSMutableArray *data;
+
+- (void)sendMessage:(TLMessage *)message;
+
+- (void)scrollToBottomWithAnimation:(BOOL)animation;
+
+- (void)clearData;
 
 @end

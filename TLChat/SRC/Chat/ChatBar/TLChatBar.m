@@ -83,6 +83,28 @@
     [self textViewDidChange:self.textView];
 }
 
+- (BOOL)isFirstResponder
+{
+    if (self.status == TLChatBarStatusEmoji || self.status == TLChatBarStatusKeyboard || self.status == TLChatBarStatusMore) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)resignFirstResponder
+{
+    if (self.status == TLChatBarStatusEmoji || self.status == TLChatBarStatusKeyboard || self.status == TLChatBarStatusMore) {
+        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+            [_delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
+        }
+        [self.textView resignFirstResponder];
+        self.status = TLChatBarStatusInit;
+        [_moreButton setImage:kMoreImage imageHL:kMoreImageHL];
+        [_emojiButton setImage:kEmojiImage imageHL:kEmojiImageHL];
+    }
+    return [super resignFirstResponder];
+}
+
 #pragma mark - Delegate
 //MARK: UITextViewDelegate
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView

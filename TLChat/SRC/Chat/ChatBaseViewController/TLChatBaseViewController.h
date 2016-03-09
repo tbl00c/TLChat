@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "TLMoreKeyboardDelegate.h"
-#import "TLChatTableView.h"
 
 #import "TLChatBar.h"
 #import "TLMoreKeyboard.h"
@@ -37,7 +36,7 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 @property (nonatomic, strong) NSMutableArray *data;
 
 /// UI
-@property (nonatomic, strong) TLChatTableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) TLChatBar *chatBar;
 

@@ -215,10 +215,13 @@ static NSDate *lastDate = nil;
 
 
 #pragma mark - Getter -
-- (TLChatTableView *)tableView
+- (UITableView *)tableView
 {
     if (_tableView == nil) {
-        _tableView = [[TLChatTableView alloc] init];
+        _tableView = [[UITableView alloc] init];
+        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [_tableView setBackgroundColor:[UIColor colorChatTableViewBG]];
+        [_tableView setTableFooterView:[[UIView alloc] init]];
         [_tableView setDataSource:self];
         [_tableView setDelegate:self];
     }

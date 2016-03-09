@@ -1,5 +1,5 @@
 //
-//  TLChatTableView.h
+//  TLChatTableViewController.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/9.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TLChatTableView : UITableView
+@interface TLChatTableViewController : UITableViewController
 
 @end

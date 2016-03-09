@@ -39,7 +39,7 @@
     self.qrCodeVC.username = group.groupName;
     self.qrCodeVC.qrCode = group.groupID;
     NSDate *date = [NSDate dateWithDaysFromNow:7];
-    self.qrCodeVC.introduction = [NSString stringWithFormat:@"该二维码将在7天内(%lu月%lu日前)有效，重新进入将更新", date.month, date.day];
+    self.qrCodeVC.introduction = [NSString stringWithFormat:@"该二维码7天内(%lu月%lu日前)有效，重新进入将更新", date.month, date.day];
 }
 
 #pragma mark - UIActionSheetDelegate -

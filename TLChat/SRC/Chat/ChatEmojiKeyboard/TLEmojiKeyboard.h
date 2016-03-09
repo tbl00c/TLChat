@@ -8,15 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "TLKeyboardDelegate.h"
-#import "TLEmojiKeyboardDataSource.h"
 
 @interface TLEmojiKeyboard : UIView
 
 @property (nonatomic, assign) NSMutableArray *emojiGroupData;
 
 @property (nonatomic, assign) id<TLKeyboardDelegate> keyboardDelegate;
-
-@property (nonatomic, assign) id<TLEmojiKeyboardDataSource> dataSource;
 
 + (TLEmojiKeyboard *)keyboard;
 

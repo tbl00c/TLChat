@@ -8,6 +8,7 @@
 
 #import "TLEmojiKeyboard.h"
 #import "TLChatMacros.h"
+#import "TLEmojiKBHelper.h"
 #import "TLEmojiGroupControl.h"
 #import "TLEmojiItemCell.h"
 #import "TLEmojiImageItemCell.h"
@@ -216,9 +217,7 @@ static TLEmojiKeyboard *emojiKB;
 - (void)emojiGroupControl:(TLEmojiGroupControl *)emojiGroupControl didSelectedGroup:(TLEmojiGroup *)group
 {
     if (group.data == nil) {
-        if (_dataSource && [_dataSource respondsToSelector:@selector(emojiKeyboard:emojiDataForGroupItem:)]) {
-            group.data = [_dataSource emojiKeyboard:self emojiDataForGroupItem:group];
-        }
+        group.data = [TLEmojiKBHelper getEmojiDataByPath:group.dataPath];
     }
     self.curGroup = group;
     [self p_resetCollectionSize];

@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TLEmojiGroup.h"
 
 @interface TLEmojiKBHelper : NSObject
 
 @property (nonatomic, strong) NSMutableArray *emojiGroupData;
+
++ (NSMutableArray *)getEmojiDataByPath:(NSString *)path;
 
 @end

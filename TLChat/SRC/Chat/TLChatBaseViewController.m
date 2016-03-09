@@ -235,7 +235,6 @@ static NSDate *lastDate = nil;
     if (_emojiKeyboard == nil) {
         _emojiKeyboard = [TLEmojiKeyboard keyboard];
         [_emojiKeyboard setKeyboardDelegate:self.chatKeyboardController];
-        [_emojiKeyboard setDataSource:self];
     }
     return _emojiKeyboard;
 }

@@ -119,20 +119,6 @@ static TLChatViewController *chatVC;
     }
 }
 
-//MARK: TLEmojiKeyboardDataSource
-- (NSMutableArray *)emojiKeyboard:(id)emojiKeyboard emojiDataForGroupItem:(TLEmojiGroup *)item
-{
-    NSUInteger count = (item.type == TLEmojiGroupTypeFace || item.type == TLEmojiGroupTypeEmoji)? 100 : 20;
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
-    for (int i = 0; i <= count; i ++) {
-        TLEmoji *emoji = [[TLEmoji alloc] init];
-        emoji.title = (item.type == TLEmojiGroupTypeEmoji) ? @"😚" : @"你好";
-        emoji.iconPath = (item.type == TLEmojiGroupTypeFace) ? @"[微笑]" : @"10.jpeg";
-        [arr addObject:emoji];
-    }
-    return arr;
-}
-
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UINavigationBar *)sender
 {

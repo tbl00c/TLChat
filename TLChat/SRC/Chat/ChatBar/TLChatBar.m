@@ -429,4 +429,9 @@
     return _moreButton;
 }
 
+- (NSString *)curText
+{
+    return self.textView.text;
+}
+
 @end

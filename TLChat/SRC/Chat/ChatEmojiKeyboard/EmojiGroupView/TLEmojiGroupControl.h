@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TLEmojiGroup.h"
 
+typedef NS_ENUM(NSInteger, TLGroupControlSendButtonStatus) {
+    TLGroupControlSendButtonStatusGray,
+    TLGroupControlSendButtonStatusBlue,
+    TLGroupControlSendButtonStatusNone,
+};
+
 @class TLEmojiGroupControl;
 @protocol TLEmojiGroupControlDelegate <NSObject>
 
@@ -16,16 +22,20 @@
 
 - (void)emojiGroupControlEditButtonDown:(TLEmojiGroupControl *)emojiGroupControl;
 
+- (void)emojiGroupControlEditMyEmojiButtonDown:(TLEmojiGroupControl *)emojiGroupControl;
+
 - (void)emojiGroupControlSendButtonDown:(TLEmojiGroupControl *)emojiGroupControl;
 
 @end
 
 @interface TLEmojiGroupControl : UIView
 
+@property (nonatomic, assign) TLGroupControlSendButtonStatus sendButtonStatus;
+
 @property (nonatomic, strong) NSMutableArray *emojiGroupData;
 
 @property (nonatomic, assign) id<TLEmojiGroupControlDelegate>delegate;
 
-- (void)selectGroupIndex:(NSUInteger)groupIndex;
+@property (nonatomic, assign) NSInteger curGroupIndex;
 
 @end

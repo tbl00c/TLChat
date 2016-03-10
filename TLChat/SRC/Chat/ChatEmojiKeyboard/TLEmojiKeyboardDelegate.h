@@ -11,15 +11,19 @@
 
 @protocol TLEmojiKeyboardDelegate <NSObject>
 
+- (BOOL)chatInputViewHasText;
+
 @optional
 - (void)touchInEmojiItem:(TLEmoji *)emoji point:(CGPoint)point;
 
-- (void)cancelTouchEmojiItem:(TLEmoji *)emoji;
+- (void)cancelTouchEmojiItem;
 
 - (void)selectedEmojiItem:(TLEmoji *)emoji;
 
+- (void)sendButtonDown;
+
 - (void)emojiEditButtonDown;
 
-- (void)sendButtonDown;
+- (void)myEmojiEditButtonDown;
 
 @end

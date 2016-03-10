@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, TLEmojiType) {
     TLEmojiTypeFace,
     TLEmojiTypeImage,
     TLEmojiTypeImageWithTitle,
+    TLEmojiTypeOther,
 };
 
 typedef NS_ENUM(NSInteger, TLChatBarStatus) {

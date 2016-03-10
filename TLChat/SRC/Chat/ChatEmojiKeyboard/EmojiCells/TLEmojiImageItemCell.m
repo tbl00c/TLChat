@@ -7,7 +7,6 @@
 //
 
 #import "TLEmojiImageItemCell.h"
-#import "UIImage+Color.h"
 
 @interface TLEmojiImageItemCell ()
 
@@ -21,7 +20,7 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self.contentView addSubview:self.imageView];
-        [self.bgView setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0.7 alpha:0.7]] forState:UIControlStateHighlighted];
+        [self setHighlightImage:[UIImage imageNamed:@"emoji_hl_background"]];
         [self p_addMasonry];
     }
     return self;

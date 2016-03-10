@@ -7,6 +7,7 @@
 //
 
 #import "TLExpressionViewController.h"
+#import "TLMyExpressionViewController.h"
 
 #define     WIDTH_EXPRESSION_SEGMENT    WIDTH_SCREEN * 0.55
 
@@ -37,7 +38,9 @@
 #pragma mark - Event Response
 - (void) rightBarButtonDown
 {
-    
+    TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:myExpressionVC animated:YES];
 }
 
 - (void) segmentedControlChanged:(UISegmentedControl *)segmentedControl

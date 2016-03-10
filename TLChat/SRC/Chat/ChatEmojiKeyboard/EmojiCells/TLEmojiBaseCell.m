@@ -21,40 +21,23 @@
     return self;
 }
 
-#pragma mark - Event Response -
-- (void)bgButtonTouchDown
+- (void)setShowHighlightImage:(BOOL)showHighlightImage
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(touchInEmojiItem:point:)]) {
-        CGPoint point = CGPointMake(self.x + self.width / 2, self.y + self.height / 2);
-        [_delegate touchInEmojiItem:self.emojiItem point:point];
+    if (showHighlightImage) {
+        [self.bgView setImage:self.highlightImage];
     }
-}
-
-- (void)bgButtonTouchUpInside
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(selectedEmojiItem:)]) {
-        [_delegate selectedEmojiItem:self.emojiItem];
-    }
-}
-
-- (void)bgButtonTouchCancel
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(cancelTouchEmojiItem:)]) {
-        [_delegate cancelTouchEmojiItem:self.emojiItem];
+    else {
+        [self.bgView setImage:nil];
     }
 }
 
 #pragma mark - Getter -
-- (UIButton *)bgView
+- (UIImageView *)bgView
 {
     if (_bgView == nil) {
-        _bgView = [[UIButton alloc] init];
+        _bgView = [[UIImageView alloc] init];
         [_bgView.layer setMasksToBounds:YES];
         [_bgView.layer setCornerRadius:5.0f];
-        [_bgView addTarget:self action:@selector(bgButtonTouchDown) forControlEvents:UIControlEventTouchDown];
-        [_bgView addTarget:self action:@selector(bgButtonTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
-        [_bgView addTarget:self action:@selector(bgButtonTouchCancel) forControlEvents:UIControlEventTouchUpOutside];
-        [_bgView addTarget:self action:@selector(bgButtonTouchCancel) forControlEvents:UIControlEventTouchCancel];
     }
     return _bgView;
 }

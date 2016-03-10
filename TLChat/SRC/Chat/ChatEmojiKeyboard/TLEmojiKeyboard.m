@@ -53,7 +53,7 @@ static TLEmojiKeyboard *emojiKB;
     return emojiKB;
 }
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         [self setBackgroundColor:[UIColor colorChatBox]];
@@ -66,17 +66,20 @@ static TLEmojiKeyboard *emojiKB;
         [self.collectionView registerClass:[TLEmojiFaceItemCell class] forCellWithReuseIdentifier:@"TLEmojiFaceItemCell"];
         [self.collectionView registerClass:[TLEmojiImageItemCell class] forCellWithReuseIdentifier:@"TLEmojiImageItemCell"];
         [self.collectionView registerClass:[TLEmojiImageTitleItemCell class] forCellWithReuseIdentifier:@"TLEmojiImageTitleItemCell"];
+        
+        UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
+        [self.collectionView addGestureRecognizer:longPressGR];
     }
     return self;
 }
 
-- (void) setEmojiGroupData:(NSMutableArray *)emojiGroupData
+- (void)setEmojiGroupData:(NSMutableArray *)emojiGroupData
 {
     [self.groupControl setEmojiGroupData:emojiGroupData];
 }
 
 #pragma mark - Public Methods -
-- (void) showInView:(UIView *)view withAnimation:(BOOL)animation;
+- (void)showInView:(UIView *)view withAnimation:(BOOL)animation;
 {
     if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
         [_keyboardDelegate chatKeyboardWillShow:self];
@@ -112,9 +115,10 @@ static TLEmojiKeyboard *emojiKB;
             [_keyboardDelegate chatKeyboardDidShow:self];
         }
     }
+    [self p_updateSendButtonStatus];
 }
 
-- (void) dismissWithAnimation:(BOOL)animation
+- (void)dismissWithAnimation:(BOOL)animation
 {
     if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardWillDismiss:)]) {
         [_keyboardDelegate chatKeyboardWillDismiss:self];
@@ -146,6 +150,8 @@ static TLEmojiKeyboard *emojiKB;
 - (void)reset
 {
     [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
+    // 更新发送按钮状态
+    [self p_updateSendButtonStatus];
 }
 
 #pragma mark - Delegate -
@@ -176,8 +182,7 @@ static TLEmojiKeyboard *emojiKB;
     else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiImageItemCell" forIndexPath:indexPath];
     }
-    [cell setDelegate:self.delegate];
-    NSUInteger tIndex = [self p_transformIndex:index];  // 矩阵坐标转置
+    NSUInteger tIndex = [self p_transformModelIndex:index];  // 矩阵坐标转置
     TLEmoji *emojiItem = self.curGroup.count > tIndex ? [self.curGroup objectAtIndex:tIndex] : nil;
     [cell setEmojiItem:emojiItem];
     return cell;
@@ -189,6 +194,19 @@ static TLEmojiKeyboard *emojiKB;
 }
 
 //MARK: UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSUInteger index = indexPath.section * self.curGroup.pageItemNumber + indexPath.row;
+    NSUInteger tIndex = [self p_transformModelIndex:index];  // 矩阵坐标转置
+    if (tIndex < self.curGroup.count) {
+        TLEmoji *item = [self.curGroup objectAtIndex:tIndex];
+        if (_delegate && [_delegate respondsToSelector:@selector(selectedEmojiItem:)]) {
+            [_delegate selectedEmojiItem:item];
+        }
+    }
+    [self p_updateSendButtonStatus];
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return cellSize;
@@ -222,6 +240,7 @@ static TLEmojiKeyboard *emojiKB;
 //MARK: TLEmojiGroupControlDelegate
 - (void)emojiGroupControl:(TLEmojiGroupControl *)emojiGroupControl didSelectedGroup:(TLEmojiGroup *)group
 {
+    // 显示Group表情
     if (group.data == nil) {
         group.data = [TLEmojiKBHelper getEmojiDataByPath:group.dataPath];
     }
@@ -231,6 +250,15 @@ static TLEmojiKeyboard *emojiKB;
     [self.pageControl setCurrentPage:0];
     [self.collectionView reloadData];
     [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
+    // 更新发送按钮状态
+    [self p_updateSendButtonStatus];
+}
+
+- (void)emojiGroupControlEditMyEmojiButtonDown:(TLEmojiGroupControl *)emojiGroupControl
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(myEmojiEditButtonDown)]) {
+        [_delegate myEmojiEditButtonDown];
+    }
 }
 
 - (void)emojiGroupControlEditButtonDown:(TLEmojiGroupControl *)emojiGroupControl
@@ -245,6 +273,8 @@ static TLEmojiKeyboard *emojiKB;
     if (_delegate && [_delegate respondsToSelector:@selector(sendButtonDown)]) {
         [_delegate sendButtonDown];
     }
+    // 更新发送按钮状态
+    [self p_updateSendButtonStatus];
 }
 
 #pragma mark - Event Response -
@@ -253,7 +283,78 @@ static TLEmojiKeyboard *emojiKB;
     [self.collectionView scrollRectToVisible:CGRectMake(WIDTH_SCREEN * pageControl.currentPage, 0, WIDTH_SCREEN, HEIGHT_PAGECONTROL) animated:YES];
 }
 
+static NSInteger lastIndex = -1;
+- (void)longPressAction:(UILongPressGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        if (lastIndex != -1) {
+            id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:lastIndex]];
+            [cell setShowHighlightImage:NO];
+        }
+        lastIndex = -1;
+        if (_delegate && [_delegate respondsToSelector:@selector(cancelTouchEmojiItem)]) {
+            [_delegate cancelTouchEmojiItem];
+        }
+    }
+    else {
+        CGPoint point = [sender locationInView:self.collectionView];
+        [self p_getEmojiItemAtPoint:point success:^(TLEmoji *emoji, CGPoint p, NSInteger index) {
+            if (lastIndex == index) {
+                return ;
+            }
+            else if (lastIndex != -1){
+                id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:lastIndex]];
+                [cell setShowHighlightImage:NO];
+            }
+            lastIndex = index;
+            id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:index]];
+            [cell setShowHighlightImage:YES];
+            if (_delegate && [_delegate respondsToSelector:@selector(touchInEmojiItem:point:)]) {
+                [_delegate touchInEmojiItem:emoji point:p];
+            }
+
+        } failed:^{
+            if (lastIndex != -1) {
+                id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:lastIndex]];
+                [cell setShowHighlightImage:NO];
+            }
+            lastIndex = -1;
+            if (_delegate && [_delegate respondsToSelector:@selector(cancelTouchEmojiItem)]) {
+                [_delegate cancelTouchEmojiItem];
+            }
+        }];
+    }
+}
+
 #pragma mark - Private Methods -
+- (void)p_getEmojiItemAtPoint:(CGPoint)point
+                      success:(void (^)(TLEmoji *, CGPoint, NSInteger))success
+                       failed:(void (^)())failed
+{
+    NSInteger page = point.x / self.collectionView.width;
+    point.x -= page  * self.collectionView.width;
+    if (point.x < headerReferenceSize.width || point.x > self.collectionView.width - footerReferenceSize.width || point.y < sectionInsets.top || point.y > self.collectionView.contentSize.height - sectionInsets.bottom) {
+        failed();
+    }
+    else {
+        point.x -= headerReferenceSize.width;
+        point.y -= sectionInsets.top;
+        NSInteger w = (self.collectionView.width - headerReferenceSize.width - footerReferenceSize.width) / self.curGroup.rowNumber;
+        NSInteger h = (self.collectionView.height - sectionInsets.top - sectionInsets.bottom) / self.curGroup.lineNumber;
+        NSInteger x = point.x / w;
+        NSInteger y = point.y / h;
+        NSInteger index = page * self.curGroup.pageItemNumber + y * self.curGroup.rowNumber + x;
+
+        if (index >= self.curGroup.count) {
+            failed();
+        }
+        else {
+            TLEmoji *emoji = [self.curGroup objectAtIndex:index];
+            success(emoji, point, index);
+        }
+    }
+}
+
 - (void)p_resetCollectionSize
 {
     float cellHeight;
@@ -287,13 +388,52 @@ static TLEmojiKeyboard *emojiKB;
     sectionInsets = UIEdgeInsetsMake(topSpace, 0, btmSpace, 0);
 }
 
-- (NSUInteger)p_transformIndex:(NSUInteger)index
+/**
+ *  转换index
+ *
+ *  @param index collectionView中的Index
+ *
+ *  @return model中的Index
+ */
+- (NSUInteger)p_transformModelIndex:(NSInteger)index
 {
     NSUInteger page = index / self.curGroup.pageItemNumber;
     index = index % self.curGroup.pageItemNumber;
     NSUInteger x = index / self.curGroup.lineNumber;
     NSUInteger y = index % self.curGroup.lineNumber;
     return self.curGroup.rowNumber * y + x + page * self.curGroup.pageItemNumber;
+}
+
+- (NSUInteger)p_transformCellIndex:(NSInteger)index
+{
+    NSUInteger page = index / self.curGroup.pageItemNumber;
+    index = index % self.curGroup.pageItemNumber;
+    NSUInteger x = index / self.curGroup.rowNumber;
+    NSUInteger y = index % self.curGroup.rowNumber;
+    return self.curGroup.lineNumber * y + x + page * self.curGroup.pageItemNumber;
+}
+
+- (NSIndexPath *)p_getIndexPathOfIndex:(NSInteger)index
+{
+    index = [self p_transformCellIndex:index];
+    NSInteger row = index % self.curGroup.pageItemNumber;
+    NSInteger section = index / self.curGroup.pageItemNumber;
+    return [NSIndexPath indexPathForRow:row inSection:section];
+}
+
+- (void)p_updateSendButtonStatus
+{
+    if (self.curGroup.type == TLEmojiTypeEmoji || self.curGroup.type == TLEmojiTypeFace) {
+        if ([self.delegate chatInputViewHasText]) {
+            [self.groupControl setSendButtonStatus:TLGroupControlSendButtonStatusBlue];
+        }
+        else {
+            [self.groupControl setSendButtonStatus:TLGroupControlSendButtonStatusGray];
+        }
+    }
+    else {
+        [self.groupControl setSendButtonStatus:TLGroupControlSendButtonStatusNone];
+    }
 }
 
 - (void)p_addMasonry

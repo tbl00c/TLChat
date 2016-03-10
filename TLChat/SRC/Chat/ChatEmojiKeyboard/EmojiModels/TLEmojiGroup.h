@@ -20,14 +20,29 @@
 
 @property (nonatomic, strong) NSString *dataPath;
 
+/**
+ *  总数
+ */
 @property (nonatomic, assign) NSUInteger count;
 
+/**
+ *  每页个数
+ */
 @property (nonatomic, assign) NSUInteger pageItemNumber;
 
+/**
+ *  页数
+ */
 @property (nonatomic, assign) NSUInteger pageNumber;
 
+/**
+ *  行数
+ */
 @property (nonatomic, assign) NSUInteger lineNumber;
 
+/**
+ *  列数
+ */
 @property (nonatomic, assign) NSUInteger rowNumber;
 
 - (id)objectAtIndex:(NSUInteger)index;

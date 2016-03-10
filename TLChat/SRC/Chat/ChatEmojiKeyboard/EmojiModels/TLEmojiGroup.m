@@ -14,6 +14,8 @@
 {
     _type = type;
     switch (type) {
+        case TLEmojiTypeOther:
+            return;
         case TLEmojiTypeFace:
         case TLEmojiTypeEmoji:
             self.lineNumber = 3;

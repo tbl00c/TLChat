@@ -81,6 +81,14 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+//MARK: UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewControllerDidTouched:)]) {
+        [_delegate chatTableViewControllerDidTouched:self];
+    }
+}
+
 #pragma mark - Event Response -
 - (void)didTouchTableView
 {

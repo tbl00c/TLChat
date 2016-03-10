@@ -10,7 +10,7 @@
 #import "TLEmojiGroupCell.h"
 
 #define     WIDTH_EMOJIGROUP_CELL       46
-#define     WIDTH_SENDBUTTON            52
+#define     WIDTH_SENDBUTTON            60
 
 @interface TLEmojiGroupControl () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -34,25 +34,67 @@
         [self p_addMasonry];
         
         [self.collectionView registerClass:[TLEmojiGroupCell class] forCellWithReuseIdentifier:@"TLEmojiGroupCell"];
-        [self selectGroupIndex:0];
+        
+        _curGroupIndex = -1;
     }
     return self;
 }
 
-- (void)setEmojiGroupData:(NSMutableArray *)emojiGroupData
+- (void)setSendButtonStatus:(TLGroupControlSendButtonStatus)sendButtonStatus
 {
-    _emojiGroupData = emojiGroupData;
-    [self.collectionView reloadData];
-    if (emojiGroupData && emojiGroupData.count > 0) {
-        [self selectGroupIndex:0];
+    if (_sendButtonStatus != sendButtonStatus) {
+        if (_sendButtonStatus == TLGroupControlSendButtonStatusNone) {
+            [UIView animateWithDuration:0.5f animations:^{
+                [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.right.mas_equalTo(self);
+                }];
+                [self layoutIfNeeded];
+            }];
+        }
+        
+        _sendButtonStatus = sendButtonStatus;
+        if (sendButtonStatus == TLGroupControlSendButtonStatusNone) {
+            [UIView animateWithDuration:0.5f animations:^{
+                [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.right.mas_equalTo(self).mas_offset(WIDTH_SENDBUTTON);
+                }];
+                [self layoutIfNeeded];
+            }];
+        }
+        else if (sendButtonStatus == TLGroupControlSendButtonStatusBlue) {
+            [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_blue"] forState:UIControlStateNormal];
+            [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_blueHL"] forState:UIControlStateHighlighted];
+            [_sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+        else if (sendButtonStatus == TLGroupControlSendButtonStatusGray) {
+            [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateNormal];
+            [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateHighlighted];
+            [_sendButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        }
     }
 }
 
-- (void)selectGroupIndex:(NSUInteger)groupIndex
+- (void)setEmojiGroupData:(NSMutableArray *)emojiGroupData
 {
-    [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:groupIndex inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    if (_emojiGroupData == emojiGroupData) {
+        return;
+    }
+    _emojiGroupData = emojiGroupData;
+    [self.collectionView reloadData];
+    if (emojiGroupData && emojiGroupData.count > 0) {
+        [self setCurGroupIndex:0];
+    }
+}
+
+- (void)setCurGroupIndex:(NSInteger)curGroupIndex
+{
+    [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:curGroupIndex inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    if (_curGroupIndex == curGroupIndex) {
+        return;
+    }
+    _curGroupIndex = curGroupIndex;
     if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControl:didSelectedGroup:)]) {
-        [_delegate emojiGroupControl:self didSelectedGroup:self.emojiGroupData[groupIndex]];
+        [_delegate emojiGroupControl:self didSelectedGroup:self.emojiGroupData[curGroupIndex]];
     }
 }
 
@@ -65,8 +107,8 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    TLEmojiGroupCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiGroupCell" forIndexPath:indexPath];
     TLEmojiGroup *group = self.emojiGroupData[indexPath.row];
-    TLEmojiGroupCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiGroupCell" forIndexPath:indexPath];
     [cell setEmojiGroup:group];
     return cell;
 }
@@ -79,8 +121,13 @@
 //MARK: UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControl:didSelectedGroup:)]) {
-        [_delegate emojiGroupControl:self didSelectedGroup:self.emojiGroupData[indexPath.row]];
+    TLEmojiGroup *group = self.emojiGroupData[indexPath.row];
+    if (group.type == TLEmojiTypeOther) {
+        [self setCurGroupIndex:_curGroupIndex];
+        [self p_eidtMyEmojiButtonDown];
+    }
+    else {
+        [self setCurGroupIndex:indexPath.row];
     }
 }
 
@@ -102,6 +149,13 @@
         make.left.mas_equalTo(self.addButton.mas_right);
         make.right.mas_equalTo(self.sendButton.mas_left);
     }];
+}
+
+- (void)p_eidtMyEmojiButtonDown
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControlEditMyEmojiButtonDown:)]) {
+        [_delegate emojiGroupControlEditMyEmojiButtonDown:self];
+    }
 }
 
 - (void)drawRect:(CGRect)rect
@@ -165,8 +219,10 @@
     if (_sendButton == nil) {
         _sendButton = [[UIButton alloc] init];
         [_sendButton.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
-        [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
-        [_sendButton setBackgroundColor:[UIColor colorChatEmojiSend]];
+        [_sendButton setTitle:@"  发送" forState:UIControlStateNormal];
+        [_sendButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateNormal];
+        [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateHighlighted];
         [_sendButton addTarget:self action:@selector(sendButtonDown) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sendButton;

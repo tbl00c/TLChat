@@ -92,7 +92,6 @@
 //MARK: TLChatTableViewControllerDelegate
 - (void)chatTableViewControllerDidTouched:(TLChatTableViewController *)chatTVC
 {
-    NSLog(@"Tap ChatVC");
     if ([self.chatBar isFirstResponder]) {
         [self.chatBar resignFirstResponder];
     }
@@ -153,9 +152,14 @@
     NSLog(@"touch in %@, path %@", emoji.title, emoji.path);
 }
 
-- (void)cancelTouchEmojiItem:(TLEmoji *)emoji
+- (void)cancelTouchEmojiItem
 {
-    NSLog(@"cancel touch %@, path %@", emoji.title, emoji.path);
+    NSLog(@"cancel touch");
+}
+
+- (BOOL)chatInputViewHasText
+{
+    return self.chatBar.curText.length == 0 ? NO : YES;
 }
 
 #pragma mark - Private Methods -

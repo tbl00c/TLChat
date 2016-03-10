@@ -13,6 +13,7 @@
 #import "TLChatDetailViewController.h"
 #import "TLChatGroupDetailViewController.h"
 #import "TLExpressionViewController.h"
+#import "TLMyExpressionViewController.h"
 
 static TLChatViewController *chatVC;
 
@@ -132,6 +133,13 @@ static TLChatViewController *chatVC;
 {
     TLExpressionViewController *expressionVC = [[TLExpressionViewController alloc] init];
     TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:expressionVC];
+    [self presentViewController:navC animated:YES completion:nil];
+}
+
+- (void)myEmojiEditButtonDown
+{
+    TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
+    TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:myExpressionVC];
     [self presentViewController:navC animated:YES completion:nil];
 }
 

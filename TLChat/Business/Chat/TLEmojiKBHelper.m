@@ -38,7 +38,11 @@
     group4.type = TLEmojiTypeImageWithTitle;
     group4.groupIconPath = @"emojiKB_group_tusiji";
     group4.dataPath = [[NSBundle mainBundle] pathForResource:@"TusijiTitleEmoji" ofType:@"json"];
-    [self.emojiGroupData addObjectsFromArray:@[group1, group2, group3, group4]];
+    
+    TLEmojiGroup *editGroup = [[TLEmojiGroup alloc] init];
+    editGroup.type = TLEmojiTypeOther;
+    editGroup.groupIconPath = @"emojiKB_settingBtn";
+    [self.emojiGroupData addObjectsFromArray:@[group1, group2, group3, group4, editGroup]];
 }
 
 + (NSMutableArray *)getEmojiDataByPath:(NSString *)path

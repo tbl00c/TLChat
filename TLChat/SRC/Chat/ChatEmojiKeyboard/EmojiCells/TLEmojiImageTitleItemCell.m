@@ -22,7 +22,7 @@
 - (id) initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        [self.bgView setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0.7 alpha:0.7]] forState:UIControlStateHighlighted];
+        [self setHighlightImage:[UIImage imageNamed:@"emoji_hl_background"]];
         [self.contentView addSubview:self.imageView];
         [self.contentView addSubview:self.label];
         [self p_addMasonry];

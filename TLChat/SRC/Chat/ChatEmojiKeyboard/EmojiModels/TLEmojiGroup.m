@@ -18,27 +18,27 @@
             return;
         case TLEmojiTypeFace:
         case TLEmojiTypeEmoji:
-            self.lineNumber = 3;
-            self.rowNumber = 7;
+            self.rowNumber = 3;
+            self.colNumber = 7;
             break;
         case TLEmojiTypeImage:
         case TLEmojiTypeFavorite:
         case TLEmojiTypeImageWithTitle:
-            self.lineNumber = 2;
-            self.rowNumber = 4;
+            self.rowNumber = 2;
+            self.colNumber = 4;
             break;
         default:
             break;
     }
-    self.pageItemNumber = self.lineNumber * self.rowNumber;
-    self.pageNumber = self.count / self.pageItemNumber + (self.count % self.pageItemNumber == 0 ? 0 : 1);
+    self.pageItemCount = self.rowNumber * self.colNumber;
+    self.pageNumber = self.count / self.pageItemCount + (self.count % self.pageItemCount == 0 ? 0 : 1);
 }
 
 - (void)setData:(NSMutableArray *)data
 {
     _data = data;
-    self.pageItemNumber = self.lineNumber * self.rowNumber;
-    self.pageNumber = self.count / self.pageItemNumber + (self.count % self.pageItemNumber == 0 ? 0 : 1);
+    self.pageItemCount = self.rowNumber * self.colNumber;
+    self.pageNumber = self.count / self.pageItemCount + (self.count % self.pageItemCount == 0 ? 0 : 1);
 }
 
 - (NSUInteger)count

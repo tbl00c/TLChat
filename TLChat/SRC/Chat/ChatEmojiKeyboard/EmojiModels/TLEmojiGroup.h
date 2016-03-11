@@ -28,7 +28,7 @@
 /**
  *  每页个数
  */
-@property (nonatomic, assign) NSUInteger pageItemNumber;
+@property (nonatomic, assign) NSUInteger pageItemCount;
 
 /**
  *  页数
@@ -38,12 +38,12 @@
 /**
  *  行数
  */
-@property (nonatomic, assign) NSUInteger lineNumber;
+@property (nonatomic, assign) NSUInteger rowNumber;
 
 /**
  *  列数
  */
-@property (nonatomic, assign) NSUInteger rowNumber;
+@property (nonatomic, assign) NSUInteger colNumber;
 
 - (id)objectAtIndex:(NSUInteger)index;
 

@@ -163,12 +163,12 @@ static TLEmojiKeyboard *emojiKB;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.curGroup.pageItemNumber;
+    return self.curGroup.pageItemCount;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger index = indexPath.section * self.curGroup.pageItemNumber + indexPath.row;
+    NSUInteger index = indexPath.section * self.curGroup.pageItemCount + indexPath.row;
     TLEmojiBaseCell *cell;
     if (self.curGroup.type == TLEmojiTypeEmoji) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiItemCell" forIndexPath:indexPath];
@@ -196,7 +196,7 @@ static TLEmojiKeyboard *emojiKB;
 //MARK: UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger index = indexPath.section * self.curGroup.pageItemNumber + indexPath.row;
+    NSUInteger index = indexPath.section * self.curGroup.pageItemCount + indexPath.row;
     NSUInteger tIndex = [self p_transformModelIndex:index];  // 矩阵坐标转置
     if (tIndex < self.curGroup.count) {
         TLEmoji *item = [self.curGroup objectAtIndex:tIndex];
@@ -339,11 +339,11 @@ static NSInteger lastIndex = -1;
     else {
         point.x -= headerReferenceSize.width;
         point.y -= sectionInsets.top;
-        NSInteger w = (self.collectionView.width - headerReferenceSize.width - footerReferenceSize.width) / self.curGroup.rowNumber;
-        NSInteger h = (self.collectionView.height - sectionInsets.top - sectionInsets.bottom) / self.curGroup.lineNumber;
+        NSInteger w = (self.collectionView.width - headerReferenceSize.width - footerReferenceSize.width) / self.curGroup.colNumber;
+        NSInteger h = (self.collectionView.height - sectionInsets.top - sectionInsets.bottom) / self.curGroup.rowNumber;
         NSInteger x = point.x / w;
         NSInteger y = point.y / h;
-        NSInteger index = page * self.curGroup.pageItemNumber + y * self.curGroup.rowNumber + x;
+        NSInteger index = page * self.curGroup.pageItemCount + y * self.curGroup.colNumber + x;
 
         if (index >= self.curGroup.count) {
             failed();
@@ -363,28 +363,28 @@ static NSInteger lastIndex = -1;
     float btmSpace = 0;
     float hfSpace = 0;
     if (self.curGroup.type == TLEmojiTypeFace || self.curGroup.type == TLEmojiTypeEmoji) {
-        cellWidth = cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.lineNumber) * 0.55;
+        cellWidth = cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.rowNumber) * 0.55;
         topSpace = 11;
         btmSpace = 19;
-        hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.rowNumber) / (self.curGroup.rowNumber + 1) * 1.4;
+        hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.4;
     }
     else if (self.curGroup.type == TLEmojiTypeImageWithTitle){
-        cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.lineNumber) * 0.96;
+        cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.rowNumber) * 0.96;
         cellWidth = cellHeight * 0.8;
-        hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.rowNumber) / (self.curGroup.rowNumber + 1) * 1.2;
+        hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.2;
     }
     else {
-        cellWidth = cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.lineNumber) * 0.72;
+        cellWidth = cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.rowNumber) * 0.72;
         topSpace = 8;
         btmSpace = 16;
-        hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.rowNumber) / (self.curGroup.rowNumber + 1) * 1.2;
+        hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.2;
     }
     
     cellSize = CGSizeMake(cellWidth, cellHeight);
     headerReferenceSize = CGSizeMake(hfSpace, HEIGHT_EMOJIVIEW);
     footerReferenceSize = CGSizeMake(hfSpace, HEIGHT_EMOJIVIEW);
-    minimumLineSpacing = (WIDTH_SCREEN - hfSpace * 2 - cellWidth * self.curGroup.rowNumber) / (self.curGroup.rowNumber - 1);
-    minimumInteritemSpacing = (HEIGHT_EMOJIVIEW - topSpace - btmSpace - cellHeight * self.curGroup.lineNumber) / (self.curGroup.lineNumber - 1);
+    minimumLineSpacing = (WIDTH_SCREEN - hfSpace * 2 - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber - 1);
+    minimumInteritemSpacing = (HEIGHT_EMOJIVIEW - topSpace - btmSpace - cellHeight * self.curGroup.rowNumber) / (self.curGroup.rowNumber - 1);
     sectionInsets = UIEdgeInsetsMake(topSpace, 0, btmSpace, 0);
 }
 
@@ -397,27 +397,27 @@ static NSInteger lastIndex = -1;
  */
 - (NSUInteger)p_transformModelIndex:(NSInteger)index
 {
-    NSUInteger page = index / self.curGroup.pageItemNumber;
-    index = index % self.curGroup.pageItemNumber;
-    NSUInteger x = index / self.curGroup.lineNumber;
-    NSUInteger y = index % self.curGroup.lineNumber;
-    return self.curGroup.rowNumber * y + x + page * self.curGroup.pageItemNumber;
+    NSUInteger page = index / self.curGroup.pageItemCount;
+    index = index % self.curGroup.pageItemCount;
+    NSUInteger x = index / self.curGroup.rowNumber;
+    NSUInteger y = index % self.curGroup.rowNumber;
+    return self.curGroup.colNumber * y + x + page * self.curGroup.pageItemCount;
 }
 
 - (NSUInteger)p_transformCellIndex:(NSInteger)index
 {
-    NSUInteger page = index / self.curGroup.pageItemNumber;
-    index = index % self.curGroup.pageItemNumber;
-    NSUInteger x = index / self.curGroup.rowNumber;
-    NSUInteger y = index % self.curGroup.rowNumber;
-    return self.curGroup.lineNumber * y + x + page * self.curGroup.pageItemNumber;
+    NSUInteger page = index / self.curGroup.pageItemCount;
+    index = index % self.curGroup.pageItemCount;
+    NSUInteger x = index / self.curGroup.colNumber;
+    NSUInteger y = index % self.curGroup.colNumber;
+    return self.curGroup.rowNumber * y + x + page * self.curGroup.pageItemCount;
 }
 
 - (NSIndexPath *)p_getIndexPathOfIndex:(NSInteger)index
 {
     index = [self p_transformCellIndex:index];
-    NSInteger row = index % self.curGroup.pageItemNumber;
-    NSInteger section = index / self.curGroup.pageItemNumber;
+    NSInteger row = index % self.curGroup.pageItemCount;
+    NSInteger section = index / self.curGroup.pageItemCount;
     return [NSIndexPath indexPathForRow:row inSection:section];
 }
 

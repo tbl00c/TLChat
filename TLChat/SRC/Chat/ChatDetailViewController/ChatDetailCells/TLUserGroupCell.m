@@ -11,8 +11,8 @@
 
 #define     USER_CELL_WIDTH         57
 #define     USER_CELL_HEIGHT        75
-#define     USER_CELL_LINESPACE     15
-#define     USER_CELL_ROWSPACE      ((WIDTH_SCREEN - USER_CELL_WIDTH * 4) / 5)
+#define     USER_CELL_ROWSPACE     15
+#define     USER_CELL_COLSPACE      ((WIDTH_SCREEN - USER_CELL_WIDTH * 4) / 5)
 
 @interface TLUserGroupCell () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -74,8 +74,8 @@
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         [layout setItemSize:CGSizeMake(USER_CELL_WIDTH, USER_CELL_HEIGHT)];
-        [layout setMinimumInteritemSpacing:USER_CELL_ROWSPACE];
-        [layout setSectionInset:UIEdgeInsetsMake(USER_CELL_LINESPACE, USER_CELL_ROWSPACE * 0.9, USER_CELL_LINESPACE, USER_CELL_ROWSPACE * 0.9)];
+        [layout setMinimumInteritemSpacing:USER_CELL_COLSPACE];
+        [layout setSectionInset:UIEdgeInsetsMake(USER_CELL_ROWSPACE, USER_CELL_COLSPACE * 0.9, USER_CELL_ROWSPACE, USER_CELL_ROWSPACE * 0.9)];
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor whiteColor]];
         [_collectionView setScrollEnabled:NO];

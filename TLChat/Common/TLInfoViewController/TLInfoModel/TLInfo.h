@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, TLInfoType) {
     TLInfoTypeDefault,
     TLInfoTypeTitleOnly,
     TLInfoTypeImages,
-    TLInfoTypeMutirow,
+    TLInfoTypeMutiRow,
     TLInfoTypeButton,
     TLInfoTypeOther,
 };

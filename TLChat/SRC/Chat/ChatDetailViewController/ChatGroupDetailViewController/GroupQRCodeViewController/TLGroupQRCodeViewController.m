@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorDefaultGray]];
+    [self.view setBackgroundColor:[UIColor colorDefaultBlack]];
     [self.navigationItem setTitle:@"群二维码名片"];
     
     [self.view addSubview:self.qrCodeVC.view];

@@ -8,9 +8,9 @@
 
 #import "TLMyExpressionViewController.h"
 #import "TLMineExpressionHelper.h"
-#import "TLEmojiGroup.h"
+#import "TLMyExpressionCell.h"
 
-@interface TLMyExpressionViewController ()
+@interface TLMyExpressionViewController () <TLMyExpressionCellDelegate>
 
 @property (nonatomic, strong) TLMineExpressionHelper *mineHelper;
 
@@ -33,6 +33,8 @@
         [self.navigationItem setLeftBarButtonItem:dismissBarButton];
     }
     
+    [self.tableView registerClass:[TLMyExpressionCell class] forCellReuseIdentifier:@"TLMyExpressionCell"];
+    
     self.mineHelper = [[TLMineExpressionHelper alloc] init];
     self.data = [self.mineHelper myExpressionDataByUserID:[TLUserHelper sharedHelper].userID];
 }
@@ -43,12 +45,9 @@
     TLSettingGroup *group = self.data[indexPath.section];
     if (group.headerTitle) {
         TLEmojiGroup *emojiGroup = [group objectAtIndex:indexPath.row];
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-        }
-        [cell.imageView setImage:[UIImage imageNamed:emojiGroup.groupIconPath]];
-        [cell.textLabel setText:emojiGroup.groupName];
+        TLMyExpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMyExpressionCell"];
+        [cell setGroup:emojiGroup];
+        [cell setDelegate:self];
         return cell;
     }
     else {
@@ -63,6 +62,12 @@
         return 50.0f;
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+//MARK: TLMyExpressionCellDelegate
+- (void)myExpressionCellDeleteButtonDown:(TLEmojiGroup *)group
+{
+    
 }
 
 #pragma mark - Event Response -

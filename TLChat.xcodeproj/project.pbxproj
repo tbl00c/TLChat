@@ -87,6 +87,7 @@
 		C2B1ADF61C915EA30037DA6B /* TLTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B1ADF41C915EA30037DA6B /* TLTextMessageCell.m */; };
 		C2B1ADFA1C917BDF0037DA6B /* TLMyExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B1ADF91C917BDF0037DA6B /* TLMyExpressionViewController.m */; };
 		C2B1ADFD1C9192900037DA6B /* TLEmojiGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B1ADFC1C9192900037DA6B /* TLEmojiGroupCell.m */; };
+		C2B70A951C932362005BECDD /* TLMyExpressionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B70A941C932362005BECDD /* TLMyExpressionCell.m */; };
 		C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */; };
 		C2B973071C6A4A56004B9B71 /* TLUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B973061C6A4A56004B9B71 /* TLUIUtility.m */; };
 		C2B9730C1C6A52BB004B9B71 /* TLPrivacySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9730B1C6A52BB004B9B71 /* TLPrivacySettingViewController.m */; };
@@ -369,6 +370,8 @@
 		C2B1ADF91C917BDF0037DA6B /* TLMyExpressionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMyExpressionViewController.m; sourceTree = "<group>"; };
 		C2B1ADFB1C9192900037DA6B /* TLEmojiGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiGroupCell.h; sourceTree = "<group>"; };
 		C2B1ADFC1C9192900037DA6B /* TLEmojiGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiGroupCell.m; sourceTree = "<group>"; };
+		C2B70A931C932362005BECDD /* TLMyExpressionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMyExpressionCell.h; sourceTree = "<group>"; };
+		C2B70A941C932362005BECDD /* TLMyExpressionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMyExpressionCell.m; sourceTree = "<group>"; };
 		C2B972FF1C6A33EB004B9B71 /* TLNewMessageSettingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLNewMessageSettingHelper.h; sourceTree = "<group>"; };
 		C2B973001C6A33EB004B9B71 /* TLNewMessageSettingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLNewMessageSettingHelper.m; sourceTree = "<group>"; };
 		C2B973051C6A4A56004B9B71 /* TLUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUIUtility.h; sourceTree = "<group>"; };
@@ -1279,6 +1282,8 @@
 		C2B1ADF71C917BAE0037DA6B /* MyExpressionViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C2B70A931C932362005BECDD /* TLMyExpressionCell.h */,
+				C2B70A941C932362005BECDD /* TLMyExpressionCell.m */,
 				C2B1ADF81C917BDF0037DA6B /* TLMyExpressionViewController.h */,
 				C2B1ADF91C917BDF0037DA6B /* TLMyExpressionViewController.m */,
 			);
@@ -2294,6 +2299,7 @@
 				C28C445F1C8818FD005975FF /* NSDate+Utilities.m in Sources */,
 				C2BF17D31C86DB50003318CB /* UIImage+Color.m in Sources */,
 				C2B9E4211C65DA0900CEBA81 /* TLMenuViewController.m in Sources */,
+				C2B70A951C932362005BECDD /* TLMyExpressionCell.m in Sources */,
 				C2F0EC051C7A1F480090843C /* TLBottleButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

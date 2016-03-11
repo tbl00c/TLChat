@@ -24,7 +24,7 @@
 /**
  *  默认的灰色
  */
-+ (UIColor *)colorDefaultGray;
++ (UIColor *)colorDefaultBlack;
 
 + (UIColor *)colorTabBarBG;
 

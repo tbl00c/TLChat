@@ -10,6 +10,14 @@
 
 @interface TLAddThirdPartFriendItem : UIButton
 
+/**
+ *  第三方类型
+ *  {
+ *      TLThirdPartFriendTypeContacts
+ *      TLThirdPartFriendTypeQQ
+ *      TLThirdPartFriendTypeGoogle
+ *  }
+ */
 @property (nonatomic, strong) NSString *itemTag;
 
 - (id)initWithImagePath:(NSString *)imagePath andTitle:(NSString *)title;

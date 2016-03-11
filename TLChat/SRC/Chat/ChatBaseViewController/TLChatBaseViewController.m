@@ -109,7 +109,7 @@
     message.text = text;
     message.showTime = YES;
     message.showName = NO;
-    [self.chatTableVC sendMessage:message];
+    [self.chatTableVC addMessage:message];
     if (self.curChatType == TLChatVCTypeFriend) {
         TLMessage *message1 = [[TLMessage alloc] init];
         message1.fromID = self.user.userID;
@@ -120,7 +120,7 @@
         message1.text = text;
         message1.showTime = NO;
         message1.showName = NO;
-        [self.chatTableVC sendMessage:message1];
+        [self.chatTableVC addMessage:message1];
     }
     else {
         for (NSString *userID in self.group.users) {
@@ -134,7 +134,7 @@
             message1.text = text;
             message1.showTime = NO;
             message1.showName = NO;
-            [self.chatTableVC sendMessage:message1];
+            [self.chatTableVC addMessage:message1];
         }
     }
 

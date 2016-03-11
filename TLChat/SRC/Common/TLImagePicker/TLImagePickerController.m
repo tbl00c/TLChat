@@ -10,8 +10,6 @@
 
 @interface TLImagePickerController ()
 
-
-
 @end
 
 @implementation TLImagePickerController

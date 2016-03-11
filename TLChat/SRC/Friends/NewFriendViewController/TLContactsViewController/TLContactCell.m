@@ -100,7 +100,7 @@
         make.right.mas_equalTo(self.contentView);
         make.centerY.mas_equalTo(self.contentView);
         make.height.mas_equalTo(30);
-        make.width.mas_greaterThanOrEqualTo(45);
+        make.width.mas_greaterThanOrEqualTo(48);
     }];
 }
 

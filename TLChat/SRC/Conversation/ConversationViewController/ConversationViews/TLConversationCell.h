@@ -10,19 +10,13 @@
 
 @interface TLConversationCell : TLTableViewCell
 
-/**
- *  会话Model
- */
+/// 会话Model
 @property (nonatomic, strong) TLConversation *conversation;
 
-/**
- *  消息数量
- */
+/// 消息数量
 @property (nonatomic, assign) NSInteger convNumber;
 
-/**
- *  已读
- */
+/// 已读
 @property (nonatomic, assign) BOOL isRead;
 
 

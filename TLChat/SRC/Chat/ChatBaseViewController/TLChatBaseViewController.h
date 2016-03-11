@@ -33,7 +33,6 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 
 @property (nonatomic, strong) TLGroup *group;
 
-/// UI
 @property (nonatomic, strong) TLChatTableViewController *chatTableVC;
 
 @property (nonatomic, strong) TLChatBar *chatBar;

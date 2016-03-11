@@ -22,7 +22,7 @@
     return TLColor(2.0, 187.0, 0.0, 1.0f);
 }
 
-+ (UIColor *)colorDefaultGray
++ (UIColor *)colorDefaultBlack
 {
     return TLColor(46, 49, 50, 1.0);
 }

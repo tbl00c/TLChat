@@ -36,7 +36,7 @@
     [self.tableView reloadData];
 }
 
-- (void)sendMessage:(TLMessage *)message
+- (void)addMessage:(TLMessage *)message
 {
     [self.data addObject:message];
     [self.tableView reloadData];

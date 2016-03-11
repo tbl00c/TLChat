@@ -6,6 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
+/**
+ *  通讯录 Model
+ */
+
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, TLContactStatus) {

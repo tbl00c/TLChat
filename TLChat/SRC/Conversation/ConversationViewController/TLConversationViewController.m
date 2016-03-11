@@ -169,6 +169,7 @@
 }
 
 //MARK: TLAddMenuViewDelegate
+//  选中了addMenu的某个菜单项
 - (void)addMenuView:(TLAddMenuView *)addMenuView didSelectedItem:(TLAddMenuItem *)item
 {
     if (item.className.length > 0) {
@@ -193,6 +194,7 @@
     }
 }
 
+// 网络情况改变
 - (void)networkStatusChange:(NSNotification *)noti
 {
     AFNetworkReachabilityStatus status = [noti.userInfo[@"AFNetworkingReachabilityNotificationStatusItem"] longValue];

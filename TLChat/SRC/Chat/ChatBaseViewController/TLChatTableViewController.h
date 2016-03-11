@@ -22,10 +22,21 @@
 
 @property (nonatomic, strong) NSMutableArray *data;
 
-- (void)sendMessage:(TLMessage *)message;
+/**
+ *  发送消息（在列表展示）
+ */
+- (void)addMessage:(TLMessage *)message;
 
+/**
+ *  滚动到底部
+ *
+ *  @param animation 是否执行动画
+ */
 - (void)scrollToBottomWithAnimation:(BOOL)animation;
 
+/**
+ *  清楚用户信息
+ */
 - (void)clearData;
 
 @end

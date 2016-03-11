@@ -36,7 +36,7 @@
 {
     TLUserGroup *group = [self.data objectAtIndex:indexPath.row];
     TLTagCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTagCell"];
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@(%ld)", group.groupName, group.count]];
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@(%ld)", group.groupName, (long)group.count]];
     [cell setTopLineStyle:(indexPath.row == 0 ? TLCellLineStyleFill : TLCellLineStyleNone)];
     [cell setBottomLineStyle:(indexPath.row == self.data.count - 1 ? TLCellLineStyleFill : TLCellLineStyleDefault)];
     return cell;

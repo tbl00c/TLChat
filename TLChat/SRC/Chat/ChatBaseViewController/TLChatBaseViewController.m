@@ -101,7 +101,7 @@
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
     TLMessage *message = [[TLMessage alloc] init];
-    message.fromID = [TLUserHelper sharedHelper].user.userID;
+    message.fromID = [TLUserHelper sharedHelper].userID;
     message.toID = self.user.userID;
     message.fromUser = [TLUserHelper sharedHelper].user;
     message.messageType = TLMessageTypeText;
@@ -113,7 +113,7 @@
     if (self.curChatType == TLChatVCTypeFriend) {
         TLMessage *message1 = [[TLMessage alloc] init];
         message1.fromID = self.user.userID;
-        message1.toID = [TLUserHelper sharedHelper].user.userID;
+        message1.toID = [TLUserHelper sharedHelper].userID;
         message1.fromUser = self.user;
         message1.messageType = TLMessageTypeText;
         message1.ownerTyper = TLMessageOwnerTypeOther;
@@ -127,7 +127,7 @@
             TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
             TLMessage *message1 = [[TLMessage alloc] init];
             message1.fromID = user.userID;
-            message1.toID = [TLUserHelper sharedHelper].user.userID;
+            message1.toID = [TLUserHelper sharedHelper].userID;
             message1.fromUser = user;
             message1.messageType = TLMessageTypeText;
             message1.ownerTyper = TLMessageOwnerTypeOther;

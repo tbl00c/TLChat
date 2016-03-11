@@ -14,6 +14,8 @@
 
 @interface TLEmojiGroupControl () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, strong) NSIndexPath *curIndexPath;
+
 @property (nonatomic, strong) UIButton *addButton;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -34,8 +36,6 @@
         [self p_addMasonry];
         
         [self.collectionView registerClass:[TLEmojiGroupCell class] forCellWithReuseIdentifier:@"TLEmojiGroupCell"];
-        
-        _curGroupIndex = -1;
     }
     return self;
 }
@@ -82,33 +82,39 @@
     _emojiGroupData = emojiGroupData;
     [self.collectionView reloadData];
     if (emojiGroupData && emojiGroupData.count > 0) {
-        [self setCurGroupIndex:0];
+        [self setCurIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     }
 }
 
-- (void)setCurGroupIndex:(NSInteger)curGroupIndex
+- (void)setCurIndexPath:(NSIndexPath *)curIndexPath
 {
-    [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:curGroupIndex inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-    if (_curGroupIndex == curGroupIndex) {
+    [self.collectionView selectItemAtIndexPath:curIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    if (_curIndexPath && _curIndexPath.section == curIndexPath.section && _curIndexPath.row == curIndexPath.row) {
         return;
     }
-    _curGroupIndex = curGroupIndex;
+    _curIndexPath = curIndexPath;
     if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControl:didSelectedGroup:)]) {
-        [_delegate emojiGroupControl:self didSelectedGroup:self.emojiGroupData[curGroupIndex]];
+        TLEmojiGroup *group = [self.emojiGroupData[curIndexPath.section] objectAtIndex:curIndexPath.row];
+        [_delegate emojiGroupControl:self didSelectedGroup:group];
     }
 }
 
 #pragma mark - Delegate -
 //MARK: UICollectionViewDataSource
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return self.emojiGroupData.count;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.emojiGroupData[section] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TLEmojiGroupCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiGroupCell" forIndexPath:indexPath];
-    TLEmojiGroup *group = self.emojiGroupData[indexPath.row];
+    TLEmojiGroup *group = [self.emojiGroupData[indexPath.section] objectAtIndex:indexPath.row];
     [cell setEmojiGroup:group];
     return cell;
 }
@@ -121,13 +127,16 @@
 //MARK: UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    TLEmojiGroup *group = self.emojiGroupData[indexPath.row];
+    TLEmojiGroup *group = [self.emojiGroupData[indexPath.section] objectAtIndex:indexPath.row];
     if (group.type == TLEmojiTypeOther) {
-        [self setCurGroupIndex:_curGroupIndex];
+        //???: 存在冲突：用户选中cellA,再此方法中立马调用方法选中cellB时，所有cell都不会被选中
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setCurIndexPath:_curIndexPath];
+        });
         [self p_eidtMyEmojiButtonDown];
     }
     else {
-        [self setCurGroupIndex:indexPath.row];
+        [self setCurIndexPath:indexPath];
     }
 }
 
@@ -221,6 +230,7 @@
         [_sendButton.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
         [_sendButton setTitle:@"  发送" forState:UIControlStateNormal];
         [_sendButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_sendButton setBackgroundColor:[UIColor clearColor]];
         [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateNormal];
         [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateHighlighted];
         [_sendButton addTarget:self action:@selector(sendButtonDown) forControlEvents:UIControlEventTouchUpInside];

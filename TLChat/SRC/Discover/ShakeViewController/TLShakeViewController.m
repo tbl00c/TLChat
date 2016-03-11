@@ -42,7 +42,6 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"摇一摇"];
     [self.view setBackgroundColor:[UIColor colorShakeBG]];
-    self.curType = TLShakeButtonTypePeople;
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
@@ -56,6 +55,8 @@
     [self.view addSubview:self.songButton];
     [self.view addSubview:self.tvButton];
     [self p_addMasonry];
+    
+    self.curType = TLShakeButtonTypePeople;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -63,7 +64,7 @@
     [super viewWillAppear:animated];
     NSString *centreImageName = [[NSUserDefaults standardUserDefaults] objectForKey:@"Shake_Image_Path"];
     if (centreImageName) {
-        NSString *path = [NSFileManager pathUserSettingImage:centreImageName forUser:[TLUserHelper sharedHelper].user.userID];
+        NSString *path = [NSFileManager pathUserSettingImage:centreImageName forUser:[TLUserHelper sharedHelper].userID];
         [self.centerLogoView setImage:[UIImage imageNamed:path]];
     }
     else {

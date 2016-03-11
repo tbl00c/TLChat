@@ -68,4 +68,11 @@ typedef NS_ENUM(NSUInteger, TLScannerType) {
     TLScannerTypeTranslate,     // 扫一扫 - 翻译
 };
 
+typedef NS_ENUM(NSInteger, TLAddMneuType) {
+    TLAddMneuTypeGroupChat = 0,
+    TLAddMneuTypeAddFriend,
+    TLAddMneuTypeScan,
+    TLAddMneuTypeWallet,
+};
+
 #endif /* TLEnumerate_h */

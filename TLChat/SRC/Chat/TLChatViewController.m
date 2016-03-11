@@ -47,8 +47,10 @@ static TLChatViewController *chatVC;
     
     self.moreKBhelper = [[TLMoreKBHelper alloc] init];
     [self setChatMoreKeyboardData:self.moreKBhelper.chatMoreKeyboardData];
-    self.emojiKBHelper = [[TLEmojiKBHelper alloc] init];
-    [self setChatEmojiKeyboardData:self.emojiKBHelper.emojiGroupData];
+    self.emojiKBHelper = [TLEmojiKBHelper sharedKBHelper];
+    [self.emojiKBHelper emojiGroupDataByUserID:[TLUserHelper sharedHelper].userID complete:^(NSMutableArray *emojiGroups) {
+        [self setChatEmojiKeyboardData:emojiGroups];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -107,7 +109,7 @@ static TLChatViewController *chatVC;
                 UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
                 NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
                 NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
-                NSString *imagePath = [NSFileManager pathUserChatAvatar:imageName forUser:[TLUserHelper sharedHelper].user.userID];
+                NSString *imagePath = [NSFileManager pathUserChatAvatar:imageName forUser:[TLUserHelper sharedHelper].userID];
                 [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
                 [self sendImageMessage:imagePath];
             }];

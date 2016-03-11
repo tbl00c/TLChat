@@ -11,20 +11,24 @@
 #import "TLChatViewController.h"
 #import "TLConversationCell.h"
 #import "TLSearchController.h"
+#import "TLAddMenuView.h"
 #import "TLFriendHelper.h"
 #import <UIImageView+WebCache.h>
 #import <AFNetworking.h>
 
 #define     HEIGHT_CONVERSATION_CELL        65.0f
 
-@interface TLConversationViewController () <UISearchBarDelegate>
+@interface TLConversationViewController () <UISearchBarDelegate, TLAddMenuViewDelegate>
 
 @property (nonatomic, strong) UIImageView *scrollTopView;
 
 @property (nonatomic, strong) NSMutableArray *data;
 
 @property (nonatomic, strong) TLSearchController *searchController;
+
 @property (nonatomic, strong) TLFriendSearchViewController *searchVC;
+
+@property (nonatomic, strong) TLAddMenuView *addMenuView;
 
 @end
 
@@ -38,19 +42,17 @@
     
     [self.tableView registerClass:[TLConversationCell class] forCellReuseIdentifier:@"TLConversationCell"];
     
-    //TODO: Do not work
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleClick)];
-    [tapGes setNumberOfTapsRequired:2];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
     
     [self initTestData];
 }
 
-- (void) doubleClick
+- (void)viewWillAppear:(BOOL)animated
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Double Click Tab Bar" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alert show];
+    [super viewWillAppear:animated];
+    if (self.addMenuView.isShow) {
+        [self.addMenuView dismiss];
+    }
 }
 
 #pragma mark - Delegate -
@@ -166,14 +168,32 @@
     [alert show];
 }
 
+//MARK: TLAddMenuViewDelegate
+- (void)addMenuView:(TLAddMenuView *)addMenuView didSelectedItem:(TLAddMenuItem *)item
+{
+    if (item.className.length > 0) {
+        id vc = [[NSClassFromString(item.className) alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:vc animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+    }
+    else {
+        [UIAlertView alertWithTitle:item.title message:@"功能暂未实现"];
+    }
+}
+
 #pragma mark - Event Response
 - (void) rightBarButtonDown:(UIBarButtonItem *)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Right Bar Button Down!" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alert show];
+    if (self.addMenuView.isShow) {
+        [self.addMenuView dismiss];
+    }
+    else {
+        [self.addMenuView showInView:self.view];
+    }
 }
 
-- (void) networkStatusChange:(NSNotification *)noti
+- (void)networkStatusChange:(NSNotification *)noti
 {
     AFNetworkReachabilityStatus status = [noti.userInfo[@"AFNetworkingReachabilityNotificationStatusItem"] longValue];
     switch (status) {
@@ -265,6 +285,15 @@
         _scrollTopView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"conv_wechat_icon"]];
     }
     return _scrollTopView;
+}
+
+- (TLAddMenuView *)addMenuView
+{
+    if (_addMenuView == nil) {
+        _addMenuView = [[TLAddMenuView alloc] init];
+        [_addMenuView setDelegate:self];
+    }
+    return _addMenuView;
 }
 
 @end

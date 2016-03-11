@@ -74,6 +74,16 @@
     return TLColor(160, 160, 160, 1.0);
 }
 
++ (UIColor *)colorNavAddMenuBG
+{
+    return TLColor(71, 70, 73, 1.0);
+}
+
++ (UIColor *)colorNavAddMenuBGHL
+{
+    return TLColor(65, 64, 67, 1.0);
+}
+
 #pragma mark - Discover
 + (UIColor *)colorShakeBG
 {

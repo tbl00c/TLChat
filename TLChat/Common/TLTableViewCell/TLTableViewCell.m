@@ -10,7 +10,7 @@
 
 @implementation TLTableViewCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _leftSeparatorSpace = 15.0f;
@@ -20,21 +20,27 @@
     return self;
 }
 
-- (void) setTopLineStyle:(TLCellLineStyle)topLineStyle
+- (void)setTopLineStyle:(TLCellLineStyle)topLineStyle
 {
     _topLineStyle = topLineStyle;
     [self setNeedsDisplay];
 }
 
-- (void) setBottomLineStyle:(TLCellLineStyle)bottomLineStyle
+- (void)setBottomLineStyle:(TLCellLineStyle)bottomLineStyle
 {
     _bottomLineStyle = bottomLineStyle;
     [self setNeedsDisplay];
 }
 
-- (void) setLeftSeparatorSpace:(CGFloat)leftSeparatorSpace
+- (void)setLeftSeparatorSpace:(CGFloat)leftSeparatorSpace
 {
     _leftSeparatorSpace = leftSeparatorSpace;
+    [self setNeedsDisplay];
+}
+
+- (void)setRightSeparatorSpace:(CGFloat)rightSeparatorSpace
+{
+    _rightSeparatorSpace = rightSeparatorSpace;
     [self setNeedsDisplay];
 }
 
@@ -47,7 +53,7 @@
     if (self.topLineStyle != TLCellLineStyleNone) {
         CGContextBeginPath(context);
         CGFloat startX = (self.topLineStyle == TLCellLineStyleFill ? 0 : _leftSeparatorSpace);
-        CGFloat endX = WIDTH_SCREEN;
+        CGFloat endX = self.width - self.rightSeparatorSpace;
         CGFloat y = 0;
         CGContextMoveToPoint(context, startX, y);
         CGContextAddLineToPoint(context, endX, y);
@@ -56,7 +62,7 @@
     if (self.bottomLineStyle != TLCellLineStyleNone) {
         CGContextBeginPath(context);
         CGFloat startX = (self.bottomLineStyle == TLCellLineStyleFill ? 0 : _leftSeparatorSpace);
-        CGFloat endX = WIDTH_SCREEN;
+        CGFloat endX = self.width - self.rightSeparatorSpace;
         CGFloat y = self.height;
         CGContextMoveToPoint(context, startX, y);
         CGContextAddLineToPoint(context, endX, y);

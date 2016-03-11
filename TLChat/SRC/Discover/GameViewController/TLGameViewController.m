@@ -26,6 +26,14 @@
     [SVProgressHUD showWithStatus:@"加载中"];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if ([SVProgressHUD isVisible]) {
+        [SVProgressHUD dismiss];
+    }
+}
+
 #pragma mark - Delegate -
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {

@@ -58,7 +58,7 @@ static UILabel *hLabel = nil;
                     UIImage *ansImage = [[UIImage alloc] initWithCGImage:imageRefRect];
                     NSData *imageViewData = UIImagePNGRepresentation(ansImage);
                     NSString *imageName = [NSString stringWithFormat:@"%.0lf.png", [NSDate date].timeIntervalSince1970 * 10000];
-                    NSString *savedImagePath = [NSFileManager pathUserChatAvatar:imageName forUser:[TLUserHelper sharedHelper].user.userID];
+                    NSString *savedImagePath = [NSFileManager pathUserChatAvatar:imageName forUser:[TLUserHelper sharedHelper].userID];
                     [imageViewData writeToFile:savedImagePath atomically:YES];
                     CGImageRelease(imageRefRect);
                     dispatch_async(dispatch_get_main_queue(), ^{

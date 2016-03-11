@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) NSString *groupIconPath;
 
+@property (nonatomic, strong) NSString *groupName;
+
 @property (nonatomic, strong) NSMutableArray *data;
 
 @property (nonatomic, strong) NSString *dataPath;

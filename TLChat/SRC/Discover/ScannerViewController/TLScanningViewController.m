@@ -12,7 +12,7 @@
 #import "TLScannerButton.h"
 #import "TLMyQRCodeViewController.h"
 
-#define     HEIGHT_BOTTOM_VIEW      80
+#define     HEIGHT_BOTTOM_VIEW      82
 
 @interface TLScanningViewController () <TLScannerDelegate>
 
@@ -177,12 +177,13 @@
     
     // bottom
     CGFloat widthButton = 35;
+    CGFloat hightButton = 55;
     CGFloat space = (WIDTH_SCREEN - widthButton * 4) / 5;
     [self.qrButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.bottomView).mas_offset(13);
-        make.bottom.mas_equalTo(self.bottomView).mas_offset(-13);
+        make.centerY.mas_equalTo(self.bottomView);
         make.left.mas_equalTo(self.bottomView).mas_offset(space);
         make.width.mas_equalTo(widthButton);
+        make.height.mas_equalTo(hightButton);
     }];
     [self.coverButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.bottom.and.width.mas_equalTo(self.qrButton);
@@ -220,6 +221,9 @@
         [blackView setAlpha:0.5f];
         _bottomView = [[UIView alloc] init];
         [_bottomView addSubview:blackView];
+        [blackView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(_bottomView);
+        }];
     }
     return _bottomView;
 }

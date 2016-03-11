@@ -65,7 +65,7 @@
     sendMsg.titleColor = [UIColor whiteColor];
     sendMsg.buttonBorderColor = [UIColor colorCellLine];
     [arr addObject:sendMsg];
-    if (![userInfo.userID isEqualToString:[TLUserHelper sharedHelper].user.userID]) {
+    if (![userInfo.userID isEqualToString:[TLUserHelper sharedHelper].userID]) {
         TLInfo *video = TLCreateInfo(@"视频聊天", nil);
         video.type = TLInfoTypeButton;
         video.buttonBorderColor = [UIColor colorCellLine];

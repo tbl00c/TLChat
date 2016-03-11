@@ -134,6 +134,11 @@
 		C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500E01C55CA7B0088997C /* TLFriendSearchViewController.m */; };
 		C2D500E71C5639210088997C /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D500E61C5639210088997C /* Conversation.xcassets */; };
 		C2D69D881C925DE600EE91D7 /* emoji_dapigu.gif in Resources */ = {isa = PBXBuildFile; fileRef = C2D69D871C925DE600EE91D7 /* emoji_dapigu.gif */; };
+		C2D69D8B1C9271CF00EE91D7 /* TLMineExpressionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D69D8A1C9271CF00EE91D7 /* TLMineExpressionHelper.m */; };
+		C2D69D911C929AE100EE91D7 /* TLAddMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D69D901C929AE100EE91D7 /* TLAddMenuView.m */; };
+		C2D69D941C92B0E300EE91D7 /* TLAddMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D69D931C92B0E300EE91D7 /* TLAddMenuCell.m */; };
+		C2D69D971C92B0FE00EE91D7 /* TLAddMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D69D961C92B0FE00EE91D7 /* TLAddMenuItem.m */; };
+		C2D69D9B1C92D8AE00EE91D7 /* TLAddMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D69D9A1C92D8AE00EE91D7 /* TLAddMenuHelper.m */; };
 		C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D8513F1C672B65007DD697 /* TLSettingViewController.m */; };
 		C2D851501C68D67F007DD697 /* TLMineSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D8514F1C68D67F007DD697 /* TLMineSettingViewController.m */; };
 		C2D851551C68D811007DD697 /* TLSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D851541C68D811007DD697 /* TLSettingHelper.m */; };
@@ -454,6 +459,16 @@
 		C2D500E01C55CA7B0088997C /* TLFriendSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendSearchViewController.m; sourceTree = "<group>"; };
 		C2D500E61C5639210088997C /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
 		C2D69D871C925DE600EE91D7 /* emoji_dapigu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = emoji_dapigu.gif; sourceTree = "<group>"; };
+		C2D69D891C9271CF00EE91D7 /* TLMineExpressionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineExpressionHelper.h; sourceTree = "<group>"; };
+		C2D69D8A1C9271CF00EE91D7 /* TLMineExpressionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineExpressionHelper.m; sourceTree = "<group>"; };
+		C2D69D8F1C929AE100EE91D7 /* TLAddMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddMenuView.h; sourceTree = "<group>"; };
+		C2D69D901C929AE100EE91D7 /* TLAddMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddMenuView.m; sourceTree = "<group>"; };
+		C2D69D921C92B0E300EE91D7 /* TLAddMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddMenuCell.h; sourceTree = "<group>"; };
+		C2D69D931C92B0E300EE91D7 /* TLAddMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddMenuCell.m; sourceTree = "<group>"; };
+		C2D69D951C92B0FE00EE91D7 /* TLAddMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddMenuItem.h; sourceTree = "<group>"; };
+		C2D69D961C92B0FE00EE91D7 /* TLAddMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddMenuItem.m; sourceTree = "<group>"; };
+		C2D69D991C92D8AE00EE91D7 /* TLAddMenuHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddMenuHelper.h; sourceTree = "<group>"; };
+		C2D69D9A1C92D8AE00EE91D7 /* TLAddMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddMenuHelper.m; sourceTree = "<group>"; };
 		C2D8513E1C672B65007DD697 /* TLSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingViewController.h; sourceTree = "<group>"; };
 		C2D8513F1C672B65007DD697 /* TLSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingViewController.m; sourceTree = "<group>"; };
 		C2D8514E1C68D67F007DD697 /* TLMineSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineSettingViewController.h; sourceTree = "<group>"; };
@@ -841,6 +856,7 @@
 		C2142E9D1C531EFD0030B29B /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
+				C2D69D8E1C929AD500EE91D7 /* AddMenuView */,
 				C2D500C41C55C08C0088997C /* ConversationViewController */,
 			);
 			path = Conversation;
@@ -1320,6 +1336,8 @@
 				C2B9E4301C65F53700CEBA81 /* TLMineHelper.m */,
 				C2AF1F9E1C6B603300617D98 /* TLMineInfoHelper.h */,
 				C2AF1F9F1C6B603300617D98 /* TLMineInfoHelper.m */,
+				C2D69D891C9271CF00EE91D7 /* TLMineExpressionHelper.h */,
+				C2D69D8A1C9271CF00EE91D7 /* TLMineExpressionHelper.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1637,6 +1655,28 @@
 			path = Vendors;
 			sourceTree = "<group>";
 		};
+		C2D69D8E1C929AD500EE91D7 /* AddMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				C2D69D951C92B0FE00EE91D7 /* TLAddMenuItem.h */,
+				C2D69D961C92B0FE00EE91D7 /* TLAddMenuItem.m */,
+				C2D69D921C92B0E300EE91D7 /* TLAddMenuCell.h */,
+				C2D69D931C92B0E300EE91D7 /* TLAddMenuCell.m */,
+				C2D69D8F1C929AE100EE91D7 /* TLAddMenuView.h */,
+				C2D69D901C929AE100EE91D7 /* TLAddMenuView.m */,
+			);
+			path = AddMenuView;
+			sourceTree = "<group>";
+		};
+		C2D69D981C92D8A200EE91D7 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				C2D69D991C92D8AE00EE91D7 /* TLAddMenuHelper.h */,
+				C2D69D9A1C92D8AE00EE91D7 /* TLAddMenuHelper.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		C2D8514C1C68D618007DD697 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -1700,6 +1740,7 @@
 		C2DD58E01C58C821005419E4 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				C2D69D981C92D8A200EE91D7 /* Other */,
 				C2F0EC191C7ABF0B0090843C /* Common */,
 				C282DF6F1C75C7BE006924AE /* Chat */,
 				C2B9E4371C66450D00CEBA81 /* User */,
@@ -2106,6 +2147,7 @@
 				C2142EF61C5376D40030B29B /* TLViewController.m in Sources */,
 				C2F0EC151C7AB1BB0090843C /* TLAboutHelper.m in Sources */,
 				C2A5ACB01C8ECF0D007A4574 /* UIView+Extensions.m in Sources */,
+				C2D69D971C92B0FE00EE91D7 /* TLAddMenuItem.m in Sources */,
 				C2B973071C6A4A56004B9B71 /* TLUIUtility.m in Sources */,
 				C28C44711C8855CB005975FF /* UIImagePickerController+Fixed.m in Sources */,
 				C2CE0BCB1C717582006C5C2A /* TLMessage.m in Sources */,
@@ -2120,6 +2162,7 @@
 				C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */,
 				C2AF1F931C6B20C400617D98 /* TLMineInfoViewController.m in Sources */,
 				C282DF5D1C74545E006924AE /* TLMoreKeyboard.m in Sources */,
+				C2D69D911C929AE100EE91D7 /* TLAddMenuView.m in Sources */,
 				C2F0EBF81C7A0DC90090843C /* TLCommonSettingHelper.m in Sources */,
 				C2F617771C8FFB9500A8D9E6 /* TLEmojiBaseCell.m in Sources */,
 				C2CF4C9A1C80655D0054637A /* TLInfo.m in Sources */,
@@ -2169,6 +2212,7 @@
 				C2CF4C7D1C804BF30054637A /* TLSettingCell.m in Sources */,
 				C2A5ACC01C8EF0B9007A4574 /* TLContactCell.m in Sources */,
 				C2B1ADFA1C917BDF0037DA6B /* TLMyExpressionViewController.m in Sources */,
+				C2D69D941C92B0E300EE91D7 /* TLAddMenuCell.m in Sources */,
 				C2028D421C8D3B200060E271 /* TLNewFriendSearchViewController.m in Sources */,
 				C2F617851C902F8300A8D9E6 /* TLChatTableViewController.m in Sources */,
 				C2A5ACA11C8EB07E007A4574 /* TLChatGroupDetailViewController.m in Sources */,
@@ -2197,6 +2241,7 @@
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
 				C2A5AC8A1C8EA6E2007A4574 /* TLQRCodeViewController.m in Sources */,
 				C2E56FFE1C897418009662AB /* TLAccountAndSafetyHelper.m in Sources */,
+				C2D69D9B1C92D8AE00EE91D7 /* TLAddMenuHelper.m in Sources */,
 				C28C446A1C883827005975FF /* TLShakeHelper.m in Sources */,
 				C2A5ACAA1C8EBE21007A4574 /* TLAddThirdPartFriendCell.m in Sources */,
 				C2A98BC51C89D57300029AD5 /* TLMyQRCodeViewController.m in Sources */,
@@ -2222,6 +2267,7 @@
 				C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */,
 				C293E5CF1C8BCA37002A84D6 /* TLChatDetailHelper.m in Sources */,
 				C29C08E31C89CEE400F8EE82 /* UIBarButtonItem+Action.m in Sources */,
+				C2D69D8B1C9271CF00EE91D7 /* TLMineExpressionHelper.m in Sources */,
 				C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */,
 				C246F1101C6B867C00A5AFB2 /* TLShoppingViewController.m in Sources */,
 				C2F617741C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m in Sources */,

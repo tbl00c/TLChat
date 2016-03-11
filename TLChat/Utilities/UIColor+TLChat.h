@@ -40,6 +40,8 @@
 #pragma mark - Conversation
 + (UIColor *)colorConversationDetail;
 + (UIColor *)colorConversationTime;
++ (UIColor *)colorNavAddMenuBG;
++ (UIColor *)colorNavAddMenuBGHL;
 
 #pragma mark - Friends
 

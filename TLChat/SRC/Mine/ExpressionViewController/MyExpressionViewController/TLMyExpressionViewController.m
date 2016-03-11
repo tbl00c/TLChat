@@ -7,6 +7,14 @@
 //
 
 #import "TLMyExpressionViewController.h"
+#import "TLMineExpressionHelper.h"
+#import "TLEmojiGroup.h"
+
+@interface TLMyExpressionViewController ()
+
+@property (nonatomic, strong) TLMineExpressionHelper *mineHelper;
+
+@end
 
 @implementation TLMyExpressionViewController
 
@@ -24,6 +32,37 @@
         }];
         [self.navigationItem setLeftBarButtonItem:dismissBarButton];
     }
+    
+    self.mineHelper = [[TLMineExpressionHelper alloc] init];
+    self.data = [self.mineHelper myExpressionDataByUserID:[TLUserHelper sharedHelper].userID];
+}
+
+#pragma mark - Delegate -
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLSettingGroup *group = self.data[indexPath.section];
+    if (group.headerTitle) {
+        TLEmojiGroup *emojiGroup = [group objectAtIndex:indexPath.row];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
+        }
+        [cell.imageView setImage:[UIImage imageNamed:emojiGroup.groupIconPath]];
+        [cell.textLabel setText:emojiGroup.groupName];
+        return cell;
+    }
+    else {
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLSettingGroup *group = self.data[indexPath.section];
+    if (group.headerTitle) {
+        return 50.0f;
+    }
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 #pragma mark - Event Response -

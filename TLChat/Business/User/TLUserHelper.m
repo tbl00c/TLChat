@@ -21,6 +21,11 @@ static TLUserHelper *helper;
     return helper;
 }
 
+- (NSString *)userID
+{
+    return self.user.userID;
+}
+
 - (id) init
 {
     if (self = [super init]) {

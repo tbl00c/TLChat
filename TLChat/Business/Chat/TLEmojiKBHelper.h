@@ -11,7 +11,11 @@
 
 @interface TLEmojiKBHelper : NSObject
 
-@property (nonatomic, strong) NSMutableArray *emojiGroupData;
++ (TLEmojiKBHelper *)sharedKBHelper;
+
+- (void)emojiGroupDataByUserID:(NSString *)userID complete:(void (^)(NSMutableArray *))complete;
+
+- (NSMutableArray *)userEmojiGroupsByUserID:(NSString *)userID;
 
 + (NSMutableArray *)getEmojiDataByPath:(NSString *)path;
 

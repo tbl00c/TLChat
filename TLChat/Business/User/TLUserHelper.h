@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) TLUser *user;
 
+@property (nonatomic, strong, readonly) NSString *userID;
+
 + (TLUserHelper *) sharedHelper;
 
 @end

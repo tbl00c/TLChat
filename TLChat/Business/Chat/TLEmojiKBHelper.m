@@ -9,40 +9,33 @@
 #import "TLEmojiKBHelper.h"
 #import "TLEmojiGroup.h"
 
+static TLEmojiKBHelper *helper;
+
+@interface TLEmojiKBHelper ()
+
+@property (nonatomic, strong) NSString *userID;
+
+@property (nonatomic, strong) NSMutableArray *emojiGroupData;
+
+@property (nonatomic, strong) NSMutableArray *userProfectData;
+
+@property (nonatomic, strong) NSMutableArray *defaultEmojiGroups;
+
+@property (nonatomic, strong) NSMutableArray *userEmojiGroups;
+
+@property (nonatomic, strong) NSMutableArray *systemEmojiGroups;
+
+@end
+
 @implementation TLEmojiKBHelper
 
-- (id) init
++ (TLEmojiKBHelper *)sharedKBHelper
 {
-    if (self = [super init]) {
-        self.emojiGroupData = [[NSMutableArray alloc] init];
-        [self p_initTestData];
-    }
-    return self;
-}
-
-- (void) p_initTestData
-{
-    TLEmojiGroup *group1 = [[TLEmojiGroup alloc] init];
-    group1.type = TLEmojiTypeFace;
-    group1.groupIconPath = @"emojiKB_group_face";
-    group1.dataPath = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
-    TLEmojiGroup *group2 = [[TLEmojiGroup alloc] init];
-    group2.type = TLEmojiTypeEmoji;
-    group2.groupIconPath = @"emojiKB_group_face";
-    group2.dataPath = [[NSBundle mainBundle] pathForResource:@"SystemEmoji" ofType:@"json"];
-    TLEmojiGroup *group3 = [[TLEmojiGroup alloc] init];
-    group3.type = TLEmojiTypeImage;
-    group3.groupIconPath = @"emojiKB_group_tusiji";
-    group3.dataPath = [[NSBundle mainBundle] pathForResource:@"TusijiEmoji" ofType:@"json"];
-    TLEmojiGroup *group4 = [[TLEmojiGroup alloc] init];
-    group4.type = TLEmojiTypeImageWithTitle;
-    group4.groupIconPath = @"emojiKB_group_tusiji";
-    group4.dataPath = [[NSBundle mainBundle] pathForResource:@"TusijiTitleEmoji" ofType:@"json"];
-    
-    TLEmojiGroup *editGroup = [[TLEmojiGroup alloc] init];
-    editGroup.type = TLEmojiTypeOther;
-    editGroup.groupIconPath = @"emojiKB_settingBtn";
-    [self.emojiGroupData addObjectsFromArray:@[group1, group2, group3, group4, editGroup]];
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        helper = [[TLEmojiKBHelper alloc] init];
+    });
+    return helper;
 }
 
 + (NSMutableArray *)getEmojiDataByPath:(NSString *)path
@@ -54,6 +47,96 @@
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
     NSArray *array = [TLEmoji mj_objectArrayWithKeyValuesArray:jsonArray];
     return [NSMutableArray arrayWithArray:array];
+}
+
+- (void)emojiGroupDataByUserID:(NSString *)userID complete:(void (^)(NSMutableArray *))complete
+{
+    if (self.userID && [self.userID isEqualToString:userID] && self.emojiGroupData) {
+        complete(self.emojiGroupData);
+    }
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        self.userID = userID;
+        
+        self.emojiGroupData = [[NSMutableArray alloc] init];
+        
+        // 默认表情包
+        [self.emojiGroupData addObject:self.defaultEmojiGroups];
+        
+        // 用户收藏的表情包
+        NSMutableArray *profectGroups = [self p_userProfectEmojiGroups];
+        if (profectGroups && profectGroups.count > 0) {
+            [self.emojiGroupData addObject:profectGroups];
+        }
+        
+        // 用户的表情包
+        NSMutableArray *userGroups = [self userEmojiGroupsByUserID:userID];
+        if (userGroups && userGroups.count > 0) {
+            [self.emojiGroupData addObject:userGroups];
+        }
+        
+        // 系统设置
+        [self.emojiGroupData addObject:self.systemEmojiGroups];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            complete(self.emojiGroupData);
+        });
+    });
+}
+
+- (NSMutableArray *)userEmojiGroupsByUserID:(NSString *)userID
+{
+    // 兔斯基
+    TLEmojiGroup *tisijiGroup = [[TLEmojiGroup alloc] init];
+    tisijiGroup.type = TLEmojiTypeImage;
+    tisijiGroup.groupName = @"兔斯基";
+    tisijiGroup.groupIconPath = @"emojiKB_group_tusiji";
+    tisijiGroup.dataPath = [[NSBundle mainBundle] pathForResource:@"TusijiEmoji" ofType:@"json"];
+    
+    TLEmojiGroup *group2 = [[TLEmojiGroup alloc] init];
+    group2.type = TLEmojiTypeImageWithTitle;
+    group2.groupName = @"老司机";
+    group2.groupIconPath = @"emojiKB_group_tusiji";
+    group2.dataPath = [[NSBundle mainBundle] pathForResource:@"TusijiTitleEmoji" ofType:@"json"];
+    
+    NSMutableArray *userEmojiGroupData = [[NSMutableArray alloc] initWithObjects:tisijiGroup, group2, nil];
+    return userEmojiGroupData;
+}
+
+#pragma mark - Private Methods -
+- (NSMutableArray *)p_userProfectEmojiGroups
+{
+    return nil;
+}
+
+#pragma mark - Getter -
+- (NSMutableArray *)defaultEmojiGroups
+{
+    if (_defaultEmojiGroups == nil) {
+        TLEmojiGroup *faceGroup = [[TLEmojiGroup alloc] init];
+        faceGroup.type = TLEmojiTypeFace;
+        faceGroup.groupIconPath = @"emojiKB_group_face";
+        faceGroup.dataPath = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
+        TLEmojiGroup *emojiGroup = [[TLEmojiGroup alloc] init];
+        emojiGroup.type = TLEmojiTypeEmoji;
+        emojiGroup.groupIconPath = @"emojiKB_group_face";
+        emojiGroup.dataPath = [[NSBundle mainBundle] pathForResource:@"SystemEmoji" ofType:@"json"];
+        
+        
+        _defaultEmojiGroups = [[NSMutableArray alloc] initWithObjects:faceGroup, emojiGroup, nil];
+    }
+    return _defaultEmojiGroups;
+}
+
+- (NSMutableArray *)systemEmojiGroups
+{
+    if (_systemEmojiGroups == nil) {
+        TLEmojiGroup *editGroup = [[TLEmojiGroup alloc] init];
+        editGroup.type = TLEmojiTypeOther;
+        editGroup.groupIconPath = @"emojiKB_settingBtn";
+        _systemEmojiGroups = [[NSMutableArray alloc] initWithObjects:editGroup, nil];
+    }
+    return _systemEmojiGroups;
 }
 
 @end

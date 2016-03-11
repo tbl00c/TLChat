@@ -133,6 +133,7 @@
 		C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500DC1C55CA170088997C /* TLRootViewController.m */; };
 		C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500E01C55CA7B0088997C /* TLFriendSearchViewController.m */; };
 		C2D500E71C5639210088997C /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D500E61C5639210088997C /* Conversation.xcassets */; };
+		C2D69D881C925DE600EE91D7 /* emoji_dapigu.gif in Resources */ = {isa = PBXBuildFile; fileRef = C2D69D871C925DE600EE91D7 /* emoji_dapigu.gif */; };
 		C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D8513F1C672B65007DD697 /* TLSettingViewController.m */; };
 		C2D851501C68D67F007DD697 /* TLMineSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D8514F1C68D67F007DD697 /* TLMineSettingViewController.m */; };
 		C2D851551C68D811007DD697 /* TLSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D851541C68D811007DD697 /* TLSettingHelper.m */; };
@@ -168,7 +169,6 @@
 		C2F617661C8FD88E00A8D9E6 /* FaceEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F617651C8FD88E00A8D9E6 /* FaceEmoji.json */; };
 		C2F6176A1C8FE29900A8D9E6 /* TusijiEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F617691C8FE29900A8D9E6 /* TusijiEmoji.json */; };
 		C2F6176C1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F6176B1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json */; };
-		C2F617701C8FEDAC00A8D9E6 /* emoji_dapigu.gif in Resources */ = {isa = PBXBuildFile; fileRef = C2F6176F1C8FEDAC00A8D9E6 /* emoji_dapigu.gif */; };
 		C2F617741C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F617731C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m */; };
 		C2F617771C8FFB9500A8D9E6 /* TLEmojiBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F617761C8FFB9500A8D9E6 /* TLEmojiBaseCell.m */; };
 		C2F617811C902F6000A8D9E6 /* TLChatBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F6177E1C902F6000A8D9E6 /* TLChatBaseViewController.m */; };
@@ -453,6 +453,7 @@
 		C2D500DF1C55CA7B0088997C /* TLFriendSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendSearchViewController.h; sourceTree = "<group>"; };
 		C2D500E01C55CA7B0088997C /* TLFriendSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendSearchViewController.m; sourceTree = "<group>"; };
 		C2D500E61C5639210088997C /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
+		C2D69D871C925DE600EE91D7 /* emoji_dapigu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = emoji_dapigu.gif; sourceTree = "<group>"; };
 		C2D8513E1C672B65007DD697 /* TLSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingViewController.h; sourceTree = "<group>"; };
 		C2D8513F1C672B65007DD697 /* TLSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingViewController.m; sourceTree = "<group>"; };
 		C2D8514E1C68D67F007DD697 /* TLMineSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineSettingViewController.h; sourceTree = "<group>"; };
@@ -519,7 +520,6 @@
 		C2F617651C8FD88E00A8D9E6 /* FaceEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FaceEmoji.json; sourceTree = "<group>"; };
 		C2F617691C8FE29900A8D9E6 /* TusijiEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiEmoji.json; sourceTree = "<group>"; };
 		C2F6176B1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiTitleEmoji.json; sourceTree = "<group>"; };
-		C2F6176F1C8FEDAC00A8D9E6 /* emoji_dapigu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = emoji_dapigu.gif; path = ../../../../../../../Pictures/emoji_dapigu.gif; sourceTree = "<group>"; };
 		C2F617721C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiFaceItemCell.h; sourceTree = "<group>"; };
 		C2F617731C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiFaceItemCell.m; sourceTree = "<group>"; };
 		C2F617751C8FFB9500A8D9E6 /* TLEmojiBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiBaseCell.h; sourceTree = "<group>"; };
@@ -1870,7 +1870,7 @@
 		C2F6176E1C8FED8900A8D9E6 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				C2F6176F1C8FEDAC00A8D9E6 /* emoji_dapigu.gif */,
+				C2D69D871C925DE600EE91D7 /* emoji_dapigu.gif */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -2025,7 +2025,7 @@
 				C2F9F6811C854F94000EE9ED /* FriendList.json in Resources */,
 				C2B9E43C1C665AC700CEBA81 /* Common.xcassets in Resources */,
 				C2F6176C1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json in Resources */,
-				C2F617701C8FEDAC00A8D9E6 /* emoji_dapigu.gif in Resources */,
+				C2D69D881C925DE600EE91D7 /* emoji_dapigu.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

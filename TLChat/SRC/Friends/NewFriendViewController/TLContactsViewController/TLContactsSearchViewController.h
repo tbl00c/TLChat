@@ -10,4 +10,6 @@
 
 @interface TLContactsSearchViewController : TLTableViewController <UISearchResultsUpdating>
 
+@property (nonatomic, strong) NSArray *contactsData;
+
 @end

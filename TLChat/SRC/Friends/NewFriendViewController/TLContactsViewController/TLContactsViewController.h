@@ -10,8 +10,4 @@
 
 @interface TLContactsViewController : TLTableViewController
 
-@property (nonatomic, strong) NSArray *data;
-
-@property (nonatomic, strong) NSArray *headers;
-
 @end

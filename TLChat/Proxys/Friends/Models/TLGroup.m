@@ -8,6 +8,7 @@
 
 #import "TLGroup.h"
 #import "TLFriendHelper.h"
+#import "NSString+PinYin.h"
 
 @implementation TLGroup
 
@@ -50,6 +51,22 @@
         _myNikeName = [TLUserHelper sharedHelper].user.showName;
     }
     return _myNikeName;
+}
+
+- (NSString *)pinyin
+{
+    if (_pinyin == nil) {
+        _pinyin = self.groupName.pinyin;
+    }
+    return _pinyin;
+}
+
+- (NSString *)pinyinInitial
+{
+    if (_pinyinInitial == nil) {
+        _pinyinInitial = self.groupName.pinyinInitial;
+    }
+    return _pinyinInitial;
 }
 
 @end

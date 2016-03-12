@@ -19,4 +19,12 @@
     return _pinyin;
 }
 
+- (NSString *)pinyinInitial
+{
+    if (_pinyinInitial == nil) {
+        _pinyinInitial = self.name.pinyinInitial;
+    }
+    return _pinyinInitial;
+}
+
 @end

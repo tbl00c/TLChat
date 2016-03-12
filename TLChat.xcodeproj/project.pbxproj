@@ -610,12 +610,12 @@
 		C2028D221C8D2CB80060E271 /* GroupViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C21C6E1F1C8D88700018C570 /* TLGroupCell.h */,
+				C21C6E201C8D88700018C570 /* TLGroupCell.m */,
 				C2028D291C8D2D0C0060E271 /* TLGroupViewController.h */,
 				C2028D2A1C8D2D0C0060E271 /* TLGroupViewController.m */,
 				C2028D3D1C8D3B010060E271 /* TLGroupSearchViewController.h */,
 				C2028D3E1C8D3B010060E271 /* TLGroupSearchViewController.m */,
-				C21C6E1F1C8D88700018C570 /* TLGroupCell.h */,
-				C21C6E201C8D88700018C570 /* TLGroupCell.m */,
 			);
 			path = GroupViewController;
 			sourceTree = "<group>";

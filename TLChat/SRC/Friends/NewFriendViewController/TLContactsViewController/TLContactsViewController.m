@@ -16,6 +16,15 @@
 
 @interface TLContactsViewController () <UISearchBarDelegate>
 
+/// 通讯录好友（初始数据）
+@property (nonatomic, strong) NSArray *contactsData;
+
+/// 通讯录好友（格式化的列表数据）
+@property (nonatomic, strong) NSArray *data;
+
+/// 通讯录好友索引
+@property (nonatomic, strong) NSArray *headers;
+
 @property (nonatomic, strong) TLSearchController *searchController;
 
 @property (nonatomic, strong) TLContactsSearchViewController *searchVC;
@@ -35,9 +44,10 @@
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     
     [SVProgressHUD showWithStatus:@"加载中"];
-    [TLFriendHelper tryToGetAllContactsSuccess:^(NSArray *data, NSArray *headers) {
+    [TLFriendHelper tryToGetAllContactsSuccess:^(NSArray *data, NSArray *formatData, NSArray *headers) {
         [SVProgressHUD dismiss];
-        self.data = data;
+        self.data = formatData;
+        self.contactsData = data;
         self.headers = headers;
         [self.tableView reloadData];
     } failed:^{
@@ -116,18 +126,14 @@
 //MARK: UISearchBarDelegate
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
+    [self.searchVC setContactsData:self.contactsData];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
-
 
 #pragma mark - Getter -
 - (TLSearchController *)searchController
@@ -139,6 +145,14 @@
         [_searchController.searchBar setDelegate:self];
     }
     return _searchController;
+}
+
+- (TLContactsSearchViewController *)searchVC
+{
+    if (_searchVC == nil) {
+        _searchVC = [[TLContactsSearchViewController alloc] init];
+    }
+    return _searchVC;
 }
 
 @end

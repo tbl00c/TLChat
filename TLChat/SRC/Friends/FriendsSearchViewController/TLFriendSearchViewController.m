@@ -69,7 +69,7 @@
 
 //MARK: UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    NSString *searchText = searchController.searchBar.text;
+    NSString *searchText = [searchController.searchBar.text lowercaseString];
     [self.data removeAllObjects];
     for (TLUser *user in self.friendsData) {
         if ([user.remarkName containsString:searchText] || [user.username containsString:searchText] || [user.nikeName containsString:searchText] || [user.pinyin containsString:searchText] || [user.pinyinInitial containsString:searchText]) {

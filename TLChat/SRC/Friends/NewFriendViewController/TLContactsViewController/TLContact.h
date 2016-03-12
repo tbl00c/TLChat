@@ -34,6 +34,8 @@ typedef NS_ENUM(NSInteger, TLContactStatus) {
 
 @property (nonatomic, assign) NSString *email;
 
-@property (nonatomic, assign) NSString *pinyin;
+@property (nonatomic, strong) NSString *pinyin;
+
+@property (nonatomic, strong) NSString *pinyinInitial;
 
 @end

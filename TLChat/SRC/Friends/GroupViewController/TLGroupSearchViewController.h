@@ -10,4 +10,6 @@
 
 @interface TLGroupSearchViewController : TLTableViewController <UISearchResultsUpdating>
 
+@property (nonatomic, strong) NSMutableArray *groupData;
+
 @end

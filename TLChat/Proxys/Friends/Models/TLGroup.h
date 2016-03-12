@@ -38,6 +38,10 @@
  */
 @property (nonatomic, strong) NSString *myNikeName;
 
+@property (nonatomic, strong) NSString *pinyin;
+
+@property (nonatomic, strong) NSString *pinyinInitial;
+
 @property (nonatomic, assign, readonly) NSInteger count;
 
 - (void)addObject:(id)anObject;

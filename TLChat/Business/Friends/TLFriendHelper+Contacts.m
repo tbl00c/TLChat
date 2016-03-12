@@ -11,7 +11,7 @@
 
 @implementation TLFriendHelper (Contacts)
 
-+ (void)tryToGetAllContactsSuccess:(void (^)(NSArray *data, NSArray *headers))success
++ (void)tryToGetAllContactsSuccess:(void (^)(NSArray *data, NSArray *formatData, NSArray *headers))success
                             failed:(void (^)())failed
 {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -164,7 +164,7 @@
         }
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            success(data, headers);
+            success(serializeArray, data, headers);
         });
     });
 }

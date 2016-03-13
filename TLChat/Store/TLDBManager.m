@@ -16,20 +16,27 @@ static TLDBManager *manager;
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        manager = [[TLDBManager alloc] init];
+        NSString *userID = [TLUserHelper sharedHelper].userID;
+        manager = [[TLDBManager alloc] initWithUserID:userID];
     });
     return manager;
 }
 
-- (id)init
+- (id)initWithUserID:(NSString *)userID
 {
     if (self = [super init]) {
-        NSString *commonQueuePath;
+        NSString *commonQueuePath = [NSFileManager pathDBCommonForUser:userID];
         self.commonQueue = [FMDatabaseQueue databaseQueueWithPath:commonQueuePath];
-        NSString *messageQueuePath;
+        NSString *messageQueuePath = [NSFileManager pathDBMessageForUser:userID];
         self.messageQueue = [FMDatabaseQueue databaseQueueWithPath:messageQueuePath];
     }
     return self;
+}
+
+- (id)init
+{
+    DDLogError(@"TLDBManager：请使用 initWithUserID: 方法初始化");
+    return nil;
 }
 
 @end

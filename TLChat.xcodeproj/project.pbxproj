@@ -38,6 +38,7 @@
 		C21C6E211C8D88700018C570 /* TLGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C6E201C8D88700018C570 /* TLGroupCell.m */; };
 		C220EF2B1C7EB89300DE3B86 /* TLScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C220EF2A1C7EB89300DE3B86 /* TLScanningViewController.m */; };
 		C225799A1C95717E003B1B85 /* TLMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C22579991C95717E003B1B85 /* TLMessageManager.m */; };
+		C225799D1C959696003B1B85 /* TLDBMessage+TLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C225799C1C959696003B1B85 /* TLDBMessage+TLMessage.m */; };
 		C246F1101C6B867C00A5AFB2 /* TLShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */; };
 		C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F1131C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m */; };
 		C271A4FF1C83D6F9004372D4 /* TLInfoButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A4FE1C83D6F9004372D4 /* TLInfoButtonCell.m */; };
@@ -279,6 +280,9 @@
 		C220EF2A1C7EB89300DE3B86 /* TLScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScanningViewController.m; sourceTree = "<group>"; };
 		C22579981C95717E003B1B85 /* TLMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageManager.h; sourceTree = "<group>"; };
 		C22579991C95717E003B1B85 /* TLMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessageManager.m; sourceTree = "<group>"; };
+		C225799B1C959696003B1B85 /* TLDBMessage+TLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLDBMessage+TLMessage.h"; sourceTree = "<group>"; };
+		C225799C1C959696003B1B85 /* TLDBMessage+TLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLDBMessage+TLMessage.m"; sourceTree = "<group>"; };
+		C225799E1C959CC5003B1B85 /* TLDBMessageStoreSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBMessageStoreSQL.h; sourceTree = "<group>"; };
 		C246F10E1C6B867C00A5AFB2 /* TLShoppingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLShoppingViewController.h; sourceTree = "<group>"; };
 		C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShoppingViewController.m; sourceTree = "<group>"; };
 		C246F1121C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLHelpAndFeedbackViewController.h; sourceTree = "<group>"; };
@@ -1325,8 +1329,11 @@
 			children = (
 				C2B70AA81C9517F0005BECDD /* TLDBMessage.h */,
 				C2B70AA91C9517F0005BECDD /* TLDBMessage.m */,
+				C225799E1C959CC5003B1B85 /* TLDBMessageStoreSQL.h */,
 				C2B70AA21C95163C005BECDD /* TLDBMessageStore.h */,
 				C2B70AA31C95163C005BECDD /* TLDBMessageStore.m */,
+				C225799B1C959696003B1B85 /* TLDBMessage+TLMessage.h */,
+				C225799C1C959696003B1B85 /* TLDBMessage+TLMessage.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -2295,6 +2302,7 @@
 				C2028D3F1C8D3B010060E271 /* TLGroupSearchViewController.m in Sources */,
 				C2B1ADF51C915EA30037DA6B /* TLMessageBaseCell.m in Sources */,
 				C2B70AA01C9515AE005BECDD /* TLDBBaseStore.m in Sources */,
+				C225799D1C959696003B1B85 /* TLDBMessage+TLMessage.m in Sources */,
 				C2CE0BC31C7173B2006C5C2A /* TLChatViewController.m in Sources */,
 				C282DF651C7486DC006924AE /* TLEmojiKeyboard.m in Sources */,
 				C2D851501C68D67F007DD697 /* TLMineSettingViewController.m in Sources */,

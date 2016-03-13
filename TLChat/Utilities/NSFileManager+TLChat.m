@@ -17,7 +17,7 @@
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
         if (error) {
-            NSLog(@"File Create Failed: %@", path);
+            DDLogError(@"File Create Failed: %@", path);
         }
     }
     return [path stringByAppendingString:imageName];
@@ -30,7 +30,7 @@
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
         if (error) {
-            NSLog(@"File Create Failed: %@", path);
+            DDLogError(@"File Create Failed: %@", path);
         }
     }
     return [path stringByAppendingString:imageName];
@@ -43,7 +43,7 @@
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
         if (error) {
-            NSLog(@"File Create Failed: %@", path);
+            DDLogError(@"File Create Failed: %@", path);
         }
     }
     return [path stringByAppendingString:imageName];
@@ -56,7 +56,7 @@
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
         if (error) {
-            NSLog(@"File Create Failed: %@", path);
+            DDLogError(@"File Create Failed: %@", path);
         }
     }
     return [path stringByAppendingString:imageName];
@@ -69,10 +69,36 @@
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
         if (error) {
-            NSLog(@"File Create Failed: %@", path);
+            DDLogError(@"File Create Failed: %@", path);
         }
     }
     return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathDBCommonForUser:(NSString *)userID
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/DB/", [NSFileManager documentsPath], userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:@"common.sqlite3"];
+}
+
++ (NSString *)pathDBMessageForUser:(NSString *)userID
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/DB/", [NSFileManager documentsPath], userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:@"message.sqlite3"];
 }
 
 @end

@@ -7,11 +7,18 @@
 //
 
 #import "TLDBBaseStore.h"
-#import "TLDBMessage.h"
+#import "TLMessage.h"
 
 @interface TLDBMessageStore : TLDBBaseStore
 
-- (BOOL)addMessage:(TLDBMessage *)message;
+/**
+ *  添加消息记录
+ */
+- (BOOL)addMessage:(TLMessage *)message;
 
+/**
+ *  获取与某个好友的聊天记录
+ */
+- (NSArray *)messagesByUserID:(NSString *)userID friendID:(NSString *)friendID fromDate:(NSDate *)date count:(NSUInteger)count;
 
 @end

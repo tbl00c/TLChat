@@ -8,6 +8,7 @@
 
 #import "TLMessageManager.h"
 #import "TLDBMessageStore.h"
+#import "TLDBMessage+TLMessage.h"
 
 @interface TLMessageManager ()
 
@@ -22,11 +23,20 @@
             success:(void (^)(TLMessage *))success
             failure:(void (^)(TLMessage *))failure
 {
-    TLDBMessage *dbMessage;
-    BOOL ok = [self.messageStore addMessage:dbMessage];
+    BOOL ok = [self.messageStore addMessage:message];
     if (!ok) {
-        NSLog(@"存储Message到DB失败");
+        DDLogError(@"存储Message到DB失败");
     }
+}
+
+- (void)messageRecordForUser:(NSString *)userID
+                    toFriend:(NSString *)friendID
+                    fromDate:(NSDate *)date
+                       count:(NSUInteger)count
+                    complete:(void (^)(NSArray *))complete
+{
+    NSArray *data = [self.messageStore messagesByUserID:userID friendID:friendID fromDate:date count:count];
+    complete(data);
 }
 
 #pragma mark - Getter -

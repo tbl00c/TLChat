@@ -53,24 +53,24 @@
 #pragma mark - Public Methods -
 - (void)setUser:(TLUser *)user
 {
-    if (_curChatType != TLChatVCTypeFriend || (_user && ![_user.userID isEqualToString:user.userID])) {
+    if (_curChatType != TLChatVCTypeFriend || !_user || ![_user.userID isEqualToString:user.userID]) {
+        _user = user;
+        [self.navigationItem setTitle:user.showName];
         _curChatType = TLChatVCTypeFriend;
         _group = nil;
         [self p_resetChatVC];
     }
-    _user = user;
-    [self.navigationItem setTitle:user.showName];
 }
 
 - (void)setGroup:(TLGroup *)group
 {
-    if (_curChatType != TLChatVCTypeGroup || (_group && [_group.groupID isEqualToString:group.groupID])) {
+    if (_curChatType != TLChatVCTypeGroup || !_group || [_group.groupID isEqualToString:group.groupID]) {
+        _group = group;
+        [self.navigationItem setTitle:group.groupName];
         _curChatType = TLChatVCTypeGroup;
         _user = nil;
         [self p_resetChatVC];
     }
-    _group = group;
-    [self.navigationItem setTitle:group.groupName];
 }
 
 - (void)setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData
@@ -106,12 +106,25 @@
     }
 }
 
+- (void)chatRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *))completed
+{
+    [self.messageManager messageRecordForUser:[TLUserHelper sharedHelper].userID toFriend:self.user.userID fromDate:date count:count complete:^(NSArray *array) {
+        for (TLMessage *message in array) {
+            if (message.ownerTyper == TLMessageOwnerTypeSelf) {
+                message.fromUser = [TLUserHelper sharedHelper].user;
+            }
+            else {
+                message.fromUser = self.user;
+            }
+        }
+        completed(date, array);
+    }];
+}
+
 //MARK: TLChatBarDataDelegate
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
     TLMessage *message = [[TLMessage alloc] init];
-    message.fromID = [TLUserHelper sharedHelper].userID;
-    message.toID = self.user.userID;
     message.fromUser = [TLUserHelper sharedHelper].user;
     message.messageType = TLMessageTypeText;
     message.ownerTyper = TLMessageOwnerTypeSelf;
@@ -120,8 +133,6 @@
     [self p_sendMessage:message];
     if (self.curChatType == TLChatVCTypeFriend) {
         TLMessage *message1 = [[TLMessage alloc] init];
-        message1.fromID = self.user.userID;
-        message1.toID = [TLUserHelper sharedHelper].userID;
         message1.fromUser = self.user;
         message1.messageType = TLMessageTypeText;
         message1.ownerTyper = TLMessageOwnerTypeOther;
@@ -133,8 +144,6 @@
         for (NSString *userID in self.group.users) {
             TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
             TLMessage *message1 = [[TLMessage alloc] init];
-            message1.fromID = user.userID;
-            message1.toID = [TLUserHelper sharedHelper].userID;
             message1.fromUser = user;
             message1.messageType = TLMessageTypeText;
             message1.ownerTyper = TLMessageOwnerTypeOther;
@@ -174,8 +183,8 @@
  */
 - (void)p_sendMessage:(TLMessage *)message
 {
-//    message.fromID = [TLUserHelper sharedHelper].userID;
-//    message.toID = self.user.userID;
+    message.userID = [TLUserHelper sharedHelper].userID;
+    message.friendID = self.user.userID;
 //    message.ownerTyper = TLMessageOwnerTypeSelf;
     message.date = [NSDate date];
 //    message.showName = NO;
@@ -201,7 +210,7 @@
 }
 
 /**
- *  充值chatVC，清空数据
+ *  重置chatVC，清空数据
  */
 - (void)p_resetChatVC
 {

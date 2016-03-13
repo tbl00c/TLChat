@@ -19,6 +19,7 @@
 #import <Masonry.h>
 #import <ReactiveCocoa.h>
 #import <SVProgressHUD.h>
+#import <CocoaLumberjack.h>
 
 #import "TLNavigationController.h"
 
@@ -34,5 +35,7 @@
 #import "UIImagePickerController+Fixed.h"
 #import "UIBarButtonItem+Action.h"
 #import "UINavigationItem+Fixed.h"
+
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
 #endif /* PrefixHeader_pch */

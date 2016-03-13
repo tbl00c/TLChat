@@ -21,4 +21,8 @@
 
 + (NSString *)pathContactsAvatar:(NSString *)imageName;
 
++ (NSString *)pathDBCommonForUser:(NSString *)userID;
+
++ (NSString *)pathDBMessageForUser:(NSString *)userID;
+
 @end

@@ -10,7 +10,11 @@
 #import "TLFriendDetailViewController.h"
 #import "TLTextMessageCell.h"
 
+#define     PAGE_MESSAGE_COUNT      20
+
 @interface TLChatTableViewController () <TLMessageCellDelegate>
+
+@property (nonatomic, strong) NSDate *curDate;
 
 @end
 
@@ -34,6 +38,16 @@
 {
     [self.data removeAllObjects];
     [self.tableView reloadData];
+    self.curDate = [NSDate date];
+    if (_delegate && [_delegate respondsToSelector:@selector(chatRecordsFromDate:count:completed:)]) {
+        [_delegate chatRecordsFromDate:self.curDate count:PAGE_MESSAGE_COUNT completed:^(NSDate *date, NSArray *array) {
+            if (array.count > 0 && [date isEqualToDate:self.curDate]) {
+                [self.data insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, array.count)]];
+                [self.tableView reloadData];
+                [self.tableView scrollToBottomWithAnimation:NO];
+            }
+        }];
+    }
 }
 
 - (void)addMessage:(TLMessage *)message
@@ -77,7 +91,7 @@
 {
     TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
     [detailVC setUser:user];
-    [self setHidesBottomBarWhenPushed:YES];
+    [self.parentViewController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

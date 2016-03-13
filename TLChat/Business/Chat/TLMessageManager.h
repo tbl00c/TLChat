@@ -16,4 +16,10 @@
             success:(void (^)(TLMessage *))success
             failure:(void (^)(TLMessage *))failure;
 
+- (void)messageRecordForUser:(NSString *)userID
+                    toFriend:(NSString *)friendID
+                    fromDate:(NSDate *)date
+                       count:(NSUInteger)count
+                    complete:(void (^)(NSArray *))complete;
+
 @end

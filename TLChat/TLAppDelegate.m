@@ -22,7 +22,7 @@
     [self p_initThirdPartSDK];
     [self p_initUserData];
     
-    NSLog(@"%@", [NSFileManager documentsPath]);
+    DDLogInfo(@"%@", [NSFileManager documentsPath]);
     
     return YES;
 }
@@ -77,6 +77,13 @@
     
     [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] init];
+    fileLogger.rollingFrequency = 60 * 60 * 24;
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+    [DDLog addLogger:fileLogger];
 }
 
 - (void)p_initUserData

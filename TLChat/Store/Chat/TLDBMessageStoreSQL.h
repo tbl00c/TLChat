@@ -14,7 +14,7 @@
                                     msgid TEXT,\
                                     uid TEXT,\
                                     fid TEXT,\
-                                    date DATE,\
+                                    date TEXT,\
                                     own_type INTEGER DEFAULT (0),\
                                     msg_type INTEGER DEFAULT (0),\
                                     content TEXT,\

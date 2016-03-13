@@ -17,7 +17,7 @@
     message.userID = self.userID;
     message.friendID = self.friendID;
     message.ownerTyper = self.ownerType;
-    message.date = self.date;
+    message.date = [NSDate dateWithTimeIntervalSince1970:self.date.doubleValue];
     message.messageType = self.msgType;
     message.text = self.content;
     message.sendState = self.sendStatus;
@@ -37,7 +37,7 @@
     dbMessage.userID = self.userID;
     dbMessage.friendID = self.friendID;
     dbMessage.ownerType = self.ownerTyper;
-    dbMessage.date = self.date;
+    dbMessage.date = [NSString stringWithFormat:@"%lf", self.date.timeIntervalSince1970];
     
     dbMessage.msgType = self.messageType;
     dbMessage.content = self.text;

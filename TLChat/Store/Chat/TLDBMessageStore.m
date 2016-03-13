@@ -65,7 +65,7 @@
                         MESSAGE_TABLE_NAME,
                         userID,
                         friendID,
-                        date,
+                        [NSString stringWithFormat:@"%lf", date.timeIntervalSince1970],
                         count];
 
     [self excuteQuerySQL:sqlstr resultBlock:^(FMResultSet *retSet) {
@@ -87,7 +87,7 @@
     dbMessage.msgID = [retSet stringForColumn:@"msgid"];
     dbMessage.userID = [retSet stringForColumn:@"uid"];
     dbMessage.friendID = [retSet stringForColumn:@"fid"];
-    dbMessage.date = [retSet dateForColumn:@"date"];
+    dbMessage.date = [retSet stringForColumn:@"date"];
     dbMessage.ownerType = [retSet intForColumn:@"own_type"];
     dbMessage.msgType = [retSet intForColumn:@"msg_type"];
     dbMessage.content = [retSet stringForColumn:@"content"];

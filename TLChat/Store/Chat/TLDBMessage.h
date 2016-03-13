@@ -19,7 +19,7 @@
 
 @property (nonatomic, assign) NSInteger ownerType;
 
-@property (nonatomic, strong, nonnull) NSDate *date;
+@property (nonatomic, strong, nonnull) NSString *date;
 
 
 #pragma mark - 消息内容

@@ -108,6 +108,7 @@
 
 - (void)chatRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *))completed
 {
+    NSLog(@"%@", date);
     [self.messageManager messageRecordForUser:[TLUserHelper sharedHelper].userID toFriend:self.user.userID fromDate:date count:count complete:^(NSArray *array) {
         for (TLMessage *message in array) {
             if (message.ownerTyper == TLMessageOwnerTypeSelf) {

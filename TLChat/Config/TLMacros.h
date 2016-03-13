@@ -12,7 +12,7 @@
 #define     APP_CHANNEL         @"Github"
 
 #pragma mark - Debug
-#define     DEBUG_MEMERY
+//#define     DEBUG_MEMERY
 
 #pragma mark - SIZE
 #define     SIZE_SCREEN                 [UIScreen mainScreen].bounds.size
@@ -29,11 +29,6 @@
 #pragma mark - Methods
 #define     TLURL(urlString)    [NSURL URLWithString:urlString]
 #define     TLColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
-
-
-#pragma mark - Path
-#define     PATH_DOCUMENT       [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
-
 
 #pragma mark - ThirdPart KEY
 #define     UMENG_APPKEY       @"56b8ba33e0f55a15480020b0"

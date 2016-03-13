@@ -6,8 +6,12 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseDataModel.h"
+#import "TLDBBaseStore.h"
+#import "TLDBMessage.h"
 
-@interface TLDBMessageStore : TLBaseDataModel
+@interface TLDBMessageStore : TLDBBaseStore
+
+- (BOOL)addMessage:(TLDBMessage *)message;
+
 
 @end

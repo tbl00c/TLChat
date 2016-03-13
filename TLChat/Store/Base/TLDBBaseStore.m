@@ -10,4 +10,23 @@
 
 @implementation TLDBBaseStore
 
+- (id)init
+{
+    if (self = [super init]) {
+        self.dbQueue = [TLDBManager sharedInstance].commonQueue;
+    }
+    return self;
+}
+
+- (BOOL)createTable:(NSString*)tableName withSqlString:(NSString*)sqlString
+{
+    __block BOOL ok = YES;
+    [_dbQueue inDatabase:^(FMDatabase *db) {
+        if(![db tableExists:tableName]){
+            ok = [db executeUpdate:sqlString withArgumentsInArray:nil];
+        }
+    }];
+    return ok;
+}
+
 @end

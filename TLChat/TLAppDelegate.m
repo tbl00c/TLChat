@@ -22,6 +22,8 @@
     [self p_initThirdPartSDK];
     [self p_initUserData];
     
+    NSLog(@"%@", [NSFileManager documentsPath]);
+    
     return YES;
 }
 

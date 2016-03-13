@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) NSDate *date;
 
+
 #pragma mark - 消息内容
 @property (nonatomic, assign) NSInteger msgType;
 

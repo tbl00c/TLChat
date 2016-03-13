@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <FMDB.h>
+#import "TLDBManager.h"
 
 @interface TLDBBaseStore : NSObject
+
+/// 数据库操作队列(从TLDBManager中获取，默认使用commonQueue)
+@property (nonatomic, weak) FMDatabaseQueue *dbQueue;
+
+
+- (BOOL)createTable:(NSString*)tableName withSqlString:(NSString*)sqlString;
 
 @end

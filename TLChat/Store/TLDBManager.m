@@ -21,4 +21,15 @@ static TLDBManager *manager;
     return manager;
 }
 
+- (id)init
+{
+    if (self = [super init]) {
+        NSString *commonQueuePath;
+        self.commonQueue = [FMDatabaseQueue databaseQueueWithPath:commonQueuePath];
+        NSString *messageQueuePath;
+        self.messageQueue = [FMDatabaseQueue databaseQueueWithPath:messageQueuePath];
+    }
+    return self;
+}
+
 @end

@@ -10,6 +10,8 @@
 #import "TLChatTableViewController.h"
 #import "TLMoreKeyboardDelegate.h"
 
+#import "TLMessageManager.h"
+
 #import "TLChatBar.h"
 #import "TLMoreKeyboard.h"
 #import "TLEmojiKeyboard.h"
@@ -24,22 +26,27 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 
 @interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate, TLEmojiKeyboardDelegate>
 
-/**
- *  当前聊天类型 （赋值User或Group时自动设置）
- */
+/// 当前聊天类型 （赋值User或Group时自动设置）
 @property (nonatomic, assign, readonly) TLChatVCType curChatType;
 
 @property (nonatomic, strong) TLUser *user;
 
 @property (nonatomic, strong) TLGroup *group;
 
+/// 消息展示页面
 @property (nonatomic, strong) TLChatTableViewController *chatTableVC;
 
+/// 聊天输入栏
 @property (nonatomic, strong) TLChatBar *chatBar;
 
+/// 更多键盘
 @property (nonatomic, strong) TLMoreKeyboard *moreKeyboard;
 
+/// 表情键盘
 @property (nonatomic, strong) TLEmojiKeyboard *emojiKeyboard;
+
+/// 聊天管理类
+@property (nonatomic, strong) TLMessageManager *messageManager;
 
 
 /**

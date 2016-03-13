@@ -10,6 +10,9 @@
 #import "TLChatKeyboardController.h"
 #import "TLFriendHelper.h"
 
+#define     MAX_SHOWTIME_MSG_COUNT      10
+#define     MAX_SHOWTIME_MSG_SECOND     10
+
 @interface TLChatBaseViewController () <TLChatBarDataDelegate, TLChatTableViewControllerDelegate>
 
 @property (nonatomic, strong) TLChatKeyboardController *chatKeyboardController;
@@ -53,10 +56,9 @@
     if (_curChatType != TLChatVCTypeFriend || (_user && ![_user.userID isEqualToString:user.userID])) {
         _curChatType = TLChatVCTypeFriend;
         _group = nil;
-        [self.chatTableVC clearData];
+        [self p_resetChatVC];
     }
     _user = user;
-    lastDate = nil;
     [self.navigationItem setTitle:user.showName];
 }
 
@@ -65,10 +67,9 @@
     if (_curChatType != TLChatVCTypeGroup || (_group && [_group.groupID isEqualToString:group.groupID])) {
         _curChatType = TLChatVCTypeGroup;
         _user = nil;
-        [self.chatTableVC clearData];
+        [self p_resetChatVC];
     }
     _group = group;
-    lastDate = nil;
     [self.navigationItem setTitle:group.groupName];
 }
 
@@ -85,8 +86,16 @@
 - (void)sendImageMessage:(NSString *)imagePath
 {
     [self chatBar:nil sendText:@"[图片消息，即将支持]"];
+//    TLMessage *message = [[TLMessage alloc] init];
+//    message.fromID = [TLUserHelper sharedHelper].userID;
+//    message.toID = self.user.userID;
+//    message.fromUser = [TLUserHelper sharedHelper].user;
+//    message.messageType = TLMessageTypeText;
+//    message.ownerTyper = TLMessageOwnerTypeSelf;
+//    message.imagePath = imagePath;
+//    message.showName = NO;
+//    [self p_sendMessage:message];
 }
-
 
 #pragma mark - Delegate -
 //MARK: TLChatTableViewControllerDelegate
@@ -107,9 +116,8 @@
     message.messageType = TLMessageTypeText;
     message.ownerTyper = TLMessageOwnerTypeSelf;
     message.text = text;
-    message.showTime = YES;
     message.showName = NO;
-    [self.chatTableVC addMessage:message];
+    [self p_sendMessage:message];
     if (self.curChatType == TLChatVCTypeFriend) {
         TLMessage *message1 = [[TLMessage alloc] init];
         message1.fromID = self.user.userID;
@@ -118,9 +126,8 @@
         message1.messageType = TLMessageTypeText;
         message1.ownerTyper = TLMessageOwnerTypeOther;
         message1.text = text;
-        message1.showTime = NO;
         message1.showName = NO;
-        [self.chatTableVC addMessage:message1];
+        [self p_sendMessage:message1];
     }
     else {
         for (NSString *userID in self.group.users) {
@@ -132,9 +139,8 @@
             message1.messageType = TLMessageTypeText;
             message1.ownerTyper = TLMessageOwnerTypeOther;
             message1.text = text;
-            message1.showTime = NO;
             message1.showName = NO;
-            [self.chatTableVC addMessage:message1];
+            [self p_sendMessage:message1];
         }
     }
 
@@ -163,6 +169,59 @@
 }
 
 #pragma mark - Private Methods -
+/**
+ *  发送消息（网络、数据库）
+ */
+- (void)p_sendMessage:(TLMessage *)message
+{
+//    message.fromID = [TLUserHelper sharedHelper].userID;
+//    message.toID = self.user.userID;
+//    message.ownerTyper = TLMessageOwnerTypeSelf;
+    message.date = [NSDate date];
+//    message.showName = NO;
+    
+    [self p_addMessage:message];
+    [self.messageManager sendMessage:message progress:^(TLMessage *message, CGFloat pregress) {
+        
+    } success:^(TLMessage *message) {
+        NSLog(@"send success");
+    } failure:^(TLMessage *message) {
+        NSLog(@"send failure");
+    }];
+}
+
+/**
+ *  展示消息（添加到chatVC）
+ */
+- (void)p_addMessage:(TLMessage *)message
+{
+//    message.fromUser = [TLUserHelper sharedHelper].user;
+    message.showTime = [self p_needShowTime:message.date];
+    [self.chatTableVC addMessage:message];
+}
+
+/**
+ *  充值chatVC，清空数据
+ */
+- (void)p_resetChatVC
+{
+    [self.chatTableVC clearData];
+    lastDateInterval = 0;
+    msgAccumulate = 0;
+}
+
+static NSTimeInterval lastDateInterval = 0;
+static NSInteger msgAccumulate = 0;
+- (BOOL)p_needShowTime:(NSDate *)date
+{
+    if (lastDateInterval == 0 || date.timeIntervalSince1970 - lastDateInterval > MAX_SHOWTIME_MSG_SECOND || ++msgAccumulate > MAX_SHOWTIME_MSG_COUNT) {
+        lastDateInterval = date.timeIntervalSince1970;
+        msgAccumulate = 0;
+        return YES;
+    }
+    return NO;
+}
+
 - (void)p_addMasonry
 {
     [self.chatTableVC.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -174,18 +233,15 @@
     }];
 }
 
-static NSDate *lastDate = nil;
-- (BOOL)p_needShowTime:(NSDate *)date
+#pragma mark - Getter -
+- (TLMessageManager *)messageManager
 {
-    if (lastDate == nil) {
-        date = lastDate;
-        return YES;
+    if (_messageManager == nil) {
+        _messageManager = [[TLMessageManager alloc] init];
     }
-    return NO;
+    return _messageManager;
 }
 
-
-#pragma mark - Getter -
 - (TLChatTableViewController *)chatTableVC
 {
     if (_chatTableVC == nil) {

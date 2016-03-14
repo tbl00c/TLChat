@@ -33,10 +33,11 @@
                     toFriend:(NSString *)friendID
                     fromDate:(NSDate *)date
                        count:(NSUInteger)count
-                    complete:(void (^)(NSArray *))complete
+                    complete:(void (^)(NSArray *, BOOL))complete
 {
-    NSArray *data = [self.messageStore messagesByUserID:userID friendID:friendID fromDate:date count:count];
-    complete(data);
+    [self.messageStore messagesByUserID:userID friendID:friendID fromDate:date count:count complete:^(NSArray *data, BOOL hasMore) {
+        complete(data, hasMore);
+    }];
 }
 
 #pragma mark - Getter -

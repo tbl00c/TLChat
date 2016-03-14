@@ -14,7 +14,8 @@
 
 - (void)chatTableViewControllerDidTouched:(TLChatTableViewController *)chatTVC;
 
-- (void)chatRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *))completed;
+- (void)chatRecordsFromDate:(NSDate *)date count:(NSUInteger)count
+                  completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
 
 @end
 

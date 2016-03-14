@@ -57,7 +57,7 @@
     return ok;
 }
 
-- (NSArray *)messagesByUserID:(NSString *)userID friendID:(NSString *)friendID fromDate:(NSDate *)date count:(NSUInteger)count
+- (void)messagesByUserID:(NSString *)userID friendID:(NSString *)friendID fromDate:(NSDate *)date count:(NSUInteger)count complete:(void (^)(NSArray *, BOOL))complet
 {
     __block NSMutableArray *data = [[NSMutableArray alloc] init];
     NSString *sqlstr = [NSString stringWithFormat:
@@ -66,7 +66,7 @@
                         userID,
                         friendID,
                         [NSString stringWithFormat:@"%lf", date.timeIntervalSince1970],
-                        count];
+                        count + 1];
 
     [self excuteQuerySQL:sqlstr resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
@@ -77,7 +77,12 @@
         [retSet close];
     }];
     
-    return data;
+    BOOL hasMore = NO;
+    if (data.count == count + 1) {
+        hasMore = YES;
+        [data removeObjectAtIndex:0];
+    }
+    complet(data, hasMore);
 }
 
 #pragma mark - Private Methods -

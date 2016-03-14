@@ -10,6 +10,7 @@
 #define TLDBMessageStoreSQL_h
 
 #define     MESSAGE_TABLE_NAME      @"message"
+
 #define     CREATE_TABLE_SQL        @"CREATE TABLE IF NOT EXISTS %@(\
                                     msgid TEXT,\
                                     uid TEXT,\

@@ -20,6 +20,6 @@
                     toFriend:(NSString *)friendID
                     fromDate:(NSDate *)date
                        count:(NSUInteger)count
-                    complete:(void (^)(NSArray *))complete;
+                    complete:(void (^)(NSArray *, BOOL))complete;
 
 @end

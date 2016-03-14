@@ -11,7 +11,7 @@
 #import "TLFriendHelper.h"
 
 #define     MAX_SHOWTIME_MSG_COUNT      10
-#define     MAX_SHOWTIME_MSG_SECOND     10
+#define     MAX_SHOWTIME_MSG_SECOND     30
 
 @interface TLChatBaseViewController () <TLChatBarDataDelegate, TLChatTableViewControllerDelegate>
 
@@ -83,6 +83,9 @@
     [self.emojiKeyboard setEmojiGroupData:emojiKeyboardData];
 }
 
+/**
+ *  发送图片消息
+ */
 - (void)sendImageMessage:(NSString *)imagePath
 {
     [self chatBar:nil sendText:@"[图片消息，即将支持]"];
@@ -106,23 +109,38 @@
     }
 }
 
-- (void)chatRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *))completed
+/**
+ *  获取历史记录
+ */
+- (void)chatRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *, BOOL))completed
 {
-    NSLog(@"%@", date);
-    [self.messageManager messageRecordForUser:[TLUserHelper sharedHelper].userID toFriend:self.user.userID fromDate:date count:count complete:^(NSArray *array) {
-        for (TLMessage *message in array) {
-            if (message.ownerTyper == TLMessageOwnerTypeSelf) {
-                message.fromUser = [TLUserHelper sharedHelper].user;
-            }
-            else {
-                message.fromUser = self.user;
+    [self.messageManager messageRecordForUser:[TLUserHelper sharedHelper].userID toFriend:self.user.userID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
+        if (array.count > 0) {
+            int count = 0;
+            NSTimeInterval tm = date.timeIntervalSince1970;
+            for (NSInteger i = array.count - 1; i >= 0; i --) {
+                TLMessage *message = array[i];
+                if (++count > MAX_SHOWTIME_MSG_COUNT || message.date.timeIntervalSince1970 - tm > MAX_SHOWTIME_MSG_SECOND) {
+                    tm = message.date.timeIntervalSince1970;
+                    count = 0;
+                    message.showTime = YES;
+                }
+                if (message.ownerTyper == TLMessageOwnerTypeSelf) {
+                    message.fromUser = [TLUserHelper sharedHelper].user;
+                }
+                else {
+                    message.fromUser = self.user;
+                }
             }
         }
-        completed(date, array);
+        completed(date, array, hasMore);
     }];
 }
 
 //MARK: TLChatBarDataDelegate
+/**
+ *  发送文字消息
+ */
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
     TLMessage *message = [[TLMessage alloc] init];
@@ -224,7 +242,7 @@ static NSTimeInterval lastDateInterval = 0;
 static NSInteger msgAccumulate = 0;
 - (BOOL)p_needShowTime:(NSDate *)date
 {
-    if (lastDateInterval == 0 || date.timeIntervalSince1970 - lastDateInterval > MAX_SHOWTIME_MSG_SECOND || ++msgAccumulate > MAX_SHOWTIME_MSG_COUNT) {
+    if (++msgAccumulate > MAX_SHOWTIME_MSG_COUNT || lastDateInterval == 0 || date.timeIntervalSince1970 - lastDateInterval > MAX_SHOWTIME_MSG_SECOND) {
         lastDateInterval = date.timeIntervalSince1970;
         msgAccumulate = 0;
         return YES;

@@ -50,7 +50,7 @@
             make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM);
         }];
     }
-    else if (message.ownerTyper == TLMessageOwnerTypeOther){
+    else if (message.ownerTyper == TLMessageOwnerTypeFriend){
         [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_receiver_bg"]];
         [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_receiver_bgHL"]];
         

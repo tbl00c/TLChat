@@ -15,7 +15,9 @@
                                     msgid TEXT,\
                                     uid TEXT,\
                                     fid TEXT,\
+                                    subfid TEXT,\
                                     date TEXT,\
+                                    partner_type INTEGER DEFAULT (0),\
                                     own_type INTEGER DEFAULT (0),\
                                     msg_type INTEGER DEFAULT (0),\
                                     content TEXT,\
@@ -28,7 +30,7 @@
                                     ext5 TEXT,\
                                     PRIMARY KEY(uid, msgid, fid))"
 
-#define     ADD_MESSAGE_SQL         @"REPLACE INTO %@ ( msgid, uid, fid, date, own_type, msg_type, content, send_status, received_status, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+#define     ADD_MESSAGE_SQL         @"REPLACE INTO %@ ( msgid, uid, fid, subfid, date, partner_type, own_type, msg_type, content, send_status, received_status, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
 #define     MESSAGES_PAGE_SQL       @"SELECT * FROM %@ WHERE uid = '%@' and fid = '%@' and date < '%@' order by date desc LIMIT '%ld'"
 

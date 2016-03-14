@@ -30,12 +30,12 @@
 }
 
 - (void)messageRecordForUser:(NSString *)userID
-                    toFriend:(NSString *)friendID
+                  andPartner:(NSString *)partnerID
                     fromDate:(NSDate *)date
                        count:(NSUInteger)count
                     complete:(void (^)(NSArray *, BOOL))complete
 {
-    [self.messageStore messagesByUserID:userID friendID:friendID fromDate:date count:count complete:^(NSArray *data, BOOL hasMore) {
+    [self.messageStore messagesByUserID:userID partnerID:partnerID fromDate:date count:count complete:^(NSArray *data, BOOL hasMore) {
         complete(data, hasMore);
     }];
 }

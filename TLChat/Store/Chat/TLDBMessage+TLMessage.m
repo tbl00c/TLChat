@@ -13,9 +13,16 @@
 - (TLMessage *)toMessage
 {
     TLMessage *message = [[TLMessage alloc] init];
-    message.messageID = self.msgID;
-    message.userID = self.userID;
-    message.friendID = self.friendID;
+    message.messageID = self.mid;
+    message.userID = self.uid;
+    message.partnerType = self.partnerType;
+    if (message.partnerType == TLPartnerTypeGroup) {
+        message.groupID = self.fid;
+        message.friendID = self.subfid;
+    }
+    else {
+        message.friendID = self.fid;
+    }
     message.ownerTyper = self.ownerType;
     message.date = [NSDate dateWithTimeIntervalSince1970:self.date.doubleValue];
     message.messageType = self.msgType;
@@ -33,9 +40,17 @@
 - (TLDBMessage *)toDBMessage
 {
     TLDBMessage *dbMessage = [[TLDBMessage alloc] init];
-    dbMessage.msgID = self.messageID;
-    dbMessage.userID = self.userID;
-    dbMessage.friendID = self.friendID;
+    dbMessage.mid = self.messageID;
+    dbMessage.uid = self.userID;
+    dbMessage.partnerType = self.partnerType;
+    if (self.partnerType == TLPartnerTypeGroup) {
+        dbMessage.fid = self.groupID;
+        dbMessage.subfid = self.friendID;
+    }
+    else {
+        dbMessage.fid = self.friendID;
+        dbMessage.subfid = @"";
+    }
     dbMessage.ownerType = self.ownerTyper;
     dbMessage.date = [NSString stringWithFormat:@"%lf", self.date.timeIntervalSince1970];
     

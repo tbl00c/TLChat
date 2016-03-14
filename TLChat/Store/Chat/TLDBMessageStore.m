@@ -33,15 +33,17 @@
 - (BOOL)addMessage:(TLMessage *)message
 {
     TLDBMessage *dbMessage = [message toDBMessage];
-    if (dbMessage.msgID == nil || dbMessage.userID == nil || dbMessage.friendID == nil) {
+    if (dbMessage.mid == nil || dbMessage.uid == nil || dbMessage.fid == nil) {
         return NO;
     }
     NSString *sqlString = [NSString stringWithFormat:ADD_MESSAGE_SQL, MESSAGE_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
-                        dbMessage.msgID,
-                        dbMessage.userID,
-                        dbMessage.friendID,
+                        dbMessage.mid,
+                        dbMessage.uid,
+                        dbMessage.fid,
+                        dbMessage.subfid.length > 0 ? dbMessage.subfid : @"",
                         dbMessage.date,
+                        [NSNumber numberWithInteger:dbMessage.partnerType],
                         [NSNumber numberWithInteger:dbMessage.ownerType],
                         [NSNumber numberWithInteger:dbMessage.msgType],
                         dbMessage.content,
@@ -57,14 +59,14 @@
     return ok;
 }
 
-- (void)messagesByUserID:(NSString *)userID friendID:(NSString *)friendID fromDate:(NSDate *)date count:(NSUInteger)count complete:(void (^)(NSArray *, BOOL))complet
+- (void)messagesByUserID:(NSString *)userID partnerID:(NSString *)partnerID fromDate:(NSDate *)date count:(NSUInteger)count complete:(void (^)(NSArray *, BOOL))complet
 {
     __block NSMutableArray *data = [[NSMutableArray alloc] init];
     NSString *sqlstr = [NSString stringWithFormat:
                         MESSAGES_PAGE_SQL,
                         MESSAGE_TABLE_NAME,
                         userID,
-                        friendID,
+                        partnerID,
                         [NSString stringWithFormat:@"%lf", date.timeIntervalSince1970],
                         count + 1];
 
@@ -89,10 +91,12 @@
 - (TLDBMessage *)p_createDBMessageByFMResultSet:(FMResultSet *)retSet
 {
     TLDBMessage *dbMessage = [[TLDBMessage alloc]init];
-    dbMessage.msgID = [retSet stringForColumn:@"msgid"];
-    dbMessage.userID = [retSet stringForColumn:@"uid"];
-    dbMessage.friendID = [retSet stringForColumn:@"fid"];
+    dbMessage.mid = [retSet stringForColumn:@"msgid"];
+    dbMessage.uid = [retSet stringForColumn:@"uid"];
+    dbMessage.fid = [retSet stringForColumn:@"fid"];
+    dbMessage.subfid = [retSet stringForColumn:@"subfid"];
     dbMessage.date = [retSet stringForColumn:@"date"];
+    dbMessage.partnerType = [retSet intForColumn:@"partner_type"];
     dbMessage.ownerType = [retSet intForColumn:@"own_type"];
     dbMessage.msgType = [retSet intForColumn:@"msg_type"];
     dbMessage.content = [retSet stringForColumn:@"content"];

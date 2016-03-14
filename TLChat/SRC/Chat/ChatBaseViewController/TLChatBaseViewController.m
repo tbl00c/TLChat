@@ -114,7 +114,14 @@
  */
 - (void)chatRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *, BOOL))completed
 {
-    [self.messageManager messageRecordForUser:[TLUserHelper sharedHelper].userID toFriend:self.user.userID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
+    NSString *partnerID;
+    if (self.curChatType == TLPartnerTypeGroup) {
+        partnerID = self.group.groupID;
+    }
+    else {
+        partnerID = self.user.userID;
+    }
+    [self.messageManager messageRecordForUser:[TLUserHelper sharedHelper].userID andPartner:partnerID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
         if (array.count > 0) {
             int count = 0;
             NSTimeInterval tm = 0;
@@ -128,7 +135,12 @@
                     message.fromUser = [TLUserHelper sharedHelper].user;
                 }
                 else {
-                    message.fromUser = self.user;
+                    if (self.curChatType == TLPartnerTypeUser) {
+                        message.fromUser = self.user;
+                    }
+                    else {
+                        message.fromUser = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:message.friendID];
+                    }
                 }
             }
         }
@@ -153,7 +165,7 @@
         TLMessage *message1 = [[TLMessage alloc] init];
         message1.fromUser = self.user;
         message1.messageType = TLMessageTypeText;
-        message1.ownerTyper = TLMessageOwnerTypeOther;
+        message1.ownerTyper = TLMessageOwnerTypeFriend;
         message1.text = text;
         message1.showName = NO;
         [self p_sendMessage:message1];
@@ -162,9 +174,10 @@
         for (NSString *userID in self.group.users) {
             TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
             TLMessage *message1 = [[TLMessage alloc] init];
+            message1.friendID = userID;
             message1.fromUser = user;
             message1.messageType = TLMessageTypeText;
-            message1.ownerTyper = TLMessageOwnerTypeOther;
+            message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.text = text;
             message1.showName = NO;
             [self p_sendMessage:message1];
@@ -202,8 +215,16 @@
 - (void)p_sendMessage:(TLMessage *)message
 {
     message.userID = [TLUserHelper sharedHelper].userID;
-    message.friendID = self.user.userID;
+    if (self.curChatType == TLChatVCTypeFriend) {
+        message.partnerType = TLPartnerTypeUser;
+        message.friendID = self.user.userID;
+    }
+    else if (self.curChatType == TLChatVCTypeGroup) {
+        message.partnerType = TLPartnerTypeGroup;
+        message.groupID = self.group.groupID;
+    }
 //    message.ownerTyper = TLMessageOwnerTypeSelf;
+//    message.fromUser = [TLUserHelper sharedHelper].user;
     message.date = [NSDate date];
 //    message.showName = NO;
     
@@ -222,7 +243,6 @@
  */
 - (void)p_addMessage:(TLMessage *)message
 {
-//    message.fromUser = [TLUserHelper sharedHelper].user;
     message.showTime = [self p_needShowTime:message.date];
     [self.chatTableVC addMessage:message];
 }

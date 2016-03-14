@@ -11,13 +11,15 @@
 @interface TLDBMessage : NSObject
 
 #pragma mark - 基本信息
-@property (nonatomic, strong) NSString *msgID;
+@property (nonatomic, strong) NSString *mid;
 
-@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *uid;
 
-@property (nonatomic, strong) NSString *groupID;        // 讨论组专用
+@property (nonatomic, strong) NSString *fid;
 
-@property (nonatomic, strong) NSString *friendID;
+@property (nonatomic, strong) NSString *subfid;        // 讨论组专用
+
+@property (nonatomic, assign) NSInteger partnerType;
 
 @property (nonatomic, assign) NSInteger ownerType;
 

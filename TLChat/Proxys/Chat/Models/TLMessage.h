@@ -11,13 +11,21 @@
 #import <MapKit/MapKit.h>
 
 /**
+ *  消息所有者类型
+ */
+typedef NS_ENUM(NSUInteger, TLPartnerType){
+    TLPartnerTypeUser,          // 用户
+    TLPartnerTypeGroup,         // 群聊
+};
+
+/**
  *  消息拥有者
  */
 typedef NS_ENUM(NSUInteger, TLMessageOwnerType){
     TLMessageOwnerTypeUnknown,  // 未知的消息拥有者
     TLMessageOwnerTypeSystem,   // 系统消息
     TLMessageOwnerTypeSelf,     // 自己发送的消息
-    TLMessageOwnerTypeOther,    // 接收到的他人消息
+    TLMessageOwnerTypeFriend,   // 接收到的他人消息
 };
 
 /**
@@ -41,10 +49,12 @@ typedef NS_ENUM(NSUInteger, TLMessageReadState) {
 @property (nonatomic, strong) NSString *messageID;                  // 消息ID
 @property (nonatomic, strong) NSString *userID;                     // 发送者ID
 @property (nonatomic, strong) NSString *friendID;                   // 接收者ID
+@property (nonatomic, strong) NSString *groupID;                    // 讨论组ID（无则为nil）
 @property (nonatomic, strong) TLUser *fromUser;                     // 发送者
 
 @property (nonatomic, strong) NSDate *date;                         // 发送时间
 
+@property (nonatomic, assign) TLPartnerType partnerType;            // 对方类型
 @property (nonatomic, assign) TLMessageType messageType;            // 消息类型
 @property (nonatomic, assign) TLMessageOwnerType ownerTyper;        // 发送者类型
 @property (nonatomic, assign) TLMessageReadState readState;         // 读取状态

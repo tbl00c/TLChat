@@ -20,7 +20,7 @@
  *  获取与某个好友的聊天记录
  */
 - (void)messagesByUserID:(NSString *)userID
-                friendID:(NSString *)friendID
+               partnerID:(NSString *)partnerID
                 fromDate:(NSDate *)date
                    count:(NSUInteger)count
                 complete:(void (^)(NSArray *data, BOOL hasMore))complete;

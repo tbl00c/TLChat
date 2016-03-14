@@ -29,8 +29,9 @@ static UILabel *textLabel;
 {
     if (_frame == nil) {
         _frame = [[TLMessageFrame alloc] init];
-        _frame.height = 40 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0);
+        _frame.height = 20 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0);
         if (self.messageType == TLMessageTypeText) {
+            _frame.height += 20;
             [textLabel setText:self.text];
             _frame.contentSize = [textLabel sizeThatFits:CGSizeMake(MAX_MESSAGE_WIDTH, MAXFLOAT)];
         }

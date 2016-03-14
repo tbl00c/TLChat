@@ -9,6 +9,8 @@
 #import "TLImageMessageCell.h"
 #import <UIImageView+WebCache.h>
 
+#define     MSG_SPACE_TOP       2
+
 @interface TLImageMessageCell ()
 
 @property (nonatomic, strong) UIImageView *msgImageView;
@@ -46,13 +48,13 @@
     if (lastOwnType != message.ownerTyper) {
         if (message.ownerTyper == TLMessageOwnerTypeSelf) {
             [self.msgImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.avatarButton);
+                make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
                 make.right.mas_equalTo(self.messageBackgroundView);
             }];
         }
         else if (message.ownerTyper == TLMessageOwnerTypeFriend){
             [self.msgImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.avatarButton);
+                make.top.mas_equalTo(self.messageBackgroundView).mas_equalTo(MSG_SPACE_TOP);
                 make.left.mas_equalTo(self.messageBackgroundView);
             }];
         }

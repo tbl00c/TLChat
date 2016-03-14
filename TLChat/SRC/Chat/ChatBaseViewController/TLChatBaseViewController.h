@@ -62,6 +62,6 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 /**
  *  发送图片信息
  */
-- (void)sendImageMessage:(NSString *)imagePath;
+- (void)sendImageMessage:(UIImage *)image;
 
 @end

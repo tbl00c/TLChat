@@ -86,18 +86,41 @@
 /**
  *  发送图片消息
  */
-- (void)sendImageMessage:(NSString *)imagePath
+- (void)sendImageMessage:(UIImage *)image
 {
-    [self chatBar:nil sendText:@"[图片消息，即将支持]"];
-//    TLMessage *message = [[TLMessage alloc] init];
-//    message.fromID = [TLUserHelper sharedHelper].userID;
-//    message.toID = self.user.userID;
-//    message.fromUser = [TLUserHelper sharedHelper].user;
-//    message.messageType = TLMessageTypeText;
-//    message.ownerTyper = TLMessageOwnerTypeSelf;
-//    message.imagePath = imagePath;
-//    message.showName = NO;
-//    [self p_sendMessage:message];
+    NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
+    NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
+    NSString *imagePath = [NSFileManager pathUserChatAvatar:imageName forUser:[TLUserHelper sharedHelper].userID];
+    [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
+    
+    TLMessage *message = [[TLMessage alloc] init];
+    message.fromUser = [TLUserHelper sharedHelper].user;
+    message.messageType = TLMessageTypeImage;
+    message.ownerTyper = TLMessageOwnerTypeSelf;
+    message.imagePath = imageName;
+    message.showName = NO;
+    [self p_sendMessage:message];
+    if (self.curChatType == TLChatVCTypeFriend) {
+        TLMessage *message1 = [[TLMessage alloc] init];
+        message1.fromUser = self.user;
+        message1.messageType = TLMessageTypeImage;
+        message1.ownerTyper = TLMessageOwnerTypeFriend;
+        message1.imagePath = imagePath;
+        message1.showName = NO;
+        [self p_sendMessage:message1];
+    }
+    else {
+        for (TLUser *user in self.group.users) {
+            TLMessage *message1 = [[TLMessage alloc] init];
+            message1.friendID = user.userID;
+            message1.fromUser = user;
+            message1.messageType = TLMessageTypeImage;
+            message1.ownerTyper = TLMessageOwnerTypeFriend;
+            message1.imagePath = imageName;
+            message1.showName = NO;
+            [self p_sendMessage:message1];
+        }
+    }
 }
 
 #pragma mark - Delegate -

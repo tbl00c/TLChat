@@ -25,7 +25,18 @@
     }
     message.ownerTyper = self.ownerType;
     message.date = [NSDate dateWithTimeIntervalSince1970:self.date.doubleValue];
+    
     message.messageType = self.msgType;
+    NSData *jsonData = [self.content dataUsingEncoding:NSASCIIStringEncoding];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+    if (message.messageType == TLMessageTypeText) {
+        message.text = [dic valueForKey:@"text"];
+    }
+    else if (message.messageType == TLMessageTypeImage) {
+        message.imagePath = [dic valueForKey:@"path"];
+        message.imageURL = [dic valueForKey:@"url"];
+    }
+    
     message.text = self.content;
     message.sendState = self.sendStatus;
     message.readState= self.receivedStatus;
@@ -55,7 +66,17 @@
     dbMessage.date = [NSString stringWithFormat:@"%lf", self.date.timeIntervalSince1970];
     
     dbMessage.msgType = self.messageType;
-    dbMessage.content = self.text;
+    NSString *contentStr = @"";
+    if (self.messageType == TLMessageTypeText) {
+        NSDictionary *dic = @{@"text":self.text};
+        contentStr = [dic mj_JSONString];
+    }
+    else if (self.messageType == TLMessageTypeImage) {
+        NSDictionary *dic = @{@"path":self.imagePath.length > 0 ? self.imagePath : @"",
+                              @"url":self.imageURL.length > 0 ? self.imageURL : @""};
+        contentStr = [dic mj_JSONString];
+    }
+    dbMessage.content = contentStr;
     
     dbMessage.sendStatus = self.sendState;
     dbMessage.receivedStatus = self.readState;

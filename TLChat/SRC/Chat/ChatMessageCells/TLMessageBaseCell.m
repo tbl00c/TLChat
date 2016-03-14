@@ -21,10 +21,8 @@
 #define     AVATAR_SPACE_X      8.0f
 #define     AVATAR_SPACE_Y      12.0f
 
-#define     MSGBG_SPACE_X       5.0f
+#define     MSGBG_SPACE_X       7.0f
 #define     MSGBG_SPACE_Y       1.0f
-
-#define     BOTTOM_SPACE        0.0f
 
 @interface TLMessageBaseCell ()
 
@@ -121,8 +119,6 @@
         make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y);
     }];
     
-    [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_bg"]];
-    [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_bgHL"]];
     [self.messageBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X);
         make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y);

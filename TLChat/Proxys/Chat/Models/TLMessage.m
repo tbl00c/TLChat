@@ -29,12 +29,26 @@ static UILabel *textLabel;
 {
     if (_frame == nil) {
         _frame = [[TLMessageFrame alloc] init];
-        _frame.height = 32 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0);
+        _frame.height = 40 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0);
         if (self.messageType == TLMessageTypeText) {
             [textLabel setText:self.text];
-            CGSize size = [textLabel sizeThatFits:CGSizeMake(MAX_MESSAGE_WIDTH, MAXFLOAT)];
-            size.height = (size.height < 28 ? 28 : size.height);
-            _frame.contentSize = size;
+            _frame.contentSize = [textLabel sizeThatFits:CGSizeMake(MAX_MESSAGE_WIDTH, MAXFLOAT)];
+        }
+        else if (self.messageType == TLMessageTypeImage){
+            if (self.imagePath) {
+                NSString *imagePath = [NSFileManager pathUserChatAvatar:self.imagePath forUser:self.userID];
+                UIImage *image = [UIImage imageNamed:imagePath];
+                if (image.size.width > image.size.height) {
+                    CGFloat height = MAX_MESSAGE_IMAGE_WIDTH * image.size.height / image.size.width;
+                    height = height < MIN_MESSAGE_IMAGE_WIDTH ? MIN_MESSAGE_IMAGE_WIDTH : height;
+                    _frame.contentSize = CGSizeMake(MAX_MESSAGE_IMAGE_WIDTH, height);
+                }
+                else {
+                    CGFloat width = MAX_MESSAGE_IMAGE_WIDTH * image.size.width / image.size.height;
+                    width = width < MIN_MESSAGE_IMAGE_WIDTH ? MIN_MESSAGE_IMAGE_WIDTH : width;
+                    _frame.contentSize = CGSizeMake(width, MAX_MESSAGE_IMAGE_WIDTH);
+                }
+            }
         }
         _frame.height += _frame.contentSize.height;
     }

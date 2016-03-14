@@ -9,6 +9,7 @@
 #import "TLChatTableViewController.h"
 #import "TLFriendDetailViewController.h"
 #import "TLTextMessageCell.h"
+#import "TLImageMessageCell.h"
 #import <MJRefresh.h>
 
 #define     PAGE_MESSAGE_COUNT      15
@@ -46,6 +47,7 @@
     [self.tableView setMj_header:self.refresHeader];
     
     [self.tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
+    [self.tableView registerClass:[TLImageMessageCell class] forCellReuseIdentifier:@"TLImageMessageCell"];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchTableView)];
     [self.tableView addGestureRecognizer:tap];
@@ -91,7 +93,13 @@
 {
     TLMessage *message = self.data[indexPath.row];
     if (message.messageType == TLMessageTypeText) {
-        TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell" forIndexPath:indexPath];
+        TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell"];
+        [cell setMessage:message];
+        [cell setDelegate:self];
+        return cell;
+    }
+    else if (message.messageType == TLMessageTypeImage) {
+        TLImageMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLImageMessageCell"];
         [cell setMessage:message];
         [cell setDelegate:self];
         return cell;

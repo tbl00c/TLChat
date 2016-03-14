@@ -8,10 +8,10 @@
 
 #import "TLTextMessageCell.h"
 
-#define     MSG_SPACE_TOP       9
-#define     MSG_SPACE_BTM       16
-#define     MSG_SPACE_LEFT      18
-#define     MSG_SPACE_RIGHT     18
+#define     MSG_SPACE_TOP       14
+#define     MSG_SPACE_BTM       20
+#define     MSG_SPACE_LEFT      19
+#define     MSG_SPACE_RIGHT     22
 
 @interface TLTextMessageCell ()
 
@@ -31,39 +31,47 @@
 
 - (void)setMessage:(TLMessage *)message
 {
+    if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
+        return;
+    }
+    TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
     [self.messageLabel setText:message.text];
     
     [self.messageLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
     [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
-    if (message.ownerTyper == TLMessageOwnerTypeSelf) {
-        [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_bg"]];
-        [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_bgHL"]];
-        
-        [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT);
-            make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
-            make.size.mas_equalTo(message.frame.contentSize);
-        }];
-        [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.messageLabel).mas_offset(-MSG_SPACE_LEFT);
-            make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM);
-        }];
+    if (lastOwnType != message.ownerTyper) {
+        if (message.ownerTyper == TLMessageOwnerTypeSelf) {
+            [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_bg"]];
+            [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_bgHL"]];
+            
+            [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT);
+                make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
+            }];
+            [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(self.messageLabel).mas_offset(-MSG_SPACE_LEFT);
+                make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM);
+            }];
+        }
+        else if (message.ownerTyper == TLMessageOwnerTypeFriend){
+            [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_receiver_bg"]];
+            [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_receiver_bgHL"]];
+            
+            [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_LEFT);
+                make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
+            }];
+            [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_RIGHT);
+                make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM);
+            }];
+        }
     }
-    else if (message.ownerTyper == TLMessageOwnerTypeFriend){
-        [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_receiver_bg"]];
-        [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_receiver_bgHL"]];
-        
-        [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_RIGHT);
-            make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
-            make.size.mas_equalTo(message.frame.contentSize);
-        }];
-        [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_LEFT);
-            make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM);
-        }];
-    }
+    
+    [self.messageLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(message.frame.contentSize);
+    }];
 }
 
 #pragma mark - Getter -

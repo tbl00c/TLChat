@@ -100,9 +100,10 @@
 }
 
 //MARK: UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    return 60.0f;
+    TLMessage *message = self.data[indexPath.row];
+    return message.frame.height;
 }
 
 //MARK: TLMessageCellDelegate

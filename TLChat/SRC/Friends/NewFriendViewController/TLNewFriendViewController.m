@@ -63,7 +63,7 @@
 {
     if (indexPath.section == 0) {
         TLAddThirdPartFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLAddThirdPartFriendCell"];
-        [cell setThridPartItems:@[TLThirdPartFriendTypeContacts, TLThirdPartFriendTypeQQ]];
+        [cell setThridPartItems:@[TLThirdPartFriendTypeContacts]];
         [cell setDelegate:self];
         return cell;
     }

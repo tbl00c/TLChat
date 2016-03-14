@@ -39,12 +39,7 @@
 {
     if (indexPath.section == 0 && indexPath.row == 0) {
         TLUserGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLUserGroupCell"];
-        NSMutableArray *users = [[NSMutableArray alloc] init];
-        for (NSString *userID in self.group.users) {
-            TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
-            [users addObject:user];
-        }
-        [cell setUsers:users];
+        [cell setUsers:self.group.users];
         [cell setDelegate:self];
         return cell;
     }

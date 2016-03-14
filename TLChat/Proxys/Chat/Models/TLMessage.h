@@ -8,6 +8,7 @@
 
 #import "TLBaseDataModel.h"
 #import "TLUser.h"
+#import "TLMessageFrame.h"
 #import <MapKit/MapKit.h>
 
 /**
@@ -79,5 +80,9 @@ typedef NS_ENUM(NSUInteger, TLMessageReadState) {
 @property (nonatomic, assign) NSUInteger voiceSeconds;              // 语音时间
 @property (nonatomic, strong) NSString *voiceUrl;                   // 网络语音URL
 @property (nonatomic, strong) NSString *voicePath;                  // 本地语音Path
+
+
+@property (nonatomic, strong) TLMessageFrame *frame;                // 消息frame
+
 
 @end

@@ -22,7 +22,7 @@
     [self p_initThirdPartSDK];
     [self p_initUserData];
     
-    DDLogInfo(@"%@", [NSFileManager documentsPath]);
+//    DDLogInfo(@"%@", [NSFileManager documentsPath]);
     
     return YES;
 }

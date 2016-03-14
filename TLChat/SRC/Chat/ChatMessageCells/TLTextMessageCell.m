@@ -43,7 +43,7 @@
         [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT);
             make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
-            make.width.mas_lessThanOrEqualTo(MAX_MESSAGE_WIDTH);
+            make.size.mas_equalTo(message.frame.contentSize);
         }];
         [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.messageLabel).mas_offset(-MSG_SPACE_LEFT);
@@ -57,7 +57,7 @@
         [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_RIGHT);
             make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
-            make.width.mas_lessThanOrEqualTo(MAX_MESSAGE_WIDTH);
+            make.size.mas_equalTo(message.frame.contentSize);
         }];
         [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_LEFT);
@@ -71,7 +71,7 @@
 {
     if (_messageLabel == nil) {
         _messageLabel = [[UILabel alloc] init];
-        [_messageLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        [_messageLabel setFont:[UIFont fontTextMessageText]];
         [_messageLabel setNumberOfLines:0];
     }
     return _messageLabel;

@@ -116,11 +116,6 @@
         make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X);
         make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y);
     }];
-    
-    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.messageBackgroundView).mas_offset(BOTTOM_SPACE);
-        make.top.and.left.and.right.mas_equalTo(0);
-    }];
 }
 
 #pragma mark - Event Response -

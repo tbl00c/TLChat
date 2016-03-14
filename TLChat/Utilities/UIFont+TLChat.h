@@ -11,21 +11,25 @@
 @interface UIFont (TLChat)
 
 #pragma mark - Common
-+ (UIFont *) fontNavBarTitle;
++ (UIFont *)fontNavBarTitle;
 
 #pragma mark - Conversation
-+ (UIFont *) fontConversationUsername;
-+ (UIFont *) fontConversationDetail;
-+ (UIFont *) fontConversationTime;
++ (UIFont *)fontConversationUsername;
++ (UIFont *)fontConversationDetail;
++ (UIFont *)fontConversationTime;
 
 #pragma mark - Friends
 + (UIFont *) fontFriendsUsername;
 
 #pragma mark - Mine
-+ (UIFont *) fontMineNikename;
-+ (UIFont *) fontMineUsername;
++ (UIFont *)fontMineNikename;
++ (UIFont *)fontMineUsername;
 
 #pragma mark - Setting
-+ (UIFont *) fontSettingHeaderAndFooterTitle;
++ (UIFont *)fontSettingHeaderAndFooterTitle;
+
+
+#pragma mark - Chat
++ (UIFont *)fontTextMessageText;
 
 @end

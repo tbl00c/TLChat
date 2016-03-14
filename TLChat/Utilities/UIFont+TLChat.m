@@ -50,4 +50,9 @@
     return [UIFont systemFontOfSize:14.0f];
 }
 
++ (UIFont *)fontTextMessageText
+{
+    return [UIFont systemFontOfSize:16.0f];
+}
+
 @end

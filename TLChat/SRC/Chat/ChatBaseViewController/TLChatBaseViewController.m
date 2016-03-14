@@ -171,10 +171,9 @@
         [self p_sendMessage:message1];
     }
     else {
-        for (NSString *userID in self.group.users) {
-            TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
+        for (TLUser *user in self.group.users) {
             TLMessage *message1 = [[TLMessage alloc] init];
-            message1.friendID = userID;
+            message1.friendID = user.userID;
             message1.fromUser = user;
             message1.messageType = TLMessageTypeText;
             message1.ownerTyper = TLMessageOwnerTypeFriend;

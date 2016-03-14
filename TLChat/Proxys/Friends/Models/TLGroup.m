@@ -12,6 +12,16 @@
 
 @implementation TLGroup
 
+- (id)init
+{
+    if (self = [super init]) {
+        [TLGroup mj_setupObjectClassInArray:^NSDictionary *{
+            return @{ @"users" : @"TLUser" };
+        }];
+    }
+    return self;
+}
+
 - (NSInteger)count
 {
     return self.users.count;
@@ -30,8 +40,7 @@
 - (NSString *)groupName
 {
     if (_groupName == nil || _groupName.length == 0) {
-        for (NSString *userID in self.users) {
-            TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userID];
+        for (TLUser *user in self.users) {
             if (user.showName.length > 0) {
                 if (_groupName == nil || _groupName.length <= 0) {
                     _groupName = user.showName;

@@ -7,6 +7,7 @@
 //
 
 #import "TLBaseDataModel.h"
+#import "TLUser.h"
 
 @interface TLGroup : TLBaseDataModel
 

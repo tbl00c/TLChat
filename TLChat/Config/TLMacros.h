@@ -22,15 +22,20 @@
 #define     HEIGHT_TABBAR               49.0f
 #define     HEIGHT_NAVBAR               44.0f
 #define     NAVBAR_ITEM_FIXED_SPACE     5.0f
+#define     MAX_MESSAGE_WIDTH           200.0f
+
 
 #define mark - Default
 #define     DEFAULT_AVATAR_PATH    @"default_head"
+
 
 #pragma mark - Methods
 #define     TLURL(urlString)    [NSURL URLWithString:urlString]
 #define     TLColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
 
+
 #pragma mark - ThirdPart KEY
 #define     UMENG_APPKEY       @"56b8ba33e0f55a15480020b0"
+
 
 #endif /* TLMacros_h */

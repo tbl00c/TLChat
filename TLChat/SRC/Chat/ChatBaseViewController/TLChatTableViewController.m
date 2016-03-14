@@ -54,7 +54,7 @@
 }
 
 #pragma mark - Public Methods -
-- (void)clearData
+- (void)reloadData
 {
     [self.data removeAllObjects];
     [self.tableView reloadData];
@@ -132,6 +132,9 @@
 }
 
 #pragma mark - Event Response -
+/**
+ *  获取聊天历史记录
+ */
 - (void)p_tryToRefreshMoreRecord:(void (^)(NSInteger count, BOOL hasMore))complete
 {
     if (_delegate && [_delegate respondsToSelector:@selector(chatRecordsFromDate:count:completed:)]) {

@@ -21,6 +21,7 @@
         NSUInteger row = [self.dataSource tableView:self numberOfRowsInSection:section];
         if (row > 0) {
             [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row - 1 inSection:section] atScrollPosition:UITableViewScrollPositionBottom animated:animation];
+//            [self scrollRectToVisible:CGRectMake(0, self.contentSize.height - self.height, self.width, self.height) animated:animation];
         }
     }
 }

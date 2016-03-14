@@ -38,8 +38,8 @@
 - (void)scrollToBottomWithAnimation:(BOOL)animation;
 
 /**
- *  清楚用户信息
+ *  重新加载聊天信息
  */
-- (void)clearData;
+- (void)reloadData;
 
 @end

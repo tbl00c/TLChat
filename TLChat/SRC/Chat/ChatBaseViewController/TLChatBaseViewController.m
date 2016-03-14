@@ -205,8 +205,6 @@
             [self p_sendMessage:message1];
         }
     }
-
-    [self.chatTableVC scrollToBottomWithAnimation:YES];
 }
 
 //MARK: TLEmojiKeyboardDelegate
@@ -250,7 +248,7 @@
     message.date = [NSDate date];
 //    message.showName = NO;
     
-    [self p_addMessage:message];
+    [self p_addMessage:message];    // 添加到列表
     [self.messageManager sendMessage:message progress:^(TLMessage *message, CGFloat pregress) {
         
     } success:^(TLMessage *message) {
@@ -267,6 +265,7 @@
 {
     message.showTime = [self p_needShowTime:message.date];
     [self.chatTableVC addMessage:message];
+    [self.chatTableVC scrollToBottomWithAnimation:YES];
 }
 
 /**
@@ -274,7 +273,7 @@
  */
 - (void)p_resetChatVC
 {
-    [self.chatTableVC clearData];
+    [self.chatTableVC reloadData];
     lastDateInterval = 0;
     msgAccumulate = 0;
 }

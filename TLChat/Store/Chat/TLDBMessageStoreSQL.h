@@ -30,7 +30,6 @@
 
 #define     ADD_MESSAGE_SQL         @"REPLACE INTO %@ ( msgid, uid, fid, date, own_type, msg_type, content, send_status, received_status, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
-
-#define     MESSAGES_PAGE_SQL   @"SELECT * FROM %@ WHERE uid = '%@' and fid = '%@' and date < '%@' order by date desc LIMIT '%ld'"
+#define     MESSAGES_PAGE_SQL       @"SELECT * FROM %@ WHERE uid = '%@' and fid = '%@' and date < '%@' order by date desc LIMIT '%ld'"
 
 #endif /* TLDBMessageStoreSQL_h */

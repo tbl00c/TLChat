@@ -117,10 +117,9 @@
     [self.messageManager messageRecordForUser:[TLUserHelper sharedHelper].userID toFriend:self.user.userID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
         if (array.count > 0) {
             int count = 0;
-            NSTimeInterval tm = date.timeIntervalSince1970;
-            for (NSInteger i = array.count - 1; i >= 0; i --) {
-                TLMessage *message = array[i];
-                if (++count > MAX_SHOWTIME_MSG_COUNT || message.date.timeIntervalSince1970 - tm > MAX_SHOWTIME_MSG_SECOND) {
+            NSTimeInterval tm = 0;
+            for (TLMessage *message in array) {
+                if (++count > MAX_SHOWTIME_MSG_COUNT || tm == 0 || message.date.timeIntervalSince1970 - tm > MAX_SHOWTIME_MSG_SECOND) {
                     tm = message.date.timeIntervalSince1970;
                     count = 0;
                     message.showTime = YES;

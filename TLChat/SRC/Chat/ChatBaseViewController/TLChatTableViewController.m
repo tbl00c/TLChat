@@ -28,7 +28,7 @@
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setBackgroundColor:[UIColor colorChatTableViewBG]];
-    [self.tableView setTableFooterView:[[UIView alloc] init]];
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 20)]];
     self.refresHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self p_tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {
             [self.tableView.mj_header endRefreshing];
@@ -91,7 +91,7 @@
 {
     TLMessage *message = self.data[indexPath.row];
     if (message.messageType == TLMessageTypeText) {
-        TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell"];
+        TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell" forIndexPath:indexPath];
         [cell setMessage:message];
         [cell setDelegate:self];
         return cell;

@@ -21,7 +21,7 @@
 #define     AVATAR_SPACE_X      8.0f
 #define     AVATAR_SPACE_Y      12.0f
 
-#define     MSGBG_SPACE_X       3.0f
+#define     MSGBG_SPACE_X       5.0f
 #define     MSGBG_SPACE_Y       1.0f
 
 #define     BOTTOM_SPACE        0.0f
@@ -48,46 +48,57 @@
 
 - (void)setMessage:(TLMessage *)message
 {
-    _message = message;
+    if (_message && [_message.messageID isEqualToString:message.messageID]) {
+        return;
+    }
     [self.timeLabel setText:[NSString stringWithFormat:@"  %@  ", message.date.chatTimeInfo]];
     [self.usernameLabel setText:message.fromUser.showName];
     [self.avatarButton sd_setImageWithURL:TLURL(message.fromUser.avatarURL) forState:UIControlStateNormal];
     
     // 时间
-    [self.timeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(message.showTime ? TIMELABEL_HEIGHT : 0);
-        make.top.mas_equalTo(self.contentView).mas_offset(message.showTime ? TIMELABEL_SPACE_Y : 0);
-    }];
+    if (!_message || _message.showTime != message.showTime) {
+        [self.timeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(message.showTime ? TIMELABEL_HEIGHT : 0);
+            make.top.mas_equalTo(self.contentView).mas_offset(message.showTime ? TIMELABEL_SPACE_Y : 0);
+        }];
+    }
     
-    // 用户名
-    [self.usernameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+    if (!message || _message.ownerTyper != message.ownerTyper) {
+        // 头像
+        [self.avatarButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.and.height.mas_equalTo(AVATAR_WIDTH);
+            make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y);
+            if(message.ownerTyper == TLMessageOwnerTypeSelf) {
+                make.right.mas_equalTo(self.contentView).mas_offset(-AVATAR_SPACE_X);
+            }
+            else {
+                make.left.mas_equalTo(self.contentView).mas_offset(AVATAR_SPACE_X);
+            }
+        }];
+        
+        // 用户名
+        [self.usernameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.avatarButton).mas_equalTo(-NAMELABEL_SPACE_Y);
+            if (message.ownerTyper == TLMessageOwnerTypeSelf) {
+                make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(- NAMELABEL_SPACE_X);
+            }
+            else {
+                make.left.mas_equalTo(self.avatarButton.mas_right).mas_equalTo(NAMELABEL_SPACE_X);
+            }
+        }];
+        
+        // 背景
+        [self.messageBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            message.ownerTyper == TLMessageOwnerTypeSelf ? make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X) : make.left.mas_equalTo(self.avatarButton.mas_right).mas_offset(MSGBG_SPACE_X);
+            make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(message.showName ? 0 : -MSGBG_SPACE_Y);
+        }];
+    }
+    
+    [self.usernameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(message.showName ? NAMELABEL_HEIGHT : 0);
-        make.top.mas_equalTo(self.avatarButton).mas_equalTo(-NAMELABEL_SPACE_Y);
-        if (message.ownerTyper == TLMessageOwnerTypeSelf) {
-            make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(- NAMELABEL_SPACE_X);
-        }
-        else {
-            make.left.mas_equalTo(self.avatarButton.mas_right).mas_equalTo(NAMELABEL_SPACE_X);
-        }
     }];
     
-    // 头像
-    [self.avatarButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.width.and.height.mas_equalTo(AVATAR_WIDTH);
-        make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y);
-        if(message.ownerTyper == TLMessageOwnerTypeSelf) {
-            make.right.mas_equalTo(self.contentView).mas_offset(-AVATAR_SPACE_X);
-        }
-        else {
-            make.left.mas_equalTo(self.contentView).mas_offset(AVATAR_SPACE_X);
-        }
-    }];
-    
-    // 背景
-    [self.messageBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        message.ownerTyper == TLMessageOwnerTypeSelf ? make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X) : make.left.mas_equalTo(self.avatarButton.mas_right).mas_offset(MSGBG_SPACE_X);
-        make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(message.showName ? 0 : -MSGBG_SPACE_Y);
-    }];
+    _message = message;
 }
 
 #pragma mark - Private Methods -

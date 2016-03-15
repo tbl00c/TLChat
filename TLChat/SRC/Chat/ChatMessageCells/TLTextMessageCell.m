@@ -36,7 +36,7 @@
     }
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
-    [self.messageLabel setAttributedText:self.message.attrText];
+    [self.messageLabel setAttributedText:message.attrText];
     
     [self.messageLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
     [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];

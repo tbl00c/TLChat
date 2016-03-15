@@ -21,7 +21,7 @@
     NSError *error = nil;
     NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:regex_emoji options:NSRegularExpressionCaseInsensitive error:&error];
     if (!re) {
-        NSLog(@"%@", [error localizedDescription]);
+        NSLog(@"[NSString toMessageString]: %@", [error localizedDescription]);
         return attributeString;
     }
     
@@ -37,6 +37,9 @@
         NSString *subStr = [self substringWithRange:range];
         
         TLEmojiGroup *group = [[TLEmojiKBHelper sharedKBHelper] defaultFaceGroup];
+        if (group.data == nil) {
+            group.data = [TLEmojiKBHelper getEmojiDataByPath:group.dataPath];
+        }
         for (TLEmoji *emoji in group.data) {
             if ([emoji.title isEqualToString:subStr]) {
                 //face[i][@"png"]就是我们要加载的图片

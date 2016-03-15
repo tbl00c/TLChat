@@ -21,7 +21,7 @@
 #define     AVATAR_SPACE_X      8.0f
 #define     AVATAR_SPACE_Y      12.0f
 
-#define     MSGBG_SPACE_X       7.0f
+#define     MSGBG_SPACE_X       5.0f
 #define     MSGBG_SPACE_Y       1.0f
 
 @interface TLMessageBaseCell ()

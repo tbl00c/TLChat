@@ -66,7 +66,7 @@
 {
     [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
         [self.navigationController popViewControllerAnimated:YES];
-    } title:@"错误" message:errorString cancelButtonName:@"确定" otherButtonTitles:nil];
+    } title:@"错误" message:errorString cancelButtonTitle:@"确定" otherButtonTitles:nil];
 }
 
 - (void)scannerViewController:(TLScannerViewController *)scannerVC scanAnswer:(NSString *)ansStr
@@ -125,7 +125,7 @@
                 if (ansStr == nil) {
                     [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
                         [self.scanVC startCodeReading];
-                    } title:@"扫描失败" message:@"请换张图片，或换个设备重试~" cancelButtonName:@"确定" otherButtonTitles:nil];
+                    } title:@"扫描失败" message:@"请换张图片，或换个设备重试~" cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 }
                 else {
                     [self p_analysisQRAnswer:ansStr];
@@ -164,7 +164,7 @@
     else {
         [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
             [self.scanVC startCodeReading];
-        } title:@"扫描结果" message:ansStr cancelButtonName:@"确定" otherButtonTitles:nil];
+        } title:@"扫描结果" message:ansStr cancelButtonTitle:@"确定" otherButtonTitles:nil];
     }
 }
 

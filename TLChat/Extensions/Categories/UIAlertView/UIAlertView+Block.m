@@ -13,9 +13,13 @@ static NSString *UIAlertViewKey = @"UIAlertViewKey";
 
 @implementation UIAlertView (Blocks)
 
-+ (void)alertWithCallBackBlock:(UIAlertViewCallBackBlock)alertViewCallBackBlock title:(NSString *)title message:(NSString *)message  cancelButtonName:(NSString *)cancelButtonName otherButtonTitles:(NSString *)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION {
++ (void)alertWithCallBackBlock:(UIAlertViewCallBackBlock)alertViewCallBackBlock
+                         title:(NSString *)title
+                       message:(NSString *)message
+             cancelButtonTitle:(NSString *)cancelButtonTitle
+             otherButtonTitles:(NSString *)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION {
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:cancelButtonName otherButtonTitles: otherButtonTitles, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles: otherButtonTitles, nil];
     NSString *other = nil;
     va_list args;
     if (otherButtonTitles) {

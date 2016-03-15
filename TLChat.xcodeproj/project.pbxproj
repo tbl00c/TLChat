@@ -21,6 +21,12 @@
 		C2028D481C8D698C0060E271 /* TLTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D471C8D698C0060E271 /* TLTagCell.m */; };
 		C20829171C88113600034998 /* TLImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20829161C88113600034998 /* TLImagePickerController.m */; };
 		C209073C1C97B91B00AB87A5 /* TLMessageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C209073B1C97B91B00AB87A5 /* TLMessageImageView.m */; };
+		C20907451C97ED0700AB87A5 /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C20907441C97ED0700AB87A5 /* JSPatch.framework */; };
+		C209074B1C97ED7300AB87A5 /* FaceEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C20907471C97ED7300AB87A5 /* FaceEmoji.json */; };
+		C209074C1C97ED7300AB87A5 /* SystemEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C20907481C97ED7300AB87A5 /* SystemEmoji.json */; };
+		C209074D1C97ED7300AB87A5 /* TusijiEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C20907491C97ED7300AB87A5 /* TusijiEmoji.json */; };
+		C209074E1C97ED7300AB87A5 /* TusijiTitleEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C209074A1C97ED7300AB87A5 /* TusijiTitleEmoji.json */; };
+		C20907531C97F15200AB87A5 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = C20907521C97F15200AB87A5 /* main.js */; };
 		C2097EE81C52326500163B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097EE71C52326500163B5C /* main.m */; };
 		C2097F011C52326500163B5C /* TLChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F001C52326500163B5C /* TLChatTests.m */; };
 		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
@@ -177,16 +183,12 @@
 		C2F0EC151C7AB1BB0090843C /* TLAboutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC141C7AB1BB0090843C /* TLAboutHelper.m */; };
 		C2F0EC181C7AB6E30090843C /* TLAboutHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC171C7AB6E30090843C /* TLAboutHeaderView.m */; };
 		C2F0EC1C1C7ABF190090843C /* TLAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */; };
-		C2F6174B1C8FCE0500A8D9E6 /* SystemEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F6174A1C8FCE0500A8D9E6 /* SystemEmoji.json */; };
 		C2F6175E1C8FD50F00A8D9E6 /* TLEmojiImageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F6174E1C8FD50F00A8D9E6 /* TLEmojiImageItemCell.m */; };
 		C2F6175F1C8FD50F00A8D9E6 /* TLEmojiImageTitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F617501C8FD50F00A8D9E6 /* TLEmojiImageTitleItemCell.m */; };
 		C2F617601C8FD50F00A8D9E6 /* TLEmojiItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F617521C8FD50F00A8D9E6 /* TLEmojiItemCell.m */; };
 		C2F617621C8FD50F00A8D9E6 /* TLEmojiGroupControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F617581C8FD50F00A8D9E6 /* TLEmojiGroupControl.m */; };
 		C2F617631C8FD50F00A8D9E6 /* TLEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F6175B1C8FD50F00A8D9E6 /* TLEmoji.m */; };
 		C2F617641C8FD50F00A8D9E6 /* TLEmojiGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F6175D1C8FD50F00A8D9E6 /* TLEmojiGroup.m */; };
-		C2F617661C8FD88E00A8D9E6 /* FaceEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F617651C8FD88E00A8D9E6 /* FaceEmoji.json */; };
-		C2F6176A1C8FE29900A8D9E6 /* TusijiEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F617691C8FE29900A8D9E6 /* TusijiEmoji.json */; };
-		C2F6176C1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F6176B1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json */; };
 		C2F617741C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F617731C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m */; };
 		C2F617771C8FFB9500A8D9E6 /* TLEmojiBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F617761C8FFB9500A8D9E6 /* TLEmojiBaseCell.m */; };
 		C2F617811C902F6000A8D9E6 /* TLChatBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F6177E1C902F6000A8D9E6 /* TLChatBaseViewController.m */; };
@@ -245,6 +247,12 @@
 		C20829161C88113600034998 /* TLImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImagePickerController.m; sourceTree = "<group>"; };
 		C209073A1C97B91B00AB87A5 /* TLMessageImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageImageView.h; sourceTree = "<group>"; };
 		C209073B1C97B91B00AB87A5 /* TLMessageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessageImageView.m; sourceTree = "<group>"; };
+		C20907441C97ED0700AB87A5 /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
+		C20907471C97ED7300AB87A5 /* FaceEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FaceEmoji.json; sourceTree = "<group>"; };
+		C20907481C97ED7300AB87A5 /* SystemEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SystemEmoji.json; sourceTree = "<group>"; };
+		C20907491C97ED7300AB87A5 /* TusijiEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiEmoji.json; sourceTree = "<group>"; };
+		C209074A1C97ED7300AB87A5 /* TusijiTitleEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiTitleEmoji.json; sourceTree = "<group>"; };
+		C20907521C97F15200AB87A5 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		C2097EE31C52326500163B5C /* TLChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2097EE71C52326500163B5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2097EF71C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -559,7 +567,6 @@
 		C2F0EC171C7AB6E30090843C /* TLAboutHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAboutHeaderView.m; sourceTree = "<group>"; };
 		C2F0EC1A1C7ABF190090843C /* TLAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppHelper.h; sourceTree = "<group>"; };
 		C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppHelper.m; sourceTree = "<group>"; };
-		C2F6174A1C8FCE0500A8D9E6 /* SystemEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SystemEmoji.json; sourceTree = "<group>"; };
 		C2F6174D1C8FD50F00A8D9E6 /* TLEmojiImageItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiImageItemCell.h; sourceTree = "<group>"; };
 		C2F6174E1C8FD50F00A8D9E6 /* TLEmojiImageItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiImageItemCell.m; sourceTree = "<group>"; };
 		C2F6174F1C8FD50F00A8D9E6 /* TLEmojiImageTitleItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiImageTitleItemCell.h; sourceTree = "<group>"; };
@@ -572,9 +579,6 @@
 		C2F6175B1C8FD50F00A8D9E6 /* TLEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmoji.m; sourceTree = "<group>"; };
 		C2F6175C1C8FD50F00A8D9E6 /* TLEmojiGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiGroup.h; sourceTree = "<group>"; };
 		C2F6175D1C8FD50F00A8D9E6 /* TLEmojiGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiGroup.m; sourceTree = "<group>"; };
-		C2F617651C8FD88E00A8D9E6 /* FaceEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FaceEmoji.json; sourceTree = "<group>"; };
-		C2F617691C8FE29900A8D9E6 /* TusijiEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiEmoji.json; sourceTree = "<group>"; };
-		C2F6176B1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiTitleEmoji.json; sourceTree = "<group>"; };
 		C2F617721C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiFaceItemCell.h; sourceTree = "<group>"; };
 		C2F617731C8FF37C00A8D9E6 /* TLEmojiFaceItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiFaceItemCell.m; sourceTree = "<group>"; };
 		C2F617751C8FFB9500A8D9E6 /* TLEmojiBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiBaseCell.h; sourceTree = "<group>"; };
@@ -595,6 +599,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C20907451C97ED0700AB87A5 /* JSPatch.framework in Frameworks */,
 				C2AF1FAA1C6B78F600617D98 /* WebKit.framework in Frameworks */,
 				CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */,
 			);
@@ -708,6 +713,33 @@
 				C20829161C88113600034998 /* TLImagePickerController.m */,
 			);
 			path = TLImagePicker;
+			sourceTree = "<group>";
+		};
+		C20907431C97ED0000AB87A5 /* JSPatch */ = {
+			isa = PBXGroup;
+			children = (
+				C20907441C97ED0700AB87A5 /* JSPatch.framework */,
+			);
+			path = JSPatch;
+			sourceTree = "<group>";
+		};
+		C20907461C97ED7300AB87A5 /* DefaultEmoji */ = {
+			isa = PBXGroup;
+			children = (
+				C20907471C97ED7300AB87A5 /* FaceEmoji.json */,
+				C20907481C97ED7300AB87A5 /* SystemEmoji.json */,
+				C20907491C97ED7300AB87A5 /* TusijiEmoji.json */,
+				C209074A1C97ED7300AB87A5 /* TusijiTitleEmoji.json */,
+			);
+			path = DefaultEmoji;
+			sourceTree = "<group>";
+		};
+		C209074F1C97EE0000AB87A5 /* JSPatch */ = {
+			isa = PBXGroup;
+			children = (
+				C20907521C97F15200AB87A5 /* main.js */,
+			);
+			path = JSPatch;
 			sourceTree = "<group>";
 		};
 		C2097EDA1C52326500163B5C = {
@@ -832,7 +864,7 @@
 		C2142E971C531EFD0030B29B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C2F617491C8FCDF800A8D9E6 /* Json */,
+				C20907461C97ED7300AB87A5 /* DefaultEmoji */,
 				C2142E981C531EFD0030B29B /* Images */,
 				C2F9F67E1C854F67000EE9ED /* TestData */,
 			);
@@ -1787,6 +1819,7 @@
 		C2D500E81C565CC50088997C /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				C20907431C97ED0000AB87A5 /* JSPatch */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -1997,17 +2030,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		C2F617491C8FCDF800A8D9E6 /* Json */ = {
-			isa = PBXGroup;
-			children = (
-				C2F6174A1C8FCE0500A8D9E6 /* SystemEmoji.json */,
-				C2F617651C8FD88E00A8D9E6 /* FaceEmoji.json */,
-				C2F617691C8FE29900A8D9E6 /* TusijiEmoji.json */,
-				C2F6176B1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json */,
-			);
-			path = Json;
-			sourceTree = "<group>";
-		};
 		C2F6174C1C8FD50F00A8D9E6 /* EmojiCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -2072,6 +2094,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F9F67F1C854F77000EE9ED /* Friends */,
+				C209074F1C97EE0000AB87A5 /* JSPatch */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -2193,19 +2216,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C21C6E1E1C8D7B6B0018C570 /* FriendGroupList.json in Resources */,
-				C2F617661C8FD88E00A8D9E6 /* FaceEmoji.json in Resources */,
+				C209074C1C97ED7300AB87A5 /* SystemEmoji.json in Resources */,
 				C2B9E4231C65DD6C00CEBA81 /* Discover.xcassets in Resources */,
+				C209074B1C97ED7300AB87A5 /* FaceEmoji.json in Resources */,
 				C2B9E4331C65F5DA00CEBA81 /* Mine.xcassets in Resources */,
-				C2F6176A1C8FE29900A8D9E6 /* TusijiEmoji.json in Resources */,
+				C209074D1C97ED7300AB87A5 /* TusijiEmoji.json in Resources */,
 				C2D500E71C5639210088997C /* Conversation.xcassets in Resources */,
 				C2CE0BD41C718702006C5C2A /* Chat.xcassets in Resources */,
-				C2F6174B1C8FCE0500A8D9E6 /* SystemEmoji.json in Resources */,
 				C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */,
+				C20907531C97F15200AB87A5 /* main.js in Resources */,
 				C2A1BBCA1C5753420046CA1C /* Friends.xcassets in Resources */,
 				C2F9F6811C854F94000EE9ED /* FriendList.json in Resources */,
 				C2B9E43C1C665AC700CEBA81 /* Common.xcassets in Resources */,
-				C2F6176C1C8FE2F300A8D9E6 /* TusijiTitleEmoji.json in Resources */,
 				C2D69D881C925DE600EE91D7 /* emoji_dapigu.gif in Resources */,
+				C209074E1C97ED7300AB87A5 /* TusijiTitleEmoji.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2572,6 +2596,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TLChat/Extensions/Vendors/JSPatch",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TLChat/PrefixHeader.pch";
 				INFOPLIST_FILE = TLChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2591,6 +2619,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TLChat/Extensions/Vendors/JSPatch",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TLChat/PrefixHeader.pch";
 				INFOPLIST_FILE = TLChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

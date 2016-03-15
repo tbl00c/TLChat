@@ -11,18 +11,20 @@
 
 #import <MobClick.h>
 #import <AFNetworking.h>
+#import <JSPatch/JSPatch.h>
 #import "TLFriendHelper.h"
 
 @implementation TLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self p_initUI];
+    [self p_initAppData];           // 初始化应用信息
+    [self p_initUI];                // 初始化UI
 //    [self p_initTestUI];
-    [self p_initThirdPartSDK];
-    [self p_initUserData];
+    [self p_initThirdPartSDK];      // 初始化第三方SDK
+    [self p_initUserData];          // 初始化用户信息
     
-//    DDLogInfo(@"%@", [NSFileManager documentsPath]);
+    [self p_urgentMethod];          // 紧急方法
     
     return YES;
 }
@@ -60,6 +62,35 @@
     [self.window makeKeyAndVisible];
 }
 
+- (void)p_initThirdPartSDK
+{
+    // 友盟统计
+    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:APP_CHANNEL];
+    
+    // 网络环境监测
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    // JSPatch
+#ifdef DEBUG_JSPATCH
+    [JSPatch testScriptInBundle];
+#else
+    [JSPatch startWithAppKey:JSPATCH_APPKEY];
+    [JSPatch sync];
+#endif
+    
+    // 提示框
+    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    
+    // 日志
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] init];
+    fileLogger.rollingFrequency = 60 * 60 * 24;
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+    [DDLog addLogger:fileLogger];
+}
+
 - (void)p_initUI
 {
     TLRootViewController *rootVC = [TLRootViewController sharedRootViewController];
@@ -69,27 +100,20 @@
     [self.window makeKeyAndVisible];
 }
 
-- (void)p_initThirdPartSDK
-{
-    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:APP_CHANNEL];
-    
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
-    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    DDFileLogger *fileLogger = [[DDFileLogger alloc] init];
-    fileLogger.rollingFrequency = 60 * 60 * 24;
-    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
-    [DDLog addLogger:fileLogger];
-}
-
 - (void)p_initUserData
 {
     [TLUserHelper sharedHelper];
     [TLFriendHelper sharedFriendHelper];
+}
+
+- (void)p_initAppData
+{
+
+}
+
+- (void)p_urgentMethod
+{
+    // 由JSPatch重写
 }
 
 @end

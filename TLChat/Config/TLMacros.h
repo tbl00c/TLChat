@@ -12,7 +12,8 @@
 #define     APP_CHANNEL         @"Github"
 
 #pragma mark - Debug
-//#define     DEBUG_MEMERY
+//#define     DEBUG_MEMERY      // 内存测试
+//#define     DEBUG_JSPATCH     // JSPatch本地测试
 
 #pragma mark - SIZE
 #define     SIZE_SCREEN                 [UIScreen mainScreen].bounds.size
@@ -37,7 +38,8 @@
 
 
 #pragma mark - ThirdPart KEY
-#define     UMENG_APPKEY       @"56b8ba33e0f55a15480020b0"
+#define     UMENG_APPKEY        @"56b8ba33e0f55a15480020b0"
+#define     JSPATCH_APPKEY      @"7eadab71a29a784e"
 
 
 #endif /* TLMacros_h */

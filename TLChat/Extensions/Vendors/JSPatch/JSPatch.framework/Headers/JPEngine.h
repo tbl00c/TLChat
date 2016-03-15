@@ -62,12 +62,6 @@
  */
 + (void)defineStruct:(NSDictionary *)defineDict;
 
-/*!
- @method
- @description Return the registered struct definition in JSPatch,
-              the key of dictionary is the struct name.
- */
-+ (NSMutableDictionary *)registeredStruct;
 @end
 
 
@@ -76,6 +70,7 @@
 + (void)main:(JSContext *)context;
 
 + (void *)formatPointerJSToOC:(JSValue *)val;
++ (id)formatRetainedCFTypeOCToJS:(CFTypeRef)CF_CONSUMED type;
 + (id)formatPointerOCToJS:(void *)pointer;
 + (id)formatJSToOC:(JSValue *)val;
 + (id)formatOCToJS:(id)obj;
@@ -83,5 +78,8 @@
 + (int)sizeOfStructTypes:(NSString *)structTypes;
 + (void)getStructDataWidthDict:(void *)structData dict:(NSDictionary *)dict structDefine:(NSDictionary *)structDefine;
 + (NSDictionary *)getDictOfStruct:(void *)structData structDefine:(NSDictionary *)structDefine;
+
++ (NSMutableDictionary *)registeredStruct;
++ (NSDictionary *)overideMethods;
 @end
 

@@ -39,7 +39,10 @@ static UILabel *textLabel;
             if (self.imagePath) {
                 NSString *imagePath = [NSFileManager pathUserChatAvatar:self.imagePath forUser:self.userID];
                 UIImage *image = [UIImage imageNamed:imagePath];
-                if (image.size.width > image.size.height) {
+                if (image == nil) {
+                    _frame.contentSize = CGSizeMake(60, 60);
+                }
+                else if (image.size.width > image.size.height) {
                     CGFloat height = MAX_MESSAGE_IMAGE_WIDTH * image.size.height / image.size.width;
                     height = height < MIN_MESSAGE_IMAGE_WIDTH ? MIN_MESSAGE_IMAGE_WIDTH : height;
                     _frame.contentSize = CGSizeMake(MAX_MESSAGE_IMAGE_WIDTH, height);

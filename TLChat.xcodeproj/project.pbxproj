@@ -27,6 +27,7 @@
 		C209074D1C97ED7300AB87A5 /* TusijiEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C20907491C97ED7300AB87A5 /* TusijiEmoji.json */; };
 		C209074E1C97ED7300AB87A5 /* TusijiTitleEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C209074A1C97ED7300AB87A5 /* TusijiTitleEmoji.json */; };
 		C20907531C97F15200AB87A5 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = C20907521C97F15200AB87A5 /* main.js */; };
+		C20907571C98364C00AB87A5 /* NSString+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = C20907561C98364C00AB87A5 /* NSString+Message.m */; };
 		C2097EE81C52326500163B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097EE71C52326500163B5C /* main.m */; };
 		C2097F011C52326500163B5C /* TLChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F001C52326500163B5C /* TLChatTests.m */; };
 		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
@@ -253,6 +254,9 @@
 		C20907491C97ED7300AB87A5 /* TusijiEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiEmoji.json; sourceTree = "<group>"; };
 		C209074A1C97ED7300AB87A5 /* TusijiTitleEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TusijiTitleEmoji.json; sourceTree = "<group>"; };
 		C20907521C97F15200AB87A5 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		C20907541C981D5F00AB87A5 /* TLEventStatistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLEventStatistics.h; sourceTree = "<group>"; };
+		C20907551C98364C00AB87A5 /* NSString+Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Message.h"; sourceTree = "<group>"; };
+		C20907561C98364C00AB87A5 /* NSString+Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Message.m"; sourceTree = "<group>"; };
 		C2097EE31C52326500163B5C /* TLChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2097EE71C52326500163B5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2097EF71C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -837,6 +841,7 @@
 			children = (
 				C2142EA41C531F420030B29B /* TLMacros.h */,
 				C2142F011C5379E90030B29B /* TLEnumerate.h */,
+				C20907541C981D5F00AB87A5 /* TLEventStatistics.h */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1011,6 +1016,8 @@
 				C28C44611C881B51005975FF /* NSDate+TLChat.m */,
 				C28C446B1C884166005975FF /* NSFileManager+TLChat.h */,
 				C28C446C1C884166005975FF /* NSFileManager+TLChat.m */,
+				C20907551C98364C00AB87A5 /* NSString+Message.h */,
+				C20907561C98364C00AB87A5 /* NSString+Message.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -2457,6 +2464,7 @@
 				C2A5AC961C8EB04D007A4574 /* TLUserGroupCell.m in Sources */,
 				C2028D2B1C8D2D0C0060E271 /* TLGroupViewController.m in Sources */,
 				C2D500E11C55CA7B0088997C /* TLFriendSearchViewController.m in Sources */,
+				C20907571C98364C00AB87A5 /* NSString+Message.m in Sources */,
 				C2A5ACAD1C8EC4AD007A4574 /* TLAddThirdPartFriendItem.m in Sources */,
 				C2A5AC971C8EB04D007A4574 /* TLUserGroupItemCell.m in Sources */,
 				C282DF6E1C7574FE006924AE /* TLMoreKeyboardItem.m in Sources */,

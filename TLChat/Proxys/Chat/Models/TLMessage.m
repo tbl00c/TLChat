@@ -7,6 +7,7 @@
 //
 
 #import "TLMessage.h"
+#import "NSString+Message.h"
 
 static UILabel *textLabel;
 
@@ -25,6 +26,14 @@ static UILabel *textLabel;
     return self;
 }
 
+- (NSAttributedString *)attrText
+{
+    if (_attrText == nil) {
+        _attrText = [self.text toMessageString];
+    }
+    return _attrText;
+}
+
 - (TLMessageFrame *)frame
 {
     if (_frame == nil) {
@@ -32,7 +41,7 @@ static UILabel *textLabel;
         _frame.height = 20 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0);
         if (self.messageType == TLMessageTypeText) {
             _frame.height += 20;
-            [textLabel setText:self.text];
+            [textLabel setAttributedText:self.attrText];
             _frame.contentSize = [textLabel sizeThatFits:CGSizeMake(MAX_MESSAGE_WIDTH, MAXFLOAT)];
         }
         else if (self.messageType == TLMessageTypeImage){

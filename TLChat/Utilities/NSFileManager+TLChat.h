@@ -11,18 +11,45 @@
 
 @interface NSFileManager (TLChat)
 
+/**
+ *  图片 — 设置
+ */
 + (NSString *)pathUserSettingImage:(NSString *)imageName forUser:(NSString *)userID;
 
+/**
+ *  图片 — 聊天
+ */
 + (NSString *)pathUserChatImage:(NSString*)imageName forUser:(NSString *)userID;
 
+/**
+ *  图片 — 用户头像
+ */
 + (NSString *)pathUserChatAvatar:(NSString *)imageName forUser:(NSString *)userID;
 
+/**
+ *  图片 — 屏幕截图
+ */
 + (NSString *)pathScreenshotImage:(NSString *)imageName;
 
+/**
+ *  图片 — 本地通讯录
+ */
 + (NSString *)pathContactsAvatar:(NSString *)imageName;
 
+/**
+ *  数据 — 本地通讯录
+ */
++ (NSString *)pathContactsData;
+
+/**
+ *  数据库 — 通用
+ */
 + (NSString *)pathDBCommonForUser:(NSString *)userID;
 
+/**
+ *  数据库 — 聊天
+ */
 + (NSString *)pathDBMessageForUser:(NSString *)userID;
+
 
 @end

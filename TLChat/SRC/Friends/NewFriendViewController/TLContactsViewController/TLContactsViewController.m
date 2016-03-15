@@ -50,6 +50,8 @@
         self.contactsData = data;
         self.headers = headers;
         [self.tableView reloadData];
+        
+        [MobClick event:EVENT_GET_CONTACTS];
     } failed:^{
         [SVProgressHUD dismiss];
         [UIAlertView alertWithTitle:@"错误" message:@"未成功获取到通讯录信息"];

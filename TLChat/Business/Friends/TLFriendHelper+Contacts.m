@@ -32,6 +32,25 @@
         CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBooks);
         CFIndex nPeople = ABAddressBookGetPersonCount(addressBooks);
         
+        // 2、加载缓存
+        if (CFArrayGetCount(allPeople) > 0) {
+            NSString *path = [NSFileManager pathContactsData];
+            NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+            if (dic) {
+                NSArray *data = dic[@"data"];
+                NSArray *formatData = dic[@"formatData"];
+                NSArray *headers = dic[@"headers"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    success(data, formatData, headers);
+                });
+            }
+        }
+        else {
+            failed();
+            return;
+        }
+        
+        // 3、格式转换
         NSMutableArray *data = [[NSMutableArray alloc] init];
         for (NSInteger i = 0; i < nPeople; i++) {
             TLContact  *contact = [[TLContact  alloc] init];
@@ -98,7 +117,7 @@
             if (abFullName) CFRelease(abFullName);
         }
         
-        // 2、排序
+        // 4、排序
         NSArray *serializeArray = [data sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
             int i;
             NSString *strA = ((TLContact *)obj1).pinyin;
@@ -122,7 +141,7 @@
             return (NSComparisonResult)NSOrderedSame;
         }];
 
-        // 3、分组
+        // 5、分组
         data = [[NSMutableArray alloc] init];
         NSMutableArray *headers = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
         char lastC = '1';
@@ -163,9 +182,19 @@
             [headers addObject:othGroup.groupName];
         }
 
+        // 6、数据返回
         dispatch_async(dispatch_get_main_queue(), ^{
             success(serializeArray, data, headers);
         });
+        
+        // 7、存入本地缓存
+        NSDictionary *dic = @{@"data": serializeArray,
+                              @"formatData": data,
+                              @"headers": headers};
+        NSString *path = [NSFileManager pathContactsData];
+        if(![NSKeyedArchiver archiveRootObject:dic toFile:path]){
+            DDLogError(@"缓存联系人数据失败");
+        }
     });
 }
 

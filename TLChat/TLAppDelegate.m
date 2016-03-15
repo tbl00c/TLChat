@@ -9,7 +9,6 @@
 #import "TLAppDelegate.h"
 #import "TLRootViewController.h"
 
-#import <MobClick.h>
 #import <AFNetworking.h>
 #import <JSPatch/JSPatch.h>
 #import "TLFriendHelper.h"

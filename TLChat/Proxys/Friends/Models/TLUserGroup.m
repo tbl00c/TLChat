@@ -19,6 +19,19 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self.groupName = [decoder decodeObjectForKey:@"name"];
+    self.users = [decoder decodeObjectForKey:@"users"];
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.groupName forKey:@"name"];
+    [encoder encodeObject:self.users forKey:@"users"];
+}
+
 - (NSMutableArray *) users
 {
     if (_users == nil) {

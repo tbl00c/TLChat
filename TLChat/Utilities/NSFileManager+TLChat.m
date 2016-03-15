@@ -51,7 +51,7 @@
 
 + (NSString *)pathContactsAvatar:(NSString *)imageName
 {
-    NSString *path = [NSString stringWithFormat:@"%@/Contacts/", [NSFileManager cachesPath]];
+    NSString *path = [NSString stringWithFormat:@"%@/Contacts/Avatar/", [NSFileManager documentsPath]];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
@@ -60,6 +60,19 @@
         }
     }
     return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathContactsData
+{
+    NSString *path = [NSString stringWithFormat:@"%@/Contacts/", [NSFileManager documentsPath]];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:@"Contacts.dat"];
 }
 
 + (NSString *)pathScreenshotImage:(NSString *)imageName

@@ -110,20 +110,27 @@ static TLEmojiKBHelper *helper;
 }
 
 #pragma mark - Getter -
+- (TLEmojiGroup *)defaultFaceGroup
+{
+    if (_defaultFaceGroup == nil) {
+        _defaultFaceGroup = [[TLEmojiGroup alloc] init];
+        _defaultFaceGroup.type = TLEmojiTypeFace;
+        _defaultFaceGroup.groupIconPath = @"emojiKB_group_face";
+        _defaultFaceGroup.dataPath = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
+    }
+    return _defaultFaceGroup;
+}
+
 - (NSMutableArray *)defaultEmojiGroups
 {
     if (_defaultEmojiGroups == nil) {
-        TLEmojiGroup *faceGroup = [[TLEmojiGroup alloc] init];
-        faceGroup.type = TLEmojiTypeFace;
-        faceGroup.groupIconPath = @"emojiKB_group_face";
-        faceGroup.dataPath = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
         TLEmojiGroup *emojiGroup = [[TLEmojiGroup alloc] init];
         emojiGroup.type = TLEmojiTypeEmoji;
         emojiGroup.groupIconPath = @"emojiKB_group_face";
         emojiGroup.dataPath = [[NSBundle mainBundle] pathForResource:@"SystemEmoji" ofType:@"json"];
         
         
-        _defaultEmojiGroups = [[NSMutableArray alloc] initWithObjects:faceGroup, emojiGroup, nil];
+        _defaultEmojiGroups = [[NSMutableArray alloc] initWithObjects:self.defaultFaceGroup, emojiGroup, nil];
     }
     return _defaultEmojiGroups;
 }

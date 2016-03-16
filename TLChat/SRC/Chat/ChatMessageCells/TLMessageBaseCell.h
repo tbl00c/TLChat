@@ -22,7 +22,6 @@
 
 @property (nonatomic, strong) UIImageView *messageBackgroundView;
 
-
 @property (nonatomic, strong) TLMessage *message;
 
 @end

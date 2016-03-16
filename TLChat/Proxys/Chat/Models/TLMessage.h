@@ -84,5 +84,6 @@ typedef NS_ENUM(NSInteger, TLMessageReadState) {
 
 @property (nonatomic, strong) TLMessageFrame *frame;                // 消息frame
 
+@property (nonatomic, strong) NSString *messageCopy;
 
 @end

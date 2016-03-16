@@ -8,13 +8,20 @@
 
 #import "TLChatTableViewController.h"
 #import "TLFriendDetailViewController.h"
+#import "TLChatCellMenuView.h"
+#import "TLTextDisplayView.h"
+#import <MJRefresh.h>
+
 #import "TLTextMessageCell.h"
 #import "TLImageMessageCell.h"
-#import <MJRefresh.h>
+
+
 
 #define     PAGE_MESSAGE_COUNT      15
 
 @interface TLChatTableViewController () <TLMessageCellDelegate>
+
+@property (nonatomic, strong) TLChatCellMenuView *menuView;
 
 @property (nonatomic, strong) MJRefreshNormalHeader *refresHeader;
 
@@ -123,6 +130,33 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+- (void)messageCellLongPress:(TLMessage *)message rect:(CGRect)rect
+{
+    if ([self.menuView isShow]) {
+        return;
+    }
+    NSInteger row = [self.data indexOfObject:message];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    CGRect cellRect = [self.tableView rectForRowAtIndexPath:indexPath];
+    rect.origin.y += cellRect.origin.y - self.tableView.contentOffset.y;
+    __weak typeof(self.tableView)tableView = self.tableView;
+    [self.menuView showInView:self.navigationController.view withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        if (type == TLChatMenuItemTypeCopy) {
+            NSString *str = message.messageCopy;
+            [[UIPasteboard generalPasteboard] setString:str];
+        }
+    }];
+}
+
+- (void)messageCellDoubleClick:(TLMessage *)message
+{
+    if (message.messageType == TLMessageTypeText) {
+        TLTextDisplayView *displayView = [[TLTextDisplayView alloc] init];
+        [displayView showInView:self.navigationController.view withAttrText:message.attrText animation:YES];
+    }
+}
+
 //MARK: UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -132,6 +166,14 @@
 }
 
 #pragma mark - Event Response -
+- (void)didTouchTableView
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewControllerDidTouched:)]) {
+        [_delegate chatTableViewControllerDidTouched:self];
+    }
+}
+
+#pragma mark - Private Methods -
 /**
  *  获取聊天历史记录
  */
@@ -153,13 +195,6 @@
     }
 }
 
-- (void)didTouchTableView
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewControllerDidTouched:)]) {
-        [_delegate chatTableViewControllerDidTouched:self];
-    }
-}
-
 #pragma mark - Getter -
 - (NSMutableArray *)data
 {
@@ -167,6 +202,14 @@
         _data = [[NSMutableArray alloc] init];
     }
     return _data;
+}
+
+- (TLChatCellMenuView *)menuView
+{
+    if (_menuView == nil) {
+        _menuView = [[TLChatCellMenuView alloc] init];
+    }
+    return _menuView;
 }
 
 @end

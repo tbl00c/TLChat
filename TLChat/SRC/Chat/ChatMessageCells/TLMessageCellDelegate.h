@@ -10,8 +10,13 @@
 #import <Foundation/Foundation.h>
 
 @class TLUser;
+@class TLMessage;
 @protocol TLMessageCellDelegate <NSObject>
 
 - (void)messageCellDidClickAvatarForUser:(TLUser *)user;
+
+- (void)messageCellLongPress:(TLMessage *)message rect:(CGRect)rect;
+
+- (void)messageCellDoubleClick:(TLMessage *)message;
 
 @end

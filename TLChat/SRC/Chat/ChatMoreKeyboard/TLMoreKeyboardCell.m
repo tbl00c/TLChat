@@ -7,6 +7,7 @@
 //
 
 #import "TLMoreKeyboardCell.h"
+#import "UIImage+Color.h"
 
 @interface TLMoreKeyboardCell()
 
@@ -74,6 +75,7 @@
         [_iconButton.layer setCornerRadius:5.0f];
         [_iconButton.layer setBorderWidth:0.5f];
         [_iconButton.layer setBorderColor:[UIColor grayColor].CGColor];
+        [_iconButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorChatBoxLine]] forState:UIControlStateHighlighted];
         [_iconButton addTarget:self action:@selector(iconButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _iconButton;

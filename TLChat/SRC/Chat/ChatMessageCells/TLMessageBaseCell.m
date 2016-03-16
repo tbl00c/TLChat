@@ -133,6 +133,23 @@
     }
 }
 
+- (void)longPressMsgBGView
+{
+    [self.messageBackgroundView setHighlighted:YES];
+    if (_delegate && [_delegate respondsToSelector:@selector(messageCellLongPress:rect:)]) {
+        CGRect rect = self.messageBackgroundView.frame;
+        rect.size.height -= 10;     // 北京图片底部空白区域
+        [_delegate messageCellLongPress:self.message rect:rect];
+    }
+}
+
+- (void)doubleTabpMsgBGView
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(messageCellDoubleClick:)]) {
+        [_delegate messageCellDoubleClick:self.message];
+    }
+}
+
 #pragma mark - Getter -
 - (UILabel *)timeLabel
 {
@@ -173,6 +190,14 @@
 {
     if (_messageBackgroundView == nil) {
         _messageBackgroundView = [[UIImageView alloc] init];
+        [_messageBackgroundView setUserInteractionEnabled:YES];
+        
+        UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressMsgBGView)];
+        [_messageBackgroundView addGestureRecognizer:longPressGR];
+        
+        UITapGestureRecognizer *doubleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTabpMsgBGView)];
+        [doubleTapGR setNumberOfTapsRequired:2];
+        [_messageBackgroundView addGestureRecognizer:doubleTapGR];
     }
     return _messageBackgroundView;
 }

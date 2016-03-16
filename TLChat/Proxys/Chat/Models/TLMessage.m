@@ -68,4 +68,20 @@ static UILabel *textLabel;
     return _frame;
 }
 
+- (NSString *)messageCopy
+{
+    if (_messageCopy == nil) {
+        if (self.messageType == TLMessageTypeText) {
+            _messageCopy = self.text;
+        }
+        else if (self.messageType == TLMessageTypeImage) {
+            NSDictionary *dictionary = @{@"path":self.imagePath.length > 0 ? self.imagePath : @"",
+                                         @"url":self.imageURL.length > 0 ? self.imageURL : @""};
+            NSString *jsonStr = dictionary.mj_JSONString;
+            _messageCopy = [@"###TLCHAT_IMAGE_MESSAGE###" stringByAppendingString:jsonStr];
+        }
+    }
+    return _messageCopy;
+}
+
 @end

@@ -29,6 +29,7 @@
 
 - (void)setMessage:(TLMessage *)message
 {
+    [self.msgImageView setAlpha:1.0];
     if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
         return;
     }
@@ -64,11 +65,37 @@
     }];
 }
 
+#pragma mark - Event Response -
+- (void)longPressMsgBGView
+{
+    [self.msgImageView setAlpha:0.7];   // 比较low的选中效果
+    if (self.delegate && [self.delegate respondsToSelector:@selector(messageCellLongPress:rect:)]) {
+        CGRect rect = self.msgImageView.frame;
+        rect.size.height -= 10;     // 北京图片底部空白区域
+        [self.delegate messageCellLongPress:self.message rect:rect];
+    }
+}
+
+- (void)doubleTabpMsgBGView
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(messageCellDoubleClick:)]) {
+        [self.delegate messageCellDoubleClick:self.message];
+    }
+}
+
 #pragma mark - Getter -
 - (TLMessageImageView *)msgImageView
 {
     if (_msgImageView == nil) {
         _msgImageView = [[TLMessageImageView alloc] init];
+        [_msgImageView setUserInteractionEnabled:YES];
+        
+        UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressMsgBGView)];
+        [_msgImageView addGestureRecognizer:longPressGR];
+        
+        UITapGestureRecognizer *doubleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTabpMsgBGView)];
+        [doubleTapGR setNumberOfTapsRequired:2];
+        [_msgImageView addGestureRecognizer:doubleTapGR];
     }
     return _msgImageView;
 }

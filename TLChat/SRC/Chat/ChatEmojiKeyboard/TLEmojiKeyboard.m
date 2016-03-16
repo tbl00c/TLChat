@@ -201,6 +201,8 @@ static TLEmojiKeyboard *emojiKB;
     if (tIndex < self.curGroup.count) {
         TLEmoji *item = [self.curGroup objectAtIndex:tIndex];
         if (_delegate && [_delegate respondsToSelector:@selector(selectedEmojiItem:)]) {
+            //FIXME: 表情类型
+            item.type = self.curGroup.type;
             [_delegate selectedEmojiItem:item];
         }
     }

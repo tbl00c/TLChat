@@ -10,6 +10,7 @@
 #import "TLChatKeyboardController.h"
 #import "TLFriendHelper.h"
 #import "TLEmojiDisplayView.h"
+#import "TLImageExpressionDisplayView.h"
 
 #define     MAX_SHOWTIME_MSG_COUNT      10
 #define     MAX_SHOWTIME_MSG_SECOND     30
@@ -19,6 +20,8 @@
 @property (nonatomic, strong) TLChatKeyboardController *chatKeyboardController;
 
 @property (nonatomic, strong) TLEmojiDisplayView *emojiDisplayView;
+
+@property (nonatomic, strong) TLImageExpressionDisplayView *imageExpressionDisplayView;
 
 @end
 
@@ -211,6 +214,13 @@
 }
 
 //MARK: TLEmojiKeyboardDelegate
+- (void)selectedEmojiItem:(TLEmoji *)emoji
+{
+    if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
+        [self.chatBar addEmojiString:emoji.title];
+    }
+}
+
 - (void)sendButtonDown
 {
     [self.chatBar sendCurrentText];
@@ -224,7 +234,12 @@
         }
         [self.emojiDisplayView displayEmoji:emoji atRect:rect];
     }
-    
+    else {
+        if (self.imageExpressionDisplayView.superview == nil) {
+            [self.emojiKeyboard addSubview:self.imageExpressionDisplayView];
+        }
+        [self.imageExpressionDisplayView displayEmoji:emoji atRect:rect];
+    }
 }
 
 - (void)cancelTouchEmojiItem
@@ -232,8 +247,10 @@
     if (self.emojiDisplayView.superview != nil) {
         [self.emojiDisplayView removeFromSuperview];
     }
+    else if (self.imageExpressionDisplayView.superview != nil) {
+        [self.imageExpressionDisplayView removeFromSuperview];
+    }
 }
-
 - (BOOL)chatInputViewHasText
 {
     return self.chatBar.curText.length == 0 ? NO : YES;
@@ -374,6 +391,14 @@ static NSInteger msgAccumulate = 0;
         _emojiDisplayView = [[TLEmojiDisplayView alloc] init];
     }
     return _emojiDisplayView;
+}
+
+- (TLImageExpressionDisplayView *)imageExpressionDisplayView
+{
+    if (_imageExpressionDisplayView == nil) {
+        _imageExpressionDisplayView = [[TLImageExpressionDisplayView alloc] init];
+    }
+    return _imageExpressionDisplayView;
 }
 
 @end

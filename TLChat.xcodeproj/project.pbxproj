@@ -10,6 +10,7 @@
 		C20032671C992AAF0088A3BC /* TLTextDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20032661C992AAF0088A3BC /* TLTextDisplayView.m */; };
 		C200326A1C992B0A0088A3BC /* TLChatCellMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20032691C992B0A0088A3BC /* TLChatCellMenuView.m */; };
 		C200326E1C994D430088A3BC /* TLEmojiDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C200326D1C994D430088A3BC /* TLEmojiDisplayView.m */; };
+		C20032721C9976E10088A3BC /* TLImageExpressionDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20032711C9976E10088A3BC /* TLImageExpressionDisplayView.m */; };
 		C2028D1B1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D1A1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m */; };
 		C2028D1E1C8D1D360060E271 /* TLFriendHelper+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D1D1C8D1D360060E271 /* TLFriendHelper+Detail.m */; };
 		C2028D281C8D2CF20060E271 /* TLNewFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D271C8D2CF20060E271 /* TLNewFriendViewController.m */; };
@@ -228,6 +229,8 @@
 		C20032691C992B0A0088A3BC /* TLChatCellMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatCellMenuView.m; sourceTree = "<group>"; };
 		C200326C1C994D430088A3BC /* TLEmojiDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiDisplayView.h; sourceTree = "<group>"; };
 		C200326D1C994D430088A3BC /* TLEmojiDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiDisplayView.m; sourceTree = "<group>"; };
+		C20032701C9976E10088A3BC /* TLImageExpressionDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImageExpressionDisplayView.h; sourceTree = "<group>"; };
+		C20032711C9976E10088A3BC /* TLImageExpressionDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageExpressionDisplayView.m; sourceTree = "<group>"; };
 		C2028D191C8D1A3D0060E271 /* TLFriendDetailSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailSettingViewController.h; sourceTree = "<group>"; };
 		C2028D1A1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailSettingViewController.m; sourceTree = "<group>"; };
 		C2028D1C1C8D1D360060E271 /* TLFriendHelper+Detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLFriendHelper+Detail.h"; sourceTree = "<group>"; };
@@ -658,6 +661,7 @@
 			children = (
 				C20032641C992AAF0088A3BC /* TLTextDisplayView */,
 				C200326B1C994CDF0088A3BC /* TLEmojiDisplayView */,
+				C200326F1C9976CD0088A3BC /* TLImageExpressionDisplayView */,
 				C20032631C992AAF0088A3BC /* TLChatCellMenuView */,
 			);
 			path = ChatCommonViews;
@@ -688,6 +692,15 @@
 				C200326D1C994D430088A3BC /* TLEmojiDisplayView.m */,
 			);
 			path = TLEmojiDisplayView;
+			sourceTree = "<group>";
+		};
+		C200326F1C9976CD0088A3BC /* TLImageExpressionDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				C20032701C9976E10088A3BC /* TLImageExpressionDisplayView.h */,
+				C20032711C9976E10088A3BC /* TLImageExpressionDisplayView.m */,
+			);
+			path = TLImageExpressionDisplayView;
 			sourceTree = "<group>";
 		};
 		C2028D181C8D1A200060E271 /* FriendDetailSettingViewController */ = {
@@ -2477,6 +2490,7 @@
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */,
 				C271A5091C83FEF2004372D4 /* TLFriendDetailAlbumCell.m in Sources */,
+				C20032721C9976E10088A3BC /* TLImageExpressionDisplayView.m in Sources */,
 				C2BF17D11C86DB50003318CB /* UIAlertView+Block.m in Sources */,
 				C209073C1C97B91B00AB87A5 /* TLMessageImageView.m in Sources */,
 				C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */,

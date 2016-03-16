@@ -120,13 +120,6 @@ static TLChatViewController *chatVC;
 }
 
 //MARK: TLEmojiKeyboardDelegate
-- (void)selectedEmojiItem:(TLEmoji *)emoji
-{
-    if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
-        [self.chatBar addEmojiString:emoji.title];
-    }
-}
-
 - (void)emojiEditButtonDown
 {
     TLExpressionViewController *expressionVC = [[TLExpressionViewController alloc] init];

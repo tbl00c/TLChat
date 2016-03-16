@@ -61,7 +61,7 @@
 - (void)setRect:(CGRect)rect
 {
     [self setCenterX:rect.origin.x + rect.size.width / 2];
-    [self setY:rect.origin.y + rect.size.height - SIZE_TIPS.height + 15.0];
+    [self setY:rect.origin.y + rect.size.height - self.height + 15.0];
 }
 
 #pragma mark - Private Methods -

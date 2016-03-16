@@ -116,6 +116,9 @@ static TLEmojiKeyboard *emojiKB;
         }
     }
     [self p_updateSendButtonStatus];
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiKeyboard:selectedEmojiGroupType:)]) {
+        [_delegate emojiKeyboard:self selectedEmojiGroupType:self.curGroup.type];
+    }
 }
 
 - (void)dismissWithAnimation:(BOOL)animation
@@ -200,10 +203,10 @@ static TLEmojiKeyboard *emojiKB;
     NSUInteger tIndex = [self p_transformModelIndex:index];  // 矩阵坐标转置
     if (tIndex < self.curGroup.count) {
         TLEmoji *item = [self.curGroup objectAtIndex:tIndex];
-        if (_delegate && [_delegate respondsToSelector:@selector(selectedEmojiItem:)]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(emojiKeyboard:didSelectedEmojiItem:)]) {
             //FIXME: 表情类型
             item.type = self.curGroup.type;
-            [_delegate selectedEmojiItem:item];
+            [_delegate emojiKeyboard:self didSelectedEmojiItem:item];
         }
     }
     [self p_updateSendButtonStatus];
@@ -254,26 +257,30 @@ static TLEmojiKeyboard *emojiKB;
     [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
     // 更新发送按钮状态
     [self p_updateSendButtonStatus];
+    // 更新chatBar的textView状态
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiKeyboard:selectedEmojiGroupType:)]) {
+        [_delegate emojiKeyboard:self selectedEmojiGroupType:group.type];
+    }
 }
 
 - (void)emojiGroupControlEditMyEmojiButtonDown:(TLEmojiGroupControl *)emojiGroupControl
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(myEmojiEditButtonDown)]) {
-        [_delegate myEmojiEditButtonDown];
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiKeyboardMyEmojiEditButtonDown)]) {
+        [_delegate emojiKeyboardMyEmojiEditButtonDown];
     }
 }
 
 - (void)emojiGroupControlEditButtonDown:(TLEmojiGroupControl *)emojiGroupControl
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(emojiEditButtonDown)]) {
-        [_delegate emojiEditButtonDown];
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiKeyboardEmojiEditButtonDown)]) {
+        [_delegate emojiKeyboardEmojiEditButtonDown];
     }
 }
 
 - (void)emojiGroupControlSendButtonDown:(TLEmojiGroupControl *)emojiGroupControl
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(sendButtonDown)]) {
-        [_delegate sendButtonDown];
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiKeyboardSendButtonDown)]) {
+        [_delegate emojiKeyboardSendButtonDown];
     }
     // 更新发送按钮状态
     [self p_updateSendButtonStatus];
@@ -294,8 +301,8 @@ static NSInteger lastIndex = -1;
             [cell setShowHighlightImage:NO];
         }
         lastIndex = -1;
-        if (_delegate && [_delegate respondsToSelector:@selector(cancelTouchEmojiItem)]) {
-            [_delegate cancelTouchEmojiItem];
+        if (_delegate && [_delegate respondsToSelector:@selector(emojiKeyboardCancelTouchEmojiItem:)]) {
+            [_delegate emojiKeyboardCancelTouchEmojiItem:self];
         }
     }
     else {
@@ -311,10 +318,10 @@ static NSInteger lastIndex = -1;
             lastIndex = index;
             id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:index]];
             [cell setShowHighlightImage:YES];
-            if (_delegate && [_delegate respondsToSelector:@selector(touchInEmojiItem:rect:)]) {
+            if (_delegate && [_delegate respondsToSelector:@selector(emojiKeyboard:didTouchEmojiItem:atRect:)]) {
                 //FIXME: emoji类型确定的方式太LOW！
                 emoji.type = self.curGroup.type;
-                [_delegate touchInEmojiItem:emoji rect:[cell frame]];
+                [_delegate emojiKeyboard:self didTouchEmojiItem:emoji atRect:[cell frame]];
             }
 
         } failed:^{
@@ -323,8 +330,8 @@ static NSInteger lastIndex = -1;
                 [cell setShowHighlightImage:NO];
             }
             lastIndex = -1;
-            if (_delegate && [_delegate respondsToSelector:@selector(cancelTouchEmojiItem)]) {
-                [_delegate cancelTouchEmojiItem];
+            if (_delegate && [_delegate respondsToSelector:@selector(emojiKeyboardCancelTouchEmojiItem:)]) {
+                [_delegate emojiKeyboardCancelTouchEmojiItem:self];
             }
         }];
     }

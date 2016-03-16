@@ -188,7 +188,6 @@
     message.messageType = TLMessageTypeText;
     message.ownerTyper = TLMessageOwnerTypeSelf;
     message.text = text;
-    message.showName = NO;
     [self p_sendMessage:message];
     if (self.curChatType == TLChatVCTypeFriend) {
         TLMessage *message1 = [[TLMessage alloc] init];
@@ -196,7 +195,6 @@
         message1.messageType = TLMessageTypeText;
         message1.ownerTyper = TLMessageOwnerTypeFriend;
         message1.text = text;
-        message1.showName = NO;
         [self p_sendMessage:message1];
     }
     else {
@@ -214,19 +212,22 @@
 }
 
 //MARK: TLEmojiKeyboardDelegate
-- (void)selectedEmojiItem:(TLEmoji *)emoji
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didSelectedEmojiItem:(TLEmoji *)emoji
 {
     if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
         [self.chatBar addEmojiString:emoji.title];
     }
+    else {
+        
+    }
 }
 
-- (void)sendButtonDown
+- (void)emojiKeyboardSendButtonDown
 {
     [self.chatBar sendCurrentText];
 }
 
-- (void)touchInEmojiItem:(TLEmoji *)emoji rect:(CGRect)rect
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didTouchEmojiItem:(TLEmoji *)emoji atRect:(CGRect)rect
 {
     if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
         if (self.emojiDisplayView.superview == nil) {
@@ -242,7 +243,7 @@
     }
 }
 
-- (void)cancelTouchEmojiItem
+- (void)emojiKeyboardCancelTouchEmojiItem:(TLEmojiKeyboard *)emojiKB
 {
     if (self.emojiDisplayView.superview != nil) {
         [self.emojiDisplayView removeFromSuperview];
@@ -251,6 +252,17 @@
         [self.imageExpressionDisplayView removeFromSuperview];
     }
 }
+
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB selectedEmojiGroupType:(TLEmojiType)type
+{
+    if (type == TLEmojiTypeEmoji || type == TLEmojiTypeFace) {
+        [self.chatBar setActivity:YES];
+    }
+    else {
+        [self.chatBar setActivity:NO];
+    }
+}
+
 - (BOOL)chatInputViewHasText
 {
     return self.chatBar.curText.length == 0 ? NO : YES;

@@ -23,4 +23,6 @@ typedef NS_ENUM(NSInteger, TLChatMenuItemType) {
 
 - (void)showInView:(UIView *)view withMessageType:(TLMessageType)messageType rect:(CGRect)rect actionBlock:(void (^)(TLChatMenuItemType))actionBlock;
 
+- (void)dismiss;
+
 @end

@@ -13,8 +13,14 @@
 
 @property (nonatomic, assign) TLEmojiType type;
 
+@property (nonatomic, strong) NSString *groupID;
+
+@property (nonatomic, strong) NSString *emojiID;
+
 @property (nonatomic, strong) NSString *title;
 
 @property (nonatomic, strong) NSString *path;
+
+@property (nonatomic, strong) NSString *url;
 
 @end

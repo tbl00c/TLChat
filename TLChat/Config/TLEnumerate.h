@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger, TLMessageType) {
     TLMessageTypeUnknown,
     TLMessageTypeText,          // 文字
     TLMessageTypeImage,         // 图片
+    TLMessageTypeExpression,    // 表情
     TLMessageTypeVoice,         // 语音
     TLMessageTypeVideo,         // 视频
     TLMessageTypeURL,           // 链接

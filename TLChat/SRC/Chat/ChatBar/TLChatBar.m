@@ -83,6 +83,17 @@
     [self textViewDidChange:self.textView];
 }
 
+- (void)setActivity:(BOOL)activity
+{
+    _activity = activity;
+    if (activity) {
+        [self.textView setTextColor:[UIColor blackColor]];
+    }
+    else {
+        [self.textView setTextColor:[UIColor grayColor]];
+    }
+}
+
 - (BOOL)isFirstResponder
 {
     if (self.status == TLChatBarStatusEmoji || self.status == TLChatBarStatusKeyboard || self.status == TLChatBarStatusMore) {
@@ -109,6 +120,7 @@
 //MARK: UITextViewDelegate
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
+    [self setActivity:YES];
     if (self.status != TLChatBarStatusKeyboard) {
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
             [_delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];

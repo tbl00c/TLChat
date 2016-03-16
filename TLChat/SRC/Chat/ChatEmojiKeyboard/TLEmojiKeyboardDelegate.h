@@ -9,21 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "TLEmoji.h"
 
+@class TLEmojiKeyboard;
 @protocol TLEmojiKeyboardDelegate <NSObject>
 
 - (BOOL)chatInputViewHasText;
 
 @optional
-- (void)touchInEmojiItem:(TLEmoji *)emoji rect:(CGRect)rect;
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didTouchEmojiItem:(TLEmoji *)emoji atRect:(CGRect)rect;
 
-- (void)cancelTouchEmojiItem;
+- (void)emojiKeyboardCancelTouchEmojiItem:(TLEmojiKeyboard *)emojiKB;
 
-- (void)selectedEmojiItem:(TLEmoji *)emoji;
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didSelectedEmojiItem:(TLEmoji *)emoji;
 
-- (void)sendButtonDown;
+- (void)emojiKeyboardSendButtonDown;
 
-- (void)emojiEditButtonDown;
+- (void)emojiKeyboardEmojiEditButtonDown;
 
-- (void)myEmojiEditButtonDown;
+- (void)emojiKeyboardMyEmojiEditButtonDown;
+
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB selectedEmojiGroupType:(TLEmojiType)type;
 
 @end

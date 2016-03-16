@@ -60,6 +60,14 @@
     [self.tableView addGestureRecognizer:tap];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if ([self.menuView isShow]) {
+        [self.menuView dismiss];
+    }
+}
+
 #pragma mark - Public Methods -
 - (void)reloadData
 {

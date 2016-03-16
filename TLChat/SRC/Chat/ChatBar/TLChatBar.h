@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong, readonly) NSString *curText;
 
+@property (nonatomic, assign) BOOL activity;
+
 - (void)addEmojiString:(NSString *)emojiString;
 
 - (void)sendCurrentText;

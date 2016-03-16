@@ -120,14 +120,14 @@ static TLChatViewController *chatVC;
 }
 
 //MARK: TLEmojiKeyboardDelegate
-- (void)emojiEditButtonDown
+- (void)emojiKeyboardEmojiEditButtonDown
 {
     TLExpressionViewController *expressionVC = [[TLExpressionViewController alloc] init];
     TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:expressionVC];
     [self presentViewController:navC animated:YES completion:nil];
 }
 
-- (void)myEmojiEditButtonDown
+- (void)emojiKeyboardMyEmojiEditButtonDown
 {
     TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
     TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:myExpressionVC];

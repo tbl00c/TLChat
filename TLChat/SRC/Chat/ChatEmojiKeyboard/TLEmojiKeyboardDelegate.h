@@ -14,7 +14,7 @@
 - (BOOL)chatInputViewHasText;
 
 @optional
-- (void)touchInEmojiItem:(TLEmoji *)emoji point:(CGPoint)point;
+- (void)touchInEmojiItem:(TLEmoji *)emoji rect:(CGRect)rect;
 
 - (void)cancelTouchEmojiItem;
 

@@ -286,8 +286,8 @@ static TLEmojiKeyboard *emojiKB;
 static NSInteger lastIndex = -1;
 - (void)longPressAction:(UILongPressGestureRecognizer *)sender
 {
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        if (lastIndex != -1) {
+    if (sender.state == UIGestureRecognizerStateEnded) {        // 长按停止
+        if (lastIndex != -1) {      // 取消选中状态
             id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:lastIndex]];
             [cell setShowHighlightImage:NO];
         }
@@ -298,19 +298,21 @@ static NSInteger lastIndex = -1;
     }
     else {
         CGPoint point = [sender locationInView:self.collectionView];
-        [self p_getEmojiItemAtPoint:point success:^(TLEmoji *emoji, CGPoint p, NSInteger index) {
-            if (lastIndex == index) {
+        [self p_getEmojiItemAtPoint:point success:^(TLEmoji *emoji, NSInteger index) {
+            if (lastIndex == index) {       // 与之前选中的Emoji一致，不回调，以免闪屏
                 return ;
             }
-            else if (lastIndex != -1){
+            else if (lastIndex != -1) {     // 取消之前选中cell的高亮状态
                 id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:lastIndex]];
                 [cell setShowHighlightImage:NO];
             }
             lastIndex = index;
             id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:index]];
             [cell setShowHighlightImage:YES];
-            if (_delegate && [_delegate respondsToSelector:@selector(touchInEmojiItem:point:)]) {
-                [_delegate touchInEmojiItem:emoji point:p];
+            if (_delegate && [_delegate respondsToSelector:@selector(touchInEmojiItem:rect:)]) {
+                //FIXME: emoji类型确定的方式太LOW！
+                emoji.type = self.curGroup.type;
+                [_delegate touchInEmojiItem:emoji rect:[cell frame]];
             }
 
         } failed:^{
@@ -327,8 +329,15 @@ static NSInteger lastIndex = -1;
 }
 
 #pragma mark - Private Methods -
+/**
+ *  获取collectionView某个点得Emoji
+ *
+ *  @param point   点
+ *  @param success 在point点存在Emoji，在数据源中的位置
+ *  @param failed  在point点不存在Emoji
+ */
 - (void)p_getEmojiItemAtPoint:(CGPoint)point
-                      success:(void (^)(TLEmoji *, CGPoint, NSInteger))success
+                      success:(void (^)(TLEmoji *, NSInteger))success
                        failed:(void (^)())failed
 {
     NSInteger page = point.x / self.collectionView.width;
@@ -339,18 +348,18 @@ static NSInteger lastIndex = -1;
     else {
         point.x -= headerReferenceSize.width;
         point.y -= sectionInsets.top;
-        NSInteger w = (self.collectionView.width - headerReferenceSize.width - footerReferenceSize.width) / self.curGroup.colNumber;
-        NSInteger h = (self.collectionView.height - sectionInsets.top - sectionInsets.bottom) / self.curGroup.rowNumber;
+        NSInteger w = (self.collectionView.width - headerReferenceSize.width) / self.curGroup.colNumber;
+        NSInteger h = (self.collectionView.height - sectionInsets.top) / self.curGroup.rowNumber;
         NSInteger x = point.x / w;
         NSInteger y = point.y / h;
         NSInteger index = page * self.curGroup.pageItemCount + y * self.curGroup.colNumber + x;
-
+        
         if (index >= self.curGroup.count) {
             failed();
         }
         else {
             TLEmoji *emoji = [self.curGroup objectAtIndex:index];
-            success(emoji, point, index);
+            success(emoji, index);
         }
     }
 }

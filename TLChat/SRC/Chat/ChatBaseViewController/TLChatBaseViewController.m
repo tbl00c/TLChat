@@ -9,6 +9,7 @@
 #import "TLChatBaseViewController.h"
 #import "TLChatKeyboardController.h"
 #import "TLFriendHelper.h"
+#import "TLEmojiDisplayView.h"
 
 #define     MAX_SHOWTIME_MSG_COUNT      10
 #define     MAX_SHOWTIME_MSG_SECOND     30
@@ -16,6 +17,8 @@
 @interface TLChatBaseViewController () <TLChatBarDataDelegate, TLChatTableViewControllerDelegate>
 
 @property (nonatomic, strong) TLChatKeyboardController *chatKeyboardController;
+
+@property (nonatomic, strong) TLEmojiDisplayView *emojiDisplayView;
 
 @end
 
@@ -213,14 +216,22 @@
     [self.chatBar sendCurrentText];
 }
 
-- (void)touchInEmojiItem:(TLEmoji *)emoji point:(CGPoint)point
+- (void)touchInEmojiItem:(TLEmoji *)emoji rect:(CGRect)rect
 {
-    NSLog(@"touch in %@, path %@", emoji.title, emoji.path);
+    if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
+        if (self.emojiDisplayView.superview == nil) {
+            [self.emojiKeyboard addSubview:self.emojiDisplayView];
+        }
+        [self.emojiDisplayView displayEmoji:emoji atRect:rect];
+    }
+    
 }
 
 - (void)cancelTouchEmojiItem
 {
-    NSLog(@"cancel touch");
+    if (self.emojiDisplayView.superview != nil) {
+        [self.emojiDisplayView removeFromSuperview];
+    }
 }
 
 - (BOOL)chatInputViewHasText
@@ -355,6 +366,14 @@ static NSInteger msgAccumulate = 0;
         _chatKeyboardController = [[TLChatKeyboardController alloc] init];
     }
     return _chatKeyboardController;
+}
+
+- (TLEmojiDisplayView *)emojiDisplayView
+{
+    if (_emojiDisplayView == nil) {
+        _emojiDisplayView = [[TLEmojiDisplayView alloc] init];
+    }
+    return _emojiDisplayView;
 }
 
 @end

@@ -40,7 +40,9 @@
     [self setAttrString:attrText];
     [self setAlpha:0];
     [UIView animateWithDuration:0.1 animations:^{
-        [self setAlpha:1];
+        [self setAlpha:1.0];
+    } completion:^(BOOL finished) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     }];
 }
 
@@ -59,6 +61,7 @@
 
 - (void)dismiss
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [UIView animateWithDuration:0.2 animations:^{
         self.alpha = 0;
     } completion:^(BOOL finished) {

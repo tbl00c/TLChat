@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C20032671C992AAF0088A3BC /* TLTextDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20032661C992AAF0088A3BC /* TLTextDisplayView.m */; };
 		C200326A1C992B0A0088A3BC /* TLChatCellMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20032691C992B0A0088A3BC /* TLChatCellMenuView.m */; };
+		C200326E1C994D430088A3BC /* TLEmojiDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C200326D1C994D430088A3BC /* TLEmojiDisplayView.m */; };
 		C2028D1B1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D1A1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m */; };
 		C2028D1E1C8D1D360060E271 /* TLFriendHelper+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D1D1C8D1D360060E271 /* TLFriendHelper+Detail.m */; };
 		C2028D281C8D2CF20060E271 /* TLNewFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D271C8D2CF20060E271 /* TLNewFriendViewController.m */; };
@@ -225,6 +226,8 @@
 		C20032661C992AAF0088A3BC /* TLTextDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTextDisplayView.m; sourceTree = "<group>"; };
 		C20032681C992B0A0088A3BC /* TLChatCellMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatCellMenuView.h; sourceTree = "<group>"; };
 		C20032691C992B0A0088A3BC /* TLChatCellMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatCellMenuView.m; sourceTree = "<group>"; };
+		C200326C1C994D430088A3BC /* TLEmojiDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiDisplayView.h; sourceTree = "<group>"; };
+		C200326D1C994D430088A3BC /* TLEmojiDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiDisplayView.m; sourceTree = "<group>"; };
 		C2028D191C8D1A3D0060E271 /* TLFriendDetailSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailSettingViewController.h; sourceTree = "<group>"; };
 		C2028D1A1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailSettingViewController.m; sourceTree = "<group>"; };
 		C2028D1C1C8D1D360060E271 /* TLFriendHelper+Detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLFriendHelper+Detail.h"; sourceTree = "<group>"; };
@@ -653,8 +656,9 @@
 		C20032621C992AAF0088A3BC /* ChatCommonViews */ = {
 			isa = PBXGroup;
 			children = (
-				C20032631C992AAF0088A3BC /* TLChatCellMenuView */,
 				C20032641C992AAF0088A3BC /* TLTextDisplayView */,
+				C200326B1C994CDF0088A3BC /* TLEmojiDisplayView */,
+				C20032631C992AAF0088A3BC /* TLChatCellMenuView */,
 			);
 			path = ChatCommonViews;
 			sourceTree = "<group>";
@@ -675,6 +679,15 @@
 				C20032661C992AAF0088A3BC /* TLTextDisplayView.m */,
 			);
 			path = TLTextDisplayView;
+			sourceTree = "<group>";
+		};
+		C200326B1C994CDF0088A3BC /* TLEmojiDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				C200326C1C994D430088A3BC /* TLEmojiDisplayView.h */,
+				C200326D1C994D430088A3BC /* TLEmojiDisplayView.m */,
+			);
+			path = TLEmojiDisplayView;
 			sourceTree = "<group>";
 		};
 		C2028D181C8D1A200060E271 /* FriendDetailSettingViewController */ = {
@@ -2373,6 +2386,7 @@
 				C21C6E211C8D88700018C570 /* TLGroupCell.m in Sources */,
 				C2DD58EA1C58CEF2005419E4 /* UIFont+TLChat.m in Sources */,
 				C271A5061C83FEC8004372D4 /* TLFriendDetailUserCell.m in Sources */,
+				C200326E1C994D430088A3BC /* TLEmojiDisplayView.m in Sources */,
 				C2E570051C89831A009662AB /* TLScannerView.m in Sources */,
 				C2142EF51C5376D40030B29B /* TLTableViewController.m in Sources */,
 				C2F0EC001C7A17300090843C /* TLBottleViewController.m in Sources */,

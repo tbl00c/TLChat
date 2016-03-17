@@ -22,4 +22,6 @@
                        count:(NSUInteger)count
                     complete:(void (^)(NSArray *, BOOL))complete;
 
+- (BOOL)deleteMessageByID:(NSString *)msgID;
+
 @end

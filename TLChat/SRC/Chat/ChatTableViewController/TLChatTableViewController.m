@@ -51,12 +51,6 @@
     [self.tableView addGestureRecognizer:tap];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    NSLog(@"2、 %lf %lf %lf %lf", self.tableView.x, self.tableView.y, self.tableView.width, self.tableView.height);
-}
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -78,7 +72,6 @@
         }
         if (count > 0) {
             [self.tableView reloadData];
-            NSLog(@"1、%lf %lf %lf %lf", self.tableView.x, self.tableView.y, self.tableView.width, self.tableView.height);
             [self.tableView scrollToBottomWithAnimation:NO];
         }
     }];
@@ -88,6 +81,22 @@
 {
     [self.data addObject:message];
     [self.tableView reloadData];
+}
+
+- (void)deleteMessage:(TLMessage *)message
+{
+    NSInteger index = [self.data indexOfObject:message];
+    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewController:deleteMessage:)]) {
+        BOOL ok = [_delegate chatTableViewController:self deleteMessage:message];
+        if (ok) {
+            [self.data removeObject:message];
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [MobClick event:EVENT_DELETE_MESSAGE];
+        }
+        else {
+            [UIAlertView alertWithTitle:@"错误" message:@"从数据库中删除消息失败。"];
+        }
+    }
 }
 
 - (void)scrollToBottomWithAnimation:(BOOL)animation
@@ -109,20 +118,22 @@
  */
 - (void)p_tryToRefreshMoreRecord:(void (^)(NSInteger count, BOOL hasMore))complete
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(chatRecordsFromDate:count:completed:)]) {
-        [_delegate chatRecordsFromDate:self.curDate
-                                 count:PAGE_MESSAGE_COUNT
-                             completed:^(NSDate *date, NSArray *array, BOOL hasMore) {
-            if (array.count > 0 && [date isEqualToDate:self.curDate]) {
-                self.curDate = [array[0] date];
-                [self.data insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, array.count)]];
-                complete(array.count, hasMore);
-            }
-            else {
-                complete(0, hasMore);
-            }
-        }];
+    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewController:getRecordsFromDate:count:completed:)]) {
+        [_delegate chatTableViewController:self
+                        getRecordsFromDate:self.curDate
+                                     count:PAGE_MESSAGE_COUNT
+                                 completed:^(NSDate *date, NSArray *array, BOOL hasMore) {
+                                     if (array.count > 0 && [date isEqualToDate:self.curDate]) {
+                                         self.curDate = [array[0] date];
+                                         [self.data insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, array.count)]];
+                                         complete(array.count, hasMore);
+                                     }
+                                     else {
+                                         complete(0, hasMore);
+                                     }
+                                 }];
     }
+
 }
 
 #pragma mark - Getter -

@@ -87,6 +87,13 @@
     complet(data, hasMore);
 }
 
+- (BOOL)deleteMessageByMessageID:(NSString *)messageID
+{
+    NSString *sqlString = [NSString stringWithFormat:DELETE_MESSAGE_SQL, MESSAGE_TABLE_NAME, messageID];
+    BOOL ok = [self excuteSQL:sqlString, nil];
+    return ok;
+}
+
 #pragma mark - Private Methods -
 - (TLDBMessage *)p_createDBMessageByFMResultSet:(FMResultSet *)retSet
 {

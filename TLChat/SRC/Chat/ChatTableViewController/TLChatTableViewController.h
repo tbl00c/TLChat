@@ -15,9 +15,13 @@
 
 - (void)chatTableViewControllerDidTouched:(TLChatTableViewController *)chatTVC;
 
-- (void)chatRecordsFromDate:(NSDate *)date
-                      count:(NSUInteger)count
-                  completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
+- (void)chatTableViewController:(TLChatTableViewController *)chatTVC
+             getRecordsFromDate:(NSDate *)date
+                          count:(NSUInteger)count
+                      completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
+
+- (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC
+                  deleteMessage:(TLMessage *)message;
 
 @end
 
@@ -33,6 +37,12 @@
  *  发送消息（在列表展示）
  */
 - (void)addMessage:(TLMessage *)message;
+
+
+/**
+ *  删除消息
+ */
+- (void)deleteMessage:(TLMessage *)message;
 
 /**
  *  滚动到底部

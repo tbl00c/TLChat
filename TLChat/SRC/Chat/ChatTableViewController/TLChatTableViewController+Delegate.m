@@ -69,12 +69,17 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     CGRect cellRect = [self.tableView rectForRowAtIndexPath:indexPath];
     rect.origin.y += cellRect.origin.y - self.tableView.contentOffset.y;
-    __weak typeof(self.tableView)tableView = self.tableView;
+    __weak typeof(self)weakSelf = self;
     [self.menuView showInView:self.navigationController.view withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
-        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         if (type == TLChatMenuItemTypeCopy) {
             NSString *str = message.messageCopy;
             [[UIPasteboard generalPasteboard] setString:str];
+        }
+        else if (type == TLChatMenuItemTypeDelete) {
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"是否删除该条消息" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles: nil];
+            actionSheet.tag = [self.data indexOfObject:message];
+            [actionSheet showInView:self.view];
         }
     }];
 }
@@ -92,6 +97,15 @@
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewControllerDidTouched:)]) {
         [self.delegate chatTableViewControllerDidTouched:self];
+    }
+}
+
+//MARK: UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        TLMessage *message = [self.data objectAtIndex:actionSheet.tag];
+        [self deleteMessage:message];
     }
 }
 

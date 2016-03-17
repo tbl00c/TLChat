@@ -25,4 +25,9 @@
                    count:(NSUInteger)count
                 complete:(void (^)(NSArray *data, BOOL hasMore))complete;
 
+/**
+ *  删除单条消息
+ */
+- (BOOL)deleteMessageByMessageID:(NSString *)messageID;
+
 @end

@@ -40,6 +40,11 @@
     }];
 }
 
+- (BOOL)deleteMessageByID:(NSString *)msgID;
+{
+    return [self.messageStore deleteMessageByMessageID:msgID];
+}
+
 #pragma mark - Getter -
 - (TLDBMessageStore *)messageStore
 {

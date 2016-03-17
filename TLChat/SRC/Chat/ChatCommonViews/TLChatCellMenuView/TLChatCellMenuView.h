@@ -11,6 +11,7 @@
 typedef NS_ENUM(NSInteger, TLChatMenuItemType) {
     TLChatMenuItemTypeCancel,
     TLChatMenuItemTypeCopy,
+    TLChatMenuItemTypeDelete,
 };
 
 @interface TLChatCellMenuView : UIView

@@ -37,7 +37,7 @@
 /**
  *  获取历史记录
  */
-- (void)chatRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *, BOOL))completed
+- (void)chatTableViewController:(TLChatTableViewController *)chatTVC getRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *, BOOL))completed
 {
     NSString *partnerID;
     if (self.curChatType == TLPartnerTypeGroup) {
@@ -71,6 +71,11 @@
         }
         completed(date, array, hasMore);
     }];
+}
+
+- (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC deleteMessage:(TLMessage *)message
+{
+    return [self.messageManager deleteMessageByID:message.messageID];
 }
 
 #pragma mark - Private Methods -

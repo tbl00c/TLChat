@@ -11,27 +11,29 @@
 
 @interface TLMineInfoAvatarCell ()
 
+@property (nonatomic, strong) UILabel *titleLabel;
+
 @property (nonatomic, strong) UIImageView *avatarImageView;
 
 @end
 
 @implementation TLMineInfoAvatarCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        
+        [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.avatarImageView];
         [self p_addMasonry];
     }
     return self;
 }
 
-- (void) setItem:(TLSettingItem *)item
+- (void)setItem:(TLSettingItem *)item
 {
     _item = item;
-    [self.textLabel setText:item.title];
+    [self.titleLabel setText:item.title];
     if (item.rightImagePath) {
         [self.avatarImageView setImage: [UIImage imageNamed:item.rightImagePath]];
     }
@@ -44,8 +46,14 @@
 }
 
 #pragma mark - Private Methods -
-- (void) p_addMasonry
+- (void)p_addMasonry
 {
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.contentView);
+        make.left.mas_equalTo(self.contentView).mas_offset(15);
+        make.right.mas_lessThanOrEqualTo(self.avatarImageView.mas_left).mas_offset(-15);
+    }];
+    
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.contentView);
         make.top.mas_equalTo(self.contentView).mas_offset(9);
@@ -55,7 +63,15 @@
 }
 
 #pragma mark - Getter -
-- (UIImageView *) avatarImageView
+- (UILabel *)titleLabel
+{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] init];
+    }
+    return _titleLabel;
+}
+
+- (UIImageView *)avatarImageView
 {
     if (_avatarImageView == nil) {
         _avatarImageView = [[UIImageView alloc] init];

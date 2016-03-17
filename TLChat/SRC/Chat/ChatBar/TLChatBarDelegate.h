@@ -23,3 +23,22 @@
 - (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height;
 
 @end
+
+
+@protocol TLChatBarDataDelegate <NSObject>
+/**
+ *  发送文字
+ */
+- (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text;
+
+
+// 录音控制 
+- (void)chatBarRecording:(TLChatBar *)chatBar;
+
+- (void)chatBarWillCancelRecording:(TLChatBar *)chatBar;
+
+- (void)chatBarDidCancelRecording:(TLChatBar *)chatBar;
+
+- (void)chatBarFinishedRecoding:(TLChatBar *)chatBar;
+
+@end

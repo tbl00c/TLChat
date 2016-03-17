@@ -44,4 +44,24 @@
     }
 }
 
+- (void)chatBarRecording:(TLChatBar *)chatBar
+{
+    NSLog(@"rec...");
+}
+
+- (void)chatBarWillCancelRecording:(TLChatBar *)chatBar
+{
+    NSLog(@"will cancel");
+}
+
+- (void)chatBarDidCancelRecording:(TLChatBar *)chatBar
+{
+    NSLog(@"cancel");
+}
+
+- (void)chatBarFinishedRecoding:(TLChatBar *)chatBar
+{
+    NSLog(@"finished");
+}
+
 @end

@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) MJRefreshNormalHeader *refresHeader;
 
+/// 用户决定新消息是否显示时间
 @property (nonatomic, strong) NSDate *curDate;
 
 @end
@@ -50,6 +51,12 @@
     [self.tableView addGestureRecognizer:tap];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"2、 %lf %lf %lf %lf", self.tableView.x, self.tableView.y, self.tableView.width, self.tableView.height);
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -71,6 +78,7 @@
         }
         if (count > 0) {
             [self.tableView reloadData];
+            NSLog(@"1、%lf %lf %lf %lf", self.tableView.x, self.tableView.y, self.tableView.width, self.tableView.height);
             [self.tableView scrollToBottomWithAnimation:NO];
         }
     }];

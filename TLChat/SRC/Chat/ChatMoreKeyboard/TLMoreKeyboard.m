@@ -12,7 +12,7 @@
 
 #define     HEIGHT_TOP_SPACE            15
 #define     HEIGHT_COLLECTIONVIEW       (HEIGHT_CHAT_KEYBOARD * 0.85 - HEIGHT_TOP_SPACE)
-#define     WIDTH_COLLECTION_CELL       58
+#define     WIDTH_COLLECTION_CELL       60
 
 static TLMoreKeyboard *moreKB;
 

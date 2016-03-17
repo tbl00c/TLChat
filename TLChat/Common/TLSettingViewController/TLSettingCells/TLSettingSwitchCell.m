@@ -10,6 +10,8 @@
 
 @interface TLSettingSwitchCell ()
 
+@property (nonatomic, strong) UILabel *titleLabel;
+
 @property (nonatomic, strong) UISwitch *cellSwitch;
 
 @end
@@ -21,6 +23,8 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self setAccessoryView:self.cellSwitch];
+        [self.contentView addSubview:self.titleLabel];
+        [self p_addMasonry];
     }
     return self;
 }
@@ -28,7 +32,7 @@
 - (void)setItem:(TLSettingItem *)item
 {
     _item = item;
-    [self.textLabel setText:item.title];
+    [self.titleLabel setText:item.title];
 }
 
 #pragma mark - Event Response -
@@ -39,7 +43,26 @@
     }
 }
 
+#pragma mark - Private Methods -
+- (void)p_addMasonry
+{
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.contentView);
+        make.left.mas_equalTo(self.contentView).mas_offset(15);
+        make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-15);
+    }];
+}
+
+
 #pragma mark - Getter -
+- (UILabel *)titleLabel
+{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] init];
+    }
+    return _titleLabel;
+}
+
 - (UISwitch *)cellSwitch
 {
     if (_cellSwitch == nil) {

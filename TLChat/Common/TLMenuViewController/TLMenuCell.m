@@ -13,6 +13,10 @@
 
 @interface TLMenuCell ()
 
+@property (nonatomic, strong) UIImageView *iconImageView;
+
+@property (nonatomic, strong) UILabel *titleLabel;
+
 @property (nonatomic, strong) UILabel *midLabel;
 
 @property (nonatomic, strong) UIImageView *rightImageView;
@@ -23,10 +27,12 @@
 
 @implementation TLMenuCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        [self.contentView addSubview:self.iconImageView];
+        [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.midLabel];
         [self.contentView addSubview:self.rightImageView];
         [self.contentView addSubview:self.redPointView];
@@ -36,11 +42,11 @@
     return self;
 }
 
-- (void) setMenuItem:(TLMenuItem *)menuItem
+- (void)setMenuItem:(TLMenuItem *)menuItem
 {
     _menuItem = menuItem;
-    [self.imageView setImage:[UIImage imageNamed:menuItem.iconPath]];
-    [self.textLabel setText:menuItem.title];
+    [self.iconImageView setImage:[UIImage imageNamed:menuItem.iconPath]];
+    [self.titleLabel setText:menuItem.title];
     [self.midLabel setText:menuItem.subTitle];
     if (menuItem.rightIconURL == nil) {
         [self.rightImageView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -57,16 +63,27 @@
 }
 
 #pragma mark - Private Methods
-- (void) p_addMasonry
+- (void)p_addMasonry
 {
+    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.contentView).mas_offset(15.0f);
+        make.centerY.mas_equalTo(self.contentView);
+        make.width.and.height.mas_equalTo(25.0f);
+    }];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.iconImageView);
+        make.left.mas_equalTo(self.iconImageView.mas_right).mas_offset(15.0f);
+        make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(15.0f);
+    }];
     [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.contentView);
-        make.centerY.mas_equalTo(self.contentView);
+        make.centerY.mas_equalTo(self.iconImageView);
         make.width.and.height.mas_equalTo(31);
     }];
     [self.midLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_greaterThanOrEqualTo(self.titleLabel.mas_right).mas_offset(15);
         make.right.mas_equalTo(self.rightImageView.mas_left).mas_offset(-5);
-        make.centerY.mas_equalTo(self.contentView);
+        make.centerY.mas_equalTo(self.iconImageView);
     }];
     [self.redPointView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.rightImageView.mas_right).mas_offset(1);
@@ -76,7 +93,23 @@
 }
 
 #pragma mark - Getter
-- (UILabel *) midLabel
+- (UIImageView *)iconImageView
+{
+    if (_iconImageView == nil) {
+        _iconImageView = [[UIImageView alloc] init];
+    }
+    return _iconImageView;
+}
+
+- (UILabel *)titleLabel
+{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] init];
+    }
+    return _titleLabel;
+}
+
+- (UILabel *)midLabel
 {
     if (_midLabel == nil) {
         _midLabel = [[UILabel alloc] init];
@@ -86,7 +119,7 @@
     return _midLabel;
 }
 
-- (UIImageView *) rightImageView
+- (UIImageView *)rightImageView
 {
     if (_rightImageView == nil) {
         _rightImageView = [[UIImageView alloc] init];
@@ -94,7 +127,7 @@
     return _rightImageView;
 }
 
-- (UIView *) redPointView
+- (UIView *)redPointView
 {
     if (_redPointView == nil) {
         _redPointView = [[UIView alloc] init];

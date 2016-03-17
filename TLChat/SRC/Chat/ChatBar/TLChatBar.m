@@ -299,6 +299,27 @@
     }
 }
 
+- (void)talkButtonTouchDown:(UIButton *)sender
+{
+    if (_dataDelegate && [_dataDelegate respondsToSelector:@selector(chatBarRecording:)]) {
+        [_dataDelegate chatBarRecording:self];
+    }
+}
+
+- (void)talkButtonTouchUpInside:(UIButton *)sender
+{
+    if (_dataDelegate && [_dataDelegate respondsToSelector:@selector(chatBarFinishedRecoding:)]) {
+        [_dataDelegate chatBarFinishedRecoding:self];
+    }
+}
+
+- (void)talkButtonTouchCancel:(UIButton *)sender
+{
+    if (_dataDelegate && [_dataDelegate respondsToSelector:@selector(chatBarDidCancelRecording:)]) {
+        [_dataDelegate chatBarDidCancelRecording:self];
+    }
+}
+
 #pragma mark - Private Methods
 - (void)p_addMasonry
 {
@@ -413,10 +434,10 @@
         [_talkButton.layer setBorderWidth:0.5f];
         [_talkButton.layer setBorderColor:[UIColor grayColor].CGColor];
         [_talkButton setHidden:YES];
-//        [_talkButton addTarget:self action:@selector(talkButtonDown:) forControlEvents:UIControlEventTouchDown];
-//        [_talkButton addTarget:self action:@selector(talkButtonUpInside:) forControlEvents:UIControlEventTouchUpInside];
-//        [_talkButton addTarget:self action:@selector(talkButtonUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
-//        [_talkButton addTarget:self action:@selector(talkButtonUpOutside:) forControlEvents:UIControlEventTouchCancel];
+        [_talkButton addTarget:self action:@selector(talkButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
+        [_talkButton addTarget:self action:@selector(talkButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+        [_talkButton addTarget:self action:@selector(talkButtonTouchCancel:) forControlEvents:UIControlEventTouchUpOutside];
+        [_talkButton addTarget:self action:@selector(talkButtonTouchCancel:) forControlEvents:UIControlEventTouchCancel];
     }
     return _talkButton;
 }

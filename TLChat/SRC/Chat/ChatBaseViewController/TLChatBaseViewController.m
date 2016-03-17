@@ -18,7 +18,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.chatTableVC.tableView];
     [self addChildViewController:self.chatTableVC];

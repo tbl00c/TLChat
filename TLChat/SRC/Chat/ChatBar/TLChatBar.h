@@ -9,14 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TLChatBarDelegate.h"
 
-@class TLChatBar;
-@protocol TLChatBarDataDelegate <NSObject>
-/**
- *  发送文字
- */
-- (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text;
-@end
-
 @interface TLChatBar : UIView
 
 @property (nonatomic, assign) id<TLChatBarDelegate> delegate;

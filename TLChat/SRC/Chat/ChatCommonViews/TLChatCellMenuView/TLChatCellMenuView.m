@@ -29,6 +29,9 @@
 
 - (void)showInView:(UIView *)view withMessageType:(TLMessageType)messageType rect:(CGRect)rect actionBlock:(void (^)(TLChatMenuItemType))actionBlock
 {
+    if (_isShow) {
+        return;
+    }
     _isShow = YES;
     [self setFrame:view.bounds];
     [view addSubview:self];

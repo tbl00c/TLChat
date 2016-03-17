@@ -10,8 +10,8 @@
 #import "TLChatTableViewController.h"
 #import "TLEmojiDisplayView.h"
 #import "TLImageExpressionDisplayView.h"
-#import "TLMoreKeyboardDelegate.h"
 
+#import "TLMoreKeyboardDelegate.h"
 #import "TLMessageManager.h"
 
 #import "TLChatBar.h"
@@ -51,9 +51,6 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 
 /// 表情键盘
 @property (nonatomic, strong) TLEmojiKeyboard *emojiKeyboard;
-
-/// 聊天管理类
-@property (nonatomic, strong) TLMessageManager *messageManager;
 
 /// emoji展示view
 @property (nonatomic, strong) TLEmojiDisplayView *emojiDisplayView;

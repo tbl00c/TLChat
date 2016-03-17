@@ -7,11 +7,16 @@
 //
 
 #import "TLChatDetailViewController.h"
+#import "TLFriendDetailViewController.h"
+#import "TLMessageManager.h"
 #import "TLChatDetailHelper.h"
 #import "TLUserGroupCell.h"
-#import "TLFriendDetailViewController.h"
 
-@interface TLChatDetailViewController () <TLUserGroupCellDelegate>
+#import "TLChatViewController.h"
+
+#define     TAG_EMPTY_CHAT_REC      1001
+
+@interface TLChatDetailViewController () <TLUserGroupCellDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) TLChatDetailHelper *helper;
 
@@ -44,6 +49,17 @@
 }
 
 //MARK: UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+    if ([item.title isEqualToString:@"清空聊天记录"]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles: nil];
+        actionSheet.tag = TAG_EMPTY_CHAT_REC;
+        [actionSheet showInView:self.view];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 0) {
@@ -51,6 +67,22 @@
         return ((count + 1) / 4 + ((((count + 1) % 4) == 0) ? 0 : 1)) * 90 + 15;
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+//MARK: UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == TAG_EMPTY_CHAT_REC) {
+        if (buttonIndex == 0) {
+            BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByFriendID:self.user.userID];
+            if (!ok) {
+                [UIAlertView alertWithTitle:@"错误" message:@"清空讨论组聊天记录失败"];
+            }
+            else {
+                [[TLChatViewController sharedChatVC].chatTableVC reloadData];
+            }
+        }
+    }
 }
 
 //MARK: TLUserGroupCellDelegate

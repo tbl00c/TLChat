@@ -46,7 +46,7 @@
     else {
         partnerID = self.user.userID;
     }
-    [self.messageManager messageRecordForUser:[TLUserHelper sharedHelper].userID andPartner:partnerID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
+    [[TLMessageManager sharedInstance] messageRecordForUser:[TLUserHelper sharedHelper].userID andPartner:partnerID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
         if (array.count > 0) {
             int count = 0;
             NSTimeInterval tm = 0;
@@ -75,7 +75,7 @@
 
 - (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC deleteMessage:(TLMessage *)message
 {
-    return [self.messageManager deleteMessageByMsgID:message.messageID];
+    return [[TLMessageManager sharedInstance] deleteMessageByMsgID:message.messageID];
 }
 
 #pragma mark - Private Methods -

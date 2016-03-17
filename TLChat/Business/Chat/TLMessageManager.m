@@ -10,6 +10,8 @@
 #import "TLDBMessageStore.h"
 #import "TLDBMessage+TLMessage.h"
 
+static TLMessageManager *messageManager;
+
 @interface TLMessageManager ()
 
 @property (nonatomic, strong) TLDBMessageStore *messageStore;
@@ -17,6 +19,15 @@
 @end
 
 @implementation TLMessageManager
+
++ (TLMessageManager *)sharedInstance
+{
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        messageManager = [[TLMessageManager alloc] init];
+    });
+    return messageManager;
+}
 
 - (void)sendMessage:(TLMessage *)message
            progress:(void (^)(TLMessage *, CGFloat))progress

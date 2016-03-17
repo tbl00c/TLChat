@@ -11,6 +11,8 @@
 
 @interface TLMessageManager : NSObject
 
++ (TLMessageManager *)sharedInstance;
+
 - (void)sendMessage:(TLMessage *)message
            progress:(void (^)(TLMessage *, CGFloat))progress
             success:(void (^)(TLMessage *))success

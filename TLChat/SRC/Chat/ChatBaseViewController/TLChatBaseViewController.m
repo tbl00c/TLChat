@@ -128,14 +128,6 @@
 }
 
 #pragma mark - Getter -
-- (TLMessageManager *)messageManager
-{
-    if (_messageManager == nil) {
-        _messageManager = [[TLMessageManager alloc] init];
-    }
-    return _messageManager;
-}
-
 - (TLChatTableViewController *)chatTableVC
 {
     if (_chatTableVC == nil) {

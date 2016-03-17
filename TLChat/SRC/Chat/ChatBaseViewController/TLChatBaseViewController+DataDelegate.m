@@ -28,7 +28,7 @@
     //    message.showName = NO;
     
     [self addMessage:message];    // 添加到列表
-    [self.messageManager sendMessage:message progress:^(TLMessage *message, CGFloat pregress) {
+    [[TLMessageManager sharedInstance] sendMessage:message progress:^(TLMessage *message, CGFloat pregress) {
         
     } success:^(TLMessage *message) {
         NSLog(@"send success");

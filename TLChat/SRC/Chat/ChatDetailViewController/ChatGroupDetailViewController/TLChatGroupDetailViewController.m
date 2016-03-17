@@ -11,8 +11,11 @@
 #import "TLMessageManager.h"
 #import "TLUserGroupCell.h"
 
+#import "TLChatViewController.h"
+
 #import "TLFriendDetailViewController.h"
 #import "TLGroupQRCodeViewController.h"
+
 
 #define     TAG_EMPTY_CHAT_REC      1001
 
@@ -80,7 +83,13 @@
 {
     if (actionSheet.tag == TAG_EMPTY_CHAT_REC) {
         if (buttonIndex == 0) {
-//            [TLMessageManager ]
+            BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByFriendID:self.group.groupID];
+            if (!ok) {
+                [UIAlertView alertWithTitle:@"错误" message:@"清空讨论组聊天记录失败"];
+            }
+            else {
+                [[TLChatViewController sharedChatVC].chatTableVC reloadData];
+            }
         }
     }
 }

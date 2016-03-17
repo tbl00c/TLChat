@@ -11,7 +11,6 @@
 
 #import <AFNetworking.h>
 #import <JSPatch/JSPatch.h>
-#import "TLFriendHelper.h"
 
 @implementation TLAppDelegate
 

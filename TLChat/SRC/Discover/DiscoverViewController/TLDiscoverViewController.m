@@ -31,8 +31,8 @@
     self.data = self.discoverHelper.discoverMenuData;
 }
 
-#pragma mark - 
-#pragma mark UITableViewDelegate
+#pragma mark - Delegate - 
+//MARK: UITableViewDelegate
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLMenuItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];

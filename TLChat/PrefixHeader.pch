@@ -26,6 +26,7 @@
 #import "TLNavigationController.h"
 
 #import "TLUserHelper.h"
+#import "TLFriendHelper.h"
 
 #import "UIView+Frame.h"
 #import "UIButton+TLChat.h"

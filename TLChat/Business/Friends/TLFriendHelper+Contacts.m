@@ -33,7 +33,7 @@
         CFIndex nPeople = ABAddressBookGetPersonCount(addressBooks);
         
         // 2、加载缓存
-        if (CFArrayGetCount(allPeople) > 0) {
+        if (allPeople != nil &&  CFArrayGetCount(allPeople) > 0) {
             NSString *path = [NSFileManager pathContactsData];
             NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
             if (dic) {
@@ -46,7 +46,9 @@
             }
         }
         else {
-            failed();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                failed();
+            });
             return;
         }
         

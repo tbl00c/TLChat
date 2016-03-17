@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TLChatTableViewController.h"
+#import "TLEmojiDisplayView.h"
+#import "TLImageExpressionDisplayView.h"
 #import "TLMoreKeyboardDelegate.h"
 
 #import "TLMessageManager.h"
@@ -24,7 +26,11 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
     TLChatVCTypeGroup,
 };
 
-@interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate, TLEmojiKeyboardDelegate>
+@interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate>
+{
+    TLChatBarStatus lastStatus;
+    TLChatBarStatus curStatus;
+}
 
 /// 当前聊天类型 （赋值User或Group时自动设置）
 @property (nonatomic, assign, readonly) TLChatVCType curChatType;
@@ -32,6 +38,7 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 @property (nonatomic, strong) TLUser *user;
 
 @property (nonatomic, strong) TLGroup *group;
+
 
 /// 消息展示页面
 @property (nonatomic, strong) TLChatTableViewController *chatTableVC;
@@ -47,6 +54,12 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 
 /// 聊天管理类
 @property (nonatomic, strong) TLMessageManager *messageManager;
+
+/// emoji展示view
+@property (nonatomic, strong) TLEmojiDisplayView *emojiDisplayView;
+
+/// 图片表情展示view
+@property (nonatomic, strong) TLImageExpressionDisplayView *imageExpressionDisplayView;
 
 
 /**

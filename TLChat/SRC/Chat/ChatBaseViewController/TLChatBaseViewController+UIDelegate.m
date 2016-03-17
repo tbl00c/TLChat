@@ -1,35 +1,16 @@
 //
-//  TLChatKeyboardController.m
+//  TLChatBaseViewController+UIDelegate.m
 //  TLChat
 //
-//  Created by 李伯坤 on 16/3/1.
+//  Created by 李伯坤 on 16/3/17.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLChatKeyboardController.h"
-#import "TLChatBaseViewController.h"
+#import "TLChatBaseViewController+UIDelegate.h"
 
-@interface TLChatKeyboardController ()
+@implementation TLChatBaseViewController (UIDelegate)
 
-@property (nonatomic, strong) UIView *view;
-
-@property (nonatomic, strong) TLChatTableViewController *chatTableVC;
-
-@property (nonatomic, strong) TLChatBar *chatBar;
-
-@property (nonatomic, strong) TLMoreKeyboard *moreKeyboard;
-
-@property (nonatomic, strong) TLEmojiKeyboard *emojiKeyboard;
-
-@end
-
-
-@implementation TLChatKeyboardController
-{
-    TLChatBarStatus lastStatus;
-    TLChatBarStatus curStatus;
-}
-
+#pragma mark - Public Methods -
 - (void)keyboardWillHide:(NSNotification *)notification
 {
     if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
@@ -66,6 +47,27 @@
     }
     else if (lastStatus == TLChatBarStatusEmoji) {
         [self.emojiKeyboard dismissWithAnimation:NO];
+    }
+}
+
+#pragma mark - Delegate -
+//MARK: TLKeyboardDelegate
+- (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
+{
+    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view).mas_offset(-height);
+    }];
+    [self.view layoutIfNeeded];
+    [self.chatTableVC scrollToBottomWithAnimation:NO];
+}
+
+- (void)chatKeyboardDidShow:(id)keyboard
+{
+    if (curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji) {
+        [self.emojiKeyboard dismissWithAnimation:NO];
+    }
+    else if (curStatus == TLChatBarStatusEmoji && lastStatus == TLChatBarStatusMore) {
+        [self.moreKeyboard dismissWithAnimation:NO];
     }
 }
 
@@ -130,53 +132,6 @@
 - (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height
 {
     [self.chatTableVC scrollToBottomWithAnimation:NO];
-}
-
-//MARK: TLKeyboardDelegate
-- (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
-{
-    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view).mas_offset(-height);
-    }];
-    [self.view layoutIfNeeded];
-    [self.chatTableVC scrollToBottomWithAnimation:NO];
-}
-
-- (void)chatKeyboardDidShow:(id)keyboard
-{
-    if (curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji) {
-        [self.emojiKeyboard dismissWithAnimation:NO];
-    }
-    else if (curStatus == TLChatBarStatusEmoji && lastStatus == TLChatBarStatusMore) {
-        [self.moreKeyboard dismissWithAnimation:NO];
-    }
-}
-
-
-#pragma mark - 
-- (TLChatTableViewController *)chatTableVC
-{
-    return self.chatBaseVC.chatTableVC;
-}
-
-- (UIView *)view
-{
-    return self.chatBaseVC.view;
-}
-
-- (TLChatBar *)chatBar
-{
-    return self.chatBaseVC.chatBar;
-}
-
-- (TLEmojiKeyboard *)emojiKeyboard
-{
-    return self.chatBaseVC.emojiKeyboard;
-}
-
-- (TLMoreKeyboard *)moreKeyboard
-{
-    return self.chatBaseVC.moreKeyboard;
 }
 
 @end

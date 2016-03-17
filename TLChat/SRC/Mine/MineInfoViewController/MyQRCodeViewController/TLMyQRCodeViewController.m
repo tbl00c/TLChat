@@ -44,7 +44,8 @@
     self.qrCodeVC.introduction = @"扫一扫上面的二维码图案，加我微信";
 }
 
-#pragma mark - UIActionSheetDelegate -
+#pragma mark - Delegate -
+//MARK: UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet.tag == ACTIONTAG_SHOW_SCANNER && buttonIndex == 2) {

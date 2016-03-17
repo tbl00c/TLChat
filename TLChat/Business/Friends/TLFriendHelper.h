@@ -40,7 +40,7 @@
 /**
  *  好友数量
  */
-@property (nonatomic, assign, readonly) NSInteger friendNumber;
+@property (nonatomic, assign, readonly) NSInteger friendCount;
 
 /**
  *  标签数据
@@ -48,7 +48,7 @@
 @property (nonatomic, strong) NSMutableArray *tagsData;
 
 
-@property (nonatomic, strong) void(^dataChangedBlock)(NSMutableArray *friends, NSMutableArray *headers);
+@property (nonatomic, strong) void(^dataChangedBlock)(NSMutableArray *friends, NSMutableArray *headers, NSInteger friendCount);
 
 
 + (TLFriendHelper *)sharedFriendHelper;

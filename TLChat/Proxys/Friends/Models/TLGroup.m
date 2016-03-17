@@ -7,7 +7,6 @@
 //
 
 #import "TLGroup.h"
-#import "TLFriendHelper.h"
 #import "NSString+PinYin.h"
 
 @implementation TLGroup

@@ -29,8 +29,8 @@
     self.data = [self.helper mineInfoDataByUserInfo:[TLUserHelper sharedHelper].user];
 }
 
-#pragma mark - Delegate
-#pragma mark UITableViewDataSource
+#pragma mark - Delegate -
+//MARK: UITableViewDataSource
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
@@ -42,7 +42,7 @@
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
-#pragma mark UITableViewDelegate
+//MARK: UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];

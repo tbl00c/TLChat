@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLChatCellMenuView.h"
 #import "TLMessage.h"
 
 @class TLChatTableViewController;
@@ -14,7 +15,8 @@
 
 - (void)chatTableViewControllerDidTouched:(TLChatTableViewController *)chatTVC;
 
-- (void)chatRecordsFromDate:(NSDate *)date count:(NSUInteger)count
+- (void)chatRecordsFromDate:(NSDate *)date
+                      count:(NSUInteger)count
                   completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
 
 @end
@@ -24,6 +26,8 @@
 @property (nonatomic, assign) id<TLChatTableViewControllerDelegate>delegate;
 
 @property (nonatomic, strong) NSMutableArray *data;
+
+@property (nonatomic, strong) TLChatCellMenuView *menuView;
 
 /**
  *  发送消息（在列表展示）

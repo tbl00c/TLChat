@@ -7,22 +7,14 @@
 //
 
 #import "TLMoreKeyboard.h"
+#import "TLMoreKeyboard+CollectionViewDelegate.h"
 #import "TLChatMacros.h"
-#import "TLMoreKeyboardCell.h"
 
 #define     HEIGHT_TOP_SPACE            15
 #define     HEIGHT_COLLECTIONVIEW       (HEIGHT_CHAT_KEYBOARD * 0.85 - HEIGHT_TOP_SPACE)
 #define     WIDTH_COLLECTION_CELL       58
 
 static TLMoreKeyboard *moreKB;
-
-@interface TLMoreKeyboard () <UICollectionViewDataSource, UICollectionViewDelegate>
-
-@property (nonatomic, strong) UICollectionView *collectionView;
-
-@property (nonatomic, strong) UIPageControl *pageControl;
-
-@end
 
 @implementation TLMoreKeyboard
 
@@ -42,7 +34,7 @@ static TLMoreKeyboard *moreKB;
         [self addSubview:self.collectionView];
         [self addSubview:self.pageControl];
         [self p_addMasonry];
-        [self.collectionView registerClass:[TLMoreKeyboardCell class] forCellWithReuseIdentifier:@"TLMoreKeyboardCell"];
+        [self registerCellClass];
     }
     return self;
 }
@@ -128,43 +120,6 @@ static TLMoreKeyboard *moreKB;
     [self.pageControl setNumberOfPages:pageNumber];
 }
 
-#pragma mark - Delegate -
-//MARK: UICollectionViewDataSource
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return self.chatMoreKeyboardData.count / 8 + (self.chatMoreKeyboardData.count % 8 == 0 ? 0 : 1);
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 8;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    TLMoreKeyboardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLMoreKeyboardCell" forIndexPath:indexPath];
-    NSUInteger index = indexPath.section * 8 + indexPath.row;
-    NSUInteger tIndex = [self p_transformIndex:index];  // 矩阵坐标转置
-    if (tIndex >= self.chatMoreKeyboardData.count) {
-        [cell setItem:nil];
-    }
-    else {
-        [cell setItem:self.chatMoreKeyboardData[tIndex]];
-    }
-    __weak typeof(self) weakSelf = self;
-    [cell setClickBlock:^(TLMoreKeyboardItem *sItem) {
-        if (_delegate && [_delegate respondsToSelector:@selector(moreKeyboard:didSelectedFunctionItem:)]) {
-            [_delegate moreKeyboard:weakSelf didSelectedFunctionItem:sItem];
-        }
-    }];
-    return cell;
-}
-
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self.pageControl setCurrentPage:(int)(scrollView.contentOffset.x / WIDTH_SCREEN)];
-}
-
 #pragma mark - Event Response -
 - (void) pageControlChanged:(UIPageControl *)pageControl
 {
@@ -172,15 +127,6 @@ static TLMoreKeyboard *moreKB;
 }
 
 #pragma mark - Private Methods -
-- (NSUInteger)p_transformIndex:(NSUInteger)index
-{
-    NSUInteger page = index / 8;
-    index = index % 8;
-    NSUInteger x = index / 2;
-    NSUInteger y = index % 2;
-    return 4 * y + x + page * 8;
-}
-
 - (void)p_addMasonry
 {
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -7,9 +7,12 @@
 //
 
 #import "TLTableViewController.h"
+#import "TLGroupSearchViewController.h"
 
 @interface TLGroupViewController : TLTableViewController
 
 @property (nonatomic, strong) NSMutableArray *data;
+
+@property (nonatomic, strong) TLGroupSearchViewController *searchVC;
 
 @end

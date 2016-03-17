@@ -7,7 +7,12 @@
 //
 
 #import "TLTableViewController.h"
+#import "TLFriendSearchViewController.h"
 
 @interface TLConversationViewController : TLTableViewController
+
+@property (nonatomic, strong) TLFriendSearchViewController *searchVC;
+
+@property (nonatomic, strong) NSMutableArray *data;
 
 @end

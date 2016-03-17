@@ -19,6 +19,10 @@
 
 @property (nonatomic, strong) NSMutableArray *chatMoreKeyboardData;
 
+@property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) UIPageControl *pageControl;
+
 + (TLMoreKeyboard *)keyboard;
 
 - (void)reset;

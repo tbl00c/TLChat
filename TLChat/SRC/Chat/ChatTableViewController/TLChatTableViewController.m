@@ -7,21 +7,12 @@
 //
 
 #import "TLChatTableViewController.h"
-#import "TLFriendDetailViewController.h"
-#import "TLChatCellMenuView.h"
-#import "TLTextDisplayView.h"
+#import "TLChatTableViewController+Delegate.h"
 #import <MJRefresh.h>
-
-#import "TLTextMessageCell.h"
-#import "TLImageMessageCell.h"
-
-
 
 #define     PAGE_MESSAGE_COUNT      15
 
-@interface TLChatTableViewController () <TLMessageCellDelegate>
-
-@property (nonatomic, strong) TLChatCellMenuView *menuView;
+@interface TLChatTableViewController ()
 
 @property (nonatomic, strong) MJRefreshNormalHeader *refresHeader;
 
@@ -53,8 +44,7 @@
     self.refresHeader.stateLabel.hidden = YES;
     [self.tableView setMj_header:self.refresHeader];
     
-    [self.tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
-    [self.tableView registerClass:[TLImageMessageCell class] forCellReuseIdentifier:@"TLImageMessageCell"];
+    [self registerCellClass];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchTableView)];
     [self.tableView addGestureRecognizer:tap];
@@ -95,82 +85,6 @@
 - (void)scrollToBottomWithAnimation:(BOOL)animation
 {
     [self.tableView scrollToBottomWithAnimation:animation];
-}
-
-#pragma mark - Delegate -
-//MARK: UITableViewDataSouce
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.data.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TLMessage *message = self.data[indexPath.row];
-    if (message.messageType == TLMessageTypeText) {
-        TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell"];
-        [cell setMessage:message];
-        [cell setDelegate:self];
-        return cell;
-    }
-    else if (message.messageType == TLMessageTypeImage) {
-        TLImageMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLImageMessageCell"];
-        [cell setMessage:message];
-        [cell setDelegate:self];
-        return cell;
-    }
-    return nil;
-}
-
-//MARK: UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-    TLMessage *message = self.data[indexPath.row];
-    return message.frame.height;
-}
-
-//MARK: TLMessageCellDelegate
-- (void)messageCellDidClickAvatarForUser:(TLUser *)user
-{
-    TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
-    [detailVC setUser:user];
-    [self.parentViewController setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:detailVC animated:YES];
-}
-
-- (void)messageCellLongPress:(TLMessage *)message rect:(CGRect)rect
-{
-    if ([self.menuView isShow]) {
-        return;
-    }
-    NSInteger row = [self.data indexOfObject:message];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    CGRect cellRect = [self.tableView rectForRowAtIndexPath:indexPath];
-    rect.origin.y += cellRect.origin.y - self.tableView.contentOffset.y;
-    __weak typeof(self.tableView)tableView = self.tableView;
-    [self.menuView showInView:self.navigationController.view withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
-        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-        if (type == TLChatMenuItemTypeCopy) {
-            NSString *str = message.messageCopy;
-            [[UIPasteboard generalPasteboard] setString:str];
-        }
-    }];
-}
-
-- (void)messageCellDoubleClick:(TLMessage *)message
-{
-    if (message.messageType == TLMessageTypeText) {
-        TLTextDisplayView *displayView = [[TLTextDisplayView alloc] init];
-        [displayView showInView:self.navigationController.view withAttrText:message.attrText animation:YES];
-    }
-}
-
-//MARK: UIScrollViewDelegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewControllerDidTouched:)]) {
-        [_delegate chatTableViewControllerDidTouched:self];
-    }
 }
 
 #pragma mark - Event Response -

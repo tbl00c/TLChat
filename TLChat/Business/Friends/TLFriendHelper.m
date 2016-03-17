@@ -150,7 +150,7 @@ static TLFriendHelper *friendHelper = nil;
     [self.sectionHeaders addObjectsFromArray:ansSectionHeaders];
     if (self.dataChangedBlock) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.dataChangedBlock(self.data, self.sectionHeaders);
+            self.dataChangedBlock(self.data, self.sectionHeaders, self.friendCount);
         });
     }
 }
@@ -188,7 +188,7 @@ static TLFriendHelper *friendHelper = nil;
     return _defaultGroup;
 }
 
-- (NSInteger)friendNumber
+- (NSInteger)friendCount
 {
     return self.friendsData.count;
 }

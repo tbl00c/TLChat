@@ -8,7 +8,6 @@
 
 #import "TLChatGroupDetailViewController.h"
 #import "TLChatDetailHelper.h"
-#import "TLFriendHelper.h"
 #import "TLUserGroupCell.h"
 
 #import "TLFriendDetailViewController.h"

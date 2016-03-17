@@ -32,8 +32,8 @@
     self.data = self.helper.mineSettingData;
 }
 
-#pragma mark - delegate
-#pragma mark UITableViewDelegate
+#pragma mark - delegate -
+//MARK: UITableViewDelegate
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];

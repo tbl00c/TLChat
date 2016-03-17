@@ -36,8 +36,8 @@
     [self.tableView registerClass:[TLMineHeaderCell class] forCellReuseIdentifier:@"TLMineHeaderCell"];
 }
 
-#pragma mark -
-#pragma mark UITableViewDataSource
+#pragma mark - Delegate -
+//MARK: UITableViewDataSource
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -48,7 +48,7 @@
     return [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
 }
 
-#pragma mark UITableViewDelegate
+//MARK: UITableViewDelegate
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {

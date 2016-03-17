@@ -7,13 +7,12 @@
 //
 
 #import "TLChatViewController.h"
-#import <MobClick.h>
-#import "TLMoreKBHelper.h"
-#import "TLEmojiKBHelper.h"
+#import "TLChatViewController+Delegate.h"
 #import "TLChatDetailViewController.h"
 #import "TLChatGroupDetailViewController.h"
-#import "TLExpressionViewController.h"
-#import "TLMyExpressionViewController.h"
+#import "TLMoreKBHelper.h"
+#import "TLEmojiKBHelper.h"
+#import <MobClick.h>
 
 static TLChatViewController *chatVC;
 
@@ -83,55 +82,6 @@ static TLChatViewController *chatVC;
 {
     [super setGroup:group];
     [self.rightBarButton setImage:[UIImage imageNamed:@"nav_chat_multi"]];
-}
-
-#pragma mark - Delegate -
-//MARK: TLMoreKeyboardDelegate
-- (void)moreKeyboard:(id)keyboard didSelectedFunctionItem:(TLMoreKeyboardItem *)funcItem
-{
-    if (funcItem.type == TLMoreKeyboardItemTypeCamera || funcItem.type == TLMoreKeyboardItemTypeImage) {
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-        if (funcItem.type == TLMoreKeyboardItemTypeCamera) {
-            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
-            }
-            else {
-                [UIAlertView alertWithTitle:@"错误" message:@"相机初始化失败"];
-                return;
-            }
-        }
-        else {
-            [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-        }
-        [self presentViewController:imagePickerController animated:YES completion:nil];
-        [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
-            [imagePickerController dismissViewControllerAnimated:YES completion:^{
-                UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
-                [self sendImageMessage:image];
-            }];
-        } completed:^{
-            [imagePickerController dismissViewControllerAnimated:YES completion:nil];
-        }];
-    }
-    else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"选中”%@“ 按钮", funcItem.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alert show];
-    }
-}
-
-//MARK: TLEmojiKeyboardDelegate
-- (void)emojiKeyboardEmojiEditButtonDown
-{
-    TLExpressionViewController *expressionVC = [[TLExpressionViewController alloc] init];
-    TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:expressionVC];
-    [self presentViewController:navC animated:YES completion:nil];
-}
-
-- (void)emojiKeyboardMyEmojiEditButtonDown
-{
-    TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
-    TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:myExpressionVC];
-    [self presentViewController:navC animated:YES completion:nil];
 }
 
 #pragma mark - Event Response -

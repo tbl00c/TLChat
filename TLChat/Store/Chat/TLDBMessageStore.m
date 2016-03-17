@@ -94,6 +94,13 @@
     return ok;
 }
 
+- (BOOL)deleteMessagesByFriendID:(NSString *)friendID
+{
+    NSString *sqlString = [NSString stringWithFormat:DELETE_FRIEND_MESSAGES_SQL, MESSAGE_TABLE_NAME, friendID];
+    BOOL ok = [self excuteSQL:sqlString, nil];
+    return ok;
+}
+
 #pragma mark - Private Methods -
 - (TLDBMessage *)p_createDBMessageByFMResultSet:(FMResultSet *)retSet
 {

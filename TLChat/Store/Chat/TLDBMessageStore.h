@@ -30,4 +30,9 @@
  */
 - (BOOL)deleteMessageByMessageID:(NSString *)messageID;
 
+/**
+ *  删除与某个好友的所有聊天记录
+ */
+- (BOOL)deleteMessagesByFriendID:(NSString *)friendID;
+
 @end

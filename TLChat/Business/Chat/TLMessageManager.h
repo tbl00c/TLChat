@@ -22,6 +22,11 @@
                        count:(NSUInteger)count
                     complete:(void (^)(NSArray *, BOOL))complete;
 
-- (BOOL)deleteMessageByID:(NSString *)msgID;
+- (BOOL)deleteMessageByMsgID:(NSString *)msgID;
+
+/**
+ *  删除与某好友的聊天记录
+ */
+- (BOOL)deleteMessagesByFriendID:(NSString *)friendID;
 
 @end

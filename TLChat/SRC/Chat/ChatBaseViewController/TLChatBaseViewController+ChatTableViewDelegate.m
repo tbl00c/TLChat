@@ -75,7 +75,7 @@
 
 - (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC deleteMessage:(TLMessage *)message
 {
-    return [self.messageManager deleteMessageByID:message.messageID];
+    return [self.messageManager deleteMessageByMsgID:message.messageID];
 }
 
 #pragma mark - Private Methods -

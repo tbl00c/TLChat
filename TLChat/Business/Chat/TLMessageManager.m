@@ -40,9 +40,14 @@
     }];
 }
 
-- (BOOL)deleteMessageByID:(NSString *)msgID;
+- (BOOL)deleteMessageByMsgID:(NSString *)msgID
 {
     return [self.messageStore deleteMessageByMessageID:msgID];
+}
+
+- (BOOL)deleteMessagesByFriendID:(NSString *)friendID
+{
+    return [self.messageStore deleteMessagesByFriendID:friendID];
 }
 
 #pragma mark - Getter -

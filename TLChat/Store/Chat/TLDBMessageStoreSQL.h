@@ -34,6 +34,7 @@
 
 #define     MESSAGES_PAGE_SQL       @"SELECT * FROM %@ WHERE uid = '%@' and fid = '%@' and date < '%@' order by date desc LIMIT '%ld'"
 
-#define     DELETE_MESSAGE_SQL      @"DELETE FROM %@ WHERE msgid = '%@'"
+#define     DELETE_MESSAGE_SQL              @"DELETE FROM %@ WHERE msgid = '%@'"
+#define     DELETE_FRIEND_MESSAGES_SQL      @"DELETE FROM %@ WHERE fid = '%@'"
 
 #endif /* TLDBMessageStoreSQL_h */

@@ -8,12 +8,15 @@
 
 #import "TLChatGroupDetailViewController.h"
 #import "TLChatDetailHelper.h"
+#import "TLMessageManager.h"
 #import "TLUserGroupCell.h"
 
 #import "TLFriendDetailViewController.h"
 #import "TLGroupQRCodeViewController.h"
 
-@interface TLChatGroupDetailViewController () <TLUserGroupCellDelegate>
+#define     TAG_EMPTY_CHAT_REC      1001
+
+@interface TLChatGroupDetailViewController () <TLUserGroupCellDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) TLChatDetailHelper *helper;
 
@@ -55,6 +58,11 @@
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:gorupQRCodeVC animated:YES];
     }
+    else if ([item.title isEqualToString:@"清空聊天记录"]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles: nil];
+        actionSheet.tag = TAG_EMPTY_CHAT_REC;
+        [actionSheet showInView:self.view];
+    }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -65,6 +73,16 @@
         return ((count + 1) / 4 + ((((count + 1) % 4) == 0) ? 0 : 1)) * 90 + 15;
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+//MARK: UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == TAG_EMPTY_CHAT_REC) {
+        if (buttonIndex == 0) {
+//            [TLMessageManager ]
+        }
+    }
 }
 
 //MARK: TLUserGroupCellDelegate

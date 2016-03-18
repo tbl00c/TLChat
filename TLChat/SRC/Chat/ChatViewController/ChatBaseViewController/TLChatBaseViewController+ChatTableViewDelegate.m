@@ -46,7 +46,7 @@
     else {
         partnerID = self.user.userID;
     }
-    [[TLMessageManager sharedInstance] messageRecordForUser:[TLUserHelper sharedHelper].userID andPartner:partnerID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
+    [[TLMessageManager sharedInstance] messageRecordForPartner:partnerID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
         if (array.count > 0) {
             int count = 0;
             NSTimeInterval tm = 0;

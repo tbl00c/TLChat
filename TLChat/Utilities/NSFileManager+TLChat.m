@@ -10,9 +10,9 @@
 
 @implementation NSFileManager (TLChat)
 
-+ (NSString *)pathUserSettingImage:(NSString *)imageName forUser:(NSString *)userID;
++ (NSString *)pathUserSettingImage:(NSString *)imageName;
 {
-    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/Images/", [NSFileManager documentsPath], userID];
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/Images/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
@@ -23,9 +23,9 @@
     return [path stringByAppendingString:imageName];
 }
 
-+ (NSString *)pathUserChatImage:(NSString*)imageName forUser:(NSString *)userID
++ (NSString *)pathUserChatImage:(NSString*)imageName
 {
-    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Images/", [NSFileManager documentsPath], userID];
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Images/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
@@ -36,9 +36,9 @@
     return [path stringByAppendingString:imageName];
 }
 
-+ (NSString *)pathUserChatAvatar:(NSString *)imageName forUser:(NSString *)userID;
++ (NSString *)pathUserChatAvatar:(NSString *)imageName
 {
-    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Avatar/", [NSFileManager documentsPath], userID];
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Avatar/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
@@ -88,9 +88,9 @@
     return [path stringByAppendingString:imageName];
 }
 
-+ (NSString *)pathDBCommonForUser:(NSString *)userID
++ (NSString *)pathDBCommon
 {
-    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/DB/", [NSFileManager documentsPath], userID];
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/DB/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
@@ -101,9 +101,9 @@
     return [path stringByAppendingString:@"common.sqlite3"];
 }
 
-+ (NSString *)pathDBMessageForUser:(NSString *)userID
++ (NSString *)pathDBMessage
 {
-    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/DB/", [NSFileManager documentsPath], userID];
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/DB/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];

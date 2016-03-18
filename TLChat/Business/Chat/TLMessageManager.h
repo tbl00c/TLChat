@@ -18,17 +18,25 @@
             success:(void (^)(TLMessage *))success
             failure:(void (^)(TLMessage *))failure;
 
-- (void)messageRecordForUser:(NSString *)userID
-                  andPartner:(NSString *)partnerID
-                    fromDate:(NSDate *)date
-                       count:(NSUInteger)count
-                    complete:(void (^)(NSArray *, BOOL))complete;
+- (void)messageRecordForPartner:(NSString *)partnerID
+                       fromDate:(NSDate *)date
+                          count:(NSUInteger)count
+                       complete:(void (^)(NSArray *, BOOL))complete;
 
 - (BOOL)deleteMessageByMsgID:(NSString *)msgID;
 
 /**
  *  删除与某好友的聊天记录
  */
-- (BOOL)deleteMessagesByFriendID:(NSString *)friendID;
+- (BOOL)deleteMessagesByPartnerID:(NSString *)partnerID;
+
+/**
+ *  聊天文件
+ *
+ *  @param fid       好友/讨论组id
+ *  @param completed 带有聊天文件的Message
+ */
+- (void)chatFilesForPartnerID:(NSString *)partnerID
+                    completed:(void (^)(NSArray *))completed;
 
 @end

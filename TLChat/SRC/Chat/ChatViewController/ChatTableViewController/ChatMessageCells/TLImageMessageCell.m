@@ -37,7 +37,7 @@
     [super setMessage:message];
     
     if (message.imagePath) {
-        NSString *imagePath = [NSFileManager pathUserChatAvatar:message.imagePath forUser:message.userID];
+        NSString *imagePath = [NSFileManager pathUserChatImage:message.imagePath];
         [self.msgImageView setThumbnailPath:imagePath highDefinitionImageURL:message.imageURL];
     }
     else {

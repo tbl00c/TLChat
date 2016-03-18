@@ -16,4 +16,6 @@
 
 - (NSString *)conversaionTimeInfo;
 
+- (NSString *)chatFileTimeInfo;
+
 @end

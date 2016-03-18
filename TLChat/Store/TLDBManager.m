@@ -25,9 +25,9 @@ static TLDBManager *manager;
 - (id)initWithUserID:(NSString *)userID
 {
     if (self = [super init]) {
-        NSString *commonQueuePath = [NSFileManager pathDBCommonForUser:userID];
+        NSString *commonQueuePath = [NSFileManager pathDBCommon];
         self.commonQueue = [FMDatabaseQueue databaseQueueWithPath:commonQueuePath];
-        NSString *messageQueuePath = [NSFileManager pathDBMessageForUser:userID];
+        NSString *messageQueuePath = [NSFileManager pathDBMessage];
         self.messageQueue = [FMDatabaseQueue databaseQueueWithPath:messageQueuePath];
     }
     return self;

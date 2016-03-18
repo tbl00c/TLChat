@@ -13,6 +13,7 @@
 #import "TLUserGroupCell.h"
 
 #import "TLChatViewController.h"
+#import "TLChatFileViewController.h"
 
 #define     TAG_EMPTY_CHAT_REC      1001
 
@@ -57,6 +58,12 @@
         actionSheet.tag = TAG_EMPTY_CHAT_REC;
         [actionSheet showInView:self.view];
     }
+    else if ([item.title isEqualToString:@"聊天文件"]) {
+        TLChatFileViewController *chatFileVC = [[TLChatFileViewController alloc] init];
+        [chatFileVC setPartnerID:self.user.userID];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:chatFileVC animated:YES];
+    }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -74,7 +81,7 @@
 {
     if (actionSheet.tag == TAG_EMPTY_CHAT_REC) {
         if (buttonIndex == 0) {
-            BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByFriendID:self.user.userID];
+            BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByPartnerID:self.user.userID];
             if (!ok) {
                 [UIAlertView alertWithTitle:@"错误" message:@"清空讨论组聊天记录失败"];
             }

@@ -46,7 +46,7 @@ static UILabel *textLabel;
         }
         else if (self.messageType == TLMessageTypeImage){
             if (self.imagePath) {
-                NSString *imagePath = [NSFileManager pathUserChatAvatar:self.imagePath forUser:self.userID];
+                NSString *imagePath = [NSFileManager pathUserChatImage:self.imagePath];
                 UIImage *image = [UIImage imageNamed:imagePath];
                 if (image == nil) {
                     _frame.contentSize = CGSizeMake(60, 60);

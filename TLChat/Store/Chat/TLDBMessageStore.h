@@ -31,8 +31,13 @@
 - (BOOL)deleteMessageByMessageID:(NSString *)messageID;
 
 /**
- *  删除与某个好友的所有聊天记录
+ *  删除与某个好友/讨论组的所有聊天记录
  */
-- (BOOL)deleteMessagesByFriendID:(NSString *)friendID;
+- (BOOL)deleteMessagesByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
+
+/**
+ *  获取与某个好友/讨论组的聊天文件
+ */
+- (NSArray *)chatFilesByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
 
 @end

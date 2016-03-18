@@ -9,6 +9,7 @@
 #import "TLDBMessageStore.h"
 #import "TLDBMessageStoreSQL.h"
 #import "TLDBMessage+TLMessage.h"
+#import "NSDate+Utilities.h"
 
 @implementation TLDBMessageStore
 
@@ -26,7 +27,7 @@
 
 - (BOOL)createTable
 {
-    NSString *sqlString = [NSString stringWithFormat:CREATE_TABLE_SQL, MESSAGE_TABLE_NAME];
+    NSString *sqlString = [NSString stringWithFormat:SQL_CREATE_TABLE, MESSAGE_TABLE_NAME];
     return [self createTable:MESSAGE_TABLE_NAME withSQL:sqlString];
 }
 
@@ -36,7 +37,7 @@
     if (dbMessage.mid == nil || dbMessage.uid == nil || dbMessage.fid == nil) {
         return NO;
     }
-    NSString *sqlString = [NSString stringWithFormat:ADD_MESSAGE_SQL, MESSAGE_TABLE_NAME];
+    NSString *sqlString = [NSString stringWithFormat:SQL_ADD_MESSAGE, MESSAGE_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
                         dbMessage.mid,
                         dbMessage.uid,
@@ -59,11 +60,11 @@
     return ok;
 }
 
-- (void)messagesByUserID:(NSString *)userID partnerID:(NSString *)partnerID fromDate:(NSDate *)date count:(NSUInteger)count complete:(void (^)(NSArray *, BOOL))complet
+- (void)messagesByUserID:(NSString *)userID partnerID:(NSString *)partnerID fromDate:(NSDate *)date count:(NSUInteger)count complete:(void (^)(NSArray *, BOOL))complete
 {
     __block NSMutableArray *data = [[NSMutableArray alloc] init];
     NSString *sqlstr = [NSString stringWithFormat:
-                        MESSAGES_PAGE_SQL,
+                        SQL_MESSAGES_PAGE,
                         MESSAGE_TABLE_NAME,
                         userID,
                         partnerID,
@@ -84,21 +85,65 @@
         hasMore = YES;
         [data removeObjectAtIndex:0];
     }
-    complet(data, hasMore);
+    complete(data, hasMore);
 }
 
 - (BOOL)deleteMessageByMessageID:(NSString *)messageID
 {
-    NSString *sqlString = [NSString stringWithFormat:DELETE_MESSAGE_SQL, MESSAGE_TABLE_NAME, messageID];
+    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_MESSAGE, MESSAGE_TABLE_NAME, messageID];
     BOOL ok = [self excuteSQL:sqlString, nil];
     return ok;
 }
 
-- (BOOL)deleteMessagesByFriendID:(NSString *)friendID
+- (BOOL)deleteMessagesByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
 {
-    NSString *sqlString = [NSString stringWithFormat:DELETE_FRIEND_MESSAGES_SQL, MESSAGE_TABLE_NAME, friendID];
+    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_FRIEND_MESSAGES, MESSAGE_TABLE_NAME, userID, partnerID];
     BOOL ok = [self excuteSQL:sqlString, nil];
     return ok;
+}
+
+- (NSArray *)chatFilesByUserID:(NSString *)userID partnerID:(NSString *)partnerID
+{
+    __block NSMutableArray *data = [[NSMutableArray alloc] init];
+    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_CHAT_FILES, MESSAGE_TABLE_NAME, userID, partnerID];
+    
+    __block NSDate *lastDate = [NSDate date];
+    __block NSMutableArray *array = [[NSMutableArray alloc] init];
+    [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
+        while ([retSet next]) {
+            TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];
+            TLMessage *message = [dbMessage toMessage];
+            if ([lastDate isThisWeek]) {
+                if ([message.date isThisWeek]) {
+                    [array insertObject:message atIndex:0];
+                }
+                else {
+                    if (array.count > 0) {
+                        [data insertObject:array atIndex:0];
+                        array = [[NSMutableArray alloc] initWithObjects:message, nil];
+                    }
+                    lastDate = message.date;
+                }
+            }
+            else {
+                if ([lastDate isSameMonthAsDate:message.date]) {
+                    [array insertObject:message atIndex:0];
+                }
+                else {
+                    if (array.count > 0) {
+                        [data insertObject:array atIndex:0];
+                        array = [[NSMutableArray alloc] initWithObjects:message, nil];
+                    }
+                    lastDate = message.date;
+                }
+            }
+        }
+        if (array.count > 0) {
+            [data insertObject:array atIndex:0];
+        }
+        [retSet close];
+    }];
+    return data;
 }
 
 #pragma mark - Private Methods -

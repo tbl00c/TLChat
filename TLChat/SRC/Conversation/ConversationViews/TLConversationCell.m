@@ -99,7 +99,7 @@
     _conversation = conversation;
     
     if (conversation.avatarPath) {
-        NSString *path = [NSFileManager pathUserChatAvatar:conversation.avatarPath forUser:[TLUserHelper sharedHelper].userID];
+        NSString *path = [NSFileManager pathUserChatAvatar:conversation.avatarPath];
         [self.avatarImageView setImage:[UIImage imageNamed:path]];
     }
     else {

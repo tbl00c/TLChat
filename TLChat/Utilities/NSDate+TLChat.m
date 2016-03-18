@@ -42,4 +42,17 @@
     }
 }
 
+- (NSString *)chatFileTimeInfo
+{
+    if ([self isThisWeek]) {
+        return @"本周";
+    }
+    else if ([self isThisMonth]) {
+        return @"这个月";
+    }
+    else {
+        return [NSString stringWithFormat:@"%ld年%ld月", (long)self.year, (long)self.month];
+    }
+}
+
 @end

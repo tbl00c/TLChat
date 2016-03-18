@@ -82,7 +82,7 @@
 {
     NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 0.5));
     NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
-    NSString *imagePath = [NSFileManager pathUserChatAvatar:imageName forUser:[TLUserHelper sharedHelper].userID];
+    NSString *imagePath = [NSFileManager pathUserChatImage:imageName];
     [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
     
     TLMessage *message = [[TLMessage alloc] init];

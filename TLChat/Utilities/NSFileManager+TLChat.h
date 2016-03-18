@@ -14,17 +14,17 @@
 /**
  *  图片 — 设置
  */
-+ (NSString *)pathUserSettingImage:(NSString *)imageName forUser:(NSString *)userID;
++ (NSString *)pathUserSettingImage:(NSString *)imageName;
 
 /**
  *  图片 — 聊天
  */
-+ (NSString *)pathUserChatImage:(NSString*)imageName forUser:(NSString *)userID;
++ (NSString *)pathUserChatImage:(NSString*)imageName;
 
 /**
  *  图片 — 用户头像
  */
-+ (NSString *)pathUserChatAvatar:(NSString *)imageName forUser:(NSString *)userID;
++ (NSString *)pathUserChatAvatar:(NSString *)imageName;
 
 /**
  *  图片 — 屏幕截图
@@ -44,12 +44,12 @@
 /**
  *  数据库 — 通用
  */
-+ (NSString *)pathDBCommonForUser:(NSString *)userID;
++ (NSString *)pathDBCommon;
 
 /**
  *  数据库 — 聊天
  */
-+ (NSString *)pathDBMessageForUser:(NSString *)userID;
++ (NSString *)pathDBMessage;
 
 
 @end

@@ -40,13 +40,12 @@ static TLMessageManager *messageManager;
     }
 }
 
-- (void)messageRecordForUser:(NSString *)userID
-                  andPartner:(NSString *)partnerID
-                    fromDate:(NSDate *)date
-                       count:(NSUInteger)count
-                    complete:(void (^)(NSArray *, BOOL))complete
+- (void)messageRecordForPartner:(NSString *)partnerID
+                       fromDate:(NSDate *)date
+                          count:(NSUInteger)count
+                       complete:(void (^)(NSArray *, BOOL))complete
 {
-    [self.messageStore messagesByUserID:userID partnerID:partnerID fromDate:date count:count complete:^(NSArray *data, BOOL hasMore) {
+    [self.messageStore messagesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID fromDate:date count:count complete:^(NSArray *data, BOOL hasMore) {
         complete(data, hasMore);
     }];
 }
@@ -56,9 +55,16 @@ static TLMessageManager *messageManager;
     return [self.messageStore deleteMessageByMessageID:msgID];
 }
 
-- (BOOL)deleteMessagesByFriendID:(NSString *)friendID
+- (BOOL)deleteMessagesByPartnerID:(NSString *)partnerID
 {
-    return [self.messageStore deleteMessagesByFriendID:friendID];
+    return [self.messageStore deleteMessagesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID];
+}
+
+- (void)chatFilesForPartnerID:(NSString *)partnerID
+                    completed:(void (^)(NSArray *))completed
+{
+    NSArray *data = [self.messageStore chatFilesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID];
+    completed(data);
 }
 
 #pragma mark - Getter -

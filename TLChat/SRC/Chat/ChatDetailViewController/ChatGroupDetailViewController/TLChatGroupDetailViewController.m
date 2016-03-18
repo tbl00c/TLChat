@@ -15,7 +15,7 @@
 
 #import "TLFriendDetailViewController.h"
 #import "TLGroupQRCodeViewController.h"
-
+#import "TLChatFileViewController.h"
 
 #define     TAG_EMPTY_CHAT_REC      1001
 
@@ -61,6 +61,12 @@
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:gorupQRCodeVC animated:YES];
     }
+    else if ([item.title isEqualToString:@"聊天文件"]) {
+        TLChatFileViewController *chatFileVC = [[TLChatFileViewController alloc] init];
+        [chatFileVC setPartnerID:self.group.groupID];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:chatFileVC animated:YES];
+    }
     else if ([item.title isEqualToString:@"清空聊天记录"]) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles: nil];
         actionSheet.tag = TAG_EMPTY_CHAT_REC;
@@ -83,7 +89,7 @@
 {
     if (actionSheet.tag == TAG_EMPTY_CHAT_REC) {
         if (buttonIndex == 0) {
-            BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByFriendID:self.group.groupID];
+            BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByPartnerID:self.group.groupID];
             if (!ok) {
                 [UIAlertView alertWithTitle:@"错误" message:@"清空讨论组聊天记录失败"];
             }

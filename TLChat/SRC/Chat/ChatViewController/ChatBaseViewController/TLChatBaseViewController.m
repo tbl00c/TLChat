@@ -97,7 +97,7 @@
         message1.fromUser = self.user;
         message1.messageType = TLMessageTypeImage;
         message1.ownerTyper = TLMessageOwnerTypeFriend;
-        message1.imagePath = imagePath;
+        message1.imagePath = imageName;
         message1.showName = NO;
         [self sendMessage:message1];
     }

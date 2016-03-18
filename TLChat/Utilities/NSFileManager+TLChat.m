@@ -10,7 +10,7 @@
 
 @implementation NSFileManager (TLChat)
 
-+ (NSString *)pathUserSettingImage:(NSString *)imageName;
++ (NSString *)pathUserSettingImage:(NSString *)imageName
 {
     NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/Images/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {

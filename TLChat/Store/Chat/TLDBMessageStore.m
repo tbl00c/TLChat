@@ -113,28 +113,22 @@
         while ([retSet next]) {
             TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];
             TLMessage *message = [dbMessage toMessage];
-            if ([lastDate isThisWeek]) {
-                if ([message.date isThisWeek]) {
-                    [array insertObject:message atIndex:0];
+            if ([message.date isThisWeek]) {
+                if ([lastDate isThisWeek]) {
+                    [array addObject:message];
                 }
                 else {
-                    if (array.count > 0) {
-                        [data insertObject:array atIndex:0];
-                        array = [[NSMutableArray alloc] initWithObjects:message, nil];
-                    }
                     lastDate = message.date;
+                    array = [[NSMutableArray alloc] initWithObjects:lastDate, nil];
                 }
             }
             else {
                 if ([lastDate isSameMonthAsDate:message.date]) {
-                    [array insertObject:message atIndex:0];
+                    [array addObject:message];
                 }
                 else {
-                    if (array.count > 0) {
-                        [data insertObject:array atIndex:0];
-                        array = [[NSMutableArray alloc] initWithObjects:message, nil];
-                    }
                     lastDate = message.date;
+                    array = [[NSMutableArray alloc] initWithObjects:lastDate, nil];
                 }
             }
         }

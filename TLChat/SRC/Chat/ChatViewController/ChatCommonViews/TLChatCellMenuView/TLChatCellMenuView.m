@@ -102,7 +102,7 @@
 - (UIMenuController *)menuController
 {
     if (_menuController == nil) {
-        _menuController = [[UIMenuController alloc] init];
+        _menuController = [UIMenuController sharedMenuController];
     }
     return _menuController;
 }

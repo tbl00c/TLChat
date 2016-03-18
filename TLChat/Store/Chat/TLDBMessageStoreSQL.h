@@ -35,7 +35,7 @@
 #define     SQL_MESSAGES_PAGE       @"SELECT * FROM %@ WHERE uid = '%@' and fid = '%@' and date < '%@' order by date desc LIMIT '%ld'"
 
 #define     SQL_DELETE_MESSAGE              @"DELETE FROM %@ WHERE msgid = '%@'"
-#define     SQL_DELETE_FRIEND_MESSAGES      @"DELETE FROM %@ WHERE uid = '%@', fid = '%@'"
+#define     SQL_DELETE_FRIEND_MESSAGES      @"DELETE FROM %@ WHERE uid = '%@' and fid = '%@'"
 
 #define     SQL_SELECT_CHAT_FILES    @"SELECT * FROM %@ WHERE uid = '%@' and fid = '%@' and msg_type = '2'"
 

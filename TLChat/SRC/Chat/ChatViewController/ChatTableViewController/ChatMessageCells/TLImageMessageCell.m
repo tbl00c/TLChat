@@ -29,7 +29,7 @@
 
 - (void)setMessage:(TLMessage *)message
 {
-    [self.msgImageView setAlpha:1.0];
+    [self.msgImageView setAlpha:1.0];       // 取消长按效果
     if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
         return;
     }

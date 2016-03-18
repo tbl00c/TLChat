@@ -32,10 +32,6 @@
     if (message.messageType == TLMessageTypeImage) {
         if (message.imagePath.length > 0) {
             NSString *imagePath = [NSFileManager pathUserChatImage:message.imagePath];
-            UIImage *image = [UIImage imageNamed:imagePath];
-            if (image == nil) {
-                NSLog(@"failed");
-            }
             [self.imageView setImage:[UIImage imageNamed:imagePath]];
         }
         else if (message.imageURL.length > 0) {

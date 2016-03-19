@@ -8,8 +8,13 @@
 
 #import "TLCommonSettingViewController.h"
 #import "TLCommonSettingHelper.h"
+#import "TLMessageManager.h"
 
-@interface TLCommonSettingViewController ()
+#import "TLMyExpressionViewController.h"
+
+#define     TAG_ACTIONSHEET_EMPTY_REC       1001
+
+@interface TLCommonSettingViewController () <UIActionSheetDelegate>
 
 @property (nonatomic, strong) TLCommonSettingHelper *helper;
 
@@ -23,6 +28,35 @@
     
     self.helper = [[TLCommonSettingHelper alloc] init];
     self.data = self.helper.commonSettingData;
+}
+
+#pragma mark - Delegate -
+//MARK: UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+    if ([item.title isEqualToString:@"我的表情"]) {
+        TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:myExpressionVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"清空聊天记录"]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"将删除所有个人和群的聊天记录。" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles:nil];
+        [actionSheet setTag:TAG_ACTIONSHEET_EMPTY_REC];
+        [actionSheet showInView:self.view];
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+//MARK: UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == TAG_ACTIONSHEET_EMPTY_REC) {
+        if (buttonIndex == 0) {
+            [[TLMessageManager sharedInstance] deleteAllMessages];
+        }
+    }
 }
 
 @end

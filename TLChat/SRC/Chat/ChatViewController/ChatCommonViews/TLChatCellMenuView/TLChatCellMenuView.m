@@ -20,6 +20,7 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setBackgroundColor:[UIColor clearColor]];
+        self.menuController = [UIMenuController sharedMenuController];
         
         UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
         [self addGestureRecognizer:tapGR];
@@ -96,15 +97,6 @@
     if (self.actionBlcok) {
         self.actionBlcok(type);
     }
-}
-
-#pragma mark - Getter -
-- (UIMenuController *)menuController
-{
-    if (_menuController == nil) {
-        _menuController = [UIMenuController sharedMenuController];
-    }
-    return _menuController;
 }
 
 @end

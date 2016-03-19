@@ -50,6 +50,13 @@ static TLMessageManager *messageManager;
     }];
 }
 
+- (void)chatFilesForPartnerID:(NSString *)partnerID
+                    completed:(void (^)(NSArray *))completed
+{
+    NSArray *data = [self.messageStore chatFilesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID];
+    completed(data);
+}
+
 - (BOOL)deleteMessageByMsgID:(NSString *)msgID
 {
     return [self.messageStore deleteMessageByMessageID:msgID];
@@ -60,11 +67,9 @@ static TLMessageManager *messageManager;
     return [self.messageStore deleteMessagesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID];
 }
 
-- (void)chatFilesForPartnerID:(NSString *)partnerID
-                    completed:(void (^)(NSArray *))completed
+- (BOOL)deleteAllMessages
 {
-    NSArray *data = [self.messageStore chatFilesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID];
-    completed(data);
+    return [self.messageStore deleteMessagesByUserID:[TLUserHelper sharedHelper].userID];
 }
 
 #pragma mark - Getter -

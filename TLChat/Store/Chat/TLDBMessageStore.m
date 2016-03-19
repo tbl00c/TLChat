@@ -64,7 +64,7 @@
 {
     __block NSMutableArray *data = [[NSMutableArray alloc] init];
     NSString *sqlstr = [NSString stringWithFormat:
-                        SQL_MESSAGES_PAGE,
+                        SQL_SELECT_MESSAGES_PAGE,
                         MESSAGE_TABLE_NAME,
                         userID,
                         partnerID,
@@ -86,20 +86,6 @@
         [data removeObjectAtIndex:0];
     }
     complete(data, hasMore);
-}
-
-- (BOOL)deleteMessageByMessageID:(NSString *)messageID
-{
-    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_MESSAGE, MESSAGE_TABLE_NAME, messageID];
-    BOOL ok = [self excuteSQL:sqlString, nil];
-    return ok;
-}
-
-- (BOOL)deleteMessagesByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
-{
-    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_FRIEND_MESSAGES, MESSAGE_TABLE_NAME, userID, partnerID];
-    BOOL ok = [self excuteSQL:sqlString, nil];
-    return ok;
 }
 
 - (NSArray *)chatFilesByUserID:(NSString *)userID partnerID:(NSString *)partnerID
@@ -138,6 +124,27 @@
         [retSet close];
     }];
     return data;
+}
+
+- (BOOL)deleteMessageByMessageID:(NSString *)messageID
+{
+    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_MESSAGE, MESSAGE_TABLE_NAME, messageID];
+    BOOL ok = [self excuteSQL:sqlString, nil];
+    return ok;
+}
+
+- (BOOL)deleteMessagesByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
+{
+    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_FRIEND_MESSAGES, MESSAGE_TABLE_NAME, userID, partnerID];
+    BOOL ok = [self excuteSQL:sqlString, nil];
+    return ok;
+}
+
+- (BOOL)deleteMessagesByUserID:(NSString *)userID
+{
+    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_USER_MESSAGES, MESSAGE_TABLE_NAME, userID];
+    BOOL ok = [self excuteSQL:sqlString, nil];
+    return ok;
 }
 
 #pragma mark - Private Methods -

@@ -34,6 +34,7 @@ static NSInteger lastIndex = -1;
     }
     else {
         CGPoint point = [sender locationInView:self.collectionView];
+        // 获取point点的表情
         [self p_getEmojiItemAtPoint:point success:^(TLEmoji *emoji, NSInteger index) {
             if (lastIndex == index) {       // 与之前选中的Emoji一致，不回调，以免闪屏
                 return ;
@@ -66,7 +67,7 @@ static NSInteger lastIndex = -1;
 
 #pragma mark - Private Methods -
 /**
- *  获取collectionView某个点得Emoji
+ *  获取collectionView中某个点的Emoji
  *
  *  @param point   点
  *  @param success 在point点存在Emoji，在数据源中的位置
@@ -77,7 +78,7 @@ static NSInteger lastIndex = -1;
                        failed:(void (^)())failed
 {
     NSInteger page = point.x / self.collectionView.width;
-    point.x -= page  * self.collectionView.width;
+    point.x -= page * self.collectionView.width;
     if (point.x < headerReferenceSize.width || point.x > self.collectionView.width - footerReferenceSize.width || point.y < sectionInsets.top || point.y > self.collectionView.contentSize.height - sectionInsets.bottom) {
         failed();
     }

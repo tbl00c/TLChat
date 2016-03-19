@@ -186,6 +186,7 @@
 		C2E294C31C9D26A900721405 /* TLUserGroupItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E294C11C9D26A900721405 /* TLUserGroupItemCell.m */; };
 		C2E294C81C9D271400721405 /* TLGroupQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E294C71C9D271400721405 /* TLGroupQRCodeViewController.m */; };
 		C2E294CB1C9D27B000721405 /* TLExpressionMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E294CA1C9D27B000721405 /* TLExpressionMessageCell.m */; };
+		C2E294CD1C9D423C00721405 /* chat_bg_002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2E294CC1C9D423C00721405 /* chat_bg_002.jpg */; };
 		C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FF21C8936DE009662AB /* TLGameViewController.m */; };
 		C2E56FFB1C896233009662AB /* UINavigationItem+Fixed.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FFA1C896233009662AB /* UINavigationItem+Fixed.m */; };
 		C2E56FFE1C897418009662AB /* TLAccountAndSafetyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FFD1C897418009662AB /* TLAccountAndSafetyHelper.m */; };
@@ -602,6 +603,7 @@
 		C2E294C71C9D271400721405 /* TLGroupQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGroupQRCodeViewController.m; sourceTree = "<group>"; };
 		C2E294C91C9D27B000721405 /* TLExpressionMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionMessageCell.h; sourceTree = "<group>"; };
 		C2E294CA1C9D27B000721405 /* TLExpressionMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionMessageCell.m; sourceTree = "<group>"; };
+		C2E294CC1C9D423C00721405 /* chat_bg_002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chat_bg_002.jpg; sourceTree = "<group>"; };
 		C2E56FF11C8936DE009662AB /* TLGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLGameViewController.h; sourceTree = "<group>"; };
 		C2E56FF21C8936DE009662AB /* TLGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGameViewController.m; sourceTree = "<group>"; };
 		C2E56FF91C896233009662AB /* UINavigationItem+Fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Fixed.h"; sourceTree = "<group>"; };
@@ -2379,6 +2381,7 @@
 		C2F6176E1C8FED8900A8D9E6 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				C2E294CC1C9D423C00721405 /* chat_bg_002.jpg */,
 				C2D69D871C925DE600EE91D7 /* emoji_dapigu.gif */,
 			);
 			path = Others;
@@ -2516,6 +2519,7 @@
 				C2B9E4331C65F5DA00CEBA81 /* Mine.xcassets in Resources */,
 				C209074D1C97ED7300AB87A5 /* TusijiEmoji.json in Resources */,
 				C2D500E71C5639210088997C /* Conversation.xcassets in Resources */,
+				C2E294CD1C9D423C00721405 /* chat_bg_002.jpg in Resources */,
 				C2CE0BD41C718702006C5C2A /* Chat.xcassets in Resources */,
 				C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */,
 				C20907531C97F15200AB87A5 /* main.js in Resources */,

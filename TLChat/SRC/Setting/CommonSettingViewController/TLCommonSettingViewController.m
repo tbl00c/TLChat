@@ -10,6 +10,7 @@
 #import "TLCommonSettingHelper.h"
 #import "TLMessageManager.h"
 
+#import "TLChatViewController.h"
 #import "TLMyExpressionViewController.h"
 
 #define     TAG_ACTIONSHEET_EMPTY_REC       1001
@@ -55,6 +56,7 @@
     if (actionSheet.tag == TAG_ACTIONSHEET_EMPTY_REC) {
         if (buttonIndex == 0) {
             [[TLMessageManager sharedInstance] deleteAllMessages];
+            [[TLChatViewController sharedChatVC].chatTableVC reloadData];
         }
     }
 }

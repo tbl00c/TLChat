@@ -181,6 +181,7 @@
     if (_usernameLabel == nil) {
         _usernameLabel = [[UILabel alloc] init];
         [_usernameLabel setTextColor:[UIColor grayColor]];
+        [_usernameLabel setAlpha:0.6f];
         [_usernameLabel setFont:[UIFont systemFontOfSize:12.0f]];
     }
     return _usernameLabel;

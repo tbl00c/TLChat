@@ -50,7 +50,10 @@
 {
     _emoji = emoji;
     if ([emoji.path hasSuffix:@"gif"]) {
-        [self.imageView setImage:[UIImage sd_animatedGIFNamed:emoji.path]];
+        NSString *path = [[NSBundle mainBundle] pathForResource:[emoji.path substringToIndex:emoji.path.length - 4] ofType:@"gif"];
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        UIImage *image = [UIImage sd_animatedGIFWithData:data];
+        [self.imageView setImage:image];
     }
     else {
         [self.imageView setImage:[UIImage imageNamed:emoji.path]];

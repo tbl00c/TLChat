@@ -63,6 +63,25 @@ static UILabel *textLabel;
                 }
             }
         }
+        else if (self.messageType == TLMessageTypeExpression) {
+            _frame.height += 5;
+            if (self.imagePath) {
+                UIImage *image = [UIImage imageNamed:self.imagePath];
+                if (image == nil) {
+                    _frame.contentSize = CGSizeMake(50, 50);
+                }
+                else if (image.size.width > image.size.height) {
+                    CGFloat height = MAX_MESSAGE_EXPRESSION_WIDTH * image.size.height / image.size.width;
+                    height = height < MIN_MESSAGE_EXPRESSION_WIDTH ? MIN_MESSAGE_EXPRESSION_WIDTH : height;
+                    _frame.contentSize = CGSizeMake(MAX_MESSAGE_EXPRESSION_WIDTH, height);
+                }
+                else {
+                    CGFloat width = MAX_MESSAGE_EXPRESSION_WIDTH * image.size.width / image.size.height;
+                    width = width < MIN_MESSAGE_EXPRESSION_WIDTH ? MIN_MESSAGE_EXPRESSION_WIDTH : width;
+                    _frame.contentSize = CGSizeMake(width, MAX_MESSAGE_EXPRESSION_WIDTH);
+                }
+            }
+        }
         _frame.height += _frame.contentSize.height;
     }
     return _frame;
@@ -79,6 +98,11 @@ static UILabel *textLabel;
                                          @"url":self.imageURL.length > 0 ? self.imageURL : @""};
             NSString *jsonStr = dictionary.mj_JSONString;
             _messageCopy = [@"###TLCHAT_IMAGE_MESSAGE###" stringByAppendingString:jsonStr];
+        }
+        else if (self.messageType == TLMessageTypeExpression) {
+            NSDictionary *dictionary = @{@"path":self.imagePath.length > 0 ? self.imagePath : @""};
+            NSString *jsonStr = dictionary.mj_JSONString;
+            _messageCopy = [@"###TLCHAT_EXPRESSION_MESSAGE###" stringByAppendingString:jsonStr];
         }
     }
     return _messageCopy;

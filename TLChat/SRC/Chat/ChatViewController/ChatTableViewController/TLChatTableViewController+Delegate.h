@@ -9,6 +9,7 @@
 #import "TLChatTableViewController.h"
 #import "TLTextMessageCell.h"
 #import "TLImageMessageCell.h"
+#import "TLExpressionMessageCell.h"
 
 @interface TLChatTableViewController (Delegate) <TLMessageCellDelegate, UIActionSheetDelegate>
 

@@ -36,7 +36,9 @@
         message.imagePath = [dic valueForKey:@"path"];
         message.imageURL = [dic valueForKey:@"url"];
     }
-  
+    else if (message.messageType == TLMessageTypeExpression) {
+        message.imagePath = [dic valueForKey:@"path"];
+    }
     message.sendState = self.sendStatus;
     message.readState= self.receivedStatus;
     return message;
@@ -72,6 +74,12 @@
     else if (self.messageType == TLMessageTypeImage) {
         dic = @{@"path":self.imagePath.length > 0 ? self.imagePath : @"",
                 @"url":self.imageURL.length > 0 ? self.imageURL : @""};
+    }
+    else if (self.messageType == TLMessageTypeExpression) {
+        dic = @{@"path":self.imagePath.length > 0 ? self.imagePath : @""};
+    }
+    else {
+        return nil;
     }
     dbMessage.content = [dic mj_JSONString];
     

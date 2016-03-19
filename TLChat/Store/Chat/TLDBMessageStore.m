@@ -34,7 +34,7 @@
 - (BOOL)addMessage:(TLMessage *)message
 {
     TLDBMessage *dbMessage = [message toDBMessage];
-    if (dbMessage.mid == nil || dbMessage.uid == nil || dbMessage.fid == nil) {
+    if (dbMessage == nil || dbMessage.mid == nil || dbMessage.uid == nil || dbMessage.fid == nil) {
         return NO;
     }
     NSString *sqlString = [NSString stringWithFormat:SQL_ADD_MESSAGE, MESSAGE_TABLE_NAME];

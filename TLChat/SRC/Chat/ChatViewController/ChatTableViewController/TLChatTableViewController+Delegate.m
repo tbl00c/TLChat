@@ -17,6 +17,7 @@
 {
     [self.tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
     [self.tableView registerClass:[TLImageMessageCell class] forCellReuseIdentifier:@"TLImageMessageCell"];
+    [self.tableView registerClass:[TLExpressionMessageCell class] forCellReuseIdentifier:@"TLExpressionMessageCell"];
 }
 
 #pragma mark - Delegate -
@@ -37,6 +38,12 @@
     }
     else if (message.messageType == TLMessageTypeImage) {
         TLImageMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLImageMessageCell"];
+        [cell setMessage:message];
+        [cell setDelegate:self];
+        return cell;
+    }
+    else if (message.messageType == TLMessageTypeExpression) {
+        TLExpressionMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLExpressionMessageCell"];
         [cell setMessage:message];
         [cell setDelegate:self];
         return cell;

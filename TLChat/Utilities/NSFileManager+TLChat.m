@@ -36,6 +36,19 @@
     return [path stringByAppendingString:imageName];
 }
 
++ (NSString *)pathUserChatBackgroundImage:(NSString *)imageName
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Background/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:imageName];
+}
+
 + (NSString *)pathUserChatAvatar:(NSString *)imageName
 {
     NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Avatar/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];

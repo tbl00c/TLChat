@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.tableView setBackgroundColor:[UIColor colorChatTableViewBG]];
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 20)]];
     self.refresHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self p_tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {

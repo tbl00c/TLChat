@@ -14,6 +14,7 @@
 
 #import "TLChatViewController.h"
 #import "TLChatFileViewController.h"
+#import "TLChatBackgroundSettingViewController.h"
 
 #define     TAG_EMPTY_CHAT_REC      1001
 
@@ -53,16 +54,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"清空聊天记录"]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles: nil];
-        actionSheet.tag = TAG_EMPTY_CHAT_REC;
-        [actionSheet showInView:self.view];
-    }
-    else if ([item.title isEqualToString:@"聊天文件"]) {
+    if ([item.title isEqualToString:@"聊天文件"]) {
         TLChatFileViewController *chatFileVC = [[TLChatFileViewController alloc] init];
         [chatFileVC setPartnerID:self.user.userID];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:chatFileVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"设置当前聊天背景"]) {
+        TLChatBackgroundSettingViewController *chatBGSettingVC = [[TLChatBackgroundSettingViewController alloc] init];
+        [chatBGSettingVC setPartnerID:self.user.userID];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:chatBGSettingVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"清空聊天记录"]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles: nil];
+        actionSheet.tag = TAG_EMPTY_CHAT_REC;
+        [actionSheet showInView:self.view];
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
@@ -86,7 +93,7 @@
                 [UIAlertView alertWithTitle:@"错误" message:@"清空讨论组聊天记录失败"];
             }
             else {
-                [[TLChatViewController sharedChatVC].chatTableVC reloadData];
+                [[TLChatViewController sharedChatVC] resetChatVC];
             }
         }
     }

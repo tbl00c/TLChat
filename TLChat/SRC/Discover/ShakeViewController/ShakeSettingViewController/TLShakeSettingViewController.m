@@ -47,7 +47,7 @@
                 }
                 NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
                 NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
-                NSString *imagePath = [NSFileManager pathUserSettingImage:imageName];;
+                NSString *imagePath = [NSFileManager pathUserSettingImage:imageName];
                 [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
                 [[NSUserDefaults standardUserDefaults] setObject:imageName forKey:@"Shake_Image_Path"];
             }];

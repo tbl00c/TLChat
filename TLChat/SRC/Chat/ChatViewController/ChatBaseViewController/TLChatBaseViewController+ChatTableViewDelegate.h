@@ -18,9 +18,6 @@
  */
 - (void)addMessage:(TLMessage *)message;
 
-/**
- *  重置chatVC，清空数据
- */
-- (void)resetChatVC;
+- (void)resetChatTVC;
 
 @end

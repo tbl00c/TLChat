@@ -74,4 +74,9 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
  */
 - (void)sendImageMessage:(UIImage *)image;
 
+/**
+ *  重置chatVC
+ */
+- (void)resetChatVC;
+
 @end

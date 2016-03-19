@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) NSMutableArray *commonSettingData;
 
++ (NSMutableArray *)chatBackgroundSettingData;
+
 @end

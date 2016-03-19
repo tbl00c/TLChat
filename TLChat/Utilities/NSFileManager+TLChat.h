@@ -22,6 +22,11 @@
 + (NSString *)pathUserChatImage:(NSString*)imageName;
 
 /**
+ *  图片 — 聊天背景
+ */
++ (NSString *)pathUserChatBackgroundImage:(NSString *)imageName;
+
+/**
  *  图片 — 用户头像
  */
 + (NSString *)pathUserChatAvatar:(NSString *)imageName;

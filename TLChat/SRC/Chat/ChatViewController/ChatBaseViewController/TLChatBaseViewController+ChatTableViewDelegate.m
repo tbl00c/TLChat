@@ -18,7 +18,7 @@
     [self.chatTableVC scrollToBottomWithAnimation:YES];
 }
 
-- (void)resetChatVC
+- (void)resetChatTVC
 {
     [self.chatTableVC reloadData];
     lastDateInterval = 0;

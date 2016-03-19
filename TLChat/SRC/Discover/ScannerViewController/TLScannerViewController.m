@@ -11,7 +11,7 @@
 #import "TLScannerBackgroundView.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface TLScannerViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
+@interface TLScannerViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic, strong) UILabel *introudctionLabel;
 @property (nonatomic, strong) TLScannerView *scannerView;

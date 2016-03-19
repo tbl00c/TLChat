@@ -40,8 +40,6 @@ static TLChatViewController *chatVC;
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorTableViewBG]];
-    
     [self.navigationItem setRightBarButtonItem:self.rightBarButton];
     
     self.moreKBhelper = [[TLMoreKBHelper alloc] init];

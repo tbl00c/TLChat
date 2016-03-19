@@ -18,7 +18,7 @@
 
 @implementation TLSettingViewController
 
-- (void) loadView
+- (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN)];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
@@ -30,7 +30,7 @@
     [self.tableView setSeparatorColor:[UIColor colorCellLine]];
 }
 
-- (void) viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     
@@ -60,19 +60,19 @@
 #endif
 }
 
-#pragma mark -
-#pragma mark - UITableViewDataSource
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+#pragma mark - Delegate -
+//MARK: UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.data.count;
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.data[section] count];
 }
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     id cell = [tableView dequeueReusableCellWithIdentifier:item.cellClassName];
@@ -83,7 +83,7 @@
     return cell;
 }
 
-#pragma mark UITableViewDelegate
+//MARK: UITableViewDelegate
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     TLSettingGroup *group = self.data[section];

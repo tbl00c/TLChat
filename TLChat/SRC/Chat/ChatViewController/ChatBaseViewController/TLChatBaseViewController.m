@@ -13,12 +13,14 @@
 #import "TLChatBaseViewController+EmojiKBDelegate.h"
 #import "TLChatBaseViewController+ChatTableViewDelegate.h"
 
+#import "UIImage+Size.h"
+
 @implementation TLChatBaseViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    
     [self.view addSubview:self.chatTableVC.tableView];
     [self addChildViewController:self.chatTableVC];
     [self.view addSubview:self.chatBar];
@@ -73,6 +75,36 @@
 - (void)setChatEmojiKeyboardData:(NSMutableArray *)emojiKeyboardData
 {
     [self.emojiKeyboard setEmojiGroupData:emojiKeyboardData];
+}
+
+- (void)resetChatVC
+{
+    NSString *chatViewBGImage;
+    //TODO: 临时写法
+    if (self.curChatType == TLChatVCTypeFriend) {
+        chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:[@"CHAT_BG_" stringByAppendingString:self.user.userID]];
+    }
+    else if (self.curChatType == TLChatVCTypeGroup) {
+        chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:[@"CHAT_BG_" stringByAppendingString:self.group.groupID]];
+    }
+    if (chatViewBGImage == nil) {
+        chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:@"CHAT_BG_ALL"];
+        if (chatViewBGImage == nil) {
+            [self.view setBackgroundColor:[UIColor colorChatTableViewBG]];
+        }
+        else {
+            NSString *imagePath = [NSFileManager pathUserChatBackgroundImage:chatViewBGImage];
+            UIImage *image = [[UIImage imageNamed:imagePath] scalingToSize:self.view.size];
+            [self.view setBackgroundColor:[UIColor colorWithPatternImage:image]];
+        }
+    }
+    else {
+        NSString *imagePath = [NSFileManager pathUserChatBackgroundImage:chatViewBGImage];
+        UIImage *image = [[UIImage imageNamed:imagePath] scalingToSize:self.view.size];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:image]];
+    }
+    
+    [self resetChatTVC];
 }
 
 /**

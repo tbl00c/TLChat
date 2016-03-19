@@ -10,6 +10,24 @@
 
 @implementation TLCommonSettingHelper
 
++ (NSMutableArray *)chatBackgroundSettingData
+{
+    TLSettingItem *select = TLCreateSettingItem(@"选择背景图");
+    TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[select]);
+    
+    TLSettingItem *album = TLCreateSettingItem(@"从手机相册中选择");
+    TLSettingItem *camera = TLCreateSettingItem(@"拍一张");
+    TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[album, camera]));
+    
+    TLSettingItem *toAll = TLCreateSettingItem(@"将背景应用到所有聊天场景");
+    toAll.type = TLSettingItemTypeTitleButton;
+    TLSettingGroup *group3 = TLCreateSettingGroup(nil, nil, @[toAll]);
+    
+    NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:group1, group2, group3, nil];
+    return data;
+}
+
+
 - (id) init
 {
     if (self = [super init]) {

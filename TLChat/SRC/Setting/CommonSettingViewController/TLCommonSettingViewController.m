@@ -11,6 +11,7 @@
 #import "TLMessageManager.h"
 
 #import "TLChatViewController.h"
+#import "TLChatBackgroundSettingViewController.h"
 #import "TLMyExpressionViewController.h"
 
 #define     TAG_ACTIONSHEET_EMPTY_REC       1001
@@ -36,7 +37,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"我的表情"]) {
+    if ([item.title isEqualToString:@"聊天背景"]) {
+        TLChatBackgroundSettingViewController *chatBGSettingVC = [[TLChatBackgroundSettingViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:chatBGSettingVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"我的表情"]) {
         TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:myExpressionVC animated:YES];
@@ -56,7 +62,7 @@
     if (actionSheet.tag == TAG_ACTIONSHEET_EMPTY_REC) {
         if (buttonIndex == 0) {
             [[TLMessageManager sharedInstance] deleteAllMessages];
-            [[TLChatViewController sharedChatVC].chatTableVC reloadData];
+            [[TLChatViewController sharedChatVC] resetChatVC];
         }
     }
 }

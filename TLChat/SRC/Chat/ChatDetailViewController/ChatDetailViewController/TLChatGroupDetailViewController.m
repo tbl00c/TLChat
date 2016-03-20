@@ -8,7 +8,7 @@
 
 #import "TLChatGroupDetailViewController.h"
 #import "TLChatDetailHelper.h"
-#import "TLMessageManager.h"
+#import "TLMessageManager+MessageRecord.h"
 #import "TLUserGroupCell.h"
 
 #import "TLChatViewController.h"

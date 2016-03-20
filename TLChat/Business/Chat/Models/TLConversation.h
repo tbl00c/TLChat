@@ -61,15 +61,13 @@
  */
 @property (nonatomic, assign) TLClueType clueType;
 
-/**
- *  是否已读
- */
-@property (nonatomic, assign) BOOL isRead;
+
+@property (nonatomic, assign, readonly) BOOL isRead;
 
 /**
- *  提示数量
+ *  未读数量
  */
-@property (nonatomic, assign) NSInteger clueNumber;
+@property (nonatomic, assign) NSInteger unreadCount;
 
 
 @end

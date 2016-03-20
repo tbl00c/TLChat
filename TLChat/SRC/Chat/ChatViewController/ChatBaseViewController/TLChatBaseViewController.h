@@ -12,7 +12,7 @@
 #import "TLImageExpressionDisplayView.h"
 
 #import "TLMoreKeyboardDelegate.h"
-#import "TLMessageManager.h"
+#import "TLMessageManager+MessageRecord.h"
 
 #import "TLChatBar.h"
 #import "TLMoreKeyboard.h"

@@ -10,7 +10,7 @@
 
 @implementation TLConversation
 
-- (void) setConvType:(TLConversationType)convType
+- (void)setConvType:(TLConversationType)convType
 {
     _convType = convType;
     switch (convType) {
@@ -25,6 +25,11 @@
         default:
             break;
     }
+}
+
+- (BOOL)isRead
+{
+    return self.unreadCount == 0;
 }
 
 @end

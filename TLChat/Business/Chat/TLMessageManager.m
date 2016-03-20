@@ -7,16 +7,9 @@
 //
 
 #import "TLMessageManager.h"
-#import "TLDBMessageStore.h"
 #import "TLDBMessage+TLMessage.h"
 
 static TLMessageManager *messageManager;
-
-@interface TLMessageManager ()
-
-@property (nonatomic, strong) TLDBMessageStore *messageStore;
-
-@end
 
 @implementation TLMessageManager
 
@@ -40,37 +33,6 @@ static TLMessageManager *messageManager;
     }
 }
 
-- (void)messageRecordForPartner:(NSString *)partnerID
-                       fromDate:(NSDate *)date
-                          count:(NSUInteger)count
-                       complete:(void (^)(NSArray *, BOOL))complete
-{
-    [self.messageStore messagesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID fromDate:date count:count complete:^(NSArray *data, BOOL hasMore) {
-        complete(data, hasMore);
-    }];
-}
-
-- (void)chatFilesForPartnerID:(NSString *)partnerID
-                    completed:(void (^)(NSArray *))completed
-{
-    NSArray *data = [self.messageStore chatFilesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID];
-    completed(data);
-}
-
-- (BOOL)deleteMessageByMsgID:(NSString *)msgID
-{
-    return [self.messageStore deleteMessageByMessageID:msgID];
-}
-
-- (BOOL)deleteMessagesByPartnerID:(NSString *)partnerID
-{
-    return [self.messageStore deleteMessagesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID];
-}
-
-- (BOOL)deleteAllMessages
-{
-    return [self.messageStore deleteMessagesByUserID:[TLUserHelper sharedHelper].userID];
-}
 
 #pragma mark - Getter -
 - (TLDBMessageStore *)messageStore

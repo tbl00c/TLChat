@@ -10,7 +10,7 @@
 #import "TLChatFileCell.h"
 #import "TLChatFileHeaderView.h"
 #import "NSDate+TLChat.h"
-#import "TLMessageManager.h"
+#import "TLMessageManager+MessageRecord.h"
 
 #define     HEIGHT_COLLECTIONVIEW_HEADER    28
 #define     WIDTH_COLLECTIONVIEW_CELL       WIDTH_SCREEN / 4 * 0.98

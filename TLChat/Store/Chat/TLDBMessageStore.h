@@ -11,13 +11,13 @@
 
 @interface TLDBMessageStore : TLDBBaseStore
 
-#pragma mark - 添加消息
+#pragma mark - 添加
 /**
  *  添加消息记录
  */
 - (BOOL)addMessage:(TLMessage *)message;
 
-#pragma mark - 查询消息
+#pragma mark - 查询
 /**
  *  获取与某个好友的聊天记录
  */
@@ -32,7 +32,7 @@
  */
 - (NSArray *)chatFilesByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
 
-#pragma mark - 删除消息
+#pragma mark - 删除
 /**
  *  删除单条消息
  */

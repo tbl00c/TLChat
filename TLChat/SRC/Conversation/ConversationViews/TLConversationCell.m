@@ -32,8 +32,6 @@
 
 @implementation TLConversationCell
 
-@synthesize isRead = _isRead;
-
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -46,12 +44,96 @@
         [self.contentView addSubview:self.remindImageView];
         [self.contentView addSubview:self.redPointView];
         
-        [self addMasonry];
+        [self p_addMasonry];
     }
     return self;
 }
 
-- (void) addMasonry
+#pragma mark - Public Methods
+- (void) setConversation:(TLConversation *)conversation
+{
+    _conversation = conversation;
+    
+    if (conversation.avatarPath) {
+        NSString *path = [NSFileManager pathUserChatAvatar:conversation.avatarPath];
+        [self.avatarImageView setImage:[UIImage imageNamed:path]];
+    }
+    else {
+        [self.avatarImageView sd_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+    }
+    [self.usernameLabel setText:conversation.username];
+    [self.detailLabel setText:conversation.messageDetail];
+    [self.timeLabel setText:conversation.date.conversaionTimeInfo];
+    switch (conversation.remindType) {
+        case TLMessageRemindTypeNormal:
+            [self.remindImageView setHidden:YES];
+            break;
+        case TLMessageRemindTypeClosed:
+            [self.remindImageView setHidden:NO];
+            [self.remindImageView setImage:[UIImage imageNamed:@"conv_remind_close"]];
+            break;
+        case TLMessageRemindTypeNotLook:
+            [self.remindImageView setHidden:NO];
+            [self.remindImageView setImage:[UIImage imageNamed:@"conv_remind_notlock"]];
+            break;
+        case TLMessageRemindTypeUnlike:
+            [self.remindImageView setHidden:NO];
+            [self.remindImageView setImage:[UIImage imageNamed:@"conv_remind_unlike"]];
+            break;
+        default:
+            break;
+    }
+    
+    self.conversation.isRead ? [self markAsRead] : [self markAsUnread];
+}
+
+
+/**
+ *  标记为未读
+ */
+- (void) markAsUnread
+{
+    if (_conversation) {
+        switch (_conversation.clueType) {
+            case TLClueTypePointWithNumber:
+                
+                break;
+            case TLClueTypePoint:
+                [self.redPointView setHidden:NO];
+                break;
+            case TLClueTypeNone:
+                
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+/**
+ *  标记为已读
+ */
+- (void) markAsRead
+{
+    if (_conversation) {
+        switch (_conversation.clueType) {
+            case TLClueTypePointWithNumber:
+                
+                break;
+            case TLClueTypePoint:
+                [self.redPointView setHidden:YES];
+                break;
+            case TLClueTypeNone:
+                
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark - Private Methods -
+- (void)p_addMasonry
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(CONV_SPACE_X);
@@ -91,102 +173,6 @@
         make.centerY.mas_equalTo(self.avatarImageView.mas_top).mas_offset(2);
         make.width.and.height.mas_equalTo(REDPOINT_WIDTH);
     }];
-}
-
-#pragma mark - Public Methods
-- (void) setConversation:(TLConversation *)conversation
-{
-    _conversation = conversation;
-    
-    if (conversation.avatarPath) {
-        NSString *path = [NSFileManager pathUserChatAvatar:conversation.avatarPath];
-        [self.avatarImageView setImage:[UIImage imageNamed:path]];
-    }
-    else {
-        [self.avatarImageView sd_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
-    }
-    [self.usernameLabel setText:conversation.username];
-    [self.detailLabel setText:conversation.messageDetail];
-    [self.timeLabel setText:conversation.date.conversaionTimeInfo];
-    switch (conversation.remindType) {
-        case TLMessageRemindTypeNormal:
-            [self.remindImageView setHidden:YES];
-            break;
-        case TLMessageRemindTypeClosed:
-            [self.remindImageView setHidden:NO];
-            [self.remindImageView setImage:[UIImage imageNamed:@"conv_remind_close"]];
-            break;
-        case TLMessageRemindTypeNotLook:
-            [self.remindImageView setHidden:NO];
-            [self.remindImageView setImage:[UIImage imageNamed:@"conv_remind_notlock"]];
-            break;
-        case TLMessageRemindTypeUnlike:
-            [self.remindImageView setHidden:NO];
-            [self.remindImageView setImage:[UIImage imageNamed:@"conv_remind_unlike"]];
-            break;
-        default:
-            break;
-    }
-    
-    self.isRead ? [self markAsRead] : [self markAsUnread];
-}
-
-
-/**
- *  标记为未读
- */
-- (void) markAsUnread
-{
-    self.isRead = NO;
-    if (_conversation) {
-        switch (_conversation.clueType) {
-            case TLClueTypePointWithNumber:
-                
-                break;
-            case TLClueTypePoint:
-                [self.redPointView setHidden:NO];
-                break;
-            case TLClueTypeNone:
-                
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-/**
- *  标记为已读
- */
-- (void) markAsRead
-{
-    self.isRead = YES;
-    if (_conversation) {
-        switch (_conversation.clueType) {
-            case TLClueTypePointWithNumber:
-                
-                break;
-            case TLClueTypePoint:
-                [self.redPointView setHidden:YES];
-                break;
-            case TLClueTypeNone:
-                
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-#pragma mark - Setter
-- (void) setIsRead:(BOOL)isRead
-{
-    self.conversation.isRead = isRead;
-}
-
-- (BOOL) isRead
-{
-    return self.conversation.isRead;
 }
 
 #pragma mark - Getter

@@ -27,7 +27,7 @@
 
 - (BOOL)createTable
 {
-    NSString *sqlString = [NSString stringWithFormat:SQL_CREATE_TABLE, MESSAGE_TABLE_NAME];
+    NSString *sqlString = [NSString stringWithFormat:SQL_CREATE_MESSAGE_TABLE, MESSAGE_TABLE_NAME];
     return [self createTable:MESSAGE_TABLE_NAME withSQL:sqlString];
 }
 
@@ -63,7 +63,7 @@
 - (void)messagesByUserID:(NSString *)userID partnerID:(NSString *)partnerID fromDate:(NSDate *)date count:(NSUInteger)count complete:(void (^)(NSArray *, BOOL))complete
 {
     __block NSMutableArray *data = [[NSMutableArray alloc] init];
-    NSString *sqlstr = [NSString stringWithFormat:
+    NSString *sqlString = [NSString stringWithFormat:
                         SQL_SELECT_MESSAGES_PAGE,
                         MESSAGE_TABLE_NAME,
                         userID,
@@ -71,7 +71,7 @@
                         [NSString stringWithFormat:@"%lf", date.timeIntervalSince1970],
                         count + 1];
 
-    [self excuteQuerySQL:sqlstr resultBlock:^(FMResultSet *retSet) {
+    [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];
             TLMessage *message = [dbMessage toMessage];

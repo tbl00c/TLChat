@@ -13,13 +13,6 @@
 /// 会话Model
 @property (nonatomic, strong) TLConversation *conversation;
 
-/// 消息数量
-@property (nonatomic, assign) NSInteger convNumber;
-
-/// 已读
-@property (nonatomic, assign) BOOL isRead;
-
-
 #pragma mark - Public Methods
 /**
  *  标记为未读

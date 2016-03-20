@@ -94,13 +94,13 @@
         }
         else {
             NSString *imagePath = [NSFileManager pathUserChatBackgroundImage:chatViewBGImage];
-            UIImage *image = [[UIImage imageNamed:imagePath] scalingToSize:self.view.size];
+            UIImage *image = [UIImage imageNamed:imagePath];
             [self.view setBackgroundColor:[UIColor colorWithPatternImage:image]];
         }
     }
     else {
         NSString *imagePath = [NSFileManager pathUserChatBackgroundImage:chatViewBGImage];
-        UIImage *image = [[UIImage imageNamed:imagePath] scalingToSize:self.view.size];
+        UIImage *image = [UIImage imageNamed:imagePath];
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:image]];
     }
     

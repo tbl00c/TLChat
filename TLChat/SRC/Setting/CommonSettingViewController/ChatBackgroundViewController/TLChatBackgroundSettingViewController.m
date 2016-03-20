@@ -8,6 +8,7 @@
 
 #import "TLChatBackgroundSettingViewController.h"
 #import "TLCommonSettingHelper.h"
+#import "UIImage+Size.h"
 
 #import "TLChatViewController.h"
 
@@ -94,6 +95,7 @@
 #pragma mark - Private Methods -
 - (void)p_setChatBackgroundImage:(UIImage *)image
 {
+    image = [image scalingToSize:self.view.size];
     NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
     NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
     NSString *imagePath = [NSFileManager pathUserChatBackgroundImage:imageName];;

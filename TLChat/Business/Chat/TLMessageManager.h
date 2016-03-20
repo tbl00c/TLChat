@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "TLDBMessageStore.h"
+#import "TLDBConversationStore.h"
 #import "TLMessage.h"
 
 @interface TLMessageManager : NSObject
 
 @property (nonatomic, strong) TLDBMessageStore *messageStore;
+
+@property (nonatomic, strong) TLDBConversationStore *conversationStore;
 
 + (TLMessageManager *)sharedInstance;
 

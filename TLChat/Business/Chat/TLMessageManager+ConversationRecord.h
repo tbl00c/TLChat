@@ -10,4 +10,6 @@
 
 @interface TLMessageManager (ConversationRecord)
 
+- (void)conversationRecord:(void (^)(NSArray *))complete;
+
 @end

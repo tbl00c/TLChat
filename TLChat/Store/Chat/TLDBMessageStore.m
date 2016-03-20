@@ -126,6 +126,20 @@
     return data;
 }
 
+- (TLMessage *)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID
+{
+    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_LAST_MESSAGE, MESSAGE_TABLE_NAME, MESSAGE_TABLE_NAME, userID, partnerID];
+    __block TLMessage *message;
+    [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
+        while ([retSet next]) {
+            TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];
+            message = [dbMessage toMessage];
+        }
+        [retSet close];
+    }];
+    return message;
+}
+
 - (BOOL)deleteMessageByMessageID:(NSString *)messageID
 {
     NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_MESSAGE, MESSAGE_TABLE_NAME, messageID];

@@ -32,6 +32,11 @@
  */
 - (NSArray *)chatFilesByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
 
+/**
+ *  最后一条聊天记录（消息页用）
+ */
+- (TLMessage *)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
+
 #pragma mark - 删除
 /**
  *  删除单条消息

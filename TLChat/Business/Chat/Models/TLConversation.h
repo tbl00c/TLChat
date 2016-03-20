@@ -54,7 +54,7 @@
 /**
  *  消息展示内容
  */
-@property (nonatomic, strong) NSString *messageDetail;
+@property (nonatomic, strong) NSString *content;
 
 /**
  *  提示红点类型

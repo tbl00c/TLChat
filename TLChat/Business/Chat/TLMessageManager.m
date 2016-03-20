@@ -31,6 +31,17 @@ static TLMessageManager *messageManager;
     if (!ok) {
         DDLogError(@"存储Message到DB失败");
     }
+    
+    NSString *partnerID = message.friendID;
+    NSInteger type = 0;
+    if (message.partnerType == TLPartnerTypeGroup) {
+        partnerID = message.groupID;
+        type = 1;
+    }
+    ok = [self.conversationStore addConversationByUid:message.userID fid:partnerID type:type date:message.date];
+    if (!ok) {
+        DDLogError(@"存储Conversation到DB失败");
+    }
 }
 
 
@@ -41,6 +52,14 @@ static TLMessageManager *messageManager;
         _messageStore = [[TLDBMessageStore alloc] init];
     }
     return _messageStore;
+}
+
+- (TLDBConversationStore *)conversationStore
+{
+    if (_conversationStore == nil) {
+        _conversationStore = [[TLDBConversationStore alloc] init];
+    }
+    return _conversationStore;
 }
 
 @end

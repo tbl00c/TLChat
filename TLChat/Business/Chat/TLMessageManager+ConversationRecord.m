@@ -10,4 +10,10 @@
 
 @implementation TLMessageManager (ConversationRecord)
 
+- (void)conversationRecord:(void (^)(NSArray *))complete
+{
+    NSArray *data = [self.conversationStore conversationsByUid:[TLUserHelper sharedHelper].userID];
+    complete(data);
+}
+
 @end

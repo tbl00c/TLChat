@@ -38,6 +38,11 @@
 {
     _group = group;
     if (group.groupAvatarPath.length == 0) {
+        [TLUIUtility getGroupAvatarByGroupUsers:group.users finished:^(NSString *avatarPath) {
+            group.groupAvatarPath = avatarPath;
+            NSString *path = [NSFileManager pathUserChatAvatar:group.groupAvatarPath];
+            [self.avatarImageView setImage:[UIImage imageNamed:path]];
+        }];
         [self.avatarImageView setImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     else {

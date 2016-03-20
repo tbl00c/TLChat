@@ -19,8 +19,8 @@ typedef NS_ENUM(NSInteger, TLClueType) {
 
 typedef NS_ENUM(NSInteger, TLConversationType) {
     TLConversationTypePersonal,     // 个人
-    TLConversationTypePublic,       // 公众号
     TLConversationTypeGroup,        // 群聊
+    TLConversationTypePublic,       // 公众号
     TLConversationTypeServerGroup,  // 服务组（订阅号、企业号）
 };
 

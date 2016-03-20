@@ -16,6 +16,7 @@
 #define     SQL_CREATE_CONV_TABLE       @"CREATE TABLE IF NOT EXISTS %@(\
                                         uid TEXT,\
                                         fid TEXT,\
+                                        conv_type INTEGER DEFAULT (0), \
                                         date TEXT,\
                                         unread_count INTEGER DEFAULT (0),\
                                         ext1 TEXT,\
@@ -26,7 +27,7 @@
                                         PRIMARY KEY(uid, fid))"
 
 
-#define     SQL_ADD_CONV                @"REPLACE INTO %@ ( uid, fid, date, unread_count, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+#define     SQL_ADD_CONV                @"REPLACE INTO %@ ( uid, fid, conv_type, date, unread_count, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
 
 #define     SQL_SELECT_CONVS            @"SELECT * FROM %@ WHERE uid = %@ ORDER BY date"

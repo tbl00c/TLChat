@@ -54,15 +54,18 @@
 {
     _conversation = conversation;
     
-    if (conversation.avatarPath) {
+    if (conversation.avatarPath.length > 0) {
         NSString *path = [NSFileManager pathUserChatAvatar:conversation.avatarPath];
         [self.avatarImageView setImage:[UIImage imageNamed:path]];
     }
-    else {
+    else if (conversation.avatarURL.length > 0){
         [self.avatarImageView sd_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
+    else {
+        [self.avatarImageView setImage:nil];
+    }
     [self.usernameLabel setText:conversation.username];
-    [self.detailLabel setText:conversation.messageDetail];
+    [self.detailLabel setText:conversation.content];
     [self.timeLabel setText:conversation.date.conversaionTimeInfo];
     switch (conversation.remindType) {
         case TLMessageRemindTypeNormal:

@@ -7,9 +7,17 @@
 //
 
 #import "TLDBConversationStore.h"
+#import "TLDBMessageStore.h"
 #import "TLDBConversationSQL.h"
 #import "TLDBManager.h"
 #import "TLConversation.h"
+#import "TLMessage+TLConversation.h"
+
+@interface TLDBConversationStore ()
+
+@property (nonatomic, strong) TLDBMessageStore *messageStore;
+
+@end
 
 @implementation TLDBConversationStore
 
@@ -31,15 +39,16 @@
     return [self createTable:CONV_TABLE_NAME withSQL:sqlString];
 }
 
-- (BOOL)addConversationByUid:(NSString *)uid fid:(NSString *)fid date:(NSDate *)date;
+- (BOOL)addConversationByUid:(NSString *)uid fid:(NSString *)fid type:(NSInteger)type date:(NSDate *)date;
 {
     NSInteger unreadCount = [self unreadMessageByUid:uid fid:fid] + 1;
     NSString *sqlString = [NSString stringWithFormat:SQL_ADD_CONV, CONV_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
                         uid,
                         fid,
+                        [NSNumber numberWithInteger:type],
                         [NSString stringWithFormat:@"%lf", date.timeIntervalSince1970],
-                        [NSNumber numberWithInteger: unreadCount],
+                        [NSNumber numberWithInteger:unreadCount],
                         @"",
                         @"",
                         @"",
@@ -70,13 +79,19 @@
         while ([retSet next]) {
             TLConversation *conversation = [[TLConversation alloc] init];
             conversation.userID = [retSet stringForColumn:@"fid"];
-            NSString *dateString = [retSet stringForColumn:@"data"];
+            conversation.convType = [retSet intForColumn:@"conv_type"];
+            NSString *dateString = [retSet stringForColumn:@"date"];
             conversation.date = [NSDate dateWithTimeIntervalSince1970:dateString.doubleValue];
             conversation.unreadCount = [retSet intForColumn:@"unread_count"];
             [data addObject:conversation];
         }
         [retSet close];
     }];
+    
+    for (TLConversation *conversation in data) {
+        TLMessage *message = [self.messageStore lastMessageByUserID:uid partnerID:conversation.userID];
+        conversation.content = [message conversationContent];
+    }
     
     return data;
 }
@@ -87,7 +102,7 @@
     NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_CONV_UNREAD, CONV_TABLE_NAME, uid, fid];
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         if ([retSet next]) {
-            unreadCount = [retSet intForColumn:@"co"];
+            unreadCount = [retSet intForColumn:@"unread_count"];
         }
         [retSet close];
     }];
@@ -108,6 +123,15 @@
 - (BOOL)deleteConversationsByUid:(NSString *)uid
 {
     return YES;
+}
+
+#pragma mark - Getter -
+- (TLDBMessageStore *)messageStore
+{
+    if (_messageStore == nil) {
+        _messageStore = [[TLDBMessageStore alloc] init];
+    }
+    return _messageStore;
 }
 
 @end

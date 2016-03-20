@@ -9,9 +9,11 @@
 #import "TLConversationViewController.h"
 #import "TLConversationViewController+Delegate.h"
 #import "TLSearchController.h"
-#import "TLConversation.h"
+#import "TLConversation+TLUser.h"
 #import <UIImageView+WebCache.h>
 #import <AFNetworking.h>
+
+#import "TLMessageManager+ConversationRecord.h"
 
 @interface TLConversationViewController ()
 
@@ -33,8 +35,25 @@
     [self registerCellClass];
    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
-    
-    [self initTestData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[TLMessageManager sharedInstance] conversationRecord:^(NSArray *data) {
+        for (TLConversation *conversation in data) {
+            if (conversation.convType == TLConversationTypePersonal) {
+                TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:conversation.userID];
+                [conversation updateUserInfo:user];
+            }
+            else if (conversation.convType == TLConversationTypeGroup) {
+                TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.userID];
+                [conversation updateGroupInfo:group];
+            }
+        }
+        self.data = [[NSMutableArray alloc] initWithArray:data];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -87,32 +106,6 @@
     
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
-}
-
-- (void)initTestData
-{
-    TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:@"u1007"];
-    TLConversation *conv1 = [[TLConversation alloc] init];
-    conv1.convType = TLConversationTypePersonal;
-    conv1.userID = user.userID;
-    conv1.username = user.showName;
-    conv1.avatarURL = user.avatarURL;
-    conv1.messageDetail = @"你好啊";
-    conv1.date = [NSDate date];
-    
-    TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:@"g1001"];
-    TLConversation *conv2 = [[TLConversation alloc] init];
-    conv2.convType = TLConversationTypeGroup;
-    conv2.userID = group.groupID;
-    conv2.username = group.groupName;
-    conv2.messageDetail = @"掌柜的：开工了~~";
-    conv2.date = [NSDate date];
-    [TLUIUtility getGroupAvatarByGroupUsers:group.users finished:^(NSString *avatarPath) {
-        conv2.avatarPath = group.groupAvatarPath = avatarPath;
-        [self.tableView reloadData];
-    }];
-    
-    self.data = [NSMutableArray arrayWithObjects:conv1, conv2, nil];
 }
 
 #pragma mark - Getter -

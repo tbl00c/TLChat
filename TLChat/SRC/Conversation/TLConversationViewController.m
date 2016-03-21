@@ -43,11 +43,11 @@
     [[TLMessageManager sharedInstance] conversationRecord:^(NSArray *data) {
         for (TLConversation *conversation in data) {
             if (conversation.convType == TLConversationTypePersonal) {
-                TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:conversation.userID];
+                TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:conversation.partnerID];
                 [conversation updateUserInfo:user];
             }
             else if (conversation.convType == TLConversationTypeGroup) {
-                TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.userID];
+                TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.partnerID];
                 [conversation updateGroupInfo:group];
             }
         }

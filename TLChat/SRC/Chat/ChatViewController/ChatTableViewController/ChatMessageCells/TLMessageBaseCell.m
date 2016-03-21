@@ -158,6 +158,7 @@
         [_timeLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [_timeLabel setTextColor:[UIColor whiteColor]];
         [_timeLabel setBackgroundColor:[UIColor grayColor]];
+        [_timeLabel setAlpha:0.7f];
         [_timeLabel.layer setMasksToBounds:YES];
         [_timeLabel.layer setCornerRadius:5.0f];
     }
@@ -181,7 +182,6 @@
     if (_usernameLabel == nil) {
         _usernameLabel = [[UILabel alloc] init];
         [_usernameLabel setTextColor:[UIColor grayColor]];
-        [_usernameLabel setAlpha:0.6f];
         [_usernameLabel setFont:[UIFont systemFontOfSize:12.0f]];
     }
     return _usernameLabel;

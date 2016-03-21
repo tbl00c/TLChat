@@ -25,7 +25,6 @@
     //    message.ownerTyper = TLMessageOwnerTypeSelf;
     //    message.fromUser = [TLUserHelper sharedHelper].user;
     message.date = [NSDate date];
-    //    message.showName = NO;
     
     [self addMessage:message];    // 添加到列表
     [[TLMessageManager sharedInstance] sendMessage:message progress:^(TLMessage *message, CGFloat pregress) {

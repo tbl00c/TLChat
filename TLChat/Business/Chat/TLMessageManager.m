@@ -62,4 +62,9 @@ static TLMessageManager *messageManager;
     return _conversationStore;
 }
 
+- (NSString *)userID
+{
+    return [TLUserHelper sharedHelper].userID;
+}
+
 @end

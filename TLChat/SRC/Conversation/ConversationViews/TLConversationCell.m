@@ -64,7 +64,7 @@
     else {
         [self.avatarImageView setImage:nil];
     }
-    [self.usernameLabel setText:conversation.username];
+    [self.usernameLabel setText:conversation.partnerName];
     [self.detailLabel setText:conversation.content];
     [self.timeLabel setText:conversation.date.conversaionTimeInfo];
     switch (conversation.remindType) {

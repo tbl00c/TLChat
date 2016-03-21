@@ -12,14 +12,14 @@
 
 - (void)updateUserInfo:(TLUser *)user
 {
-    self.username = user.showName;
+    self.partnerName = user.showName;
     self.avatarPath = user.avatarPath;
     self.avatarURL = user.avatarURL;
 }
 
 - (void)updateGroupInfo:(TLGroup *)group
 {
-    self.username = group.groupName;
+    self.partnerName = group.groupName;
     self.avatarPath = group.groupAvatarPath;
 }
 

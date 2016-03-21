@@ -15,7 +15,7 @@
                           count:(NSUInteger)count
                        complete:(void (^)(NSArray *, BOOL))complete
 {
-    [self.messageStore messagesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID fromDate:date count:count complete:^(NSArray *data, BOOL hasMore) {
+    [self.messageStore messagesByUserID:self.userID partnerID:partnerID fromDate:date count:count complete:^(NSArray *data, BOOL hasMore) {
         complete(data, hasMore);
     }];
 }
@@ -23,7 +23,7 @@
 - (void)chatFilesForPartnerID:(NSString *)partnerID
                     completed:(void (^)(NSArray *))completed
 {
-    NSArray *data = [self.messageStore chatFilesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID];
+    NSArray *data = [self.messageStore chatFilesByUserID:self.userID partnerID:partnerID];
     completed(data);
 }
 
@@ -34,12 +34,16 @@
 
 - (BOOL)deleteMessagesByPartnerID:(NSString *)partnerID
 {
-    return [self.messageStore deleteMessagesByUserID:[TLUserHelper sharedHelper].userID partnerID:partnerID];
+    return [self.messageStore deleteMessagesByUserID:self.userID partnerID:partnerID];
 }
 
 - (BOOL)deleteAllMessages
 {
-    return [self.messageStore deleteMessagesByUserID:[TLUserHelper sharedHelper].userID];
+    BOOL ok = [self.messageStore deleteMessagesByUserID:self.userID];
+    if (ok) {
+        ok = [self.conversationStore deleteConversationsByUid:self.userID];
+    }
+    return ok;
 }
 
 

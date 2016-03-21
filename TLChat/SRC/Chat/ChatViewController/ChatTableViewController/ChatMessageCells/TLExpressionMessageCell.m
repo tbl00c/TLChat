@@ -34,6 +34,7 @@
     if (message.imagePath) {
         UIImage *image;
         if ([message.imagePath hasSuffix:@"gif"]) {
+            [self.msgImageView setImage:nil];
             NSString *path = [[NSBundle mainBundle] pathForResource:[message.imagePath substringToIndex:message.imagePath.length - 4] ofType:@"gif"];
             NSData *data = [NSData dataWithContentsOfFile:path];
             image = [UIImage sd_animatedGIFWithData:data];
@@ -50,13 +51,13 @@
     if (lastOwnType != message.ownerTyper) {
         if (message.ownerTyper == TLMessageOwnerTypeSelf) {
             [self.msgImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.avatarButton).mas_offset(5);
+                make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(5);
                 make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-10);
             }];
         }
         else if (message.ownerTyper == TLMessageOwnerTypeFriend){
             [self.msgImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.avatarButton).mas_offset(5);
+                make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(5);
                 make.left.mas_equalTo(self.messageBackgroundView).mas_offset(10);
             }];
         }

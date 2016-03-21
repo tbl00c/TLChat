@@ -81,10 +81,10 @@
 {
     NSString *chatViewBGImage;
     //TODO: 临时写法
-    if (self.curChatType == TLChatVCTypeFriend) {
+    if (self.curChatType == TLChatVCTypeFriend && self.user) {
         chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:[@"CHAT_BG_" stringByAppendingString:self.user.userID]];
     }
-    else if (self.curChatType == TLChatVCTypeGroup) {
+    else if (self.curChatType == TLChatVCTypeGroup && self.group) {
         chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:[@"CHAT_BG_" stringByAppendingString:self.group.groupID]];
     }
     if (chatViewBGImage == nil) {
@@ -122,7 +122,6 @@
     message.messageType = TLMessageTypeImage;
     message.ownerTyper = TLMessageOwnerTypeSelf;
     message.imagePath = imageName;
-    message.showName = NO;
     [self sendMessage:message];
     if (self.curChatType == TLChatVCTypeFriend) {
         TLMessage *message1 = [[TLMessage alloc] init];
@@ -130,7 +129,6 @@
         message1.messageType = TLMessageTypeImage;
         message1.ownerTyper = TLMessageOwnerTypeFriend;
         message1.imagePath = imageName;
-        message1.showName = NO;
         [self sendMessage:message1];
     }
     else {
@@ -141,7 +139,6 @@
             message1.messageType = TLMessageTypeImage;
             message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.imagePath = imageName;
-            message1.showName = NO;
             [self sendMessage:message1];
         }
     }

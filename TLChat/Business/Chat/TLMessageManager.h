@@ -13,6 +13,8 @@
 
 @interface TLMessageManager : NSObject
 
+@property (nonatomic, strong, readonly) NSString *userID;
+
 @property (nonatomic, strong) TLDBMessageStore *messageStore;
 
 @property (nonatomic, strong) TLDBConversationStore *conversationStore;

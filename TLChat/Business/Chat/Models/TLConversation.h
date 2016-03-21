@@ -24,12 +24,12 @@
 /**
  *  用户ID
  */
-@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *partnerID;
 
 /**
  *  用户名
  */
-@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *partnerName;
 
 /**
  *  头像地址（网络）
@@ -47,11 +47,6 @@
 @property (nonatomic, strong) NSDate *date;
 
 /**
- *  消息类型
- */
-@property (nonatomic, assign) TLMessageType messageType;
-
-/**
  *  消息展示内容
  */
 @property (nonatomic, strong) NSString *content;
@@ -59,7 +54,7 @@
 /**
  *  提示红点类型
  */
-@property (nonatomic, assign) TLClueType clueType;
+@property (nonatomic, assign, readonly) TLClueType clueType;
 
 
 @property (nonatomic, assign, readonly) BOOL isRead;

@@ -16,11 +16,11 @@
     switch (convType) {
         case TLConversationTypePersonal:
         case TLConversationTypeGroup:
-            self.clueType = TLClueTypePointWithNumber;
+            _clueType = TLClueTypePointWithNumber;
             break;
         case TLConversationTypePublic:
         case TLConversationTypeServerGroup:
-            self.clueType = TLClueTypePoint;
+            _clueType = TLClueTypePoint;
             break;
         default:
             break;

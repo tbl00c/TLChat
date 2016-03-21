@@ -38,7 +38,6 @@
             message1.messageType = TLMessageTypeText;
             message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.text = text;
-            message1.showName = NO;
             [self sendMessage:message1];
         }
     }

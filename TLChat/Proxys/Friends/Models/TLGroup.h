@@ -45,6 +45,9 @@
 
 @property (nonatomic, assign, readonly) NSInteger count;
 
+@property (nonatomic, assign) BOOL showNameInChat;
+
+
 - (void)addObject:(id)anObject;
 
 - (id)objectAtIndex:(NSUInteger)index;

@@ -7,13 +7,23 @@
 //
 
 #import "TLMessageManager+ConversationRecord.h"
+#import "TLMessageManager+MessageRecord.h"
 
 @implementation TLMessageManager (ConversationRecord)
 
 - (void)conversationRecord:(void (^)(NSArray *))complete
 {
-    NSArray *data = [self.conversationStore conversationsByUid:[TLUserHelper sharedHelper].userID];
+    NSArray *data = [self.conversationStore conversationsByUid:self.userID];
     complete(data);
+}
+
+- (BOOL)deleteConversationByPartnerID:(NSString *)partnerID
+{
+    BOOL ok = [self deleteMessagesByPartnerID:partnerID];
+    if (ok) {
+        ok = [self.conversationStore deleteConversationByUid:self.userID fid:partnerID];
+    }
+    return ok;
 }
 
 @end

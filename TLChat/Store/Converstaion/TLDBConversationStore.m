@@ -78,7 +78,7 @@
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             TLConversation *conversation = [[TLConversation alloc] init];
-            conversation.userID = [retSet stringForColumn:@"fid"];
+            conversation.partnerID = [retSet stringForColumn:@"fid"];
             conversation.convType = [retSet intForColumn:@"conv_type"];
             NSString *dateString = [retSet stringForColumn:@"date"];
             conversation.date = [NSDate dateWithTimeIntervalSince1970:dateString.doubleValue];
@@ -89,8 +89,11 @@
     }];
     
     for (TLConversation *conversation in data) {
-        TLMessage *message = [self.messageStore lastMessageByUserID:uid partnerID:conversation.userID];
-        conversation.content = [message conversationContent];
+        TLMessage *message = [self.messageStore lastMessageByUserID:uid partnerID:conversation.partnerID];
+        if (message) {
+            conversation.content = [message conversationContent];
+            conversation.date = message.date;
+        }
     }
     
     return data;
@@ -114,7 +117,9 @@
  */
 - (BOOL)deleteConversationByUid:(NSString *)uid fid:(NSString *)fid
 {
-    return YES;
+    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_CONV, CONV_TABLE_NAME, uid, fid];
+    BOOL ok = [self excuteSQL:sqlString, nil];
+    return ok;
 }
 
 /**
@@ -122,7 +127,9 @@
  */
 - (BOOL)deleteConversationsByUid:(NSString *)uid
 {
-    return YES;
+    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_ALL_CONVS, CONV_TABLE_NAME, uid];
+    BOOL ok = [self excuteSQL:sqlString, nil];
+    return ok;
 }
 
 #pragma mark - Getter -

@@ -7,6 +7,7 @@
 //
 
 #import "TLConversationViewController+Delegate.h"
+#import "TLMessageManager+ConversationRecord.h"
 #import "TLConversationCell.h"
 
 @implementation TLConversationViewController (Delegate)
@@ -50,7 +51,7 @@
     
     TLConversation *conversation = [self.data objectAtIndex:indexPath.row];
     if (conversation.convType == TLConversationTypePersonal) {
-        TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:conversation.userID];
+        TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:conversation.partnerID];
         if (user == nil) {
             [UIAlertView alertWithTitle:@"错误" message:@"您不存在此好友"];
             return;
@@ -58,7 +59,7 @@
         [chatVC setUser:user];
     }
     else if (conversation.convType == TLConversationTypeGroup){
-        TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.userID];
+        TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.partnerID];
         if (group == nil) {
             [UIAlertView alertWithTitle:@"错误" message:@"您不存在该讨论组"];
             return;
@@ -82,6 +83,10 @@
                                                                        handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
                                        {
                                            [weakSelf.data removeObjectAtIndex:indexPath.row];
+                                           BOOL ok = [[TLMessageManager sharedInstance] deleteConversationByPartnerID:conversation.partnerID];
+                                           if (!ok) {
+                                               [UIAlertView alertWithTitle:@"错误" message:@"从数据库中删除会话信息失败"];
+                                           }
                                            [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                            if (self.data.count > 0 && indexPath.row == self.data.count) {
                                                NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];

@@ -12,4 +12,6 @@
 
 - (void)conversationRecord:(void (^)(NSArray *))complete;
 
+- (BOOL)deleteConversationByPartnerID:(NSString *)partnerID;
+
 @end

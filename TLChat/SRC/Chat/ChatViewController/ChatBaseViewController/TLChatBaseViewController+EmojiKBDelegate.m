@@ -40,7 +40,6 @@
                 message1.messageType = TLMessageTypeExpression;
                 message1.ownerTyper = TLMessageOwnerTypeFriend;
                 message1.imagePath = emoji.path;
-                message1.showName = NO;
                 [self sendMessage:message1];
             }
         }

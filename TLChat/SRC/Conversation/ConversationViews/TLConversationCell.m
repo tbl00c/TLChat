@@ -179,17 +179,17 @@
 }
 
 #pragma mark - Getter
-- (UIImageView *) avatarImageView
+- (UIImageView *)avatarImageView
 {
     if (_avatarImageView == nil) {
         _avatarImageView = [[UIImageView alloc] init];
         [_avatarImageView.layer setMasksToBounds:YES];
-        [_avatarImageView.layer setCornerRadius:5.0f];
+        [_avatarImageView.layer setCornerRadius:3.0f];
     }
     return _avatarImageView;
 }
 
-- (UILabel *) usernameLabel
+- (UILabel *)usernameLabel
 {
     if (_usernameLabel == nil) {
         _usernameLabel = [[UILabel alloc] init];
@@ -198,7 +198,7 @@
     return _usernameLabel;
 }
 
-- (UILabel *) detailLabel
+- (UILabel *)detailLabel
 {
     if (_detailLabel == nil) {
         _detailLabel = [[UILabel alloc] init];
@@ -208,7 +208,7 @@
     return _detailLabel;
 }
 
-- (UILabel *) timeLabel
+- (UILabel *)timeLabel
 {
     if (_timeLabel == nil) {
         _timeLabel = [[UILabel alloc] init];
@@ -218,7 +218,7 @@
     return _timeLabel;
 }
 
-- (UIImageView *) remindImageView
+- (UIImageView *)remindImageView
 {
     if (_remindImageView == nil) {
         _remindImageView = [[UIImageView alloc] init];
@@ -227,7 +227,7 @@
     return _remindImageView;
 }
 
-- (UIView *) redPointView
+- (UIView *)redPointView
 {
     if (_redPointView == nil) {
         _redPointView = [[UIView alloc] init];

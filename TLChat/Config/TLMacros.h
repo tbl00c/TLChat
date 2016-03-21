@@ -24,11 +24,11 @@
 #define     HEIGHT_NAVBAR               44.0f
 #define     NAVBAR_ITEM_FIXED_SPACE     5.0f
 
-#define     MAX_MESSAGE_WIDTH           WIDTH_SCREEN * 0.58
-#define     MAX_MESSAGE_IMAGE_WIDTH     WIDTH_SCREEN * 0.45
-#define     MIN_MESSAGE_IMAGE_WIDTH     WIDTH_SCREEN * 0.25
-#define     MAX_MESSAGE_EXPRESSION_WIDTH     WIDTH_SCREEN * 0.35
-#define     MIN_MESSAGE_EXPRESSION_WIDTH     WIDTH_SCREEN * 0.2
+#define     MAX_MESSAGE_WIDTH               WIDTH_SCREEN * 0.58
+#define     MAX_MESSAGE_IMAGE_WIDTH         WIDTH_SCREEN * 0.45
+#define     MIN_MESSAGE_IMAGE_WIDTH         WIDTH_SCREEN * 0.25
+#define     MAX_MESSAGE_EXPRESSION_WIDTH    WIDTH_SCREEN * 0.35
+#define     MIN_MESSAGE_EXPRESSION_WIDTH    WIDTH_SCREEN * 0.2
 
 #define mark - Default
 #define     DEFAULT_AVATAR_PATH    @"default_head"

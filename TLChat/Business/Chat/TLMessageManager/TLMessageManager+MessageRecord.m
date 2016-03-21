@@ -34,7 +34,11 @@
 
 - (BOOL)deleteMessagesByPartnerID:(NSString *)partnerID
 {
-    return [self.messageStore deleteMessagesByUserID:self.userID partnerID:partnerID];
+    BOOL ok = [self.messageStore deleteMessagesByUserID:self.userID partnerID:partnerID];
+    if (ok && self.conversationDelegate && [self.conversationDelegate respondsToSelector:@selector(updateConversationData)]) {
+        [self.conversationDelegate updateConversationData];
+    }
+    return ok;
 }
 
 - (BOOL)deleteAllMessages
@@ -42,6 +46,9 @@
     BOOL ok = [self.messageStore deleteMessagesByUserID:self.userID];
     if (ok) {
         ok = [self.conversationStore deleteConversationsByUid:self.userID];
+        if (ok && self.conversationDelegate && [self.conversationDelegate respondsToSelector:@selector(updateConversationData)]) {
+            [self.conversationDelegate updateConversationData];
+        }
     }
     return ok;
 }

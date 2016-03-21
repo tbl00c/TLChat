@@ -11,12 +11,18 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  会话提示类型
+ */
 typedef NS_ENUM(NSInteger, TLClueType) {
     TLClueTypeNone,
     TLClueTypePoint,
     TLClueTypePointWithNumber,
 };
 
+/**
+ *  会话类型
+ */
 typedef NS_ENUM(NSInteger, TLConversationType) {
     TLConversationTypePersonal,     // 个人
     TLConversationTypeGroup,        // 群聊

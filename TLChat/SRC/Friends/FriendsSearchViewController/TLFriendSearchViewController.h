@@ -8,6 +8,8 @@
 
 #import "TLTableViewController.h"
 
+#define     HEIGHT_FRIEND_CELL      54.0f
+
 @interface TLFriendSearchViewController : TLTableViewController <UISearchResultsUpdating>
 
 @property (nonatomic, strong) NSMutableArray *friendsData;

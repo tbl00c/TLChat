@@ -7,6 +7,7 @@
 //
 
 #import "TLMessageManager.h"
+#import "TLMessageManager+ConversationRecord.h"
 #import "TLDBMessage+TLMessage.h"
 
 static TLMessageManager *messageManager;
@@ -31,16 +32,11 @@ static TLMessageManager *messageManager;
     if (!ok) {
         DDLogError(@"存储Message到DB失败");
     }
-    
-    NSString *partnerID = message.friendID;
-    NSInteger type = 0;
-    if (message.partnerType == TLPartnerTypeGroup) {
-        partnerID = message.groupID;
-        type = 1;
-    }
-    ok = [self.conversationStore addConversationByUid:message.userID fid:partnerID type:type date:message.date];
-    if (!ok) {
-        DDLogError(@"存储Conversation到DB失败");
+    else {      // 存储到conversation
+        ok = [self addConversationByMessage:message];
+        if (!ok) {
+            DDLogError(@"存储Conversation到DB失败");
+        }
     }
 }
 

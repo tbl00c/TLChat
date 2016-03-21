@@ -10,7 +10,7 @@
 #import <UIImageView+WebCache.h>
 
 #define     FRIENDS_SPACE_X         10.0f
-#define     FRIENDS_SPACE_Y         9.5f
+#define     FRIENDS_SPACE_Y         9.0f
 
 @interface TLFriendCell ()
 

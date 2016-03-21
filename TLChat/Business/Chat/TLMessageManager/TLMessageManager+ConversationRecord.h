@@ -10,6 +10,8 @@
 
 @interface TLMessageManager (ConversationRecord)
 
+- (BOOL)addConversationByMessage:(TLMessage *)message;
+
 - (void)conversationRecord:(void (^)(NSArray *))complete;
 
 - (BOOL)deleteConversationByPartnerID:(NSString *)partnerID;

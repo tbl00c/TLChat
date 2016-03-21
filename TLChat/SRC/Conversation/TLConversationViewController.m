@@ -9,8 +9,6 @@
 #import "TLConversationViewController.h"
 #import "TLConversationViewController+Delegate.h"
 #import "TLSearchController.h"
-#import "TLConversation+TLUser.h"
-#import <UIImageView+WebCache.h>
 #import <AFNetworking.h>
 
 #import "TLMessageManager+ConversationRecord.h"
@@ -33,27 +31,11 @@
     
     [self p_initUI];        // 初始化界面UI
     [self registerCellClass];
+    
+    [[TLMessageManager sharedInstance] setConversationDelegate:self];
+    [self updateConversationData];
    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[TLMessageManager sharedInstance] conversationRecord:^(NSArray *data) {
-        for (TLConversation *conversation in data) {
-            if (conversation.convType == TLConversationTypePersonal) {
-                TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:conversation.partnerID];
-                [conversation updateUserInfo:user];
-            }
-            else if (conversation.convType == TLConversationTypeGroup) {
-                TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.partnerID];
-                [conversation updateGroupInfo:group];
-            }
-        }
-        self.data = [[NSMutableArray alloc] initWithArray:data];
-        [self.tableView reloadData];
-    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

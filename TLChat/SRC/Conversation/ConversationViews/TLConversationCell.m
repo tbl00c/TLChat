@@ -11,7 +11,7 @@
 #import "NSDate+TLChat.h"
 
 #define     CONV_SPACE_X            10.0f
-#define     CONV_SPACE_Y            9.0f
+#define     CONV_SPACE_Y            9.5f
 #define     REDPOINT_WIDTH          10.0f
 
 @interface TLConversationCell()

@@ -32,17 +32,16 @@
     [super setMessage:message];
     
     if (message.imagePath) {
-        UIImage *image;
         if ([message.imagePath hasSuffix:@"gif"]) {
             [self.msgImageView setImage:nil];
             NSString *path = [[NSBundle mainBundle] pathForResource:[message.imagePath substringToIndex:message.imagePath.length - 4] ofType:@"gif"];
+            [self.msgImageView setImage:[UIImage imageNamed:path]];
             NSData *data = [NSData dataWithContentsOfFile:path];
-            image = [UIImage sd_animatedGIFWithData:data];
+            [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
         }
         else {
-            image = [UIImage imageNamed:message.imagePath];
+            [self.msgImageView setImage:[UIImage imageNamed:message.imagePath]];
         }
-        [self.msgImageView setImage:image];
     }
     else {
         [self.msgImageView setImage:nil];

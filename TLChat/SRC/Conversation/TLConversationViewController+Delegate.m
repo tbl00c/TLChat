@@ -7,7 +7,7 @@
 //
 
 #import "TLConversationViewController+Delegate.h"
-#import "TLMessageManager+ConversationRecord.h"
+#import "TLConversation+TLUser.h"
 #import "TLConversationCell.h"
 
 @implementation TLConversationViewController (Delegate)
@@ -19,6 +19,25 @@
 }
 
 #pragma mark - Delegate -
+//MARK: TLMessageManagerConvVCDelegate
+- (void)updateConversationData
+{
+    [[TLMessageManager sharedInstance] conversationRecord:^(NSArray *data) {
+        for (TLConversation *conversation in data) {
+            if (conversation.convType == TLConversationTypePersonal) {
+                TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:conversation.partnerID];
+                [conversation updateUserInfo:user];
+            }
+            else if (conversation.convType == TLConversationTypeGroup) {
+                TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.partnerID];
+                [conversation updateGroupInfo:group];
+            }
+        }
+        self.data = [[NSMutableArray alloc] initWithArray:data];
+        [self.tableView reloadData];
+    }];
+}
+
 //MARK: UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

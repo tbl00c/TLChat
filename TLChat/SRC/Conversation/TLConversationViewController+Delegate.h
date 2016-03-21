@@ -10,9 +10,9 @@
 #import "TLChatViewController.h"
 #import "TLAddMenuView.h"
 
-#define     HEIGHT_CONVERSATION_CELL        65.0f
+#define     HEIGHT_CONVERSATION_CELL        64.0f
 
-@interface TLConversationViewController (Delegate) <UISearchBarDelegate, TLAddMenuViewDelegate>
+@interface TLConversationViewController (Delegate) <TLMessageManagerConvVCDelegate, UISearchBarDelegate, TLAddMenuViewDelegate>
 
 - (void)registerCellClass;
 

@@ -7,6 +7,7 @@
 //
 
 #import "TLTableViewController.h"
+#import "TLMessageManager+ConversationRecord.h"
 #import "TLFriendSearchViewController.h"
 
 @interface TLConversationViewController : TLTableViewController

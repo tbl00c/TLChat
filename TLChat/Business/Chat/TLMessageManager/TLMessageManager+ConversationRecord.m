@@ -11,6 +11,19 @@
 
 @implementation TLMessageManager (ConversationRecord)
 
+- (BOOL)addConversationByMessage:(TLMessage *)message
+{
+    NSString *partnerID = message.friendID;
+    NSInteger type = 0;
+    if (message.partnerType == TLPartnerTypeGroup) {
+        partnerID = message.groupID;
+        type = 1;
+    }
+    BOOL ok = [self.conversationStore addConversationByUid:message.userID fid:partnerID type:type date:message.date];
+    
+    return ok;
+}
+
 - (void)conversationRecord:(void (^)(NSArray *))complete
 {
     NSArray *data = [self.conversationStore conversationsByUid:self.userID];

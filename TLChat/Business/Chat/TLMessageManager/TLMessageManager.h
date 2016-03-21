@@ -11,7 +11,13 @@
 #import "TLDBConversationStore.h"
 #import "TLMessage.h"
 
+#import "TLMessageManagerChatVCDelegate.h"
+#import "TLMessageManagerConvVCDelegate.h"
+
 @interface TLMessageManager : NSObject
+
+@property (nonatomic, assign) id<TLMessageManagerChatVCDelegate>messageDelegate;
+@property (nonatomic, assign) id<TLMessageManagerConvVCDelegate>conversationDelegate;
 
 @property (nonatomic, strong, readonly) NSString *userID;
 

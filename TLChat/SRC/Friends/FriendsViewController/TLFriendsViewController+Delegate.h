@@ -8,7 +8,7 @@
 
 #import "TLFriendsViewController.h"
 
-#define     HEIGHT_FRIEND_CELL      55.0f
+#define     HEIGHT_FRIEND_CELL      54.0f
 #define     HEIGHT_HEADER           22.0f
 
 @interface TLFriendsViewController (Delegate) <UISearchBarDelegate>

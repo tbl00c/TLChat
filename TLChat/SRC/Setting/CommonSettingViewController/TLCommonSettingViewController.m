@@ -11,6 +11,7 @@
 #import "TLMessageManager.h"
 
 #import "TLChatViewController.h"
+#import "TLChatFontViewController.h"
 #import "TLChatBackgroundSettingViewController.h"
 #import "TLMyExpressionViewController.h"
 
@@ -37,7 +38,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"聊天背景"]) {
+    if ([item.title isEqualToString:@"字体大小"]) {
+        TLChatFontViewController *chatFontVC = [[TLChatFontViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:chatFontVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"聊天背景"]) {
         TLChatBackgroundSettingViewController *chatBGSettingVC = [[TLChatBackgroundSettingViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:chatBGSettingVC animated:YES];

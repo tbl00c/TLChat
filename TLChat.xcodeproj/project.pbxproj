@@ -81,6 +81,7 @@
 		C2232E361C9FA3960010CDF8 /* TLChatDetailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E301C9FA3960010CDF8 /* TLChatDetailHelper.m */; };
 		C2232E371C9FA3960010CDF8 /* TLEmojiKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E331C9FA3960010CDF8 /* TLEmojiKBHelper.m */; };
 		C2232E381C9FA3960010CDF8 /* TLMoreKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E351C9FA3960010CDF8 /* TLMoreKBHelper.m */; };
+		C2232E6E1CA013CB0010CDF8 /* TLChatFontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E6D1CA013CB0010CDF8 /* TLChatFontViewController.m */; };
 		C225799D1C959696003B1B85 /* TLDBMessage+TLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C225799C1C959696003B1B85 /* TLDBMessage+TLMessage.m */; };
 		C246F1101C6B867C00A5AFB2 /* TLShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */; };
 		C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F1131C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m */; };
@@ -407,6 +408,8 @@
 		C2232E351C9FA3960010CDF8 /* TLMoreKBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKBHelper.m; sourceTree = "<group>"; };
 		C2232E391C9FABF80010CDF8 /* TLMessageManagerChatVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageManagerChatVCDelegate.h; sourceTree = "<group>"; };
 		C2232E3A1C9FAC120010CDF8 /* TLMessageManagerConvVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageManagerConvVCDelegate.h; sourceTree = "<group>"; };
+		C2232E6C1CA013CB0010CDF8 /* TLChatFontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatFontViewController.h; sourceTree = "<group>"; };
+		C2232E6D1CA013CB0010CDF8 /* TLChatFontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatFontViewController.m; sourceTree = "<group>"; };
 		C225799B1C959696003B1B85 /* TLDBMessage+TLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLDBMessage+TLMessage.h"; sourceTree = "<group>"; };
 		C225799C1C959696003B1B85 /* TLDBMessage+TLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLDBMessage+TLMessage.m"; sourceTree = "<group>"; };
 		C225799E1C959CC5003B1B85 /* TLDBMessageStoreSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBMessageStoreSQL.h; sourceTree = "<group>"; };
@@ -1459,6 +1462,15 @@
 			path = ChatKeyboardHelper;
 			sourceTree = "<group>";
 		};
+		C2232E6B1CA013BB0010CDF8 /* ChatFontViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2232E6C1CA013CB0010CDF8 /* TLChatFontViewController.h */,
+				C2232E6D1CA013CB0010CDF8 /* TLChatFontViewController.m */,
+			);
+			path = ChatFontViewController;
+			sourceTree = "<group>";
+		};
 		C246F10D1C6B866400A5AFB2 /* ShopingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2378,6 +2390,7 @@
 		C2F0EBF21C7A0D7F0090843C /* CommonSettingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C2232E6B1CA013BB0010CDF8 /* ChatFontViewController */,
 				C28D20781C9D611500145792 /* ChatBackgroundViewController */,
 				C2F0EBF31C7A0DA80090843C /* TLCommonSettingViewController.h */,
 				C2F0EBF41C7A0DA80090843C /* TLCommonSettingViewController.m */,
@@ -2739,6 +2752,7 @@
 				C2CF4C8C1C804BFE0054637A /* TLSettingHeaderTitleView.m in Sources */,
 				C21573F51C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableViewDelegate.m in Sources */,
 				C2B9E4311C65F53700CEBA81 /* TLMineHelper.m in Sources */,
+				C2232E6E1CA013CB0010CDF8 /* TLChatFontViewController.m in Sources */,
 				C21573F91C9BAC4200B7AC67 /* TLChatBaseViewController.m in Sources */,
 				C2AF1FA81C6B773000617D98 /* TLWebViewController.m in Sources */,
 				C21574031C9BAC4200B7AC67 /* TLEmojiGroupCell.m in Sources */,

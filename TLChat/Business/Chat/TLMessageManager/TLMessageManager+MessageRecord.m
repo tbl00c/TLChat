@@ -7,6 +7,7 @@
 //
 
 #import "TLMessageManager+MessageRecord.h"
+#import "TLChatViewController.h"
 
 @implementation TLMessageManager (MessageRecord)
 
@@ -35,8 +36,8 @@
 - (BOOL)deleteMessagesByPartnerID:(NSString *)partnerID
 {
     BOOL ok = [self.messageStore deleteMessagesByUserID:self.userID partnerID:partnerID];
-    if (ok && self.conversationDelegate && [self.conversationDelegate respondsToSelector:@selector(updateConversationData)]) {
-        [self.conversationDelegate updateConversationData];
+    if (ok) {
+        [[TLChatViewController sharedChatVC] resetChatVC];
     }
     return ok;
 }
@@ -45,10 +46,8 @@
 {
     BOOL ok = [self.messageStore deleteMessagesByUserID:self.userID];
     if (ok) {
+        [[TLChatViewController sharedChatVC] resetChatVC];
         ok = [self.conversationStore deleteConversationsByUid:self.userID];
-        if (ok && self.conversationDelegate && [self.conversationDelegate respondsToSelector:@selector(updateConversationData)]) {
-            [self.conversationDelegate updateConversationData];
-        }
     }
     return ok;
 }

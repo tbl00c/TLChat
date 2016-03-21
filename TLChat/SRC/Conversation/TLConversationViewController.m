@@ -33,9 +33,16 @@
     [self registerCellClass];
     
     [[TLMessageManager sharedInstance] setConversationDelegate:self];
-    [self updateConversationData];
    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //TODO: 临时写法
+    [self updateConversationData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

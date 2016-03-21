@@ -90,7 +90,7 @@
         if (buttonIndex == 0) {
             BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByPartnerID:self.user.userID];
             if (!ok) {
-                [UIAlertView alertWithTitle:@"错误" message:@"清空讨论组聊天记录失败"];
+                [UIAlertView alertWithTitle:@"错误" message:@"清空聊天记录失败"];
             }
             else {
                 [[TLChatViewController sharedChatVC] resetChatVC];

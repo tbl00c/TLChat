@@ -37,11 +37,6 @@ static TLMessageManager *messageManager;
         if (!ok) {
             DDLogError(@"存储Conversation到DB失败");
         }
-        else {
-            if (self.conversationDelegate && [self.conversationDelegate respondsToSelector:@selector(updateConversationData)]) {
-                [self.conversationDelegate updateConversationData];
-            }
-        }
     }
 }
 

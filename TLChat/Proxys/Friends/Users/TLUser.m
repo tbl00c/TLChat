@@ -12,12 +12,12 @@
 
 @implementation TLUser
 
-- (id) initWithUserID:(NSString *)userID avatarPath:(NSString *)avatarPath remarkName:(NSString *)remarkName
+- (id)init
 {
     if (self = [super init]) {
-        self.userID = userID;
-        self.avatarPath = avatarPath;
-        self.remarkName = remarkName;
+        [TLGroup mj_setupObjectClassInArray:^NSDictionary *{
+            return @{ @"users" : @"TLUser" };
+        }];
     }
     return self;
 }
@@ -62,6 +62,14 @@
 - (NSString *)showName
 {
     return self.remarkName.length > 0 ? self.remarkName : (self.nikeName.length > 0 ? self.nikeName : self.username);
+}
+
+- (TLUserDetail *)detailInfo
+{
+    if (_detailInfo == nil) {
+        _detailInfo = [[TLUserDetail alloc] init];
+    }
+    return _detailInfo;
 }
 
 @end

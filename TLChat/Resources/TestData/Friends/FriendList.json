@@ -5,16 +5,18 @@
         "nikeName" : "秀才",
         "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg",
         "remarkName" : "吕轻侯",
-        "location" : "陕西 西安",
-        "phoneNumber" : "11111111111",
-        "tags" : [
-            "武林外传",
-        ],
-        "albumArray" : [
-            "http://a.hiphotos.baidu.com/zhidao/pic/item/3ac79f3df8dcdu10002f7c850748b4710b9122f53.jpg",
-            "http://img4.duitang.com/uploads/item/201511/17/20151117130657_j3T4s.png",
-            "http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
-        ]
+        "detailInfo": {
+            "location" : "陕西 西安",
+            "phoneNumber" : "11111111111",
+            "tags" : [
+                "武林外传",
+            ],
+            "albumArray" : [
+                "http://a.hiphotos.baidu.com/zhidao/pic/item/3ac79f3df8dcdu10002f7c850748b4710b9122f53.jpg",
+                "http://img4.duitang.com/uploads/item/201511/17/20151117130657_j3T4s.png",
+                "http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg",
+            ],
+        },
     },
     {
         "userID" : "u1002",
@@ -22,17 +24,19 @@
         "nikeName" : "白展堂",
         "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg",
         "remarkName" : "",
-        "location" : "山西 大同",
-        "phoneNumber" : "122222222222",
-        "tags" : [
-           "武林外传",
-        ],
-        "albumArray" : [
-            "http://img02.store.sogou.com/app/a/u100u10016/2193345d8f4c3c551d30b8fdf7087d2e",
-            "http://ww1.sinaimg.cn/crop.278.0.1448.1448.1024/5a22e1e7jw8eo10kpdkanj21kw148gsh.jpg",
-            "http://img5.duitang.com/uploads/item/201410/03/2014u1003114818_n4mE5.jpeg",
-            "http://img4.duitang.com/uploads/item/201510/27/20151027203733_FHYNA.png",
-        ]
+        "detailInfo": {
+            "location" : "山西 大同",
+            "phoneNumber" : "122222222222",
+            "tags" : [
+               "武林外传",
+            ],
+            "albumArray" : [
+                "http://img02.store.sogou.com/app/a/u100u10016/2193345d8f4c3c551d30b8fdf7087d2e",
+                "http://ww1.sinaimg.cn/crop.278.0.1448.1448.1024/5a22e1e7jw8eo10kpdkanj21kw148gsh.jpg",
+                "http://img5.duitang.com/uploads/item/201410/03/2014u1003114818_n4mE5.jpeg",
+                "http://img4.duitang.com/uploads/item/201510/27/20151027203733_FHYNA.png",
+            ],
+        },
     },
     {
         "userID" : "u1003",
@@ -40,17 +44,19 @@
         "nikeName" : "大嘴",
         "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=e4ac7f21bb0e7bec238f0be71f1e9500/472309f790529822afa352edd4ca7bcb0a46d408.jpg",
         "remarkName" : "李秀莲",
-        "location" : "山东 济南",
-        "phoneNumber" : "13333333333",
-        "tags" : [
-           "武林外传",
-        ],
-        "albumArray" : [
-            "http://wanzao2.b0.upaiyun.com/system/avatars/5762080/original/20140724124127782.png",
-            "http://ww1.sinaimg.cn/crop.0.0.1080.1080.1024/69679492jw8etju0d877bj20u00u0770.jpg",
-            "http://ww1.sinaimg.cn/crop.0.0.998.998.1024/67f811f5gw1em6b2j2y5aj20rs0rsag4.jpg",
-            "http://cdn.duitang.com/uploads/item/201411/12/20141112104102_cCHRi.jpeg",
-        ]
+        "detailInfo": {
+            "location" : "山东 济南",
+            "phoneNumber" : "13333333333",
+            "tags" : [
+               "武林外传",
+            ],
+            "albumArray" : [
+                "http://wanzao2.b0.upaiyun.com/system/avatars/5762080/original/20140724124127782.png",
+                "http://ww1.sinaimg.cn/crop.0.0.1080.1080.1024/69679492jw8etju0d877bj20u00u0770.jpg",
+                "http://ww1.sinaimg.cn/crop.0.0.998.998.1024/67f811f5gw1em6b2j2y5aj20rs0rsag4.jpg",
+                "http://cdn.duitang.com/uploads/item/201411/12/20141112104102_cCHRi.jpeg",
+            ],
+        },
     },
     {
         "userID" : "u1004",
@@ -58,17 +64,19 @@
         "nikeName" : "",
         "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=811f2b9ca5cc7cd9fa783cdf09310d07/54fbb2fb43166d2262fa25e5402309f79052d235.jpg",
         "remarkName" : "燕小六",
-        "location" : "河南 郑州",
-        "phoneNumber" : "110",
-        "tags" : [
-           "武林外传",
-        ],
-        "albumArray" : [
-            "http://img4.duitang.com/uploads/item/201602/22/20160222200011_RjLh4.png",
-            "http://img4.duitang.com/uploads/item/201409/16/20140916103102_RVECy.jpeg",
-            "http://img5.duitang.com/uploads/item/201505/21/20150521153548_QLUyR.jpeg",
-            "http://p3.music.126.net/h9mt7TJr9ewthxZZiS2yPA==/6026423232495755.jpg",
-        ]
+        "detailInfo": {
+            "location" : "河南 郑州",
+            "phoneNumber" : "110",
+            "tags" : [
+               "武林外传",
+            ],
+            "albumArray" : [
+                "http://img4.duitang.com/uploads/item/201602/22/20160222200011_RjLh4.png",
+                "http://img4.duitang.com/uploads/item/201409/16/20140916103102_RVECy.jpeg",
+                "http://img5.duitang.com/uploads/item/201505/21/20150521153548_QLUyR.jpeg",
+                "http://p3.music.126.net/h9mt7TJr9ewthxZZiS2yPA==/6026423232495755.jpg",
+            ],
+        },
     },
     {
         "userID" : "u1005",
@@ -76,17 +84,19 @@
         "nikeName" : "",
         "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=ceb4ac363f12b31bc739c52fb6281a42/cc11728b4710b91275c5c68fc5fdfc03924522be.jpg",
         "remarkName" : "郭芙蓉",
-        "location" : "江苏 杭州",
-        "phoneNumber" : "15555555555",
-        "tags" : [
-            "武林外传",
-        ],
-        "albumArray" : [
-            "http://d.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=8154f242978fa0ec7f926c0b16a775d6/d043ad4bd11373f061865feea20f4bfbfbed0401.jpg",
-            "http://a.hiphotos.baidu.com/zhidao/pic/item/3ac79f3df8dcdu10002f7c850748b4710b9122f53.jpg",
-            "http://f.hiphotos.baidu.com/zhidao/pic/item/29381f30e924b899bc7e4f856a061d950b7bf6c8.jpg",
-            "http://img5.duitang.com/uploads/item/201508/08/20150808131549_wJR8i.png",
-        ]
+        "detailInfo": {
+            "location" : "江苏 杭州",
+            "phoneNumber" : "15555555555",
+            "tags" : [
+                "武林外传",
+            ],
+            "albumArray" : [
+                "http://d.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=8154f242978fa0ec7f926c0b16a775d6/d043ad4bd11373f061865feea20f4bfbfbed0401.jpg",
+                "http://a.hiphotos.baidu.com/zhidao/pic/item/3ac79f3df8dcdu10002f7c850748b4710b9122f53.jpg",
+                "http://f.hiphotos.baidu.com/zhidao/pic/item/29381f30e924b899bc7e4f856a061d950b7bf6c8.jpg",
+                "http://img5.duitang.com/uploads/item/201508/08/20150808131549_wJR8i.png",
+            ],
+        },
     },
     {
         "userID" : "u1006",
@@ -94,17 +104,19 @@
         "nikeName" : "掌柜的",
         "avatarURL" : "http://d.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=b67b74ca4110b912bf94fef8f3cdd03b/9a504fc2d56285359eb7e15096ef76c6a7ef636f.jpg",
         "remarkName" : "佟湘玉",
-        "location" : "山西 大同",
-        "phoneNumber" : "18888888888",
-        "tags" : [
-            "武林外传",
-        ],
-        "albumArray" : [
-            "http://ww1.sinaimg.cn/crop.95.235.u1000.u1000.1024/d71a5054jw8euqdybnb1ij20xc1e0tht.jpg",
-            "http://e.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=d2590444c81b9d168a929267c3ee98b7/8644ebf81a4c510f7d6674816659252dd52aa58f.jpg",
-            "http://img.name2012.com/uploads/allimg/121123/23-220426_73.jpg",
-            "http://cdn.duitang.com/uploads/item/201501/24/20150124130719_EsU8n.png",
-        ]
+        "detailInfo": {
+            "location" : "山西 大同",
+            "phoneNumber" : "18888888888",
+            "tags" : [
+                "武林外传",
+            ],
+            "albumArray" : [
+                "http://ww1.sinaimg.cn/crop.95.235.u1000.u1000.1024/d71a5054jw8euqdybnb1ij20xc1e0tht.jpg",
+                "http://e.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=d2590444c81b9d168a929267c3ee98b7/8644ebf81a4c510f7d6674816659252dd52aa58f.jpg",
+                "http://img.name2012.com/uploads/allimg/121123/23-220426_73.jpg",
+                "http://cdn.duitang.com/uploads/item/201501/24/20150124130719_EsU8n.png",
+            ],
+        },
     },
     {
         "userID" : "u1007",
@@ -112,17 +124,19 @@
         "nikeName" : "小贝",
         "avatarURL" : "http://tx.haiqq.com/uploads/allimg/150323/1513261b8-0.jpg",
         "remarkName" : "莫小贝",
-        "location" : "山西 大同",
-        "phoneNumber" : "16666666666",
-        "tags" : [
-           "武林外传",
-           "好友",
-        ],
-        "albumArray" : [
-            "http://d.hiphotos.baidu.com/zhidao/pic/item/b8014a90f603738dfa989413b51bb051f819ec35.jpg",
-            "http://img4.duitang.com/uploads/item/201206/03/20120603185827_Qm5Rr.jpeg",
-            "http://b.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=2d3a154ba2c27d1ea57333c22be58156/9c16fdfaaf51f3de4d8a1e8b92eef01f3a297921.jpg",
-            "http://b.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=42fe38a83f12b31bc739c52fb6281a42/cc11728b4710b912f98f5211c5fdfc0393452296.jpg",
-        ]
+        "detailInfo": {
+            "location" : "山西 大同",
+            "phoneNumber" : "16666666666",
+            "tags" : [
+               "武林外传",
+               "好友",
+            ],
+            "albumArray" : [
+                "http://d.hiphotos.baidu.com/zhidao/pic/item/b8014a90f603738dfa989413b51bb051f819ec35.jpg",
+                "http://img4.duitang.com/uploads/item/201206/03/20120603185827_Qm5Rr.jpeg",
+                "http://b.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=2d3a154ba2c27d1ea57333c22be58156/9c16fdfaaf51f3de4d8a1e8b92eef01f3a297921.jpg",
+                "http://b.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=42fe38a83f12b31bc739c52fb6281a42/cc11728b4710b912f98f5211c5fdfc0393452296.jpg",
+            ],
+        },
     },
  ]

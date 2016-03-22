@@ -50,14 +50,14 @@
     }
     
     [self.usernameLabel setText:user.showName];
-    [self.subTitleLabel setText:user.remarkInfo];
-    if (user.remarkInfo.length > 0 && self.subTitleLabel.isHidden) {
+    [self.subTitleLabel setText:user.detailInfo.remarkInfo];
+    if (user.detailInfo.remarkInfo.length > 0 && self.subTitleLabel.isHidden) {
         [self.subTitleLabel setHidden:NO];
         [self.usernameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.avatarImageView).mas_offset(-9.5);
         }];
     }
-    else if (user.remarkInfo.length == 0 && !self.subTitleLabel.isHidden){
+    else if (user.detailInfo.remarkInfo.length == 0 && !self.subTitleLabel.isHidden){
         [self.usernameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.avatarImageView);
         }];

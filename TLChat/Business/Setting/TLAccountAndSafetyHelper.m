@@ -38,11 +38,11 @@
     TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[username]);
     
     TLSettingItem *qqNumber = TLCreateSettingItem(@"QQ号");
-    qqNumber.subTitle = (userInfo.qqNumber.length > 0 ? userInfo.qqNumber : @"未绑定");
+    qqNumber.subTitle = (userInfo.detailInfo.qqNumber.length > 0 ? userInfo.detailInfo.qqNumber : @"未绑定");
     TLSettingItem *phoneNumber = TLCreateSettingItem(@"手机号");
-    phoneNumber.subTitle = (phoneNumber.subTitle.length > 0 ?userInfo.phoneNumber : @"未绑定");
+    phoneNumber.subTitle = (phoneNumber.subTitle.length > 0 ?userInfo.detailInfo.phoneNumber : @"未绑定");
     TLSettingItem *email = TLCreateSettingItem(@"邮箱地址");
-    email.subTitle = userInfo.email.length > 0 ? userInfo.email : @"未绑定";
+    email.subTitle = userInfo.detailInfo.email.length > 0 ? userInfo.detailInfo.email : @"未绑定";
     TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[qqNumber, phoneNumber, email]));
     
     TLSettingItem *voiceLock = TLCreateSettingItem(@"声音锁");

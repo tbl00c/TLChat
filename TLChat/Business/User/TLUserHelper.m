@@ -34,11 +34,11 @@ static TLUserHelper *helper;
         self.user.avatarURL = @"http://img.jsqq.net/uploads/allimg/140903/1_140903051019_18.png";
         self.user.nikeName = @"李伯坤";
         self.user.username = @"li-bokun";
-        self.user.qqNumber = @"1159197873";
-        self.user.email = @"libokun@126.com";
-        self.user.location = @"山东 滨州";
-        self.user.sex = @"男";
-        self.user.motto = @"Hello world!";
+        self.user.detailInfo.qqNumber = @"1159197873";
+        self.user.detailInfo.email = @"libokun@126.com";
+        self.user.detailInfo.location = @"山东 滨州";
+        self.user.detailInfo.sex = @"男";
+        self.user.detailInfo.motto = @"Hello world!";
     }
     return self;
 }

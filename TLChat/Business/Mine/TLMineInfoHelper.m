@@ -46,11 +46,11 @@
     TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, (@[avatar, nikename, username, qrCode, location]));
     
     TLSettingItem *sex = TLCreateSettingItem(@"性别");
-    sex.subTitle = userInfo.sex;
+    sex.subTitle = userInfo.detailInfo.sex;
     TLSettingItem *city = TLCreateSettingItem(@"地区");
-    city.subTitle = userInfo.location;
+    city.subTitle = userInfo.detailInfo.location;
     TLSettingItem *motto = TLCreateSettingItem(@"个性签名");
-    motto.subTitle = userInfo.motto.length > 0 ? userInfo.motto : @"未填写";
+    motto.subTitle = userInfo.detailInfo.motto.length > 0 ? userInfo.detailInfo.motto : @"未填写";
     TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[sex, city, motto]));
     
     [_mineInfoData removeAllObjects];

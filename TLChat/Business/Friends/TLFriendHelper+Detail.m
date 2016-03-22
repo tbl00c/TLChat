@@ -26,17 +26,17 @@
     
     // 2
     arr = [[NSMutableArray alloc] init];
-    if (userInfo.phoneNumber.length > 0) {
-        TLInfo *tel = TLCreateInfo(@"电话号码", userInfo.phoneNumber);
+    if (userInfo.detailInfo.phoneNumber.length > 0) {
+        TLInfo *tel = TLCreateInfo(@"电话号码", userInfo.detailInfo.phoneNumber);
         tel.showDisclosureIndicator = NO;
         [arr addObject:tel];
     }
-    if (userInfo.tags.count == 0) {
+    if (userInfo.detailInfo.tags.count == 0) {
         TLInfo *remark = TLCreateInfo(@"设置备注和标签" , nil);
         [arr insertObject:remark atIndex:0];
     }
     else {
-        NSString *str = [userInfo.tags componentsJoinedByString:@","];
+        NSString *str = [userInfo.detailInfo.tags componentsJoinedByString:@","];
         TLInfo *remark = TLCreateInfo(@"标签", str);
         [arr addObject:remark];
     }
@@ -44,14 +44,14 @@
     arr = [[NSMutableArray alloc] init];
     
     // 3
-    if (userInfo.location.length > 0) {
-        TLInfo *location = TLCreateInfo(@"地区", userInfo.location);
+    if (userInfo.detailInfo.location.length > 0) {
+        TLInfo *location = TLCreateInfo(@"地区", userInfo.detailInfo.location);
         location.showDisclosureIndicator = NO;
         location.disableHighlight = YES;
         [arr addObject:location];
     }
     TLInfo *album = TLCreateInfo(@"个人相册", nil);
-    album.userInfo = userInfo.albumArray;
+    album.userInfo = userInfo.detailInfo.albumArray;
     album.type = TLInfoTypeOther;
     [arr addObject:album];
     TLInfo *more = TLCreateInfo(@"更多", nil);

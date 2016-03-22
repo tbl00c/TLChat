@@ -39,7 +39,7 @@
     _user = user;
     self.qrCodeVC.avatarURL = user.avatarURL;
     self.qrCodeVC.username = self.user.showName;
-    self.qrCodeVC.subTitle = self.user.location;
+    self.qrCodeVC.subTitle = self.user.detailInfo.location;
     self.qrCodeVC.qrCode = self.user.userID;
     self.qrCodeVC.introduction = @"扫一扫上面的二维码图案，加我微信";
 }

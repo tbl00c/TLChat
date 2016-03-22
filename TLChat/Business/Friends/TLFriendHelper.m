@@ -122,8 +122,8 @@ static TLFriendHelper *friendHelper = nil;
         }
         
         // TAGs
-        if (user.tags.count > 0) {
-            for (NSString *tag in user.tags) {
+        if (user.detailInfo.tags.count > 0) {
+            for (NSString *tag in user.detailInfo.tags) {
                 TLUserGroup *group = [tagsDic objectForKey:tag];
                 if (group == nil) {
                     group = [[TLUserGroup alloc] init];
@@ -179,10 +179,22 @@ static TLFriendHelper *friendHelper = nil;
 - (TLUserGroup *)defaultGroup
 {
     if (_defaultGroup == nil) {
-        TLUser *item_new = [[TLUser alloc] initWithUserID:@"-1" avatarPath:@"friends_new" remarkName:@"新的朋友"];
-        TLUser *item_group = [[TLUser alloc] initWithUserID:@"-2" avatarPath:@"friends_group" remarkName:@"群聊"];
-        TLUser *item_tag = [[TLUser alloc] initWithUserID:@"-3" avatarPath:@"friends_tag" remarkName:@"标签"];
-        TLUser *item_public = [[TLUser alloc] initWithUserID:@"-4" avatarPath:@"friends_public" remarkName:@"公共号"];
+        TLUser *item_new = [[TLUser alloc] init];
+        item_new.userID = @"-1";
+        item_new.avatarPath = @"friends_new";
+        item_new.remarkName = @"新的朋友";
+        TLUser *item_group = [[TLUser alloc] init];
+        item_group.userID = @"-2";
+        item_group.avatarPath = @"friends_group";
+        item_group.remarkName = @"群聊";
+        TLUser *item_tag = [[TLUser alloc] init];
+        item_tag.userID = @"-3";
+        item_tag.avatarPath = @"friends_tag";
+        item_tag.remarkName = @"标签";
+        TLUser *item_public = [[TLUser alloc] init];
+        item_public.userID = @"-4";
+        item_public.avatarPath = @"friends_public";
+        item_public.remarkName = @"公共号";
         _defaultGroup = [[TLUserGroup alloc] initWithGroupName:nil users:[NSMutableArray arrayWithObjects:item_new, item_group, item_tag, item_public, nil]];
     }
     return _defaultGroup;

@@ -33,7 +33,6 @@
     
     __weak typeof(self) weakSelf = self;
     [self.chatFontSettingView setFontSizeChangeTo:^(CGFloat size) {
-        NSLog(@"%lf", size);
         [[NSUserDefaults standardUserDefaults] setDouble:size forKey:@"CHAT_FONT_SIZE"];
         weakSelf.chatTVC.data = [weakSelf p_chatTVCData];
         [weakSelf.chatTVC.tableView reloadData];

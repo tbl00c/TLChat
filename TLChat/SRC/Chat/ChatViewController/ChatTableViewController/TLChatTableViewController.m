@@ -29,22 +29,9 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 20)]];
-    self.refresHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self p_tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {
-            [self.tableView.mj_header endRefreshing];
-            if (!hasMore) {
-                self.tableView.mj_header = nil;
-            }
-            if (count > 0) {
-                [self.tableView reloadData];
-                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-            }
-        }];
-    }];
-    self.refresHeader.lastUpdatedTimeLabel.hidden = YES;
-    self.refresHeader.stateLabel.hidden = YES;
-    [self.tableView setMj_header:self.refresHeader];
-    
+    if (!self.disablePullToRefresh) {
+        [self.tableView setMj_header:self.refresHeader];
+    }
     [self registerCellClass];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchTableView)];
@@ -64,8 +51,10 @@
 {
     [self.data removeAllObjects];
     [self.tableView reloadData];
-    [self.tableView setMj_header:self.refresHeader];
     self.curDate = [NSDate date];
+    if (!self.disablePullToRefresh) {
+        [self.tableView setMj_header:self.refresHeader];
+    }
     [self p_tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {
         if (!hasMore) {
             self.tableView.mj_header = nil;
@@ -102,6 +91,16 @@
 - (void)scrollToBottomWithAnimation:(BOOL)animation
 {
     [self.tableView scrollToBottomWithAnimation:animation];
+}
+
+- (void)setDisablePullToRefresh:(BOOL)disablePullToRefresh
+{
+    if (disablePullToRefresh) {
+        [self.tableView setMj_header:nil];
+    }
+    else {
+        [self.tableView setMj_header:self.refresHeader];
+    }
 }
 
 #pragma mark - Event Response -
@@ -151,6 +150,27 @@
         _menuView = [[TLChatCellMenuView alloc] init];
     }
     return _menuView;
+}
+
+- (MJRefreshNormalHeader *)refresHeader
+{
+    if (_refresHeader == nil) {
+        _refresHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [self p_tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {
+                [self.tableView.mj_header endRefreshing];
+                if (!hasMore) {
+                    self.tableView.mj_header = nil;
+                }
+                if (count > 0) {
+                    [self.tableView reloadData];
+                    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                }
+            }];
+        }];
+        _refresHeader.lastUpdatedTimeLabel.hidden = YES;
+        _refresHeader.stateLabel.hidden = YES;
+    }
+    return _refresHeader;
 }
 
 @end

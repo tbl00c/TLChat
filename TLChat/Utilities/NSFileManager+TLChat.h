@@ -29,7 +29,7 @@
 /**
  *  图片 — 用户头像
  */
-+ (NSString *)pathUserChatAvatar:(NSString *)imageName;
++ (NSString *)pathUserAvatar:(NSString *)imageName;
 
 /**
  *  图片 — 屏幕截图

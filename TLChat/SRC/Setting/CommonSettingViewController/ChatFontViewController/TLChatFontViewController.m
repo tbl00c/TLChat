@@ -8,10 +8,13 @@
 
 #import "TLChatFontViewController.h"
 #import "TLChatTableViewController.h"
+#import "TLChatFontSettingView.h"
 
 @interface TLChatFontViewController ()
 
 @property (nonatomic, strong) TLChatTableViewController *chatTVC;
+
+@property (nonatomic, strong) TLChatFontSettingView *chatFontSettingView;
 
 @end
 
@@ -25,8 +28,18 @@
     
     [self.view addSubview:self.chatTVC.view];
     [self addChildViewController:self.chatTVC];
+    [self.view addSubview:self.chatFontSettingView];
     [self p_addMasonry];
     
+    __weak typeof(self) weakSelf = self;
+    [self.chatFontSettingView setFontSizeChangeTo:^(CGFloat size) {
+        NSLog(@"%lf", size);
+        [[NSUserDefaults standardUserDefaults] setDouble:size forKey:@"CHAT_FONT_SIZE"];
+        weakSelf.chatTVC.data = [weakSelf p_chatTVCData];
+        [weakSelf.chatTVC.tableView reloadData];
+    }];
+    CGFloat size = [[NSUserDefaults standardUserDefaults] doubleForKey:@"CHAT_FONT_SIZE"];
+    [self.chatFontSettingView setCurFontSize:size];
     self.chatTVC.data = [self p_chatTVCData];
 }
 
@@ -35,7 +48,12 @@
 {
     [self.chatTVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(self.view).multipliedBy(0.65);
+        make.bottom.mas_equalTo(self.chatFontSettingView.mas_top);
+    }];
+    
+    [self.chatFontSettingView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.and.bottom.mas_equalTo(self.view);
+        make.height.mas_equalTo(self.chatFontSettingView.mas_width).multipliedBy(0.4);
     }];
 }
 
@@ -49,6 +67,15 @@
     
     TLUser *user = [[TLUser alloc] init];
     user.avatarPath = @"AppIcon";
+    NSString *path = [NSFileManager pathUserAvatar:@"AppIcon"];
+    if (![[NSFileManager defaultManager] isExecutableFileAtPath:path]) {
+        NSString *iconPath = [[[[NSBundle mainBundle] infoDictionary] valueForKeyPath:@"CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] lastObject];
+        UIImage *image = [UIImage imageNamed:iconPath];
+        NSData *data = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
+        [[NSFileManager defaultManager] createFileAtPath:path contents:data attributes:nil];
+    }
+    
+    
     TLMessage *message1 = [[TLMessage alloc] init];
     message1.fromUser = user;
     message1.messageType = TLMessageTypeText;
@@ -58,7 +85,7 @@
     message2.fromUser = user;
     message2.messageType = TLMessageTypeText;
     message2.ownerTyper = TLMessageOwnerTypeFriend;
-    message2.text = @"设置后，会改变聊天、菜单和朋友圈的字体大小。如果在使用过程中存在问题或意见，可反馈给微信团队。";
+    message2.text = @"设置后，会改变聊天页面的字体大小。后续将支持更改菜单、朋友圈的字体修改。";
     
     NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:message, message1, message2, nil];
     return data;
@@ -70,8 +97,17 @@
 {
     if (_chatTVC == nil) {
         _chatTVC = [[TLChatTableViewController alloc] init];
+        [_chatTVC setDisablePullToRefresh:YES];
     }
     return _chatTVC;
+}
+
+- (TLChatFontSettingView *)chatFontSettingView
+{
+    if (_chatFontSettingView == nil) {
+        _chatFontSettingView = [[TLChatFontSettingView alloc] init];
+    }
+    return _chatFontSettingView;
 }
 
 @end

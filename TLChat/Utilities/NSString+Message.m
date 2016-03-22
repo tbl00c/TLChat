@@ -15,6 +15,7 @@
 {
     //1、创建一个可变的属性字符串
     NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:self];
+    [attributeString addAttribute:NSFontAttributeName value:[UIFont fontTextMessageText] range:NSMakeRange(0, self.length)];
     //2、通过正则表达式来匹配字符串
     NSString *regex_emoji = @"\\[[a-zA-Z0-9\\/\\u4e00-\\u9fa5]+\\]"; //匹配表情
     

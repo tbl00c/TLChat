@@ -55,7 +55,7 @@
     _conversation = conversation;
     
     if (conversation.avatarPath.length > 0) {
-        NSString *path = [NSFileManager pathUserChatAvatar:conversation.avatarPath];
+        NSString *path = [NSFileManager pathUserAvatar:conversation.avatarPath];
         [self.avatarImageView setImage:[UIImage imageNamed:path]];
     }
     else if (conversation.avatarURL.length > 0){

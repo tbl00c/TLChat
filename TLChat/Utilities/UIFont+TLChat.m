@@ -52,7 +52,11 @@
 
 + (UIFont *)fontTextMessageText
 {
-    return [UIFont systemFontOfSize:16.0f];
+    CGFloat size = [[NSUserDefaults standardUserDefaults] doubleForKey:@"CHAT_FONT_SIZE"];
+    if (size == 0) {
+        size = 16.0f;
+    }
+    return [UIFont systemFontOfSize:size];
 }
 
 @end

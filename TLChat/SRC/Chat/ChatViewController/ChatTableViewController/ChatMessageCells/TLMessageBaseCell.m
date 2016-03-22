@@ -51,7 +51,13 @@
     }
     [self.timeLabel setText:[NSString stringWithFormat:@"  %@  ", message.date.chatTimeInfo]];
     [self.usernameLabel setText:message.fromUser.showName];
-    [self.avatarButton sd_setImageWithURL:TLURL(message.fromUser.avatarURL) forState:UIControlStateNormal];
+    if (message.fromUser.avatarPath.length > 0) {
+        NSString *path = [NSFileManager pathUserAvatar:message.fromUser.avatarPath];
+        [self.avatarButton setImage:[UIImage imageNamed:path] forState:UIControlStateNormal];
+    }
+    else {
+        [self.avatarButton sd_setImageWithURL:TLURL(message.fromUser.avatarURL) forState:UIControlStateNormal];
+    }
     
     // 时间
     if (!_message || _message.showTime != message.showTime) {

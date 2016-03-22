@@ -33,6 +33,9 @@
 
 @property (nonatomic, strong) TLChatCellMenuView *menuView;
 
+/// 禁用下拉刷新
+@property (nonatomic, assign) BOOL disablePullToRefresh;
+
 /**
  *  发送消息（在列表展示）
  */

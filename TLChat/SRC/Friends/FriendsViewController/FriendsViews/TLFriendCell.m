@@ -39,7 +39,7 @@
 }
 
 #pragma mark - Public Methods
-- (void) setUser:(TLUser *)user
+- (void)setUser:(TLUser *)user
 {
     _user = user;
     if (user.avatarPath) {
@@ -65,7 +65,7 @@
 }
 
 #pragma mark - Prvate Methods -
-- (void) p_addMasonry
+- (void)p_addMasonry
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(FRIENDS_SPACE_X);

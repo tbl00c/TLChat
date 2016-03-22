@@ -49,7 +49,7 @@
     return [path stringByAppendingString:imageName];
 }
 
-+ (NSString *)pathUserChatAvatar:(NSString *)imageName
++ (NSString *)pathUserAvatar:(NSString *)imageName
 {
     NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Avatar/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {

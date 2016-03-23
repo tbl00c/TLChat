@@ -412,6 +412,7 @@
 		C2232E3A1C9FAC120010CDF8 /* TLMessageManagerConvVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageManagerConvVCDelegate.h; sourceTree = "<group>"; };
 		C2232E6C1CA013CB0010CDF8 /* TLChatFontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatFontViewController.h; sourceTree = "<group>"; };
 		C2232E6D1CA013CB0010CDF8 /* TLChatFontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatFontViewController.m; sourceTree = "<group>"; };
+		C223341D1CA286CD00548E59 /* TLChatTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatTableViewControllerDelegate.h; sourceTree = "<group>"; };
 		C225799B1C959696003B1B85 /* TLDBMessage+TLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLDBMessage+TLMessage.h"; sourceTree = "<group>"; };
 		C225799C1C959696003B1B85 /* TLDBMessage+TLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLDBMessage+TLMessage.m"; sourceTree = "<group>"; };
 		C225799E1C959CC5003B1B85 /* TLDBMessageStoreSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBMessageStoreSQL.h; sourceTree = "<group>"; };
@@ -1409,10 +1410,11 @@
 			isa = PBXGroup;
 			children = (
 				C21573E11C9BAC4200B7AC67 /* ChatMessageCells */,
-				C21573EB1C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.h */,
-				C21573EC1C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.m */,
+				C223341D1CA286CD00548E59 /* TLChatTableViewControllerDelegate.h */,
 				C21573ED1C9BAC4200B7AC67 /* TLChatTableViewController.h */,
 				C21573EE1C9BAC4200B7AC67 /* TLChatTableViewController.m */,
+				C21573EB1C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.h */,
+				C21573EC1C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.m */,
 			);
 			path = ChatTableViewController;
 			sourceTree = "<group>";

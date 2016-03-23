@@ -112,7 +112,24 @@
 {
     if (buttonIndex == 0) {
         TLMessage *message = [self.data objectAtIndex:actionSheet.tag];
-        [self deleteMessage:message];
+        [self p_deleteMessage:message];
+    }
+}
+
+#pragma mark - Private Methods -
+- (void)p_deleteMessage:(TLMessage *)message
+{
+    NSInteger index = [self.data indexOfObject:message];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:deleteMessage:)]) {
+        BOOL ok = [self.delegate chatTableViewController:self deleteMessage:message];
+        if (ok) {
+            [self.data removeObject:message];
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [MobClick event:EVENT_DELETE_MESSAGE];
+        }
+        else {
+            [UIAlertView alertWithTitle:@"错误" message:@"从数据库中删除消息失败。"];
+        }
     }
 }
 

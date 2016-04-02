@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TLMessage.h"
 
-@class TLMessage;
 @class TLChatTableViewController;
 @protocol TLChatTableViewControllerDelegate <NSObject>
 
@@ -20,6 +20,6 @@
                       completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
 
 - (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC
-                  deleteMessage:(TLMessage *)message;
+                  deleteMessage:(id<TLMessageProtocol>)message;
 
 @end

@@ -26,16 +26,16 @@
     return self;
 }
 
-- (void)setMessage:(TLMessage *)message
+- (void)setMessage:(id<TLMessageProtocol>)message
 {
     _message = message;
     if (message.messageType == TLMessageTypeImage) {
-        if (message.imagePath.length > 0) {
-            NSString *imagePath = [NSFileManager pathUserChatImage:message.imagePath];
+        if ([(TLImageMessage *)message imagePath].length > 0) {
+            NSString *imagePath = [NSFileManager pathUserChatImage:[(TLImageMessage *)message imagePath]];
             [self.imageView setImage:[UIImage imageNamed:imagePath]];
         }
-        else if (message.imageURL.length > 0) {
-            [self.imageView sd_setImageWithURL:TLURL(message.imageURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        else if ([(TLImageMessage *)message imageURL].length > 0) {
+            [self.imageView sd_setImageWithURL:TLURL([(TLImageMessage *)message imageURL]) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
         }
         else {
             [self.imageView setImage:nil];

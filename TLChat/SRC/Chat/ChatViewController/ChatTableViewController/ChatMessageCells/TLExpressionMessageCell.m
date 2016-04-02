@@ -25,22 +25,23 @@
     return self;
 }
 
-- (void)setMessage:(TLMessage *)message
+- (void)setMessage:(id<TLMessageProtocol>)message
 {
     [self.msgImageView setAlpha:1.0];       // 取消长按效果
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
     
-    if (message.imagePath) {
-        if ([message.imagePath hasSuffix:@"gif"]) {
+    NSString *imagePath = [(TLExpressionMessage *)message imagePath];
+    if (imagePath) {
+        if ([imagePath hasSuffix:@"gif"]) {
             [self.msgImageView setImage:nil];
-            NSString *path = [[NSBundle mainBundle] pathForResource:[message.imagePath substringToIndex:message.imagePath.length - 4] ofType:@"gif"];
+            NSString *path = [[NSBundle mainBundle] pathForResource:[imagePath substringToIndex:imagePath.length - 4] ofType:@"gif"];
             [self.msgImageView setImage:[UIImage imageNamed:path]];
             NSData *data = [NSData dataWithContentsOfFile:path];
             [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
         }
         else {
-            [self.msgImageView setImage:[UIImage imageNamed:message.imagePath]];
+            [self.msgImageView setImage:[UIImage imageNamed:imagePath]];
         }
     }
     else {
@@ -62,7 +63,7 @@
         }
     }
     [self.msgImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(message.frame.contentSize);
+        make.size.mas_equalTo(message.messageFrame.contentSize);
     }];
 }
 

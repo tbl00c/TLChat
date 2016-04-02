@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "TLChatTableViewControllerDelegate.h"
 #import "TLChatCellMenuView.h"
-#import "TLMessage.h"
+
+#import "TLTextMessage.h"
+#import "TLImageMessage.h"
+#import "TLExpressionMessage.h"
+
 
 @interface TLChatTableViewController : UITableViewController
 
@@ -25,7 +29,12 @@
 /**
  *  发送消息（在列表展示）
  */
-- (void)addMessage:(TLMessage *)message;
+- (void)addMessage:(id<TLMessageProtocol>)message;
+
+/**
+ *  删除消息
+ */
+- (void)deleteMessage:(id<TLMessageProtocol>)message;
 
 /**
  *  滚动到底部

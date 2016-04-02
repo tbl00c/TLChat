@@ -11,7 +11,6 @@
 #import "TLDBConversationSQL.h"
 #import "TLDBManager.h"
 #import "TLConversation.h"
-#import "TLMessage+TLConversation.h"
 
 @interface TLDBConversationStore ()
 

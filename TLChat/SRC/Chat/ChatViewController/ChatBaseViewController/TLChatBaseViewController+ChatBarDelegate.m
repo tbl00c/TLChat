@@ -16,14 +16,14 @@
 //MARK: TLChatBarDataDelegate
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
-    TLMessage *message = [[TLMessage alloc] init];
+    TLTextMessage *message = [[TLTextMessage alloc] init];
     message.fromUser = [TLUserHelper sharedHelper].user;
     message.messageType = TLMessageTypeText;
     message.ownerTyper = TLMessageOwnerTypeSelf;
     message.text = text;
     [self sendMessage:message];
     if (self.curChatType == TLChatVCTypeFriend) {
-        TLMessage *message1 = [[TLMessage alloc] init];
+        TLTextMessage *message1 = [[TLTextMessage alloc] init];
         message1.fromUser = self.user;
         message1.messageType = TLMessageTypeText;
         message1.ownerTyper = TLMessageOwnerTypeFriend;
@@ -32,7 +32,7 @@
     }
     else {
         for (TLUser *user in self.group.users) {
-            TLMessage *message1 = [[TLMessage alloc] init];
+            TLTextMessage *message1 = [[TLTextMessage alloc] init];
             message1.friendID = user.userID;
             message1.fromUser = user;
             message1.messageType = TLMessageTypeText;

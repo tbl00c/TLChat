@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void)setMessage:(TLMessage *)message
+- (void)setMessage:(id<TLMessageProtocol>)message
 {
     [self.msgImageView setAlpha:1.0];       // 取消长按效果
     if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
@@ -36,12 +36,12 @@
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
     
-    if (message.imagePath) {
-        NSString *imagePath = [NSFileManager pathUserChatImage:message.imagePath];
-        [self.msgImageView setThumbnailPath:imagePath highDefinitionImageURL:message.imageURL];
+    if ([(TLImageMessage *)message imagePath]) {
+        NSString *imagePath = [NSFileManager pathUserChatImage:[(TLImageMessage *)message imagePath]];
+        [self.msgImageView setThumbnailPath:imagePath highDefinitionImageURL:[(TLImageMessage *)message imagePath]];
     }
     else {
-        [self.msgImageView setThumbnailPath:nil highDefinitionImageURL:message.imageURL];
+        [self.msgImageView setThumbnailPath:nil highDefinitionImageURL:[(TLImageMessage *)message imagePath]];
     }
 
     if (lastOwnType != message.ownerTyper) {
@@ -61,7 +61,7 @@
         }
     }
     [self.msgImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(message.frame.contentSize);
+        make.size.mas_equalTo(message.messageFrame.contentSize);
     }];
 }
 

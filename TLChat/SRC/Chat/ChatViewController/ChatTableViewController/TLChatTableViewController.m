@@ -66,10 +66,26 @@
     }];
 }
 
-- (void)addMessage:(TLMessage *)message
+- (void)addMessage:(id<TLMessageProtocol>)message
 {
     [self.data addObject:message];
     [self.tableView reloadData];
+}
+
+- (void)deleteMessage:(id<TLMessageProtocol>)message
+{
+    NSInteger index = [self.data indexOfObject:message];
+    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewController:deleteMessage:)]) {
+        BOOL ok = [_delegate chatTableViewController:self deleteMessage:message];
+        if (ok) {
+            [self.data removeObject:message];
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [MobClick event:EVENT_DELETE_MESSAGE];
+        }
+        else {
+            [UIAlertView alertWithTitle:@"错误" message:@"从数据库中删除消息失败。"];
+        }
+    }
 }
 
 - (void)scrollToBottomWithAnimation:(BOOL)animation

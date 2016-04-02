@@ -7,6 +7,7 @@
 //
 
 #import "TLMessageBaseCell.h"
+#import "TLImageMessage.h"
 
 @interface TLImageMessageCell : TLMessageBaseCell
 

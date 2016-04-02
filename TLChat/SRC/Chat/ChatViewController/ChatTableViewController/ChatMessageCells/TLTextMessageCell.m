@@ -36,7 +36,7 @@
     }
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
-    [self.messageLabel setAttributedText:message.attrText];
+    [self.messageLabel setAttributedText:[(TLTextMessage *)message attrText]];
     
     [self.messageLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
     [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
@@ -70,7 +70,7 @@
     }
     
     [self.messageLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(message.frame.contentSize);
+        make.size.mas_equalTo(message.messageFrame.contentSize);
     }];
 }
 

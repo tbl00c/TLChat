@@ -57,7 +57,7 @@
                         [NSNumber numberWithInteger:message.partnerType],
                         [NSNumber numberWithInteger:message.ownerTyper],
                         [NSNumber numberWithInteger:message.messageType],
-                        message.content,
+                        [message.content mj_JSONString],
                         [NSNumber numberWithInteger:message.sendState],
                         [NSNumber numberWithInteger:message.readState],
                         @"", @"", @"", @"", @"", nil];

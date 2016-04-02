@@ -9,6 +9,8 @@
 #import "TLAppDelegate.h"
 #import "TLRootViewController.h"
 
+#import "TLRootProxy.h"
+
 #import <AFNetworking.h>
 #import <JSPatch/JSPatch.h>
 
@@ -16,11 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self p_initAppData];           // 初始化应用信息
-    [self p_initUI];                // 初始化UI
-//    [self p_initTestUI];
     [self p_initThirdPartSDK];      // 初始化第三方SDK
+    [self p_initAppData];           // 初始化应用信息
     [self p_initUserData];          // 初始化用户信息
+    [self p_initUI];                // 初始化UI
     
     [self p_urgentMethod];          // 紧急方法
     
@@ -48,18 +49,6 @@
 }
 
 #pragma mark - Private Methods
-- (void)p_initTestUI
-{
-    NSString *className = @"TLChatViewController";
-    id vc = [[NSClassFromString(className) alloc] init];
-    [vc setTitle:@"Test"];
-    UIViewController *rootVC = [[NSClassFromString(@"TLNavigationController") alloc] initWithRootViewController: vc];
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    [self.window setRootViewController:rootVC];
-    [self.window addSubview:rootVC.view];
-    [self.window makeKeyAndVisible];
-}
-
 - (void)p_initThirdPartSDK
 {
     // 友盟统计
@@ -106,7 +95,12 @@
 
 - (void)p_initAppData
 {
-
+    TLRootProxy *proxy = [[TLRootProxy alloc] init];
+    [proxy requestClientInitInfoSuccess:^(id data) {
+        
+    } failure:^(NSString *error) {
+        
+    }];
 }
 
 - (void)p_urgentMethod

@@ -10,4 +10,6 @@
 
 @interface TLHost : NSObject
 
++ (NSString *)clientInitInfoURL;
+
 @end

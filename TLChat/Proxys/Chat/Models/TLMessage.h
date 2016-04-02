@@ -18,4 +18,6 @@
 
 @property (nonatomic, strong) TLUser *fromUser;                     // 发送者
 
++ (id<TLMessageProtocol>)createMessageByType:(TLMessageType)type;
+
 @end

@@ -74,7 +74,7 @@
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];
-            TLMessage *message = [dbMessage toMessage];
+            id<TLMessageProtocol> message = [dbMessage toMessage];
             [data insertObject:message atIndex:0];
         }
         [retSet close];
@@ -98,7 +98,7 @@
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];
-            TLMessage *message = [dbMessage toMessage];
+            id<TLMessageProtocol> message = [dbMessage toMessage];
             if ([message.date isThisWeek]) {
                 if ([lastDate isThisWeek]) {
                     [array addObject:message];
@@ -126,10 +126,10 @@
     return data;
 }
 
-- (TLMessage *)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID
+- (id<TLMessageProtocol>)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID
 {
     NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_LAST_MESSAGE, MESSAGE_TABLE_NAME, MESSAGE_TABLE_NAME, userID, partnerID];
-    __block TLMessage *message;
+    __block id<TLMessageProtocol> message;
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];

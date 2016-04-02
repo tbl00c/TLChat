@@ -88,7 +88,7 @@
     }];
     
     for (TLConversation *conversation in data) {
-        TLMessage *message = [self.messageStore lastMessageByUserID:uid partnerID:conversation.partnerID];
+        id<TLMessageProtocol> message = [self.messageStore lastMessageByUserID:uid partnerID:conversation.partnerID];
         if (message) {
             conversation.content = [message conversationContent];
             conversation.date = message.date;

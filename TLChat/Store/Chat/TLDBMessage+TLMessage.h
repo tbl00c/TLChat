@@ -11,7 +11,7 @@
 
 @interface TLDBMessage (TLMessage)
 
-- (TLMessage *)toMessage;
+- (id<TLMessageProtocol>)toMessage;
 
 @end
 

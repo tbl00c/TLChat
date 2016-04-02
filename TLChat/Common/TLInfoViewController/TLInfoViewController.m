@@ -120,7 +120,7 @@
 //MARK: TLInfoButtonCellDelegate
 - (void)infoButtonCellClicked:(TLInfo *)info
 {
-    [UIAlertView alertWithTitle:@"子类未处理按钮点击事件" message:[NSString stringWithFormat:@"Title: %@", info.title]];
+    [UIAlertView bk_alertViewWithTitle:@"子类未处理按钮点击事件" message:[NSString stringWithFormat:@"Title: %@", info.title]];
 }
 
 @end

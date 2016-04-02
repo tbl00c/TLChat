@@ -35,7 +35,7 @@
 /**
  *  最后一条聊天记录（消息页用）
  */
-- (TLMessage *)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
+- (id <TLMessageProtocol>)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
 
 #pragma mark - 删除
 /**

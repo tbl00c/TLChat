@@ -24,6 +24,7 @@
 #import <SVProgressHUD.h>
 #import <CocoaLumberjack.h>
 #import <BlocksKit.h>
+#import <BlocksKit+UIKit.h>
 
 #import "TLNavigationController.h"
 
@@ -33,7 +34,6 @@
 #import "UIView+Frame.h"
 #import "UIButton+TLChat.h"
 #import "UITableView+TLChat.h"
-#import "UIAlertView+Block.h"
 #import "UINavigationController+StackManager.h"
 #import "UINavigationController+JZExtension.h"
 #import "NSFileManager+TLChat.h"

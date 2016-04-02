@@ -32,6 +32,24 @@
 
 @implementation TLMessage
 
++ (id<TLMessageProtocol>)createMessageByType:(TLMessageType)type
+{
+    NSString *className;
+    if (type == TLMessageTypeText) {
+        className = @"TLTextMessage";
+    }
+    else if (type == TLMessageTypeImage) {
+        className = @"TLImageMessage";
+    }
+    else if (type == TLMessageTypeExpression) {
+        className = @"TLExpressionMessage";
+    }
+    if (className) {
+        return [[NSClassFromString(className) alloc] init];
+    }
+    return nil;
+}
+
 - (id)init
 {
     if (self = [super init]) {

@@ -90,7 +90,7 @@
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
-        [UIAlertView alertWithTitle:@"错误" message:[NSString stringWithFormat:@"保存图片到系统相册失败\n%@", [error description]]];
+        [UIAlertView bk_alertViewWithTitle:@"错误" message:[NSString stringWithFormat:@"保存图片到系统相册失败\n%@", [error description]]];
     }
     else {
         [SVProgressHUD showSuccessWithStatus:@"已保存到系统相册"];

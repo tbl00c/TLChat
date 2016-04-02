@@ -43,7 +43,7 @@
         [MobClick event:EVENT_GET_CONTACTS];
     } failed:^{
         [SVProgressHUD dismiss];
-        [UIAlertView alertWithTitle:@"错误" message:@"未成功获取到通讯录信息"];
+        [UIAlertView bk_alertViewWithTitle:@"错误" message:@"未成功获取到通讯录信息"];
     }];
 }
 

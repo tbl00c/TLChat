@@ -10,9 +10,9 @@
 
 @implementation TLDBMessage (TLMessage)
 
-- (TLMessage *)toMessage
+- (id<TLMessageProtocol>)toMessage
 {
-    TLMessage *message = [[TLMessage alloc] init];
+    id<TLMessageProtocol> message = [TLMessage createMessageByType:self.msgType];
     message.messageID = self.mid;
     message.userID = self.uid;
     message.partnerType = self.partnerType;

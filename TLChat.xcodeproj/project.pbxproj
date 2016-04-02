@@ -153,7 +153,6 @@
 		C2B9E43C1C665AC700CEBA81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B9E43B1C665AC700CEBA81 /* Common.xcassets */; };
 		C2BD59DA1C9DB8E600401524 /* TLDBConversationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BD59D91C9DB8E600401524 /* TLDBConversationStore.m */; };
 		C2BF17D01C86DB50003318CB /* NSString+PinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17BD1C86DB50003318CB /* NSString+PinYin.m */; };
-		C2BF17D11C86DB50003318CB /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17C01C86DB50003318CB /* UIAlertView+Block.m */; };
 		C2BF17D21C86DB50003318CB /* UIButton+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17C31C86DB50003318CB /* UIButton+TLChat.m */; };
 		C2BF17D31C86DB50003318CB /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17C61C86DB50003318CB /* UIImage+Color.m */; };
 		C2BF17D41C86DB50003318CB /* UINavigationController+StackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17C91C86DB50003318CB /* UINavigationController+StackManager.m */; };
@@ -564,8 +563,6 @@
 		C2BD59D91C9DB8E600401524 /* TLDBConversationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBConversationStore.m; sourceTree = "<group>"; };
 		C2BF17BC1C86DB50003318CB /* NSString+PinYin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin.h"; sourceTree = "<group>"; };
 		C2BF17BD1C86DB50003318CB /* NSString+PinYin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin.m"; sourceTree = "<group>"; };
-		C2BF17BF1C86DB50003318CB /* UIAlertView+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Block.h"; sourceTree = "<group>"; };
-		C2BF17C01C86DB50003318CB /* UIAlertView+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Block.m"; sourceTree = "<group>"; };
 		C2BF17C21C86DB50003318CB /* UIButton+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TLChat.h"; sourceTree = "<group>"; };
 		C2BF17C31C86DB50003318CB /* UIButton+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TLChat.m"; sourceTree = "<group>"; };
 		C2BF17C51C86DB50003318CB /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -1945,7 +1942,6 @@
 				C28C44561C8817BF005975FF /* NSDate */,
 				C2BF17DA1C86E08F003318CB /* NSFileManager */,
 				C2BF17BB1C86DB50003318CB /* NSString */,
-				C2BF17BE1C86DB50003318CB /* UIAlertView */,
 				C2BF17C11C86DB50003318CB /* UIButton */,
 				C2BF17C41C86DB50003318CB /* UIImage */,
 				C2BF17C71C86DB50003318CB /* UINavigationController */,
@@ -1962,15 +1958,6 @@
 				C2BF17BD1C86DB50003318CB /* NSString+PinYin.m */,
 			);
 			path = NSString;
-			sourceTree = "<group>";
-		};
-		C2BF17BE1C86DB50003318CB /* UIAlertView */ = {
-			isa = PBXGroup;
-			children = (
-				C2BF17BF1C86DB50003318CB /* UIAlertView+Block.h */,
-				C2BF17C01C86DB50003318CB /* UIAlertView+Block.m */,
-			);
-			path = UIAlertView;
 			sourceTree = "<group>";
 		};
 		C2BF17C11C86DB50003318CB /* UIButton */ = {
@@ -2928,7 +2915,6 @@
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */,
 				C271A5091C83FEF2004372D4 /* TLFriendDetailAlbumCell.m in Sources */,
-				C2BF17D11C86DB50003318CB /* UIAlertView+Block.m in Sources */,
 				C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */,
 				C2CF4C7E1C804BF30054637A /* TLSettingSwitchCell.m in Sources */,
 				C2D851551C68D811007DD697 /* TLSettingHelper.m in Sources */,

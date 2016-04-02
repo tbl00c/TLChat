@@ -85,7 +85,7 @@
 }
 
 #pragma mark - Discover
-+ (UIColor *)colorShakeBG
++ (UIColor *)colorBlackBG
 {
     return TLColor(42, 45, 46, 1.0);
 }

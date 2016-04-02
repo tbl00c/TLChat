@@ -29,6 +29,11 @@
 		C209BB701C8F2736001C15D2 /* TLFriendHelper+Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = C209BB6F1C8F2736001C15D2 /* TLFriendHelper+Contacts.m */; };
 		C209BB741C8F2FD0001C15D2 /* TLAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C209BB731C8F2FD0001C15D2 /* TLAddFriendViewController.m */; };
 		C209F4381C7D5AAA001B9825 /* TLScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C209F4371C7D5AAA001B9825 /* TLScannerViewController.m */; };
+		C20DE50F1CAF6CB000902398 /* TLHost.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE50E1CAF6CB000902398 /* TLHost.m */; };
+		C20DE5141CAF6FB600902398 /* TLChatBackgroundSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE5131CAF6FB600902398 /* TLChatBackgroundSelectViewController.m */; };
+		C20DE5171CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE5161CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.m */; };
+		C20DE51A1CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE5191CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.m */; };
+		C20DE51D1CAF7FE300902398 /* TLChatBackgroundSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE51C1CAF7FE300902398 /* TLChatBackgroundSelectCell.m */; };
 		C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EA61C531FA40030B29B /* TLAppDelegate.m */; };
 		C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2142ED91C53345C0030B29B /* Launch.xcassets */; };
 		C2142EF31C5376D40030B29B /* TLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EE91C5376D40030B29B /* TLNavigationController.m */; };
@@ -301,6 +306,16 @@
 		C209BB731C8F2FD0001C15D2 /* TLAddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddFriendViewController.m; sourceTree = "<group>"; };
 		C209F4361C7D5AAA001B9825 /* TLScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScannerViewController.h; sourceTree = "<group>"; };
 		C209F4371C7D5AAA001B9825 /* TLScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScannerViewController.m; sourceTree = "<group>"; };
+		C20DE50D1CAF6CB000902398 /* TLHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLHost.h; sourceTree = "<group>"; };
+		C20DE50E1CAF6CB000902398 /* TLHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLHost.m; sourceTree = "<group>"; };
+		C20DE5121CAF6FB600902398 /* TLChatBackgroundSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBackgroundSelectViewController.h; sourceTree = "<group>"; };
+		C20DE5131CAF6FB600902398 /* TLChatBackgroundSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatBackgroundSelectViewController.m; sourceTree = "<group>"; };
+		C20DE5151CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLChatBackgroundSelectViewController+CollectionView.h"; sourceTree = "<group>"; };
+		C20DE5161CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatBackgroundSelectViewController+CollectionView.m"; sourceTree = "<group>"; };
+		C20DE5181CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLChatBackgroundSelectViewController+Proxy.h"; sourceTree = "<group>"; };
+		C20DE5191CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatBackgroundSelectViewController+Proxy.m"; sourceTree = "<group>"; };
+		C20DE51B1CAF7FE300902398 /* TLChatBackgroundSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBackgroundSelectCell.h; sourceTree = "<group>"; };
+		C20DE51C1CAF7FE300902398 /* TLChatBackgroundSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatBackgroundSelectCell.m; sourceTree = "<group>"; };
 		C2142EA41C531F420030B29B /* TLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMacros.h; sourceTree = "<group>"; };
 		C2142EA51C531FA40030B29B /* TLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppDelegate.h; sourceTree = "<group>"; };
 		C2142EA61C531FA40030B29B /* TLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppDelegate.m; sourceTree = "<group>"; };
@@ -963,12 +978,37 @@
 			path = ScannerViewController;
 			sourceTree = "<group>";
 		};
+		C20DE5101CAF6F9700902398 /* ChatBackgroundSelectViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C20DE5111CAF6F9700902398 /* ChatBackgroundSelectCells */,
+				C20DE5121CAF6FB600902398 /* TLChatBackgroundSelectViewController.h */,
+				C20DE5131CAF6FB600902398 /* TLChatBackgroundSelectViewController.m */,
+				C20DE5151CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.h */,
+				C20DE5161CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.m */,
+				C20DE5181CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.h */,
+				C20DE5191CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.m */,
+			);
+			path = ChatBackgroundSelectViewController;
+			sourceTree = "<group>";
+		};
+		C20DE5111CAF6F9700902398 /* ChatBackgroundSelectCells */ = {
+			isa = PBXGroup;
+			children = (
+				C20DE51B1CAF7FE300902398 /* TLChatBackgroundSelectCell.h */,
+				C20DE51C1CAF7FE300902398 /* TLChatBackgroundSelectCell.m */,
+			);
+			path = ChatBackgroundSelectCells;
+			sourceTree = "<group>";
+		};
 		C2142E931C531EFD0030B29B /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				C2142EA41C531F420030B29B /* TLMacros.h */,
 				C2142F011C5379E90030B29B /* TLEnumerate.h */,
 				C20907541C981D5F00AB87A5 /* TLEventStatistics.h */,
+				C20DE50D1CAF6CB000902398 /* TLHost.h */,
+				C20DE50E1CAF6CB000902398 /* TLHost.m */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1564,6 +1604,7 @@
 		C28D20781C9D611500145792 /* ChatBackgroundViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C20DE5101CAF6F9700902398 /* ChatBackgroundSelectViewController */,
 				C28D207C1C9D616D00145792 /* TLChatBackgroundSettingViewController.h */,
 				C28D207D1C9D616D00145792 /* TLChatBackgroundSettingViewController.m */,
 			);
@@ -2726,6 +2767,7 @@
 				C2994D8C1CA167CF00BAC038 /* TLUser.m in Sources */,
 				C2E294B81C9D268800721405 /* TLChatGroupDetailViewController.m in Sources */,
 				C2CF4C7C1C804BF30054637A /* TLSettingButtonCell.m in Sources */,
+				C20DE5171CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.m in Sources */,
 				C2E294C81C9D271400721405 /* TLGroupQRCodeViewController.m in Sources */,
 				C21573F81C9BAC4200B7AC67 /* TLChatBaseViewController+UIDelegate.m in Sources */,
 				C2B9E42D1C65E6CF00CEBA81 /* TLDiscoverHelper.m in Sources */,
@@ -2811,6 +2853,7 @@
 				C21574031C9BAC4200B7AC67 /* TLEmojiGroupCell.m in Sources */,
 				C2F0EC1C1C7ABF190090843C /* TLAppHelper.m in Sources */,
 				C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */,
+				C20DE51A1CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.m in Sources */,
 				C2BF17D61C86DB50003318CB /* UIView+Frame.m in Sources */,
 				C2E56FFB1C896233009662AB /* UINavigationItem+Fixed.m in Sources */,
 				C28C445E1C8818FD005975FF /* NSDate+Extension.m in Sources */,
@@ -2858,6 +2901,7 @@
 				C2A5AC8A1C8EA6E2007A4574 /* TLQRCodeViewController.m in Sources */,
 				C2E56FFE1C897418009662AB /* TLAccountAndSafetyHelper.m in Sources */,
 				C2232E2B1C9FA38E0010CDF8 /* TLMessageManager+ConversationRecord.m in Sources */,
+				C20DE50F1CAF6CB000902398 /* TLHost.m in Sources */,
 				C2D69D9B1C92D8AE00EE91D7 /* TLAddMenuHelper.m in Sources */,
 				C28C446A1C883827005975FF /* TLShakeHelper.m in Sources */,
 				C2A5ACAA1C8EBE21007A4574 /* TLAddThirdPartFriendCell.m in Sources */,
@@ -2890,6 +2934,7 @@
 				C220EF2B1C7EB89300DE3B86 /* TLScanningViewController.m in Sources */,
 				C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */,
 				C2E294B11C9D264100721405 /* TLChatFileHeaderView.m in Sources */,
+				C20DE5141CAF6FB600902398 /* TLChatBackgroundSelectViewController.m in Sources */,
 				C29C08E31C89CEE400F8EE82 /* UIBarButtonItem+Action.m in Sources */,
 				C2D69D8B1C9271CF00EE91D7 /* TLMineExpressionHelper.m in Sources */,
 				C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */,
@@ -2910,6 +2955,7 @@
 				C215740F1C9BAC4200B7AC67 /* TLMoreKeyboard.m in Sources */,
 				C2F0EC121C7AB01A0090843C /* TLAboutViewController.m in Sources */,
 				C271A5021C83FA0B004372D4 /* TLInfoHeaderFooterView.m in Sources */,
+				C20DE51D1CAF7FE300902398 /* TLChatBackgroundSelectCell.m in Sources */,
 				C2994D441CA1538200BAC038 /* TLDBGroup.m in Sources */,
 				C2CF4C931C8062CD0054637A /* TLInfoCell.m in Sources */,
 				C2BF17D91C86DCD0003318CB /* UINavigationController+JZExtension.m in Sources */,

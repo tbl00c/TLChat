@@ -46,9 +46,7 @@
 #pragma mark - Friends
 
 #pragma mark - Discover
-//MARK: Shake
-+ (UIColor *)colorShakeBG;
-//MARK: Scanner
++ (UIColor *)colorBlackBG;
 + (UIColor *)colorScannerBG;
 
 

@@ -10,6 +10,7 @@
 #import "TLCommonSettingHelper.h"
 #import "UIImage+Size.h"
 
+#import "TLChatBackgroundSelectViewController.h"
 #import "TLChatViewController.h"
 
 @interface TLChatBackgroundSettingViewController () <UIActionSheetDelegate>
@@ -39,7 +40,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"从手机相册中选择"]) {
+    if ([item.title isEqualToString:@"选择背景图"]) {
+        TLChatBackgroundSelectViewController *bgSelectVC = [[TLChatBackgroundSelectViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:bgSelectVC animated:YES];
+    }
+    else if ([item.title isEqualToString:@"从手机相册中选择"]) {
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         

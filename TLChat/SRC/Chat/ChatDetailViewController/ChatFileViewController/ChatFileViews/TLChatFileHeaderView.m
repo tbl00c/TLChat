@@ -51,7 +51,7 @@
 {
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
-        [_bgView setBackgroundColor:[UIColor colorShakeBG]];
+        [_bgView setBackgroundColor:[UIColor colorBlackBG]];
         [_bgView setAlpha:0.8f];
     }
     return _bgView;

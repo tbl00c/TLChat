@@ -41,7 +41,7 @@
 {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"摇一摇"];
-    [self.view setBackgroundColor:[UIColor colorShakeBG]];
+    [self.view setBackgroundColor:[UIColor colorBlackBG]];
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
@@ -175,7 +175,7 @@
 {
     if (_topLogoView == nil) {
         _topLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shake_logo_top"]];
-        [_topLogoView setBackgroundColor:[UIColor colorShakeBG]];
+        [_topLogoView setBackgroundColor:[UIColor colorBlackBG]];
         [_topLogoView setContentMode:UIViewContentModeBottom];
     }
     return _topLogoView;
@@ -185,7 +185,7 @@
 {
     if (_bottomLogoView == nil) {
         _bottomLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shake_logo_bottom"]];
-        [_bottomLogoView setBackgroundColor:[UIColor colorShakeBG]];
+        [_bottomLogoView setBackgroundColor:[UIColor colorBlackBG]];
         [_bottomLogoView setContentMode:UIViewContentModeTop];
     }
     return _bottomLogoView;

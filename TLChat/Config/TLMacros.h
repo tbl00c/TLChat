@@ -12,8 +12,9 @@
 #define     APP_CHANNEL         @"Github"
 
 #pragma mark - Debug
-//#define     DEBUG_MEMERY      // 内存测试
-//#define     DEBUG_JSPATCH     // JSPatch本地测试
+#define     DEBUG_LOCAL_SERVER      // 使用本地测试服务器
+//#define     DEBUG_MEMERY            // 内存测试
+//#define     DEBUG_JSPATCH           // JSPatch本地测试
 
 #pragma mark - SIZE
 #define     SIZE_SCREEN                 [UIScreen mainScreen].bounds.size

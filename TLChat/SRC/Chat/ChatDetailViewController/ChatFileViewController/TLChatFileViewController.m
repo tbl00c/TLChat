@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"聊天文件"];
-    [self.view setBackgroundColor:[UIColor colorShakeBG]];
+    [self.view setBackgroundColor:[UIColor colorBlackBG]];
     
     [self.view addSubview:self.collectionView];
     [self p_addMasonry];

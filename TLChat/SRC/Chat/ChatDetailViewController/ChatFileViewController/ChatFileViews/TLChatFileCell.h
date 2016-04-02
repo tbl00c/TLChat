@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLMessage.h"
+#import "TLImageMessage.h"
 
 @interface TLChatFileCell : UICollectionViewCell
 
-@property (nonatomic, strong) TLMessage *message;
+@property (nonatomic, strong) id<TLMessageProtocol> message;
 
 @end

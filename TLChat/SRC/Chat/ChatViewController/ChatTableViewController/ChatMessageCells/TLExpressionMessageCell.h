@@ -7,6 +7,7 @@
 //
 
 #import "TLMessageBaseCell.h"
+#import "TLExpressionMessage.h"
 
 @interface TLExpressionMessageCell : TLMessageBaseCell
 

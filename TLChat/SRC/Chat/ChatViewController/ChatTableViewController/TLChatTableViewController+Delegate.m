@@ -55,7 +55,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     TLMessage *message = self.data[indexPath.row];
-    return message.frame.height;
+    return message.messageFrame.height;
 }
 
 //MARK: TLMessageCellDelegate
@@ -91,11 +91,11 @@
     }];
 }
 
-- (void)messageCellDoubleClick:(TLMessage *)message
+- (void)messageCellDoubleClick:(id<TLMessageProtocol>)message
 {
     if (message.messageType == TLMessageTypeText) {
         TLTextDisplayView *displayView = [[TLTextDisplayView alloc] init];
-        [displayView showInView:self.navigationController.view withAttrText:message.attrText animation:YES];
+        [displayView showInView:self.navigationController.view withAttrText:[(TLTextMessage *)message attrText] animation:YES];
     }
 }
 

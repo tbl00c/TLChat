@@ -117,14 +117,14 @@
     NSString *imagePath = [NSFileManager pathUserChatImage:imageName];
     [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
     
-    TLMessage *message = [[TLMessage alloc] init];
+    TLImageMessage *message = [[TLImageMessage alloc] init];
     message.fromUser = [TLUserHelper sharedHelper].user;
     message.messageType = TLMessageTypeImage;
     message.ownerTyper = TLMessageOwnerTypeSelf;
     message.imagePath = imageName;
     [self sendMessage:message];
     if (self.curChatType == TLChatVCTypeFriend) {
-        TLMessage *message1 = [[TLMessage alloc] init];
+        TLImageMessage *message1 = [[TLImageMessage alloc] init];
         message1.fromUser = self.user;
         message1.messageType = TLMessageTypeImage;
         message1.ownerTyper = TLMessageOwnerTypeFriend;
@@ -133,7 +133,7 @@
     }
     else {
         for (TLUser *user in self.group.users) {
-            TLMessage *message1 = [[TLMessage alloc] init];
+            TLImageMessage *message1 = [[TLImageMessage alloc] init];
             message1.friendID = user.userID;
             message1.fromUser = user;
             message1.messageType = TLMessageTypeImage;

@@ -73,7 +73,7 @@
     }];
 }
 
-- (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC deleteMessage:(TLMessage *)message
+- (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC deleteMessage:(id<TLMessageProtocol>)message
 {
     return [[TLMessageManager sharedInstance] deleteMessageByMsgID:message.messageID];
 }

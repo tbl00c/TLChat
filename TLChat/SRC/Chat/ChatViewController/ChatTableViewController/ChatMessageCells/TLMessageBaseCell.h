@@ -22,6 +22,6 @@
 
 @property (nonatomic, strong) UIImageView *messageBackgroundView;
 
-@property (nonatomic, strong) TLMessage *message;
+@property (nonatomic, strong) id<TLMessageProtocol> message;
 
 @end

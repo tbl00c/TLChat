@@ -44,19 +44,20 @@
     return self;
 }
 
-- (void)setMessage:(TLMessage *)message
+- (void)setMessage:(id<TLMessageProtocol>)message
 {
     if (_message && [_message.messageID isEqualToString:message.messageID]) {
         return;
     }
     [self.timeLabel setText:[NSString stringWithFormat:@"  %@  ", message.date.chatTimeInfo]];
-    [self.usernameLabel setText:message.fromUser.showName];
-    if (message.fromUser.avatarPath.length > 0) {
-        NSString *path = [NSFileManager pathUserAvatar:message.fromUser.avatarPath];
+    TLUser *fromUser = [(TLMessage *)message fromUser];
+    [self.usernameLabel setText:fromUser.showName];
+    if (fromUser.avatarPath.length > 0) {
+        NSString *path = [NSFileManager pathUserAvatar:fromUser.avatarPath];
         [self.avatarButton setImage:[UIImage imageNamed:path] forState:UIControlStateNormal];
     }
     else {
-        [self.avatarButton sd_setImageWithURL:TLURL(message.fromUser.avatarURL) forState:UIControlStateNormal];
+        [self.avatarButton sd_setImageWithURL:TLURL(fromUser.avatarURL) forState:UIControlStateNormal];
     }
     
     // 时间
@@ -135,7 +136,8 @@
 - (void)avatarButtonDown:(UIButton *)sender
 {
     if (_delegate && [_delegate respondsToSelector:@selector(messageCellDidClickAvatarForUser:)]) {
-        [_delegate messageCellDidClickAvatarForUser:self.message.fromUser];
+        TLUser *user = [(TLMessage *)self.message fromUser];
+        [_delegate messageCellDidClickAvatarForUser:user];
     }
 }
 

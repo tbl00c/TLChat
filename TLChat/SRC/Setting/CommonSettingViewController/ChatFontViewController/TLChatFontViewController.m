@@ -58,7 +58,7 @@
 
 - (NSMutableArray *)p_chatTVCData
 {
-    TLMessage *message = [[TLMessage alloc] init];
+    TLTextMessage *message = [[TLTextMessage alloc] init];
     message.fromUser = [TLUserHelper sharedHelper].user;
     message.messageType = TLMessageTypeText;
     message.ownerTyper = TLMessageOwnerTypeSelf;
@@ -75,12 +75,12 @@
     }
     
     
-    TLMessage *message1 = [[TLMessage alloc] init];
+    TLTextMessage *message1 = [[TLTextMessage alloc] init];
     message1.fromUser = user;
     message1.messageType = TLMessageTypeText;
     message1.ownerTyper = TLMessageOwnerTypeFriend;
     message1.text = @"拖动下面的滑块，可设置字体大小";
-    TLMessage *message2 = [[TLMessage alloc] init];
+    TLTextMessage *message2 = [[TLTextMessage alloc] init];
     message2.fromUser = user;
     message2.messageType = TLMessageTypeText;
     message2.ownerTyper = TLMessageOwnerTypeFriend;

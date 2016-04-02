@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "TLChatCellMenuView.h"
-#import "TLMessage.h"
+
+#import "TLTextMessage.h"
+#import "TLImageMessage.h"
+#import "TLExpressionMessage.h"
 
 @class TLChatTableViewController;
 @protocol TLChatTableViewControllerDelegate <NSObject>
@@ -21,7 +24,7 @@
                       completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
 
 - (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC
-                  deleteMessage:(TLMessage *)message;
+                  deleteMessage:(id<TLMessageProtocol>)message;
 
 @end
 
@@ -39,13 +42,13 @@
 /**
  *  发送消息（在列表展示）
  */
-- (void)addMessage:(TLMessage *)message;
+- (void)addMessage:(id<TLMessageProtocol>)message;
 
 
 /**
  *  删除消息
  */
-- (void)deleteMessage:(TLMessage *)message;
+- (void)deleteMessage:(id<TLMessageProtocol>)message;
 
 /**
  *  滚动到底部

@@ -18,14 +18,14 @@
         [self.chatBar addEmojiString:emoji.title];
     }
     else {
-        TLMessage *message = [[TLMessage alloc] init];
+        TLExpressionMessage *message = [[TLExpressionMessage alloc] init];
         message.fromUser = [TLUserHelper sharedHelper].user;
         message.messageType = TLMessageTypeExpression;
         message.ownerTyper = TLMessageOwnerTypeSelf;
         message.imagePath = emoji.path;
         [self sendMessage:message];
         if (self.curChatType == TLChatVCTypeFriend) {
-            TLMessage *message1 = [[TLMessage alloc] init];
+            TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
             message1.fromUser = self.user;
             message1.messageType = TLMessageTypeExpression;
             message1.ownerTyper = TLMessageOwnerTypeFriend;
@@ -34,7 +34,7 @@
         }
         else {
             for (TLUser *user in self.group.users) {
-                TLMessage *message1 = [[TLMessage alloc] init];
+                TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
                 message1.friendID = user.userID;
                 message1.fromUser = user;
                 message1.messageType = TLMessageTypeExpression;

@@ -66,13 +66,13 @@
     }];
 }
 
-- (void)addMessage:(TLMessage *)message
+- (void)addMessage:(id<TLMessageProtocol>)message
 {
     [self.data addObject:message];
     [self.tableView reloadData];
 }
 
-- (void)deleteMessage:(TLMessage *)message
+- (void)deleteMessage:(id<TLMessageProtocol>)message
 {
     NSInteger index = [self.data indexOfObject:message];
     if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewController:deleteMessage:)]) {

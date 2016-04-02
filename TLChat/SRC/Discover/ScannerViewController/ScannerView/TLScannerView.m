@@ -48,7 +48,20 @@
 - (void)startScanner
 {
     [self stopScanner];
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60 target:self selector:@selector(updateScannerLineStatus) userInfo:nil repeats:YES];
+    timer = [NSTimer bk_scheduledTimerWithTimeInterval:1.0 / 60 block:^(NSTimer *timer) {
+        if (self.hiddenScannerIndicator) {
+            return;
+        }
+        self.scannerLine.centerX = self.bgView.centerX;
+        self.scannerLine.width = self.bgView.width * 1.4;
+        self.scannerLine.height = 10;
+        if (self.scannerLine.y + self.scannerLine.height >= self.height) {
+            self.scannerLine.y = 0;
+        }
+        else {
+            self.scannerLine.y ++;
+        }
+    } repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
@@ -77,22 +90,6 @@
             self.scannerLine.y = 0;
             [self.scannerLine setHidden:hiddenScannerIndicator];
         });
-    }}
-
-#pragma mark - Event Response -
-- (void)updateScannerLineStatus
-{
-    if (self.hiddenScannerIndicator) {
-        return;
-    }
-    self.scannerLine.centerX = self.bgView.centerX;
-    self.scannerLine.width = self.bgView.width * 1.4;
-    self.scannerLine.height = 10;
-    if (self.scannerLine.y + self.scannerLine.height >= self.height) {
-        self.scannerLine.y = 0;
-    }
-    else {
-        self.scannerLine.y ++;
     }
 }
 

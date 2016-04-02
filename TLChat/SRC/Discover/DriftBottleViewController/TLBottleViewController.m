@@ -50,7 +50,10 @@
     [super viewWillAppear:animated];
     
     [timer invalidate];
-    timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(tryHiddenNavBar) userInfo:nil repeats:NO];
+    timer = [NSTimer bk_scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
+        [tm invalidate];
+        [self p_setNavBarHidden:YES];
+    } repeats:NO];
     tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView)];
     [self.view addGestureRecognizer:tapGes];
 }
@@ -69,11 +72,6 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:sender.title message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
     [alert show];
-}
-- (void) tryHiddenNavBar
-{
-    [timer invalidate];
-    [self p_setNavBarHidden:YES];
 }
 
 - (void) didTapView

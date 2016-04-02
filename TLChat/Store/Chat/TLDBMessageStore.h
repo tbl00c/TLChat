@@ -15,7 +15,7 @@
 /**
  *  添加消息记录
  */
-- (BOOL)addMessage:(TLMessage *)message;
+- (BOOL)addMessage:(id<TLMessageProtocol>)message;
 
 #pragma mark - 查询
 /**

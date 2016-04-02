@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, TLMessageReadState) {
 @property (nonatomic, assign) TLMessageReadState readState;         // 读取状态
 @property (nonatomic, assign) TLMessageSendState sendState;         // 发送状态
 
-@property (nonatomic, assign) NSMutableDictionary *content;
+@property (nonatomic, strong) NSMutableDictionary *content;
 
 @property (nonatomic, strong) TLMessageFrame *messageFrame;         // 消息frame
 

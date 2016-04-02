@@ -8,7 +8,6 @@
 
 #import "TLMessageManager.h"
 #import "TLMessageManager+ConversationRecord.h"
-#import "TLDBMessage+TLMessage.h"
 
 static TLMessageManager *messageManager;
 
@@ -23,10 +22,10 @@ static TLMessageManager *messageManager;
     return messageManager;
 }
 
-- (void)sendMessage:(TLMessage *)message
-           progress:(void (^)(TLMessage *, CGFloat))progress
-            success:(void (^)(TLMessage *))success
-            failure:(void (^)(TLMessage *))failure
+- (void)sendMessage:(id<TLMessageProtocol>)message
+           progress:(void (^)(id<TLMessageProtocol>, CGFloat))progress
+            success:(void (^)(id<TLMessageProtocol>))success
+            failure:(void (^)(id<TLMessageProtocol>))failure
 {
     BOOL ok = [self.messageStore addMessage:message];
     if (!ok) {

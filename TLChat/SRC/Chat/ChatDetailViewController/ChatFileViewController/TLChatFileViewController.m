@@ -66,7 +66,7 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    TLMessage *message = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+    id<TLMessageProtocol> message = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     TLChatFileHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TLChatFileHeaderView" forIndexPath:indexPath];
     [headerView setTitle:[message.date chatFileTimeInfo]];
     return headerView;
@@ -74,7 +74,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    TLMessage *message = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+    id<TLMessageProtocol> message = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     TLChatFileCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLChatFileCell" forIndexPath:indexPath];
     [cell setMessage:message];
     return cell;

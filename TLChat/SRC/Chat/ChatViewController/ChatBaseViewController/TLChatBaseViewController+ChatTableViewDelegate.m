@@ -11,7 +11,7 @@
 @implementation TLChatBaseViewController (ChatTableViewDelegate)
 
 #pragma mark - Public Methods -
-- (void)addMessage:(TLMessage *)message
+- (void)addMessage:(id<TLMessageProtocol>)message
 {
     message.showTime = [self p_needShowTime:message.date];
     [self.chatTableVC addMessage:message];

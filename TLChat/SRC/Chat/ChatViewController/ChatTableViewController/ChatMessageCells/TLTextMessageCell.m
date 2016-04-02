@@ -29,7 +29,7 @@
     return self;
 }
 
-- (void)setMessage:(TLMessage *)message
+- (void)setMessage:(id<TLMessageProtocol>)message
 {
     if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
         return;

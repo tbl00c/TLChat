@@ -8,7 +8,6 @@
 
 #import "TLDBMessageStore.h"
 #import "TLDBMessageStoreSQL.h"
-#import "TLDBMessage+TLMessage.h"
 #import "NSDate+Utilities.h"
 
 @implementation TLDBMessageStore
@@ -31,31 +30,37 @@
     return [self createTable:MESSAGE_TABLE_NAME withSQL:sqlString];
 }
 
-- (BOOL)addMessage:(TLMessage *)message
+- (BOOL)addMessage:(id<TLMessageProtocol>)message
 {
-    TLDBMessage *dbMessage = [message toDBMessage];
-    if (dbMessage == nil || dbMessage.mid == nil || dbMessage.uid == nil || dbMessage.fid == nil) {
+    if (message == nil || message.messageID == nil || message.userID == nil || message.friendID == nil) {
         return NO;
     }
+    
+    NSString *fid = @"";
+    NSString *subfid = @"";
+    if (message.partnerType == TLPartnerTypeUser) {
+        fid = message.friendID;
+    }
+    else {
+        fid = message.groupID;
+        subfid = message.friendID;
+    }
+    NSString *dataString = [NSString stringWithFormat:@"%lf", message.date.timeIntervalSince1970];
+    
     NSString *sqlString = [NSString stringWithFormat:SQL_ADD_MESSAGE, MESSAGE_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
-                        dbMessage.mid,
-                        dbMessage.uid,
-                        dbMessage.fid,
-                        dbMessage.subfid.length > 0 ? dbMessage.subfid : @"",
-                        dbMessage.date,
-                        [NSNumber numberWithInteger:dbMessage.partnerType],
-                        [NSNumber numberWithInteger:dbMessage.ownerType],
-                        [NSNumber numberWithInteger:dbMessage.msgType],
-                        dbMessage.content,
-                        [NSNumber numberWithInteger:dbMessage.sendStatus],
-                        [NSNumber numberWithInteger:dbMessage.receivedStatus],
-                        dbMessage.ext1.length > 0 ? dbMessage.ext1 : @"",
-                        dbMessage.ext2.length > 0 ? dbMessage.ext2 : @"",
-                        dbMessage.ext3.length > 0 ? dbMessage.ext3 : @"",
-                        dbMessage.ext4.length > 0 ? dbMessage.ext4 : @"",
-                        dbMessage.ext5.length > 0 ? dbMessage.ext5 : @"",
-                        nil];
+                        message.messageID,
+                        message.userID,
+                        fid,
+                        subfid,
+                        dataString,
+                        [NSNumber numberWithInteger:message.partnerType],
+                        [NSNumber numberWithInteger:message.ownerTyper],
+                        [NSNumber numberWithInteger:message.messageType],
+                        message.content,
+                        [NSNumber numberWithInteger:message.sendState],
+                        [NSNumber numberWithInteger:message.readState],
+                        @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     return ok;
 }
@@ -73,8 +78,7 @@
 
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
-            TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];
-            id<TLMessageProtocol> message = [dbMessage toMessage];
+            id<TLMessageProtocol> message = [self p_createDBMessageByFMResultSet:retSet];
             [data insertObject:message atIndex:0];
         }
         [retSet close];
@@ -97,8 +101,7 @@
     __block NSMutableArray *array = [[NSMutableArray alloc] init];
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
-            TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];
-            id<TLMessageProtocol> message = [dbMessage toMessage];
+            id<TLMessageProtocol> message = [self p_createDBMessageByFMResultSet:retSet];
             if ([message.date isThisWeek]) {
                 if ([lastDate isThisWeek]) {
                     [array addObject:message];
@@ -132,8 +135,7 @@
     __block id<TLMessageProtocol> message;
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
-            TLDBMessage *dbMessage = [self p_createDBMessageByFMResultSet:retSet];
-            message = [dbMessage toMessage];
+            message = [self p_createDBMessageByFMResultSet:retSet];
         }
         [retSet close];
     }];
@@ -162,26 +164,24 @@
 }
 
 #pragma mark - Private Methods -
-- (TLDBMessage *)p_createDBMessageByFMResultSet:(FMResultSet *)retSet
+- (id<TLMessageProtocol>)p_createDBMessageByFMResultSet:(FMResultSet *)retSet
 {
-    TLDBMessage *dbMessage = [[TLDBMessage alloc]init];
-    dbMessage.mid = [retSet stringForColumn:@"msgid"];
-    dbMessage.uid = [retSet stringForColumn:@"uid"];
-    dbMessage.fid = [retSet stringForColumn:@"fid"];
-    dbMessage.subfid = [retSet stringForColumn:@"subfid"];
-    dbMessage.date = [retSet stringForColumn:@"date"];
-    dbMessage.partnerType = [retSet intForColumn:@"partner_type"];
-    dbMessage.ownerType = [retSet intForColumn:@"own_type"];
-    dbMessage.msgType = [retSet intForColumn:@"msg_type"];
-    dbMessage.content = [retSet stringForColumn:@"content"];
-    dbMessage.sendStatus = [retSet intForColumn:@"send_status"];
-    dbMessage.receivedStatus = [retSet intForColumn:@"received_status"];
-    dbMessage.ext1 = [retSet stringForColumn:@"ext1"];
-    dbMessage.ext2 = [retSet stringForColumn:@"ext2"];
-    dbMessage.ext3 = [retSet stringForColumn:@"ext3"];
-    dbMessage.ext4 = [retSet stringForColumn:@"ext4"];
-    dbMessage.ext5 = [retSet stringForColumn:@"ext5"];
-    return dbMessage;
+    TLMessageType type = [retSet intForColumn:@"msg_type"];
+    id<TLMessageProtocol> message = [TLMessage createMessageByType:type];
+    message.messageID = [retSet stringForColumn:@"msgid"];
+    message.userID = [retSet stringForColumn:@"uid"];
+    message.friendID = [retSet stringForColumn:@"fid"];
+    message.groupID = [retSet stringForColumn:@"subfid"];
+    NSString *dateString = [retSet stringForColumn:@"date"];
+    message.date = [NSDate dateWithTimeIntervalSince1970:dateString.doubleValue];
+    message.partnerType = [retSet intForColumn:@"partner_type"];
+    message.ownerTyper = [retSet intForColumn:@"own_type"];
+    message.messageType = [retSet intForColumn:@"msg_type"];
+    NSString *content = [retSet stringForColumn:@"content"];
+    message.content = [[NSMutableDictionary alloc] initWithDictionary:[content mj_JSONObject]];
+    message.sendState = [retSet intForColumn:@"send_status"];
+    message.readState = [retSet intForColumn:@"received_status"];
+    return message;
 }
 
 @end

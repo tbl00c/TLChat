@@ -29,7 +29,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TLMessage *message = self.data[indexPath.row];
+    id<TLMessageProtocol> message = self.data[indexPath.row];
     if (message.messageType == TLMessageTypeText) {
         TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell"];
         [cell setMessage:message];
@@ -54,7 +54,7 @@
 //MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    TLMessage *message = self.data[indexPath.row];
+    id<TLMessageProtocol> message = self.data[indexPath.row];
     return message.messageFrame.height;
 }
 
@@ -67,7 +67,7 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-- (void)messageCellLongPress:(TLMessage *)message rect:(CGRect)rect
+- (void)messageCellLongPress:(id<TLMessageProtocol>)message rect:(CGRect)rect
 {
     if ([self.menuView isShow]) {
         return;
@@ -111,13 +111,13 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        TLMessage *message = [self.data objectAtIndex:actionSheet.tag];
+        id<TLMessageProtocol> message = [self.data objectAtIndex:actionSheet.tag];
         [self p_deleteMessage:message];
     }
 }
 
 #pragma mark - Private Methods -
-- (void)p_deleteMessage:(TLMessage *)message
+- (void)p_deleteMessage:(id<TLMessageProtocol>)message
 {
     NSInteger index = [self.data indexOfObject:message];
     if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:deleteMessage:)]) {

@@ -10,8 +10,13 @@
 
 @interface TLRootProxy : TLBaseProxy
 
-- (void)requestClientInitInfoSuccess:(void (^)(id)) clientInitInfo
+- (void)requestClientInitInfoSuccess:(void (^)(id))clientInitInfo
                              failure:(void (^)(NSString *))error;
+
+- (void)userLoginWithUsername:(NSString *)username
+                     password:(NSString *)password
+                      success:(void (^)(id))userInfo
+                      failure:(void (^)(NSString *))error;
 
 
 @end

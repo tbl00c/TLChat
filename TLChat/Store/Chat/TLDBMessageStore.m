@@ -102,23 +102,12 @@
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             id<TLMessageProtocol> message = [self p_createDBMessageByFMResultSet:retSet];
-            if ([message.date isThisWeek]) {
-                if ([lastDate isThisWeek]) {
-                    [array addObject:message];
-                }
-                else {
-                    lastDate = message.date;
-                    array = [[NSMutableArray alloc] initWithObjects:lastDate, nil];
-                }
+            if (([message.date isThisWeek] && [lastDate isThisWeek]) || (![message.date isThisWeek] && [lastDate isSameMonthAsDate:message.date])) {
+                [array addObject:message];
             }
             else {
-                if ([lastDate isSameMonthAsDate:message.date]) {
-                    [array addObject:message];
-                }
-                else {
-                    lastDate = message.date;
-                    array = [[NSMutableArray alloc] initWithObjects:lastDate, nil];
-                }
+                lastDate = message.date;
+                array = [[NSMutableArray alloc] initWithObjects:message, nil];
             }
         }
         if (array.count > 0) {

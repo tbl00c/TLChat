@@ -21,4 +21,9 @@
     return [HOST_URL stringByAppendingString:@"client/getClientInitInfo/"];
 }
 
++ (NSString *)expressionChosenURL
+{
+    return [HOST_URL stringByAppendingString:@"expression/getExpressionChosenList/"];
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TLExpressionViewController.h"
+#import "TLExpressionChosenViewController.h"
 #import "TLMyExpressionViewController.h"
 
 #define     WIDTH_EXPRESSION_SEGMENT    WIDTH_SCREEN * 0.55
@@ -14,18 +15,23 @@
 @interface TLExpressionViewController ()
 
 @property (nonatomic, strong) UISegmentedControl *segmentedControl;
-@property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
+
+@property (nonatomic, strong) TLExpressionChosenViewController *expChosenVC;
 
 @end
 
 @implementation TLExpressionViewController
 
-- (void) viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.navigationItem setTitleView:self.segmentedControl];
-    [self.navigationItem setRightBarButtonItem:self.rightBarButtonItem];
+    [self.view addSubview:self.expChosenVC.view];
+    [self addChildViewController:self.expChosenVC];
+    [self p_addMasonry];
+    
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown)];
+    [self.navigationItem setRightBarButtonItem:rightBarButton];
     
     if (self.navigationController.rootViewController == self) {
         UIBarButtonItem *dismissBarButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain actionBlick:^{
@@ -35,37 +41,50 @@
     }
 }
 
-#pragma mark - Event Response
-- (void) rightBarButtonDown
+#pragma mark - # Event Response -
+- (void)rightBarButtonDown
 {
     TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
     [self setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:myExpressionVC animated:YES];
 }
 
-- (void) segmentedControlChanged:(UISegmentedControl *)segmentedControl
+- (void)segmentedControlChanged:(UISegmentedControl *)segmentedControl
 {
-    
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        [self.expChosenVC.view setHidden:NO];
+    }
+    else {
+        [self.expChosenVC.view setHidden:YES];
+    }
 }
 
-#pragma mark - Getter and Setter
-- (UISegmentedControl *) segmentedControl
+#pragma mark - # Event Response -
+- (void)p_addMasonry
+{
+    [self.expChosenVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
+}
+
+#pragma mark - # Getter -
+- (UISegmentedControl *)segmentedControl
 {
     if (_segmentedControl == nil) {
         _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"精选表情", @"投稿表情"]];
         [_segmentedControl setWidth:WIDTH_EXPRESSION_SEGMENT];
         [_segmentedControl setSelectedSegmentIndex:0];
-        [_segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventEditingChanged];
+        [_segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
     }
     return _segmentedControl;
 }
 
-- (UIBarButtonItem *)rightBarButtonItem
+- (TLExpressionChosenViewController *)expChosenVC
 {
-    if (_rightBarButtonItem == nil) {
-        _rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown)];
+    if (_expChosenVC == nil) {
+        _expChosenVC = [[TLExpressionChosenViewController alloc] init];
     }
-    return _rightBarButtonItem;
+    return _expChosenVC;
 }
 
 @end

@@ -34,7 +34,7 @@
 {
     // 显示Group表情
     if (group.data == nil) {
-        group.data = [TLEmojiKBHelper getEmojiDataByPath:group.dataPath];
+        group.data = [TLEmojiKBHelper getEmojiDataByPath:group.path];
     }
     self.curGroup = group;
     [self resetCollectionSize];

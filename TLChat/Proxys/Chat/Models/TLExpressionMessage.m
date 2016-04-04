@@ -9,33 +9,19 @@
 #import "TLExpressionMessage.h"
 
 @implementation TLExpressionMessage
-@synthesize imagePath = _imagePath;
-@synthesize imageURL = _imageURL;
+@synthesize path = _path;
 
-- (NSString *)imagePath
+- (NSString *)path
 {
-    if (_imagePath == nil) {
-        _imagePath = [self.content objectForKey:@"path"];
+    if (_path == nil) {
+        _path = [self.content objectForKey:@"path"];
     }
-    return _imagePath;
+    return _path;
 }
-- (void)setImagePath:(NSString *)imagePath
+- (void)setPath:(NSString *)path
 {
-    _imagePath = imagePath;
-    [self.content setObject:imagePath forKey:@"path"];
-}
-
-- (NSString *)imageURL
-{
-    if (_imageURL == nil) {
-        _imageURL = [self.content objectForKey:@"url"];
-    }
-    return _imageURL;
-}
-- (void)setImageURL:(NSString *)imageURL
-{
-    _imageURL = imageURL;
-    [self.content setObject:imageURL forKey:@"url"];
+    _path = path;
+    [self.content setObject:path forKey:@"path"];
 }
 
 #pragma mark -
@@ -46,8 +32,8 @@
         kMessageFrame.height = 20 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0);
         
         kMessageFrame.height += 5;
-        if (self.imagePath) {
-            UIImage *image = [UIImage imageNamed:self.imagePath];
+        if (self.path) {
+            UIImage *image = [UIImage imageNamed:self.path];
             if (image == nil) {
                 kMessageFrame.contentSize = CGSizeMake(50, 50);
             }

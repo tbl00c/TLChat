@@ -39,7 +39,7 @@
         
         TLEmojiGroup *group = [[TLEmojiKBHelper sharedKBHelper] defaultFaceGroup];
         if (group.data == nil) {
-            group.data = [TLEmojiKBHelper getEmojiDataByPath:group.dataPath];
+            group.data = [TLEmojiKBHelper getEmojiDataByPath:group.path];
         }
         for (TLEmoji *emoji in group.data) {
             if ([emoji.title isEqualToString:subStr]) {

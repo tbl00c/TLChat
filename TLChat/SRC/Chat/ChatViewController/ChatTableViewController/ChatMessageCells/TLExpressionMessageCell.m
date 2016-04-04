@@ -31,7 +31,7 @@
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
     
-    NSString *imagePath = [(TLExpressionMessage *)message imagePath];
+    NSString *imagePath = [(TLExpressionMessage *)message path];
     if (imagePath) {
         if ([imagePath hasSuffix:@"gif"]) {
             [self.msgImageView setImage:nil];

@@ -12,4 +12,7 @@
 
 + (NSString *)clientInitInfoURL;
 
+#pragma mark - Mine
++ (NSString *)expressionChosenURL;
+
 @end

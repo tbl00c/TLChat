@@ -91,13 +91,13 @@ static TLEmojiKBHelper *helper;
     tisijiGroup.type = TLEmojiTypeImage;
     tisijiGroup.groupName = @"兔斯基";
     tisijiGroup.groupIconPath = @"emojiKB_group_tusiji";
-    tisijiGroup.dataPath = [[NSBundle mainBundle] pathForResource:@"TusijiEmoji" ofType:@"json"];
+    tisijiGroup.path = [[NSBundle mainBundle] pathForResource:@"TusijiEmoji" ofType:@"json"];
     
     TLEmojiGroup *group2 = [[TLEmojiGroup alloc] init];
     group2.type = TLEmojiTypeImageWithTitle;
     group2.groupName = @"老司机";
     group2.groupIconPath = @"emojiKB_group_tusiji";
-    group2.dataPath = [[NSBundle mainBundle] pathForResource:@"TusijiTitleEmoji" ofType:@"json"];
+    group2.path = [[NSBundle mainBundle] pathForResource:@"TusijiTitleEmoji" ofType:@"json"];
     
     NSMutableArray *userEmojiGroupData = [[NSMutableArray alloc] initWithObjects:tisijiGroup, group2, nil];
     return userEmojiGroupData;
@@ -116,7 +116,7 @@ static TLEmojiKBHelper *helper;
         _defaultFaceGroup = [[TLEmojiGroup alloc] init];
         _defaultFaceGroup.type = TLEmojiTypeFace;
         _defaultFaceGroup.groupIconPath = @"emojiKB_group_face";
-        _defaultFaceGroup.dataPath = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
+        _defaultFaceGroup.path = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
     }
     return _defaultFaceGroup;
 }
@@ -127,7 +127,7 @@ static TLEmojiKBHelper *helper;
         TLEmojiGroup *emojiGroup = [[TLEmojiGroup alloc] init];
         emojiGroup.type = TLEmojiTypeEmoji;
         emojiGroup.groupIconPath = @"emojiKB_group_face";
-        emojiGroup.dataPath = [[NSBundle mainBundle] pathForResource:@"SystemEmoji" ofType:@"json"];
+        emojiGroup.path = [[NSBundle mainBundle] pathForResource:@"SystemEmoji" ofType:@"json"];
         
         
         _defaultEmojiGroups = [[NSMutableArray alloc] initWithObjects:self.defaultFaceGroup, emojiGroup, nil];

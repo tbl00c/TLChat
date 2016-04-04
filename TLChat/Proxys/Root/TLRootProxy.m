@@ -21,4 +21,12 @@
     }];
 }
 
+- (void)userLoginWithUsername:(NSString *)username
+                     password:(NSString *)password
+                      success:(void (^)(id))userInfo
+                      failure:(void (^)(NSString *))error
+{
+
+}
+
 @end

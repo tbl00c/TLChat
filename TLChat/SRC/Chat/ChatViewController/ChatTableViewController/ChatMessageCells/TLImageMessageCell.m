@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void)setMessage:(id<TLMessageProtocol>)message
+- (void)setMessage:(TLImageMessage *)message
 {
     [self.msgImageView setAlpha:1.0];       // 取消长按效果
     if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
@@ -36,12 +36,12 @@
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
     
-    if ([(TLImageMessage *)message imagePath]) {
-        NSString *imagePath = [NSFileManager pathUserChatImage:[(TLImageMessage *)message imagePath]];
-        [self.msgImageView setThumbnailPath:imagePath highDefinitionImageURL:[(TLImageMessage *)message imagePath]];
+    if ([message imagePath]) {
+        NSString *imagePath = [NSFileManager pathUserChatImage:[message imagePath]];
+        [self.msgImageView setThumbnailPath:imagePath highDefinitionImageURL:[message imagePath]];
     }
     else {
-        [self.msgImageView setThumbnailPath:nil highDefinitionImageURL:[(TLImageMessage *)message imagePath]];
+        [self.msgImageView setThumbnailPath:nil highDefinitionImageURL:[message imagePath]];
     }
 
     if (lastOwnType != message.ownerTyper) {

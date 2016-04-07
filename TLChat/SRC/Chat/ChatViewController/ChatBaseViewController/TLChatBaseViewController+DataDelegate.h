@@ -13,6 +13,6 @@
 /**
  *  发送消息
  */
-- (void)sendMessage:(id<TLMessageProtocol>)message;
+- (void)sendMessage:(TLMessage *)message;
 
 @end

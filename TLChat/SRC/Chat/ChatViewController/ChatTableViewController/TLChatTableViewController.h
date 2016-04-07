@@ -29,12 +29,12 @@
 /**
  *  发送消息（在列表展示）
  */
-- (void)addMessage:(id<TLMessageProtocol>)message;
+- (void)addMessage:(TLMessage *)message;
 
 /**
  *  删除消息
  */
-- (void)deleteMessage:(id<TLMessageProtocol>)message;
+- (void)deleteMessage:(TLMessage *)message;
 
 /**
  *  滚动到底部

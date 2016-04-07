@@ -44,7 +44,7 @@
     return self;
 }
 
-- (void)setMessage:(id<TLMessageProtocol>)message
+- (void)setMessage:(TLMessage *)message
 {
     if (_message && [_message.messageID isEqualToString:message.messageID]) {
         return;

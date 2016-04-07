@@ -11,7 +11,7 @@
 
 @implementation TLMessageManager (ConversationRecord)
 
-- (BOOL)addConversationByMessage:(id<TLMessageProtocol>)message
+- (BOOL)addConversationByMessage:(TLMessage *)message
 {
     NSString *partnerID = message.friendID;
     NSInteger type = 0;

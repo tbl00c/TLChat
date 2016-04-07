@@ -8,15 +8,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TLMessageProtocol.h"
 
+@class TLMessage;
 @class TLUser;
 @protocol TLMessageCellDelegate <NSObject>
 
 - (void)messageCellDidClickAvatarForUser:(TLUser *)user;
 
-- (void)messageCellLongPress:(id<TLMessageProtocol>)message rect:(CGRect)rect;
+- (void)messageCellLongPress:(TLMessage *)message rect:(CGRect)rect;
 
-- (void)messageCellDoubleClick:(id<TLMessageProtocol>)message;
+- (void)messageCellDoubleClick:(TLMessage *)message;
 
 @end

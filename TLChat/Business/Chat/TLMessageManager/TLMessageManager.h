@@ -28,10 +28,10 @@
 + (TLMessageManager *)sharedInstance;
 
 #pragma mark - 发送
-- (void)sendMessage:(id<TLMessageProtocol>)message
-           progress:(void (^)(id<TLMessageProtocol>, CGFloat))progress
-            success:(void (^)(id<TLMessageProtocol>))success
-            failure:(void (^)(id<TLMessageProtocol>))failure;
+- (void)sendMessage:(TLMessage *)message
+           progress:(void (^)(TLMessage *, CGFloat))progress
+            success:(void (^)(TLMessage *))success
+            failure:(void (^)(TLMessage *))failure;
 
 
 @end

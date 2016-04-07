@@ -25,13 +25,13 @@
     return self;
 }
 
-- (void)setMessage:(id<TLMessageProtocol>)message
+- (void)setMessage:(TLExpressionMessage *)message
 {
     [self.msgImageView setAlpha:1.0];       // 取消长按效果
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
     
-    NSString *imagePath = [(TLExpressionMessage *)message path];
+    NSString *imagePath = message.path;
     if (imagePath) {
         if ([imagePath hasSuffix:@"gif"]) {
             [self.msgImageView setImage:nil];

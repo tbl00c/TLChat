@@ -11,7 +11,7 @@
 
 @implementation TLChatBaseViewController (DataDelegate)
 
-- (void)sendMessage:(id<TLMessageProtocol>)message
+- (void)sendMessage:(TLMessage *)message
 {
     message.userID = [TLUserHelper sharedHelper].userID;
     if (self.curChatType == TLChatVCTypeFriend) {
@@ -27,11 +27,11 @@
     message.date = [NSDate date];
     
     [self addMessage:message];    // 添加到列表
-    [[TLMessageManager sharedInstance] sendMessage:message progress:^(id<TLMessageProtocol> message, CGFloat pregress) {
+    [[TLMessageManager sharedInstance] sendMessage:message progress:^(TLMessage * message, CGFloat pregress) {
         
-    } success:^(id<TLMessageProtocol> message) {
+    } success:^(TLMessage * message) {
         NSLog(@"send success");
-    } failure:^(id<TLMessageProtocol> message) {
+    } failure:^(TLMessage * message) {
         NSLog(@"send failure");
     }];
 }

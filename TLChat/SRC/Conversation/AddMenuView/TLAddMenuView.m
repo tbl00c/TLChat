@@ -58,7 +58,14 @@
 
 - (void)dismiss
 {
-    [self removeFromSuperview];
+    [UIView animateWithDuration:0.2 animations:^{
+        [self setAlpha:0.0f];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [self removeFromSuperview];
+            [self setAlpha:1.0];
+        }
+    }];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

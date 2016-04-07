@@ -11,7 +11,7 @@
 @implementation TLChatBaseViewController (ChatTableViewDelegate)
 
 #pragma mark - Public Methods -
-- (void)addMessage:(id<TLMessageProtocol>)message
+- (void)addMessage:(TLMessage *)message
 {
     message.showTime = [self p_needShowTime:message.date];
     [self.chatTableVC addMessage:message];
@@ -73,7 +73,7 @@
     }];
 }
 
-- (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC deleteMessage:(id<TLMessageProtocol>)message
+- (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC deleteMessage:(TLMessage *)message
 {
     return [[TLMessageManager sharedInstance] deleteMessageByMsgID:message.messageID];
 }

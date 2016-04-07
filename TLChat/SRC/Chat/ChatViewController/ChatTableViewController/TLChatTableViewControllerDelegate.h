@@ -20,6 +20,6 @@
                       completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
 
 - (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC
-                  deleteMessage:(id<TLMessageProtocol>)message;
+                  deleteMessage:(TLMessage *)message;
 
 @end

@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void)setMessage:(id<TLMessageProtocol>)message
+- (void)setMessage:(TLMessage *)message
 {
     _message = message;
     if (message.messageType == TLMessageTypeImage) {

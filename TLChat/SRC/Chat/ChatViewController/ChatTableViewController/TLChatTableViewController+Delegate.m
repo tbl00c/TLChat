@@ -29,7 +29,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<TLMessageProtocol> message = self.data[indexPath.row];
+    TLMessage * message = self.data[indexPath.row];
     if (message.messageType == TLMessageTypeText) {
         TLTextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLTextMessageCell"];
         [cell setMessage:message];
@@ -54,7 +54,7 @@
 //MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    id<TLMessageProtocol> message = self.data[indexPath.row];
+    TLMessage * message = self.data[indexPath.row];
     return message.messageFrame.height;
 }
 
@@ -67,7 +67,7 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-- (void)messageCellLongPress:(id<TLMessageProtocol>)message rect:(CGRect)rect
+- (void)messageCellLongPress:(TLMessage *)message rect:(CGRect)rect
 {
     if ([self.menuView isShow]) {
         return;
@@ -80,7 +80,7 @@
     [self.menuView showInView:self.navigationController.view withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
         [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         if (type == TLChatMenuItemTypeCopy) {
-            NSString *str = message.messageCopy;
+            NSString *str = [message messageCopy];
             [[UIPasteboard generalPasteboard] setString:str];
         }
         else if (type == TLChatMenuItemTypeDelete) {
@@ -91,7 +91,7 @@
     }];
 }
 
-- (void)messageCellDoubleClick:(id<TLMessageProtocol>)message
+- (void)messageCellDoubleClick:(TLMessage *)message
 {
     if (message.messageType == TLMessageTypeText) {
         TLTextDisplayView *displayView = [[TLTextDisplayView alloc] init];
@@ -111,13 +111,13 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        id<TLMessageProtocol> message = [self.data objectAtIndex:actionSheet.tag];
+        TLMessage * message = [self.data objectAtIndex:actionSheet.tag];
         [self p_deleteMessage:message];
     }
 }
 
 #pragma mark - Private Methods -
-- (void)p_deleteMessage:(id<TLMessageProtocol>)message
+- (void)p_deleteMessage:(TLMessage *)message
 {
     NSInteger index = [self.data indexOfObject:message];
     if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:deleteMessage:)]) {

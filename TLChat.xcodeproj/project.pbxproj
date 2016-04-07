@@ -84,6 +84,8 @@
 		C2232E371C9FA3960010CDF8 /* TLEmojiKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E331C9FA3960010CDF8 /* TLEmojiKBHelper.m */; };
 		C2232E381C9FA3960010CDF8 /* TLMoreKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E351C9FA3960010CDF8 /* TLMoreKBHelper.m */; };
 		C2232E6E1CA013CB0010CDF8 /* TLChatFontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E6D1CA013CB0010CDF8 /* TLChatFontViewController.m */; };
+		C225AFB71CB2E4AA000477F3 /* TLMomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C225AFB61CB2E4AA000477F3 /* TLMomentsViewController.m */; };
+		C225AFBA1CB2E7B4000477F3 /* TLMomentsViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C225AFB91CB2E7B4000477F3 /* TLMomentsViewController+TableView.m */; };
 		C237E9D51CB2445C0034CEA2 /* TLExpressionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C237E9D41CB2445C0034CEA2 /* TLExpressionCell.m */; };
 		C237E9D81CB244830034CEA2 /* TLExpressionChosenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C237E9D71CB244830034CEA2 /* TLExpressionChosenViewController.m */; };
 		C237E9DC1CB2AA240034CEA2 /* TLExpressionChosenViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C237E9DB1CB2AA240034CEA2 /* TLExpressionChosenViewController+TableView.m */; };
@@ -435,6 +437,10 @@
 		C2232E6D1CA013CB0010CDF8 /* TLChatFontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatFontViewController.m; sourceTree = "<group>"; };
 		C223341D1CA286CD00548E59 /* TLChatTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatTableViewControllerDelegate.h; sourceTree = "<group>"; };
 		C225799E1C959CC5003B1B85 /* TLDBMessageStoreSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBMessageStoreSQL.h; sourceTree = "<group>"; };
+		C225AFB51CB2E4AA000477F3 /* TLMomentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentsViewController.h; sourceTree = "<group>"; };
+		C225AFB61CB2E4AA000477F3 /* TLMomentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentsViewController.m; sourceTree = "<group>"; };
+		C225AFB81CB2E7B4000477F3 /* TLMomentsViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLMomentsViewController+TableView.h"; sourceTree = "<group>"; };
+		C225AFB91CB2E7B4000477F3 /* TLMomentsViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLMomentsViewController+TableView.m"; sourceTree = "<group>"; };
 		C237E9D31CB2445C0034CEA2 /* TLExpressionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionCell.h; sourceTree = "<group>"; };
 		C237E9D41CB2445C0034CEA2 /* TLExpressionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionCell.m; sourceTree = "<group>"; };
 		C237E9D61CB244830034CEA2 /* TLExpressionChosenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionChosenViewController.h; sourceTree = "<group>"; };
@@ -1135,6 +1141,7 @@
 			isa = PBXGroup;
 			children = (
 				C2D500D61C55C9A20088997C /* DiscoverViewController */,
+				C225AFB41CB2E473000477F3 /* MomentsViewController */,
 				C209F4351C7D5A8C001B9825 /* ScannerViewController */,
 				C2F0EC061C7A2BB90090843C /* ShakeViewController */,
 				C2F0EBFD1C7A17180090843C /* DriftBottleViewController */,
@@ -1539,6 +1546,17 @@
 				C2232E6D1CA013CB0010CDF8 /* TLChatFontViewController.m */,
 			);
 			path = ChatFontViewController;
+			sourceTree = "<group>";
+		};
+		C225AFB41CB2E473000477F3 /* MomentsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C225AFB51CB2E4AA000477F3 /* TLMomentsViewController.h */,
+				C225AFB61CB2E4AA000477F3 /* TLMomentsViewController.m */,
+				C225AFB81CB2E7B4000477F3 /* TLMomentsViewController+TableView.h */,
+				C225AFB91CB2E7B4000477F3 /* TLMomentsViewController+TableView.m */,
+			);
+			path = MomentsViewController;
 			sourceTree = "<group>";
 		};
 		C237E9D11CB2445C0034CEA2 /* ExpressionChosenViewController */ = {
@@ -2877,11 +2895,13 @@
 				C2E6B82C1C9A61190045A6EB /* TLConversationViewController+Delegate.m in Sources */,
 				C2E294A01C9D1DAA00721405 /* TLChatViewController.m in Sources */,
 				C215740B1C9BAC4200B7AC67 /* TLEmojiKeyboard.m in Sources */,
+				C225AFBA1CB2E7B4000477F3 /* TLMomentsViewController+TableView.m in Sources */,
 				C215740D1C9BAC4200B7AC67 /* TLMoreKeyboardItem.m in Sources */,
 				C2986D491C9EC08400A74166 /* TLConversation.m in Sources */,
 				C2994D901CA167CF00BAC038 /* TLUserSetting.m in Sources */,
 				C2F0EC151C7AB1BB0090843C /* TLAboutHelper.m in Sources */,
 				C2A5ACB01C8ECF0D007A4574 /* UIView+Extensions.m in Sources */,
+				C225AFB71CB2E4AA000477F3 /* TLMomentsViewController.m in Sources */,
 				C2232E381C9FA3960010CDF8 /* TLMoreKBHelper.m in Sources */,
 				C2D69D971C92B0FE00EE91D7 /* TLAddMenuItem.m in Sources */,
 				C2E6B8301C9A62270045A6EB /* TLShakeButton.m in Sources */,

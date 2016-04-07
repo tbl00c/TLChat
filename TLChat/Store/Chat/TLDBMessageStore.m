@@ -30,7 +30,7 @@
     return [self createTable:MESSAGE_TABLE_NAME withSQL:sqlString];
 }
 
-- (BOOL)addMessage:(id<TLMessageProtocol>)message
+- (BOOL)addMessage:(TLMessage *)message
 {
     if (message == nil || message.messageID == nil || message.userID == nil || message.friendID == nil) {
         return NO;
@@ -78,7 +78,7 @@
 
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
-            id<TLMessageProtocol> message = [self p_createDBMessageByFMResultSet:retSet];
+            TLMessage * message = [self p_createDBMessageByFMResultSet:retSet];
             [data insertObject:message atIndex:0];
         }
         [retSet close];
@@ -101,27 +101,30 @@
     __block NSMutableArray *array = [[NSMutableArray alloc] init];
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
-            id<TLMessageProtocol> message = [self p_createDBMessageByFMResultSet:retSet];
+            TLMessage * message = [self p_createDBMessageByFMResultSet:retSet];
             if (([message.date isThisWeek] && [lastDate isThisWeek]) || (![message.date isThisWeek] && [lastDate isSameMonthAsDate:message.date])) {
                 [array addObject:message];
             }
             else {
                 lastDate = message.date;
+                if (array.count > 0) {
+                    [data addObject:array];
+                }
                 array = [[NSMutableArray alloc] initWithObjects:message, nil];
             }
         }
         if (array.count > 0) {
-            [data insertObject:array atIndex:0];
+            [data addObject:array];
         }
         [retSet close];
     }];
     return data;
 }
 
-- (id<TLMessageProtocol>)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID
+- (TLMessage *)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID
 {
     NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_LAST_MESSAGE, MESSAGE_TABLE_NAME, MESSAGE_TABLE_NAME, userID, partnerID];
-    __block id<TLMessageProtocol> message;
+    __block TLMessage * message;
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             message = [self p_createDBMessageByFMResultSet:retSet];
@@ -153,10 +156,10 @@
 }
 
 #pragma mark - Private Methods -
-- (id<TLMessageProtocol>)p_createDBMessageByFMResultSet:(FMResultSet *)retSet
+- (TLMessage *)p_createDBMessageByFMResultSet:(FMResultSet *)retSet
 {
     TLMessageType type = [retSet intForColumn:@"msg_type"];
-    id<TLMessageProtocol> message = [TLMessage createMessageByType:type];
+    TLMessage * message = [TLMessage createMessageByType:type];
     message.messageID = [retSet stringForColumn:@"msgid"];
     message.userID = [retSet stringForColumn:@"uid"];
     message.friendID = [retSet stringForColumn:@"fid"];

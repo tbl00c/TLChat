@@ -11,6 +11,6 @@
 
 @interface TLChatFileCell : UICollectionViewCell
 
-@property (nonatomic, strong) id<TLMessageProtocol> message;
+@property (nonatomic, strong) TLMessage * message;
 
 @end

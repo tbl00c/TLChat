@@ -9,6 +9,7 @@
 #import "TLDiscoverViewController.h"
 #import "TLDiscoverHelper.h"
 
+#import "TLMomentsViewController.h"
 #import "TLScanningViewController.h"
 #import "TLShakeViewController.h"
 #import "TLBottleViewController.h"
@@ -16,6 +17,8 @@
 #import "TLGameViewController.h"
 
 @interface TLDiscoverViewController ()
+
+@property (nonatomic, strong) TLMomentsViewController *momentsVC;
 
 @property (nonatomic, strong) TLDiscoverHelper *discoverHelper;
 
@@ -36,6 +39,11 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLMenuItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
+    if ([item.title isEqualToString:@"朋友圈"]) {
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:self.momentsVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+    }
     if ([item.title isEqualToString:@"扫一扫"]) {
         TLScanningViewController *scannerVC = [[TLScanningViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
@@ -67,6 +75,15 @@
         [self setHidesBottomBarWhenPushed:NO];
     }
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
+#pragma mark - # Getter -
+- (TLMomentsViewController *)momentsVC
+{
+    if (_momentsVC == nil) {
+        _momentsVC = [[TLMomentsViewController alloc] init];
+    }
+    return _momentsVC;
 }
 
 @end

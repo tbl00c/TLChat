@@ -29,14 +29,14 @@
     return self;
 }
 
-- (void)setMessage:(id<TLMessageProtocol>)message
+- (void)setMessage:(TLTextMessage *)message
 {
     if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
         return;
     }
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
-    [self.messageLabel setAttributedText:[(TLTextMessage *)message attrText]];
+    [self.messageLabel setAttributedText:[message attrText]];
     
     [self.messageLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
     [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];

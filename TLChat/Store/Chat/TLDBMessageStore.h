@@ -15,7 +15,7 @@
 /**
  *  添加消息记录
  */
-- (BOOL)addMessage:(id<TLMessageProtocol>)message;
+- (BOOL)addMessage:(TLMessage *)message;
 
 #pragma mark - 查询
 /**
@@ -35,7 +35,7 @@
 /**
  *  最后一条聊天记录（消息页用）
  */
-- (id <TLMessageProtocol>)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
+- (TLMessage *)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
 
 #pragma mark - 删除
 /**

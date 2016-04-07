@@ -10,7 +10,7 @@
 
 @interface TLMessageManager (ConversationRecord)
 
-- (BOOL)addConversationByMessage:(id<TLMessageProtocol>)message;
+- (BOOL)addConversationByMessage:(TLMessage *)message;
 
 - (void)conversationRecord:(void (^)(NSArray *))complete;
 

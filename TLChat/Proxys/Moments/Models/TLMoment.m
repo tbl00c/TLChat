@@ -10,4 +10,15 @@
 
 @implementation TLMoment
 
+- (id)init
+{
+    if (self = [super init]) {
+        [TLUser mj_setupObjectClassInArray:^NSDictionary *{
+            return @{ @"detail" : @"TLMomentDetail",
+                      @"moment" : @"TLMomentComment"};
+        }];
+    }
+    return self;
+}
+
 @end

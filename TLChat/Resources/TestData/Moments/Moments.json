@@ -3,30 +3,48 @@
         "momentID" : "m1001",
         "username" : "吕秀才",
         "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg",
+        "detail" : {
+            "text" : "Hello world!",
+        }
     },
      {
          "momentID" : "m1002",
          "username" : "白展堂",
          "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg",
+        "detail" : {
+            "text" : "排山倒海，葵花点穴手，天王盖地虎，小鸡炖蘑菇～",
+        }
      },
      {
          "momentID" : "m1001",
          "username" : "吕秀才",
          "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg",
+         "detail" : {
+             "text" : "畅销书《C语言，从入门到放弃》即将上市，不要998，不要88，只要8块8。现在开始接受预定，机不可失，时不再来，欲购从速！！",
+         }
      },
      {
          "momentID" : "m1002",
          "username" : "白展堂",
          "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg",
+         "detail" : {
+             "text" : "哈哈哈哈哈哈",
+         }
      },
      {
          "momentID" : "m1001",
          "username" : "吕秀才",
          "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg",
+         "detail" : {
+             "text" : "好好学习，天天向上！",
+         }
      },
      {
          "momentID" : "m1002",
          "username" : "白展堂",
          "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg",
+         "detail" : {
+             "text" : "老板娘太抠了，同意的点赞！",
+         }
      },
  ]

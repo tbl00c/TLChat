@@ -22,10 +22,13 @@
         [self addSubview:self.textLabel];
         
         [self p_addMasonry];
-        
-        [self.textLabel setText:@"Hello world!"];
     }
     return self;
+}
+
+- (void)setDetail:(TLMomentDetail *)detail
+{
+    [self.textLabel setText:detail.text];
 }
 
 #pragma mark - # Private Methods -

@@ -12,7 +12,7 @@
 #define         EDGE_LEFT       8.0f
 #define         EDGE_TOP        10.0f
 #define         WIDTH_AVATAR    40.0f
-#define         SPACE_ROW       6.0f
+#define         SPACE_ROW       7.0f
 
 @interface TLMomentBaseCell ()
 
@@ -117,7 +117,6 @@
 {
     if (_detailContainerView == nil) {
         _detailContainerView = [[UIView alloc] init];
-        [_detailContainerView setBackgroundColor:[UIColor orangeColor]];
     }
     return _detailContainerView;
 }

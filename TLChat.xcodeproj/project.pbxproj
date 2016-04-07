@@ -257,6 +257,8 @@
 		C2FB85D91CB6C2B000747B6D /* Moments.json in Resources */ = {isa = PBXBuildFile; fileRef = C2FB85D81CB6C2B000747B6D /* Moments.json */; };
 		C2FB85DC1CB6C76B00747B6D /* TLMomentDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85DB1CB6C76B00747B6D /* TLMomentDetailView.m */; };
 		C2FB85E21CB6C7B900747B6D /* TLMomentCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85E11CB6C7B900747B6D /* TLMomentCommentView.m */; };
+		C2FB85E51CB6CCDD00747B6D /* TLMomentDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85E41CB6CCDD00747B6D /* TLMomentDetail.m */; };
+		C2FB85E81CB6CD0600747B6D /* TLMomentComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85E71CB6CD0600747B6D /* TLMomentComment.m */; };
 		C2FE2F3C1CA9733400E5155B /* TLTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F3B1CA9733400E5155B /* TLTextMessage.m */; };
 		C2FE2F411CA97FFE00E5155B /* TLImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F401CA97FFE00E5155B /* TLImageMessage.m */; };
 		C2FE2F441CA9802700E5155B /* TLExpressionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F431CA9802700E5155B /* TLExpressionMessage.m */; };
@@ -786,6 +788,10 @@
 		C2FB85DB1CB6C76B00747B6D /* TLMomentDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentDetailView.m; sourceTree = "<group>"; };
 		C2FB85E01CB6C7B900747B6D /* TLMomentCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentCommentView.h; sourceTree = "<group>"; };
 		C2FB85E11CB6C7B900747B6D /* TLMomentCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentCommentView.m; sourceTree = "<group>"; };
+		C2FB85E31CB6CCDD00747B6D /* TLMomentDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentDetail.h; sourceTree = "<group>"; };
+		C2FB85E41CB6CCDD00747B6D /* TLMomentDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentDetail.m; sourceTree = "<group>"; };
+		C2FB85E61CB6CD0600747B6D /* TLMomentComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentComment.h; sourceTree = "<group>"; };
+		C2FB85E71CB6CD0600747B6D /* TLMomentComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentComment.m; sourceTree = "<group>"; };
 		C2FE2F391CA96DDB00E5155B /* TLMessageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageProtocol.h; sourceTree = "<group>"; };
 		C2FE2F3A1CA9733400E5155B /* TLTextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTextMessage.h; sourceTree = "<group>"; };
 		C2FE2F3B1CA9733400E5155B /* TLTextMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTextMessage.m; sourceTree = "<group>"; };
@@ -1663,6 +1669,10 @@
 			children = (
 				C274761D1CB6818900C667E6 /* TLMoment.h */,
 				C274761E1CB6818900C667E6 /* TLMoment.m */,
+				C2FB85E31CB6CCDD00747B6D /* TLMomentDetail.h */,
+				C2FB85E41CB6CCDD00747B6D /* TLMomentDetail.m */,
+				C2FB85E61CB6CD0600747B6D /* TLMomentComment.h */,
+				C2FB85E71CB6CD0600747B6D /* TLMomentComment.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2960,6 +2970,7 @@
 				C21574101C9BAC4200B7AC67 /* TLImageMessageCell.m in Sources */,
 				C2994D8C1CA167CF00BAC038 /* TLUser.m in Sources */,
 				C2E294B81C9D268800721405 /* TLChatGroupDetailViewController.m in Sources */,
+				C2FB85E81CB6CD0600747B6D /* TLMomentComment.m in Sources */,
 				C2CF4C7C1C804BF30054637A /* TLSettingButtonCell.m in Sources */,
 				C20DE5171CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.m in Sources */,
 				C2E294C81C9D271400721405 /* TLGroupQRCodeViewController.m in Sources */,
@@ -3124,6 +3135,7 @@
 				C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */,
 				C2CF4C7E1C804BF30054637A /* TLSettingSwitchCell.m in Sources */,
 				C2D851551C68D811007DD697 /* TLSettingHelper.m in Sources */,
+				C2FB85E51CB6CCDD00747B6D /* TLMomentDetail.m in Sources */,
 				C237E9DC1CB2AA240034CEA2 /* TLExpressionChosenViewController+TableView.m in Sources */,
 				C21574011C9BAC4200B7AC67 /* TLEmojiImageTitleItemCell.m in Sources */,
 				C2CF4C841C804BF90054637A /* TLSettingGroup.m in Sources */,

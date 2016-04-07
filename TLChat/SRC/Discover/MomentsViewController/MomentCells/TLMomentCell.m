@@ -36,6 +36,12 @@
     return self;
 }
 
+- (void)setMoment:(TLMoment *)moment
+{
+    [super setMoment:moment];
+    [self.detailView setDetail:moment.detail];
+}
+
 #pragma mark - # Getter -
 - (TLMomentDetailView *)detailView
 {

@@ -7,6 +7,8 @@
 //
 
 #import "TLBaseDataModel.h"
+#import "TLMomentDetail.h"
+#import "TLMomentComment.h"
 
 @interface TLMoment : TLBaseDataModel
 
@@ -20,10 +22,12 @@
 
 @property (nonatomic, strong) NSDate *date;
 
+/// 详细内容
+@property (nonatomic, strong) TLMomentDetail *detail;
 
-#pragma mark - 内容 -
-@property (nonatomic, strong) NSString *text;
+/// 评论
+@property (nonatomic, strong) NSMutableArray *comments;
 
-@property (nonatomic, strong) NSMutableArray *images;
 
 @end
+

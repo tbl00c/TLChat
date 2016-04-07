@@ -8,6 +8,7 @@
 
 #import "TLMomentsViewController.h"
 #import "TLMomentsViewController+TableView.h"
+#import "TLMomentsViewController+Proxy.h"
 
 @interface TLMomentsViewController ()
 
@@ -26,6 +27,17 @@
     [self.navigationItem setRightBarButtonItem:rightBarButton];
     
     [self registerCellForTableView:self.tableView];
+    [self loadData];
+}
+
+
+#pragma mark - # Getter -
+- (TLMomentsProxy *)proxy
+{
+    if (_proxy == nil) {
+        _proxy = [[TLMomentsProxy alloc] init];
+    }
+    return _proxy;
 }
 
 @end

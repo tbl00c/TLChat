@@ -1,5 +1,5 @@
 //
-//  TLMoments.h
+//  TLMoment.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/4/7.
@@ -8,17 +8,9 @@
 
 #import "TLBaseDataModel.h"
 
-@interface TLBell : TLBaseDataModel
+@interface TLMoment : TLBaseDataModel
 
-@property (nonatomic, strong) NSString *bellURL;
-
-@property (nonatomic, strong) NSString *bellIconURL;
-
-@property (nonatomic, strong) NSString *bellTitle;
-
-@end
-
-@interface TLMoments : TLBaseDataModel
+@property (nonatomic, strong) NSString *momentID;
 
 @property (nonatomic, strong) NSString *userID;
 
@@ -33,7 +25,5 @@
 @property (nonatomic, strong) NSString *text;
 
 @property (nonatomic, strong) NSMutableArray *images;
-
-//@property (nonatomic, strong)
 
 @end

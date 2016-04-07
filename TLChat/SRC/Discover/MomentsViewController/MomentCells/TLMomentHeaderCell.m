@@ -1,17 +1,17 @@
 //
-//  TLMomentsHeaderCell.m
+//  TLMomentHeaderCell.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/4/7.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLMomentsHeaderCell.h"
+#import "TLMomentHeaderCell.h"
 #import <UIButton+WebCache.h>
 
 #define         WIDTH_AVATAR        65
 
-@interface TLMomentsHeaderCell ()
+@interface TLMomentHeaderCell ()
 
 @property (nonatomic, strong) UIButton *backgroundWall;
 
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation TLMomentsHeaderCell
+@implementation TLMomentHeaderCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

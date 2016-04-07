@@ -97,8 +97,7 @@
 		C271A5021C83FA0B004372D4 /* TLInfoHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5011C83FA0B004372D4 /* TLInfoHeaderFooterView.m */; };
 		C271A5061C83FEC8004372D4 /* TLFriendDetailUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5051C83FEC8004372D4 /* TLFriendDetailUserCell.m */; };
 		C271A5091C83FEF2004372D4 /* TLFriendDetailAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5081C83FEF2004372D4 /* TLFriendDetailAlbumCell.m */; };
-		C274761A1CB66F3900C667E6 /* TLMomentsHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C27476191CB66F3900C667E6 /* TLMomentsHeaderCell.m */; };
-		C274761F1CB6818900C667E6 /* TLMoments.m in Sources */ = {isa = PBXBuildFile; fileRef = C274761E1CB6818900C667E6 /* TLMoments.m */; };
+		C274761F1CB6818900C667E6 /* TLMoment.m in Sources */ = {isa = PBXBuildFile; fileRef = C274761E1CB6818900C667E6 /* TLMoment.m */; };
 		C2893A7B1CB03E640080C4BB /* NSDate+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A6E1CB03E640080C4BB /* NSDate+TLChat.m */; };
 		C2893A7C1CB03E640080C4BB /* NSFileManager+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A701CB03E640080C4BB /* NSFileManager+TLChat.m */; };
 		C2893A7D1CB03E640080C4BB /* NSString+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A721CB03E640080C4BB /* NSString+Message.m */; };
@@ -250,6 +249,14 @@
 		C2F0EC181C7AB6E30090843C /* TLAboutHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC171C7AB6E30090843C /* TLAboutHeaderView.m */; };
 		C2F0EC1C1C7ABF190090843C /* TLAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */; };
 		C2F9F6811C854F94000EE9ED /* FriendList.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F9F6801C854F94000EE9ED /* FriendList.json */; };
+		C2FB85CA1CB6B8BE00747B6D /* TLMomentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85C91CB6B8BE00747B6D /* TLMomentHeaderCell.m */; };
+		C2FB85CD1CB6B91E00747B6D /* TLMomentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85CC1CB6B91E00747B6D /* TLMomentCell.m */; };
+		C2FB85D01CB6B93400747B6D /* TLMomentBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85CF1CB6B93400747B6D /* TLMomentBaseCell.m */; };
+		C2FB85D31CB6C19500747B6D /* TLMomentsProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85D21CB6C19500747B6D /* TLMomentsProxy.m */; };
+		C2FB85D61CB6C1F600747B6D /* TLMomentsViewController+Proxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85D51CB6C1F600747B6D /* TLMomentsViewController+Proxy.m */; };
+		C2FB85D91CB6C2B000747B6D /* Moments.json in Resources */ = {isa = PBXBuildFile; fileRef = C2FB85D81CB6C2B000747B6D /* Moments.json */; };
+		C2FB85DC1CB6C76B00747B6D /* TLMomentDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85DB1CB6C76B00747B6D /* TLMomentDetailView.m */; };
+		C2FB85E21CB6C7B900747B6D /* TLMomentCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85E11CB6C7B900747B6D /* TLMomentCommentView.m */; };
 		C2FE2F3C1CA9733400E5155B /* TLTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F3B1CA9733400E5155B /* TLTextMessage.m */; };
 		C2FE2F411CA97FFE00E5155B /* TLImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F401CA97FFE00E5155B /* TLImageMessage.m */; };
 		C2FE2F441CA9802700E5155B /* TLExpressionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F431CA9802700E5155B /* TLExpressionMessage.m */; };
@@ -465,10 +472,8 @@
 		C271A5051C83FEC8004372D4 /* TLFriendDetailUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailUserCell.m; sourceTree = "<group>"; };
 		C271A5071C83FEF2004372D4 /* TLFriendDetailAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailAlbumCell.h; sourceTree = "<group>"; };
 		C271A5081C83FEF2004372D4 /* TLFriendDetailAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailAlbumCell.m; sourceTree = "<group>"; };
-		C27476181CB66F3900C667E6 /* TLMomentsHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentsHeaderCell.h; sourceTree = "<group>"; };
-		C27476191CB66F3900C667E6 /* TLMomentsHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentsHeaderCell.m; sourceTree = "<group>"; };
-		C274761D1CB6818900C667E6 /* TLMoments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoments.h; sourceTree = "<group>"; };
-		C274761E1CB6818900C667E6 /* TLMoments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoments.m; sourceTree = "<group>"; };
+		C274761D1CB6818900C667E6 /* TLMoment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoment.h; sourceTree = "<group>"; };
+		C274761E1CB6818900C667E6 /* TLMoment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoment.m; sourceTree = "<group>"; };
 		C2893A6D1CB03E640080C4BB /* NSDate+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TLChat.h"; sourceTree = "<group>"; };
 		C2893A6E1CB03E640080C4BB /* NSDate+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TLChat.m"; sourceTree = "<group>"; };
 		C2893A6F1CB03E640080C4BB /* NSFileManager+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TLChat.h"; sourceTree = "<group>"; };
@@ -766,6 +771,21 @@
 		C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppHelper.m; sourceTree = "<group>"; };
 		C2F9F67D1C854BDE000EE9ED /* TLInfoMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLInfoMacros.h; sourceTree = "<group>"; };
 		C2F9F6801C854F94000EE9ED /* FriendList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendList.json; sourceTree = "<group>"; };
+		C2FB85C81CB6B8BE00747B6D /* TLMomentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentHeaderCell.h; sourceTree = "<group>"; };
+		C2FB85C91CB6B8BE00747B6D /* TLMomentHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentHeaderCell.m; sourceTree = "<group>"; };
+		C2FB85CB1CB6B91E00747B6D /* TLMomentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentCell.h; sourceTree = "<group>"; };
+		C2FB85CC1CB6B91E00747B6D /* TLMomentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentCell.m; sourceTree = "<group>"; };
+		C2FB85CE1CB6B93400747B6D /* TLMomentBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentBaseCell.h; sourceTree = "<group>"; };
+		C2FB85CF1CB6B93400747B6D /* TLMomentBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentBaseCell.m; sourceTree = "<group>"; };
+		C2FB85D11CB6C19500747B6D /* TLMomentsProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentsProxy.h; sourceTree = "<group>"; };
+		C2FB85D21CB6C19500747B6D /* TLMomentsProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentsProxy.m; sourceTree = "<group>"; };
+		C2FB85D41CB6C1F600747B6D /* TLMomentsViewController+Proxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLMomentsViewController+Proxy.h"; sourceTree = "<group>"; };
+		C2FB85D51CB6C1F600747B6D /* TLMomentsViewController+Proxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLMomentsViewController+Proxy.m"; sourceTree = "<group>"; };
+		C2FB85D81CB6C2B000747B6D /* Moments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Moments.json; sourceTree = "<group>"; };
+		C2FB85DA1CB6C76B00747B6D /* TLMomentDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentDetailView.h; sourceTree = "<group>"; };
+		C2FB85DB1CB6C76B00747B6D /* TLMomentDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentDetailView.m; sourceTree = "<group>"; };
+		C2FB85E01CB6C7B900747B6D /* TLMomentCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentCommentView.h; sourceTree = "<group>"; };
+		C2FB85E11CB6C7B900747B6D /* TLMomentCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentCommentView.m; sourceTree = "<group>"; };
 		C2FE2F391CA96DDB00E5155B /* TLMessageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageProtocol.h; sourceTree = "<group>"; };
 		C2FE2F3A1CA9733400E5155B /* TLTextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTextMessage.h; sourceTree = "<group>"; };
 		C2FE2F3B1CA9733400E5155B /* TLTextMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTextMessage.m; sourceTree = "<group>"; };
@@ -1558,11 +1578,13 @@
 		C225AFB41CB2E473000477F3 /* MomentsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C27476171CB66EF800C667E6 /* MomentsCells */,
+				C2FB85C71CB6B8BE00747B6D /* MomentCells */,
 				C225AFB51CB2E4AA000477F3 /* TLMomentsViewController.h */,
 				C225AFB61CB2E4AA000477F3 /* TLMomentsViewController.m */,
 				C225AFB81CB2E7B4000477F3 /* TLMomentsViewController+TableView.h */,
 				C225AFB91CB2E7B4000477F3 /* TLMomentsViewController+TableView.m */,
+				C2FB85D41CB6C1F600747B6D /* TLMomentsViewController+Proxy.h */,
+				C2FB85D51CB6C1F600747B6D /* TLMomentsViewController+Proxy.m */,
 			);
 			path = MomentsViewController;
 			sourceTree = "<group>";
@@ -1626,19 +1648,12 @@
 			path = FriendDetailViews;
 			sourceTree = "<group>";
 		};
-		C27476171CB66EF800C667E6 /* MomentsCells */ = {
-			isa = PBXGroup;
-			children = (
-				C27476181CB66F3900C667E6 /* TLMomentsHeaderCell.h */,
-				C27476191CB66F3900C667E6 /* TLMomentsHeaderCell.m */,
-			);
-			path = MomentsCells;
-			sourceTree = "<group>";
-		};
 		C274761B1CB6804200C667E6 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
 				C274761C1CB6804200C667E6 /* Models */,
+				C2FB85D11CB6C19500747B6D /* TLMomentsProxy.h */,
+				C2FB85D21CB6C19500747B6D /* TLMomentsProxy.m */,
 			);
 			path = Moments;
 			sourceTree = "<group>";
@@ -1646,8 +1661,8 @@
 		C274761C1CB6804200C667E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C274761D1CB6818900C667E6 /* TLMoments.h */,
-				C274761E1CB6818900C667E6 /* TLMoments.m */,
+				C274761D1CB6818900C667E6 /* TLMoment.h */,
+				C274761E1CB6818900C667E6 /* TLMoment.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2703,6 +2718,7 @@
 		C2F9F67E1C854F67000EE9ED /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				C2FB85D71CB6C29000747B6D /* Moments */,
 				C2F9F67F1C854F77000EE9ED /* Friends */,
 				C209074F1C97EE0000AB87A5 /* JSPatch */,
 			);
@@ -2716,6 +2732,31 @@
 				C21C6E1D1C8D7B6B0018C570 /* FriendGroupList.json */,
 			);
 			path = Friends;
+			sourceTree = "<group>";
+		};
+		C2FB85C71CB6B8BE00747B6D /* MomentCells */ = {
+			isa = PBXGroup;
+			children = (
+				C2FB85C81CB6B8BE00747B6D /* TLMomentHeaderCell.h */,
+				C2FB85C91CB6B8BE00747B6D /* TLMomentHeaderCell.m */,
+				C2FB85CE1CB6B93400747B6D /* TLMomentBaseCell.h */,
+				C2FB85CF1CB6B93400747B6D /* TLMomentBaseCell.m */,
+				C2FB85DA1CB6C76B00747B6D /* TLMomentDetailView.h */,
+				C2FB85DB1CB6C76B00747B6D /* TLMomentDetailView.m */,
+				C2FB85E01CB6C7B900747B6D /* TLMomentCommentView.h */,
+				C2FB85E11CB6C7B900747B6D /* TLMomentCommentView.m */,
+				C2FB85CB1CB6B91E00747B6D /* TLMomentCell.h */,
+				C2FB85CC1CB6B91E00747B6D /* TLMomentCell.m */,
+			);
+			path = MomentCells;
+			sourceTree = "<group>";
+		};
+		C2FB85D71CB6C29000747B6D /* Moments */ = {
+			isa = PBXGroup;
+			children = (
+				C2FB85D81CB6C2B000747B6D /* Moments.json */,
+			);
+			path = Moments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2832,6 +2873,7 @@
 				C2B9E4331C65F5DA00CEBA81 /* Mine.xcassets in Resources */,
 				C209074D1C97ED7300AB87A5 /* TusijiEmoji.json in Resources */,
 				C2D500E71C5639210088997C /* Conversation.xcassets in Resources */,
+				C2FB85D91CB6C2B000747B6D /* Moments.json in Resources */,
 				C2CE0BD41C718702006C5C2A /* Chat.xcassets in Resources */,
 				C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */,
 				C20907531C97F15200AB87A5 /* main.js in Resources */,
@@ -2925,11 +2967,13 @@
 				C2B9E42D1C65E6CF00CEBA81 /* TLDiscoverHelper.m in Sources */,
 				C237E9D81CB244830034CEA2 /* TLExpressionChosenViewController.m in Sources */,
 				C2142EF61C5376D40030B29B /* TLViewController.m in Sources */,
+				C2FB85CD1CB6B91E00747B6D /* TLMomentCell.m in Sources */,
 				C2893A7D1CB03E640080C4BB /* NSString+Message.m in Sources */,
 				C2E6B82C1C9A61190045A6EB /* TLConversationViewController+Delegate.m in Sources */,
 				C2E294A01C9D1DAA00721405 /* TLChatViewController.m in Sources */,
 				C215740B1C9BAC4200B7AC67 /* TLEmojiKeyboard.m in Sources */,
 				C225AFBA1CB2E7B4000477F3 /* TLMomentsViewController+TableView.m in Sources */,
+				C2FB85E21CB6C7B900747B6D /* TLMomentCommentView.m in Sources */,
 				C215740D1C9BAC4200B7AC67 /* TLMoreKeyboardItem.m in Sources */,
 				C2986D491C9EC08400A74166 /* TLConversation.m in Sources */,
 				C2994D901CA167CF00BAC038 /* TLUserSetting.m in Sources */,
@@ -3030,10 +3074,9 @@
 				C2D500D51C55C9350088997C /* TLMineViewController.m in Sources */,
 				C2E570081C898FB2009662AB /* TLScannerBackgroundView.m in Sources */,
 				C2E6B8221C9A60150045A6EB /* TLFriendDetailViewController+Delegate.m in Sources */,
-				C274761A1CB66F3900C667E6 /* TLMomentsHeaderCell.m in Sources */,
 				C2028D281C8D2CF20060E271 /* TLNewFriendViewController.m in Sources */,
 				C2B9E43A1C66451B00CEBA81 /* TLUserHelper.m in Sources */,
-				C274761F1CB6818900C667E6 /* TLMoments.m in Sources */,
+				C274761F1CB6818900C667E6 /* TLMoment.m in Sources */,
 				C21574151C9BAC4200B7AC67 /* TLChatTableViewController.m in Sources */,
 				C2A5ACA01C8EB07E007A4574 /* TLChatDetailViewController.m in Sources */,
 				C2E570021C898305009662AB /* TLScannerButton.m in Sources */,
@@ -3053,6 +3096,7 @@
 				C21574061C9BAC4200B7AC67 /* TLEmojiGroup.m in Sources */,
 				C21573FB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m in Sources */,
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
+				C2FB85DC1CB6C76B00747B6D /* TLMomentDetailView.m in Sources */,
 				C2E6B80E1C9A5B8C0045A6EB /* TLFriendSearchViewController.m in Sources */,
 				C2E895171CB1192000F4451E /* TLDBExpressionStore.m in Sources */,
 				C2A5AC8A1C8EA6E2007A4574 /* TLQRCodeViewController.m in Sources */,
@@ -3062,6 +3106,8 @@
 				C2D69D9B1C92D8AE00EE91D7 /* TLAddMenuHelper.m in Sources */,
 				C28C446A1C883827005975FF /* TLShakeHelper.m in Sources */,
 				C2A5ACAA1C8EBE21007A4574 /* TLAddThirdPartFriendCell.m in Sources */,
+				C2FB85D31CB6C19500747B6D /* TLMomentsProxy.m in Sources */,
+				C2FB85CA1CB6B8BE00747B6D /* TLMomentHeaderCell.m in Sources */,
 				C2A98BC51C89D57300029AD5 /* TLMyQRCodeViewController.m in Sources */,
 				C21574131C9BAC4200B7AC67 /* TLTextMessageCell.m in Sources */,
 				C2893A7C1CB03E640080C4BB /* NSFileManager+TLChat.m in Sources */,
@@ -3071,6 +3117,7 @@
 				C2E6B80A1C9A5B570045A6EB /* TLGroupSearchViewController.m in Sources */,
 				C215740C1C9BAC4200B7AC67 /* TLMoreKeyboardCell.m in Sources */,
 				C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */,
+				C2FB85D01CB6B93400747B6D /* TLMomentBaseCell.m in Sources */,
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */,
 				C271A5091C83FEF2004372D4 /* TLFriendDetailAlbumCell.m in Sources */,
@@ -3133,6 +3180,7 @@
 				C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */,
 				C28C445F1C8818FD005975FF /* NSDate+Utilities.m in Sources */,
 				C2BF17D31C86DB50003318CB /* UIImage+Color.m in Sources */,
+				C2FB85D61CB6C1F600747B6D /* TLMomentsViewController+Proxy.m in Sources */,
 				C2232E2C1C9FA38E0010CDF8 /* TLMessageManager+MessageRecord.m in Sources */,
 				C2B9E4211C65DA0900CEBA81 /* TLMenuViewController.m in Sources */,
 				C2E6B7FC1C9A57860045A6EB /* TLContactCell.m in Sources */,

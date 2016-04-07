@@ -7,13 +7,15 @@
 //
 
 #import "TLMomentsViewController+TableView.h"
-#import "TLMomentsHeaderCell.h"
+#import "TLMomentHeaderCell.h"
+#import "TLMomentCell.h"
 
 @implementation TLMomentsViewController (TableView)
 
 - (void)registerCellForTableView:(UITableView *)tableView
 {
-    [tableView registerClass:[TLMomentsHeaderCell class] forCellReuseIdentifier:@"TLMomentsHeaderCell"];
+    [tableView registerClass:[TLMomentHeaderCell class] forCellReuseIdentifier:@"TLMomentHeaderCell"];
+    [tableView registerClass:[TLMomentCell class] forCellReuseIdentifier:@"TLMomentCell"];
 }
 
 #pragma mark - # Delegate -
@@ -25,11 +27,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        TLMomentsHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentsHeaderCell"];
+        TLMomentHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentHeaderCell"];
         [cell setUser:[TLUserHelper sharedHelper].user];
         return cell;
     }
-    return nil;
+    TLMomentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentCell"];
+    TLMoment *moment = [self.data objectAtIndex:indexPath.row - 1];
+    [cell setMoment:moment];
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -37,7 +42,7 @@
     if (indexPath.row == 0) {
         return 260.0f;
     }
-    return 0.0f;
+    return 77.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

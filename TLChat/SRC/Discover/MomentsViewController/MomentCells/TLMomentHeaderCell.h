@@ -1,5 +1,5 @@
 //
-//  TLMomentsHeaderCell.h
+//  TLMomentHeaderCell.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/4/7.
@@ -8,7 +8,7 @@
 
 #import "TLTableViewCell.h"
 
-@interface TLMomentsHeaderCell : TLTableViewCell
+@interface TLMomentHeaderCell : TLTableViewCell
 
 @property (nonatomic, strong) TLUser *user;
 

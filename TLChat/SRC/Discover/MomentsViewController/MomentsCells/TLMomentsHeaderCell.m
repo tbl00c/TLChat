@@ -55,7 +55,8 @@
 {
     [self.backgroundWall mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self.contentView);
-        make.bottom.mas_equalTo(self.mottoLabel.mas_top).mas_offset(- WIDTH_AVATAR / 3.0f - 10.0f);
+        make.bottom.mas_equalTo(self.mottoLabel.mas_top).mas_offset(- WIDTH_AVATAR / 3.0f - 8.0f);
+        make.top.mas_lessThanOrEqualTo(self.contentView.mas_top);
     }];
     
     [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -70,7 +71,7 @@
     }];
     
     [self.mottoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.contentView).mas_offset(-10.0f);
+        make.bottom.mas_equalTo(self.contentView).mas_offset(-8.0f);
         make.right.mas_equalTo(self.avatarView);
         make.width.mas_lessThanOrEqualTo(WIDTH_SCREEN * 0.4);
     }];

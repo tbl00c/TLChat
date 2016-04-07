@@ -10,4 +10,6 @@
 
 @interface TLMomentsViewController (TableView)
 
+- (void)registerCellForTableView:(UITableView *)tableView;
+
 @end

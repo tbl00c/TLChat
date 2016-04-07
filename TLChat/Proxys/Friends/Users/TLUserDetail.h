@@ -26,6 +26,8 @@
 
 @property (nonatomic, strong) NSString *motto;
 
+@property (nonatomic, strong) NSString *momentsWallURL;
+
 
 /// 备注信息
 @property (nonatomic, strong) NSString *remarkInfo;
@@ -34,7 +36,7 @@
 @property (nonatomic, strong) NSString *remarkImagePath;
 
 /// 备注图片 (URL)
-@property (nonatomic, strong) NSString *remarkImagaURL;
+@property (nonatomic, strong) NSString *remarkImageURL;
 
 /// 标签
 @property (nonatomic, strong) NSMutableArray *tags;

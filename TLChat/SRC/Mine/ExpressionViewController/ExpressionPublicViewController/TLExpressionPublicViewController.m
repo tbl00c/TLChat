@@ -29,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setAutomaticallyAdjustsScrollViewInsets:NO];
     [self.view addSubview:self.collectionView];
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
 //    [self.collectionView setTableHeaderView:self.searchController.searchBar];

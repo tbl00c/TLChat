@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setAutomaticallyAdjustsScrollViewInsets:NO];
     [self.navigationItem setTitleView:self.segmentedControl];
     [self.view addSubview:self.expChosenVC.view];
     [self addChildViewController:self.expChosenVC];

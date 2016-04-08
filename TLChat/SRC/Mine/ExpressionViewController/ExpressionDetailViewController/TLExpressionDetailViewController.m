@@ -30,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.view addSubview:self.collectionView];
     
     [self registerCellForCollectionView:self.collectionView];

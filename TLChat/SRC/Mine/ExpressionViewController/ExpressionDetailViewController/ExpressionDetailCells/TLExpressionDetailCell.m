@@ -32,7 +32,7 @@
 - (void)setEmoji:(TLEmoji *)emoji
 {
     _emoji = emoji;
-    [self.imageView sd_setImageWithURL:TLURL(emoji.emojiURL) placeholderImage:[UIImage imageWithColor:[UIColor colorSearchBarTint]]];
+    [self.imageView sd_setImageWithURL:TLURL(emoji.emojiURL)];
 }
 
 #pragma mark - # Private Methods -

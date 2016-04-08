@@ -9,22 +9,74 @@
 #import "TLExpressionProxy.h"
 #import "TLEmojiGroup.h"
 
+#define     IEXPRESSION_NEW_URL         @"http://123.57.155.230:8080/ibiaoqing/admin/expre/listBy.do?pageNumber=%ld&status=Y&status1=B"
+#define     IEXPRESSION_PUBLIC_URL      @"http://123.57.155.230:8080/ibiaoqing/admin/expre/listBy.do?pageNumber=%ld&status=Y&status1=B&count=yes"
+#define     IEXPRESSION_DETAIL_URL      @"http://123.57.155.230:8080/ibiaoqing/admin/expre/getByeId.do?pageNumber=%ld&eId=%@"
+
 @implementation TLExpressionProxy
 
-- (void)requestExpressionChosenListSuccess:(void (^)(id))success
-                                   failure:(void (^)(NSString *))failure
+- (void)requestExpressionChosenListByPageIndex:(NSInteger)pageIndex
+                                       success:(void (^)(id data))success
+                                       failure:(void (^)(NSString *error))failure
 {
-    TLEmojiGroup *group1 = [[TLEmojiGroup alloc] init];
-    group1.groupIconURL = @"http://e.hiphotos.baidu.com/zhidao/pic/item/8601a18b87d6277f52f5409d2b381f30e824fcb4.jpg";
-    group1.groupName = @"金馆长";
-    group1.groupDetailInfo = @"老板，来个老婆，不要饼!";
-    NSMutableArray *data = [[NSMutableArray alloc] initWithArray:@[group1, group1, group1, group1, group1, group1, group1, group1]];
-    success(data);
-    NSString *urlString = [TLHost expressionChosenURL];
+    NSString *urlString = [NSString stringWithFormat:IEXPRESSION_NEW_URL, (long)pageIndex];
     [TLNetworking postToUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"YES");
+        NSArray *respArray = [responseObject mj_JSONObject];
+        NSString *status = respArray[0];
+        if ([status isEqualToString:@"OK"]) {
+            NSArray *infoArray = respArray[2];
+            NSMutableArray *data = [TLEmojiGroup mj_objectArrayWithKeyValuesArray:infoArray];
+            success(data);
+        }
+        else {
+            failure(status);
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"NO");
+        failure([error description]);
+    }];
+}
+
+- (void)requestExpressionPublicListByPageIndex:(NSInteger)pageIndex
+                                       success:(void (^)(id data))success
+                                       failure:(void (^)(NSString *error))failure
+{
+    NSString *urlString = [NSString stringWithFormat:IEXPRESSION_PUBLIC_URL, (long)pageIndex];
+    [TLNetworking postToUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *respArray = [responseObject mj_JSONObject];
+        NSString *status = respArray[0];
+        if ([status isEqualToString:@"OK"]) {
+            NSArray *infoArray = respArray[2];
+            NSMutableArray *data = [TLEmojiGroup mj_objectArrayWithKeyValuesArray:infoArray];
+            success(data);
+        }
+        else {
+            failure(status);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure([error description]);
+    }];
+}
+
+
+- (void)requestExpressionGroupDetailByGroupID:(NSString *)groupID
+                                    pageIndex:(NSInteger)pageIndex
+                                      success:(void (^)(id data))success
+                                      failure:(void (^)(NSString *error))failure
+{
+    NSString *urlString = [NSString stringWithFormat:IEXPRESSION_DETAIL_URL, (long)pageIndex, groupID];
+    [TLNetworking postToUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *respArray = [responseObject mj_JSONObject];
+        NSString *status = respArray[0];
+        if ([status isEqualToString:@"OK"]) {
+            NSArray *infoArray = respArray[2];
+            NSMutableArray *data = [TLEmoji mj_objectArrayWithKeyValuesArray:infoArray];
+            success(data);
+        }
+        else {
+            failure(status);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure([error description]);
     }];
 }
 

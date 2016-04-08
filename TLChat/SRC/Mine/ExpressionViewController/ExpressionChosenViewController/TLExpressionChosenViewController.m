@@ -8,13 +8,12 @@
 
 #import "TLExpressionChosenViewController.h"
 #import "TLExpressionChosenViewController+TableView.h"
+#import "TLExpressionChosenViewController+Proxy.h"
 #import "TLExpressionSearchViewController.h"
 #import "TLSearchController.h"
-#import "TLExpressionProxy.h"
+#import <MJRefresh.h>
 
 @interface TLExpressionChosenViewController () <UISearchBarDelegate>
-
-@property (nonatomic, strong) TLExpressionProxy *proxy;
 
 @property (nonatomic, strong) TLSearchController *searchController;
 @property (nonatomic, strong) TLExpressionSearchViewController *searchVC;
@@ -26,19 +25,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tableView setFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN)];
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     
-    [self registerCellsForTableView:self.tableView];
     
-    __weak typeof(self) weakSelf = self;
-    [self.proxy requestExpressionChosenListSuccess:^(id data) {
-        NSLog(@"OK");
-        weakSelf.data = data;
-        [weakSelf.tableView reloadData];
-    } failure:^(NSString *error) {
-        NSLog(@"NO");
-    }];
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    [footer setTitle:@"正在加载..." forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"" forState:MJRefreshStateNoMoreData];
+    [self.tableView setMj_footer:footer];
+    
+    [self registerCellsForTableView:self.tableView];
+    [self loadDataWithLoadingView:YES];
 }
 
 #pragma mark - #Delegate -

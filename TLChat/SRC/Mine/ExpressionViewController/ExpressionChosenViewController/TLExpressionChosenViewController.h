@@ -7,9 +7,16 @@
 //
 
 #import "TLTableViewController.h"
+#import "TLExpressionProxy.h"
 
 @interface TLExpressionChosenViewController : TLTableViewController
+{
+    NSInteger kPageIndex;
+}
 
 @property (nonatomic, strong) NSMutableArray *data;
+
+@property (nonatomic, strong) TLExpressionProxy *proxy;
+
 
 @end

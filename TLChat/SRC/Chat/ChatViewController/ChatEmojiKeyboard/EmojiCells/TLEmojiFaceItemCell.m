@@ -29,7 +29,7 @@
 - (void)setEmojiItem:(TLEmoji *)emojiItem
 {
     [super setEmojiItem:emojiItem];
-    [self.imageView setImage:emojiItem.title == nil ? nil : [UIImage imageNamed:emojiItem.title]];
+    [self.imageView setImage:emojiItem.emojiName == nil ? nil : [UIImage imageNamed:emojiItem.emojiName]];
 }
 
 #pragma mark - Private Methods -

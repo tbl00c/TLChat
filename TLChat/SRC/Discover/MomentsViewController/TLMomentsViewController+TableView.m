@@ -42,7 +42,7 @@
     if (indexPath.row == 0) {
         return 260.0f;
     }
-    return 120.0f;
+    return 160.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

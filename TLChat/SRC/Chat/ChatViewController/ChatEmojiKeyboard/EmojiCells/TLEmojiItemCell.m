@@ -28,7 +28,7 @@
 - (void)setEmojiItem:(TLEmoji *)emojiItem
 {
     [super setEmojiItem:emojiItem];
-    [self.label setText:emojiItem.title];
+    [self.label setText:emojiItem.emojiName];
 }
 
 #pragma mark - Private Methods -

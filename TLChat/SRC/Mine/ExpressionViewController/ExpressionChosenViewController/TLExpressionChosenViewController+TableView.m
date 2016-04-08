@@ -7,6 +7,7 @@
 //
 
 #import "TLExpressionChosenViewController+TableView.h"
+#import "TLExpressionDetailViewController.h"
 #import "TLExpressionCell.h"
 
 @implementation TLExpressionChosenViewController (TableView)
@@ -32,6 +33,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    TLEmojiGroup *group = [self.data objectAtIndex:indexPath.row];
+    TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
+    [detailVC setGroup:group];
+    [self.parentViewController setHidesBottomBarWhenPushed:YES];
+    [self.parentViewController.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

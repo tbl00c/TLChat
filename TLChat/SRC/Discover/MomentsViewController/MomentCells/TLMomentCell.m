@@ -8,13 +8,13 @@
 
 #import "TLMomentCell.h"
 #import "TLMomentDetailView.h"
-#import "TLMomentCommentView.h"
+#import "TLMomentExtensionView.h"
 
 @interface TLMomentCell ()
 
 @property (nonatomic, strong) TLMomentDetailView *detailView;
 
-@property (nonatomic, strong) TLMomentCommentView *commentView;
+@property (nonatomic, strong) TLMomentExtensionView *extensionView;
 
 @end
 
@@ -24,13 +24,13 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self.detailContainerView addSubview:self.detailView];
-        [self.commentContainerView addSubview:self.commentView];
+        [self.extensionContainerView addSubview:self.extensionView];
         
         [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self.detailContainerView);
         }];
-        [self.commentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(self.commentContainerView);
+        [self.extensionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self.extensionContainerView);
         }];
     }
     return self;
@@ -51,12 +51,12 @@
     return _detailView;
 }
 
-- (TLMomentCommentView *)commentView
+- (TLMomentExtensionView *)extensionView
 {
-    if (_commentView == nil) {
-        _commentView = [[TLMomentCommentView alloc] init];
+    if (_extensionView == nil) {
+        _extensionView = [[TLMomentExtensionView alloc] init];
     }
-    return _commentView;
+    return _extensionView;
 }
 
 @end

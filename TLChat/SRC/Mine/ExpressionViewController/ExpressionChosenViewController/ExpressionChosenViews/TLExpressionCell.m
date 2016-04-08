@@ -9,6 +9,10 @@
 #import "TLExpressionCell.h"
 #import <UIImageView+WebCache.h>
 
+#define         EDGE_TOP        10.0f
+#define         EDGE_LEFT       15.0f
+#define         ROW_SPCAE       10.0f
+
 @interface TLExpressionCell ()
 
 @property (nonatomic, strong) UIImageView *iconImageView;
@@ -51,28 +55,28 @@
 - (void)p_addMasonry
 {
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.contentView).mas_offset(15.0f);
-        make.top.mas_equalTo(self.contentView).mas_offset(8.0f);
-        make.bottom.mas_equalTo(self.contentView).mas_offset(-8.0f);
+        make.left.mas_equalTo(self.contentView).mas_offset(EDGE_LEFT);
+        make.top.mas_equalTo(self.contentView).mas_offset(EDGE_TOP);
+        make.bottom.mas_equalTo(self.contentView).mas_offset(-EDGE_TOP);
         make.width.mas_equalTo(self.iconImageView.mas_height);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.iconImageView.mas_centerY).mas_offset(-1.5f);
-        make.left.mas_equalTo(self.iconImageView.mas_right).mas_offset(10.0f);
-        make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-10);
+        make.bottom.mas_equalTo(self.iconImageView.mas_centerY).mas_offset(-2.0f);
+        make.left.mas_equalTo(self.iconImageView.mas_right).mas_offset(13.0f);
+        make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-EDGE_LEFT);
     }];
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.iconImageView.mas_centerY).mas_offset(4.5f);
+        make.top.mas_equalTo(self.iconImageView.mas_centerY).mas_offset(5.0);
         make.left.mas_equalTo(self.titleLabel);
-        make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-10);
+        make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-EDGE_LEFT);
     }];
     [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.top.mas_equalTo(self.contentView);
     }];
     [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.contentView).mas_offset(-10.0f);
+        make.right.mas_equalTo(self.contentView).mas_offset(-EDGE_LEFT);
         make.centerY.mas_equalTo(self.contentView);
-        make.size.mas_equalTo(CGSizeMake(60, 27));
+        make.size.mas_equalTo(CGSizeMake(60, 26));
     }];
 }
 
@@ -81,6 +85,9 @@
 {
     if (_iconImageView == nil) {
         _iconImageView = [[UIImageView alloc] init];
+        [_iconImageView setBackgroundColor:[UIColor clearColor]];
+        [_iconImageView.layer setMasksToBounds:YES];
+        [_iconImageView.layer setCornerRadius:5.0f];
     }
     return _iconImageView;
 }
@@ -109,6 +116,7 @@
     if (_tagView == nil) {
         _tagView = [[UIImageView alloc] init];
         [_tagView setImage:[UIImage imageNamed:@"icon_corner_new"]];
+        [_tagView setHidden:YES];
     }
     return _tagView;
 }

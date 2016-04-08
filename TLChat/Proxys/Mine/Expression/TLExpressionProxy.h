@@ -10,7 +10,26 @@
 
 @interface TLExpressionProxy : TLBaseProxy
 
-- (void)requestExpressionChosenListSuccess:(void (^)(id data))success
-                                   failure:(void (^)(NSString *error))failure;
+/**
+ *  精选表情
+ */
+- (void)requestExpressionChosenListByPageIndex:(NSInteger)page
+                                       success:(void (^)(id data))success
+                                       failure:(void (^)(NSString *error))failure;
+
+/**
+ *  网络表情
+ */
+- (void)requestExpressionPublicListByPageIndex:(NSInteger)page
+                                       success:(void (^)(id data))success
+                                       failure:(void (^)(NSString *error))failure;
+
+/**
+ *  表情详情
+ */
+- (void)requestExpressionGroupDetailByGroupID:(NSString *)groupID
+                                    pageIndex:(NSInteger)pageIndex
+                                      success:(void (^)(id data))success
+                                      failure:(void (^)(NSString *error))failure;
 
 @end

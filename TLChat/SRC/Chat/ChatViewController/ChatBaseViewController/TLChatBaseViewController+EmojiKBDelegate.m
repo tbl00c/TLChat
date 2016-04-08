@@ -15,21 +15,21 @@
 - (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didSelectedEmojiItem:(TLEmoji *)emoji
 {
     if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
-        [self.chatBar addEmojiString:emoji.title];
+        [self.chatBar addEmojiString:emoji.emojiName];
     }
     else {
         TLExpressionMessage *message = [[TLExpressionMessage alloc] init];
         message.fromUser = [TLUserHelper sharedHelper].user;
         message.messageType = TLMessageTypeExpression;
         message.ownerTyper = TLMessageOwnerTypeSelf;
-        message.path = emoji.path;
+        message.path = emoji.emojiPath;
         [self sendMessage:message];
         if (self.curChatType == TLChatVCTypeFriend) {
             TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
             message1.fromUser = self.user;
             message1.messageType = TLMessageTypeExpression;
             message1.ownerTyper = TLMessageOwnerTypeFriend;
-            message1.path = emoji.path;
+            message1.path = emoji.emojiPath;
             [self sendMessage:message1];
         }
         else {
@@ -39,7 +39,7 @@
                 message1.fromUser = user;
                 message1.messageType = TLMessageTypeExpression;
                 message1.ownerTyper = TLMessageOwnerTypeFriend;
-                message1.path = emoji.path;
+                message1.path = emoji.emojiPath;
                 [self sendMessage:message1];
             }
         }

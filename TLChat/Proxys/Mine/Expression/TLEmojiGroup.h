@@ -23,9 +23,8 @@
 
 @property (nonatomic, strong) NSString *groupIconURL;
 
-@property (nonatomic, strong) NSMutableArray *data;
-
-@property (nonatomic, strong) NSString *path;
+/// 总数
+@property (nonatomic, assign) NSUInteger count;
 
 /// 详细信息
 @property (nonatomic, strong) NSString *groupInfo;
@@ -38,10 +37,12 @@
 @property (nonatomic, strong) NSString *authID;
 
 
+#pragma mark - 本地信息
+@property (nonatomic, strong) NSMutableArray *data;
+
+@property (nonatomic, strong) NSString *path;
 
 #pragma mark - 展示用
-/// 总数
-@property (nonatomic, assign) NSUInteger count;
 
 /// 每页个数
 @property (nonatomic, assign) NSUInteger pageItemCount;

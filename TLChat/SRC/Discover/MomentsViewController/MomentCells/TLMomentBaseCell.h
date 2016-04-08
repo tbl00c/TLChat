@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) UIView *detailContainerView;
 
-@property (nonatomic, strong) UIView *commentContainerView;
+@property (nonatomic, strong) UIView *extensionContainerView;
 
 @property (nonatomic, strong) TLMoment *moment;
 

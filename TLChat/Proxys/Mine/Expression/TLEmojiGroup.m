@@ -10,6 +10,18 @@
 
 @implementation TLEmojiGroup
 
++ (NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{
+             @"groupID" : @"eId",
+             @"groupIconURL" : @"coverUrl",
+             @"groupName" : @"eName",
+             @"groupInfo" : @"memo",
+             @"groupDetailInfo" : @"memo1",
+             @"count" : @"picCount",
+             };
+}
+
 - (void)setType:(TLEmojiType)type
 {
     _type = type;
@@ -43,7 +55,10 @@
 
 - (NSUInteger)count
 {
-    return self.data.count;
+    if (_count == 0) {
+        _count = self.data.count;
+    }
+    return _count;
 }
 
 - (id)objectAtIndex:(NSUInteger)index

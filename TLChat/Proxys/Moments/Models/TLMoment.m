@@ -15,7 +15,7 @@
     if (self = [super init]) {
         [TLUser mj_setupObjectClassInArray:^NSDictionary *{
             return @{ @"detail" : @"TLMomentDetail",
-                      @"moment" : @"TLMomentComment"};
+                      @"extension" : @"TLMomentExtension"};
         }];
     }
     return self;

@@ -9,8 +9,8 @@
 #import "TLMomentBaseCell.h"
 #import <UIButton+WebCache.h>
 
-#define         EDGE_LEFT       8.0f
-#define         EDGE_TOP        10.0f
+#define         EDGE_LEFT       10.0f
+#define         EDGE_TOP        12.0f
 #define         WIDTH_AVATAR    40.0f
 #define         SPACE_ROW       7.0f
 
@@ -38,7 +38,7 @@
         [self.contentView addSubview:self.avatarView];
         [self.contentView addSubview:self.usernameView];
         [self.contentView addSubview:self.detailContainerView];
-        [self.contentView addSubview:self.commentContainerView];
+        [self.contentView addSubview:self.extensionContainerView];
         [self.contentView addSubview:self.dateLabel];
         [self.contentView addSubview:self.originLabel];
         [self.contentView addSubview:self.moreButton];
@@ -87,8 +87,9 @@
     [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.dateLabel);
         make.right.mas_equalTo(self.detailContainerView);
+        make.size.mas_equalTo(CGSizeMake(25, 25));
     }];
-    [self.commentContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.extensionContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.dateLabel.mas_bottom).mas_offset(SPACE_ROW);
         make.left.and.right.mas_equalTo(self.detailContainerView);
     }];
@@ -121,13 +122,12 @@
     return _detailContainerView;
 }
 
-- (UIView *)commentContainerView
+- (UIView *)extensionContainerView
 {
-    if (_commentContainerView == nil) {
-        _commentContainerView = [[UIView alloc] init];
-        [_commentContainerView setBackgroundColor:[UIColor purpleColor]];
+    if (_extensionContainerView == nil) {
+        _extensionContainerView = [[UIView alloc] init];
     }
-    return _commentContainerView;
+    return _extensionContainerView;
 }
 
 - (UILabel *)dateLabel
@@ -154,6 +154,7 @@
 {
     if (_moreButton == nil) {
         _moreButton = [[UIButton alloc] init];
+        [_moreButton setImage:[UIImage imageNamed:@"moments_more"] imageHL:[UIImage imageNamed:@"moments_moreHL"]];
     }
     return _moreButton;
 }

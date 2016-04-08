@@ -17,8 +17,12 @@
 
 @property (nonatomic, strong) NSString *emojiID;
 
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *emojiName;
 
-@property (nonatomic, strong) NSString *path;
+@property (nonatomic, strong) NSString *emojiPath;
+
+@property (nonatomic, strong) NSString *emojiURL;
+
+@property (nonatomic, assign) CGFloat size;
 
 @end

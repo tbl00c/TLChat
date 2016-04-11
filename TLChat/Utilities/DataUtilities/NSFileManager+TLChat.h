@@ -42,6 +42,11 @@
 + (NSString *)pathContactsAvatar:(NSString *)imageName;
 
 /**
+ *  表情
+ */
++ (NSString *)pathExpressionForGroupID:(NSString *)groupID;
+
+/**
  *  数据 — 本地通讯录
  */
 + (NSString *)pathContactsData;

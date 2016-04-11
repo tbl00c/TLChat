@@ -46,14 +46,9 @@
                         uid,
                         fid,
                         [NSNumber numberWithInteger:type],
-                        [NSString stringWithFormat:@"%lf", date.timeIntervalSince1970],
+                        TLTimeStamp(date),
                         [NSNumber numberWithInteger:unreadCount],
-                        @"",
-                        @"",
-                        @"",
-                        @"",
-                        @"",
-                        nil];
+                        @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     return ok;
 }

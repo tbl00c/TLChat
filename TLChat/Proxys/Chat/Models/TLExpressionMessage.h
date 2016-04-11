@@ -7,12 +7,12 @@
 //
 
 #import "TLMessage.h"
+#import "TLEmoji.h"
 
 @interface TLExpressionMessage : TLMessage
 
-@property (nonatomic, strong) NSString *expGroupID;         // 表情专辑ID
-@property (nonatomic, strong) NSString *expItemID;          // 表情ID
+@property (nonatomic, strong) TLEmoji *emoji;
 
-@property (nonatomic, strong) NSString *path;
+@property (nonatomic, strong, readonly) NSString *path;
 
 @end

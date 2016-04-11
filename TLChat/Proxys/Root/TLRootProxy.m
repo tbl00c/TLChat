@@ -14,7 +14,7 @@
                              failure:(void (^)(NSString *))error
 {
     NSString *urlString = [TLHost clientInitInfoURL];
-    [TLNetworking postToUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [TLNetworking postUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"OK");
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"NO");

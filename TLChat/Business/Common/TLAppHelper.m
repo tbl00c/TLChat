@@ -24,7 +24,7 @@ static TLAppHelper *helper;
 - (NSString *)version
 {
     if (_version == nil) {
-        _version = [[[NSBundle mainBundle]infoDictionary] objectForKey:@"CFBundleVersion"];
+        _version = [[[NSBundle mainBundle]infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     }
     return _version;
 }

@@ -11,10 +11,10 @@
 
 @implementation TLNetworking
 
-+ (NSURLSessionDataTask *)postToUrl:(NSString *)urlString
-                         parameters:(id)parameters
-                            success:(void (^)(NSURLSessionDataTask *, id))success
-                            failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
++ (NSURLSessionDataTask *)postUrl:(NSString *)urlString
+                       parameters:(id)parameters
+                          success:(void (^)(NSURLSessionDataTask *, id))success
+                          failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];

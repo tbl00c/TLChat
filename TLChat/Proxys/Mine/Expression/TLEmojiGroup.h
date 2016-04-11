@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) NSString *groupName;
 
+@property (nonatomic, strong) NSString *path;
+
 @property (nonatomic, strong) NSString *groupIconPath;
 
 @property (nonatomic, strong) NSString *groupIconURL;
@@ -31,6 +33,8 @@
 
 @property (nonatomic, strong) NSString *groupDetailInfo;
 
+@property (nonatomic, strong) NSDate *date;
+
 /// 作者
 @property (nonatomic, strong) NSString *authName;
 
@@ -40,7 +44,6 @@
 #pragma mark - 本地信息
 @property (nonatomic, strong) NSMutableArray *data;
 
-@property (nonatomic, strong) NSString *path;
 
 #pragma mark - 展示用
 

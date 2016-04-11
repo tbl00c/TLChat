@@ -49,7 +49,9 @@ static NSInteger lastIndex = -1;
             if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboard:didTouchEmojiItem:atRect:)]) {
                 //FIXME: emoji类型确定的方式太LOW！
                 emoji.type = self.curGroup.type;
-                [self.delegate emojiKeyboard:self didTouchEmojiItem:emoji atRect:[cell frame]];
+                CGRect rect = [cell frame];
+                rect.origin.x = rect.origin.x - self.width * (int)(rect.origin.x / self.width);
+                [self.delegate emojiKeyboard:self didTouchEmojiItem:emoji atRect:rect];
             }
             
         } failed:^{

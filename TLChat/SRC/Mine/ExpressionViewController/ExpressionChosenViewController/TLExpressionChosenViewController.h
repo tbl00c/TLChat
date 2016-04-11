@@ -7,6 +7,7 @@
 //
 
 #import "TLTableViewController.h"
+#import "TLExpressionHelper.h"
 #import "TLExpressionProxy.h"
 
 @interface TLExpressionChosenViewController : TLTableViewController

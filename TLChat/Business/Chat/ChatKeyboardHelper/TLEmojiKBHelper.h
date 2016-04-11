@@ -19,6 +19,6 @@
 
 - (NSMutableArray *)userEmojiGroupsByUserID:(NSString *)userID;
 
-+ (NSMutableArray *)getEmojiDataByPath:(NSString *)path;
++ (NSMutableArray *)getEmojisByGroupID:(NSString *)groupID;
 
 @end

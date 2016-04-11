@@ -8,7 +8,7 @@
 
 #import "TLExpressionChosenViewController+TableView.h"
 #import "TLExpressionDetailViewController.h"
-#import "TLExpressionCell.h"
+#import "TLDBExpressionStore.h"
 
 @implementation TLExpressionChosenViewController (TableView)
 
@@ -28,6 +28,7 @@
     TLExpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLExpressionCell"];
     TLEmojiGroup *group = self.data[indexPath.row];
     [cell setGroup:group];
+    [cell setDelegate:self];
     return cell;
 }
 
@@ -44,6 +45,28 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return HEGIHT_EXPCELL;
+}
+
+//MARK: TLExpressionCellDelegate
+- (void)expressionCellDownloadButtonDown:(TLEmojiGroup *)group
+{
+    [self.proxy requestExpressionGroupDetailByGroupID:group.groupID pageIndex:1 success:^(id data) {
+        group.data = data;
+        [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
+            
+        } success:^(TLEmojiGroup *group) {
+            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"\"%@\" 下载成功！", group.groupName]];
+            TLDBExpressionStore *store = [[TLDBExpressionStore alloc] init];
+            BOOL ok = [store addExpressionGroup:group forUid:[TLUserHelper sharedHelper].userID];
+            if (!ok) {
+                DDLogError(@"表情 %@ 存入用户表情数据库失败！", group.groupName);
+            }
+        } failure:^(TLEmojiGroup *group, NSString *error) {
+            
+        }];
+    } failure:^(NSString *error) {
+        
+    }];
 }
 
 @end

@@ -11,6 +11,10 @@
 
 @interface TLMyExpressionCell()
 
+@property (nonatomic, strong) UIImageView *iconView;
+
+@property (nonatomic, strong) UILabel *titleLabel;
+
 @property (nonatomic, strong) UIButton *delButton;
 
 @end
@@ -20,7 +24,11 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self.contentView addSubview:self.iconView];
+        [self.contentView addSubview:self.titleLabel];
         [self setAccessoryView:self.delButton];
+        
+        [self p_addMasonry];
     }
     return self;
 }
@@ -28,8 +36,8 @@
 - (void)setGroup:(TLEmojiGroup *)group
 {
     _group = group;
-    [self.imageView setImage:[UIImage imageNamed:group.groupIconPath]];
-    [self.textLabel setText:group.groupName];
+    [self.iconView setImage:[UIImage imageNamed:group.groupIconPath]];
+    [self.titleLabel setText:group.groupName];
 }
 
 #pragma mark - Event Response -
@@ -40,7 +48,38 @@
     }
 }
 
+#pragma mark - # Private Methods -
+- (void)p_addMasonry
+{
+    [self.iconView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.contentView).mas_offset(15.0f);
+        make.centerY.mas_equalTo(self.contentView);
+        make.width.and.height.mas_equalTo(35);
+    }];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.iconView);
+        make.left.mas_equalTo(self.iconView.mas_right).mas_offset(10.0f);
+        make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-15.0f);
+    }];
+}
+
 #pragma mark - Getter -
+- (UIImageView *)iconView
+{
+    if (_iconView == nil) {
+        _iconView = [[UIImageView alloc] init];
+    }
+    return _iconView;
+}
+
+- (UILabel *)titleLabel
+{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] init];
+    }
+    return _titleLabel;
+}
+
 - (UIButton *)delButton
 {
     if (_delButton == nil) {

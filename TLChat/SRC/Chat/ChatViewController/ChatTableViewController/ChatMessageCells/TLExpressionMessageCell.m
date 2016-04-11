@@ -30,23 +30,10 @@
     [self.msgImageView setAlpha:1.0];       // 取消长按效果
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
-    
-    NSString *imagePath = message.path;
-    if (imagePath) {
-        if ([imagePath hasSuffix:@"gif"]) {
-            [self.msgImageView setImage:nil];
-            NSString *path = [[NSBundle mainBundle] pathForResource:[imagePath substringToIndex:imagePath.length - 4] ofType:@"gif"];
-            [self.msgImageView setImage:[UIImage imageNamed:path]];
-            NSData *data = [NSData dataWithContentsOfFile:path];
-            [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
-        }
-        else {
-            [self.msgImageView setImage:[UIImage imageNamed:imagePath]];
-        }
-    }
-    else {
-        [self.msgImageView setImage:nil];
-    }
+
+    [self.msgImageView setImage:[UIImage imageNamed:message.path]];
+    NSData *data = [NSData dataWithContentsOfFile:message.path];
+    [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
     
     if (lastOwnType != message.ownerTyper) {
         if (message.ownerTyper == TLMessageOwnerTypeSelf) {

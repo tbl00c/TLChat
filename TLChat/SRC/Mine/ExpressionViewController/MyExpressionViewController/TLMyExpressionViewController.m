@@ -36,7 +36,7 @@
     [self.tableView registerClass:[TLMyExpressionCell class] forCellReuseIdentifier:@"TLMyExpressionCell"];
     
     self.mineHelper = [[TLMineExpressionHelper alloc] init];
-    self.data = [self.mineHelper myExpressionDataByUserID:[TLUserHelper sharedHelper].userID];
+    self.data = [self.mineHelper myExpressionData];
 }
 
 #pragma mark - Delegate -
@@ -67,7 +67,15 @@
 //MARK: TLMyExpressionCellDelegate
 - (void)myExpressionCellDeleteButtonDown:(TLEmojiGroup *)group
 {
-    
+    BOOL ok = [self.mineHelper deleteExpressionGroupByID:group.groupID];
+    if (ok) {
+        NSInteger row = [self.data[0] indexOfObject:group];
+        [self.data[0] removeObject:group];
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else {
+        [SVProgressHUD showErrorWithStatus:@"表情包删除失败"];
+    }
 }
 
 #pragma mark - Event Response -

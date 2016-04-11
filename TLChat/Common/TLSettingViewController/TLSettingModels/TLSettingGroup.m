@@ -27,6 +27,17 @@
     return [self.items objectAtIndex:index];
 }
 
+- (NSUInteger)indexOfObject:(id)obj
+{
+    return [self.items indexOfObject:obj];
+}
+
+
+- (void)removeObject:(id)obj
+{
+    [self.items removeObject:obj];
+}
+
 #pragma mark - Setter
 - (void) setHeaderTitle:(NSString *)headerTitle
 {

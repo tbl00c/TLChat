@@ -22,6 +22,14 @@
              };
 }
 
+- (id)init
+{
+    if (self = [super init]) {
+        [self setType:TLEmojiTypeImageWithTitle];
+    }
+    return self;
+}
+
 - (void)setType:(TLEmojiType)type
 {
     _type = type;
@@ -49,21 +57,30 @@
 - (void)setData:(NSMutableArray *)data
 {
     _data = data;
+    self.count = data.count;
     self.pageItemCount = self.rowNumber * self.colNumber;
     self.pageNumber = self.count / self.pageItemCount + (self.count % self.pageItemCount == 0 ? 0 : 1);
-}
-
-- (NSUInteger)count
-{
-    if (_count == 0) {
-        _count = self.data.count;
-    }
-    return _count;
 }
 
 - (id)objectAtIndex:(NSUInteger)index
 {
     return [self.data objectAtIndex:index];
+}
+
+- (NSString *)path
+{
+    if (_path == nil && self.groupID != nil) {
+        _path = [NSFileManager pathExpressionForGroupID:self.groupID];
+    }
+    return _path;
+}
+
+- (NSString *)groupIconPath
+{
+    if (_groupIconPath == nil && self.path != nil) {
+        _groupIconPath = [NSString stringWithFormat:@"%@icon_%@.png", self.path, self.groupID];
+    }
+    return _groupIconPath;
 }
 
 @end

@@ -13,12 +13,21 @@
 + (NSDictionary *)replacedKeyFromPropertyName
 {
     return @{
-             @"emojiID" : @"eId",
+             @"emojiID" : @"pId",
              @"emojiURL" : @"Url",
              @"emojiName" : @"credentialName",
              @"emojiPath" : @"imageFile",
              @"size" : @"size",
              };
+}
+
+- (NSString *)emojiPath
+{
+    if (_emojiPath == nil) {
+        NSString *groupPath = [NSFileManager pathExpressionForGroupID:self.groupID];
+        _emojiPath = [NSString stringWithFormat:@"%@%@.gif", groupPath, self.emojiID];
+    }
+    return _emojiPath;
 }
 
 @end

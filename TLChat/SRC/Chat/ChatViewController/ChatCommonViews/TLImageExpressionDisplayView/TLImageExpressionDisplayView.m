@@ -49,15 +49,8 @@
 - (void)setEmoji:(TLEmoji *)emoji
 {
     _emoji = emoji;
-    if ([emoji.emojiPath hasSuffix:@"gif"]) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:[emoji.emojiPath substringToIndex:emoji.emojiPath.length - 4] ofType:@"gif"];
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        UIImage *image = [UIImage sd_animatedGIFWithData:data];
-        [self.imageView setImage:image];
-    }
-    else {
-        [self.imageView setImage:[UIImage imageNamed:emoji.emojiPath]];
-    }
+    NSData *data = [NSData dataWithContentsOfFile:emoji.emojiPath];
+    [self.imageView setImage:[UIImage sd_animatedGIFWithData:data]];
 }
 
 - (void)setRect:(CGRect)rect

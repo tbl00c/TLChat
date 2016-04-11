@@ -15,4 +15,6 @@
 #pragma mark - Mine
 + (NSString *)expressionChosenURL;
 
++ (NSString *)expressionDownloadURLWithEid:(NSString *)eid;
+
 @end

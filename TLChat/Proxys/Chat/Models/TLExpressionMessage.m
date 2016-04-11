@@ -9,19 +9,28 @@
 #import "TLExpressionMessage.h"
 
 @implementation TLExpressionMessage
-@synthesize path = _path;
+@synthesize emoji = _emoji;
+
+- (void)setEmoji:(TLEmoji *)emoji
+{
+    _emoji = emoji;
+    [self.content setObject:emoji.groupID forKey:@"groupID"];
+    [self.content setObject:emoji.emojiID forKey:@"emojiID"];
+}
+
+- (TLEmoji *)emoji
+{
+    if (_emoji == nil) {
+        _emoji = [[TLEmoji alloc] init];
+        _emoji.groupID = self.content[@"groupID"];
+        _emoji.emojiID = self.content[@"emojiID"];
+    }
+    return _emoji;
+}
 
 - (NSString *)path
 {
-    if (_path == nil) {
-        _path = [self.content objectForKey:@"path"];
-    }
-    return _path;
-}
-- (void)setPath:(NSString *)path
-{
-    _path = path;
-    [self.content setObject:path forKey:@"path"];
+    return self.emoji.emojiPath;
 }
 
 #pragma mark -

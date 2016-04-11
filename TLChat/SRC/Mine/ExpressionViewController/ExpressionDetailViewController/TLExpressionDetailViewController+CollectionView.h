@@ -7,8 +7,9 @@
 //
 
 #import "TLExpressionDetailViewController.h"
+#import "TLExpressionDetailCell.h"
 
-@interface TLExpressionDetailViewController (CollectionView) <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface TLExpressionDetailViewController (CollectionView) <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, TLExpressionDetailCellDelegate>
 
 - (void)registerCellForCollectionView:(UICollectionView *)collectionView;
 

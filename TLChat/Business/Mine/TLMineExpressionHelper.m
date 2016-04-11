@@ -7,14 +7,20 @@
 //
 
 #import "TLMineExpressionHelper.h"
-#import "TLEmojiKBHelper.h"
+#import "TLDBExpressionStore.h"
+
+@interface TLMineExpressionHelper ()
+
+@property (nonatomic, strong) TLDBExpressionStore *store;
+
+@end
 
 @implementation TLMineExpressionHelper
 
-- (NSMutableArray *)myExpressionDataByUserID:(NSString *)userID
+- (NSMutableArray *)myExpressionData
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
-    NSMutableArray *myEmojiGroups = [[TLEmojiKBHelper sharedKBHelper] userEmojiGroupsByUserID:userID];
+    NSMutableArray *myEmojiGroups = [NSMutableArray arrayWithArray:[self.store expressionGroupsByUid:[TLUserHelper sharedHelper].userID]];
     if (myEmojiGroups) {
         TLSettingGroup *group1 = TLCreateSettingGroup(@"聊天面板中的表情", nil, myEmojiGroups);
         [data addObject:group1];
@@ -26,7 +32,20 @@
     [data addObject:group2];
     
     return data;
+}
 
+- (BOOL)deleteExpressionGroupByID:(NSString *)groupID
+{
+    return [self.store deleteExpressionGroupByID:groupID forUid:[TLUserHelper sharedHelper].userID];
+}
+
+#pragma mark - # Getter -
+- (TLDBExpressionStore *)store
+{
+    if (_store == nil) {
+        _store = [[TLDBExpressionStore alloc] init];
+    }
+    return _store;
 }
 
 @end

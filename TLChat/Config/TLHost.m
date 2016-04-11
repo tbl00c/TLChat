@@ -26,4 +26,9 @@
     return [HOST_URL stringByAppendingString:@"expression/getExpressionChosenList/"];
 }
 
++ (NSString *)expressionDownloadURLWithEid:(NSString *)eid
+{
+    return [NSString stringWithFormat:@"http://123.57.155.230:8080/ibiaoqing/admin/expre/download.do?pId=%@", eid];
+}
+
 @end

@@ -75,6 +75,19 @@
     return [path stringByAppendingString:imageName];
 }
 
++ (NSString *)pathExpressionForGroupID:(NSString *)groupID
+{
+    NSString *path = [NSString stringWithFormat:@"%@/Expression/%@/", [NSFileManager documentsPath], groupID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return path;
+}
+
 + (NSString *)pathContactsData
 {
     NSString *path = [NSString stringWithFormat:@"%@/Contacts/", [NSFileManager documentsPath]];

@@ -10,10 +10,6 @@
 #import "TLExpressionDetailViewController+CollectionView.h"
 #import "TLExpressionProxy.h"
 
-#define         EDGE                20.0
-#define         SPACE_CELL          15.0
-#define         WIDTH_CELL          ((WIDTH_SCREEN - EDGE * 2 - SPACE_CELL * 3.0) / 4.0)
-
 @interface TLExpressionDetailViewController ()
 {
     NSInteger kPageIndex;
@@ -76,10 +72,6 @@
 {
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        [layout setSectionInset:UIEdgeInsetsMake(EDGE, EDGE, EDGE, EDGE)];
-        [layout setItemSize:CGSizeMake(WIDTH_CELL, WIDTH_CELL)];
-        [layout setMinimumLineSpacing:SPACE_CELL];
-        [layout setMinimumInteritemSpacing:SPACE_CELL];
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor whiteColor]];
         [_collectionView setDataSource:self];

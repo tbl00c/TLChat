@@ -22,14 +22,14 @@
         message.fromUser = [TLUserHelper sharedHelper].user;
         message.messageType = TLMessageTypeExpression;
         message.ownerTyper = TLMessageOwnerTypeSelf;
-        message.path = emoji.emojiPath;
+        message.emoji = emoji;
         [self sendMessage:message];
         if (self.curChatType == TLChatVCTypeFriend) {
             TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
             message1.fromUser = self.user;
             message1.messageType = TLMessageTypeExpression;
             message1.ownerTyper = TLMessageOwnerTypeFriend;
-            message1.path = emoji.emojiPath;
+            message1.emoji = emoji;;
             [self sendMessage:message1];
         }
         else {
@@ -39,7 +39,7 @@
                 message1.fromUser = user;
                 message1.messageType = TLMessageTypeExpression;
                 message1.ownerTyper = TLMessageOwnerTypeFriend;
-                message1.path = emoji.emojiPath;
+                message1.emoji = emoji;
                 [self sendMessage:message1];
             }
         }

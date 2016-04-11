@@ -11,6 +11,8 @@
 
 @interface TLMineExpressionHelper : NSObject
 
-- (NSMutableArray *)myExpressionDataByUserID:(NSString *)userID;
+- (NSMutableArray *)myExpressionData;
+
+- (BOOL)deleteExpressionGroupByID:(NSString *)groupID;
 
 @end

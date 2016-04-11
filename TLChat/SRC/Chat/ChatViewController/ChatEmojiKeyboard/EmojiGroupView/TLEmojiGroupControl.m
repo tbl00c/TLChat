@@ -213,7 +213,6 @@
         [layout setMinimumLineSpacing:0];
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor clearColor]];
-        [_collectionView setPagingEnabled:YES];
         [_collectionView setDataSource:self];
         [_collectionView setDelegate:self];
         [_collectionView setShowsHorizontalScrollIndicator:NO];

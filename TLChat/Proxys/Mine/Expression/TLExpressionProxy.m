@@ -20,7 +20,7 @@
                                        failure:(void (^)(NSString *error))failure
 {
     NSString *urlString = [NSString stringWithFormat:IEXPRESSION_NEW_URL, (long)pageIndex];
-    [TLNetworking postToUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [TLNetworking postUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *respArray = [responseObject mj_JSONObject];
         NSString *status = respArray[0];
         if ([status isEqualToString:@"OK"]) {
@@ -41,7 +41,7 @@
                                        failure:(void (^)(NSString *error))failure
 {
     NSString *urlString = [NSString stringWithFormat:IEXPRESSION_PUBLIC_URL, (long)pageIndex];
-    [TLNetworking postToUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [TLNetworking postUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *respArray = [responseObject mj_JSONObject];
         NSString *status = respArray[0];
         if ([status isEqualToString:@"OK"]) {
@@ -64,7 +64,7 @@
                                       failure:(void (^)(NSString *error))failure
 {
     NSString *urlString = [NSString stringWithFormat:IEXPRESSION_DETAIL_URL, (long)pageIndex, groupID];
-    [TLNetworking postToUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [TLNetworking postUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *respArray = [responseObject mj_JSONObject];
         NSString *status = respArray[0];
         if ([status isEqualToString:@"OK"]) {

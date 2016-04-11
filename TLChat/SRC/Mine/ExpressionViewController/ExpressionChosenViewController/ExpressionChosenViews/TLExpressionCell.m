@@ -51,6 +51,14 @@
     [self.detailLabel setText:group.groupDetailInfo];
 }
 
+#pragma mark - # Event Response -
+- (void)downloadButtonDown:(UIButton *)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(expressionCellDownloadButtonDown:)]) {
+        [_delegate expressionCellDownloadButtonDown:self.group];
+    }
+}
+
 #pragma mark - # Private Methods -
 - (void)p_addMasonry
 {
@@ -132,6 +140,7 @@
         [_downloadButton.layer setCornerRadius:3.0f];
         [_downloadButton.layer setBorderWidth:1.0f];
         [_downloadButton.layer setBorderColor:[UIColor colorDefaultGreen].CGColor];
+        [_downloadButton addTarget:self action:@selector(downloadButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _downloadButton;
 }

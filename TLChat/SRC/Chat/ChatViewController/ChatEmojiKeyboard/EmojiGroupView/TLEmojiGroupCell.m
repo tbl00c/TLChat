@@ -41,7 +41,7 @@
 {
     [self.groupIconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.contentView);
-        make.width.and.height.mas_equalTo(self.groupIconView.mas_height);
+        make.width.and.height.mas_lessThanOrEqualTo(30);
     }];
 }
 

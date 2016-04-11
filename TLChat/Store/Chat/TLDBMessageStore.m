@@ -45,7 +45,6 @@
         fid = message.groupID;
         subfid = message.friendID;
     }
-    NSString *dataString = [NSString stringWithFormat:@"%lf", message.date.timeIntervalSince1970];
     
     NSString *sqlString = [NSString stringWithFormat:SQL_ADD_MESSAGE, MESSAGE_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
@@ -53,7 +52,7 @@
                         message.userID,
                         fid,
                         subfid,
-                        dataString,
+                        TLTimeStamp(message.date),
                         [NSNumber numberWithInteger:message.partnerType],
                         [NSNumber numberWithInteger:message.ownerTyper],
                         [NSNumber numberWithInteger:message.messageType],

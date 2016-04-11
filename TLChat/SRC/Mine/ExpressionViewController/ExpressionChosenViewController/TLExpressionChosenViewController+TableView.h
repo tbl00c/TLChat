@@ -7,10 +7,11 @@
 //
 
 #import "TLExpressionChosenViewController.h"
+#import "TLExpressionCell.h"
 
 #define         HEGIHT_EXPCELL      80
 
-@interface TLExpressionChosenViewController (TableView)
+@interface TLExpressionChosenViewController (TableView) <TLExpressionCellDelegate>
 
 - (void)registerCellsForTableView:(UITableView *)tableView;
 

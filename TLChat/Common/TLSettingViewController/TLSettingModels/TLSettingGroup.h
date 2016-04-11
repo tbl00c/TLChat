@@ -34,11 +34,15 @@
 
 @property (nonatomic, assign, readonly) NSUInteger count;
 
-+ (TLSettingGroup *) createGroupWithHeaderTitle:(NSString *)headerTitle
++ (TLSettingGroup *)createGroupWithHeaderTitle:(NSString *)headerTitle
                                     footerTitle:(NSString *)footerTitle
                                           items:(NSMutableArray *)items;
 
 
-- (id) objectAtIndex:(NSUInteger)index;
+- (id)objectAtIndex:(NSUInteger)index;
+
+- (NSUInteger)indexOfObject:(id)obj;
+
+- (void)removeObject:(id)obj;
 
 @end

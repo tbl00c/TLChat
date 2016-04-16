@@ -158,12 +158,14 @@
 
 + (id)bk_alertViewWithTitle:(NSString *)title message:(NSString *)message
 {
-	return [[[self class] alloc] bk_initWithTitle:title message:message];
+    UIAlertView *alert = [[[self class] alloc] bk_initWithTitle:title message:message];
+    [alert show];
+    return alert;
 }
 
 - (id)bk_initWithTitle:(NSString *)title message:(NSString *)message
 {
-	self = [self initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+	self = [self initWithTitle:title message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
 	if (!self) return nil;
 
 	self.delegate = self.bk_dynamicDelegate;

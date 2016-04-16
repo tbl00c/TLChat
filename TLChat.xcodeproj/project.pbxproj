@@ -173,6 +173,7 @@
 		C2BF17D61C86DB50003318CB /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17CF1C86DB50003318CB /* UIView+Frame.m */; };
 		C2BF17D91C86DCD0003318CB /* UINavigationController+JZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17D81C86DCD0003318CB /* UINavigationController+JZExtension.m */; };
 		C2BF17DD1C86E08F003318CB /* NSFileManager+Paths.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF17DC1C86E08F003318CB /* NSFileManager+Paths.m */; };
+		C2C5A7081CC21339000546ED /* NSString+UrlEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C5A7071CC21339000546ED /* NSString+UrlEncode.m */; };
 		C2CE0BCB1C717582006C5C2A /* TLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE0BCA1C717582006C5C2A /* TLMessage.m */; };
 		C2CE0BD41C718702006C5C2A /* Chat.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2CE0BD31C718702006C5C2A /* Chat.xcassets */; };
 		C2CF4C701C802DBD0054637A /* TLFriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CF4C6F1C802DBD0054637A /* TLFriendDetailViewController.m */; };
@@ -633,6 +634,8 @@
 		C2BF17D81C86DCD0003318CB /* UINavigationController+JZExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JZExtension.m"; sourceTree = "<group>"; };
 		C2BF17DB1C86E08F003318CB /* NSFileManager+Paths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Paths.h"; sourceTree = "<group>"; };
 		C2BF17DC1C86E08F003318CB /* NSFileManager+Paths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Paths.m"; sourceTree = "<group>"; };
+		C2C5A7061CC21339000546ED /* NSString+UrlEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UrlEncode.h"; sourceTree = "<group>"; };
+		C2C5A7071CC21339000546ED /* NSString+UrlEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UrlEncode.m"; sourceTree = "<group>"; };
 		C2CE0BC91C717582006C5C2A /* TLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessage.h; sourceTree = "<group>"; };
 		C2CE0BCA1C717582006C5C2A /* TLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessage.m; sourceTree = "<group>"; };
 		C2CE0BD31C718702006C5C2A /* Chat.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Chat.xcassets; sourceTree = "<group>"; };
@@ -2153,6 +2156,8 @@
 		C2BF17BB1C86DB50003318CB /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				C2C5A7061CC21339000546ED /* NSString+UrlEncode.h */,
+				C2C5A7071CC21339000546ED /* NSString+UrlEncode.m */,
 				C2BF17BC1C86DB50003318CB /* NSString+PinYin.h */,
 				C2BF17BD1C86DB50003318CB /* NSString+PinYin.m */,
 			);
@@ -3127,6 +3132,7 @@
 				C2AF1FA81C6B773000617D98 /* TLWebViewController.m in Sources */,
 				C21574031C9BAC4200B7AC67 /* TLEmojiGroupCell.m in Sources */,
 				C2F0EC1C1C7ABF190090843C /* TLAppHelper.m in Sources */,
+				C2C5A7081CC21339000546ED /* NSString+UrlEncode.m in Sources */,
 				C2DD58E41C58C8CA005419E4 /* TLFriendHelper.m in Sources */,
 				C20DE51A1CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.m in Sources */,
 				C2BF17D61C86DB50003318CB /* UIView+Frame.m in Sources */,

@@ -8,10 +8,14 @@
 
 #import "TLExpressionProxy.h"
 #import "TLEmojiGroup.h"
+#import "NSString+UrlEncode.h"
 
-#define     IEXPRESSION_NEW_URL         @"http://123.57.155.230:8080/ibiaoqing/admin/expre/listBy.do?pageNumber=%ld&status=Y&status1=B"
-#define     IEXPRESSION_PUBLIC_URL      @"http://123.57.155.230:8080/ibiaoqing/admin/expre/listBy.do?pageNumber=%ld&status=Y&status1=B&count=yes"
-#define     IEXPRESSION_DETAIL_URL      @"http://123.57.155.230:8080/ibiaoqing/admin/expre/getByeId.do?pageNumber=%ld&eId=%@"
+#define     IEXPRESSION_HOST_URL        @"http://123.57.155.230:8080/ibiaoqing/admin/expre/"
+
+#define     IEXPRESSION_NEW_URL         [IEXPRESSION_HOST_URL stringByAppendingString:@"listBy.do?pageNumber=%ld&status=Y&status1=B"]
+#define     IEXPRESSION_PUBLIC_URL      [IEXPRESSION_HOST_URL stringByAppendingString:@"listBy.do?pageNumber=%ld&status=Y&status1=B&count=yes"]
+#define     IEXPRESSION_SEARCH_URL      [IEXPRESSION_HOST_URL stringByAppendingString:@"listBy.do?pageNumber=1&status=Y&eName=%@&seach=yes"]
+#define     IEXPRESSION_DETAIL_URL      [IEXPRESSION_HOST_URL stringByAppendingString:@"getByeId.do?pageNumber=%ld&eId=%@"]
 
 @implementation TLExpressionProxy
 
@@ -57,6 +61,26 @@
     }];
 }
 
+- (void)requestExpressionSearchByKeyword:(NSString *)keyword
+                                 success:(void (^)(id data))success
+                                 failure:(void (^)(NSString *error))failure
+{
+    NSString *urlString = [NSString stringWithFormat:IEXPRESSION_SEARCH_URL, [[keyword urlEncode] urlEncode]];
+    [TLNetworking postUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *respArray = [responseObject mj_JSONObject];
+        NSString *status = respArray[0];
+        if ([status isEqualToString:@"OK"]) {
+            NSArray *infoArray = respArray[2];
+            NSMutableArray *data = [TLEmojiGroup mj_objectArrayWithKeyValuesArray:infoArray];
+            success(data);
+        }
+        else {
+            failure(status);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure([error description]);
+    }];
+}
 
 - (void)requestExpressionGroupDetailByGroupID:(NSString *)groupID
                                     pageIndex:(NSInteger)pageIndex

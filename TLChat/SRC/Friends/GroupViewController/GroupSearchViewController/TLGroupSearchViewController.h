@@ -8,7 +8,7 @@
 
 #import "TLTableViewController.h"
 
-@interface TLGroupSearchViewController : TLTableViewController <UISearchResultsUpdating>
+@interface TLGroupSearchViewController : TLTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
 
 @property (nonatomic, strong) NSMutableArray *groupData;
 

@@ -43,6 +43,12 @@
     [self loadDataWithLoadingView:YES];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 #pragma mark - #Delegate -
 //MARK: UISearchBarDelegate
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar

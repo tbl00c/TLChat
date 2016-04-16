@@ -21,9 +21,9 @@
     return [HOST_URL stringByAppendingString:@"client/getClientInitInfo/"];
 }
 
-+ (NSString *)expressionChosenURL
++ (NSString *)expressionURLWithEid:(NSString *)eid
 {
-    return [HOST_URL stringByAppendingString:@"expression/getExpressionChosenList/"];
+    return [NSString stringWithFormat:@"http://123.57.155.230:8080/ibiaoqing/admin/expre/downloadsuo.do?pId=%@", eid];
 }
 
 + (NSString *)expressionDownloadURLWithEid:(NSString *)eid

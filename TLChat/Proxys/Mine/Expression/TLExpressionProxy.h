@@ -25,6 +25,13 @@
                                        failure:(void (^)(NSString *error))failure;
 
 /**
+ *  表情搜索
+ */
+- (void)requestExpressionSearchByKeyword:(NSString *)keyword
+                                 success:(void (^)(id data))success
+                                 failure:(void (^)(NSString *error))failure;
+
+/**
  *  表情详情
  */
 - (void)requestExpressionGroupDetailByGroupID:(NSString *)groupID

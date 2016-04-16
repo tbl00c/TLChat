@@ -30,7 +30,6 @@
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     
-    
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     [footer setTitle:@"正在加载..." forState:MJRefreshStateRefreshing];
     [footer setTitle:@"" forState:MJRefreshStateNoMoreData];
@@ -40,16 +39,10 @@
     [self loadDataWithLoadingView:YES];
 }
 
-#pragma mark - #Delegate -
-//MARK: UISearchBarDelegate
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [super viewDidDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 
 #pragma mark - # Getter -
@@ -67,7 +60,7 @@
         _searchController = [[TLSearchController alloc] initWithSearchResultsController:self.searchVC];
         [_searchController setSearchResultsUpdater:self.searchVC];
         [_searchController.searchBar setPlaceholder:@"搜索表情"];
-        [_searchController.searchBar setDelegate:self];
+        [_searchController.searchBar setDelegate:self.searchVC];
     }
     return _searchController;
 }

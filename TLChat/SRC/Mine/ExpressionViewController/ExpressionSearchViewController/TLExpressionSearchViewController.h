@@ -8,6 +8,6 @@
 
 #import "TLTableViewController.h"
 
-@interface TLExpressionSearchViewController : TLTableViewController <UISearchResultsUpdating>
+@interface TLExpressionSearchViewController : TLTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
 
 @end

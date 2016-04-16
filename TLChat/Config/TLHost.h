@@ -13,7 +13,8 @@
 + (NSString *)clientInitInfoURL;
 
 #pragma mark - Mine
-+ (NSString *)expressionChosenURL;
+
++ (NSString *)expressionURLWithEid:(NSString *)eid;
 
 + (NSString *)expressionDownloadURLWithEid:(NSString *)eid;
 

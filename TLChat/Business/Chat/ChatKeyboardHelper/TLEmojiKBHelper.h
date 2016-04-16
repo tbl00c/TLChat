@@ -11,14 +11,10 @@
 
 @interface TLEmojiKBHelper : NSObject
 
-@property (nonatomic, strong) TLEmojiGroup *defaultFaceGroup;
-
 + (TLEmojiKBHelper *)sharedKBHelper;
 
 - (void)emojiGroupDataByUserID:(NSString *)userID complete:(void (^)(NSMutableArray *))complete;
 
-- (NSMutableArray *)userEmojiGroupsByUserID:(NSString *)userID;
-
-+ (NSMutableArray *)getEmojisByGroupID:(NSString *)groupID;
+- (void)updateEmojiGroupData;
 
 @end

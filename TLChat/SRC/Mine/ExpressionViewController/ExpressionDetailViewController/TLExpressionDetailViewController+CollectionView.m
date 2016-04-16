@@ -8,7 +8,6 @@
 
 #import "TLExpressionDetailViewController+CollectionView.h"
 #import "TLExpressionHelper.h"
-#import "TLDBExpressionStore.h"
 #import "TLExpressionItemCell.h"
 
 #define         EDGE                20.0
@@ -84,13 +83,12 @@
         
     } success:^(TLEmojiGroup *group) {
         [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"\"%@\" 下载成功！", group.groupName]];
-        TLDBExpressionStore *store = [[TLDBExpressionStore alloc] init];
-        BOOL ok = [store addExpressionGroup:group forUid:[TLUserHelper sharedHelper].userID];
+        BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
         if (!ok) {
-            DDLogError(@"表情 %@ 存入用户表情数据库失败！", group.groupName);
+            DDLogError(@"表情 %@ 存储失败！", group.groupName);
         }
     } failure:^(TLEmojiGroup *group, NSString *error) {
-        
+         [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];
     }];
 }
 

@@ -7,8 +7,8 @@
 //
 
 #import "TLEmojiKBHelper.h"
+#import "TLExpressionHelper.h"
 #import "TLEmojiGroup.h"
-#import "TLDBExpressionStore.h"
 
 static TLEmojiKBHelper *helper;
 
@@ -16,17 +16,9 @@ static TLEmojiKBHelper *helper;
 
 @property (nonatomic, strong) NSString *userID;
 
-@property (nonatomic, strong) TLDBExpressionStore *store;
-
-@property (nonatomic, strong) NSMutableArray *emojiGroupData;
-
-@property (nonatomic, strong) NSMutableArray *userProfectData;
-
-@property (nonatomic, strong) NSMutableArray *defaultEmojiGroups;
-
-@property (nonatomic, strong) NSMutableArray *userEmojiGroups;
-
 @property (nonatomic, strong) NSMutableArray *systemEmojiGroups;
+
+@property (nonatomic, strong) void (^complete)(NSMutableArray *);
 
 @end
 
@@ -41,86 +33,47 @@ static TLEmojiKBHelper *helper;
     return helper;
 }
 
-+ (NSMutableArray *)getEmojisByGroupID:(NSString *)groupID
+- (void)updateEmojiGroupData
 {
-    return nil;
+    if (self.userID && self.complete) {
+        [self emojiGroupDataByUserID:self.userID complete:self.complete];
+    }
 }
 
 - (void)emojiGroupDataByUserID:(NSString *)userID complete:(void (^)(NSMutableArray *))complete
 {
-    if (self.userID && [self.userID isEqualToString:userID] && self.emojiGroupData) {
-        complete(self.emojiGroupData);
-    }
-    
+    self.userID = userID;
+    self.complete = complete;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        self.userID = userID;
-        
-        self.emojiGroupData = [[NSMutableArray alloc] init];
+        NSMutableArray *emojiGroupData = [[NSMutableArray alloc] init];
         
         // 默认表情包
-        [self.emojiGroupData addObject:self.defaultEmojiGroups];
+        NSArray *defaultEmojiGroups = @[[TLExpressionHelper sharedHelper].defaultFaceGroup,
+                                        [TLExpressionHelper sharedHelper].defaultSystemEmojiGroup];
+        [emojiGroupData addObject:defaultEmojiGroups];
         
         // 用户收藏的表情包
-        NSMutableArray *profectGroups = [self p_userProfectEmojiGroups];
-        if (profectGroups && profectGroups.count > 0) {
-            [self.emojiGroupData addObject:profectGroups];
+        TLEmojiGroup *preferEmojiGroup = [TLExpressionHelper sharedHelper].userPreferEmojiGroup;
+        if (preferEmojiGroup && preferEmojiGroup.count > 0) {
+            [emojiGroupData addObject:@[preferEmojiGroup]];
         }
         
         // 用户的表情包
-        NSMutableArray *userGroups = [self userEmojiGroupsByUserID:userID];
+        NSArray *userGroups = [TLExpressionHelper sharedHelper].userEmojiGroups;
         if (userGroups && userGroups.count > 0) {
-            [self.emojiGroupData addObject:userGroups];
+            [emojiGroupData addObject:userGroups];
         }
         
         // 系统设置
-        [self.emojiGroupData addObject:self.systemEmojiGroups];
+        [emojiGroupData addObject:self.systemEmojiGroups];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            complete(self.emojiGroupData);
+            complete(emojiGroupData);
         });
     });
 }
 
-- (NSMutableArray *)userEmojiGroupsByUserID:(NSString *)userID
-{
-    NSMutableArray *userEmojiGroupData = [NSMutableArray arrayWithArray:[self.store expressionGroupsByUid:userID]];
-    return userEmojiGroupData;
-}
-
-#pragma mark - Private Methods -
-- (NSMutableArray *)p_userProfectEmojiGroups
-{
-    return nil;
-}
-
 #pragma mark - Getter -
-- (TLEmojiGroup *)defaultFaceGroup
-{
-    if (_defaultFaceGroup == nil) {
-        _defaultFaceGroup = [[TLEmojiGroup alloc] init];
-        _defaultFaceGroup.type = TLEmojiTypeFace;
-        _defaultFaceGroup.groupIconPath = @"emojiKB_group_face";
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        _defaultFaceGroup.data = [TLEmoji mj_objectArrayWithKeyValuesArray:data];
-    }
-    return _defaultFaceGroup;
-}
-
-- (NSMutableArray *)defaultEmojiGroups
-{
-    if (_defaultEmojiGroups == nil) {
-        TLEmojiGroup *emojiGroup = [[TLEmojiGroup alloc] init];
-        emojiGroup.type = TLEmojiTypeEmoji;
-        emojiGroup.groupIconPath = @"emojiKB_group_face";
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"SystemEmoji" ofType:@"json"];
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        emojiGroup.data = [TLEmoji mj_objectArrayWithKeyValuesArray:data];
-        _defaultEmojiGroups = [[NSMutableArray alloc] initWithObjects:self.defaultFaceGroup, emojiGroup, nil];
-    }
-    return _defaultEmojiGroups;
-}
-
 - (NSMutableArray *)systemEmojiGroups
 {
     if (_systemEmojiGroups == nil) {
@@ -132,12 +85,5 @@ static TLEmojiKBHelper *helper;
     return _systemEmojiGroups;
 }
 
-- (TLDBExpressionStore *)store
-{
-    if (_store == nil) {
-        _store = [[TLDBExpressionStore alloc] init];
-    }
-    return _store;
-}
 
 @end

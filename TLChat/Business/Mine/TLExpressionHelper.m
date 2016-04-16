@@ -1,0 +1,141 @@
+//
+//  TLExpressionHelper.m
+//  TLChat
+//
+//  Created by 李伯坤 on 16/3/11.
+//  Copyright © 2016年 李伯坤. All rights reserved.
+//
+
+#import "TLExpressionHelper.h"
+#import "TLDBExpressionStore.h"
+#import "TLEmojiKBHelper.h"
+
+@interface TLExpressionHelper ()
+
+@property (nonatomic, strong) TLDBExpressionStore *store;
+
+@end
+
+@implementation TLExpressionHelper
+@synthesize defaultFaceGroup = _defaultFaceGroup;
+@synthesize defaultSystemEmojiGroup = _defaultSystemEmojiGroup;
+@synthesize userEmojiGroups = _userEmojiGroups;
+
++ (TLExpressionHelper *)sharedHelper
+{
+    static TLExpressionHelper *helper;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        helper = [[TLExpressionHelper alloc] init];
+    });
+    return helper;
+}
+
+- (NSArray *)userEmojiGroups
+{
+    return [self.store expressionGroupsByUid:[TLUserHelper sharedHelper].userID];
+}
+
+- (BOOL)addExpressionGroup:(TLEmojiGroup *)emojiGroup
+{
+    BOOL ok = [self.store addExpressionGroup:emojiGroup forUid:[TLUserHelper sharedHelper].userID];
+    if (ok) {
+        [[TLEmojiKBHelper sharedKBHelper] updateEmojiGroupData];
+    }
+    return ok;
+}
+
+- (BOOL)deleteExpressionGroupByID:(NSString *)groupID
+{
+    BOOL ok = [self.store deleteExpressionGroupByID:groupID forUid:[TLUserHelper sharedHelper].userID];
+    if (ok) {
+        [[TLEmojiKBHelper sharedKBHelper] updateEmojiGroupData];
+    }
+    return ok;
+}
+
+- (void)downloadExpressionsWithGroupInfo:(TLEmojiGroup *)group
+                                progress:(void (^)(CGFloat))progress
+                                 success:(void (^)(TLEmojiGroup *))success
+                                 failure:(void (^)(TLEmojiGroup *, NSString *))failure
+{
+    NSString *path = [NSFileManager pathExpressionForGroupID:group.groupID];
+    dispatch_queue_t downloadQueue = dispatch_queue_create([group.groupID UTF8String], nil);
+    dispatch_group_t downloadGroup = dispatch_group_create();
+    
+    for (int i = 0; i <= group.data.count; i++) {
+        dispatch_group_async(downloadGroup, downloadQueue, ^{
+            NSString *emojiUrl = @"";
+            NSString *emojiName = @"";
+            if (i == group.data.count) {
+                emojiUrl = group.groupIconURL;
+                emojiName = [NSString stringWithFormat:@"icon_%@.png", group.groupID];
+            }
+            else {
+                TLEmoji *emoji = group.data[i];
+                emojiUrl = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
+                emojiName = [emoji.emojiID stringByAppendingString:@".gif"];
+            }
+            NSString *emojiPath = [path stringByAppendingString:emojiName];
+            NSData *data = [NSData dataWithContentsOfURL:TLURL(emojiUrl)];
+            [data writeToFile:emojiPath atomically:YES];
+        });
+    }
+    dispatch_group_notify(downloadGroup, downloadQueue, ^{
+        success(group);
+    });
+}
+
+#pragma mark - # Getter -
+- (TLDBExpressionStore *)store
+{
+    if (_store == nil) {
+        _store = [[TLDBExpressionStore alloc] init];
+    }
+    return _store;
+}
+
+- (NSMutableArray *)myExpressionListData
+{
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    NSMutableArray *myEmojiGroups = [NSMutableArray arrayWithArray:[self.store expressionGroupsByUid:[TLUserHelper sharedHelper].userID]];
+    if (myEmojiGroups) {
+        TLSettingGroup *group1 = TLCreateSettingGroup(@"聊天面板中的表情", nil, myEmojiGroups);
+        [data addObject:group1];
+    }
+    
+    TLSettingItem *userEmojis = TLCreateSettingItem(@"添加的表情");
+    TLSettingItem *buyedEmojis = TLCreateSettingItem(@"购买的表情");
+    TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[userEmojis, buyedEmojis]));
+    [data addObject:group2];
+    
+    return data;
+}
+
+- (TLEmojiGroup *)defaultFaceGroup
+{
+    if (_defaultFaceGroup == nil) {
+        _defaultFaceGroup = [[TLEmojiGroup alloc] init];
+        _defaultFaceGroup.type = TLEmojiTypeFace;
+        _defaultFaceGroup.groupIconPath = @"emojiKB_group_face";
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        _defaultFaceGroup.data = [TLEmoji mj_objectArrayWithKeyValuesArray:data];
+    }
+    return _defaultFaceGroup;
+}
+
+- (TLEmojiGroup *)defaultSystemEmojiGroup
+{
+    if (_defaultSystemEmojiGroup == nil) {
+        _defaultSystemEmojiGroup = [[TLEmojiGroup alloc] init];
+        _defaultSystemEmojiGroup.type = TLEmojiTypeEmoji;
+        _defaultSystemEmojiGroup.groupIconPath = @"emojiKB_group_face";
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"SystemEmoji" ofType:@"json"];
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        _defaultSystemEmojiGroup.data = [TLEmoji mj_objectArrayWithKeyValuesArray:data];
+    }
+    return _defaultSystemEmojiGroup;
+}
+
+@end

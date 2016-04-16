@@ -7,12 +7,12 @@
 //
 
 #import "TLMyExpressionViewController.h"
-#import "TLMineExpressionHelper.h"
+#import "TLExpressionHelper.h"
 #import "TLMyExpressionCell.h"
 
 @interface TLMyExpressionViewController () <TLMyExpressionCellDelegate>
 
-@property (nonatomic, strong) TLMineExpressionHelper *mineHelper;
+@property (nonatomic, strong) TLExpressionHelper *helper;
 
 @end
 
@@ -35,8 +35,8 @@
     
     [self.tableView registerClass:[TLMyExpressionCell class] forCellReuseIdentifier:@"TLMyExpressionCell"];
     
-    self.mineHelper = [[TLMineExpressionHelper alloc] init];
-    self.data = [self.mineHelper myExpressionData];
+    self.helper = [TLExpressionHelper sharedHelper];
+    self.data = [self.helper myExpressionListData];
 }
 
 #pragma mark - Delegate -
@@ -67,7 +67,7 @@
 //MARK: TLMyExpressionCellDelegate
 - (void)myExpressionCellDeleteButtonDown:(TLEmojiGroup *)group
 {
-    BOOL ok = [self.mineHelper deleteExpressionGroupByID:group.groupID];
+    BOOL ok = [self.helper deleteExpressionGroupByID:group.groupID];
     if (ok) {
         NSInteger row = [self.data[0] indexOfObject:group];
         [self.data[0] removeObject:group];

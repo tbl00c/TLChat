@@ -8,7 +8,6 @@
 
 #import "TLEmojiKeyboard+GroupControlDelegate.h"
 #import "TLEmojiKeyboard+CollectionViewDelegate.h"
-#import "TLEmojiKBHelper.h"
 
 @implementation TLEmojiKeyboard (GroupControlDelegate)
 
@@ -33,9 +32,6 @@
 - (void)emojiGroupControl:(TLEmojiGroupControl *)emojiGroupControl didSelectedGroup:(TLEmojiGroup *)group
 {
     // 显示Group表情
-    if (group.data == nil) {
-        group.data = [TLEmojiKBHelper getEmojisByGroupID:group.groupID];
-    }
     self.curGroup = group;
     [self resetCollectionSize];
     [self.pageControl setNumberOfPages:group.pageNumber];

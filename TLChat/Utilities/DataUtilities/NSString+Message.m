@@ -7,7 +7,7 @@
 //
 
 #import "NSString+Message.h"
-#import "TLEmojiKBHelper.h"
+#import "TLExpressionHelper.h"
 
 @implementation NSString (Message)
 
@@ -37,10 +37,7 @@
         //获取原字符串中对应的值
         NSString *subStr = [self substringWithRange:range];
         
-        TLEmojiGroup *group = [[TLEmojiKBHelper sharedKBHelper] defaultFaceGroup];
-        if (group.data == nil) {
-            group.data = [TLEmojiKBHelper getEmojisByGroupID:group.groupID];
-        }
+        TLEmojiGroup *group = [[TLExpressionHelper sharedHelper] defaultFaceGroup];
         for (TLEmoji *emoji in group.data) {
             if ([emoji.emojiName isEqualToString:subStr]) {
                 //face[i][@"png"]就是我们要加载的图片

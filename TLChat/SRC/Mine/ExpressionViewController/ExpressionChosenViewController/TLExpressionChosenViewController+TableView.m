@@ -8,7 +8,7 @@
 
 #import "TLExpressionChosenViewController+TableView.h"
 #import "TLExpressionDetailViewController.h"
-#import "TLDBExpressionStore.h"
+#import "TLExpressionHelper.h"
 
 @implementation TLExpressionChosenViewController (TableView)
 
@@ -56,16 +56,15 @@
             
         } success:^(TLEmojiGroup *group) {
             [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"\"%@\" 下载成功！", group.groupName]];
-            TLDBExpressionStore *store = [[TLDBExpressionStore alloc] init];
-            BOOL ok = [store addExpressionGroup:group forUid:[TLUserHelper sharedHelper].userID];
+            BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
             if (!ok) {
-                DDLogError(@"表情 %@ 存入用户表情数据库失败！", group.groupName);
+                DDLogError(@"表情 %@ 存储失败！", group.groupName);
             }
         } failure:^(TLEmojiGroup *group, NSString *error) {
             
         }];
     } failure:^(NSString *error) {
-        
+        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];
     }];
 }
 

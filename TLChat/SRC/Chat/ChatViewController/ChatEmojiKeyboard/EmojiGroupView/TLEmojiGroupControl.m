@@ -76,7 +76,7 @@
 
 - (void)setEmojiGroupData:(NSMutableArray *)emojiGroupData
 {
-    if (_emojiGroupData == emojiGroupData) {
+    if (_emojiGroupData == emojiGroupData || [_emojiGroupData isEqualToArray:emojiGroupData]) {
         return;
     }
     _emojiGroupData = emojiGroupData;

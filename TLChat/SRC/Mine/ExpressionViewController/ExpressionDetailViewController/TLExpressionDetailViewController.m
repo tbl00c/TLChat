@@ -52,7 +52,7 @@
     __weak typeof(self) weakSelf = self;
     [self.proxy requestExpressionGroupDetailByGroupID:self.group.groupID pageIndex:kPageIndex success:^(id data) {
         [SVProgressHUD dismiss];
-        weakSelf.data = data;
+        weakSelf.group.data = data;
         [weakSelf.collectionView reloadData];
     } failure:^(NSString *error) {
         [SVProgressHUD dismiss];

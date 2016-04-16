@@ -13,6 +13,4 @@
 
 @property (nonatomic, strong) TLEmojiGroup *group;
 
-@property (nonatomic, strong) NSMutableArray *data;
-
 @end

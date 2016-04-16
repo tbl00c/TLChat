@@ -33,7 +33,7 @@
     if (section == 0) {
         return 1;
     }
-    return self.data.count;
+    return self.group.data.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -45,7 +45,7 @@
         return cell;
     }
     TLExpressionItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLExpressionItemCell" forIndexPath:indexPath];
-    TLEmoji *emoji = [self.data objectAtIndex:indexPath.row];
+    TLEmoji *emoji = [self.group objectAtIndex:indexPath.row];
     [cell setEmoji:emoji];
     return cell;
 }

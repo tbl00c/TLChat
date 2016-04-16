@@ -67,6 +67,7 @@
         dispatch_group_async(downloadGroup, downloadQueue, ^{
             NSString *emojiUrl = @"";
             NSString *emojiName = @"";
+            NSData *data = nil;
             if (i == group.data.count) {
                 emojiUrl = group.groupIconURL;
                 emojiName = [NSString stringWithFormat:@"icon_%@.png", group.groupID];
@@ -75,9 +76,14 @@
                 TLEmoji *emoji = group.data[i];
                 emojiUrl = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
                 emojiName = [emoji.emojiID stringByAppendingString:@".gif"];
+                data = [NSData dataWithContentsOfURL:TLURL(emojiUrl)];
+                if (data == nil) {
+                    emojiUrl = [TLHost expressionURLWithEid:emoji.emojiID];
+                    data = [NSData dataWithContentsOfURL:TLURL(emojiUrl)];
+                }
             }
             NSString *emojiPath = [path stringByAppendingString:emojiName];
-            NSData *data = [NSData dataWithContentsOfURL:TLURL(emojiUrl)];
+            
             [data writeToFile:emojiPath atomically:YES];
         });
     }

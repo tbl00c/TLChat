@@ -29,7 +29,7 @@
                                             ext3 TEXT,\
                                             ext4 TEXT,\
                                             ext5 TEXT,\
-                                            PRIMARY KEY(uid, msgid, fid))"
+                                            PRIMARY KEY(uid, msgid, fid, subfid))"
 
 
 #define     SQL_ADD_MESSAGE                 @"REPLACE INTO %@ ( msgid, uid, fid, subfid, date, partner_type, own_type, msg_type, content, send_status, received_status, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"

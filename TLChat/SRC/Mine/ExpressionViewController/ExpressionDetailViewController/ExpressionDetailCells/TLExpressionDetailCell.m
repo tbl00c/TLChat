@@ -37,6 +37,18 @@
     _group = group;
     [self.titleLabel setText:group.groupName];
     [self.detailLabel setText:group.groupDetailInfo];
+    if (group.status == TLEmojiGroupStatusDownloaded) {
+        [self.downloadButton setTitle:@"已下载" forState:UIControlStateNormal];
+        [self.downloadButton setBackgroundColor:[UIColor grayColor]];
+    }
+    else if (group.status == TLEmojiGroupStatusDownloading) {
+        [self.downloadButton setTitle:@"下载中" forState:UIControlStateNormal];
+        [self.downloadButton setBackgroundColor:[UIColor colorDefaultGreen]];
+    }
+    else {
+        [self.downloadButton setTitle:@"下载" forState:UIControlStateNormal];
+        [self.downloadButton setBackgroundColor:[UIColor colorDefaultGreen]];
+    }
 }
 
 #pragma mark - # Private Methods -
@@ -48,7 +60,7 @@
         make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_right).mas_offset(-15);
     }];
     [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.titleLabel).mas_offset(2);
+        make.centerY.mas_equalTo(self.titleLabel).mas_offset(-2);
         make.right.mas_equalTo(self.contentView).mas_offset(-15.0f);
         make.size.mas_equalTo(CGSizeMake(75, 26));
     }];
@@ -99,6 +111,7 @@
         _detailLabel = [[UILabel alloc] init];
         [_detailLabel setFont:[UIFont systemFontOfSize:13.0f]];
         [_detailLabel setTextColor:[UIColor grayColor]];
+        [_detailLabel setNumberOfLines:0];
     }
     return _detailLabel;
 }

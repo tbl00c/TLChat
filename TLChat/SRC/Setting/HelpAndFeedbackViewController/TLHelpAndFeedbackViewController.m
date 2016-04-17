@@ -17,7 +17,7 @@
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_more"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
 
-    [self setUrl:@"http://kf.qq.com/touch/product/wechat_app.html"];
+    [self setUrl:@"https://github.com/tbl00c/TLChat/issues"];
 }
 
 

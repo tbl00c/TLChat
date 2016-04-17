@@ -7,6 +7,7 @@
 //
 
 #import "TLMyExpressionViewController.h"
+#import "TLExpressionDetailViewController.h"
 #import "TLExpressionHelper.h"
 #import "TLMyExpressionCell.h"
 
@@ -43,7 +44,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingGroup *group = self.data[indexPath.section];
-    if (group.headerTitle) {
+    if (group.headerTitle) {    // 有标题的就是表情组
         TLEmojiGroup *emojiGroup = [group objectAtIndex:indexPath.row];
         TLMyExpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMyExpressionCell"];
         [cell setGroup:emojiGroup];
@@ -62,6 +63,19 @@
         return 50.0f;
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLSettingGroup *group = self.data[indexPath.section];
+    if (group.headerTitle) {    // 有标题的就是表情组
+        TLEmojiGroup *emojiGroup = [group objectAtIndex:indexPath.row];
+        TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
+        [detailVC setGroup:emojiGroup];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 //MARK: TLMyExpressionCellDelegate

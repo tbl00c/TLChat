@@ -34,7 +34,13 @@
 {
     _group = group;
     [self.titleLabel setText:group.groupName];
-    [self.imageView sd_setImageWithURL:TLURL(group.groupIconURL) placeholderImage:[UIImage imageWithColor:[UIColor colorSearchBarTint]]];
+    UIImage *image = [UIImage imageNamed:group.groupIconPath];
+    if (image) {
+        [self.imageView setImage:image];
+    }
+    else {
+        [self.imageView sd_setImageWithURL:TLURL(group.groupIconURL) placeholderImage:[UIImage imageWithColor:[UIColor colorSearchBarTint]]];
+    }
 }
 
 #pragma mark - # Private Methods -

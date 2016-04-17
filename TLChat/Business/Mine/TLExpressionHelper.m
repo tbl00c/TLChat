@@ -54,6 +54,16 @@
     return ok;
 }
 
+- (TLEmojiGroup *)emojiGroupByID:(NSString *)groupID;
+{
+    for (TLEmojiGroup *group in self.userEmojiGroups) {
+        if ([group.groupID isEqualToString:groupID]) {
+            return group;
+        }
+    }
+    return nil;
+}
+
 - (void)downloadExpressionsWithGroupInfo:(TLEmojiGroup *)group
                                 progress:(void (^)(CGFloat))progress
                                  success:(void (^)(TLEmojiGroup *))success
@@ -85,7 +95,7 @@
             [data writeToFile:emojiPath atomically:YES];
         });
     }
-    dispatch_group_notify(downloadGroup, downloadQueue, ^{
+    dispatch_group_notify(downloadGroup, dispatch_get_main_queue(), ^{
         success(group);
     });
 }

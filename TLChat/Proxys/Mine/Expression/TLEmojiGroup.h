@@ -10,6 +10,12 @@
 #import "TLChatMacros.h"
 #import "TLEmoji.h"
 
+typedef NS_ENUM(NSInteger, TLEmojiGroupStatus) {
+    TLEmojiGroupStatusUnDownload,
+    TLEmojiGroupStatusDownloaded,
+    TLEmojiGroupStatusDownloading,
+};
+
 @interface TLEmojiGroup : NSObject
 
 @property (nonatomic, assign) TLEmojiType type;
@@ -34,6 +40,8 @@
 @property (nonatomic, strong) NSString *groupDetailInfo;
 
 @property (nonatomic, strong) NSDate *date;
+
+@property (nonatomic, assign) TLEmojiGroupStatus status;
 
 /// 作者
 @property (nonatomic, strong) NSString *authName;

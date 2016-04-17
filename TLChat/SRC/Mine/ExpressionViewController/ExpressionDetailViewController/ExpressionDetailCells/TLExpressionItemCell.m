@@ -32,7 +32,13 @@
 - (void)setEmoji:(TLEmoji *)emoji
 {
     _emoji = emoji;
-    [self.imageView sd_setImageWithURL:TLURL(emoji.emojiURL)];
+    UIImage *image = [UIImage imageNamed:emoji.emojiPath];
+    if (image) {
+        [self.imageView setImage:image];
+    }
+    else {
+        [self.imageView sd_setImageWithURL:TLURL(emoji.emojiURL)];
+    }
 }
 
 #pragma mark - # Private Methods -

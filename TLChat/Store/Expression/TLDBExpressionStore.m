@@ -79,6 +79,7 @@
             group.count = [retSet intForColumn:@"count"];
             group.authID = [retSet stringForColumn:@"auth_id"];
             group.authName = [retSet stringForColumn:@"auth_name"];
+            group.status = TLEmojiGroupStatusDownloaded;
             [data addObject:group];
         }
         [retSet close];

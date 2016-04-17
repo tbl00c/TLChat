@@ -105,11 +105,17 @@
 //MARK: TLExpressionCellDelegate
 - (void)expressionCellDownloadButtonDown:(TLEmojiGroup *)group
 {
+    group.status = TLEmojiGroupStatusDownloading;
     [self.proxy requestExpressionGroupDetailByGroupID:group.groupID pageIndex:1 success:^(id data) {
         group.data = data;
         [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
             
         } success:^(TLEmojiGroup *group) {
+            group.status = TLEmojiGroupStatusDownloaded;
+            NSInteger index = [self.data indexOfObject:group];
+            if (index < self.data.count) {
+                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            }
             [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"\"%@\" 下载成功！", group.groupName]];
             BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
             if (!ok) {

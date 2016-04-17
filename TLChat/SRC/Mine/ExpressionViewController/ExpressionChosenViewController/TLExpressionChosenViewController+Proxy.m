@@ -21,7 +21,16 @@
     [self.proxy requestExpressionChosenListByPageIndex:kPageIndex success:^(id data) {
         [SVProgressHUD dismiss];
         kPageIndex ++;
-        weakSelf.data = data;
+        weakSelf.data = [[NSMutableArray alloc] init];
+        for (TLEmojiGroup *group in data) {     // 优先使用本地表情
+            TLEmojiGroup *localEmojiGroup = [[TLExpressionHelper sharedHelper] emojiGroupByID:group.groupID];
+            if (localEmojiGroup) {
+                [self.data addObject:localEmojiGroup];
+            }
+            else {
+                [self.data addObject:group];
+            }
+        }
         [weakSelf.tableView reloadData];
     } failure:^(NSString *error) {
         [SVProgressHUD dismiss];
@@ -39,7 +48,15 @@
         else {
             [self.tableView.mj_footer endRefreshing];
             kPageIndex ++;
-            [weakSelf.data addObjectsFromArray:data];
+            for (TLEmojiGroup *group in data) {     // 优先使用本地表情
+                TLEmojiGroup *localEmojiGroup = [[TLExpressionHelper sharedHelper] emojiGroupByID:group.groupID];
+                if (localEmojiGroup) {
+                    [self.data addObject:localEmojiGroup];
+                }
+                else {
+                    [self.data addObject:group];
+                }
+            }
             [weakSelf.tableView reloadData];
         }
     } failure:^(NSString *error) {

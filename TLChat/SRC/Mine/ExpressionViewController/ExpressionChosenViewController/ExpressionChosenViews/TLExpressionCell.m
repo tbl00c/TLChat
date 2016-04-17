@@ -46,16 +46,42 @@
 - (void)setGroup:(TLEmojiGroup *)group
 {
     _group = group;
-    [self.iconImageView sd_setImageWithURL:TLURL(group.groupIconURL)];
+    UIImage *image = [UIImage imageNamed:group.groupIconPath];
+    if (image) {
+        [self.iconImageView setImage:image];
+    }
+    else {
+        [self.iconImageView sd_setImageWithURL:TLURL(group.groupIconURL)];
+    }
     [self.titleLabel setText:group.groupName];
     [self.detailLabel setText:group.groupDetailInfo];
+    
+    if (group.status == TLEmojiGroupStatusDownloaded) {
+        [self.downloadButton setTitle:@"已下载" forState:UIControlStateNormal];
+        [self.downloadButton.layer setBorderColor:[UIColor grayColor].CGColor];
+        [self.downloadButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    }
+    else if (group.status == TLEmojiGroupStatusDownloading) {
+        [self.downloadButton setTitle:@"下载中" forState:UIControlStateNormal];
+        [self.downloadButton.layer setBorderColor:[UIColor colorDefaultGreen].CGColor];
+        [self.downloadButton setTitleColor:[UIColor colorDefaultGreen] forState:UIControlStateNormal];
+    }
+    else {
+        [self.downloadButton setTitle:@"下载" forState:UIControlStateNormal];
+        [self.downloadButton.layer setBorderColor:[UIColor colorDefaultGreen].CGColor];
+        [self.downloadButton setTitleColor:[UIColor colorDefaultGreen] forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - # Event Response -
 - (void)downloadButtonDown:(UIButton *)sender
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(expressionCellDownloadButtonDown:)]) {
-        [_delegate expressionCellDownloadButtonDown:self.group];
+    if (self.group.status == TLEmojiGroupStatusUnDownload) {
+        self.group.status = TLEmojiGroupStatusDownloading;
+        [self setGroup:self.group];
+        if (_delegate && [_delegate respondsToSelector:@selector(expressionCellDownloadButtonDown:)]) {
+            [_delegate expressionCellDownloadButtonDown:self.group];
+        }
     }
 }
 

@@ -38,6 +38,9 @@
 - (BOOL)deleteExpressionGroupByID:(NSString *)groupID;
 
 
+- (TLEmojiGroup *)emojiGroupByID:(NSString *)groupID;
+
+
 #pragma mark - 下载表情包
 - (void)downloadExpressionsWithGroupInfo:(TLEmojiGroup *)group
                                 progress:(void (^)(CGFloat progress))progress

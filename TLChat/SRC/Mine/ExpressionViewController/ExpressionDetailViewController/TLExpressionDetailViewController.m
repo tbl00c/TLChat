@@ -17,8 +17,6 @@
 
 @property (nonatomic, strong) TLExpressionProxy *proxy;
 
-@property (nonatomic, strong) UICollectionView *collectionView;
-
 @end
 
 @implementation TLExpressionDetailViewController
@@ -29,24 +27,27 @@
     [self.view addSubview:self.collectionView];
     
     [self registerCellForCollectionView:self.collectionView];
-    [SVProgressHUD show];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [self p_loadDataIfNeed];
+    if (self.group.data == nil) {
+        [SVProgressHUD show];
+        [self p_loadData];
+    }
 }
 
 - (void)setGroup:(TLEmojiGroup *)group
 {
     _group = group;
     [self.navigationItem setTitle:group.groupName];
+//    [self.collectionView reloadData];
 }
 
 #pragma mark - # Private Methods -
-- (void)p_loadDataIfNeed
+- (void)p_loadData
 {
     kPageIndex = 1;
     __weak typeof(self) weakSelf = self;

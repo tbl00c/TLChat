@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) TLEmojiGroup *group;
 
+@property (nonatomic, strong) UICollectionView *collectionView;
+
 @end

@@ -82,13 +82,17 @@
     [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
         
     } success:^(TLEmojiGroup *group) {
+        group.status = TLEmojiGroupStatusDownloaded;
+        [self.collectionView reloadData];
         [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"\"%@\" 下载成功！", group.groupName]];
         BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
         if (!ok) {
             DDLogError(@"表情 %@ 存储失败！", group.groupName);
         }
     } failure:^(TLEmojiGroup *group, NSString *error) {
-         [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];
+        group.status = TLEmojiGroupStatusUnDownload;
+        [self.collectionView reloadData];
+        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];
     }];
 }
 

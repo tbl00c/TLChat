@@ -37,19 +37,12 @@
 - (void) setGroup:(TLGroup *)group
 {
     _group = group;
-    if (group.groupAvatarPath.length == 0) {
-        [TLUIUtility getGroupAvatarByGroupUsers:group.users finished:^(NSString *avatarPath) {
-            group.groupAvatarPath = avatarPath;
-            NSString *path = [NSFileManager pathUserAvatar:group.groupAvatarPath];
-            [self.avatarImageView setImage:[UIImage imageNamed:path]];
-        }];
-        [self.avatarImageView setImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+    NSString *path = [NSFileManager pathUserAvatar:group.groupAvatarPath];
+    UIImage *image = [UIImage imageNamed:path];
+    if (image == nil) {
+        image = [UIImage imageNamed:DEFAULT_AVATAR_PATH];
     }
-    else {
-        NSString *path = [NSFileManager pathUserAvatar:group.groupAvatarPath];
-        [self.avatarImageView setImage:[UIImage imageNamed:path]];
-    }
-
+    [self.avatarImageView setImage:image];
     [self.usernameLabel setText:group.groupName];
 }
 

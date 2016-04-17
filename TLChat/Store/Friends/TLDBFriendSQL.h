@@ -29,6 +29,6 @@
 
 #define     SQL_SELECT_FRIENDS              @"SELECT * FROM %@ WHERE uid = %@"
 
-#define     SQL_DELETE_FRIEND               @"DELETE FROM %@ WHERE uid = '%@'"
+#define     SQL_DELETE_FRIEND               @"DELETE FROM %@ WHERE uid = '%@' and fid = '%@'"
 
 #endif /* TLDBFriendSQL_h */

@@ -15,9 +15,8 @@
 
 - (BOOL)addFriend:(TLUser *)user forUid:(NSString *)uid;
 
-
 - (NSMutableArray *)friendsDataByUid:(NSString *)uid;
 
-- (BOOL)deleteFriendByUid:(NSString *)uid;
+- (BOOL)deleteFriendByFid:(NSString *)fid forUid:(NSString *)uid;
 
 @end

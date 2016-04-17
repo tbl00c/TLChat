@@ -18,6 +18,7 @@
     [self.tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
     [self.tableView registerClass:[TLImageMessageCell class] forCellReuseIdentifier:@"TLImageMessageCell"];
     [self.tableView registerClass:[TLExpressionMessageCell class] forCellReuseIdentifier:@"TLExpressionMessageCell"];
+    [self.tableView registerClass:[TLTableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
 #pragma mark - Delegate -
@@ -48,12 +49,15 @@
         [cell setDelegate:self];
         return cell;
     }
-    return nil;
+    return [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
 }
 
 //MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
+    if (indexPath.row >= self.data.count) {
+        return 0.0f;
+    }
     TLMessage * message = self.data[indexPath.row];
     return message.messageFrame.height;
 }

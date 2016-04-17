@@ -82,6 +82,7 @@
         [retSet close];
     }];
     
+    // 获取conv对应的msg
     for (TLConversation *conversation in data) {
         TLMessage * message = [self.messageStore lastMessageByUserID:uid partnerID:conversation.partnerID];
         if (message) {

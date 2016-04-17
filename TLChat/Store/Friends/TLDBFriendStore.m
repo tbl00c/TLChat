@@ -18,7 +18,7 @@
         self.dbQueue = [TLDBManager sharedInstance].commonQueue;
         BOOL ok = [self createTable];
         if (!ok) {
-            DDLogError(@"DB: 聊天记录表创建失败");
+            DDLogError(@"DB: 好友表创建失败");
         }
     }
     return self;
@@ -34,11 +34,12 @@
 {
     NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_FRIEND, FRIENDS_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
-                        user.userID,
-                        user.username,
-                        user.nikeName,
-                        user.avatarURL,
-                        user.remarkName,
+                        TLNoNilString(uid),
+                        TLNoNilString(user.userID),
+                        TLNoNilString(user.username),
+                        TLNoNilString(user.nikeName),
+                        TLNoNilString(user.avatarURL),
+                        TLNoNilString(user.remarkName),
                         @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     return ok;
@@ -55,22 +56,16 @@
         }
         for (TLUser *user in oldData) {
             if ([newDataHash objectForKey:user.userID] == nil) {
-                [self deleteFriendByUid:uid];
+                BOOL ok = [self deleteFriendByFid:user.userID forUid:uid];
+                if (!ok) {
+                    DDLogError(@"DBError: 删除过期好友失败");
+                }
             }
         }
     }
     
     for (TLUser *user in friendData) {
-        NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_FRIEND, FRIENDS_TABLE_NAME];
-        NSArray *arrPara = [NSArray arrayWithObjects:
-                            TLNoNilString(uid),
-                            TLNoNilString(user.userID),
-                            TLNoNilString(user.username),
-                            TLNoNilString(user.nikeName),
-                            TLNoNilString(user.avatarURL),
-                            TLNoNilString(user.remarkName),
-                            @"", @"", @"", @"", @"", nil];
-        BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
+        BOOL ok = [self addFriend:user forUid:uid];
         if (!ok) {
             return ok;
         }
@@ -100,9 +95,9 @@
     return data;
 }
 
-- (BOOL)deleteFriendByUid:(NSString *)uid
+- (BOOL)deleteFriendByFid:(NSString *)fid forUid:(NSString *)uid
 {
-    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_FRIEND, FRIENDS_TABLE_NAME, uid];
+    NSString *sqlString = [NSString stringWithFormat:SQL_DELETE_FRIEND, FRIENDS_TABLE_NAME, uid, fid];
     BOOL ok = [self excuteSQL:sqlString, nil];
     return ok;
 }

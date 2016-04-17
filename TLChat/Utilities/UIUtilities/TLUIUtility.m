@@ -9,6 +9,7 @@
 
 #import "TLUIUtility.h"
 #import <UIImageView+WebCache.h>
+#import "TLGroup.h"
 
 static UILabel *hLabel = nil;
 
@@ -28,10 +29,10 @@ static UILabel *hLabel = nil;
     return [hLabel sizeThatFits:CGSizeMake(width, MAXFLOAT)].height;
 }
 
-+ (void)getGroupAvatarByGroupUsers:(NSArray *)users finished:(void (^)(NSString *))finished
++ (void)createGroupAvatar:(TLGroup *)group finished:(void (^)(NSString *groupID))finished
 {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSInteger usersCount = users.count > 9 ? 9 : users.count;
+        NSInteger usersCount = group.users.count > 9 ? 9 : group.users.count;
         CGFloat viewWidth = 200;
         CGFloat width = viewWidth / 3 * 0.85;
         CGFloat space3 = (viewWidth - width * 3) / 4;               // 三张图时的边距（图与图之间的边距）
@@ -44,7 +45,7 @@ static UILabel *hLabel = nil;
         [view setBackgroundColor:[UIColor colorWithWhite:0.8 alpha:0.6]];
         __block NSInteger count = 0;        // 下载完成图片计数器
         for (NSInteger i = usersCount - 1; i >= 0; i--) {
-            TLUser *user = [users objectAtIndex:i];
+            TLUser *user = [group.users objectAtIndex:i];
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, width, width)];
             [view addSubview:imageView];
             [imageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -58,12 +59,13 @@ static UILabel *hLabel = nil;
                     CGImageRef imageRefRect =CGImageCreateWithImageInRect(imageRef, CGRectMake(0, 0, view.width * 2, view.height * 2));
                     UIImage *ansImage = [[UIImage alloc] initWithCGImage:imageRefRect];
                     NSData *imageViewData = UIImagePNGRepresentation(ansImage);
-                    NSString *imageName = [NSString stringWithFormat:@"%.0lf.png", [NSDate date].timeIntervalSince1970 * 10000];
-                    NSString *savedImagePath = [NSFileManager pathUserAvatar:imageName];
+                    NSString *savedImagePath = [NSFileManager pathUserAvatar:group.groupAvatarPath];
                     [imageViewData writeToFile:savedImagePath atomically:YES];
                     CGImageRelease(imageRefRect);
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        finished(imageName);
+                        if (finished) {
+                            finished(group.groupID);
+                        }
                     });
                 }
             }];

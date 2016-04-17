@@ -36,6 +36,16 @@
     return [self.users objectAtIndex:index];
 }
 
+- (TLUser *)memberByUserID:(NSString *)uid
+{
+    for (TLUser *user in self.users) {
+        if ([user.userID isEqualToString:uid]) {
+            return user;
+        }
+    }
+    return nil;
+}
+
 - (NSString *)groupName
 {
     if (_groupName == nil || _groupName.length == 0) {
@@ -75,6 +85,14 @@
         _pinyinInitial = self.groupName.pinyinInitial;
     }
     return _pinyinInitial;
+}
+
+- (NSString *)groupAvatarPath
+{
+    if (_groupAvatarPath == nil) {
+        _groupAvatarPath = [self.groupID stringByAppendingString:@".png"];
+    }
+    return _groupAvatarPath;
 }
 
 @end

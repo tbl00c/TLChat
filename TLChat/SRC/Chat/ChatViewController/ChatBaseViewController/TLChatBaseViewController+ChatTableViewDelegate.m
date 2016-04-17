@@ -11,7 +11,7 @@
 @implementation TLChatBaseViewController (ChatTableViewDelegate)
 
 #pragma mark - Public Methods -
-- (void)addMessage:(TLMessage *)message
+- (void)addToShowMessage:(TLMessage *)message
 {
     message.showTime = [self p_needShowTime:message.date];
     [self.chatTableVC addMessage:message];
@@ -64,7 +64,7 @@
                         message.fromUser = self.user;
                     }
                     else {
-                        message.fromUser = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:message.friendID];
+                        message.fromUser = [self.group memberByUserID:message.friendID];
                     }
                 }
             }

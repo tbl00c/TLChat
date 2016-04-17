@@ -32,12 +32,12 @@
 
 - (BOOL)addMessage:(TLMessage *)message
 {
-    if (message == nil || message.messageID == nil || message.userID == nil || message.friendID == nil) {
+    if (message == nil || message.messageID == nil || message.userID == nil || (message.friendID == nil && message.groupID == nil)) {
         return NO;
     }
     
     NSString *fid = @"";
-    NSString *subfid = @"";
+    NSString *subfid;
     if (message.partnerType == TLPartnerTypeUser) {
         fid = message.friendID;
     }
@@ -51,7 +51,7 @@
                         message.messageID,
                         message.userID,
                         fid,
-                        subfid,
+                        TLNoNilString(subfid),
                         TLTimeStamp(message.date),
                         [NSNumber numberWithInteger:message.partnerType],
                         [NSNumber numberWithInteger:message.ownerTyper],
@@ -161,11 +161,17 @@
     TLMessage * message = [TLMessage createMessageByType:type];
     message.messageID = [retSet stringForColumn:@"msgid"];
     message.userID = [retSet stringForColumn:@"uid"];
-    message.friendID = [retSet stringForColumn:@"fid"];
-    message.groupID = [retSet stringForColumn:@"subfid"];
+    message.partnerType = [retSet intForColumn:@"partner_type"];
+    if (message.partnerType == TLPartnerTypeGroup) {
+        message.groupID = [retSet stringForColumn:@"fid"];
+        message.friendID = [retSet stringForColumn:@"subfid"];
+    }
+    else {
+        message.friendID = [retSet stringForColumn:@"fid"];
+        message.groupID = [retSet stringForColumn:@"subfid"];
+    }
     NSString *dateString = [retSet stringForColumn:@"date"];
     message.date = [NSDate dateWithTimeIntervalSince1970:dateString.doubleValue];
-    message.partnerType = [retSet intForColumn:@"partner_type"];
     message.ownerTyper = [retSet intForColumn:@"own_type"];
     message.messageType = [retSet intForColumn:@"msg_type"];
     NSString *content = [retSet stringForColumn:@"content"];

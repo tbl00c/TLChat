@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class TLGroup;
 @interface TLUIUtility : NSObject
 
 + (CGFloat)getTextHeightOfText:(NSString *)text
                           font:(UIFont *)font
                          width:(CGFloat)width;
 
-+ (void)getGroupAvatarByGroupUsers:(NSArray *)users
-                          finished:(void (^)(NSString *avatarPath))finished;
++ (void)createGroupAvatar:(TLGroup *)group
+                 finished:(void (^)(NSString *groupID))finished;
 
 + (void)captureScreenshotFromView:(UIView *)view
                              rect:(CGRect)rect

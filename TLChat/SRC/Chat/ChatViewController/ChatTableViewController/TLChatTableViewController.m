@@ -22,6 +22,7 @@
 @end
 
 @implementation TLChatTableViewController
+@synthesize data = _data;
 
 - (void)viewDidLoad
 {
@@ -69,6 +70,12 @@
 - (void)addMessage:(TLMessage *)message
 {
     [self.data addObject:message];
+    [self.tableView reloadData];
+}
+
+- (void)setData:(NSMutableArray *)data
+{
+    _data = data;
     [self.tableView reloadData];
 }
 

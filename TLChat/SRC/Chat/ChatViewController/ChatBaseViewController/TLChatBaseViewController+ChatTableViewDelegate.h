@@ -16,7 +16,7 @@
 /**
  *  展示消息（添加到chatVC）
  */
-- (void)addMessage:(TLMessage *)message;
+- (void)addToShowMessage:(TLMessage *)message;
 
 - (void)resetChatTVC;
 

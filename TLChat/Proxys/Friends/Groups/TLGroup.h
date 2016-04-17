@@ -52,4 +52,6 @@
 
 - (id)objectAtIndex:(NSUInteger)index;
 
+- (TLUser *)memberByUserID:(NSString *)uid;
+
 @end

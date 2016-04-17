@@ -8,12 +8,15 @@
 
 #import "TLFriendHelper.h"
 #import "TLDBFriendStore.h"
+#import "TLDBGroupStore.h"
 
 static TLFriendHelper *friendHelper = nil;
 
 @interface TLFriendHelper ()
 
-@property (nonatomic, strong) TLDBFriendStore *store;
+@property (nonatomic, strong) TLDBFriendStore *friendStore;
+
+@property (nonatomic, strong) TLDBGroupStore *groupStore;
 
 @end
 
@@ -31,11 +34,14 @@ static TLFriendHelper *friendHelper = nil;
 - (id)init
 {
     if (self = [super init]) {
-        self.friendsData = [self.store friendsDataByUid:[TLUserHelper sharedHelper].userID];
+        // 初始化好友数据
+        self.friendsData = [self.friendStore friendsDataByUid:[TLUserHelper sharedHelper].userID];
         self.data = [[NSMutableArray alloc] initWithObjects:self.defaultGroup, nil];
         self.sectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
+        // 初始化群数据
+        self.groupsData = [self.groupStore groupsDataByUid:[TLUserHelper sharedHelper].userID];
+        // 初始化标签数据
         self.tagsData = [[NSMutableArray alloc] init];
-        self.groupsData = [[NSMutableArray alloc] init];
         [self p_initTestData];
     }
     return self;
@@ -164,14 +170,15 @@ static TLFriendHelper *friendHelper = nil;
 
 - (void)p_initTestData
 {
+    // 好友数据
     NSString *path = [[NSBundle mainBundle] pathForResource:@"FriendList" ofType:@"json"];
     NSData *jsonData = [NSData dataWithContentsOfFile:path];
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
     NSArray *arr = [TLUser mj_objectArrayWithKeyValuesArray:jsonArray];
     [self.friendsData removeAllObjects];
     [self.friendsData addObjectsFromArray:arr];
-    // 更新到数据库
-    BOOL ok = [self.store updateFriendsData:self.friendsData forUid:[TLUserHelper sharedHelper].userID];
+    // 更新好友数据到数据库
+    BOOL ok = [self.friendStore updateFriendsData:self.friendsData forUid:[TLUserHelper sharedHelper].userID];
     if (!ok) {
         DDLogError(@"保存好友数据到数据库失败!");
     }
@@ -179,12 +186,21 @@ static TLFriendHelper *friendHelper = nil;
         [self p_resetFriendData];
     });
     
+    // 群数据
     path = [[NSBundle mainBundle] pathForResource:@"FriendGroupList" ofType:@"json"];
     jsonData = [NSData dataWithContentsOfFile:path];
     jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
     arr = [TLGroup mj_objectArrayWithKeyValuesArray:jsonArray];
     [self.groupsData removeAllObjects];
     [self.groupsData addObjectsFromArray:arr];
+    ok = [self.groupStore updateGroupsData:self.groupsData forUid:[TLUserHelper sharedHelper].userID];
+    if (!ok) {
+        DDLogError(@"保存群数据到数据库失败!");
+    }
+    // 生成Group Icon
+    for (TLGroup *group in self.groupsData) {
+        [TLUIUtility createGroupAvatar:group finished:nil];
+    }
 }
 
 #pragma mark - Getter
@@ -217,12 +233,20 @@ static TLFriendHelper *friendHelper = nil;
     return self.friendsData.count;
 }
 
-- (TLDBFriendStore *)store
+- (TLDBFriendStore *)friendStore
 {
-    if (_store == nil) {
-        _store = [[TLDBFriendStore alloc] init];
+    if (_friendStore == nil) {
+        _friendStore = [[TLDBFriendStore alloc] init];
     }
-    return _store;
+    return _friendStore;
+}
+
+- (TLDBGroupStore *)groupStore
+{
+    if (_groupStore == nil) {
+        _groupStore = [[TLDBGroupStore alloc] init];
+    }
+    return _groupStore;
 }
 
 @end

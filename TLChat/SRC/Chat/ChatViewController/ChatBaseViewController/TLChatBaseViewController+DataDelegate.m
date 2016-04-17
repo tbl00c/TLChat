@@ -26,7 +26,7 @@
     //    message.fromUser = [TLUserHelper sharedHelper].user;
     message.date = [NSDate date];
     
-    [self addMessage:message];    // 添加到列表
+    [self addToShowMessage:message];    // 添加到列表
     [[TLMessageManager sharedInstance] sendMessage:message progress:^(TLMessage * message, CGFloat pregress) {
         
     } success:^(TLMessage * message) {

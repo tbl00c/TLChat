@@ -5,7 +5,7 @@ var key = 'JSPatch_ShowDBCrashAlert';
 defineClass("TLAppDelegate : UIResponse <UIAlertViewDelegate>", {
 	p__urgentMethod : function() {
 		var title = 'JSPatch提示';
-		var message = '因近期有频繁的数据库模型修改，如在IM界面出现显示异常或者崩溃现象，请删除应用后重新安装。';
+		var message = '因近期对部分数据库模型修改，在表情、群模块可能会出现异常，这时请从手机/模拟器删除应用后重新运行代码即可。（P.S. 现在支持从网络下载表情了哦，可到“我的”-“表情”体验。）';
 		var needShowAlert = require('NSUserDefaults').standardUserDefaults().objectForKey(key);
 		if (needShowAlert == 0) {
 			var alert = require('UIAlertView').alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles(title, message, self, '不再提示', '确定', null);

@@ -10,4 +10,14 @@
 
 @interface TLDBFriendStore : TLDBBaseStore
 
+- (BOOL)updateFriendsData:(NSArray *)friendData
+                   forUid:(NSString *)uid;
+
+- (BOOL)addFriend:(TLUser *)user forUid:(NSString *)uid;
+
+
+- (NSMutableArray *)friendsDataByUid:(NSString *)uid;
+
+- (BOOL)deleteFriendByUid:(NSString *)uid;
+
 @end

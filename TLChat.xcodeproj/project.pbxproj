@@ -513,7 +513,7 @@
 		C298E3DD1CB95795009A0065 /* TLDBExpressionSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBExpressionSQL.h; sourceTree = "<group>"; };
 		C2994D341CA142DA00BAC038 /* TLDBFriendStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBFriendStore.h; sourceTree = "<group>"; };
 		C2994D351CA142DA00BAC038 /* TLDBFriendStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBFriendStore.m; sourceTree = "<group>"; };
-		C2994D3D1CA1431D00BAC038 /* TLDBFriendStoreSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBFriendStoreSQL.h; sourceTree = "<group>"; };
+		C2994D3D1CA1431D00BAC038 /* TLDBFriendSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBFriendSQL.h; sourceTree = "<group>"; };
 		C2994D5F1CA1678000BAC038 /* TLGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLGroup.h; sourceTree = "<group>"; };
 		C2994D601CA1678000BAC038 /* TLGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGroup.m; sourceTree = "<group>"; };
 		C2994D821CA167CF00BAC038 /* TLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUser.h; sourceTree = "<group>"; };
@@ -2021,7 +2021,7 @@
 		C2B70A991C9514A5005BECDD /* Friends */ = {
 			isa = PBXGroup;
 			children = (
-				C2994D3D1CA1431D00BAC038 /* TLDBFriendStoreSQL.h */,
+				C2994D3D1CA1431D00BAC038 /* TLDBFriendSQL.h */,
 				C2994D341CA142DA00BAC038 /* TLDBFriendStore.h */,
 				C2994D351CA142DA00BAC038 /* TLDBFriendStore.m */,
 			);

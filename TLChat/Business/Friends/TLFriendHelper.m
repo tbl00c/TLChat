@@ -7,8 +7,15 @@
 //
 
 #import "TLFriendHelper.h"
+#import "TLDBFriendStore.h"
 
 static TLFriendHelper *friendHelper = nil;
+
+@interface TLFriendHelper ()
+
+@property (nonatomic, strong) TLDBFriendStore *store;
+
+@end
 
 @implementation TLFriendHelper
 
@@ -24,7 +31,7 @@ static TLFriendHelper *friendHelper = nil;
 - (id)init
 {
     if (self = [super init]) {
-        self.friendsData = [[NSMutableArray alloc] init];
+        self.friendsData = [self.store friendsDataByUid:[TLUserHelper sharedHelper].userID];
         self.data = [[NSMutableArray alloc] initWithObjects:self.defaultGroup, nil];
         self.sectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
         self.tagsData = [[NSMutableArray alloc] init];
@@ -163,6 +170,11 @@ static TLFriendHelper *friendHelper = nil;
     NSArray *arr = [TLUser mj_objectArrayWithKeyValuesArray:jsonArray];
     [self.friendsData removeAllObjects];
     [self.friendsData addObjectsFromArray:arr];
+    // 更新到数据库
+    BOOL ok = [self.store updateFriendsData:self.friendsData forUid:[TLUserHelper sharedHelper].userID];
+    if (!ok) {
+        DDLogError(@"保存好友数据到数据库失败!");
+    }
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self p_resetFriendData];
     });
@@ -203,6 +215,14 @@ static TLFriendHelper *friendHelper = nil;
 - (NSInteger)friendCount
 {
     return self.friendsData.count;
+}
+
+- (TLDBFriendStore *)store
+{
+    if (_store == nil) {
+        _store = [[TLDBFriendStore alloc] init];
+    }
+    return _store;
 }
 
 @end

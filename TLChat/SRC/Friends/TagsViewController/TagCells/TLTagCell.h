@@ -10,4 +10,6 @@
 
 @interface TLTagCell : TLTableViewCell
 
+@property (nonatomic, strong) NSString *title;
+
 @end

@@ -73,7 +73,7 @@
        }];
     }];
     [detailVC.navigationItem setLeftBarButtonItem:closeButton];
-    [self presentViewController:navC animated:navC completion:^{
+    [self presentViewController:navC animated:YES completion:^{
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     }];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

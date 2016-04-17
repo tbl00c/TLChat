@@ -34,13 +34,13 @@
     self.friendHelper = [TLFriendHelper sharedFriendHelper];      // 初始化好友数据业务类
     self.data = self.friendHelper.data;
     self.sectionHeaders = self.friendHelper.sectionHeaders;
-    [self.footerLabel setText:[NSString stringWithFormat:@"%ld位联系人", self.friendHelper.friendCount]];
+    [self.footerLabel setText:[NSString stringWithFormat:@"%ld位联系人", (long)self.friendHelper.friendCount]];
     
     __weak typeof(self) weakSelf = self;
     [self.friendHelper setDataChangedBlock:^(NSMutableArray *data, NSMutableArray *headers, NSInteger friendCount) {
         weakSelf.data = data;
         weakSelf.sectionHeaders = headers;
-        [weakSelf.footerLabel setText:[NSString stringWithFormat:@"%ld位联系人", friendCount]];
+        [weakSelf.footerLabel setText:[NSString stringWithFormat:@"%ld位联系人", (long)friendCount]];
         [weakSelf.tableView reloadData];
     }];
 }

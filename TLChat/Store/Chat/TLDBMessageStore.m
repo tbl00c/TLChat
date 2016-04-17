@@ -73,7 +73,7 @@
                         userID,
                         partnerID,
                         [NSString stringWithFormat:@"%lf", date.timeIntervalSince1970],
-                        count + 1];
+                        (long)(count + 1)];
 
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {

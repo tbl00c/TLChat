@@ -25,7 +25,7 @@
 {
     if (_emojiPath == nil) {
         NSString *groupPath = [NSFileManager pathExpressionForGroupID:self.groupID];
-        _emojiPath = [NSString stringWithFormat:@"%@%@.gif", groupPath, self.emojiID];
+        _emojiPath = [NSString stringWithFormat:@"%@%@", groupPath, self.emojiID];
     }
     return _emojiPath;
 }

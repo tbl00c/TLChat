@@ -78,7 +78,7 @@
 - (NSString *)groupIconPath
 {
     if (_groupIconPath == nil && self.path != nil) {
-        _groupIconPath = [NSString stringWithFormat:@"%@icon_%@.png", self.path, self.groupID];
+        _groupIconPath = [NSString stringWithFormat:@"%@icon_%@", self.path, self.groupID];
     }
     return _groupIconPath;
 }

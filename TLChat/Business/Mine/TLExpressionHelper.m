@@ -59,30 +59,28 @@
                                  success:(void (^)(TLEmojiGroup *))success
                                  failure:(void (^)(TLEmojiGroup *, NSString *))failure
 {
-    NSString *path = [NSFileManager pathExpressionForGroupID:group.groupID];
     dispatch_queue_t downloadQueue = dispatch_queue_create([group.groupID UTF8String], nil);
     dispatch_group_t downloadGroup = dispatch_group_create();
     
     for (int i = 0; i <= group.data.count; i++) {
         dispatch_group_async(downloadGroup, downloadQueue, ^{
-            NSString *emojiUrl = @"";
-            NSString *emojiName = @"";
+            NSString *groupPath = [NSFileManager pathExpressionForGroupID:group.groupID];
+            NSString *emojiPath;
             NSData *data = nil;
             if (i == group.data.count) {
-                emojiUrl = group.groupIconURL;
-                emojiName = [NSString stringWithFormat:@"icon_%@.png", group.groupID];
+                emojiPath = [NSString stringWithFormat:@"%@icon_%@", groupPath, group.groupID];
+                data = [NSData dataWithContentsOfURL:TLURL(group.groupIconURL)];
             }
             else {
                 TLEmoji *emoji = group.data[i];
-                emojiUrl = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
-                emojiName = [emoji.emojiID stringByAppendingString:@".gif"];
-                data = [NSData dataWithContentsOfURL:TLURL(emojiUrl)];
+                NSString *urlString = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
+                data = [NSData dataWithContentsOfURL:TLURL(urlString)];
                 if (data == nil) {
-                    emojiUrl = [TLHost expressionURLWithEid:emoji.emojiID];
-                    data = [NSData dataWithContentsOfURL:TLURL(emojiUrl)];
+                    urlString = [TLHost expressionURLWithEid:emoji.emojiID];
+                    data = [NSData dataWithContentsOfURL:TLURL(urlString)];
                 }
+                emojiPath = [NSString stringWithFormat:@"%@%@", groupPath, emoji.emojiID];
             }
-            NSString *emojiPath = [path stringByAppendingString:emojiName];
             
             [data writeToFile:emojiPath atomically:YES];
         });

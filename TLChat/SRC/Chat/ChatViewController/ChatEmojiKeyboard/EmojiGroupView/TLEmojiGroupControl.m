@@ -124,6 +124,15 @@
     return CGSizeMake(WIDTH_EMOJIGROUP_CELL, self.height);
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    if (section == self.emojiGroupData.count - 1) {
+        return CGSizeMake(WIDTH_EMOJIGROUP_CELL * 2, self.height);
+    }
+    return CGSizeZero;
+}
+
+
 //MARK: UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {

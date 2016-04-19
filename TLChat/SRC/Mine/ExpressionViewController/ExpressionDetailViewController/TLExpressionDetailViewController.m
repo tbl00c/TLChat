@@ -27,6 +27,11 @@
     [self.view addSubview:self.collectionView];
     
     [self registerCellForCollectionView:self.collectionView];
+    
+    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] init];
+    [longPressGR setMinimumPressDuration:1.0f];
+    [longPressGR addTarget:self action:@selector(didLongPressScreen:)];
+    [self.collectionView addGestureRecognizer:longPressGR];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -80,6 +85,14 @@
         [_collectionView setAlwaysBounceVertical:YES];
     }
     return _collectionView;
+}
+
+- (TLImageExpressionDisplayView *)emojiDisplayView
+{
+    if (_emojiDisplayView == nil) {
+        _emojiDisplayView = [[TLImageExpressionDisplayView alloc] init];
+    }
+    return _emojiDisplayView;
 }
 
 @end

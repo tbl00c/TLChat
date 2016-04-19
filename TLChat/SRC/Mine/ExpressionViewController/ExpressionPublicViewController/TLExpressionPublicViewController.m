@@ -13,11 +13,6 @@
 #import "TLSearchController.h"
 #import <MJRefresh.h>
 
-#define         EDGE                20.0
-#define         SPACE_CELL          EDGE
-#define         WIDTH_CELL          ((WIDTH_SCREEN - EDGE * 2 - SPACE_CELL * 2.0) / 3.0)
-#define         HEIGHT_CELL         (WIDTH_CELL + 20)
-
 @interface TLExpressionPublicViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) TLSearchController *searchController;
@@ -93,10 +88,6 @@
 {
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        [layout setSectionInset:UIEdgeInsetsMake(EDGE, EDGE, EDGE, EDGE)];
-        [layout setItemSize:CGSizeMake(WIDTH_CELL, HEIGHT_CELL)];
-        [layout setMinimumLineSpacing:SPACE_CELL];
-        [layout setMinimumInteritemSpacing:SPACE_CELL];
         CGRect rect = CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, HEIGHT_SCREEN - HEIGHT_NAVBAR - HEIGHT_STATUSBAR);
         _collectionView = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor whiteColor]];

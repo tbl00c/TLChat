@@ -22,6 +22,28 @@
     [collectionView registerClass:[TLExpressionDetailCell class] forCellWithReuseIdentifier:@"TLExpressionDetailCell"];
 }
 
+- (void)didLongPressScreen:(UILongPressGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded) {        // 长按停止
+        [self.emojiDisplayView removeFromSuperview];
+    }
+    else {
+        CGPoint point = [sender locationInView:self.collectionView];
+        for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
+            if (cell.x <= point.x && cell.y <= point.y && cell.x + cell.width >= point.x && cell.y + cell.height >= point.y) {
+                NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+                TLEmoji *emoji = [self.group objectAtIndex:indexPath.row];
+                CGRect rect = cell.frame;
+                rect.origin.y -= (self.collectionView.contentOffset.y + 13);
+                [self.emojiDisplayView removeFromSuperview];
+                [self.emojiDisplayView displayEmoji:emoji atRect:rect];
+                [self.view addSubview:self.emojiDisplayView];
+                break;
+            }
+        }
+    }
+}
+
 #pragma mark - # Delegate -
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {

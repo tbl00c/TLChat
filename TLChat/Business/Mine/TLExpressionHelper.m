@@ -113,7 +113,7 @@
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
     NSMutableArray *myEmojiGroups = [NSMutableArray arrayWithArray:[self.store expressionGroupsByUid:[TLUserHelper sharedHelper].userID]];
-    if (myEmojiGroups) {
+    if (myEmojiGroups.count > 0) {
         TLSettingGroup *group1 = TLCreateSettingGroup(@"聊天面板中的表情", nil, myEmojiGroups);
         [data addObject:group1];
     }

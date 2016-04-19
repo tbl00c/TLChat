@@ -8,6 +8,7 @@
 
 #import "TLImageExpressionDisplayView.h"
 #import <UIImage+GIF.h>
+#import <UIImageView+WebCache.h>
 
 #define     WIDTH_TIPS      150
 #define     HEIGHT_TIPS     162
@@ -46,11 +47,33 @@
     [self setEmoji:emoji];
 }
 
+static NSString *curID;
 - (void)setEmoji:(TLEmoji *)emoji
 {
+    if (_emoji == emoji) {
+        return;
+    }
     _emoji = emoji;
+    curID = emoji.emojiID;
     NSData *data = [NSData dataWithContentsOfFile:emoji.emojiPath];
-    [self.imageView setImage:[UIImage sd_animatedGIFWithData:data]];
+    if (data) {
+        [self.imageView setImage:[UIImage sd_animatedGIFWithData:data]];
+    }
+    else {
+        NSString *urlString = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
+        [self.imageView sd_setImageWithURL:TLURL(emoji.emojiURL) completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if ([urlString containsString:curID]) {
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    NSData *data = [NSData dataWithContentsOfURL:TLURL(urlString)];
+                    if ([urlString containsString:curID]) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.imageView setImage:[UIImage sd_animatedGIFWithData:data]];
+                        });
+                    }
+                });
+            }
+        }];
+    }
 }
 
 - (void)setRect:(CGRect)rect

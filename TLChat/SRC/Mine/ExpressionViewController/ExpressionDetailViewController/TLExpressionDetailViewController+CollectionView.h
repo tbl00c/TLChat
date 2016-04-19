@@ -13,4 +13,7 @@
 
 - (void)registerCellForCollectionView:(UICollectionView *)collectionView;
 
+- (void)didLongPressScreen:(UILongPressGestureRecognizer *)sender;
+
+
 @end

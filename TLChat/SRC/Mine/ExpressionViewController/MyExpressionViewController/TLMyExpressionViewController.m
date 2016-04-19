@@ -85,7 +85,13 @@
     if (ok) {
         NSInteger row = [self.data[0] indexOfObject:group];
         [self.data[0] removeObject:group];
-        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if ([self.data[0] count] == 0) {
+            [self.data removeObjectAtIndex:0];
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        else {
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     }
     else {
         [SVProgressHUD showErrorWithStatus:@"表情包删除失败"];

@@ -8,7 +8,7 @@
 
 #import "TLExpressionPublicViewController.h"
 
-@interface TLExpressionPublicViewController (CollectionView) <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface TLExpressionPublicViewController (CollectionView) <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 - (void)registerCellForCollectionView:(UICollectionView *)collectionView;
 

@@ -185,7 +185,7 @@
         [_whiteBGView setBackgroundColor:[UIColor whiteColor]];
         [_whiteBGView.layer setMasksToBounds:YES];
         [_whiteBGView.layer setCornerRadius:2.0f];
-        [_whiteBGView.layer setBorderWidth:0.5f];
+        [_whiteBGView.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_whiteBGView.layer setBorderColor:[UIColor blackColor].CGColor];
     }
     return _whiteBGView;
@@ -197,7 +197,7 @@
         _avatarImageView = [[UIImageView alloc] init];
         [_avatarImageView.layer setMasksToBounds:YES];
         [_avatarImageView.layer setCornerRadius:3.0f];
-        [_avatarImageView.layer setBorderWidth:0.5f];
+        [_avatarImageView.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_avatarImageView.layer setBorderColor:[UIColor colorCellLine].CGColor];
     }
     return _avatarImageView;

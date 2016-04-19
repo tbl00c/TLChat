@@ -44,7 +44,7 @@
 {
     if (_sendButtonStatus != sendButtonStatus) {
         if (_sendButtonStatus == TLGroupControlSendButtonStatusNone) {
-            [UIView animateWithDuration:0.5f animations:^{
+            [UIView animateWithDuration:BORDER_WIDTH_1PX animations:^{
                 [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.right.mas_equalTo(self);
                 }];
@@ -54,7 +54,7 @@
         
         _sendButtonStatus = sendButtonStatus;
         if (sendButtonStatus == TLGroupControlSendButtonStatusNone) {
-            [UIView animateWithDuration:0.5f animations:^{
+            [UIView animateWithDuration:BORDER_WIDTH_1PX animations:^{
                 [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.right.mas_equalTo(self).mas_offset(WIDTH_SENDBUTTON);
                 }];

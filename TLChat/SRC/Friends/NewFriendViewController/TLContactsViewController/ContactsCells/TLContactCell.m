@@ -139,7 +139,7 @@
         [_rightButton.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
         [_rightButton.layer setMasksToBounds:YES];
         [_rightButton.layer setCornerRadius:4.0f];
-        [_rightButton.layer setBorderWidth:0.5f];
+        [_rightButton.layer setBorderWidth:BORDER_WIDTH_1PX];
     }
     return _rightButton;
 }

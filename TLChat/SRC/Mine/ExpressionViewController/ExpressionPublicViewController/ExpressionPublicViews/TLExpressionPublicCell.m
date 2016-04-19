@@ -65,7 +65,7 @@
         [_imageView setUserInteractionEnabled:NO];
         [_imageView.layer setMasksToBounds:YES];
         [_imageView.layer setCornerRadius:5.0f];
-        [_imageView.layer setBorderWidth:0.5f];
+        [_imageView.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_imageView.layer setBorderColor:[UIColor colorCellLine].CGColor];
     }
     return _imageView;

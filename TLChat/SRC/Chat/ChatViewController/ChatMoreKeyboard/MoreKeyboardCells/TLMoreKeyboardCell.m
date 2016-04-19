@@ -73,7 +73,7 @@
         _iconButton = [[UIButton alloc] init];
         [_iconButton.layer setMasksToBounds:YES];
         [_iconButton.layer setCornerRadius:5.0f];
-        [_iconButton.layer setBorderWidth:0.5f];
+        [_iconButton.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_iconButton.layer setBorderColor:[UIColor grayColor].CGColor];
         [_iconButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorChatBoxLine]] forState:UIControlStateHighlighted];
         [_iconButton addTarget:self action:@selector(iconButtonDown:) forControlEvents:UIControlEventTouchUpInside];

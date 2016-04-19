@@ -411,7 +411,7 @@
         [_textView setFont:[UIFont systemFontOfSize:16.0f]];
         [_textView setReturnKeyType:UIReturnKeySend];
         [_textView.layer setMasksToBounds:YES];
-        [_textView.layer setBorderWidth:0.5f];
+        [_textView.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_textView.layer setBorderColor:[UIColor grayColor].CGColor];
         [_textView.layer setCornerRadius:4.0f];
         [_textView setDelegate:self];
@@ -431,7 +431,7 @@
         [_talkButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [_talkButton.layer setMasksToBounds:YES];
         [_talkButton.layer setCornerRadius:4.0f];
-        [_talkButton.layer setBorderWidth:0.5f];
+        [_talkButton.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_talkButton.layer setBorderColor:[UIColor grayColor].CGColor];
         [_talkButton setHidden:YES];
         [_talkButton addTarget:self action:@selector(talkButtonTouchDown:) forControlEvents:UIControlEventTouchDown];

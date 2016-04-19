@@ -92,7 +92,7 @@
         [_delButton addTarget:self action:@selector(delButtonDown) forControlEvents:UIControlEventTouchUpInside];
         [_delButton.layer setMasksToBounds:YES];
         [_delButton.layer setCornerRadius:3.0f];
-        [_delButton.layer setBorderWidth:0.5f];
+        [_delButton.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_delButton.layer setBorderColor:[UIColor colorCellLine].CGColor];
     }
     return _delButton;

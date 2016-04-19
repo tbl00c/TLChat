@@ -87,13 +87,13 @@
         make.right.mas_equalTo(line2.mas_left).mas_offset(-5.0f);
     }];
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(0.5f);
+        make.height.mas_equalTo(BORDER_WIDTH_1PX);
         make.left.mas_equalTo(15.0f);
         make.centerY.mas_equalTo(label);
         make.width.mas_equalTo(line2);
     }];
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(0.5f);
+        make.height.mas_equalTo(BORDER_WIDTH_1PX);
         make.right.mas_equalTo(-15.0f);
         make.centerY.mas_equalTo(label);
     }];
@@ -126,7 +126,7 @@
         [_downloadButton.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
         [_downloadButton.layer setMasksToBounds:YES];
         [_downloadButton.layer setCornerRadius:3.0f];
-        [_downloadButton.layer setBorderWidth:0.5f];
+        [_downloadButton.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_downloadButton.layer setBorderColor:[UIColor colorCellLine].CGColor];
         [_downloadButton addTarget:self action:@selector(downloadButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }

@@ -66,7 +66,7 @@
         _button = [[UIButton alloc] init];
         [_button.layer setMasksToBounds:YES];
         [_button.layer setCornerRadius:4.0f];
-        [_button.layer setBorderWidth:0.5f];
+        [_button.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_button.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
         [_button addTarget:self action:@selector(cellButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }

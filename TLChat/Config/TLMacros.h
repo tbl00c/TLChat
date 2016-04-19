@@ -25,6 +25,8 @@
 #define     HEIGHT_NAVBAR               44.0f
 #define     NAVBAR_ITEM_FIXED_SPACE     5.0f
 
+#define     BORDER_WIDTH_1PX            ([[UIScreen mainScreen] scale] > 0.0 ? 1.0 / [[UIScreen mainScreen] scale] : 1.0)
+
 #define     MAX_MESSAGE_WIDTH               WIDTH_SCREEN * 0.58
 #define     MAX_MESSAGE_IMAGE_WIDTH         WIDTH_SCREEN * 0.45
 #define     MIN_MESSAGE_IMAGE_WIDTH         WIDTH_SCREEN * 0.25

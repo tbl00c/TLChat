@@ -49,7 +49,9 @@ static UICollectionViewCell *lastCell;
                 TLEmoji *emoji = [self.curGroup objectAtIndex:tIndex];
                 if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboard:didTouchEmojiItem:atRect:)]) {
                     emoji.type = self.curGroup.type;
-                    [self.delegate emojiKeyboard:self didTouchEmojiItem:emoji atRect:cell.frame];
+                    CGRect rect = [cell frame];
+                    rect.origin.x = rect.origin.x - self.width * (int)(rect.origin.x / self.width);
+                    [self.delegate emojiKeyboard:self didTouchEmojiItem:emoji atRect:rect];
                 }
                 return;
             }

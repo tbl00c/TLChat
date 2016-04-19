@@ -19,96 +19,47 @@
 }
 
 #pragma mark - Event Response -
-static NSInteger lastIndex = -1;
+static UICollectionViewCell *lastCell;
 - (void)longPressAction:(UILongPressGestureRecognizer *)sender
 {
-    if (sender.state == UIGestureRecognizerStateEnded) {        // 长按停止
-        if (lastIndex != -1) {      // 取消选中状态
-            id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:lastIndex]];
-            [cell setShowHighlightImage:NO];
-        }
-        lastIndex = -1;
+    if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {        // 长按停止
+        lastCell = nil;
         if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboardCancelTouchEmojiItem:)]) {
             [self.delegate emojiKeyboardCancelTouchEmojiItem:self];
         }
     }
     else {
         CGPoint point = [sender locationInView:self.collectionView];
-        // 获取point点的表情
-        [self p_getEmojiItemAtPoint:point success:^(TLEmoji *emoji, NSInteger index) {
-            if (lastIndex == index) {       // 与之前选中的Emoji一致，不回调，以免闪屏
-                return ;
-            }
-            else if (lastIndex != -1) {     // 取消之前选中cell的高亮状态
-                id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:lastIndex]];
-                [cell setShowHighlightImage:NO];
-            }
-            lastIndex = index;
-            id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:index]];
-            [cell setShowHighlightImage:YES];
-            if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboard:didTouchEmojiItem:atRect:)]) {
-                //FIXME: emoji类型确定的方式太LOW！
-                emoji.type = self.curGroup.type;
-                CGRect rect = [cell frame];
-                rect.origin.x = rect.origin.x - self.width * (int)(rect.origin.x / self.width);
-                [self.delegate emojiKeyboard:self didTouchEmojiItem:emoji atRect:rect];
-            }
-            
-        } failed:^{
-            if (lastIndex != -1) {
-                id cell = [self.collectionView cellForItemAtIndexPath:[self p_getIndexPathOfIndex:lastIndex]];
-                [cell setShowHighlightImage:NO];
-            }
-            lastIndex = -1;
-            if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboardCancelTouchEmojiItem:)]) {
-                [self.delegate emojiKeyboardCancelTouchEmojiItem:self];
-            }
-        }];
-    }
-}
-
-#pragma mark - Private Methods -
-/**
- *  获取collectionView中某个点的Emoji
- *
- *  @param point   点
- *  @param success 在point点存在Emoji，在数据源中的位置
- *  @param failed  在point点不存在Emoji
- */
-- (void)p_getEmojiItemAtPoint:(CGPoint)point
-                      success:(void (^)(TLEmoji *, NSInteger))success
-                       failed:(void (^)())failed
-{
-    NSInteger page = point.x / self.collectionView.width;
-    point.x -= page * self.collectionView.width;
-    if (point.x < headerReferenceSize.width || point.x > self.collectionView.width - footerReferenceSize.width || point.y < sectionInsets.top || point.y > self.collectionView.contentSize.height - sectionInsets.bottom) {
-        failed();
-    }
-    else {
-        point.x -= headerReferenceSize.width;
-        point.y -= sectionInsets.top;
-        NSInteger w = (self.collectionView.width - headerReferenceSize.width) / self.curGroup.colNumber;
-        NSInteger h = (self.collectionView.height - sectionInsets.top) / self.curGroup.rowNumber;
-        NSInteger x = point.x / w;
-        NSInteger y = point.y / h;
-        NSInteger index = page * self.curGroup.pageItemCount + y * self.curGroup.colNumber + x;
         
-        if (index >= self.curGroup.count) {
-            failed();
+        for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
+            if (cell.x - minimumLineSpacing / 2.0 <= point.x && cell.y - minimumInteritemSpacing / 2.0 <= point.y && cell.x + cell.width + minimumLineSpacing / 2.0 >= point.x && cell.y + cell.height + minimumInteritemSpacing / 2.0 >= point.y) {
+                if (lastCell == cell) {
+                    return;
+                }
+                lastCell = cell;
+                NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+                NSUInteger index = indexPath.section * self.curGroup.pageItemCount + indexPath.row;
+                NSUInteger tIndex = [self transformModelIndex:index];  // 矩阵坐标转置
+                if (tIndex >= self.curGroup.count) {
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboardCancelTouchEmojiItem:)]) {
+                        [self.delegate emojiKeyboardCancelTouchEmojiItem:self];
+                    }
+                    return;
+                }
+                TLEmoji *emoji = [self.curGroup objectAtIndex:tIndex];
+                if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboard:didTouchEmojiItem:atRect:)]) {
+                    emoji.type = self.curGroup.type;
+                    [self.delegate emojiKeyboard:self didTouchEmojiItem:emoji atRect:cell.frame];
+                }
+                return;
+            }
         }
-        else {
-            TLEmoji *emoji = [self.curGroup objectAtIndex:index];
-            success(emoji, index);
+        
+        lastCell = nil;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboardCancelTouchEmojiItem:)]) {
+            [self.delegate emojiKeyboardCancelTouchEmojiItem:self];
         }
     }
-}
-
-- (NSIndexPath *)p_getIndexPathOfIndex:(NSInteger)index
-{
-    index = [self transformCellIndex:index];
-    NSInteger row = index % self.curGroup.pageItemCount;
-    NSInteger section = index / self.curGroup.pageItemCount;
-    return [NSIndexPath indexPathForRow:row inSection:section];
 }
 
 @end

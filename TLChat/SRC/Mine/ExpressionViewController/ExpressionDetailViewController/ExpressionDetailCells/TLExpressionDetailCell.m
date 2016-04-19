@@ -69,6 +69,34 @@
         make.right.mas_equalTo(self.contentView).mas_offset(-20);
         make.top.mas_equalTo(self.titleLabel.mas_bottom).mas_offset(20);
     }];
+    
+    UIView *line1 = [[UIView alloc] init];
+    [line1 setBackgroundColor:[UIColor colorCellLine]];
+    [self.contentView addSubview:line1];
+    UIView *line2 = [[UIView alloc] init];
+    [line2 setBackgroundColor:[UIColor colorCellLine]];
+    [self.contentView addSubview:line2];
+    UILabel *label = [[UILabel alloc] init];
+    [label setTextColor:[UIColor colorCellLine]];
+    [label setFont:[UIFont systemFontOfSize:12.0f]];
+    [label setText:@"长按表情可预览"];
+    [self.contentView addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-5);
+        make.left.mas_equalTo(line1.mas_right).mas_offset(5.0f);
+        make.right.mas_equalTo(line2.mas_left).mas_offset(-5.0f);
+    }];
+    [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(0.5f);
+        make.left.mas_equalTo(15.0f);
+        make.centerY.mas_equalTo(label);
+        make.width.mas_equalTo(line2);
+    }];
+    [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(0.5f);
+        make.right.mas_equalTo(-15.0f);
+        make.centerY.mas_equalTo(label);
+    }];
 }
 
 #pragma mark - # Event Response -

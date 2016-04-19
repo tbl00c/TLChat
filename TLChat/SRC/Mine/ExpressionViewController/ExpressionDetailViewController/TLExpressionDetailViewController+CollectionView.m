@@ -24,7 +24,7 @@
 
 - (void)didLongPressScreen:(UILongPressGestureRecognizer *)sender
 {
-    if (sender.state == UIGestureRecognizerStateEnded) {        // 长按停止
+    if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {        // 长按停止
         [self.emojiDisplayView removeFromSuperview];
     }
     else {
@@ -76,7 +76,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return CGSizeMake(collectionView.width, 110);
+        return CGSizeMake(collectionView.width, 120);
     }
     else {
         return CGSizeMake(WIDTH_CELL, WIDTH_CELL);

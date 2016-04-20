@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) NSMutableArray *data;
 
+@property (nonatomic, strong) NSArray *bannerData;
+
 @property (nonatomic, strong) TLExpressionProxy *proxy;
 
 

@@ -19,6 +19,8 @@
              @"groupInfo" : @"memo",
              @"groupDetailInfo" : @"memo1",
              @"count" : @"picCount",
+             @"bannerID" : @"aId",
+             @"bannerURL" : @"URL",
              };
 }
 

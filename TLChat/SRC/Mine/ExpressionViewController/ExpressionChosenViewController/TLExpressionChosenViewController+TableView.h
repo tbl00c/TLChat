@@ -7,11 +7,13 @@
 //
 
 #import "TLExpressionChosenViewController.h"
+#import "TLExpressionBannerCell.h"
 #import "TLExpressionCell.h"
 
-#define         HEGIHT_EXPCELL      80
+#define         HEIGHT_BANNERCELL       140.0f
+#define         HEGIHT_EXPCELL          80.0f
 
-@interface TLExpressionChosenViewController (TableView) <TLExpressionCellDelegate>
+@interface TLExpressionChosenViewController (TableView) <TLExpressionCellDelegate, TLExpressionBannerCellDelegate>
 
 - (void)registerCellsForTableView:(UITableView *)tableView;
 

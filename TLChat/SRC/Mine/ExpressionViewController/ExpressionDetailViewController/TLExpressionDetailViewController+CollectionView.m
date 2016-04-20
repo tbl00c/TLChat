@@ -76,7 +76,8 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return CGSizeMake(collectionView.width, 120);
+        CGFloat height = [TLExpressionDetailCell cellHeightForModel:self.group];
+        return CGSizeMake(collectionView.width, height);
     }
     else {
         return CGSizeMake(WIDTH_CELL, WIDTH_CELL);

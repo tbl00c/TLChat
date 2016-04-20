@@ -18,6 +18,12 @@
                                        failure:(void (^)(NSString *error))failure;
 
 /**
+ *  竞选表情Banner
+ */
+- (void)requestExpressionChosenBannerSuccess:(void (^)(id data))success
+                                     failure:(void (^)(NSString *error))failure;
+
+/**
  *  网络表情
  */
 - (void)requestExpressionPublicListByPageIndex:(NSInteger)page

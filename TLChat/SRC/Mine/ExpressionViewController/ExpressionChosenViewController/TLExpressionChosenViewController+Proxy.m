@@ -35,6 +35,13 @@
     } failure:^(NSString *error) {
         [SVProgressHUD dismiss];
     }];
+    
+    [self.proxy requestExpressionChosenBannerSuccess:^(id data) {
+        self.bannerData = data;
+        [self.tableView reloadData];
+    } failure:^(NSString *error) {
+        
+    }];
 }
 
 - (void)loadMoreData

@@ -31,6 +31,11 @@ typedef NS_ENUM(NSInteger, TLEmojiGroupStatus) {
 
 @property (nonatomic, strong) NSString *groupIconURL;
 
+/// Banner用
+@property (nonatomic, strong) NSString *bannerID;
+
+@property (nonatomic, strong) NSString *bannerURL;
+
 /// 总数
 @property (nonatomic, assign) NSUInteger count;
 

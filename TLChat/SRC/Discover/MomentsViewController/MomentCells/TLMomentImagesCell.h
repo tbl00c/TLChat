@@ -1,5 +1,5 @@
 //
-//  TLMomentCell.h
+//  TLMomentImagesCell.h
 //  TLChat
 //
 //  Created by libokun on 16/4/7.
@@ -8,6 +8,6 @@
 
 #import "TLMomentBaseCell.h"
 
-@interface TLMomentCell : TLMomentBaseCell
+@interface TLMomentImagesCell : TLMomentBaseCell
 
 @end

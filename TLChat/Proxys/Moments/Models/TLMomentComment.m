@@ -10,15 +10,5 @@
 
 @implementation TLMomentComment
 
-- (id)init
-{
-    if (self = [super init]) {
-        [TLUser mj_setupObjectClassInArray:^NSDictionary *{
-            return @{ @"likedFriends" : @"TLUser",
-                      @"comments" : @"TLMomentComment"};
-        }];
-    }
-    return self;
-}
 
 @end

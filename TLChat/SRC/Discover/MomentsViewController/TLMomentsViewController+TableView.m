@@ -8,14 +8,14 @@
 
 #import "TLMomentsViewController+TableView.h"
 #import "TLMomentHeaderCell.h"
-#import "TLMomentCell.h"
+#import "TLMomentImagesCell.h"
 
 @implementation TLMomentsViewController (TableView)
 
 - (void)registerCellForTableView:(UITableView *)tableView
 {
     [tableView registerClass:[TLMomentHeaderCell class] forCellReuseIdentifier:@"TLMomentHeaderCell"];
-    [tableView registerClass:[TLMomentCell class] forCellReuseIdentifier:@"TLMomentCell"];
+    [tableView registerClass:[TLMomentImagesCell class] forCellReuseIdentifier:@"TLMomentImagesCell"];
 }
 
 #pragma mark - # Delegate -
@@ -31,7 +31,7 @@
         [cell setUser:[TLUserHelper sharedHelper].user];
         return cell;
     }
-    TLMomentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentCell"];
+    TLMomentImagesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentImagesCell"];
     TLMoment *moment = [self.data objectAtIndex:indexPath.row - 1];
     [cell setMoment:moment];
     return cell;
@@ -42,7 +42,9 @@
     if (indexPath.row == 0) {
         return 260.0f;
     }
-    return 160.0f;
+
+    TLMoment *moment = [self.data objectAtIndex:indexPath.row - 1];
+    return moment.height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

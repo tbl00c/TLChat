@@ -11,6 +11,8 @@
 
 @interface TLMomentBaseCell : TLTableViewCell
 
+@property (nonatomic, strong) UILabel *titleLabel;
+
 @property (nonatomic, strong) UIView *detailContainerView;
 
 @property (nonatomic, strong) UIView *extensionContainerView;

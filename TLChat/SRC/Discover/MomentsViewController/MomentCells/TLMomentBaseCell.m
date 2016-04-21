@@ -89,10 +89,10 @@
         make.right.mas_equalTo(self.detailContainerView);
         make.size.mas_equalTo(CGSizeMake(25, 25));
     }];
-    [self.extensionContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.dateLabel.mas_bottom).mas_offset(SPACE_ROW);
-        make.left.and.right.mas_equalTo(self.detailContainerView);
-    }];
+//    [self.extensionContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.dateLabel.mas_bottom).mas_offset(SPACE_ROW);
+//        make.left.and.right.mas_equalTo(self.detailContainerView);
+//    }];
 }
 
 #pragma mark - # Getter -

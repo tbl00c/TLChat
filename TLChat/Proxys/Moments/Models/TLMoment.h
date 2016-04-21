@@ -28,6 +28,9 @@
 /// 附加（评论，赞）
 @property (nonatomic, strong) TLMomentExtension *extension;
 
+/// 高度
+@property (nonatomic, assign) CGFloat height;
+
 
 @end
 

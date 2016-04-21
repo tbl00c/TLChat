@@ -10,4 +10,12 @@
 
 @interface TLMomentComment : TLBaseDataModel
 
+@property (nonatomic, strong) TLUser *user;
+
+@property (nonatomic, strong) TLUser *toUser;
+
+@property (nonatomic, strong) NSString *content;
+
+@property (nonatomic, strong, readonly) NSAttributedString *attrContent;
+
 @end

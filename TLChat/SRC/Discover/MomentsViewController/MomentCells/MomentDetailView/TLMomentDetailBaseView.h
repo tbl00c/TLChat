@@ -1,5 +1,5 @@
 //
-//  TLMomentDetailView.h
+//  TLMomentDetailBaseView.h
 //  TLChat
 //
 //  Created by libokun on 16/4/8.
@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TLMomentDetail.h"
 
-@interface TLMomentDetailView : UIView
+@interface TLMomentDetailBaseView : UIView
+
+@property (nonatomic, strong) UILabel *titleLabel;
 
 @property (nonatomic, strong) TLMomentDetail *detail;
 

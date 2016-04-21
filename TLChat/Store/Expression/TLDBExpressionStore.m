@@ -99,6 +99,17 @@
     return [self excuteSQL:sqlString, nil];
 }
 
+- (NSInteger)countOfUserWhoHasExpressionGroup:(NSString *)gid
+{
+    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_COUNT_EXP_GROUP_USERS, EXP_GROUP_TABLE_NAME, gid];
+    __block NSInteger count = 0;
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
+        count = [db intForQuery:sqlString];
+    }];
+
+    return count;
+}
+
 #pragma mark - # 表情 -
 - (BOOL)addExpressions:(NSArray *)expressions toGroupID:(NSString *)groupID
 {

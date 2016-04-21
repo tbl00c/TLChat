@@ -83,6 +83,15 @@
 {
     BOOL ok = [self.helper deleteExpressionGroupByID:group.groupID];
     if (ok) {
+        BOOL canDeleteFile = ![self.helper didExpressionGroupAlwaysInUsed:group.groupID];
+        if (canDeleteFile) {
+            NSError *error;
+            ok = [[NSFileManager defaultManager] removeItemAtPath:group.path error:&error];
+            if (!ok) {
+                DDLogError(@"删除表情文件失败\n路径:%@\n原因:%@", group.path, [error description]);
+            }
+        }
+        
         NSInteger row = [self.data[0] indexOfObject:group];
         [self.data[0] removeObject:group];
         if ([self.data[0] count] == 0) {

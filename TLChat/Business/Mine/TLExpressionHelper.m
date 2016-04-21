@@ -39,7 +39,7 @@
 - (BOOL)addExpressionGroup:(TLEmojiGroup *)emojiGroup
 {
     BOOL ok = [self.store addExpressionGroup:emojiGroup forUid:[TLUserHelper sharedHelper].userID];
-    if (ok) {
+    if (ok) {       // 通知表情键盘
         [[TLEmojiKBHelper sharedKBHelper] updateEmojiGroupData];
     }
     return ok;
@@ -48,10 +48,16 @@
 - (BOOL)deleteExpressionGroupByID:(NSString *)groupID
 {
     BOOL ok = [self.store deleteExpressionGroupByID:groupID forUid:[TLUserHelper sharedHelper].userID];
-    if (ok) {
+    if (ok) {       // 通知表情键盘
         [[TLEmojiKBHelper sharedKBHelper] updateEmojiGroupData];
     }
     return ok;
+}
+
+- (BOOL)didExpressionGroupAlwaysInUsed:(NSString *)groupID
+{
+    NSInteger count = [self.store countOfUserWhoHasExpressionGroup:groupID];
+    return count > 0;
 }
 
 - (TLEmojiGroup *)emojiGroupByID:(NSString *)groupID;

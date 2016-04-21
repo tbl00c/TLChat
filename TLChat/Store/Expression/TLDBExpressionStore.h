@@ -26,5 +26,10 @@
  */
 - (BOOL)deleteExpressionGroupByID:(NSString *)gid forUid:(NSString *)uid;
 
+/**
+ *  拥有某表情包的用户数
+ */
+- (NSInteger)countOfUserWhoHasExpressionGroup:(NSString *)gid;
+
 
 @end

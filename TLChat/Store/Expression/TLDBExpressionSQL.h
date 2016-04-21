@@ -37,6 +37,7 @@
 
 #define     SQL_DELETE_EXP_GROUP        @"DELETE FROM %@ WHERE uid = '%@' and gid = '%@'"
 
+#define     SQL_SELECT_COUNT_EXP_GROUP_USERS    @"SELECT count(uid) FROM %@ WHERE gid = '%@'"
 
 #pragma mark - # 表情
 #define     EXPS_TABLE_NAME             @"expressions"

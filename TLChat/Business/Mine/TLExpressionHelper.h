@@ -28,6 +28,11 @@
 + (TLExpressionHelper *)sharedHelper;
 
 /**
+ *  根据groupID获取表情包
+ */
+- (TLEmojiGroup *)emojiGroupByID:(NSString *)groupID;
+
+/**
  *  添加表情包
  */
 - (BOOL)addExpressionGroup:(TLEmojiGroup *)emojiGroup;
@@ -37,8 +42,12 @@
  */
 - (BOOL)deleteExpressionGroupByID:(NSString *)groupID;
 
-
-- (TLEmojiGroup *)emojiGroupByID:(NSString *)groupID;
+/**
+ *  表情包是否被其他用户使用
+ *
+ *  用来判断是否可删除表情包文件
+ */
+- (BOOL)didExpressionGroupAlwaysInUsed:(NSString *)groupID;
 
 
 #pragma mark - 下载表情包
@@ -46,6 +55,7 @@
                                 progress:(void (^)(CGFloat progress))progress
                                  success:(void (^)(TLEmojiGroup *group))success
                                  failure:(void (^)(TLEmojiGroup *group, NSString *error))failure;
+
 
 #pragma mark - 列表用
 /**

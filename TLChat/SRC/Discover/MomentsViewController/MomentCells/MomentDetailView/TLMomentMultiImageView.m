@@ -11,9 +11,8 @@
 #import <UIImageView+WebCache.h>
 
 #define     WIDTH_IMAGE_ONE     (WIDTH_SCREEN - 70) * 0.6
-#define     WIDTH_IMAGE         (WIDTH_SCREEN - 70) * 0.32
-#define     SPACE               3.0
-#define     EDGE                2.0
+#define     WIDTH_IMAGE         (WIDTH_SCREEN - 70) * 0.31
+#define     SPACE               4.0
 
 @interface TLMomentMultiImageView ()
 
@@ -35,24 +34,24 @@
         return;
     }
     
-    CGFloat height = EDGE;
+    CGFloat height = 0;
     CGFloat imageWidth;
     CGFloat imageHeight;
     if (images.count == 1) {
         imageWidth = WIDTH_IMAGE_ONE;
         imageHeight = imageWidth * 0.8;
-        height += imageHeight + SPACE;
+        height += imageHeight;
     }
     else {
         imageHeight = imageWidth = WIDTH_IMAGE;
         if (images.count <= 3) {
-            height += imageHeight + SPACE;
+            height += imageHeight;
         }
         else if (images.count <= 6) {
-            height += imageHeight * 2 + SPACE * 2;
+            height += imageHeight * 2 + SPACE;
         }
         else {
-            height += imageHeight * 3 + SPACE * 3;
+            height += imageHeight * 3 + SPACE * 2;
         }
     }
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -61,7 +60,7 @@
     
     
     CGFloat x = 0;
-    CGFloat y = EDGE + SPACE;
+    CGFloat y = 0;
     for (int i = 0; i < images.count && i < 9; i++) {
         UIImageView *imageView;
         if (i < self.imageViews.count) {

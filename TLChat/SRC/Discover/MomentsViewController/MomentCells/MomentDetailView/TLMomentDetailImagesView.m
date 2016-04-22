@@ -34,6 +34,10 @@
 {
     [super setDetail:detail];
     [self.multiImageView setImages:detail.images];
+    CGFloat offset = detail.images.count > 0 ? (detail.text.length > 0 ? 7.0 : 3.0) : 0.0;
+    [self.multiImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.titleLabel.mas_bottom).mas_offset(offset);
+    }];
 }
 
 #pragma mark - # Getter -

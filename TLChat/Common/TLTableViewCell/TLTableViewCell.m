@@ -48,7 +48,7 @@
 {
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 1.0);
+    CGContextSetLineWidth(context, BORDER_WIDTH_1PX * 2);
     CGContextSetStrokeColorWithColor(context, [UIColor colorCellLine].CGColor);
     if (self.topLineStyle != TLCellLineStyleNone) {
         CGContextBeginPath(context);

@@ -40,13 +40,6 @@
     }];
 }
 
-- (void)drawRect:(CGRect)rect
-{
-    [super drawRect:rect];
-    
-    
-}
-
 #pragma mark - # Getter -
 - (UITableView *)tableView
 {

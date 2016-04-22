@@ -8,11 +8,12 @@
 
 #import "TLMomentBaseCell.h"
 #import <UIButton+WebCache.h>
+#import "TLMomentExtensionView.h"
 
 #define         EDGE_LEFT       10.0f
-#define         EDGE_TOP        12.0f
+#define         EDGE_TOP        15.0f
 #define         WIDTH_AVATAR    40.0f
-#define         SPACE_ROW       7.0f
+#define         SPACE_ROW       8.0f
 
 @interface TLMomentBaseCell ()
 
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) UILabel *originLabel;
 
 @property (nonatomic, strong) UIButton *moreButton;
+
+@property (nonatomic, strong) TLMomentExtensionView *extensionView;
 
 @end
 
@@ -42,6 +45,8 @@
         [self.contentView addSubview:self.dateLabel];
         [self.contentView addSubview:self.originLabel];
         [self.contentView addSubview:self.moreButton];
+        
+        [self.extensionContainerView addSubview:self.extensionView];
         
         [self p_addMasonry];
     }
@@ -89,11 +94,16 @@
         make.right.mas_equalTo(self.detailContainerView);
         make.size.mas_equalTo(CGSizeMake(25, 25));
     }];
-//    [self.extensionContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(self.dateLabel.mas_bottom).mas_offset(SPACE_ROW);
-//        make.left.and.right.mas_equalTo(self.detailContainerView);
-//    }];
+    [self.extensionContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.dateLabel.mas_bottom).mas_offset(SPACE_ROW);
+        make.left.and.right.mas_equalTo(self.detailContainerView);
+    }];
+    
+    [self.extensionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
 }
+
 
 #pragma mark - # Getter -
 - (UIButton *)avatarView

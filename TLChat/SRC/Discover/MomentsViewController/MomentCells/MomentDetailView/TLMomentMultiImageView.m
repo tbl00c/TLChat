@@ -28,35 +28,18 @@
     [self removeAllSubViews];
    
     if (images.count == 0) {
-        [self mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(0);
-        }];
         return;
     }
     
-    CGFloat height = 0;
     CGFloat imageWidth;
     CGFloat imageHeight;
     if (images.count == 1) {
         imageWidth = WIDTH_IMAGE_ONE;
         imageHeight = imageWidth * 0.8;
-        height += imageHeight;
     }
     else {
         imageHeight = imageWidth = WIDTH_IMAGE;
-        if (images.count <= 3) {
-            height += imageHeight;
-        }
-        else if (images.count <= 6) {
-            height += imageHeight * 2 + SPACE;
-        }
-        else {
-            height += imageHeight * 3 + SPACE * 2;
-        }
     }
-    [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(height);
-    }];
     
     
     CGFloat x = 0;

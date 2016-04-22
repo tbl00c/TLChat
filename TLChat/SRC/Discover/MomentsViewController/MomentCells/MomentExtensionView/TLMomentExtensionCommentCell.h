@@ -7,7 +7,10 @@
 //
 
 #import "TLTableViewCell.h"
+#import "TLMomentComment.h"
 
 @interface TLMomentExtensionCommentCell : TLTableViewCell
+
+@property (nonatomic, strong) TLMomentComment *comment;
 
 @end

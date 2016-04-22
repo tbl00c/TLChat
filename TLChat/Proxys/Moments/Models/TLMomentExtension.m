@@ -21,5 +21,44 @@
     return self;
 }
 
+#pragma mark - # Private Methods -
+- (CGFloat)heightLiked
+{
+    CGFloat height = 0.0f;
+    if (self.likedFriends.count > 0) {
+        height = 30.0f;
+    }
+    return height;
+}
+
+- (CGFloat)heightComments
+{
+    CGFloat height = 0.0f;
+    for (TLMomentComment *comment in self.comments) {
+//        height += comment.commentFrame.height;
+        height += 35.0f;
+    }
+    return height;
+}
+
+#pragma mark - # Getter -
+- (TLMomentExtensionFrame *)extensionFrame
+{
+    if (_extensionFrame == nil) {
+        _extensionFrame = [[TLMomentExtensionFrame alloc] init];
+        _extensionFrame.height = 0.0f;
+        if (self.likedFriends.count > 0 || self.comments.count > 0) {
+            _extensionFrame.height += 10.0f;
+        }
+        _extensionFrame.height += _extensionFrame.heightLiked = [self heightLiked];
+        _extensionFrame.height += _extensionFrame.heightComments = [self heightComments];
+    }
+    return _extensionFrame;
+}
+
+@end
+
+
+@implementation TLMomentExtensionFrame
 
 @end

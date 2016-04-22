@@ -1,106 +1,57 @@
 [
- {
- "momentID" : "m1001",
- "username" : "吕秀才",
- "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg",
- "detail" : {
- "text" : "Hello world!",
- "images" : [
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             "http://f1.diyitui.com/25/08/04/25/37/62/01/08/b8/d6/c9/4d/56/03/13/22.jpg",
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             ],
- }
- },
- {
- "momentID" : "m1002",
- "username" : "白展堂",
- "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg",
- "detail" : {
- "images" : [
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             "http://f1.diyitui.com/25/08/04/25/37/62/01/08/b8/d6/c9/4d/56/03/13/22.jpg",
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             "http://f1.diyitui.com/25/08/04/25/37/62/01/08/b8/d6/c9/4d/56/03/13/22.jpg",
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             "http://f1.diyitui.com/25/08/04/25/37/62/01/08/b8/d6/c9/4d/56/03/13/22.jpg",
-             ],
- }
- },
- {
- "momentID" : "m1008",
- "username" : "吕秀才",
- "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg",
- "detail" : {
- "text" : "畅销书《C语言，从入门到放弃》即将上市，不要998，不要88，只要8块8。现在开始接受预定，机不可失，时不再来，欲购从速！！",
- "images" : [
-             "http://www.tduanzi.com/upload/2016/04/1459949927.jpg",
-             ],
- },
- },
- {
- "momentID" : "m1001",
- "username" : "吕秀才",
- "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg",
- "detail" : {
- "text" : "畅销书《C语言，从入门到放弃》即将上市，不要998，不要88，只要8块8。现在开始接受预定，机不可失，时不再来，欲购从速！！"
- },
- },
- {
- "momentID" : "m1002",
- "username" : "白展堂",
- "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg",
- "detail" : {
- "text" : "哈哈哈哈哈哈",
- "images" : [
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             "http://f1.diyitui.com/25/08/04/25/37/62/01/08/b8/d6/c9/4d/56/03/13/22.jpg",
-             ],
- },
- },
- {
- "momentID" : "m1001",
- "username" : "吕秀才",
- "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg",
- "detail" : {
- "text" : "好好学习，天天向上！",
- }
- },
- {
- "momentID" : "m1002",
- "username" : "白展堂",
- "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg",
- "detail" : {
- "text" : "萨瓦迪卡！",
- "images" : [
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             "http://f1.diyitui.com/25/08/04/25/37/62/01/08/b8/d6/c9/4d/56/03/13/22.jpg",
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             ],
- }
- },
- {
- "momentID" : "m1023",
- "username" : "白展堂",
- "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg",
- "detail" : {
- "text" : "萨瓦迪卡！",
- "images" : [
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             "http://f1.diyitui.com/25/08/04/25/37/62/01/08/b8/d6/c9/4d/56/03/13/22.jpg",
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             "http://f1.diyitui.com/25/08/04/25/37/62/01/08/b8/d6/c9/4d/56/03/13/22.jpg",
-             "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
-             "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
-             ],
- }
- },
+    {
+        "momentID" : "m1008",
+        "user" : { "uid" : "u1001", "nikeName" : "吕秀才", "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg"},
+        "detail" : {
+            "text" : "畅销书《C语言，从入门到放弃》即将上市，不要998，不要88，只要8块8。现在开始接受预定，机不可失，时不再来，欲购从速！！",
+            "images" : [
+                "http://www.tduanzi.com/upload/2016/04/1459949927.jpg",
+            ],
+        },
+        "extension" : {
+            "likedFriends" : [
+                { "uid" : "u1002", "nikeName" : "白展堂", "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg"},
+                { "uid" : "u1003", "nikeName" : "大嘴", "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=e4ac7f21bb0e7bec238f0be71f1e9500/472309f790529822afa352edd4ca7bcb0a46d408.jpg"},
+            ],
+            "comments" : [
+                {
+                    "user" : { "uid" : "u1002", "nikeName" : "白展堂", "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg"},
+                    "content" : "秀才，- 1 + 2 3 等于几？",
+                },
+                {
+                    "user" : { "uid" : "u1003", "nikeName" : "大嘴", "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=e4ac7f21bb0e7bec238f0be71f1e9500/472309f790529822afa352edd4ca7bcb0a46d408.jpg"},
+                    "toUser" : { "uid" : "u1002", "nikeName" : "白展堂", "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg"},
+                    "content" : "这是啥, 老白你咋了！",
+                },
+                {
+                    "user" : { "uid" : "u1003", "nikeName" : "大嘴", "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=e4ac7f21bb0e7bec238f0be71f1e9500/472309f790529822afa352edd4ca7bcb0a46d408.jpg"},
+                    "content" : "跟女友吵架，我不客气地说：“你这样好吃懒做，真的不感到羞耻吗？” 她毫不示弱：“你怎么不看看自己，哪个男人像你这样一事无成还不求上进？”“行吧，既然你觉得我不好，我也觉得你不好，那我们索性就在一起将就一辈子吧，别去祸害别人了。”",
+                },
+                {
+                    "user" : { "uid" : "u1001", "nikeName" : "吕秀才", "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg"},
+                    "toUser" : { "uid" : "u1003", "nikeName" : "大嘴", "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=e4ac7f21bb0e7bec238f0be71f1e9500/472309f790529822afa352edd4ca7bcb0a46d408.jpg"},
+                    "content" : "哈哈哈哈",
+                },
+            ],
+        }
+    },
+    {
+        "momentID" : "m1002",
+        "user" : { "uid" : "u1002", "nikeName" : "白展堂", "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg"},
+        "detail" : {
+            "text" : "帅不帅帅不帅！",
+            "images" : [
+                "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
+                "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",
+                "http://f1.diyitui.com/25/08/04/25/37/62/01/08/b8/d6/c9/4d/56/03/13/22.jpg",
+            ],
+        },
+    },
+    {
+        "momentID" : "m1002",
+        "user" : { "uid" : "u1003", "nikeName" : "大嘴", "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=e4ac7f21bb0e7bec238f0be71f1e9500/472309f790529822afa352edd4ca7bcb0a46d408.jpg"},
+        "detail" : {
+            "text" : "人要保持一定的饥饿感，不然就会变胖！",
+        },
+    },
  ]

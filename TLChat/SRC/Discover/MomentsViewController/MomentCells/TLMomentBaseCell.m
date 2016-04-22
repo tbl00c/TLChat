@@ -56,10 +56,18 @@
 - (void)setMoment:(TLMoment *)moment
 {
     _moment = moment;
-    [self.avatarView sd_setImageWithURL:TLURL(moment.avatarURL) forState:UIControlStateNormal];
-    [self.usernameView setTitle:moment.username forState:UIControlStateNormal];
+    [self.avatarView sd_setImageWithURL:TLURL(moment.user.avatarURL) forState:UIControlStateNormal];
+    [self.usernameView setTitle:moment.user.showName forState:UIControlStateNormal];
     [self.dateLabel setText:@"1小时前"];
     [self.originLabel setText:@"微博"];
+    [self.extensionView setExtension:moment.extension];
+    
+    [self.detailContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(moment.momentFrame.heightDetail);
+    }];
+    [self.extensionContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(moment.momentFrame.heightExtension);
+    }];
 }
 
 #pragma mark - # Private Methods -
@@ -167,6 +175,14 @@
         [_moreButton setImage:[UIImage imageNamed:@"moments_more"] imageHL:[UIImage imageNamed:@"moments_moreHL"]];
     }
     return _moreButton;
+}
+
+- (TLMomentExtensionView *)extensionView
+{
+    if (_extensionView == nil) {
+        _extensionView = [[TLMomentExtensionView alloc] init];
+    }
+    return _extensionView;
 }
 
 @end

@@ -11,8 +11,6 @@
 
 @interface TLMomentExtensionView : UIView
 
-@property (nonatomic, strong) TLUser *user;
-
 @property (nonatomic, strong) TLMomentExtension *extension;
 
 @end

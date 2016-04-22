@@ -8,6 +8,7 @@
 
 #import "TLMomentsViewController+TableView.h"
 #import "TLMomentHeaderCell.h"
+#import "TLMomentTextCell.h"
 #import "TLMomentImagesCell.h"
 
 @implementation TLMomentsViewController (TableView)
@@ -15,7 +16,9 @@
 - (void)registerCellForTableView:(UITableView *)tableView
 {
     [tableView registerClass:[TLMomentHeaderCell class] forCellReuseIdentifier:@"TLMomentHeaderCell"];
+    [tableView registerClass:[TLMomentImagesCell class] forCellReuseIdentifier:@"TLMomentTextCell"];
     [tableView registerClass:[TLMomentImagesCell class] forCellReuseIdentifier:@"TLMomentImagesCell"];
+    [tableView registerClass:[TLTableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
 #pragma mark - # Delegate -
@@ -31,9 +34,22 @@
         [cell setUser:[TLUserHelper sharedHelper].user];
         return cell;
     }
-    TLMomentImagesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentImagesCell"];
+    
     TLMoment *moment = [self.data objectAtIndex:indexPath.row - 1];
-    [cell setMoment:moment];
+    id cell;
+    if (moment.detail.images.count > 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentImagesCell"];
+    }
+    else if (moment.detail.text.length > 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentTextCell"];
+    }
+
+    if (cell) {
+        [cell setMoment:moment];
+    }
+    else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
+    }
     return cell;
 }
 
@@ -44,7 +60,7 @@
     }
 
     TLMoment *moment = [self.data objectAtIndex:indexPath.row - 1];
-    return moment.height;
+    return moment.momentFrame.height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

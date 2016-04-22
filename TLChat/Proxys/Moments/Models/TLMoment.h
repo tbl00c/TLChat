@@ -10,15 +10,24 @@
 #import "TLMomentDetail.h"
 #import "TLMomentExtension.h"
 
+
+@interface TLMomentFrame : NSObject
+
+@property (nonatomic, assign) CGFloat height;
+
+@property (nonatomic, assign) CGFloat heightDetail;
+
+@property (nonatomic, assign) CGFloat heightExtension;
+
+@end
+
+
+
 @interface TLMoment : TLBaseDataModel
 
 @property (nonatomic, strong) NSString *momentID;
 
-@property (nonatomic, strong) NSString *userID;
-
-@property (nonatomic, strong) NSString *avatarURL;
-
-@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) TLUser *user;
 
 @property (nonatomic, strong) NSDate *date;
 
@@ -28,9 +37,7 @@
 /// 附加（评论，赞）
 @property (nonatomic, strong) TLMomentExtension *extension;
 
-/// 高度
-@property (nonatomic, assign) CGFloat height;
-
+@property (nonatomic, strong) TLMomentFrame *momentFrame;
 
 @end
 

@@ -21,23 +21,22 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        [self setBackgroundColor:[UIColor grayColor]];
         [self addSubview:self.tableView];
-        
-        [self p_addMasonry];
+        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self).mas_offset(10.0f);
+            make.left.and.right.and.bottom.mas_equalTo(self);
+        }];
         
         [self registerCellForTableView:self.tableView];
     }
     return self;
 }
 
-
-#pragma mark - # Private Methods -
-- (void)p_addMasonry
+- (void)setExtension:(TLMomentExtension *)extension
 {
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self).mas_offset(20.0f);
-        make.left.and.right.and.bottom.mas_equalTo(self);
-    }];
+    _extension = extension;
+    [self.tableView reloadData];
 }
 
 #pragma mark - # Getter -
@@ -45,6 +44,8 @@
 {
     if (_tableView == nil) {
         _tableView = [[UITableView alloc] init];
+        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [_tableView setBackgroundColor:[UIColor redColor]];
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
         [_tableView setScrollsToTop:NO];

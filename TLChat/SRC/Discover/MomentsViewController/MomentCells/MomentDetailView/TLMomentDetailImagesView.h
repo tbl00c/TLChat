@@ -6,8 +6,8 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLMomentDetailBaseView.h"
+#import "TLMomentDetailTextView.h"
 
-@interface TLMomentDetailImagesView : TLMomentDetailBaseView
+@interface TLMomentDetailImagesView : TLMomentDetailTextView
 
 @end

@@ -1,14 +1,14 @@
 //
-//  TLMomentDetailBaseView.m
+//  TLMomentDetailTextView.m
 //  TLChat
 //
 //  Created by libokun on 16/4/8.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLMomentDetailBaseView.h"
+#import "TLMomentDetailTextView.h"
 
-@implementation TLMomentDetailBaseView
+@implementation TLMomentDetailTextView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -25,6 +25,9 @@
 - (void)setDetail:(TLMomentDetail *)detail
 {
     [self.titleLabel setText:detail.text];
+    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(detail.detailFrame.heightText);
+    }];
 }
 
 #pragma mark - # Getter -

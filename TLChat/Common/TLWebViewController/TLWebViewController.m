@@ -48,7 +48,7 @@
 {
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    [self.view setBackgroundColor:[UIColor colorDefaultBlack]];
+    [self.view setBackgroundColor:[UIColor colorBlackBG]];
     [self.webView.scrollView setBackgroundColor:[UIColor clearColor]];
     for (id vc in self.webView.scrollView.subviews) {
         NSString *className = NSStringFromClass([vc class]);
@@ -172,7 +172,7 @@
     if (_progressView == nil) {
         _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, 10.0f)];
         [_progressView setTransform: CGAffineTransformMakeScale(1.0f, 2.0f)];
-        [_progressView setProgressTintColor:[UIColor colorDefaultGreen]];
+        [_progressView setProgressTintColor:[UIColor colorGreenDefault]];
         [_progressView setTrackTintColor:[UIColor clearColor]];
     }
     return _progressView;
@@ -200,7 +200,7 @@
         _authLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, HEIGHT_NAVBAR + HEIGHT_STATUSBAR + 13, WIDTH_SCREEN - 40, 0)];
         [_authLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [_authLabel setTextAlignment:NSTextAlignmentCenter];
-        [_authLabel setTextColor:[UIColor colorWebViewAuthText]];
+        [_authLabel setTextColor:[UIColor colorTextGray]];
         [_authLabel setNumberOfLines:0];
     }
     return _authLabel;

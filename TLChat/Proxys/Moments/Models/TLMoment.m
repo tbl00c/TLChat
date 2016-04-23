@@ -15,7 +15,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        [TLUser mj_setupObjectClassInArray:^NSDictionary *{
+        [TLMoment mj_setupObjectClassInArray:^NSDictionary *{
             return @{ @"user" : @"TLUser",
                       @"detail" : @"TLMomentDetail",
                       @"extension" : @"TLMomentExtension"};

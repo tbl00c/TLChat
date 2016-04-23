@@ -41,7 +41,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        [self setBackgroundColor:[UIColor colorChatBar]];
+        [self setBackgroundColor:[UIColor colorGrayForChatBar]];
         [self p_initImage];
         
         [self addSubview:self.modeButton];
@@ -376,7 +376,7 @@
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, [UIColor colorChatBoxLine].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorGrayLine].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
     CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);

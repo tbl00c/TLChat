@@ -121,7 +121,7 @@
                                             conversation.isRead ? [cell markAsUnread] : [cell markAsRead];
                                             [tableView setEditing:NO animated:YES];
                                         }];
-    moreAction.backgroundColor = [UIColor colorCellMoreButton];
+    moreAction.backgroundColor = [UIColor colorGrayFrench];
     return @[delAction, moreAction];
 }
 

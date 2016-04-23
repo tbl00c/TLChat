@@ -90,7 +90,7 @@
     if (chatViewBGImage == nil) {
         chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:@"CHAT_BG_ALL"];
         if (chatViewBGImage == nil) {
-            [self.view setBackgroundColor:[UIColor colorChatTableViewBG]];
+            [self.view setBackgroundColor:[UIColor colorGrayCharcoalBG]];
         }
         else {
             NSString *imagePath = [NSFileManager pathUserChatBackgroundImage:chatViewBGImage];

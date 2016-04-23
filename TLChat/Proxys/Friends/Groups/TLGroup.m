@@ -14,8 +14,8 @@
 - (id)init
 {
     if (self = [super init]) {
-        [TLUserDetail mj_setupObjectClassInArray:^NSDictionary *{
-            return @{ @"details" : @"TLUserDetail" };
+        [TLGroup mj_setupObjectClassInArray:^NSDictionary *{
+            return @{ @"users" : @"TLUser" };
         }];
     }
     return self;

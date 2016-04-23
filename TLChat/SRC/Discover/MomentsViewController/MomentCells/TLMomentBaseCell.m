@@ -127,7 +127,7 @@
     if (_usernameView == nil) {
         _usernameView = [[UIButton alloc] init];
         [_usernameView.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
-        [_usernameView setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_usernameView setTitleColor:[UIColor colorBlueMoment] forState:UIControlStateNormal];
     }
     return _usernameView;
 }

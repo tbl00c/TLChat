@@ -14,7 +14,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorTableViewBG]];
+    [self.view setBackgroundColor:[UIColor colorGrayBG]];
     [self.tableView setTableFooterView:[UIView new]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }

@@ -30,7 +30,7 @@ static TLMoreKeyboard *moreKB;
 - (id)init
 {
     if (self = [super init]) {
-        [self setBackgroundColor:[UIColor colorChatBox]];
+        [self setBackgroundColor:[UIColor colorGrayForChatBar]];
         [self addSubview:self.collectionView];
         [self addSubview:self.pageControl];
         [self p_addMasonry];
@@ -146,7 +146,7 @@ static TLMoreKeyboard *moreKB;
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, [UIColor colorChatBoxLine].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorGrayLine].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
     CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);
@@ -184,7 +184,7 @@ static TLMoreKeyboard *moreKB;
     if (_pageControl == nil) {
         _pageControl = [[UIPageControl alloc] init];
         _pageControl.centerX = self.centerX;
-        [_pageControl setPageIndicatorTintColor:[UIColor colorChatBoxLine]];
+        [_pageControl setPageIndicatorTintColor:[UIColor colorGrayLine]];
         [_pageControl setCurrentPageIndicatorTintColor:[UIColor grayColor]];
         [_pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
     }

@@ -86,7 +86,7 @@
         [_textLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [_textLabel setTextAlignment:NSTextAlignmentCenter];
         [_textLabel setTextColor:[UIColor whiteColor]];
-        [_textLabel setHighlightedTextColor:[UIColor colorDefaultGreen]];
+        [_textLabel setHighlightedTextColor:[UIColor colorGreenDefault]];
     }
     return _textLabel;
 }

@@ -14,7 +14,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorTableViewBG]];
+    [self.view setBackgroundColor:[UIColor colorGrayBG]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

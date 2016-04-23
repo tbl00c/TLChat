@@ -203,7 +203,7 @@
     if (_detailLabel == nil) {
         _detailLabel = [[UILabel alloc] init];
         [_detailLabel setFont:[UIFont fontConversationDetail]];
-        [_detailLabel setTextColor:[UIColor colorConversationDetail]];
+        [_detailLabel setTextColor:[UIColor colorTextGray]];
     }
     return _detailLabel;
 }
@@ -213,7 +213,7 @@
     if (_timeLabel == nil) {
         _timeLabel = [[UILabel alloc] init];
         [_timeLabel setFont:[UIFont fontConversationTime]];
-        [_timeLabel setTextColor:[UIColor colorConversationTime]];
+        [_timeLabel setTextColor:[UIColor colorTextGray1]];
     }
     return _timeLabel;
 }

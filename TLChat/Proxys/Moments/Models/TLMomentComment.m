@@ -13,7 +13,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        [TLUser mj_setupObjectClassInArray:^NSDictionary *{
+        [TLMomentComment mj_setupObjectClassInArray:^NSDictionary *{
             return @{ @"user" : @"TLUser",
                       @"toUser" : @"TLUser"};
         }];

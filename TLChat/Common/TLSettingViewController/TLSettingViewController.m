@@ -24,10 +24,10 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_SETTING_TOP_SPACE)]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_SETTING_BOTTOM_SPACE)]];
-    [self.tableView setBackgroundColor:[UIColor colorTableViewBG]];
+    [self.tableView setBackgroundColor:[UIColor colorGrayBG]];
     [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 15, 0, 0)];
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
-    [self.tableView setSeparatorColor:[UIColor colorCellLine]];
+    [self.tableView setSeparatorColor:[UIColor colorGrayLine]];
 }
 
 - (void)viewDidLoad

@@ -116,8 +116,8 @@
     CGContextAddLineToPoint(context, startX + width, endY);
     CGContextAddLineToPoint(context, startX - width, endY);
     CGContextClosePath(context);
-    [[UIColor colorNavAddMenuBG] setFill];
-    [[UIColor colorNavAddMenuBG] setStroke];
+    [[UIColor colorBlackForAddMenu] setFill];
+    [[UIColor colorBlackForAddMenu] setStroke];
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 
@@ -129,7 +129,7 @@
         [_tableView setScrollEnabled:NO];
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
-        [_tableView setBackgroundColor:[UIColor colorNavAddMenuBG]];
+        [_tableView setBackgroundColor:[UIColor colorBlackForAddMenu]];
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_tableView.layer setMasksToBounds:YES];
         [_tableView.layer setCornerRadius:3.0f];

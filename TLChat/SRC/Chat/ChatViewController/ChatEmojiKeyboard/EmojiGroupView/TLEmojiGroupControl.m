@@ -181,7 +181,7 @@
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, [UIColor colorChatBoxLine].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorGrayLine].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, WIDTH_EMOJIGROUP_CELL, 5);
     CGContextAddLineToPoint(context, WIDTH_EMOJIGROUP_CELL, self.height - 5);

@@ -59,10 +59,10 @@
 {
     [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 10, 0, 0)];
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 10, 0, 0)];
-    [self.tableView setSeparatorColor:[UIColor colorCellLine]];
+    [self.tableView setSeparatorColor:[UIColor colorGrayLine]];
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
-    [self.tableView setSectionIndexColor:[UIColor colorNavBarBarTint]];
+    [self.tableView setSectionIndexColor:[UIColor colorBlackForNavBar]];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     
     [self.tableView setTableFooterView:self.footerLabel];

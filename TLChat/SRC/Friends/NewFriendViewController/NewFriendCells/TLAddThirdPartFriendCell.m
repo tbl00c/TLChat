@@ -79,7 +79,7 @@
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, [UIColor colorChatBoxLine].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorGrayLine].CGColor);
     CGContextBeginPath(context);
     if (self.thridPartItems.count == 2) {
         CGContextMoveToPoint(context, self.width / 2.0, 0);

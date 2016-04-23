@@ -45,7 +45,7 @@
     _user = user;
     [self.backgroundWall sd_setImageWithURL:TLURL(user.detailInfo.momentsWallURL) forState:UIControlStateNormal];
     [self.backgroundWall sd_setImageWithURL:TLURL(user.detailInfo.momentsWallURL) forState:UIControlStateHighlighted];
-    [self.avatarView sd_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal];
+    [self.avatarView sd_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     [self.usernameLabel setText:user.nikeName];
     [self.mottoLabel setText:user.detailInfo.motto];
 }
@@ -82,7 +82,7 @@
 {
     if (_backgroundWall == nil) {
         _backgroundWall = [[UIButton alloc] init];
-        [_backgroundWall setBackgroundColor:[UIColor colorCellLine]];
+        [_backgroundWall setBackgroundColor:[UIColor colorGrayLine]];
     }
     return _backgroundWall;
 }

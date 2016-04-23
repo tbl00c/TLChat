@@ -21,7 +21,7 @@
     if (self = [super initWithFrame:frame]) {
         [self setBackgroundColor:[UIColor clearColor]];
         UIView *selectedView = [[UIView alloc] init];
-        [selectedView setBackgroundColor:[UIColor colorChatBox]];
+        [selectedView setBackgroundColor:[UIColor colorGrayForChatBar]];
         [self setSelectedBackgroundView:selectedView];
         
         [self.contentView addSubview:self.groupIconView];
@@ -50,7 +50,7 @@
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, [UIColor colorChatBoxLine].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorGrayLine].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, self.width - 0.5, 5);
     CGContextAddLineToPoint(context, self.width - 0.5, self.height - 5);

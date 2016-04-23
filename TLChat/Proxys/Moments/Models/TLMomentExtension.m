@@ -8,12 +8,14 @@
 
 #import "TLMomentExtension.h"
 
+#define     EDGE_MOMENT_EXTENSION       5.0f
+
 @implementation TLMomentExtension
 
 - (id)init
 {
     if (self = [super init]) {
-        [TLUser mj_setupObjectClassInArray:^NSDictionary *{
+        [TLMomentExtension mj_setupObjectClassInArray:^NSDictionary *{
             return @{ @"likedFriends" : @"TLUser",
                       @"comments" : @"TLMomentComment"};
         }];
@@ -35,8 +37,7 @@
 {
     CGFloat height = 0.0f;
     for (TLMomentComment *comment in self.comments) {
-//        height += comment.commentFrame.height;
-        height += 35.0f;
+        height += comment.commentFrame.height;
     }
     return height;
 }
@@ -48,7 +49,7 @@
         _extensionFrame = [[TLMomentExtensionFrame alloc] init];
         _extensionFrame.height = 0.0f;
         if (self.likedFriends.count > 0 || self.comments.count > 0) {
-            _extensionFrame.height += 10.0f;
+            _extensionFrame.height += EDGE_MOMENT_EXTENSION;
         }
         _extensionFrame.height += _extensionFrame.heightLiked = [self heightLiked];
         _extensionFrame.height += _extensionFrame.heightComments = [self heightComments];

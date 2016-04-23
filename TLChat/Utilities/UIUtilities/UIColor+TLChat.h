@@ -10,53 +10,36 @@
 
 @interface UIColor (TLChat)
 
-#pragma mark - Global
-/**
- *  默认背景色
- */
-+ (UIColor *)colorTableViewBG;
+#pragma mark - # 字体
++ (UIColor *)colorTextBlack;
++ (UIColor *)colorTextGray;
++ (UIColor *)colorTextGray1;
 
-/**
- *  默认的绿色
- */
-+ (UIColor *)colorDefaultGreen;
 
-/**
- *  默认的灰色
- */
-+ (UIColor *)colorDefaultBlack;
+#pragma mark - 灰色
++ (UIColor *)colorGrayBG;           // 浅灰色默认背景
++ (UIColor *)colorGrayCharcoalBG;   // 较深灰色背景（聊天窗口, 朋友圈用）
++ (UIColor *)colorGrayFrench;       // 淡灰色
++ (UIColor *)colorGrayLine;
++ (UIColor *)colorGrayForChatBar;
++ (UIColor *)colorGrayForMoment;
 
-+ (UIColor *)colorTabBarBG;
 
-+ (UIColor *)colorNavBarTint;
-+ (UIColor *)colorNavBarBarTint;
 
-+ (UIColor *)colorSearchBarTint;
-+ (UIColor *)colorSearchBarBorder;
+#pragma mark - 绿色
++ (UIColor *)colorGreenDefault;
 
-+ (UIColor *)colorCellLine;
-+ (UIColor *)colorCellMoreButton;
 
-#pragma mark - Conversation
-+ (UIColor *)colorConversationDetail;
-+ (UIColor *)colorConversationTime;
-+ (UIColor *)colorNavAddMenuBG;
-+ (UIColor *)colorNavAddMenuBGHL;
+#pragma mark - 蓝色
++ (UIColor *)colorBlueMoment;
 
-#pragma mark - Friends
 
-#pragma mark - Discover
+#pragma mark - 黑色
++ (UIColor *)colorBlackForNavBar;
 + (UIColor *)colorBlackBG;
-+ (UIColor *)colorScannerBG;
++ (UIColor *)colorBlackAlphaScannerBG;
++ (UIColor *)colorBlackForAddMenu;
++ (UIColor *)colorBlackForAddMenuHL;
 
 
-#pragma mark - Chat
-+ (UIColor *)colorChatTableViewBG;
-+ (UIColor *)colorChatBar;
-+ (UIColor *)colorChatBox;
-+ (UIColor *)colorChatBoxLine;
-+ (UIColor *)colorChatEmojiSend;
-
-#pragma mark - WebView
-+ (UIColor *)colorWebViewAuthText;
 @end

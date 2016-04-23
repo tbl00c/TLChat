@@ -61,7 +61,7 @@
 {
     if (_topView == nil) {
         _topView = [[UIView alloc] init];
-        [_topView setBackgroundColor:[UIColor colorScannerBG]];
+        [_topView setBackgroundColor:[UIColor colorBlackAlphaScannerBG]];
     }
     return _topView;
 }
@@ -70,7 +70,7 @@
 {
     if (_btmView == nil) {
         _btmView = [[UIView alloc] init];
-        [_btmView setBackgroundColor:[UIColor colorScannerBG]];
+        [_btmView setBackgroundColor:[UIColor colorBlackAlphaScannerBG]];
     }
     return _btmView;
 }
@@ -79,7 +79,7 @@
 {
     if (_leftView == nil) {
         _leftView = [[UIView alloc] init];
-        [_leftView setBackgroundColor:[UIColor colorScannerBG]];
+        [_leftView setBackgroundColor:[UIColor colorBlackAlphaScannerBG]];
     }
     return _leftView;
 }
@@ -88,7 +88,7 @@
 {
     if (_rightView == nil) {
         _rightView = [[UIView alloc] init];
-        [_rightView setBackgroundColor:[UIColor colorScannerBG]];
+        [_rightView setBackgroundColor:[UIColor colorBlackAlphaScannerBG]];
     }
     return _rightView;
 }

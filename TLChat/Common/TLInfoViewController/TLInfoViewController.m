@@ -18,7 +18,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_INFO_TOP_SPACE)]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_INFO_BOTTOM_SPACE)]];
-    [self.tableView setBackgroundColor:[UIColor colorTableViewBG]];
+    [self.tableView setBackgroundColor:[UIColor colorGrayBG]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 

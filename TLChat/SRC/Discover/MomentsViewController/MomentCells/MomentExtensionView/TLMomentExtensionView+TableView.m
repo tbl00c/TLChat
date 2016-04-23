@@ -60,7 +60,8 @@
         return self.extension.extensionFrame.heightLiked;
     }
     else {
-        return 35.0f;
+        TLMomentComment *comment = [self.extension.comments objectAtIndex:indexPath.row];
+        return comment.commentFrame.height;
     }
     return 0.0f;
 }

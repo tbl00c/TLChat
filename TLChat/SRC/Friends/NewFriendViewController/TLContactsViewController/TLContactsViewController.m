@@ -27,7 +27,7 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
-    [self.tableView setSectionIndexColor:[UIColor colorNavBarBarTint]];
+    [self.tableView setSectionIndexColor:[UIColor colorBlackForNavBar]];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     
     [self registerCellClass];

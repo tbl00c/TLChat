@@ -22,9 +22,9 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.rightSeparatorSpace = 16;
-        [self setBackgroundColor:[UIColor colorNavAddMenuBG]];
+        [self setBackgroundColor:[UIColor colorBlackForAddMenu]];
         UIView *selectedView = [[UIView alloc] init];
-        [selectedView setBackgroundColor:[UIColor colorNavAddMenuBGHL]];
+        [selectedView setBackgroundColor:[UIColor colorBlackForAddMenuHL]];
         [self setSelectedBackgroundView:selectedView];
         
         [self.contentView addSubview:self.iconImageView];

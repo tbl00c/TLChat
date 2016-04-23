@@ -58,11 +58,11 @@
     }
     else if (group.status == TLEmojiGroupStatusDownloading) {
         [self.downloadButton setTitle:@"下载中" forState:UIControlStateNormal];
-        [self.downloadButton setBackgroundColor:[UIColor colorDefaultGreen]];
+        [self.downloadButton setBackgroundColor:[UIColor colorGreenDefault]];
     }
     else {
         [self.downloadButton setTitle:@"下载" forState:UIControlStateNormal];
-        [self.downloadButton setBackgroundColor:[UIColor colorDefaultGreen]];
+        [self.downloadButton setBackgroundColor:[UIColor colorGreenDefault]];
     }
 }
 
@@ -89,13 +89,13 @@
     }];
     
     UIView *line1 = [[UIView alloc] init];
-    [line1 setBackgroundColor:[UIColor colorCellLine]];
+    [line1 setBackgroundColor:[UIColor colorGrayLine]];
     [self.contentView addSubview:line1];
     UIView *line2 = [[UIView alloc] init];
-    [line2 setBackgroundColor:[UIColor colorCellLine]];
+    [line2 setBackgroundColor:[UIColor colorGrayLine]];
     [self.contentView addSubview:line2];
     UILabel *label = [[UILabel alloc] init];
-    [label setTextColor:[UIColor colorCellLine]];
+    [label setTextColor:[UIColor colorGrayLine]];
     [label setFont:[UIFont systemFontOfSize:12.0f]];
     [label setText:@"长按表情可预览"];
     [self.contentView addSubview:label];
@@ -148,12 +148,12 @@
     if (_downloadButton == nil) {
         _downloadButton = [[UIButton alloc] init];
         [_downloadButton setTitle:@"下载" forState:UIControlStateNormal];
-        [_downloadButton setBackgroundColor:[UIColor colorDefaultGreen]];
+        [_downloadButton setBackgroundColor:[UIColor colorGreenDefault]];
         [_downloadButton.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
         [_downloadButton.layer setMasksToBounds:YES];
         [_downloadButton.layer setCornerRadius:3.0f];
         [_downloadButton.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_downloadButton.layer setBorderColor:[UIColor colorCellLine].CGColor];
+        [_downloadButton.layer setBorderColor:[UIColor colorGrayLine].CGColor];
         [_downloadButton addTarget:self action:@selector(downloadButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _downloadButton;

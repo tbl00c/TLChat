@@ -63,13 +63,13 @@
     }
     else if (group.status == TLEmojiGroupStatusDownloading) {
         [self.downloadButton setTitle:@"下载中" forState:UIControlStateNormal];
-        [self.downloadButton.layer setBorderColor:[UIColor colorDefaultGreen].CGColor];
-        [self.downloadButton setTitleColor:[UIColor colorDefaultGreen] forState:UIControlStateNormal];
+        [self.downloadButton.layer setBorderColor:[UIColor colorGreenDefault].CGColor];
+        [self.downloadButton setTitleColor:[UIColor colorGreenDefault] forState:UIControlStateNormal];
     }
     else {
         [self.downloadButton setTitle:@"下载" forState:UIControlStateNormal];
-        [self.downloadButton.layer setBorderColor:[UIColor colorDefaultGreen].CGColor];
-        [self.downloadButton setTitleColor:[UIColor colorDefaultGreen] forState:UIControlStateNormal];
+        [self.downloadButton.layer setBorderColor:[UIColor colorGreenDefault].CGColor];
+        [self.downloadButton setTitleColor:[UIColor colorGreenDefault] forState:UIControlStateNormal];
     }
 }
 
@@ -161,11 +161,11 @@
         _downloadButton = [[UIButton alloc] init];
         [_downloadButton setTitle:@"下载" forState:UIControlStateNormal];
         [_downloadButton.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
-        [_downloadButton setTitleColor:[UIColor colorDefaultGreen] forState:UIControlStateNormal];
+        [_downloadButton setTitleColor:[UIColor colorGreenDefault] forState:UIControlStateNormal];
         [_downloadButton.layer setMasksToBounds:YES];
         [_downloadButton.layer setCornerRadius:3.0f];
         [_downloadButton.layer setBorderWidth:1.0f];
-        [_downloadButton.layer setBorderColor:[UIColor colorDefaultGreen].CGColor];
+        [_downloadButton.layer setBorderColor:[UIColor colorGreenDefault].CGColor];
         [_downloadButton addTarget:self action:@selector(downloadButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _downloadButton;

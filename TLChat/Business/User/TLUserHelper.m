@@ -31,7 +31,7 @@ static TLUserHelper *helper;
     if (self = [super init]) {
         self.user = [[TLUser alloc] init];
         self.user.userID = @"1000";
-        self.user.avatarURL = @"http://img.jsqq.net/uploads/allimg/140903/1_140903051019_18.png";
+        self.user.avatarURL = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
         self.user.nikeName = @"李伯坤";
         self.user.username = @"li-bokun";
         self.user.detailInfo.qqNumber = @"1159197873";

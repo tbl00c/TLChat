@@ -63,12 +63,12 @@
     TLInfo *sendMsg = TLCreateInfo(@"发消息", nil);
     sendMsg.type = TLInfoTypeButton;
     sendMsg.titleColor = [UIColor whiteColor];
-    sendMsg.buttonBorderColor = [UIColor colorCellLine];
+    sendMsg.buttonBorderColor = [UIColor colorGrayLine];
     [arr addObject:sendMsg];
     if (![userInfo.userID isEqualToString:[TLUserHelper sharedHelper].userID]) {
         TLInfo *video = TLCreateInfo(@"视频聊天", nil);
         video.type = TLInfoTypeButton;
-        video.buttonBorderColor = [UIColor colorCellLine];
+        video.buttonBorderColor = [UIColor colorGrayLine];
         video.buttonColor = [UIColor whiteColor];
         [arr addObject:video];
     }

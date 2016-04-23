@@ -10,121 +10,78 @@
 
 @implementation UIColor (TLChat)
 
-
-#pragma mark - Global
-+ (UIColor *)colorTableViewBG
-{
-    return TLColor(239.0, 239.0, 244.0, 1.0);
+#pragma mark - # 字体
++ (UIColor *)colorTextBlack {
+    return [UIColor blackColor];
 }
 
-+ (UIColor *)colorDefaultGreen
-{
-    return TLColor(2.0, 187.0, 0.0, 1.0f);
-}
-
-+ (UIColor *)colorDefaultBlack
-{
-    return TLColor(46, 49, 50, 1.0);
-}
-
-+ (UIColor *)colorTabBarBG
-{
-    return TLColor(239.0, 239.0, 244.0, 1.0);
-}
-
-+ (UIColor *)colorNavBarTint
-{
-    return [UIColor whiteColor];
-}
-
-+ (UIColor *)colorNavBarBarTint
-{
-    return TLColor(20.0, 20.0, 20.0, 0.9);
-}
-
-+ (UIColor *)colorSearchBarTint
-{
-    return TLColor(239.0, 239.0, 244.0, 1.0);
-}
-
-+ (UIColor *)colorSearchBarBorder
-{
-    return [UIColor colorSearchBarTint];
-    //    return TLColor(220, 220, 220, 1.0);
-}
-
-+ (UIColor *)colorCellLine
-{
-    return [UIColor colorWithWhite:0.5 alpha:0.3];
-}
-
-+ (UIColor *)colorCellMoreButton
-{
-    return [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0];
-}
-
-#pragma mark - Conversation
-+ (UIColor *)colorConversationDetail
-{
++ (UIColor *)colorTextGray {
     return [UIColor grayColor];
 }
 
-+ (UIColor *)colorConversationTime
-{
++ (UIColor *)colorTextGray1 {
     return TLColor(160, 160, 160, 1.0);
 }
 
-+ (UIColor *)colorNavAddMenuBG
-{
-    return TLColor(71, 70, 73, 1.0);
+#pragma mark - 灰色
++ (UIColor *)colorGrayBG {
+    return TLColor(239.0, 239.0, 244.0, 1.0);
 }
 
-+ (UIColor *)colorNavAddMenuBGHL
-{
-    return TLColor(65, 64, 67, 1.0);
-}
-
-#pragma mark - Discover
-+ (UIColor *)colorBlackBG
-{
-    return TLColor(42, 45, 46, 1.0);
-}
-
-+ (UIColor *)colorScannerBG
-{
-    return [UIColor colorWithWhite:0 alpha:0.6];
-}
-
-#pragma mark - Chat
-+ (UIColor *)colorChatBar
-{
-    return TLColor(245, 245, 247, 1.0);
-}
-
-+ (UIColor *)colorChatTableViewBG
-{
++ (UIColor *)colorGrayCharcoalBG {
     return TLColor(235.0, 235.0, 235.0, 1.0);
 }
 
-+ (UIColor *)colorChatBox
-{
-    return TLColor(244.0, 244.0, 246.0, 1.0);
++ (UIColor *)colorGrayLine {
+    return [UIColor colorWithWhite:0.5 alpha:0.3];
 }
 
-+ (UIColor *)colorChatBoxLine
-{
-    return TLColor(188.0, 188.0, 188.0, 0.7f);
++ (UIColor *)colorGrayFrench {
+    return TLColor(199, 199, 204, 1.0);
 }
 
-+ (UIColor *)colorChatEmojiSend
-{
-    return TLColor(25.5, 102.0, 204.0, 1.0);
++ (UIColor *)colorGrayForChatBar {
+    return TLColor(245.0, 245.0, 247.0, 1.0);
 }
 
-#pragma mark - WebView
-+ (UIColor *)colorWebViewAuthText
-{
-    return TLColor(107, 111, 113, 1.0);
++ (UIColor *)colorGrayForMoment {
+    return TLColor(243.0, 243.0, 245.0, 1.0);
 }
+
+
+
+
+#pragma mark - 绿色
++ (UIColor *)colorGreenDefault {
+    return TLColor(2.0, 187.0, 0.0, 1.0f);
+}
+
+
+#pragma mark - 蓝色
++ (UIColor *)colorBlueMoment {
+    return TLColor(74.0, 99.0, 141.0, 1.0);
+}
+
+#pragma mark - 黑色
++ (UIColor *)colorBlackForNavBar {
+    return TLColor(20.0, 20.0, 20.0, 1.0);
+}
+
++ (UIColor *)colorBlackBG {
+    return TLColor(46.0, 49.0, 50.0, 1.0);
+}
+
++ (UIColor *)colorBlackAlphaScannerBG {
+    return [UIColor colorWithWhite:0 alpha:0.6];
+}
+
++ (UIColor *)colorBlackForAddMenu {
+    return TLColor(71, 70, 73, 1.0);
+}
+
++ (UIColor *)colorBlackForAddMenuHL {
+    return TLColor(65, 64, 67, 1.0);
+}
+
 
 @end

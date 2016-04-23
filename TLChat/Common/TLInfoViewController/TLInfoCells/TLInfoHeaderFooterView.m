@@ -13,7 +13,7 @@
 - (id) initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        [self.contentView setBackgroundColor:[UIColor colorTableViewBG]];
+        [self.contentView setBackgroundColor:[UIColor colorGrayBG]];
     }
     return self;
 }

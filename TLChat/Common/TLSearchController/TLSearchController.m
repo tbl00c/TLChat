@@ -13,14 +13,14 @@
 - (id)initWithSearchResultsController:(UIViewController *)searchResultsController
 {
     if (self = [super initWithSearchResultsController:searchResultsController]) {
-        [self.searchBar setBarTintColor:[UIColor colorSearchBarTint]];
-        [self.searchBar setTintColor:[UIColor colorDefaultGreen]];
+        [self.searchBar setBarTintColor:[UIColor colorGrayBG]];
+        [self.searchBar setTintColor:[UIColor colorGreenDefault]];
         [self.searchBar.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [self.searchBar.layer setBorderColor:[UIColor colorSearchBarBorder].CGColor];
+        [self.searchBar.layer setBorderColor:[UIColor colorGrayBG].CGColor];
         UITextField *tf = [[[self.searchBar.subviews firstObject] subviews] lastObject];
         [tf.layer setMasksToBounds:YES];
         [tf.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [tf.layer setBorderColor:[UIColor colorCellLine].CGColor];
+        [tf.layer setBorderColor:[UIColor colorGrayLine].CGColor];
         [tf.layer setCornerRadius:5.0f];
     }
     return self;

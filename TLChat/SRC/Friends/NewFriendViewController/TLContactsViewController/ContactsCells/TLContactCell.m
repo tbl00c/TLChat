@@ -56,7 +56,7 @@
     [self.usernameLabel setText:contact.name];
     [self.subTitleLabel setText:contact.tel];
     if (contact.status == TLContactStatusStranger) {
-        [self.rightButton setBackgroundColor:[UIColor colorDefaultGreen]];
+        [self.rightButton setBackgroundColor:[UIColor colorGreenDefault]];
         [self.rightButton setTitle:@"添加" forState:UIControlStateNormal];
         [self.rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.rightButton.layer setBorderColor:[UIColor colorWithWhite:0.7 alpha:1.0].CGColor];

@@ -39,7 +39,7 @@
         [self.imageView setImage:image];
     }
     else {
-        [self.imageView sd_setImageWithURL:TLURL(group.groupIconURL) placeholderImage:[UIImage imageWithColor:[UIColor colorSearchBarTint]]];
+        [self.imageView sd_setImageWithURL:TLURL(group.groupIconURL) placeholderImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
     }
 }
 
@@ -66,7 +66,7 @@
         [_imageView.layer setMasksToBounds:YES];
         [_imageView.layer setCornerRadius:5.0f];
         [_imageView.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_imageView.layer setBorderColor:[UIColor colorCellLine].CGColor];
+        [_imageView.layer setBorderColor:[UIColor colorGrayLine].CGColor];
     }
     return _imageView;
 }

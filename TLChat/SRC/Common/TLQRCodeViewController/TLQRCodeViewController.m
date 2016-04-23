@@ -198,7 +198,7 @@
         [_avatarImageView.layer setMasksToBounds:YES];
         [_avatarImageView.layer setCornerRadius:3.0f];
         [_avatarImageView.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_avatarImageView.layer setBorderColor:[UIColor colorCellLine].CGColor];
+        [_avatarImageView.layer setBorderColor:[UIColor colorGrayLine].CGColor];
     }
     return _avatarImageView;
 }

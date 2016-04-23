@@ -94,7 +94,7 @@
             group.status = TLEmojiGroupStatusDownloaded;
             NSInteger index = [self.data indexOfObject:group];
             if (index < self.data.count) {
-                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
             }
             BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
             if (!ok) {

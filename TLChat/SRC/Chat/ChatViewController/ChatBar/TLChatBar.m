@@ -412,7 +412,7 @@
         [_textView setReturnKeyType:UIReturnKeySend];
         [_textView.layer setMasksToBounds:YES];
         [_textView.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_textView.layer setBorderColor:[UIColor grayColor].CGColor];
+        [_textView.layer setBorderColor:[UIColor colorWithWhite:0.0 alpha:0.3].CGColor];
         [_textView.layer setCornerRadius:4.0f];
         [_textView setDelegate:self];
         [_textView setScrollsToTop:NO];
@@ -427,12 +427,12 @@
         [_talkButton setTitle:@"按住 说话" forState:UIControlStateNormal];
         [_talkButton setTitle:@"松开 结束" forState:UIControlStateHighlighted];
         [_talkButton setTitleColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0] forState:UIControlStateNormal];
-        [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.5]] forState:UIControlStateHighlighted];
+        [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0.0 alpha:0.1]] forState:UIControlStateHighlighted];
         [_talkButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [_talkButton.layer setMasksToBounds:YES];
         [_talkButton.layer setCornerRadius:4.0f];
         [_talkButton.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_talkButton.layer setBorderColor:[UIColor grayColor].CGColor];
+        [_talkButton.layer setBorderColor:[UIColor colorWithWhite:0.0 alpha:0.3].CGColor];
         [_talkButton setHidden:YES];
         [_talkButton addTarget:self action:@selector(talkButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
         [_talkButton addTarget:self action:@selector(talkButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];

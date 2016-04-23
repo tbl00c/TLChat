@@ -36,10 +36,6 @@
     return [UIColor colorWithWhite:0.5 alpha:0.3];
 }
 
-+ (UIColor *)colorGrayFrench {
-    return TLColor(199, 199, 204, 1.0);
-}
-
 + (UIColor *)colorGrayForChatBar {
     return TLColor(245.0, 245.0, 247.0, 1.0);
 }

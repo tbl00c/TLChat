@@ -1,25 +1,25 @@
 //
-//  TLMomentTextCell.m
+//  TLMomentImageView.m
 //  TLChat
 //
-//  Created by 李伯坤 on 16/4/22.
+//  Created by 李伯坤 on 16/4/23.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLMomentTextCell.h"
-#import "TLMomentDetailTextView.h"
+#import "TLMomentImageView.h"
+#import "TLMomentDetailImagesView.h"
 
-@interface TLMomentTextCell ()
+@interface TLMomentImageView ()
 
-@property (nonatomic, strong) TLMomentDetailTextView *detailView;
+@property (nonatomic, strong) TLMomentDetailImagesView *detailView;
 
 @end
 
-@implementation TLMomentTextCell
+@implementation TLMomentImageView
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithFrame:(CGRect)frame
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+    if (self = [super initWithFrame:frame]) {
         [self.detailContainerView addSubview:self.detailView];
         
         [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -36,10 +36,10 @@
 }
 
 #pragma mark - # Getter -
-- (TLMomentDetailTextView *)detailView
+- (TLMomentDetailImagesView *)detailView
 {
     if (_detailView == nil) {
-        _detailView = [[TLMomentDetailTextView alloc] init];
+        _detailView = [[TLMomentDetailImagesView alloc] init];
     }
     return _detailView;
 }

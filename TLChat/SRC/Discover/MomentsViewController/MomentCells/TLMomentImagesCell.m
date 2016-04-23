@@ -7,11 +7,11 @@
 //
 
 #import "TLMomentImagesCell.h"
-#import "TLMomentDetailImagesView.h"
+#import "TLMomentImageView.h"
 
 @interface TLMomentImagesCell ()
 
-@property (nonatomic, strong) TLMomentDetailImagesView *detailView;
+@property (nonatomic, strong) TLMomentImageView *momentView;
 
 @end
 
@@ -20,10 +20,9 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self.detailContainerView addSubview:self.detailView];
-        
-        [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(self.detailContainerView);
+        [self.contentView addSubview:self.momentView];
+        [self.momentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self.contentView);
         }];
     }
     return self;
@@ -32,16 +31,16 @@
 - (void)setMoment:(TLMoment *)moment
 {
     [super setMoment:moment];
-    [self.detailView setDetail:moment.detail];
+    [self.momentView setMoment:moment];
 }
 
 #pragma mark - # Getter -
-- (TLMomentDetailImagesView *)detailView
+- (TLMomentImageView *)momentView
 {
-    if (_detailView == nil) {
-        _detailView = [[TLMomentDetailImagesView alloc] init];
+    if (_momentView == nil) {
+        _momentView = [[TLMomentImageView alloc] init];
     }
-    return _detailView;
+    return _momentView;
 }
 
 @end

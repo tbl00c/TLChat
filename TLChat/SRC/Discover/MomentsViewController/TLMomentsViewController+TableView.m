@@ -7,8 +7,8 @@
 //
 
 #import "TLMomentsViewController+TableView.h"
+#import "TLMomentDetailViewController.h"
 #import "TLMomentHeaderCell.h"
-#import "TLMomentTextCell.h"
 #import "TLMomentImagesCell.h"
 
 @implementation TLMomentsViewController (TableView)
@@ -16,7 +16,6 @@
 - (void)registerCellForTableView:(UITableView *)tableView
 {
     [tableView registerClass:[TLMomentHeaderCell class] forCellReuseIdentifier:@"TLMomentHeaderCell"];
-    [tableView registerClass:[TLMomentImagesCell class] forCellReuseIdentifier:@"TLMomentTextCell"];
     [tableView registerClass:[TLMomentImagesCell class] forCellReuseIdentifier:@"TLMomentImagesCell"];
     [tableView registerClass:[TLTableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
@@ -37,11 +36,8 @@
     
     TLMoment *moment = [self.data objectAtIndex:indexPath.row - 1];
     id cell;
-    if (moment.detail.images.count > 0) {
+    if (moment.detail.text.length > 0 || moment.detail.images.count > 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentImagesCell"];
-    }
-    else if (moment.detail.text.length > 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentTextCell"];
     }
 
     if (cell) {
@@ -65,6 +61,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row > 0) {
+        TLMoment *moment = [self.data objectAtIndex:indexPath.row - 1];
+        TLMomentDetailViewController *detailVC = [[TLMomentDetailViewController alloc] init];
+        [detailVC setMoment:moment];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

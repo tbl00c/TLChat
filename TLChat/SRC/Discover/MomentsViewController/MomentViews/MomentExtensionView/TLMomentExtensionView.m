@@ -27,7 +27,8 @@
         [self addSubview:self.tableView];
         [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self).mas_offset(EDGE_HEADER);
-            make.left.and.right.and.bottom.mas_equalTo(self);
+            make.left.and.right.mas_equalTo(self);
+            make.bottom.mas_equalTo(self).priorityLow();
         }];
         
         [self registerCellForTableView:self.tableView];
@@ -40,7 +41,6 @@
     _extension = extension;
     [self.tableView reloadData];
 }
-
 
 - (void)drawRect:(CGRect)rect
 {

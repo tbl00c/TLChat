@@ -1,14 +1,14 @@
 //
-//  TLChatBaseViewController+ChatTableViewDelegate.m
+//  TLChatBaseViewController+ChatTableView.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLChatBaseViewController+ChatTableViewDelegate.h"
+#import "TLChatBaseViewController+ChatTableView.h"
 
-@implementation TLChatBaseViewController (ChatTableViewDelegate)
+@implementation TLChatBaseViewController (ChatTableView)
 
 #pragma mark - Public Methods -
 - (void)addToShowMessage:(TLMessage *)message
@@ -76,6 +76,13 @@
 - (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC deleteMessage:(TLMessage *)message
 {
     return [[TLMessageManager sharedInstance] deleteMessageByMsgID:message.messageID];
+}
+
+- (void)chatTableViewController:(TLChatTableViewController *)chatTVC didClickUserAvatar:(TLUser *)user
+{
+    if ([self respondsToSelector:@selector(didClickedUserAvatar:)]) {
+        [self didClickedUserAvatar:user];
+    }
 }
 
 #pragma mark - Private Methods -

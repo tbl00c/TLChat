@@ -66,6 +66,13 @@
 }
 
 #pragma mark - Event Response -
+- (void)tapMessageView
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(messageCellTap:)]) {
+        [self.delegate messageCellTap:self.message];
+    }
+}
+
 - (void)longPressMsgBGView
 {
     [self.msgImageView setAlpha:0.7];   // 比较low的选中效果
@@ -89,6 +96,9 @@
     if (_msgImageView == nil) {
         _msgImageView = [[TLMessageImageView alloc] init];
         [_msgImageView setUserInteractionEnabled:YES];
+        
+        UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMessageView)];
+        [_msgImageView addGestureRecognizer:tapGR];
         
         UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressMsgBGView)];
         [_msgImageView addGestureRecognizer:longPressGR];

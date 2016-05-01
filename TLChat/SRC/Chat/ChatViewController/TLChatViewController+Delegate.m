@@ -9,6 +9,7 @@
 #import "TLChatViewController+Delegate.h"
 #import "TLExpressionViewController.h"
 #import "TLMyExpressionViewController.h"
+#import "TLFriendDetailViewController.h"
 
 @implementation TLChatViewController (Delegate)
 
@@ -59,6 +60,15 @@
     TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
     TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:myExpressionVC];
     [self presentViewController:navC animated:YES completion:nil];
+}
+
+//MARK: TLChatViewControllerProxy
+- (void)didClickedUserAvatar:(TLUser *)user
+{
+    TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
+    [detailVC setUser:user];
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 @end

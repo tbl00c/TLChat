@@ -7,7 +7,7 @@
 //
 
 #import "TLChatBaseViewController+DataDelegate.h"
-#import "TLChatBaseViewController+ChatTableViewDelegate.h"
+#import "TLChatBaseViewController+ChatTableView.h"
 
 @implementation TLChatBaseViewController (DataDelegate)
 

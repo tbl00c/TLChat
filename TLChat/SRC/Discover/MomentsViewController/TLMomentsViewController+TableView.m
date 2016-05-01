@@ -56,7 +56,7 @@
     }
 
     TLMoment *moment = [self.data objectAtIndex:indexPath.row - 1];
-    return moment.momentFrame.height;
+    return (int)moment.momentFrame.height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

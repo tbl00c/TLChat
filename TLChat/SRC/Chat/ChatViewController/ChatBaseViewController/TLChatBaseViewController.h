@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLChatViewControllerProxy.h"
 #import "TLChatTableViewController.h"
 #import "TLEmojiDisplayView.h"
 #import "TLImageExpressionDisplayView.h"
@@ -26,7 +27,7 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
     TLChatVCTypeGroup,
 };
 
-@interface TLChatBaseViewController : UIViewController <TLMoreKeyboardDelegate>
+@interface TLChatBaseViewController : UIViewController <TLChatViewControllerProxy, TLMoreKeyboardDelegate>
 {
     TLChatBarStatus lastStatus;
     TLChatBarStatus curStatus;

@@ -7,7 +7,6 @@
 //
 
 #import "TLChatTableViewController+Delegate.h"
-#import "TLFriendDetailViewController.h"
 #import "TLTextDisplayView.h"
 
 @implementation TLChatTableViewController (Delegate)
@@ -18,7 +17,7 @@
     [self.tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
     [self.tableView registerClass:[TLImageMessageCell class] forCellReuseIdentifier:@"TLImageMessageCell"];
     [self.tableView registerClass:[TLExpressionMessageCell class] forCellReuseIdentifier:@"TLExpressionMessageCell"];
-    [self.tableView registerClass:[TLTableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
 #pragma mark - Delegate -
@@ -65,10 +64,14 @@
 //MARK: TLMessageCellDelegate
 - (void)messageCellDidClickAvatarForUser:(TLUser *)user
 {
-    TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
-    [detailVC setUser:user];
-    [self.parentViewController setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:didClickUserAvatar:)]) {
+        [self.delegate chatTableViewController:self didClickUserAvatar:user];
+    }
+}
+
+- (void)messageCellTap:(TLMessage *)message
+{
+
 }
 
 - (void)messageCellLongPress:(TLMessage *)message rect:(CGRect)rect

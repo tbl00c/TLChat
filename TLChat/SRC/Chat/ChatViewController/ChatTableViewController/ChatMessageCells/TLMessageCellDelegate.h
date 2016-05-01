@@ -15,6 +15,8 @@
 
 - (void)messageCellDidClickAvatarForUser:(TLUser *)user;
 
+- (void)messageCellTap:(TLMessage *)message;
+
 - (void)messageCellLongPress:(TLMessage *)message rect:(CGRect)rect;
 
 - (void)messageCellDoubleClick:(TLMessage *)message;

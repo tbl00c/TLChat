@@ -11,7 +11,7 @@
 #import "TLChatBaseViewController+DataDelegate.h"
 #import "TLChatBaseViewController+ChatBarDelegate.h"
 #import "TLChatBaseViewController+EmojiKBDelegate.h"
-#import "TLChatBaseViewController+ChatTableViewDelegate.h"
+#import "TLChatBaseViewController+ChatTableView.h"
 
 #import "UIImage+Size.h"
 

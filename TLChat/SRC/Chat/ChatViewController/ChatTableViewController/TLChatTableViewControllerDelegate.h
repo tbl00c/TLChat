@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TLMessage.h"
 
+@class TLMessage;
 @class TLChatTableViewController;
 @protocol TLChatTableViewControllerDelegate <NSObject>
 
@@ -30,6 +30,7 @@
                           count:(NSUInteger)count
                       completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
 
+@optional
 /**
  *  消息长按删除
  *
@@ -43,5 +44,17 @@
  */
 - (void)chatTableViewController:(TLChatTableViewController *)chatTVC
              didClickUserAvatar:(TLUser *)user;
+
+/**
+ *  Message点击事件
+ */
+- (void)chatTableViewController:(TLChatTableViewController *)chatTVC
+                didClickMessage:(TLMessage *)message;
+
+/**
+ *  Message双击事件
+ */
+- (void)chatTableViewController:(TLChatTableViewController *)chatTVC
+          didDoubleClickMessage:(TLMessage *)message;
 
 @end

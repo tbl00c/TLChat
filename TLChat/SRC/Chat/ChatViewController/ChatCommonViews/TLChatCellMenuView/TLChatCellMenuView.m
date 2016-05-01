@@ -16,6 +16,16 @@
 
 @implementation TLChatCellMenuView
 
++ (TLChatCellMenuView *)sharedMenuView
+{
+    static TLChatCellMenuView *menuView;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        menuView = [[TLChatCellMenuView alloc] init];
+    });
+    return menuView;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {

@@ -16,4 +16,6 @@
 
 - (id)initWithImages:(NSArray *)images curImageIndex:(NSInteger)index curImageRect:(CGRect)rect;
 
+- (void)show;
+
 @end

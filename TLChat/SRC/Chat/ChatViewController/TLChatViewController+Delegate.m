@@ -10,6 +10,7 @@
 #import "TLExpressionViewController.h"
 #import "TLMyExpressionViewController.h"
 #import "TLFriendDetailViewController.h"
+#import "TLImageBrowserController.h"
 
 @implementation TLChatViewController (Delegate)
 
@@ -69,6 +70,12 @@
     [detailVC setUser:user];
     [self setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+- (void)didClickedImageMessage:(TLImageMessage *)message
+{
+//    TLImageBrowserController *browserVC = [[TLImageBrowserController alloc] initWithImages:@[message.imagePath] curImageIndex:0 curImageRect:CGRectZero];
+//    [browserVC show];
 }
 
 @end

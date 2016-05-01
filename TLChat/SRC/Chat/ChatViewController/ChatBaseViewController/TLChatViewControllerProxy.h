@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class TLImageMessage;
 @protocol TLChatViewControllerProxy <NSObject>
 
 @optional;
 - (void)didClickedUserAvatar:(TLUser *)user;
+
+- (void)didClickedImageMessage:(TLImageMessage *)message;
 
 @end

@@ -42,8 +42,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if ([self.menuView isShow]) {
-        [self.menuView dismiss];
+    if ([[TLChatCellMenuView sharedMenuView] isShow]) {
+        [[TLChatCellMenuView sharedMenuView] dismiss];
     }
 }
 
@@ -149,14 +149,6 @@
         _data = [[NSMutableArray alloc] init];
     }
     return _data;
-}
-
-- (TLChatCellMenuView *)menuView
-{
-    if (_menuView == nil) {
-        _menuView = [[TLChatCellMenuView alloc] init];
-    }
-    return _menuView;
 }
 
 - (MJRefreshNormalHeader *)refresHeader

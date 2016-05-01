@@ -71,20 +71,37 @@
 
 - (void)messageCellTap:(TLMessage *)message
 {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:didClickMessage:)]) {
+        [self.delegate chatTableViewController:self didClickMessage:message];
+    }
+}
 
+/**
+ *  双击Message Cell
+ */
+- (void)messageCellDoubleClick:(TLMessage *)message
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:didDoubleClickMessage:)]) {
+        [self.delegate chatTableViewController:self didDoubleClickMessage:message];
+    }
 }
 
 - (void)messageCellLongPress:(TLMessage *)message rect:(CGRect)rect
 {
-    if ([self.menuView isShow]) {
-        return;
-    }
     NSInteger row = [self.data indexOfObject:message];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    if (self.disableLongPressMenu) {
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        return;
+    }
+    if ([[TLChatCellMenuView sharedMenuView] isShow]) {
+        return;
+    }
+    
     CGRect cellRect = [self.tableView rectForRowAtIndexPath:indexPath];
     rect.origin.y += cellRect.origin.y - self.tableView.contentOffset.y;
     __weak typeof(self)weakSelf = self;
-    [self.menuView showInView:self.navigationController.view withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
+    [[TLChatCellMenuView sharedMenuView] showInView:self.navigationController.view withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
         [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         if (type == TLChatMenuItemTypeCopy) {
             NSString *str = [message messageCopy];
@@ -96,14 +113,6 @@
             [actionSheet showInView:self.view];
         }
     }];
-}
-
-- (void)messageCellDoubleClick:(TLMessage *)message
-{
-    if (message.messageType == TLMessageTypeText) {
-        TLTextDisplayView *displayView = [[TLTextDisplayView alloc] init];
-        [displayView showInView:self.navigationController.view withAttrText:[(TLTextMessage *)message attrText] animation:YES];
-    }
 }
 
 //MARK: UIScrollViewDelegate

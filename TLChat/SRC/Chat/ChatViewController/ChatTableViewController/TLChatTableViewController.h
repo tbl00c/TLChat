@@ -21,10 +21,11 @@
 
 @property (nonatomic, strong) NSMutableArray *data;
 
-@property (nonatomic, strong) TLChatCellMenuView *menuView;
-
 /// 禁用下拉刷新
 @property (nonatomic, assign) BOOL disablePullToRefresh;
+
+/// 禁用长按菜单
+@property (nonatomic, assign) BOOL disableLongPressMenu;
 
 /**
  *  发送消息（在列表展示）

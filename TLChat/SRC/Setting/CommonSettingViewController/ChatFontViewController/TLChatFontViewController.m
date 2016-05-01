@@ -97,6 +97,7 @@
     if (_chatTVC == nil) {
         _chatTVC = [[TLChatTableViewController alloc] init];
         [_chatTVC setDisablePullToRefresh:YES];
+        [_chatTVC setDisableLongPressMenu:YES];
     }
     return _chatTVC;
 }

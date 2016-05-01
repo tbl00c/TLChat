@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, TLChatMenuItemType) {
 
 @property (nonatomic, copy) void (^actionBlcok)();
 
++ (TLChatCellMenuView *)sharedMenuView;
+
 - (void)showInView:(UIView *)view withMessageType:(TLMessageType)messageType rect:(CGRect)rect actionBlock:(void (^)(TLChatMenuItemType))actionBlock;
 
 - (void)dismiss;

@@ -7,6 +7,7 @@
 //
 
 #import "TLChatBaseViewController+ChatTableView.h"
+#import "TLTextDisplayView.h"
 
 @implementation TLChatBaseViewController (ChatTableView)
 
@@ -82,6 +83,21 @@
 {
     if ([self respondsToSelector:@selector(didClickedUserAvatar:)]) {
         [self didClickedUserAvatar:user];
+    }
+}
+
+- (void)chatTableViewController:(TLChatTableViewController *)chatTVC didDoubleClickMessage:(TLMessage *)message
+{
+    if (message.messageType == TLMessageTypeText) {
+        TLTextDisplayView *displayView = [[TLTextDisplayView alloc] init];
+        [displayView showInView:self.navigationController.view withAttrText:[(TLTextMessage *)message attrText] animation:YES];
+    }
+}
+
+- (void)chatTableViewController:(TLChatTableViewController *)chatTVC didClickMessage:(TLMessage *)message
+{
+    if (message.messageType == TLMessageTypeImage && [self respondsToSelector:@selector(didClickedImageMessage:)]) {
+        [self didClickedImageMessage:(TLImageMessage *)message];
     }
 }
 

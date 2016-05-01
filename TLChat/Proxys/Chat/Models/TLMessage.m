@@ -37,7 +37,7 @@
 }
 
 
-#pragma mark - # Protocol -
+#pragma mark - # Protocol
 - (NSString *)conversationContent
 {
     return @"子类未定义";
@@ -49,7 +49,7 @@
 }
 
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (NSMutableDictionary *)content
 {
     if (_content == nil) {

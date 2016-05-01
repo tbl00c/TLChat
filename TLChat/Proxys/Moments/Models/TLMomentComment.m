@@ -21,7 +21,7 @@
     return self;
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLMomentCommentFrame *)commentFrame
 {
     if (_commentFrame == nil) {

@@ -35,7 +35,7 @@
     [self.picCarouselView setData:data];
 }
 
-#pragma mark - # Delegate -
+#pragma mark - # Delegate
 - (void)pictureCarouselView:(TLPictureCarouselView *)pictureCarouselView didSelectItem:(id<TLPictureCarouselProtocol>)model
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(expressionBannerCellDidSelectBanner:)]) {
@@ -43,7 +43,7 @@
     }
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.picCarouselView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -51,7 +51,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter 
 - (TLPictureCarouselView *)picCarouselView
 {
     if (_picCarouselView == nil) {

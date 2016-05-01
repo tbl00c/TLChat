@@ -18,7 +18,7 @@
 
 #define     TAG_EMPTY_CHAT_REC      1001
 
-@interface TLChatDetailViewController () <TLUserGroupCellDelegate, UIActionSheetDelegate>
+@interface TLChatDetailViewController () <TLUserGroupCellDelegate, TLActionSheetDelegate>
 
 @property (nonatomic, strong) TLChatDetailHelper *helper;
 
@@ -67,9 +67,9 @@
         [self.navigationController pushViewController:chatBGSettingVC animated:YES];
     }
     else if ([item.title isEqualToString:@"清空聊天记录"]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles: nil];
+        TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles: nil];
         actionSheet.tag = TAG_EMPTY_CHAT_REC;
-        [actionSheet showInView:self.view];
+        [actionSheet show];
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
@@ -83,8 +83,8 @@
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
-//MARK: UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//MARK: TLActionSheetDelegate
+- (void)actionSheet:(TLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet.tag == TAG_EMPTY_CHAT_REC) {
         if (buttonIndex == 0) {

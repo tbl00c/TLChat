@@ -55,7 +55,7 @@
     self.timer = nil;
 }
 
-#pragma mark - # Delegate -
+#pragma mark - # Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.data.count == 0 ? 0 : self.data.count + 2;
@@ -112,7 +112,7 @@
     }
 }
 
-#pragma mark - # Event Response -
+#pragma mark - # Event Response
 - (void)scrollToNextPage
 {
     NSInteger nextPage;
@@ -126,7 +126,7 @@
     [self.collectionView setPageX:nextPage animated:YES];
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -134,7 +134,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UICollectionView *)collectionView
 {
     if (_collectionView == nil) {

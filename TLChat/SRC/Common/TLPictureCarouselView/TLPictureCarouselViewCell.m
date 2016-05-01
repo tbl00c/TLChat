@@ -32,7 +32,7 @@
     [self.imageView sd_setImageWithURL:TLURL([model pictureURL])];
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -40,7 +40,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UIImageView *)imageView
 {
     if (_imageView == nil) {

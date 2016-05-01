@@ -23,7 +23,7 @@
     return self;
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (CGFloat)heightLiked
 {
     CGFloat height = 0.0f;
@@ -42,7 +42,7 @@
     return height;
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLMomentExtensionFrame *)extensionFrame
 {
     if (_extensionFrame == nil) {

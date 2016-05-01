@@ -45,7 +45,7 @@
     [SVProgressHUD dismiss];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLExpressionProxy *)proxy
 {
     if (_proxy == nil) {

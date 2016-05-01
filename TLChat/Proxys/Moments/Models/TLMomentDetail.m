@@ -12,7 +12,7 @@
 
 @implementation TLMomentDetail
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (CGFloat)heightText
 {
     if (self.text.length > 0) {
@@ -45,7 +45,7 @@
     return height;
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLMomentDetailFrame *)detailFrame
 {
     if (_detailFrame == nil) {

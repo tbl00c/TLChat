@@ -30,7 +30,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UILabel *)titleLabel
 {
     if (_titleLabel == nil) {

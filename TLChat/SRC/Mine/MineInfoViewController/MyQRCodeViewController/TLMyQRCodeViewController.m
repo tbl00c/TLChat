@@ -10,9 +10,9 @@
 #import "TLScanningViewController.h"
 #import "TLQRCodeViewController.h"
 
-#define         ACTIONTAG_SHOW_SCANNER      101
+#define         ACTIONTAG_SHOW_SCANNER          101
 
-@interface TLMyQRCodeViewController () <UIActionSheetDelegate>
+@interface TLMyQRCodeViewController () <TLActionSheetDelegate>
 
 @property (nonatomic, strong) TLQRCodeViewController *qrCodeVC;
 
@@ -44,9 +44,9 @@
     self.qrCodeVC.introduction = @"扫一扫上面的二维码图案，加我微信";
 }
 
-#pragma mark - Delegate -
-//MARK: UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+#pragma mark - # Delegate
+//MARK: TLActionSheetDelegate
+- (void)actionSheet:(TLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet.tag == ACTIONTAG_SHOW_SCANNER && buttonIndex == 2) {
         TLScanningViewController *scannerVC = [[TLScanningViewController alloc] init];
@@ -59,21 +59,21 @@
     }
 }
 
-#pragma mark - Event Response -
+#pragma mark - # Event Response
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
-    UIActionSheet *actionSheet;
+    TLActionSheet *actionSheet;
     if ([self.navigationController findViewController:@"TLScanningViewController"]) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"换个样式", @"保存图片", nil];
+        actionSheet = [[TLActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"换个样式", @"保存图片", nil];
     }
     else {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"换个样式", @"保存图片", @"扫描二维码", nil];
+        actionSheet = [[TLActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"换个样式", @"保存图片", @"扫描二维码", nil];
         actionSheet.tag = ACTIONTAG_SHOW_SCANNER;
     }
-    [actionSheet showInView:self.view];
+    [actionSheet show];
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getter
 - (TLQRCodeViewController *)qrCodeVC
 {
     if (_qrCodeVC == nil) {

@@ -33,7 +33,7 @@
     [self.titleLabel setText:title];
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,7 +43,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UILabel *)titleLabel
 {
     if (_titleLabel == nil) {

@@ -51,7 +51,7 @@
 //    [self.collectionView reloadData];
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_loadData
 {
     kPageIndex = 1;
@@ -65,7 +65,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLExpressionProxy *)proxy
 {
     if (_proxy == nil) {

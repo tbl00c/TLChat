@@ -41,7 +41,7 @@
     }];
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -53,7 +53,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLMomentImageView *)momentView
 {
     if (_momentView == nil) {

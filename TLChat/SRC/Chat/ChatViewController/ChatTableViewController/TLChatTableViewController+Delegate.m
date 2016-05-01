@@ -108,9 +108,9 @@
             [[UIPasteboard generalPasteboard] setString:str];
         }
         else if (type == TLChatMenuItemTypeDelete) {
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"是否删除该条消息" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles: nil];
+            TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:@"是否删除该条消息" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles: nil];
             actionSheet.tag = [self.data indexOfObject:message];
-            [actionSheet showInView:self.view];
+            [actionSheet show];
         }
     }];
 }
@@ -123,8 +123,8 @@
     }
 }
 
-//MARK: UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//MARK: TLActionSheetDelegate
+- (void)actionSheet:(TLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
         TLMessage * message = [self.data objectAtIndex:actionSheet.tag];

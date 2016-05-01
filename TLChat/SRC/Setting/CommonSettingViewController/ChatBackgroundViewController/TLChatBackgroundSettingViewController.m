@@ -13,7 +13,7 @@
 #import "TLChatBackgroundSelectViewController.h"
 #import "TLChatViewController.h"
 
-@interface TLChatBackgroundSettingViewController () <UIActionSheetDelegate>
+@interface TLChatBackgroundSettingViewController () <TLActionSheetDelegate>
 
 @end
 
@@ -79,14 +79,14 @@
         }
     }
     else if ([item.title isEqualToString:@"将背景应用到所有聊天场景"]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"将背景应用到所有聊天场景" otherButtonTitles:nil];
-        [actionSheet showInView:self.view];
+        TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"将背景应用到所有聊天场景" otherButtonTitles:nil];
+        [actionSheet show];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-//MARK: UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//MARK: TLActionSheetDelegate
+- (void)actionSheet:(TLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
         for (NSString *key in [NSUserDefaults standardUserDefaults].dictionaryRepresentation.allKeys) {

@@ -24,7 +24,7 @@
     return self;
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLMomentFrame *)momentFrame
 {
     if (_momentFrame == nil) {

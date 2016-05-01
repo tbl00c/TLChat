@@ -17,7 +17,7 @@
 
 #define     TAG_ACTIONSHEET_EMPTY_REC       1001
 
-@interface TLCommonSettingViewController () <UIActionSheetDelegate>
+@interface TLCommonSettingViewController () <TLActionSheetDelegate>
 
 @property (nonatomic, strong) TLCommonSettingHelper *helper;
 
@@ -54,16 +54,16 @@
         [self.navigationController pushViewController:myExpressionVC animated:YES];
     }
     else if ([item.title isEqualToString:@"清空聊天记录"]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"将删除所有个人和群的聊天记录。" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles:nil];
+        TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:@"将删除所有个人和群的聊天记录。" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles:nil];
         [actionSheet setTag:TAG_ACTIONSHEET_EMPTY_REC];
-        [actionSheet showInView:self.view];
+        [actionSheet show];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-//MARK: UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//MARK: TLActionSheetDelegate
+- (void)actionSheet:(TLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet.tag == TAG_ACTIONSHEET_EMPTY_REC) {
         if (buttonIndex == 0) {

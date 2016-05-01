@@ -31,6 +31,7 @@
 #import "TLUserHelper.h"
 #import "TLFriendHelper.h"
 
+#import "TLActionSheet.h"
 #import "UIView+Frame.h"
 #import "UIButton+TLChat.h"
 #import "UITableView+TLChat.h"

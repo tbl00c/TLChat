@@ -40,7 +40,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLMomentMultiImageView *)multiImageView
 {
     if (_multiImageView == nil) {

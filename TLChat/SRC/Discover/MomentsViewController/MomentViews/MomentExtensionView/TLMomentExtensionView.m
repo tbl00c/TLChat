@@ -58,7 +58,7 @@
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UITableView *)tableView
 {
     if (_tableView == nil) {

@@ -73,7 +73,7 @@
     }
 }
 
-#pragma mark - # Event Response -
+#pragma mark - # Event Response
 - (void)downloadButtonDown:(UIButton *)sender
 {
     if (self.group.status == TLEmojiGroupStatusUnDownload) {
@@ -85,7 +85,7 @@
     }
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -114,7 +114,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UIImageView *)iconImageView
 {
     if (_iconImageView == nil) {

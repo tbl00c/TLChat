@@ -40,6 +40,7 @@
 		C2142EF61C5376D40030B29B /* TLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EF21C5376D40030B29B /* TLViewController.m */; };
 		C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142F101C53909C0030B29B /* TLTableViewCell.m */; };
 		C21431561CD5A12400CBD933 /* TLImageBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21431551CD5A12400CBD933 /* TLImageBrowserController.m */; };
+		C214315B1CD6336600CBD933 /* TLActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C214315A1CD6336600CBD933 /* TLActionSheet.m */; };
 		C21573F31C9BAC4200B7AC67 /* TLChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573951C9BAC4200B7AC67 /* TLChatBar.m */; };
 		C21573F41C9BAC4200B7AC67 /* TLChatBaseViewController+ChatBarDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C215739A1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatBarDelegate.m */; };
 		C21573F51C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C215739C1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableView.m */; };
@@ -376,6 +377,8 @@
 		C21431541CD5A12400CBD933 /* TLImageBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImageBrowserController.h; sourceTree = "<group>"; };
 		C21431551CD5A12400CBD933 /* TLImageBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageBrowserController.m; sourceTree = "<group>"; };
 		C21431571CD5C53100CBD933 /* TLChatViewControllerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatViewControllerProxy.h; sourceTree = "<group>"; };
+		C21431591CD6336600CBD933 /* TLActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLActionSheet.h; sourceTree = "<group>"; };
+		C214315A1CD6336600CBD933 /* TLActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLActionSheet.m; sourceTree = "<group>"; };
 		C21573941C9BAC4200B7AC67 /* TLChatBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBar.h; sourceTree = "<group>"; };
 		C21573951C9BAC4200B7AC67 /* TLChatBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatBar.m; sourceTree = "<group>"; };
 		C21573961C9BAC4200B7AC67 /* TLChatBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBarDelegate.h; sourceTree = "<group>"; };
@@ -1336,6 +1339,7 @@
 				C2B9E41D1C65D9A300CEBA81 /* TLSettingViewController */,
 				C2CF4C711C804B440054637A /* TLInfoViewController */,
 				C2AF1FA51C6B771F00617D98 /* TLWebViewController */,
+				C21431581CD6333400CBD933 /* TLActionSheet */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1392,6 +1396,15 @@
 				C21431551CD5A12400CBD933 /* TLImageBrowserController.m */,
 			);
 			path = TLImageBrowser;
+			sourceTree = "<group>";
+		};
+		C21431581CD6333400CBD933 /* TLActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				C21431591CD6336600CBD933 /* TLActionSheet.h */,
+				C214315A1CD6336600CBD933 /* TLActionSheet.m */,
+			);
+			path = TLActionSheet;
 			sourceTree = "<group>";
 		};
 		C21573921C9BAC4200B7AC67 /* ChatViewController */ = {
@@ -3299,6 +3312,7 @@
 				C29A7D491CB79F4D008ECA97 /* TLExpressionDetailViewController+CollectionView.m in Sources */,
 				C2028D1B1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m in Sources */,
 				C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */,
+				C214315B1CD6336600CBD933 /* TLActionSheet.m in Sources */,
 				C2D500D51C55C9350088997C /* TLMineViewController.m in Sources */,
 				C2E570081C898FB2009662AB /* TLScannerBackgroundView.m in Sources */,
 				C2E6B8221C9A60150045A6EB /* TLFriendDetailViewController+Delegate.m in Sources */,

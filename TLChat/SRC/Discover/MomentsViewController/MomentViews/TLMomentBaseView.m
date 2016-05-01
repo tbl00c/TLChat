@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
     }];
 }
 
-#pragma mark - # Event Response -
+#pragma mark - # Event Response
 - (void)buttonClicked:(UIButton *)sender
 {
     if (sender.tag == TLMomentViewButtonTypeAvatar) {
@@ -88,7 +88,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
     }
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -134,7 +134,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UIButton *)avatarView
 {
     if (_avatarView == nil) {

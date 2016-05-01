@@ -18,7 +18,7 @@
     [tableView registerClass:[TLExpressionCell class] forCellReuseIdentifier:@"TLExpressionCell"];
 }
 
-#pragma mark - # Delegate -
+#pragma mark - # Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.bannerData.count > 0 ? 2 : 1;

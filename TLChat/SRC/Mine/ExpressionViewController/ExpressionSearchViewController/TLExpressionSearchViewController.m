@@ -46,7 +46,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
-#pragma mark - # Delegate -
+#pragma mark - # Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.data.count;
@@ -134,7 +134,7 @@
 
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLExpressionProxy *)proxy
 {
     if (_proxy == nil) {

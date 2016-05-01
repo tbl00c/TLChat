@@ -44,7 +44,7 @@
     }
 }
 
-#pragma mark - # Delegate -
+#pragma mark - # Delegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 2;

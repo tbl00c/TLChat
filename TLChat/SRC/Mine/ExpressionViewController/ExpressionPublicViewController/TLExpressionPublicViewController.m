@@ -44,7 +44,7 @@
     [SVProgressHUD dismiss];
 }
 
-#pragma mark - #Delegate -
+#pragma mark - # Delegate
 //MARK: UISearchBarDelegate
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
@@ -56,7 +56,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLSearchController *)searchController
 {
     if (_searchController == nil) {

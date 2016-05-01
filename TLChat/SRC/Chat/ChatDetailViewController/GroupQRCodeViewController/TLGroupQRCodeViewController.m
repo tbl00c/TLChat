@@ -11,7 +11,7 @@
 #import "TLQRCodeViewController.h"
 #import "NSDate+Utilities.h"
 
-@interface TLGroupQRCodeViewController () <UIActionSheetDelegate>
+@interface TLGroupQRCodeViewController () <TLActionSheetDelegate>
 
 @property (nonatomic, strong) TLQRCodeViewController *qrCodeVC;
 
@@ -42,8 +42,8 @@
     self.qrCodeVC.introduction = [NSString stringWithFormat:@"该二维码7天内(%lu月%lu日前)有效，重新进入将更新", (long)date.month, (long)date.day];
 }
 
-#pragma mark - UIActionSheetDelegate -
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+#pragma mark - TLActionSheetDelegate -
+- (void)actionSheet:(TLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
         [self.qrCodeVC saveQRCodeToSystemAlbum];
@@ -53,8 +53,8 @@
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"用邮件发送", @"保存图片", nil];
-    [actionSheet showInView:self.view];
+    TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"用邮件发送", @"保存图片", nil];
+    [actionSheet show];
 }
 
 #pragma mark - Getter -

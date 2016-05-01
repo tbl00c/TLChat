@@ -45,7 +45,7 @@
     }
 }
 
-#pragma mark - # Event Response -
+#pragma mark - # Event Response
 - (void)rightBarButtonDown
 {
     TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
@@ -71,7 +71,7 @@
     }
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UISegmentedControl *)segmentedControl
 {
     if (_segmentedControl == nil) {

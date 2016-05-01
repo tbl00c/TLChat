@@ -106,7 +106,7 @@
     });
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLDBExpressionStore *)store
 {
     if (_store == nil) {

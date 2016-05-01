@@ -69,7 +69,7 @@
     }
 }
 
-#pragma mark - # Event Response -
+#pragma mark - # Event Response
 - (void)buttonClicked:(UIButton *)sender
 {
 

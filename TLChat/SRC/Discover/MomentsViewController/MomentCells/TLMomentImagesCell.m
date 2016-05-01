@@ -34,7 +34,7 @@
     [self.momentView setMoment:moment];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLMomentImageView *)momentView
 {
     if (_momentView == nil) {

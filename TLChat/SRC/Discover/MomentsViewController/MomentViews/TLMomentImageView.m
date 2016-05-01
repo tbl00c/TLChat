@@ -35,7 +35,7 @@
     [self.detailView setDetail:moment.detail];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLMomentDetailImagesView *)detailView
 {
     if (_detailView == nil) {

@@ -16,7 +16,7 @@
 #import "TLHelpAndFeedbackViewController.h"
 #import "TLAboutViewController.h"
 
-@interface TLMineSettingViewController ()
+@interface TLMineSettingViewController () <TLActionSheetDelegate>
 
 @property (nonatomic, strong) TLSettingHelper *helper;
 
@@ -32,7 +32,7 @@
     self.data = self.helper.mineSettingData;
 }
 
-#pragma mark - delegate -
+#pragma mark - # delegate
 //MARK: UITableViewDelegate
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -67,7 +67,17 @@
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }
+    else if ([item.title isEqualToString:@"退出登录"]) {
+        TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:@"退出后不会删除任何历史数据，下次登录依然可以使用本账号。" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];
+        [actionSheet show];
+    }
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
+//MARK: TLActionSheetDelegate
+- (void)actionSheet:(TLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+
 }
 
 @end

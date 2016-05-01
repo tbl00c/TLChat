@@ -16,7 +16,7 @@
     [collectionView registerClass:[TLChatBackgroundSelectCell class] forCellWithReuseIdentifier:@"TLChatBackgroundSelectCell"];
 }
 
-#pragma mark - # Delegate -
+#pragma mark - # Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.data.count;

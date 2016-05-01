@@ -19,7 +19,7 @@
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
-#pragma mark - # Delegate -
+#pragma mark - # Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSInteger section = self.extension.likedFriends.count > 0 ? 1 : 0;

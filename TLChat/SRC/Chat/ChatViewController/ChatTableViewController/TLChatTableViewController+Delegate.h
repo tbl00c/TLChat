@@ -11,7 +11,7 @@
 #import "TLImageMessageCell.h"
 #import "TLExpressionMessageCell.h"
 
-@interface TLChatTableViewController (Delegate) <TLMessageCellDelegate, UIActionSheetDelegate>
+@interface TLChatTableViewController (Delegate) <TLMessageCellDelegate, TLActionSheetDelegate>
 
 - (void)registerCellClass;
 

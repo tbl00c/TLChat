@@ -57,7 +57,7 @@
     [window addSubview:self.view];
 }
 
-#pragma mark - # Delegate -
+#pragma mark - # Delegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.curImageView;
@@ -72,7 +72,7 @@
     self.curImageView.center=CGPointMake(contentSize.width/2+offsetX, contentSize.height/2+offsetY);
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UIScrollView *)scrollView
 {
     if (_scrollView == nil) {

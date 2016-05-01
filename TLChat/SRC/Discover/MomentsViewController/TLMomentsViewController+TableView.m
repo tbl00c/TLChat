@@ -20,7 +20,7 @@
     [tableView registerClass:[TLTableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
-#pragma mark - # Delegate -
+#pragma mark - # Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.data.count + 1;

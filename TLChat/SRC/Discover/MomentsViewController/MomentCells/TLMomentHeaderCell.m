@@ -50,7 +50,7 @@
     [self.mottoLabel setText:user.detailInfo.motto];
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.backgroundWall mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -77,7 +77,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UIButton *)backgroundWall
 {
     if (_backgroundWall == nil) {

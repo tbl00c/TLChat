@@ -110,7 +110,7 @@
     return count;
 }
 
-#pragma mark - # 表情 -
+#pragma mark - # 表情 
 - (BOOL)addExpressions:(NSArray *)expressions toGroupID:(NSString *)groupID
 {
     for (TLEmoji *emoji in expressions) {

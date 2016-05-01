@@ -77,7 +77,7 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter 
 - (TLMomentsViewController *)momentsVC
 {
     if (_momentsVC == nil) {

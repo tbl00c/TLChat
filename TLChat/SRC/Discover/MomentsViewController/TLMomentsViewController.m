@@ -31,7 +31,7 @@
     [self loadData];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (TLMomentsProxy *)proxy
 {
     if (_proxy == nil) {

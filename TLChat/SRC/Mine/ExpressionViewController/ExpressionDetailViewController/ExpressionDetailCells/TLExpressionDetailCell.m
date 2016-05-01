@@ -66,7 +66,7 @@
     }
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -117,7 +117,7 @@
     }];
 }
 
-#pragma mark - # Event Response -
+#pragma mark - # Event Response
 - (void)downloadButtonDown:(UIButton *)sender
 {
     [sender setTitle:@"下载中" forState:UIControlStateNormal];
@@ -126,7 +126,7 @@
     }
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UIImageView *)bannerView
 {
     if (_bannerView == nil) {
@@ -170,7 +170,7 @@
     return _detailLabel;
 }
 
-#pragma mark - # Class Methods -
+#pragma mark - # Class Methods
 + (CGFloat)cellHeightForModel:(TLEmojiGroup *)group
 {
     CGFloat detailHeight = [group.groupDetailInfo boundingRectWithSize:CGSizeMake(WIDTH_SCREEN - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:13.0f]} context:nil].size.height;

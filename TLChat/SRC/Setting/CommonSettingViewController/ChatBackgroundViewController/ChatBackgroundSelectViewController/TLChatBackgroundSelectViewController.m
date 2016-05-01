@@ -31,7 +31,7 @@
     [self p_addMasonry];
 }
 
-#pragma mark - # Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -39,7 +39,7 @@
     }];
 }
 
-#pragma mark - # Getter -
+#pragma mark - # Getter
 - (UICollectionView *)collectionView
 {
     if (_collectionView == nil) {

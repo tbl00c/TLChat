@@ -112,7 +112,7 @@
 }
 
 
-#pragma mark - # Group Members -
+#pragma mark - # Group Members 
 - (BOOL)addGroupMember:(TLUser *)user forUid:(NSString *)uid andGid:(NSString *)gid
 {
     NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_GROUP_MEMBER, GROUP_MEMBER_TABLE_NAMGE];

@@ -56,7 +56,6 @@
     TLUser *user = [group objectAtIndex:indexPath.row];
     [cell setUser:user];
     
-    [cell setTopLineStyle: (indexPath.section == 0 && indexPath.row == 0) ? TLCellLineStyleFill : TLCellLineStyleNone];     // cell顶部线
     if (indexPath.section == self.data.count - 1 && indexPath.row == group.count - 1){  // 最后一个cell，底部全线
         [cell setBottomLineStyle:TLCellLineStyleFill];
     }

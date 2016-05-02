@@ -32,7 +32,6 @@
     TLGroup *group = self.data[indexPath.row];
     TLGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLGroupCell"];
     [cell setGroup:group];
-    [cell setTopLineStyle:(indexPath.row == 0 ? TLCellLineStyleFill : TLCellLineStyleNone)];
     [cell setBottomLineStyle:(indexPath.row == self.data.count - 1 ? TLCellLineStyleFill : TLCellLineStyleDefault)];
     return cell;
 }

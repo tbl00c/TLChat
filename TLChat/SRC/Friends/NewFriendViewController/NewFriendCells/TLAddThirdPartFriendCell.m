@@ -28,7 +28,6 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [self setTopLineStyle:TLCellLineStyleFill];
         [self setBottomLineStyle:TLCellLineStyleFill];
         _itemsDic = @{
                       TLThirdPartFriendTypeContacts : self.contacts,

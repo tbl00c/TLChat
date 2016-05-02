@@ -40,11 +40,18 @@
     }];
 }
 
+- (void)setDelegate:(id<TLMomentDetailViewDelegate>)delegate
+{
+    [super setDelegate:delegate];
+    [self.multiImageView setDelegate:delegate];
+}
+
 #pragma mark - # Getter
 - (TLMomentMultiImageView *)multiImageView
 {
     if (_multiImageView == nil) {
         _multiImageView = [[TLMomentMultiImageView alloc] init];
+        [_multiImageView setDelegate:self.delegate];
     }
     return _multiImageView;
 }

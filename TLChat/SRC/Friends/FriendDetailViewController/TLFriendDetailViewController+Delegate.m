@@ -9,8 +9,8 @@
 #import "TLFriendDetailViewController+Delegate.h"
 #import "TLChatViewController.h"
 #import "TLRootViewController.h"
+#import <MWPhotoBrowser.h>
 
-#import "TLFriendDetailUserCell.h"
 #import "TLFriendDetailAlbumCell.h"
 
 @implementation TLFriendDetailViewController (Delegate)
@@ -30,6 +30,7 @@
     if (info.type == TLInfoTypeOther) {
         if (indexPath.section == 0) {
             TLFriendDetailUserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLFriendDetailUserCell"];
+            [cell setDelegate:self];
             [cell setInfo:info];
             [cell setTopLineStyle:TLCellLineStyleFill];
             [cell setBottomLineStyle:TLCellLineStyleFill];
@@ -43,6 +44,7 @@
     }
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
+
 //MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -90,6 +92,24 @@
     else {
         [super infoButtonCellClicked:info];
     }
+}
+
+//MARK: TLFriendDetailUserCellDelegate
+- (void)friendDetailUserCellDidClickAvatar:(TLInfo *)info
+{
+    NSURL *url;
+    if (self.user.avatarPath) {
+        NSString *imagePath = [NSFileManager pathUserAvatar:self.user.avatarPath];
+        url = [NSURL fileURLWithPath:imagePath];
+    }
+    else {
+        url = TLURL(self.user.avatarURL);
+    }
+
+    MWPhoto *photo = [MWPhoto photoWithURL:url];
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:@[photo]];
+    TLNavigationController *broserNavC = [[TLNavigationController alloc] initWithRootViewController:browser];
+    [self presentViewController:broserNavC animated:NO completion:nil];
 }
 
 @end

@@ -37,6 +37,7 @@
 
 #define     SQL_SELECT_MESSAGES_PAGE        @"SELECT * FROM %@ WHERE uid = '%@' and fid = '%@' and date < '%@' order by date desc LIMIT '%ld'"
 #define     SQL_SELECT_CHAT_FILES           @"SELECT * FROM %@ WHERE uid = '%@' and fid = '%@' and msg_type = '2'"
+#define     SQL_SELECT_CHAT_MEDIA           @"SELECT * FROM %@ WHERE uid = '%@' and fid = '%@' and msg_type = '2'"
 #define     SQL_SELECT_LAST_MESSAGE         @"SELECT * FROM %@ WHERE date = ( SELECT MAX(date) FROM %@ WHERE uid = '%@' and fid = '%@' )"
 
 

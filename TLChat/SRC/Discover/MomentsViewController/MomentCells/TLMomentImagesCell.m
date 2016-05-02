@@ -34,6 +34,12 @@
     [self.momentView setMoment:moment];
 }
 
+- (void)setDelegate:(id<TLMomentViewDelegate>)delegate
+{
+    [super setDelegate:delegate];
+    [self.momentView setDelegate:delegate];
+}
+
 #pragma mark - # Getter
 - (TLMomentImageView *)momentView
 {

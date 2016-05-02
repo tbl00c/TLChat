@@ -14,6 +14,6 @@
 @optional;
 - (void)didClickedUserAvatar:(TLUser *)user;
 
-- (void)didClickedImageMessage:(TLImageMessage *)message;
+- (void)didClickedImageMessages:(NSArray *)imageMessages atIndex:(NSInteger)index;
 
 @end

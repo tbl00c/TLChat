@@ -33,6 +33,11 @@
 - (NSArray *)chatFilesByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
 
 /**
+ *  获取与某个好友/讨论组的聊天图片及视频
+ */
+- (NSArray *)chatImagesAndVideosByUserID:(NSString *)userID partnerID:(NSString *)partnerID;
+
+/**
  *  最后一条聊天记录（消息页用）
  */
 - (TLMessage *)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID;

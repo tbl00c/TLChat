@@ -11,6 +11,7 @@
 
 #import "SVProgressHUD.h"
 #import "SVIndefiniteAnimatedView.h"
+#import "SVProgressAnimatedView.h"
 #import "SVRadialGradientLayer.h"
 
 NSString * const SVProgressHUDDidReceiveTouchEventNotification = @"SVProgressHUDDidReceiveTouchEventNotification";
@@ -37,12 +38,12 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
 @property (nonatomic, strong) UILabel *statusLabel;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIView *indefiniteAnimatedView;
+@property (nonatomic, strong) SVProgressAnimatedView *ringView;
+@property (nonatomic, strong) SVProgressAnimatedView *backgroundRingView;
 @property (nonatomic, strong) CALayer *backgroundLayer;
 
 @property (nonatomic, readwrite) CGFloat progress;
 @property (nonatomic, readwrite) NSUInteger activityCount;
-@property (nonatomic, strong) CAShapeLayer *backgroundRingLayer;
-@property (nonatomic, strong) CAShapeLayer *ringLayer;
 
 @property (nonatomic, readonly) CGFloat visibleKeyboardHeight;
 
@@ -68,15 +69,14 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
 
 - (void)showProgress:(float)progress status:(NSString*)status;
 - (void)showImage:(UIImage*)image status:(NSString*)status duration:(NSTimeInterval)duration;
-- (void)showStatus:(NSString *)status;
+- (void)showStatus:(NSString*)status;
 
-- (void)dismissWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
 - (void)dismiss;
+- (void)dismissWithDelay:(NSTimeInterval)delay;
 
-- (UIView *)indefiniteAnimatedView;
-- (CAShapeLayer*)ringLayer;
-- (CAShapeLayer*)backgroundRingLayer;
-- (CAShapeLayer*)createRingLayerWithCenter:(CGPoint)center radius:(CGFloat)radius;
+- (UIView*)indefiniteAnimatedView;
+- (SVProgressAnimatedView*)ringView;
+- (SVProgressAnimatedView*)backgroundRingView;
 
 - (void)cancelRingLayerAnimation;
 - (void)cancelIndefiniteAnimatedViewAnimation;
@@ -155,24 +155,36 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     [self sharedView].backgroundColor = color;
 }
 
++ (void)setBackgroundLayerColor:(UIColor*)color {
+    [self sharedView].backgroundLayerColor = color;
+}
+
 + (void)setInfoImage:(UIImage*)image {
     [self sharedView].infoImage = image;
 }
 
-+ (void)setSuccessImage:(UIImage *)image {
++ (void)setSuccessImage:(UIImage*)image {
     [self sharedView].successImage = image;
 }
 
-+ (void)setErrorImage:(UIImage *)image {
++ (void)setErrorImage:(UIImage*)image {
     [self sharedView].errorImage = image;
 }
 
-+ (void)setViewForExtension:(UIView *)view {
++ (void)setViewForExtension:(UIView*)view {
     [self sharedView].viewForExtension = view;
 }
 
 + (void)setMinimumDismissTimeInterval:(NSTimeInterval)interval {
     [self sharedView].minimumDismissTimeInterval = interval;
+}
+
++ (void)setFadeInAnimationDuration:(NSTimeInterval)duration {
+    [self sharedView].fadeInAnimationDuration = duration;
+}
+
++ (void)setFadeOutAnimationDuration:(NSTimeInterval)duration {
+    [self sharedView].fadeOutAnimationDuration = duration;
 }
 
 
@@ -288,13 +300,7 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
 }
 
 + (void)dismissWithDelay:(NSTimeInterval)delay {
-    [SVProgressHUD dismissWithDuration:SVProgressHUDDefaultAnimationDuration delay:delay];
-}
-
-+ (void)dismissWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay {
-    if([self isVisible]) {
-        [[self sharedView] dismissWithDuration:duration delay:delay];
-    }
+    [[self sharedView] dismissWithDelay:delay];
 }
 
 
@@ -318,6 +324,8 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
         self.userInteractionEnabled = NO;
         _backgroundColor = [UIColor clearColor];
         _foregroundColor = [UIColor blackColor];
+        _backgroundLayerColor = [UIColor colorWithWhite:0 alpha:0.4];
+        
         self.alpha = 0.0f;
         self.activityCount = 0;
         
@@ -357,6 +365,9 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
         _cornerRadius = 14.0f;
         
         _minimumDismissTimeInterval = 5.0;
+
+        _fadeInAnimationDuration = SVProgressHUDDefaultAnimationDuration;
+        _fadeOutAnimationDuration = SVProgressHUDDefaultAnimationDuration;
         
         // Accessibility support
         self.accessibilityIdentifier = @"SVProgressHUD";
@@ -443,11 +454,11 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     
     // Animate value update
     [CATransaction begin];
-    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+    [CATransaction setDisableActions:YES];
     
 	if(string) {
         if(self.defaultAnimationType == SVProgressHUDAnimationTypeFlat) {
-            SVIndefiniteAnimatedView *indefiniteAnimationView = (SVIndefiniteAnimatedView *)self.indefiniteAnimatedView;
+            SVIndefiniteAnimatedView *indefiniteAnimationView = (SVIndefiniteAnimatedView*)self.indefiniteAnimatedView;
             indefiniteAnimationView.radius = self.ringRadius;
             [indefiniteAnimationView sizeToFit];
         }
@@ -456,11 +467,11 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
         self.indefiniteAnimatedView.center = center;
         
         if(self.progress != SVProgressHUDUndefinedProgress) {
-            self.backgroundRingLayer.position = self.ringLayer.position = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), 36.0f);
+            self.backgroundRingView.center = self.ringView.center = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), 36.0f);
         }
 	} else {
         if(self.defaultAnimationType == SVProgressHUDAnimationTypeFlat) {
-            SVIndefiniteAnimatedView *indefiniteAnimationView = (SVIndefiniteAnimatedView *)self.indefiniteAnimatedView;
+            SVIndefiniteAnimatedView *indefiniteAnimationView = (SVIndefiniteAnimatedView*)self.indefiniteAnimatedView;
             indefiniteAnimationView.radius = self.ringNoTextRadius;
             [indefiniteAnimationView sizeToFit];
         }
@@ -469,7 +480,7 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
         self.indefiniteAnimatedView.center = center;
         
         if(self.progress != SVProgressHUDUndefinedProgress) {
-            self.backgroundRingLayer.position = self.ringLayer.position = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), CGRectGetHeight(self.hudView.bounds)/2);
+            self.backgroundRingView.center = self.ringView.center = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), CGRectGetHeight(self.hudView.bounds)/2);
         }
     }
     
@@ -482,11 +493,12 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
         self.backgroundLayer = nil;
     }
     switch (self.defaultMaskType) {
+        case SVProgressHUDMaskTypeCustom:
         case SVProgressHUDMaskTypeBlack:{
             
             self.backgroundLayer = [CALayer layer];
             self.backgroundLayer.frame = self.bounds;
-            self.backgroundLayer.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
+            self.backgroundLayer.backgroundColor = self.defaultMaskType == SVProgressHUDMaskTypeCustom ? self.backgroundLayerColor.CGColor : [UIColor colorWithWhite:0 alpha:0.4].CGColor;
             [self.backgroundLayer setNeedsDisplay];
             
             [self.layer insertSublayer:self.backgroundLayer atIndex:0];
@@ -633,11 +645,6 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
                                              selector:@selector(positionHUD:)
                                                  name:UIApplicationDidChangeStatusBarOrientationNotification
                                                object:nil];
-#endif
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(positionHUD:)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(positionHUD:)
@@ -657,6 +664,11 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(positionHUD:)
                                                  name:UIKeyboardDidShowNotification
+                                               object:nil];
+#endif
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(positionHUD:)
+                                                 name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
 }
 
@@ -690,6 +702,7 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     }
 #endif
     
+#if TARGET_OS_IOS
     // Get keyboardHeight in regards to current state
     if(notification) {
         NSDictionary* keyboardInfo = [notification userInfo];
@@ -698,15 +711,15 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
         
         if(notification.name == UIKeyboardWillShowNotification || notification.name == UIKeyboardDidShowNotification) {
             keyboardHeight = CGRectGetWidth(keyboardFrame);
-#if TARGET_OS_IOS
+
             if(ignoreOrientation || UIInterfaceOrientationIsPortrait(orientation)) {
                 keyboardHeight = CGRectGetHeight(keyboardFrame);
             }
-#endif
         }
     } else {
         keyboardHeight = self.visibleKeyboardHeight;
     }
+#endif
     
     // Get the currently active frame of the display (depends on orientation)
     CGRect orientationFrame = self.bounds;
@@ -845,9 +858,9 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
                 [strongSelf cancelIndefiniteAnimatedViewAnimation];
                 
                 // Add ring to HUD and set progress
-                [strongSelf.hudView.layer addSublayer:strongSelf.ringLayer];
-                [strongSelf.hudView.layer addSublayer:strongSelf.backgroundRingLayer];
-                strongSelf.ringLayer.strokeEnd = progress;
+                [strongSelf.hudView addSubview:strongSelf.ringView];
+                [strongSelf.hudView addSubview:strongSelf.backgroundRingView];
+                strongSelf.ringView.strokeEnd = progress;
                 
                 // Updat the activity count
                 if(progress == 0) {
@@ -914,7 +927,7 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     }];
 }
 
-- (void)showStatus:(NSString *)status {
+- (void)showStatus:(NSString*)status {
     // Update the HUDs frame to the new content and position HUD
     [self updateHUDFrame];
     [self positionHUD:nil];
@@ -940,115 +953,48 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
                                                             object:self
                                                           userInfo:[self notificationUserInfo]];
         
-        // Zoom HUD a little to make a nice appear, pop up animation
+        // Zoom HUD a little to make a nice appear / pop up animation
         self.hudView.transform = CGAffineTransformScale(self.hudView.transform, 1.3, 1.3);
         
-        // Set initial values to handle iOS 7 and 8 UIToolbar which not answers well to hierarchy opacity change
-        if(self.isClear) {
-            self.alpha = 1.0f;
-            self.hudView.alpha = 0.0f;
-        }
+        // Set initial values to handle iOS 7 (and above) UIToolbar which not answers well to hierarchy opacity change
+        self.alpha = 0.0f;
+        self.hudView.alpha = 0.0f;
         
-        // Animate appearance
-        __weak SVProgressHUD *weakSelf = self;
-        [UIView animateWithDuration:SVProgressHUDDefaultAnimationDuration
-                              delay:0
-                            options:(UIViewAnimationOptions) (UIViewAnimationOptionAllowUserInteraction | UIViewAnimationCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState)
-                         animations:^{
-                             __strong SVProgressHUD *strongSelf = weakSelf;
-                             if(strongSelf) {
-                                 // Shrink to finish pop up animation
-                                 strongSelf.hudView.transform = CGAffineTransformScale(strongSelf.hudView.transform, 1/1.3f, 1/1.3f);
-                                 
-                                 if(strongSelf.isClear) { // handle iOS 7 and 8 UIToolbar which not answers well to hierarchy opacity change
-                                     strongSelf.hudView.alpha = 1.0f;
-                                 } else {
-                                     strongSelf.alpha = 1.0f;
-                                 }
-                             }
-                         } completion:^(BOOL finished) {
-                             __strong SVProgressHUD *strongSelf = weakSelf;
-                             if(strongSelf) {
-                                 // Register for notification (e.g. screen rotation) to update the view
-                                 [strongSelf registerNotifications];
-                                 
-                                 // Post notification to inform user
-                                 [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDDidAppearNotification
-                                                                                     object:strongSelf
-                                                                                   userInfo:[strongSelf notificationUserInfo]];
-                             }
-                             
-                             // Update accesibilty
-                             UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
-                             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, status);
-                         }];
-        
-        // Inform iOS to redraw the view hierachy
-        [self setNeedsDisplay];
-    }
-}
-
-- (void)dismissWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay {
-    // Dismiss if visible (depending on alpha)
-    if(self.alpha != 0.0f || self.hudView.alpha != 0.0f){
-        // Post notification to inform user
-        [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDWillDisappearNotification
-                                                            object:nil
-                                                          userInfo:[self notificationUserInfo]];
-        
-        // Reset activitiy count
-        self.activityCount = 0;
-        
-        // Animate appearance
+        // Define blocks
         __weak SVProgressHUD *weakSelf = self;
         
-        void (^animationsBlock)(void) = ^{
-            __strong SVProgressHUD *strongSelf = weakSelf;
-            if(strongSelf){
-                strongSelf.hudView.transform = CGAffineTransformScale(self.hudView.transform, 0.8f, 0.8f);
-                
-                if(strongSelf.isClear){ // handle iOS 7 UIToolbar not answer well to hierarchy opacity change
-                    strongSelf.hudView.alpha = 0.0f;
-                } else{
-                    strongSelf.alpha = 0.0f;
-                }
-            }
-        };
-
-        void (^completionBlock)(void) = ^{
+        __block void (^animationsBlock)(void) = ^{
             __strong SVProgressHUD *strongSelf = weakSelf;
             if(strongSelf) {
-                // Clean up view hierachy (overlays)
-                [self.overlayView removeFromSuperview];
-                [self.hudView removeFromSuperview];
-                [self removeFromSuperview];
-                
-                
-                // Remove observer <=> we do not have to handle orientation changes etc.
-                [[NSNotificationCenter defaultCenter] removeObserver:strongSelf];
+                // Shrink HUD to finish pop up animation
+                strongSelf.hudView.transform = CGAffineTransformScale(strongSelf.hudView.transform, 1/1.3f, 1/1.3f);
+                strongSelf.alpha = 1.0f;
+                strongSelf.hudView.alpha = 1.0f;
+            }
+        };
+        
+        __block void (^completionBlock)(void) = ^{
+            __strong SVProgressHUD *strongSelf = weakSelf;
+            if(strongSelf) {
+                /// Register observer <=> we now have to handle orientation changes etc.
+                [strongSelf registerNotifications];
                 
                 // Post notification to inform user
-                [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDDidDisappearNotification
+                [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDDidAppearNotification
                                                                     object:strongSelf
                                                                   userInfo:[strongSelf notificationUserInfo]];
-                
-                // Tell the rootViewController to update the StatusBar appearance
-#if !defined(SV_APP_EXTENSIONS) && TARGET_OS_IOS
-                UIViewController *rootController = [[UIApplication sharedApplication] keyWindow].rootViewController;
-                if([rootController respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-                    [rootController setNeedsStatusBarAppearanceUpdate];
-                }
-#endif
             }
             
             // Update accesibilty
             UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
+            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, status);
         };
         
-        if (duration > 0) {
-            [UIView animateWithDuration:duration
-                                  delay:delay
-                                options:(UIViewAnimationOptions) (UIViewAnimationOptionAllowUserInteraction | UIViewAnimationCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
+        if (self.fadeInAnimationDuration > 0) {
+            // Animate appearance
+            [UIView animateWithDuration:self.fadeInAnimationDuration
+                                  delay:0
+                                options:(UIViewAnimationOptions) (UIViewAnimationOptionAllowUserInteraction | UIViewAnimationCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState)
                              animations:^{
                                  animationsBlock();
                              } completion:^(BOOL finished) {
@@ -1058,18 +1004,94 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
             animationsBlock();
             completionBlock();
         }
-
+        
+        // Inform iOS to redraw the view hierachy
+        [self setNeedsDisplay];
     }
 }
 
 - (void)dismiss {
-    [self dismissWithDuration:SVProgressHUDDefaultAnimationDuration delay:0];
+    [self dismissWithDelay:0];
+}
+
+- (void)dismissWithDelay:(NSTimeInterval)delay {
+    __weak SVProgressHUD *weakSelf = self;
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        __strong SVProgressHUD *strongSelf = weakSelf;
+        if(strongSelf){
+            // Dismiss if visible (depending on alpha)
+            if(strongSelf.alpha != 0.0f || strongSelf.hudView.alpha != 0.0f){
+                // Post notification to inform user
+                [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDWillDisappearNotification
+                                                                    object:nil
+                                                                  userInfo:[strongSelf notificationUserInfo]];
+                
+                // Reset activitiy count
+                strongSelf.activityCount = 0;
+                
+                // Define blocks
+                __block void (^animationsBlock)(void) = ^{
+                    strongSelf.hudView.transform = CGAffineTransformScale(strongSelf.hudView.transform, 0.8f, 0.8f);
+                    strongSelf.alpha = 0.0f;
+                    strongSelf.hudView.alpha = 0.0f;
+                };
+                
+                __block void (^completionBlock)(void) = ^{
+                    // Clean up view hierachy (overlays)
+                    [strongSelf.overlayView removeFromSuperview];
+                    [strongSelf.hudView removeFromSuperview];
+                    [strongSelf removeFromSuperview];
+                    
+                    // Reset progress and cancel any running animation
+                    strongSelf.progress = SVProgressHUDUndefinedProgress;
+                    [strongSelf cancelRingLayerAnimation];
+                    [strongSelf cancelIndefiniteAnimatedViewAnimation];
+                    
+                    // Remove observer <=> we do not have to handle orientation changes etc.
+                    [[NSNotificationCenter defaultCenter] removeObserver:strongSelf];
+                    
+                    // Post notification to inform user
+                    [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDDidDisappearNotification
+                                                                        object:strongSelf
+                                                                      userInfo:[strongSelf notificationUserInfo]];
+                    
+                    // Tell the rootViewController to update the StatusBar appearance
+#if !defined(SV_APP_EXTENSIONS) && TARGET_OS_IOS
+                    UIViewController *rootController = [[UIApplication sharedApplication] keyWindow].rootViewController;
+                    if([rootController respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+                        [rootController setNeedsStatusBarAppearanceUpdate];
+                    }
+#endif
+                    // Update accesibilty
+                    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
+                };
+                
+                if (strongSelf.fadeOutAnimationDuration > 0) {
+                    // Animate appearance
+                    [UIView animateWithDuration:strongSelf.fadeOutAnimationDuration
+                                          delay:delay
+                                        options:(UIViewAnimationOptions) (UIViewAnimationOptionAllowUserInteraction | UIViewAnimationCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
+                                     animations:^{
+                                         animationsBlock();
+                                     } completion:^(BOOL finished) {
+                                         completionBlock();
+                                     }];
+                } else {
+                    animationsBlock();
+                    completionBlock();
+                }
+                
+                // Inform iOS to redraw the view hierachy
+                [strongSelf setNeedsDisplay];
+            }
+        }
+    }];
 }
 
 
 #pragma mark - Ring progress animation
 
-- (UIView *)indefiniteAnimatedView {
+- (UIView*)indefiniteAnimatedView {
     // Get the correct spinner for defaultAnimationType
     if(self.defaultAnimationType == SVProgressHUDAnimationTypeFlat){
         // Check if spinner exists and is an object of different class
@@ -1083,10 +1105,10 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
         }
         
         // Update styling
-        SVIndefiniteAnimatedView *indefiniteAnimatedView = (SVIndefiniteAnimatedView *)_indefiniteAnimatedView;
+        SVIndefiniteAnimatedView *indefiniteAnimatedView = (SVIndefiniteAnimatedView*)_indefiniteAnimatedView;
         indefiniteAnimatedView.strokeColor = self.foregroundColorForStyle;
-        indefiniteAnimatedView.radius = self.statusLabel.text ? self.ringRadius : self.ringNoTextRadius;
         indefiniteAnimatedView.strokeThickness = self.ringThickness;
+        indefiniteAnimatedView.radius = self.statusLabel.text ? self.ringRadius : self.ringNoTextRadius;
     } else {
         // Check if spinner exists and is an object of different class
         if(_indefiniteAnimatedView && ![_indefiniteAnimatedView isKindOfClass:[UIActivityIndicatorView class]]){
@@ -1099,7 +1121,7 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
         }
         
         // Update styling
-        UIActivityIndicatorView *activityIndicatorView = (UIActivityIndicatorView *)_indefiniteAnimatedView;
+        UIActivityIndicatorView *activityIndicatorView = (UIActivityIndicatorView*)_indefiniteAnimatedView;
         activityIndicatorView.color = self.foregroundColorForStyle;
     }
     [_indefiniteAnimatedView sizeToFit];
@@ -1107,54 +1129,46 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     return _indefiniteAnimatedView;
 }
 
-- (CAShapeLayer*)ringLayer {
-    if(!_ringLayer) {
-        CGPoint center = CGPointMake(CGRectGetWidth(self.hudView.frame)/2, CGRectGetHeight(self.hudView.frame)/2);
-        _ringLayer = [self createRingLayerWithCenter:center radius:self.ringRadius];
-        _ringLayer.strokeColor = self.foregroundColorForStyle.CGColor;
-        _ringLayer.lineWidth = self.ringThickness;
+- (SVProgressAnimatedView*)ringView {
+    if(!_ringView) {
+        _ringView = [[SVProgressAnimatedView alloc] initWithFrame:CGRectZero];
     }
     
-    return _ringLayer;
+    // Update styling
+    _ringView.strokeColor = self.foregroundColorForStyle;
+    _ringView.strokeThickness = self.ringThickness;
+    _ringView.radius = self.statusLabel.text ? self.ringRadius : self.ringNoTextRadius;
+    
+    return _ringView;
 }
 
-- (CAShapeLayer*)backgroundRingLayer {
-    if(!_backgroundRingLayer) {
-        CGPoint center = CGPointMake(CGRectGetWidth(self.hudView.frame)/2, CGRectGetHeight(self.hudView.frame)/2);
-        _backgroundRingLayer = [self createRingLayerWithCenter:center radius:self.ringRadius];
-        _backgroundRingLayer.strokeEnd = 1;
-        _backgroundRingLayer.strokeColor = [self.foregroundColorForStyle colorWithAlphaComponent:0.1f].CGColor;
-        _backgroundRingLayer.lineWidth = self.ringThickness;
+- (SVProgressAnimatedView*)backgroundRingView {
+    if(!_backgroundRingView) {
+        _backgroundRingView = [[SVProgressAnimatedView alloc] initWithFrame:CGRectZero];
+        _backgroundRingView.strokeEnd = 1.0f;
     }
     
-    return _backgroundRingLayer;
-}
-
-- (CAShapeLayer*)createRingLayerWithCenter:(CGPoint)center radius:(CGFloat)radius {
-    UIBezierPath* smoothedPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(radius, radius) radius:radius startAngle:(CGFloat) -M_PI_2 endAngle:(CGFloat) (M_PI + M_PI_2) clockwise:YES];
+    // Update styling
+    _backgroundRingView.strokeColor = [self.foregroundColorForStyle colorWithAlphaComponent:0.1f];
+    _backgroundRingView.strokeThickness = self.ringThickness;
+    _backgroundRingView.radius = self.statusLabel.text ? self.ringRadius : self.ringNoTextRadius;
     
-    CAShapeLayer *slice = [CAShapeLayer layer];
-    slice.contentsScale = [[UIScreen mainScreen] scale];
-    slice.frame = CGRectMake(center.x-radius, center.y-radius, radius*2, radius*2);
-    slice.fillColor = [UIColor clearColor].CGColor;
-    slice.lineCap = kCALineCapRound;
-    slice.lineJoin = kCALineJoinBevel;
-    slice.path = smoothedPath.CGPath;
-    
-    return slice;
+    return _backgroundRingView;
 }
 
 - (void)cancelRingLayerAnimation {
-    // Stop animation
+    // Animate value update, stop animation
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
-    [_hudView.layer removeAllAnimations];
-    _ringLayer.strokeEnd = 0.0f;
+    
+    [self.hudView.layer removeAllAnimations];
+    self.ringView.strokeEnd = 0.0f;
+    
     [CATransaction commit];
     
     // Remove from view
-    [self.ringLayer removeFromSuperlayer];
-    [self.backgroundRingLayer removeFromSuperlayer];
+    [self.ringView removeFromSuperview];
+    [self.backgroundRingView removeFromSuperview];
 }
 
 - (void)cancelIndefiniteAnimatedViewAnimation {
@@ -1170,16 +1184,17 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
 #pragma mark - Utilities
 
 + (BOOL)isVisible {
-    return ([self sharedView].alpha == 1);
+    return ([self sharedView].alpha > 0);
 }
 
 
 #pragma mark - Getters
+
 + (NSTimeInterval)displayDurationForString:(NSString*)string {
-    return MIN((float)string.length * 0.06 + 0.5, [self sharedView].minimumDismissTimeInterval);
+    return MAX((float)string.length * 0.06 + 0.5, [self sharedView].minimumDismissTimeInterval);
 }
 
-- (UIColor *)foregroundColorForStyle {
+- (UIColor*)foregroundColorForStyle {
     if(self.defaultStyle == SVProgressHUDStyleLight) {
         return [UIColor blackColor];
     } else if(self.defaultStyle == SVProgressHUDStyleDark) {
@@ -1189,7 +1204,7 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     }
 }
 
-- (UIColor *)backgroundColorForStyle {
+- (UIColor*)backgroundColorForStyle {
     if(self.defaultStyle == SVProgressHUDStyleLight) {
         return [UIColor whiteColor];
     } else if(self.defaultStyle == SVProgressHUDStyleDark) {
@@ -1235,10 +1250,12 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
 - (UIView*)hudView {
     if(!_hudView) {
         _hudView = [[UIView alloc] initWithFrame:CGRectZero];
-        _hudView.layer.cornerRadius = self.cornerRadius;
         _hudView.layer.masksToBounds = YES;
         _hudView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
     }
+    
+    // Update styling
+    _hudView.layer.cornerRadius = self.cornerRadius;
     _hudView.backgroundColor = self.backgroundColorForStyle;
     
     return _hudView;
@@ -1257,6 +1274,7 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
         [self.hudView addSubview:_statusLabel];
     }
     
+    // Update styling
     _statusLabel.textColor = self.foregroundColorForStyle;
     _statusLabel.font = self.font;
 
@@ -1333,31 +1351,35 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     if (!_isInitializing) _cornerRadius = cornerRadius;
 }
 
-- (void)setFont:(UIFont *)font {
+- (void)setFont:(UIFont*)font {
     if (!_isInitializing) _font = font;
 }
 
-- (void)setBackgroundColor:(UIColor *)color {
+- (void)setForegroundColor:(UIColor*)color {
+    if (!_isInitializing) _foregroundColor = color;
+}
+
+- (void)setBackgroundColor:(UIColor*)color {
     if (!_isInitializing) _backgroundColor = color;
 }
 
-- (void)setForegroundColor:(UIColor *)color {
-    if (!_isInitializing) _foregroundColor = color;
+- (void)setBackgroundLayerColor:(UIColor*)color {
+    if (!_isInitializing) _backgroundLayerColor = color;
 }
 
 - (void)setInfoImage:(UIImage*)image {
     if (!_isInitializing) _infoImage = image;
 }
 
-- (void)setSuccessImage:(UIImage *)image {
+- (void)setSuccessImage:(UIImage*)image {
     if (!_isInitializing) _successImage = image;
 }
 
-- (void)setErrorImage:(UIImage *)image {
+- (void)setErrorImage:(UIImage*)image {
     if (!_isInitializing) _errorImage = image;
 }
 
-- (void)setViewForExtension:(UIView *)view {
+- (void)setViewForExtension:(UIView*)view {
     if (!_isInitializing) _viewForExtension = view;
 }
 
@@ -1367,6 +1389,14 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
 
 - (void)setMinimumDismissTimeInterval:(NSTimeInterval)minimumDismissTimeInterval {
     if (!_isInitializing) _minimumDismissTimeInterval = minimumDismissTimeInterval;
+}
+
+- (void)setFadeInAnimationDuration:(NSTimeInterval)duration {
+    if (!_isInitializing) _fadeInAnimationDuration = duration;
+}
+
+- (void)setFadeOutAnimationDuration:(NSTimeInterval)duration  {
+    if (!_isInitializing) _fadeOutAnimationDuration = duration;
 }
 
 @end

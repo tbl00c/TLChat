@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLMomentViewDelegate.h"
 
 @interface TLMomentMultiImageView : UIView
+
+@property (nonatomic, assign) id<TLMomentMultiImageViewDelegate> delegate;
 
 @property (nonatomic, strong) NSArray *images;
 

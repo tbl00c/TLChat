@@ -7,8 +7,9 @@
 //
 
 #import "TLMomentsViewController.h"
+#import "TLMomentViewDelegate.h"
 
-@interface TLMomentsViewController (TableView)
+@interface TLMomentsViewController (TableView) <TLMomentViewDelegate>
 
 - (void)registerCellForTableView:(UITableView *)tableView;
 

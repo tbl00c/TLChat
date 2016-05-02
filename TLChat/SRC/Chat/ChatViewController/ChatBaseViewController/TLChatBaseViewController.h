@@ -40,6 +40,10 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 
 @property (nonatomic, strong) TLGroup *group;
 
+@property (nonatomic, strong, readonly) id partner;
+
+@property (nonatomic, strong, readonly) NSString *partnerID;
+
 
 /// 消息展示页面
 @property (nonatomic, strong) TLChatTableViewController *chatTableVC;

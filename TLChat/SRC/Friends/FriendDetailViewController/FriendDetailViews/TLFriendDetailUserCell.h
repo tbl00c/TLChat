@@ -9,7 +9,15 @@
 #import "TLTableViewCell.h"
 #import "TLInfo.h"
 
+@protocol TLFriendDetailUserCellDelegate <NSObject>
+
+- (void)friendDetailUserCellDidClickAvatar:(TLInfo *)info;
+
+@end
+
 @interface TLFriendDetailUserCell : TLTableViewCell
+
+@property (nonatomic, assign) id<TLFriendDetailUserCellDelegate>delegate;
 
 @property (nonatomic, strong) TLInfo *info;
 

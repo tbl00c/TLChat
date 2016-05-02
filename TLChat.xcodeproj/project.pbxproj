@@ -197,6 +197,7 @@
 		C2CF4C8C1C804BFE0054637A /* TLSettingHeaderTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CF4C8A1C804BFE0054637A /* TLSettingHeaderTitleView.m */; };
 		C2CF4C931C8062CD0054637A /* TLInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CF4C921C8062CD0054637A /* TLInfoCell.m */; };
 		C2CF4C9A1C80655D0054637A /* TLInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CF4C991C80655D0054637A /* TLInfo.m */; };
+		C2CFDF131CD7972D00E9697C /* TLMomentDetailBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CFDF121CD7972D00E9697C /* TLMomentDetailBaseView.m */; };
 		C2D078D51CC7216F00C2B893 /* TLPictureCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D078D41CC7216F00C2B893 /* TLPictureCarouselView.m */; };
 		C2D078D81CC7233E00C2B893 /* TLPictureCarouselViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D078D71CC7233E00C2B893 /* TLPictureCarouselViewCell.m */; };
 		C2D078DC1CC7271200C2B893 /* TLExpressionBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D078DB1CC7271200C2B893 /* TLExpressionBannerCell.m */; };
@@ -697,6 +698,9 @@
 		C2CF4C921C8062CD0054637A /* TLInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfoCell.m; sourceTree = "<group>"; };
 		C2CF4C981C80655D0054637A /* TLInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfo.h; sourceTree = "<group>"; };
 		C2CF4C991C80655D0054637A /* TLInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfo.m; sourceTree = "<group>"; };
+		C2CFDF111CD7972D00E9697C /* TLMomentDetailBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentDetailBaseView.h; sourceTree = "<group>"; };
+		C2CFDF121CD7972D00E9697C /* TLMomentDetailBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentDetailBaseView.m; sourceTree = "<group>"; };
+		C2CFDF141CD79AFD00E9697C /* TLMomentViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentViewDelegate.h; sourceTree = "<group>"; };
 		C2D078D31CC7216F00C2B893 /* TLPictureCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLPictureCarouselView.h; sourceTree = "<group>"; };
 		C2D078D41CC7216F00C2B893 /* TLPictureCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLPictureCarouselView.m; sourceTree = "<group>"; };
 		C2D078D61CC7233E00C2B893 /* TLPictureCarouselViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLPictureCarouselViewCell.h; sourceTree = "<group>"; };
@@ -2302,6 +2306,7 @@
 		C2C826511CCB7AA5002ECE51 /* MomentViews */ = {
 			isa = PBXGroup;
 			children = (
+				C2CFDF141CD79AFD00E9697C /* TLMomentViewDelegate.h */,
 				C2C826521CCB7AA5002ECE51 /* MomentDetailView */,
 				C2C826591CCB7AA5002ECE51 /* MomentExtensionView */,
 				C2C826691CCB7AE3002ECE51 /* TLMomentBaseView.h */,
@@ -2315,6 +2320,8 @@
 		C2C826521CCB7AA5002ECE51 /* MomentDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				C2CFDF111CD7972D00E9697C /* TLMomentDetailBaseView.h */,
+				C2CFDF121CD7972D00E9697C /* TLMomentDetailBaseView.m */,
 				C2C826551CCB7AA5002ECE51 /* TLMomentDetailTextView.h */,
 				C2C826561CCB7AA5002ECE51 /* TLMomentDetailTextView.m */,
 				C2C826571CCB7AA5002ECE51 /* TLMomentMultiImageView.h */,
@@ -3336,6 +3343,7 @@
 				C2E6B8151C9A5CEF0045A6EB /* TLTagCell.m in Sources */,
 				C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */,
 				C21573FB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m in Sources */,
+				C2CFDF131CD7972D00E9697C /* TLMomentDetailBaseView.m in Sources */,
 				C2C8266B1CCB7AE3002ECE51 /* TLMomentBaseView.m in Sources */,
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
 				C2E6B80E1C9A5B8C0045A6EB /* TLFriendSearchViewController.m in Sources */,

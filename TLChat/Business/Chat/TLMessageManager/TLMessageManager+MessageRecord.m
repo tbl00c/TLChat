@@ -28,6 +28,14 @@
     completed(data);
 }
 
+- (void)chatImagesAndVideosForPartnerID:(NSString *)partnerID
+                              completed:(void (^)(NSArray *))completed
+
+{
+    NSArray *data = [self.messageStore chatImagesAndVideosByUserID:self.userID partnerID:partnerID];
+    completed(data);
+}
+
 - (BOOL)deleteMessageByMsgID:(NSString *)msgID
 {
     return [self.messageStore deleteMessageByMessageID:msgID];

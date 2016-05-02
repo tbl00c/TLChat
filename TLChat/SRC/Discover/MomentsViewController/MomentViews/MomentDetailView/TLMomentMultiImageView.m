@@ -72,7 +72,9 @@
 #pragma mark - # Event Response
 - (void)buttonClicked:(UIButton *)sender
 {
-
+    if (self.delegate && [self.delegate respondsToSelector:@selector(momentViewClickImage:atIndex:)]) {
+        [self.delegate momentViewClickImage:self.images atIndex:sender.tag];
+    }
 }
 
 @end

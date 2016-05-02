@@ -6,13 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "TLMomentDetail.h"
+#import "TLMomentDetailBaseView.h"
 
-@interface TLMomentDetailTextView : UIView
+@interface TLMomentDetailTextView : TLMomentDetailBaseView
 
 @property (nonatomic, strong) UILabel *titleLabel;
-
-@property (nonatomic, strong) TLMomentDetail *detail;
 
 @end

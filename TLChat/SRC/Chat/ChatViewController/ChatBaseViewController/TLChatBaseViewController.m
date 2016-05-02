@@ -212,4 +212,24 @@
     return _imageExpressionDisplayView;
 }
 
+- (id)partner
+{
+    if (self.curChatType == TLPartnerTypeGroup) {
+        return self.group;
+    }
+    else {
+        return self.user;
+    }
+}
+
+- (NSString *)partnerID
+{
+    if (self.curChatType == TLPartnerTypeGroup) {
+        return self.group.groupID;
+    }
+    else {
+        return self.user.userID;
+    }
+}
+
 @end

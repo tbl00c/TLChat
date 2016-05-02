@@ -8,6 +8,7 @@
 
 #import "TLMomentsViewController+TableView.h"
 #import "TLMomentDetailViewController.h"
+#import <MWPhotoBrowser.h>
 #import "TLMomentHeaderCell.h"
 #import "TLMomentImagesCell.h"
 
@@ -42,6 +43,7 @@
 
     if (cell) {
         [cell setMoment:moment];
+        [cell setDelegate:self];
     }
     else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
@@ -69,6 +71,21 @@
         [self.navigationController pushViewController:detailVC animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+//MARK: TLMomentViewDelegate
+- (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index
+{
+    NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:images.count];
+    for (NSString *imageUrl in images) {
+        MWPhoto *photo = [MWPhoto photoWithURL:TLURL(imageUrl)];
+        [data addObject:photo];
+    }
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];
+    [browser setDisplayNavArrows:YES];
+    [browser setCurrentPhotoIndex:index];
+    TLNavigationController *broserNavC = [[TLNavigationController alloc] initWithRootViewController:browser];
+    [self presentViewController:broserNavC animated:NO completion:nil];
 }
 
 @end

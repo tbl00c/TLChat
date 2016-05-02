@@ -24,6 +24,7 @@
 
 - (void)setDetail:(TLMomentDetail *)detail
 {
+    [super setDetail:detail];
     [self.titleLabel setText:detail.text];
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(detail.detailFrame.heightText);

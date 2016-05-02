@@ -39,7 +39,7 @@
         "momentID" : "m1002",
         "user" : { "userID" : "u1002", "nikeName" : "白展堂", "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg"},
         "detail" : {
-            "text" : "帅不帅帅不帅！",
+            "text" : "Hello world!",
             "images" : [
                 "http://easyread.ph.126.net/5LHLU51xRV_rY9Tid04n4g==/7917021381176099928.jpg",
                 "http://img4.duitang.com/uploads/item/201310/06/20131006183333_HcVFt.jpeg",

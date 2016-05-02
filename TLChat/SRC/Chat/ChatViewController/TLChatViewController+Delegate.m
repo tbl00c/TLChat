@@ -10,7 +10,11 @@
 #import "TLExpressionViewController.h"
 #import "TLMyExpressionViewController.h"
 #import "TLFriendDetailViewController.h"
-#import "TLImageBrowserController.h"
+#import <MWPhotoBrowser.h>
+
+@interface TLChatViewController ()
+
+@end
 
 @implementation TLChatViewController (Delegate)
 
@@ -72,10 +76,26 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-- (void)didClickedImageMessage:(TLImageMessage *)message
+- (void)didClickedImageMessages:(NSArray *)imageMessages atIndex:(NSInteger)index
 {
-//    TLImageBrowserController *browserVC = [[TLImageBrowserController alloc] initWithImages:@[message.imagePath] curImageIndex:0 curImageRect:CGRectZero];
-//    [browserVC show];
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    for (TLMessage *message in imageMessages) {
+        NSURL *url;
+        if ([(TLImageMessage *)message imagePath]) {
+            NSString *imagePath = [NSFileManager pathUserChatImage:[(TLImageMessage *)message imagePath]];
+            url = [NSURL fileURLWithPath:imagePath];
+        }
+        else {
+            url = TLURL([(TLImageMessage *)message imageURL]);
+        }
+  
+        MWPhoto *photo = [MWPhoto photoWithURL:url];
+        [data addObject:photo];
+    }
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];
+    [browser setDisplayNavArrows:YES];
+    [browser setCurrentPhotoIndex:index];
+    TLNavigationController *broserNavC = [[TLNavigationController alloc] initWithRootViewController:browser];
+    [self presentViewController:broserNavC animated:NO completion:nil];
 }
-
 @end

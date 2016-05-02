@@ -40,14 +40,7 @@
  */
 - (void)chatTableViewController:(TLChatTableViewController *)chatTVC getRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *, BOOL))completed
 {
-    NSString *partnerID;
-    if (self.curChatType == TLPartnerTypeGroup) {
-        partnerID = self.group.groupID;
-    }
-    else {
-        partnerID = self.user.userID;
-    }
-    [[TLMessageManager sharedInstance] messageRecordForPartner:partnerID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
+    [[TLMessageManager sharedInstance] messageRecordForPartner:self.partnerID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
         if (array.count > 0) {
             int count = 0;
             NSTimeInterval tm = 0;
@@ -96,8 +89,19 @@
 
 - (void)chatTableViewController:(TLChatTableViewController *)chatTVC didClickMessage:(TLMessage *)message
 {
-    if (message.messageType == TLMessageTypeImage && [self respondsToSelector:@selector(didClickedImageMessage:)]) {
-        [self didClickedImageMessage:(TLImageMessage *)message];
+    if (message.messageType == TLMessageTypeImage && [self respondsToSelector:@selector(didClickedImageMessages:atIndex:)]) {
+        [[TLMessageManager sharedInstance] chatImagesAndVideosForPartnerID:self.partnerID completed:^(NSArray *imagesData) {
+            NSInteger index = -1;
+            for (int i = 0; i < imagesData.count; i ++) {
+                if ([message.messageID isEqualToString:[imagesData[i] messageID]]) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index >= 0) {
+                [self didClickedImageMessages:imagesData atIndex:index];
+            }
+        }];
     }
 }
 

@@ -120,6 +120,21 @@
     return data;
 }
 
+- (NSArray *)chatImagesAndVideosByUserID:(NSString *)userID partnerID:(NSString *)partnerID
+{
+    __block NSMutableArray *data = [[NSMutableArray alloc] init];
+    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_CHAT_MEDIA, MESSAGE_TABLE_NAME, userID, partnerID];
+    
+    [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
+        while ([retSet next]) {
+            TLMessage *message = [self p_createDBMessageByFMResultSet:retSet];
+            [data addObject:message];
+        }
+        [retSet close];
+    }];
+    return data;
+}
+
 - (TLMessage *)lastMessageByUserID:(NSString *)userID partnerID:(NSString *)partnerID
 {
     NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_LAST_MESSAGE, MESSAGE_TABLE_NAME, MESSAGE_TABLE_NAME, userID, partnerID];

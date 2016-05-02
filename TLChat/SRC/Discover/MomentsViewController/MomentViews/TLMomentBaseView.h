@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLMomentViewDelegate.h"
 #import "TLMoment.h"
 
 @interface TLMomentBaseView : UIView
+
+@property (nonatomic, assign) id<TLMomentViewDelegate> delegate;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 

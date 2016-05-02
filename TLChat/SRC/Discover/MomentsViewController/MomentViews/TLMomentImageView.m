@@ -35,6 +35,12 @@
     [self.detailView setDetail:moment.detail];
 }
 
+- (void)setDelegate:(id<TLMomentViewDelegate>)delegate
+{
+    [super setDelegate:delegate];
+    [self.detailView setDelegate:delegate];
+}
+
 #pragma mark - # Getter
 - (TLMomentDetailImagesView *)detailView
 {

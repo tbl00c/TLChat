@@ -26,7 +26,11 @@
                     completed:(void (^)(NSArray *))completed;
 
 
-
+/**
+ *  查询聊天图片
+ */
+- (void)chatImagesAndVideosForPartnerID:(NSString *)partnerID
+                              completed:(void (^)(NSArray *))completed;
 
 #pragma mark - 删除
 /**

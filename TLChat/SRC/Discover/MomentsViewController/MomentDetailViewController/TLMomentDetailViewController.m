@@ -8,8 +8,9 @@
 
 #import "TLMomentDetailViewController.h"
 #import "TLMomentImageView.h"
+#import <MWPhotoBrowser.h>
 
-@interface TLMomentDetailViewController ()
+@interface TLMomentDetailViewController () <TLMomentViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
@@ -41,6 +42,22 @@
     }];
 }
 
+#pragma mark - # Delegate
+//MARK: TLMomentViewDelegate
+- (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index
+{
+    NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:images.count];
+    for (NSString *imageUrl in images) {
+        MWPhoto *photo = [MWPhoto photoWithURL:TLURL(imageUrl)];
+        [data addObject:photo];
+    }
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];
+    [browser setDisplayNavArrows:YES];
+    [browser setCurrentPhotoIndex:index];
+    TLNavigationController *broserNavC = [[TLNavigationController alloc] initWithRootViewController:browser];
+    [self presentViewController:broserNavC animated:NO completion:nil];
+}
+
 #pragma mark - # Private Methods
 - (void)p_addMasonry
 {
@@ -58,6 +75,7 @@
 {
     if (_momentView == nil) {
         _momentView = [[TLMomentImageView alloc] init];
+        [_momentView setDelegate:self];
     }
     return _momentView;
 }

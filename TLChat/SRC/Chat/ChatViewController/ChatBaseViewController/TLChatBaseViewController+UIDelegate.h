@@ -11,6 +11,11 @@
 #import "TLChatBarDelegate.h"
 #import "TLKeyboardDelegate.h"
 
+/**
+ *  1、处理各种键盘（系统、自定义表情、自定义更多）回调
+ *  2、响应chatBar的按钮点击事件
+ */
+
 @interface TLChatBaseViewController (UIDelegate) <TLChatBarDelegate, TLKeyboardDelegate>
 
 - (void)keyboardWillHide:(NSNotification *)notification;

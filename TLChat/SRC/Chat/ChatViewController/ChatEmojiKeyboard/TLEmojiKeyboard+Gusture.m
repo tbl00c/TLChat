@@ -11,14 +11,14 @@
 
 @implementation TLEmojiKeyboard (Gusture)
 
-#pragma mark - Public Methods -
+#pragma mark - # Public Methods
 - (void)addGusture
 {
     UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
     [self.collectionView addGestureRecognizer:longPressGR];
 }
 
-#pragma mark - Event Response -
+#pragma mark - # Event Response
 static UICollectionViewCell *lastCell;
 - (void)longPressAction:(UILongPressGestureRecognizer *)sender
 {

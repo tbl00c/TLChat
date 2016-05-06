@@ -16,8 +16,10 @@
     _emoji = emoji;
     [self.content setObject:emoji.groupID forKey:@"groupID"];
     [self.content setObject:emoji.emojiID forKey:@"emojiID"];
+    CGSize imageSize = [UIImage imageNamed:self.path].size;
+    [self.content setObject:[NSNumber numberWithDouble:imageSize.width] forKey:@"w"];
+    [self.content setObject:[NSNumber numberWithDouble:imageSize.height] forKey:@"h"];
 }
-
 - (TLEmoji *)emoji
 {
     if (_emoji == nil) {
@@ -33,6 +35,13 @@
     return self.emoji.emojiPath;
 }
 
+- (CGSize)emojiSize
+{
+    CGFloat width = [self.content[@"w"] doubleValue];
+    CGFloat height = [self.content[@"h"] doubleValue];
+    return CGSizeMake(width, height);
+}
+
 #pragma mark -
 - (TLMessageFrame *)messageFrame
 {
@@ -41,21 +50,20 @@
         kMessageFrame.height = 20 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0);
         
         kMessageFrame.height += 5;
-        if (self.path) {
-            UIImage *image = [UIImage imageNamed:self.path];
-            if (image == nil) {
-                kMessageFrame.contentSize = CGSizeMake(50, 50);
-            }
-            else if (image.size.width > image.size.height) {
-                CGFloat height = MAX_MESSAGE_EXPRESSION_WIDTH * image.size.height / image.size.width;
-                height = height < MIN_MESSAGE_EXPRESSION_WIDTH ? MIN_MESSAGE_EXPRESSION_WIDTH : height;
-                kMessageFrame.contentSize = CGSizeMake(MAX_MESSAGE_EXPRESSION_WIDTH, height);
-            }
-            else {
-                CGFloat width = MAX_MESSAGE_EXPRESSION_WIDTH * image.size.width / image.size.height;
-                width = width < MIN_MESSAGE_EXPRESSION_WIDTH ? MIN_MESSAGE_EXPRESSION_WIDTH : width;
-                kMessageFrame.contentSize = CGSizeMake(width, MAX_MESSAGE_EXPRESSION_WIDTH);
-            }
+        
+        CGSize emojiSize = self.emojiSize;
+        if (CGSizeEqualToSize(emojiSize, CGSizeZero)) {
+            kMessageFrame.contentSize = CGSizeMake(80, 80);
+        }
+        else if (emojiSize.width > emojiSize.height) {
+            CGFloat height = MAX_MESSAGE_EXPRESSION_WIDTH * emojiSize.height / emojiSize.width;
+            height = height < MIN_MESSAGE_EXPRESSION_WIDTH ? MIN_MESSAGE_EXPRESSION_WIDTH : height;
+            kMessageFrame.contentSize = CGSizeMake(MAX_MESSAGE_EXPRESSION_WIDTH, height);
+        }
+        else {
+            CGFloat width = MAX_MESSAGE_EXPRESSION_WIDTH * emojiSize.width / emojiSize.height;
+            width = width < MIN_MESSAGE_EXPRESSION_WIDTH ? MIN_MESSAGE_EXPRESSION_WIDTH : width;
+            kMessageFrame.contentSize = CGSizeMake(width, MAX_MESSAGE_EXPRESSION_WIDTH);
         }
     
         kMessageFrame.height += kMessageFrame.contentSize.height;

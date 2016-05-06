@@ -9,11 +9,11 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol TLChatUserProtocol;
 @class TLMessage;
-@class TLUser;
 @protocol TLMessageCellDelegate <NSObject>
 
-- (void)messageCellDidClickAvatarForUser:(TLUser *)user;
+- (void)messageCellDidClickAvatarForUser:(id<TLChatUserProtocol>)user;
 
 - (void)messageCellTap:(TLMessage *)message;
 

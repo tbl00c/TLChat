@@ -10,7 +10,7 @@
 #import "TLChatViewController.h"
 #import "TLRootViewController.h"
 #import <MWPhotoBrowser.h>
-
+#import "TLUser+ChatModel.h"
 #import "TLFriendDetailAlbumCell.h"
 
 @implementation TLFriendDetailViewController (Delegate)
@@ -65,11 +65,11 @@
     if ([info.title isEqualToString:@"发消息"]) {
         TLChatViewController *chatVC = [TLChatViewController sharedChatVC];
         if ([self.navigationController findViewController:@"TLChatViewController"]) {
-            if ([chatVC.user.userID isEqualToString:self.user.userID]) {
+            if ([[chatVC.partner chat_userID] isEqualToString:self.user.userID]) {
                 [self.navigationController popToViewControllerWithClassName:@"TLChatViewController" animated:YES];
             }
             else {
-                [chatVC setUser:self.user];
+                [chatVC setPartner:self.user];
                 __block id navController = self.navigationController;
                 [self.navigationController popToRootViewControllerAnimated:YES completion:^(BOOL finished) {
                     if (finished) {
@@ -79,7 +79,7 @@
             }
         }
         else {
-            [chatVC setUser:self.user];
+            [chatVC setPartner:self.user];
             UIViewController *vc = [[TLRootViewController sharedRootViewController] childViewControllerAtIndex:0];
             [[TLRootViewController sharedRootViewController] setSelectedIndex:0];
             [vc setHidesBottomBarWhenPushed:YES];

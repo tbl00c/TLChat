@@ -28,6 +28,7 @@
 
 #pragma mark - Delegate -
 //MARK: TLChatTableViewControllerDelegate
+// chatView 点击事件
 - (void)chatTableViewControllerDidTouched:(TLChatTableViewController *)chatTVC
 {
     if ([self.chatBar isFirstResponder]) {
@@ -35,12 +36,10 @@
     }
 }
 
-/**
- *  获取历史记录
- */
+// chatView 获取历史记录
 - (void)chatTableViewController:(TLChatTableViewController *)chatTVC getRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *, BOOL))completed
 {
-    [[TLMessageManager sharedInstance] messageRecordForPartner:self.partnerID fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
+    [[TLMessageManager sharedInstance] messageRecordForPartner:[self.partner chat_userID] fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
         if (array.count > 0) {
             int count = 0;
             NSTimeInterval tm = 0;
@@ -51,14 +50,16 @@
                     message.showTime = YES;
                 }
                 if (message.ownerTyper == TLMessageOwnerTypeSelf) {
-                    message.fromUser = [TLUserHelper sharedHelper].user;
+                    message.fromUser = self.user;
                 }
                 else {
-                    if (self.curChatType == TLPartnerTypeUser) {
-                        message.fromUser = self.user;
+                    if ([self.partner chat_userType] == TLChatUserTypeUser) {
+                        message.fromUser = self.partner;
                     }
-                    else {
-                        message.fromUser = [self.group memberByUserID:message.friendID];
+                    else if ([self.partner chat_userType] == TLChatUserTypeGroup){
+                        if ([self.partner respondsToSelector:@selector(groupMemberByID:)]) {
+                            message.fromUser = [self.partner groupMemberByID:message.friendID];
+                        }
                     }
                 }
             }
@@ -90,7 +91,7 @@
 - (void)chatTableViewController:(TLChatTableViewController *)chatTVC didClickMessage:(TLMessage *)message
 {
     if (message.messageType == TLMessageTypeImage && [self respondsToSelector:@selector(didClickedImageMessages:atIndex:)]) {
-        [[TLMessageManager sharedInstance] chatImagesAndVideosForPartnerID:self.partnerID completed:^(NSArray *imagesData) {
+        [[TLMessageManager sharedInstance] chatImagesAndVideosForPartnerID:[self.partner chat_userID] completed:^(NSArray *imagesData) {
             NSInteger index = -1;
             for (int i = 0; i < imagesData.count; i ++) {
                 if ([message.messageID isEqualToString:[imagesData[i] messageID]]) {

@@ -19,23 +19,23 @@
     }
     else {
         TLExpressionMessage *message = [[TLExpressionMessage alloc] init];
-        message.fromUser = [TLUserHelper sharedHelper].user;
+        message.fromUser = self.user;
         message.messageType = TLMessageTypeExpression;
         message.ownerTyper = TLMessageOwnerTypeSelf;
         message.emoji = emoji;
         [self sendMessage:message];
-        if (self.curChatType == TLChatVCTypeFriend) {
+        if ([self.partner chat_userType] == TLChatUserTypeUser) {
             TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
-            message1.fromUser = self.user;
+            message1.fromUser = self.partner;
             message1.messageType = TLMessageTypeExpression;
             message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.emoji = emoji;;
             [self sendMessage:message1];
         }
         else {
-            for (TLUser *user in self.group.users) {
+            for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
                 TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
-                message1.friendID = user.userID;
+                message1.friendID = [user chat_userID];
                 message1.fromUser = user;
                 message1.messageType = TLMessageTypeExpression;
                 message1.ownerTyper = TLMessageOwnerTypeFriend;

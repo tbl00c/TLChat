@@ -9,7 +9,7 @@
 #import "TLGroupViewController+Delegate.h"
 #import "TLChatViewController.h"
 #import "TLRootViewController.h"
-
+#import "TLGroup+ChatModel.h"
 #import "TLGroupCell.h"
 
 @implementation TLGroupViewController (Delegate)
@@ -46,7 +46,7 @@
 {
     TLGroup *group = [self.data objectAtIndex:indexPath.row];
     TLChatViewController *chatVC = [TLChatViewController sharedChatVC];
-    [chatVC setGroup:group];
+    [chatVC setPartner:group];
     UIViewController *vc = [[TLRootViewController sharedRootViewController] childViewControllerAtIndex:0];
     [[TLRootViewController sharedRootViewController] setSelectedIndex:0];
     [vc setHidesBottomBarWhenPushed:YES];

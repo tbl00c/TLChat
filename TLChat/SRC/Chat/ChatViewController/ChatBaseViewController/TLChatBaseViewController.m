@@ -45,26 +45,14 @@
 
 
 #pragma mark - Public Methods -
-- (void)setUser:(TLUser *)user
+- (void)setPartner:(id<TLChatUserProtocol>)partner
 {
-    if (_curChatType != TLChatVCTypeFriend || !_user || ![_user.userID isEqualToString:user.userID]) {
-        _user = user;
-        [self.navigationItem setTitle:user.showName];
-        _curChatType = TLChatVCTypeFriend;
-        _group = nil;
-        [self resetChatVC];
+    if (_partner && [[_partner chat_userID] isEqualToString:[partner chat_userID]]) {
+        return;
     }
-}
-
-- (void)setGroup:(TLGroup *)group
-{
-    if (_curChatType != TLChatVCTypeGroup || !_group || [_group.groupID isEqualToString:group.groupID]) {
-        _group = group;
-        [self.navigationItem setTitle:group.groupName];
-        _curChatType = TLChatVCTypeGroup;
-        _user = nil;
-        [self resetChatVC];
-    }
+    _partner = partner;
+    [self.navigationItem setTitle:[_partner chat_username]];
+    [self resetChatVC];
 }
 
 - (void)setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData
@@ -79,14 +67,7 @@
 
 - (void)resetChatVC
 {
-    NSString *chatViewBGImage;
-    //TODO: 临时写法
-    if (self.curChatType == TLChatVCTypeFriend && self.user) {
-        chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:[@"CHAT_BG_" stringByAppendingString:self.user.userID]];
-    }
-    else if (self.curChatType == TLChatVCTypeGroup && self.group) {
-        chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:[@"CHAT_BG_" stringByAppendingString:self.group.groupID]];
-    }
+    NSString *chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:[@"CHAT_BG_" stringByAppendingString:[self.partner chat_userID]]];
     if (chatViewBGImage == nil) {
         chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:@"CHAT_BG_ALL"];
         if (chatViewBGImage == nil) {
@@ -118,27 +99,30 @@
     [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
     
     TLImageMessage *message = [[TLImageMessage alloc] init];
-    message.fromUser = [TLUserHelper sharedHelper].user;
+    message.fromUser = self.user;
     message.messageType = TLMessageTypeImage;
     message.ownerTyper = TLMessageOwnerTypeSelf;
     message.imagePath = imageName;
+    message.imageSize = image.size;
     [self sendMessage:message];
-    if (self.curChatType == TLChatVCTypeFriend) {
+    if ([self.partner chat_userType] == TLChatUserTypeUser) {
         TLImageMessage *message1 = [[TLImageMessage alloc] init];
-        message1.fromUser = self.user;
+        message1.fromUser = self.partner;
         message1.messageType = TLMessageTypeImage;
         message1.ownerTyper = TLMessageOwnerTypeFriend;
         message1.imagePath = imageName;
+        message1.imageSize = image.size;
         [self sendMessage:message1];
     }
     else {
-        for (TLUser *user in self.group.users) {
+        for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
             TLImageMessage *message1 = [[TLImageMessage alloc] init];
-            message1.friendID = user.userID;
+            message1.friendID = [user chat_userID];
             message1.fromUser = user;
             message1.messageType = TLMessageTypeImage;
             message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.imagePath = imageName;
+            message1.imageSize = image.size;
             [self sendMessage:message1];
         }
     }
@@ -210,26 +194,6 @@
         _imageExpressionDisplayView = [[TLImageExpressionDisplayView alloc] init];
     }
     return _imageExpressionDisplayView;
-}
-
-- (id)partner
-{
-    if (self.curChatType == TLPartnerTypeGroup) {
-        return self.group;
-    }
-    else {
-        return self.user;
-    }
-}
-
-- (NSString *)partnerID
-{
-    if (self.curChatType == TLPartnerTypeGroup) {
-        return self.group.groupID;
-    }
-    else {
-        return self.user.userID;
-    }
 }
 
 @end

@@ -37,10 +37,11 @@
             [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         }
         [self presentViewController:imagePickerController animated:YES completion:nil];
+        __weak typeof(self) weakSelf = self;
         [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
             [imagePickerController dismissViewControllerAnimated:YES completion:^{
                 UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
-                [self sendImageMessage:image];
+                [weakSelf sendImageMessage:image];
             }];
         } completed:^{
             [imagePickerController dismissViewControllerAnimated:YES completion:nil];

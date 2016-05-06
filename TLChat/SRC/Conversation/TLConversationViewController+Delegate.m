@@ -73,7 +73,7 @@
             [UIAlertView bk_alertViewWithTitle:@"错误" message:@"您不存在此好友"];
             return;
         }
-        [chatVC setUser:user];
+        [chatVC setPartner:user];
     }
     else if (conversation.convType == TLConversationTypeGroup){
         TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.partnerID];
@@ -81,7 +81,7 @@
             [UIAlertView bk_alertViewWithTitle:@"错误" message:@"您不存在该讨论组"];
             return;
         }
-        [chatVC setGroup:group];
+        [chatVC setPartner:group];
     }
     [self setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:chatVC animated:YES];

@@ -12,7 +12,6 @@
 @synthesize imagePath = _imagePath;
 @synthesize imageURL = _imageURL;
 
-
 #pragma mark -
 - (NSString *)imagePath
 {
@@ -40,30 +39,40 @@
     [self.content setObject:imageURL forKey:@"url"];
 }
 
+- (CGSize)imageSize
+{
+    CGFloat width = [[self.content objectForKey:@"w"] doubleValue];
+    CGFloat height = [[self.content objectForKey:@"h"] doubleValue];
+    return CGSizeMake(width, height);
+}
+- (void)setImageSize:(CGSize)imageSize
+{
+    [self.content setObject:[NSNumber numberWithDouble:imageSize.width] forKey:@"w"];
+    [self.content setObject:[NSNumber numberWithDouble:imageSize.height] forKey:@"h"];
+}
+
 #pragma mark -
 - (TLMessageFrame *)messageFrame
 {
     if (kMessageFrame == nil) {
         kMessageFrame = [[TLMessageFrame alloc] init];
         kMessageFrame.height = 20 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0);
-        
-        if (self.imagePath) {
-            NSString *imagePath = [NSFileManager pathUserChatImage:self.imagePath];
-            UIImage *image = [UIImage imageNamed:imagePath];
-            if (image == nil) {
-                kMessageFrame.contentSize = CGSizeMake(60, 60);
-            }
-            else if (image.size.width > image.size.height) {
-                CGFloat height = MAX_MESSAGE_IMAGE_WIDTH * image.size.height / image.size.width;
-                height = height < MIN_MESSAGE_IMAGE_WIDTH ? MIN_MESSAGE_IMAGE_WIDTH : height;
-                kMessageFrame.contentSize = CGSizeMake(MAX_MESSAGE_IMAGE_WIDTH, height);
-            }
-            else {
-                CGFloat width = MAX_MESSAGE_IMAGE_WIDTH * image.size.width / image.size.height;
-                width = width < MIN_MESSAGE_IMAGE_WIDTH ? MIN_MESSAGE_IMAGE_WIDTH : width;
-                kMessageFrame.contentSize = CGSizeMake(width, MAX_MESSAGE_IMAGE_WIDTH);
-            }
+
+        CGSize imageSize = self.imageSize;
+        if (CGSizeEqualToSize(imageSize, CGSizeZero)) {
+            kMessageFrame.contentSize = CGSizeMake(100, 100);
         }
+        else if (imageSize.width > imageSize.height) {
+            CGFloat height = MAX_MESSAGE_IMAGE_WIDTH * imageSize.height / imageSize.width;
+            height = height < MIN_MESSAGE_IMAGE_WIDTH ? MIN_MESSAGE_IMAGE_WIDTH : height;
+            kMessageFrame.contentSize = CGSizeMake(MAX_MESSAGE_IMAGE_WIDTH, height);
+        }
+        else {
+            CGFloat width = MAX_MESSAGE_IMAGE_WIDTH * imageSize.width / imageSize.height;
+            width = width < MIN_MESSAGE_IMAGE_WIDTH ? MIN_MESSAGE_IMAGE_WIDTH : width;
+            kMessageFrame.contentSize = CGSizeMake(width, MAX_MESSAGE_IMAGE_WIDTH);
+        }
+        
         kMessageFrame.height += kMessageFrame.contentSize.height;
     }
     return kMessageFrame;

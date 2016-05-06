@@ -7,8 +7,8 @@
 //
 
 #import "TLConversation.h"
-#import "TLUser.h"
-#import "TLGroup.h"
+#import "TLUser+ChatModel.h"
+#import "TLGroup+ChatModel.h"
 
 @interface TLConversation (TLUser)
 

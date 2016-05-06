@@ -7,9 +7,9 @@
 //
 
 #import "TLBaseDataModel.h"
-#import "TLUser.h"
-#import <MapKit/MapKit.h>
+#import "TLChatUserProtocol.h"
 #import "TLMessageProtocol.h"
+#import <MapKit/MapKit.h>
 
 /**
  *  消息所有者类型
@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, TLMessageReadState) {
 
 @property (nonatomic, strong) NSDate *date;                         // 发送时间
 
-@property (nonatomic, strong) TLUser *fromUser;                     // 发送者
+@property (nonatomic, strong) id<TLChatUserProtocol> fromUser;      // 发送者
 
 @property (nonatomic, assign) BOOL showTime;
 @property (nonatomic, assign) BOOL showName;

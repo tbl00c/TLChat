@@ -13,7 +13,7 @@
 @protocol TLChatBarDelegate <NSObject>
 
 /**
- *  键盘状态改变
+ *  chatBar状态改变
  */
 - (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus;
 
@@ -23,6 +23,7 @@
 - (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height;
 
 @end
+
 
 
 @protocol TLChatBarDataDelegate <NSObject>

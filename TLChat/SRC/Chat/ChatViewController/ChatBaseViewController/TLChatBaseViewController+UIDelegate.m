@@ -10,7 +10,7 @@
 
 @implementation TLChatBaseViewController (UIDelegate)
 
-#pragma mark - Public Methods -
+#pragma mark - # Public Methods
 - (void)keyboardWillHide:(NSNotification *)notification
 {
     if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
@@ -50,7 +50,7 @@
     }
 }
 
-#pragma mark - Delegate -
+#pragma mark - # Delegate
 //MARK: TLKeyboardDelegate
 - (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
 {

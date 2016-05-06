@@ -17,23 +17,23 @@
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
     TLTextMessage *message = [[TLTextMessage alloc] init];
-    message.fromUser = [TLUserHelper sharedHelper].user;
+    message.fromUser = self.user;
     message.messageType = TLMessageTypeText;
     message.ownerTyper = TLMessageOwnerTypeSelf;
     message.text = text;
     [self sendMessage:message];
-    if (self.curChatType == TLChatVCTypeFriend) {
+    if ([self.partner chat_userType] == TLChatUserTypeUser) {
         TLTextMessage *message1 = [[TLTextMessage alloc] init];
-        message1.fromUser = self.user;
+        message1.fromUser = self.partner;
         message1.messageType = TLMessageTypeText;
         message1.ownerTyper = TLMessageOwnerTypeFriend;
         message1.text = text;
         [self sendMessage:message1];
     }
     else {
-        for (TLUser *user in self.group.users) {
+        for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
             TLTextMessage *message1 = [[TLTextMessage alloc] init];
-            message1.friendID = user.userID;
+            message1.friendID = [user chat_userID];
             message1.fromUser = user;
             message1.messageType = TLMessageTypeText;
             message1.ownerTyper = TLMessageOwnerTypeFriend;

@@ -19,13 +19,7 @@
 #import "TLMoreKeyboard.h"
 #import "TLEmojiKeyboard.h"
 
-#import "TLUser.h"
-#import "TLGroup.h"
-
-typedef NS_ENUM(NSUInteger, TLChatVCType) {
-    TLChatVCTypeFriend,
-    TLChatVCTypeGroup,
-};
+#import "TLChatUserProtocol.h"
 
 @interface TLChatBaseViewController : UIViewController <TLChatViewControllerProxy, TLMoreKeyboardDelegate>
 {
@@ -33,17 +27,11 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
     TLChatBarStatus curStatus;
 }
 
-/// 当前聊天类型 （赋值User或Group时自动设置）
-@property (nonatomic, assign, readonly) TLChatVCType curChatType;
+/// 用户信息
+@property (nonatomic, strong) id<TLChatUserProtocol> user;
 
-@property (nonatomic, strong) TLUser *user;
-
-@property (nonatomic, strong) TLGroup *group;
-
-@property (nonatomic, strong, readonly) id partner;
-
-@property (nonatomic, strong, readonly) NSString *partnerID;
-
+/// 聊天对象
+@property (nonatomic, strong) id<TLChatUserProtocol> partner;
 
 /// 消息展示页面
 @property (nonatomic, strong) TLChatTableViewController *chatTableVC;
@@ -63,7 +51,6 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 /// 图片表情展示view
 @property (nonatomic, strong) TLImageExpressionDisplayView *imageExpressionDisplayView;
 
-
 /**
  *  设置“更多”键盘元素
  */
@@ -75,13 +62,13 @@ typedef NS_ENUM(NSUInteger, TLChatVCType) {
 - (void)setChatEmojiKeyboardData:(NSMutableArray *)emojiKeyboardData;
 
 /**
- *  发送图片信息
- */
-- (void)sendImageMessage:(UIImage *)image;
-
-/**
  *  重置chatVC
  */
 - (void)resetChatVC;
+
+/**
+ *  发送图片信息
+ */
+- (void)sendImageMessage:(UIImage *)image;
 
 @end

@@ -14,13 +14,13 @@
 - (void)sendMessage:(TLMessage *)message
 {
     message.userID = [TLUserHelper sharedHelper].userID;
-    if (self.curChatType == TLChatVCTypeFriend) {
+    if ([self.partner chat_userType] == TLChatUserTypeUser) {
         message.partnerType = TLPartnerTypeUser;
-        message.friendID = self.user.userID;
+        message.friendID = [self.partner chat_userID];
     }
-    else if (self.curChatType == TLChatVCTypeGroup) {
+    else if ([self.partner chat_userType] == TLChatUserTypeGroup) {
         message.partnerType = TLPartnerTypeGroup;
-        message.groupID = self.group.groupID;
+        message.groupID = [self.partner chat_userID];
     }
     //    message.ownerTyper = TLMessageOwnerTypeSelf;
     //    message.fromUser = [TLUserHelper sharedHelper].user;

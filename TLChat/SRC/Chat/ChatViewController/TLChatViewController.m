@@ -42,6 +42,7 @@ static TLChatViewController *chatVC;
     [super viewDidLoad];
     [self.navigationItem setRightBarButtonItem:self.rightBarButton];
     
+    self.user = (id<TLChatUserProtocol>)[TLUserHelper sharedHelper].user;
     self.moreKBhelper = [[TLMoreKBHelper alloc] init];
     [self setChatMoreKeyboardData:self.moreKBhelper.chatMoreKeyboardData];
     self.emojiKBHelper = [TLEmojiKBHelper sharedKBHelper];
@@ -70,30 +71,29 @@ static TLChatViewController *chatVC;
 }
 
 #pragma mark - Public Methods -
-- (void)setUser:(TLUser *)user
+- (void)setPartner:(id<TLChatUserProtocol>)partner
 {
-    [super setUser:user];
-    [self.rightBarButton setImage:[UIImage imageNamed:@"nav_chat_single"]];
-}
-
-- (void)setGroup:(TLGroup *)group
-{
-    [super setGroup:group];
-    [self.rightBarButton setImage:[UIImage imageNamed:@"nav_chat_multi"]];
+    [super setPartner:partner];
+    if ([partner chat_userType] == TLChatUserTypeUser) {
+        [self.rightBarButton setImage:[UIImage imageNamed:@"nav_chat_single"]];
+    }
+    else if ([partner chat_userType] == TLChatUserTypeGroup) {
+        [self.rightBarButton setImage:[UIImage imageNamed:@"nav_chat_multi"]];
+    }
 }
 
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UINavigationBar *)sender
 {
-    if (self.curChatType == TLChatVCTypeFriend) {
+    if ([self.partner chat_userType] == TLChatUserTypeUser) {
         TLChatDetailViewController *chatDetailVC = [[TLChatDetailViewController alloc] init];
-        [chatDetailVC setUser:self.user];
+        [chatDetailVC setUser:(TLUser *)self.partner];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:chatDetailVC animated:YES];
     }
-    else if (self.curChatType == TLChatVCTypeGroup) {
+    else if ([self.partner chat_userType] == TLChatUserTypeGroup) {
         TLChatGroupDetailViewController *chatGroupDetailVC = [[TLChatGroupDetailViewController alloc] init];
-        [chatGroupDetailVC setGroup:self.group];
+        [chatGroupDetailVC setGroup:(TLGroup *)self.partner];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:chatGroupDetailVC animated:YES];
     }

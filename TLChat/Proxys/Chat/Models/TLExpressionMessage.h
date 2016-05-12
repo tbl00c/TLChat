@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong, readonly) NSString *path;
 
+@property (nonatomic, strong, readonly) NSString *url;
+
 @property (nonatomic, assign, readonly) CGSize emojiSize;
 
 @end

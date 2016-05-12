@@ -140,4 +140,9 @@
     return [path stringByAppendingString:@"message.sqlite3"];
 }
 
++ (NSString *)cacheForFile:(NSString *)filename
+{
+    return [[NSFileManager cachesPath] stringByAppendingString:filename];
+}
+
 @end

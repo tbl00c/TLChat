@@ -8,6 +8,7 @@
 
 #import "TLExpressionMessageCell.h"
 #import <UIImage+GIF.h>
+#import <UIImageView+WebCache.h>
 
 @interface TLExpressionMessageCell ()
 
@@ -33,7 +34,32 @@
 
     [self.msgImageView setImage:[UIImage imageNamed:message.path]];
     NSData *data = [NSData dataWithContentsOfFile:message.path];
-    [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
+    if (data) {
+        [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
+    }
+    else {      // 表情组被删掉，先从缓存目录中查找，没有的话在下载并存入缓存目录
+        NSString *cachePath = [NSFileManager cacheForFile:[NSString stringWithFormat:@"%@_%@.gif", message.emoji.groupID, message.emoji.emojiID]];
+        NSData *data = [NSData dataWithContentsOfFile:cachePath];
+        if (data) {
+            [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
+        }
+        else {
+            __weak typeof(self) weakSelf = self;
+            [self.msgImageView sd_setImageWithURL:TLURL(message.url) completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                if ([[imageURL description] isEqualToString:[(TLExpressionMessage *)weakSelf.message url]]) {
+                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                        NSData *data = [NSData dataWithContentsOfURL:imageURL];
+                        [data writeToFile:cachePath atomically:NO];      // 再写入到缓存中
+                        if ([[imageURL description] isEqualToString:[(TLExpressionMessage *)weakSelf.message url]]) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
+                            });
+                        }
+                    });
+                }
+            }];
+        }
+    }
     
     if (lastOwnType != message.ownerTyper) {
         if (message.ownerTyper == TLMessageOwnerTypeSelf) {
@@ -76,6 +102,7 @@
 {
     if (_msgImageView == nil) {
         _msgImageView = [[UIImageView alloc] init];
+        [_msgImageView setBackgroundColor:[UIColor colorGrayLine]];
         [_msgImageView setUserInteractionEnabled:YES];
         
         UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressMsgBGView)];

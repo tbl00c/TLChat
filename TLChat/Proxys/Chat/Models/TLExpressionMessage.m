@@ -35,6 +35,11 @@
     return self.emoji.emojiPath;
 }
 
+- (NSString *)url
+{
+    return [TLHost expressionDownloadURLWithEid:self.emoji.emojiID];
+}
+
 - (CGSize)emojiSize
 {
     CGFloat width = [self.content[@"w"] doubleValue];

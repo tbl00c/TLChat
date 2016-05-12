@@ -61,5 +61,10 @@
  */
 + (NSString *)pathDBMessage;
 
+/**
+ *  缓存
+ */
++ (NSString *)cacheForFile:(NSString *)filename;
+
 
 @end

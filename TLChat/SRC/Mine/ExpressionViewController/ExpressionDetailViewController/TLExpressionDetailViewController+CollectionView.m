@@ -44,6 +44,38 @@
     }
 }
 
+- (void)didTap5TimesScreen:(UITapGestureRecognizer *)sender
+{
+    CGPoint point = [sender locationInView:self.collectionView];
+    for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
+        if (cell.x <= point.x && cell.y <= point.y && cell.x + cell.width >= point.x && cell.y + cell.height >= point.y) {
+            NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+            TLEmoji *emoji = [self.group objectAtIndex:indexPath.row];
+            [SVProgressHUD showWithStatus:@"正在将表情保存到系统相册"];
+            NSString *urlString = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
+            NSData *data = [NSData dataWithContentsOfURL:TLURL(urlString)];
+            if (!data) {
+                data = [NSData dataWithContentsOfFile:emoji.emojiPath];
+            }
+            if (data) {
+                UIImage *image = [UIImage imageWithData:data];
+                UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+            }
+            break;
+        }
+    }
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error) {
+        [UIAlertView bk_alertViewWithTitle:@"错误" message:[NSString stringWithFormat:@"保存图片到系统相册失败\n%@", [error description]]];
+    }
+    else {
+        [SVProgressHUD showSuccessWithStatus:@"已保存到系统相册"];
+    }
+}
+
 #pragma mark - # Delegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {

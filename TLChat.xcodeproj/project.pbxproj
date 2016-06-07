@@ -32,6 +32,9 @@
 		C20DE5171CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE5161CAF73F300902398 /* TLChatBackgroundSelectViewController+CollectionView.m */; };
 		C20DE51A1CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE5191CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.m */; };
 		C20DE51D1CAF7FE300902398 /* TLChatBackgroundSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE51C1CAF7FE300902398 /* TLChatBackgroundSelectCell.m */; };
+		C20E80191CE973E3000CA4CE /* TLEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = C20E80141CE973E3000CA4CE /* TLEmoji.m */; };
+		C20E801B1CE973E3000CA4CE /* TLEmojiGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C20E80181CE973E3000CA4CE /* TLEmojiGroup.m */; };
+		C20E80201CE974A6000CA4CE /* TLEmojiGroup+Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = C20E801F1CE974A6000CA4CE /* TLEmojiGroup+Banner.m */; };
 		C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EA61C531FA40030B29B /* TLAppDelegate.m */; };
 		C2142EDA1C53345C0030B29B /* Launch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2142ED91C53345C0030B29B /* Launch.xcassets */; };
 		C2142EF31C5376D40030B29B /* TLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2142EE91C5376D40030B29B /* TLNavigationController.m */; };
@@ -204,9 +207,6 @@
 		C2D078D51CC7216F00C2B893 /* TLPictureCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D078D41CC7216F00C2B893 /* TLPictureCarouselView.m */; };
 		C2D078D81CC7233E00C2B893 /* TLPictureCarouselViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D078D71CC7233E00C2B893 /* TLPictureCarouselViewCell.m */; };
 		C2D078DC1CC7271200C2B893 /* TLExpressionBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D078DB1CC7271200C2B893 /* TLExpressionBannerCell.m */; };
-		C2D078E21CC7293600C2B893 /* TLEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D078DF1CC7293600C2B893 /* TLEmoji.m */; };
-		C2D078E31CC7293600C2B893 /* TLEmojiGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D078E11CC7293600C2B893 /* TLEmojiGroup.m */; };
-		C2D078E61CC74C3600C2B893 /* TLEmojiGroup+Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D078E51CC74C3600C2B893 /* TLEmojiGroup+Banner.m */; };
 		C2D500D01C55C8F40088997C /* TLFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500CF1C55C8F40088997C /* TLFriendsViewController.m */; };
 		C2D500D51C55C9350088997C /* TLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500D41C55C9350088997C /* TLMineViewController.m */; };
 		C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D500D91C55C9A20088997C /* TLDiscoverViewController.m */; };
@@ -362,6 +362,12 @@
 		C20DE5191CAF742000902398 /* TLChatBackgroundSelectViewController+Proxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatBackgroundSelectViewController+Proxy.m"; sourceTree = "<group>"; };
 		C20DE51B1CAF7FE300902398 /* TLChatBackgroundSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBackgroundSelectCell.h; sourceTree = "<group>"; };
 		C20DE51C1CAF7FE300902398 /* TLChatBackgroundSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatBackgroundSelectCell.m; sourceTree = "<group>"; };
+		C20E80131CE973E3000CA4CE /* TLEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmoji.h; sourceTree = "<group>"; };
+		C20E80141CE973E3000CA4CE /* TLEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmoji.m; sourceTree = "<group>"; };
+		C20E80171CE973E3000CA4CE /* TLEmojiGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiGroup.h; sourceTree = "<group>"; };
+		C20E80181CE973E3000CA4CE /* TLEmojiGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiGroup.m; sourceTree = "<group>"; };
+		C20E801E1CE974A6000CA4CE /* TLEmojiGroup+Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLEmojiGroup+Banner.h"; sourceTree = "<group>"; };
+		C20E801F1CE974A6000CA4CE /* TLEmojiGroup+Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLEmojiGroup+Banner.m"; sourceTree = "<group>"; };
 		C2142EA41C531F420030B29B /* TLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMacros.h; sourceTree = "<group>"; };
 		C2142EA51C531FA40030B29B /* TLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppDelegate.h; sourceTree = "<group>"; };
 		C2142EA61C531FA40030B29B /* TLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppDelegate.m; sourceTree = "<group>"; };
@@ -718,12 +724,6 @@
 		C2D078D91CC7246C00C2B893 /* TLPictureCarouselProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLPictureCarouselProtocol.h; sourceTree = "<group>"; };
 		C2D078DA1CC7271200C2B893 /* TLExpressionBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionBannerCell.h; sourceTree = "<group>"; };
 		C2D078DB1CC7271200C2B893 /* TLExpressionBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionBannerCell.m; sourceTree = "<group>"; };
-		C2D078DE1CC7293600C2B893 /* TLEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmoji.h; sourceTree = "<group>"; };
-		C2D078DF1CC7293600C2B893 /* TLEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmoji.m; sourceTree = "<group>"; };
-		C2D078E01CC7293600C2B893 /* TLEmojiGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiGroup.h; sourceTree = "<group>"; };
-		C2D078E11CC7293600C2B893 /* TLEmojiGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiGroup.m; sourceTree = "<group>"; };
-		C2D078E41CC74C3600C2B893 /* TLEmojiGroup+Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLEmojiGroup+Banner.h"; sourceTree = "<group>"; };
-		C2D078E51CC74C3600C2B893 /* TLEmojiGroup+Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLEmojiGroup+Banner.m"; sourceTree = "<group>"; };
 		C2D500CE1C55C8F40088997C /* TLFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendsViewController.h; sourceTree = "<group>"; };
 		C2D500CF1C55C8F40088997C /* TLFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendsViewController.m; sourceTree = "<group>"; };
 		C2D500D31C55C9350088997C /* TLMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineViewController.h; sourceTree = "<group>"; };
@@ -1149,6 +1149,26 @@
 			path = ChatBackgroundSelectCells;
 			sourceTree = "<group>";
 		};
+		C20E80121CE973E3000CA4CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C20E80131CE973E3000CA4CE /* TLEmoji.h */,
+				C20E80141CE973E3000CA4CE /* TLEmoji.m */,
+				C20E80171CE973E3000CA4CE /* TLEmojiGroup.h */,
+				C20E80181CE973E3000CA4CE /* TLEmojiGroup.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C20E801D1CE9749E000CA4CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C20E801E1CE974A6000CA4CE /* TLEmojiGroup+Banner.h */,
+				C20E801F1CE974A6000CA4CE /* TLEmojiGroup+Banner.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C2142E931C531EFD0030B29B /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -1519,6 +1539,7 @@
 		C21573B21C9BAC4200B7AC67 /* ChatEmojiKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				C20E80121CE973E3000CA4CE /* Models */,
 				C21573B31C9BAC4200B7AC67 /* EmojiCells */,
 				C21573BE1C9BAC4200B7AC67 /* EmojiGroupView */,
 				C21573D01C9BAC4200B7AC67 /* TLEmojiKeyboard.h */,
@@ -1695,6 +1716,7 @@
 		C237E9D11CB2445C0034CEA2 /* ExpressionChosenViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C20E801D1CE9749E000CA4CE /* Models */,
 				C237E9D21CB2445C0034CEA2 /* ExpressionChosenViews */,
 				C237E9D61CB244830034CEA2 /* TLExpressionChosenViewController.h */,
 				C237E9D71CB244830034CEA2 /* TLExpressionChosenViewController.m */,
@@ -2510,19 +2532,6 @@
 			path = TLPictureCarouselView;
 			sourceTree = "<group>";
 		};
-		C2D078DD1CC7293600C2B893 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				C2D078DE1CC7293600C2B893 /* TLEmoji.h */,
-				C2D078DF1CC7293600C2B893 /* TLEmoji.m */,
-				C2D078E01CC7293600C2B893 /* TLEmojiGroup.h */,
-				C2D078E11CC7293600C2B893 /* TLEmojiGroup.m */,
-				C2D078E41CC74C3600C2B893 /* TLEmojiGroup+Banner.h */,
-				C2D078E51CC74C3600C2B893 /* TLEmojiGroup+Banner.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		C2D500CC1C55C8F40088997C /* FriendsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2883,7 +2892,6 @@
 		C2E8951A1CB1245800F4451E /* Expression */ = {
 			isa = PBXGroup;
 			children = (
-				C2D078DD1CC7293600C2B893 /* Models */,
 				C2E8951B1CB1247500F4451E /* TLExpressionProxy.h */,
 				C2E8951C1CB1247500F4451E /* TLExpressionProxy.m */,
 			);
@@ -3239,6 +3247,7 @@
 				C2F0EC151C7AB1BB0090843C /* TLAboutHelper.m in Sources */,
 				C2A5ACB01C8ECF0D007A4574 /* UIView+Extensions.m in Sources */,
 				C2C826681CCB7AA5002ECE51 /* TLMomentExtensionView.m in Sources */,
+				C20E80201CE974A6000CA4CE /* TLEmojiGroup+Banner.m in Sources */,
 				C225AFB71CB2E4AA000477F3 /* TLMomentsViewController.m in Sources */,
 				C2BBAC821CBBC2E600FE4C8F /* TLExpressionDetailCell.m in Sources */,
 				C2232E381C9FA3960010CDF8 /* TLMoreKBHelper.m in Sources */,
@@ -3270,7 +3279,6 @@
 				C271A5061C83FEC8004372D4 /* TLFriendDetailUserCell.m in Sources */,
 				C2C826711CCB7CD6002ECE51 /* TLMomentImageView.m in Sources */,
 				C2E570051C89831A009662AB /* TLScannerView.m in Sources */,
-				C2D078E61CC74C3600C2B893 /* TLEmojiGroup+Banner.m in Sources */,
 				C2142EF51C5376D40030B29B /* TLTableViewController.m in Sources */,
 				C2F0EC001C7A17300090843C /* TLBottleViewController.m in Sources */,
 				C209BB701C8F2736001C15D2 /* TLFriendHelper+Contacts.m in Sources */,
@@ -3360,7 +3368,6 @@
 				C2F0EC091C7A2BD20090843C /* TLShakeViewController.m in Sources */,
 				C2FE2F3C1CA9733400E5155B /* TLTextMessage.m in Sources */,
 				C2232E2D1C9FA38E0010CDF8 /* TLMessageManager.m in Sources */,
-				C2D078E21CC7293600C2B893 /* TLEmoji.m in Sources */,
 				C2994D6C1CA1678000BAC038 /* TLGroup.m in Sources */,
 				C2F0EBFC1C7A11480090843C /* TLExpressionViewController.m in Sources */,
 				C2142EA71C531FA40030B29B /* TLAppDelegate.m in Sources */,
@@ -3368,6 +3375,7 @@
 				C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */,
 				C2E6B8151C9A5CEF0045A6EB /* TLTagCell.m in Sources */,
 				C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */,
+				C20E80191CE973E3000CA4CE /* TLEmoji.m in Sources */,
 				C21573FB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m in Sources */,
 				C2CFDF131CD7972D00E9697C /* TLMomentDetailBaseView.m in Sources */,
 				C2C8266B1CCB7AE3002ECE51 /* TLMomentBaseView.m in Sources */,
@@ -3418,7 +3426,6 @@
 				C220EF2B1C7EB89300DE3B86 /* TLScanningViewController.m in Sources */,
 				C2FE2F411CA97FFE00E5155B /* TLImageMessage.m in Sources */,
 				C2A1BBC81C5751210046CA1C /* TLFriendCell.m in Sources */,
-				C2D078E31CC7293600C2B893 /* TLEmojiGroup.m in Sources */,
 				C2E2B13B1CB0EE46006DFAF4 /* TLLoginViewController.m in Sources */,
 				C2E294B11C9D264100721405 /* TLChatFileHeaderView.m in Sources */,
 				C20DE5141CAF6FB600902398 /* TLChatBackgroundSelectViewController.m in Sources */,
@@ -3460,6 +3467,7 @@
 				C2A5ACAD1C8EC4AD007A4574 /* TLAddThirdPartFriendItem.m in Sources */,
 				C2E6B7FF1C9A57860045A6EB /* TLContactsViewController.m in Sources */,
 				C2893A7B1CB03E640080C4BB /* NSDate+TLChat.m in Sources */,
+				C20E801B1CE973E3000CA4CE /* TLEmojiGroup.m in Sources */,
 				C2AF1FA41C6B708D00617D98 /* TLMineInfoAvatarCell.m in Sources */,
 				C2D078DC1CC7271200C2B893 /* TLExpressionBannerCell.m in Sources */,
 				C2028D391C8D354E0060E271 /* TLSearchController.m in Sources */,

@@ -32,6 +32,12 @@
     [longPressGR setMinimumPressDuration:1.0f];
     [longPressGR addTarget:self action:@selector(didLongPressScreen:)];
     [self.collectionView addGestureRecognizer:longPressGR];
+    
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] init];
+    [tapGR setNumberOfTapsRequired:5];
+    [tapGR setNumberOfTouchesRequired:1];
+    [tapGR addTarget:self action:@selector(didTap5TimesScreen:)];
+    [self.collectionView addGestureRecognizer:tapGR];
 }
 
 - (void)viewDidAppear:(BOOL)animated

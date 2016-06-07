@@ -15,5 +15,7 @@
 
 - (void)didLongPressScreen:(UILongPressGestureRecognizer *)sender;
 
+- (void)didTap5TimesScreen:(UITapGestureRecognizer *)sender;
+
 
 @end

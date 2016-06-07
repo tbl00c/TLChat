@@ -70,7 +70,7 @@ static TLChatViewController *chatVC;
 #endif
 }
 
-#pragma mark - Public Methods -
+#pragma mark - # Public Methods
 - (void)setPartner:(id<TLChatUserProtocol>)partner
 {
     [super setPartner:partner];
@@ -82,7 +82,7 @@ static TLChatViewController *chatVC;
     }
 }
 
-#pragma mark - Event Response -
+#pragma mark - # Event Response
 - (void)rightBarButtonDown:(UINavigationBar *)sender
 {
     if ([self.partner chat_userType] == TLChatUserTypeUser) {
@@ -99,7 +99,7 @@ static TLChatViewController *chatVC;
     }
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getter
 - (UIBarButtonItem *)rightBarButton
 {
     if (_rightBarButton == nil) {

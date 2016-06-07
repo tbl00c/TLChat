@@ -22,4 +22,10 @@
                                                            NSFontAttributeName:[UIFont fontNavBarTitle]}];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
 @end

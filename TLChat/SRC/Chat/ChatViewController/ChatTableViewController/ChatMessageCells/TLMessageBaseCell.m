@@ -98,6 +98,7 @@
         }];
     }
     
+    [self.usernameLabel setHidden:!message.showName];
     [self.usernameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(message.showName ? NAMELABEL_HEIGHT : 0);
     }];

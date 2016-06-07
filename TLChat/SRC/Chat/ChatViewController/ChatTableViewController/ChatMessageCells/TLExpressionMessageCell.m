@@ -103,7 +103,6 @@
 {
     if (_msgImageView == nil) {
         _msgImageView = [[UIImageView alloc] init];
-        [_msgImageView setBackgroundColor:[UIColor colorGrayLine]];
         [_msgImageView setUserInteractionEnabled:YES];
         
         UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressMsgBGView)];

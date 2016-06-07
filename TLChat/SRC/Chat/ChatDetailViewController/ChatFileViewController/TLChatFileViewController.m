@@ -121,7 +121,9 @@
 {
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        [layout setSectionHeadersPinToVisibleBounds:YES];
+        if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
+            [layout setSectionHeadersPinToVisibleBounds:YES];
+        }
         [layout setItemSize:CGSizeMake(WIDTH_COLLECTIONVIEW_CELL, WIDTH_COLLECTIONVIEW_CELL)];
         [layout setMinimumInteritemSpacing:SPACE_COLLECTIONVIEW_CELL];
         [layout setMinimumLineSpacing:SPACE_COLLECTIONVIEW_CELL];

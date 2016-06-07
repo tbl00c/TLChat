@@ -16,12 +16,12 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorGrayBG]];
     [self.tableView setTableFooterView:[UIView new]];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [MobClick beginLogPageView:self.analyzeTitle];
 }
 

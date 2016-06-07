@@ -86,6 +86,7 @@
 
 - (void)p_initUI
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     TLRootViewController *rootVC = [TLRootViewController sharedRootViewController];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window setRootViewController:rootVC];

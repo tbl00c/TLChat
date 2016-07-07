@@ -195,7 +195,7 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
     NSString *urlString = navigationAction.request.URL.absoluteString;
-    if ([urlString hasPrefix:@"itms-apps://itunes.apple.com"] || [urlString hasPrefix:@"itms-services:"]) {
+    if ([urlString hasPrefix:@"itms-apps://itunes.apple.com"] || [urlString hasPrefix:@"https://itunes.apple.com"] || [urlString hasPrefix:@"itms-services:"]) {
         [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
         decisionHandler(WKNavigationActionPolicyCancel);
     }

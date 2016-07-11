@@ -13,8 +13,6 @@
 
 @interface TLMoreKeyboard : UIView
 
-@property (nonatomic, assign) id<TLKeyboardDelegate> keyboardDelegate;
-
 @property (nonatomic, assign) id<TLMoreKeyboardDelegate> delegate;
 
 @property (nonatomic, strong) NSMutableArray *chatMoreKeyboardData;

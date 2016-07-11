@@ -6,10 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "TLKeyboardDelegate.h"
 #import "TLMoreKeyboardItem.h"
 
-@protocol TLMoreKeyboardDelegate <NSObject>
+@protocol TLMoreKeyboardDelegate <TLKeyboardDelegate>
 @optional
 - (void) moreKeyboard:(id)keyboard didSelectedFunctionItem:(TLMoreKeyboardItem *)funcItem;
 

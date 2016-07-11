@@ -164,7 +164,6 @@
 {
     if (_emojiKeyboard == nil) {
         _emojiKeyboard = [TLEmojiKeyboard keyboard];
-        [_emojiKeyboard setKeyboardDelegate:self];
         [_emojiKeyboard setDelegate:self];
     }
     return _emojiKeyboard;
@@ -174,7 +173,6 @@
 {
     if (_moreKeyboard == nil) {
         _moreKeyboard = [TLMoreKeyboard keyboard];
-        [_moreKeyboard setKeyboardDelegate:self];
         [_moreKeyboard setDelegate:self];
     }
     return _moreKeyboard;

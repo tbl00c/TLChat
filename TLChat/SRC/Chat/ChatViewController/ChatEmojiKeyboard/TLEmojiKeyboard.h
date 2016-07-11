@@ -25,8 +25,6 @@
 
 @property (nonatomic, assign) id<TLEmojiKeyboardDelegate> delegate;
 
-@property (nonatomic, assign) id<TLKeyboardDelegate> keyboardDelegate;
-
 @property (nonatomic, strong) TLEmojiGroup *curGroup;
 
 @property (nonatomic, strong) UICollectionView *collectionView;

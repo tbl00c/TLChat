@@ -348,6 +348,7 @@
 		C209BB731C8F2FD0001C15D2 /* TLAddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddFriendViewController.m; sourceTree = "<group>"; };
 		C209F4361C7D5AAA001B9825 /* TLScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScannerViewController.h; sourceTree = "<group>"; };
 		C209F4371C7D5AAA001B9825 /* TLScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScannerViewController.m; sourceTree = "<group>"; };
+		C20A56B31D334E7000C891B3 /* TLKeyboardDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLKeyboardDelegate.h; sourceTree = "<group>"; };
 		C20DC9FC1CC3367E0085DFFC /* TLDBGroupSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBGroupSQL.h; sourceTree = "<group>"; };
 		C20DC9FD1CC336A30085DFFC /* TLDBGroupStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBGroupStore.h; sourceTree = "<group>"; };
 		C20DC9FE1CC336A30085DFFC /* TLDBGroupStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBGroupStore.m; sourceTree = "<group>"; };
@@ -436,7 +437,6 @@
 		C21573D21C9BAC4200B7AC67 /* TLEmojiKeyboardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiKeyboardDelegate.h; sourceTree = "<group>"; };
 		C21573D51C9BAC4200B7AC67 /* TLMoreKeyboardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKeyboardCell.h; sourceTree = "<group>"; };
 		C21573D61C9BAC4200B7AC67 /* TLMoreKeyboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKeyboardCell.m; sourceTree = "<group>"; };
-		C21573D81C9BAC4200B7AC67 /* TLKeyboardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLKeyboardDelegate.h; sourceTree = "<group>"; };
 		C21573D91C9BAC4200B7AC67 /* TLMoreKeyboardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKeyboardDelegate.h; sourceTree = "<group>"; };
 		C21573DA1C9BAC4200B7AC67 /* TLMoreKeyboardItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKeyboardItem.h; sourceTree = "<group>"; };
 		C21573DB1C9BAC4200B7AC67 /* TLMoreKeyboardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKeyboardItem.m; sourceTree = "<group>"; };
@@ -1605,7 +1605,6 @@
 		C21573D71C9BAC4200B7AC67 /* MoreKeyboardModels */ = {
 			isa = PBXGroup;
 			children = (
-				C21573D81C9BAC4200B7AC67 /* TLKeyboardDelegate.h */,
 				C21573D91C9BAC4200B7AC67 /* TLMoreKeyboardDelegate.h */,
 				C21573DA1C9BAC4200B7AC67 /* TLMoreKeyboardItem.h */,
 				C21573DB1C9BAC4200B7AC67 /* TLMoreKeyboardItem.m */,
@@ -1764,6 +1763,7 @@
 		C25F1D261CDC5645001EECF3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C20A56B31D334E7000C891B3 /* TLKeyboardDelegate.h */,
 				C25F1D271CDC565B001EECF3 /* TLChatMacros.h */,
 				C25F1D281CDC5685001EECF3 /* TLChatUserProtocol.h */,
 				C25F1D2A1CDC57E7001EECF3 /* TLUser+ChatModel.h */,

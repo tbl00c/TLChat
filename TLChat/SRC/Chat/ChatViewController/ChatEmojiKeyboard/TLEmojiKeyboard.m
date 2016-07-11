@@ -48,8 +48,8 @@ static TLEmojiKeyboard *emojiKB;
 #pragma mark - Public Methods -
 - (void)showInView:(UIView *)view withAnimation:(BOOL)animation;
 {
-    if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
-        [_keyboardDelegate chatKeyboardWillShow:self];
+    if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
+        [_delegate chatKeyboardWillShow:self];
     }
     [view addSubview:self];
     [self mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -64,12 +64,12 @@ static TLEmojiKeyboard *emojiKB;
                 make.bottom.mas_equalTo(view);
             }];
             [view layoutIfNeeded];
-            if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_keyboardDelegate chatKeyboard:self didChangeHeight:view.height - self.y];
+            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
+                [_delegate chatKeyboard:self didChangeHeight:view.height - self.y];
             }
         } completion:^(BOOL finished) {
-            if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
-                [_keyboardDelegate chatKeyboardDidShow:self];
+            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
+                [_delegate chatKeyboardDidShow:self];
             }
         }];
     }
@@ -78,8 +78,8 @@ static TLEmojiKeyboard *emojiKB;
             make.bottom.mas_equalTo(view);
         }];
         [view layoutIfNeeded];
-        if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
-            [_keyboardDelegate chatKeyboardDidShow:self];
+        if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
+            [_delegate chatKeyboardDidShow:self];
         }
     }
     [self updateSendButtonStatus];
@@ -90,8 +90,8 @@ static TLEmojiKeyboard *emojiKB;
 
 - (void)dismissWithAnimation:(BOOL)animation
 {
-    if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardWillDismiss:)]) {
-        [_keyboardDelegate chatKeyboardWillDismiss:self];
+    if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardWillDismiss:)]) {
+        [_delegate chatKeyboardWillDismiss:self];
     }
     if (animation) {
         [UIView animateWithDuration:0.3 animations:^{
@@ -99,20 +99,20 @@ static TLEmojiKeyboard *emojiKB;
                 make.bottom.mas_equalTo(self.superview).mas_offset(HEIGHT_CHAT_KEYBOARD);
             }];
             [self.superview layoutIfNeeded];
-            if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_keyboardDelegate chatKeyboard:self didChangeHeight:self.superview.height - self.y];
+            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
+                [_delegate chatKeyboard:self didChangeHeight:self.superview.height - self.y];
             }
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
-            if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
-                [_keyboardDelegate chatKeyboardDidDismiss:self];
+            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
+                [_delegate chatKeyboardDidDismiss:self];
             }
         }];
     }
     else {
         [self removeFromSuperview];
-        if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
-            [_keyboardDelegate chatKeyboardDidDismiss:self];
+        if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
+            [_delegate chatKeyboardDidDismiss:self];
         }
     }
 }

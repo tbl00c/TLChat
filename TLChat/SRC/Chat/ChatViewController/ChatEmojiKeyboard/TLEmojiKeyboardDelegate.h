@@ -6,11 +6,11 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "TLKeyboardDelegate.h"
 #import "TLEmoji.h"
 
 @class TLEmojiKeyboard;
-@protocol TLEmojiKeyboardDelegate <NSObject>
+@protocol TLEmojiKeyboardDelegate <TLKeyboardDelegate>
 
 - (BOOL)chatInputViewHasText;
 

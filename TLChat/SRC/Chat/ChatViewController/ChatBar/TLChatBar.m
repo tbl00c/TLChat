@@ -7,6 +7,7 @@
 //
 
 #import "TLChatBar.h"
+#import "TLTalkButton.h"
 #import "TLChatMacros.h"
 #import "UIImage+Color.h"
 

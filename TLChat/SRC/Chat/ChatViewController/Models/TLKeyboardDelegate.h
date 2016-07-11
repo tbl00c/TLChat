@@ -11,14 +11,14 @@
 @protocol TLKeyboardDelegate <NSObject>
 
 @optional
-- (void) chatKeyboardWillShow:(id)keyboard;
+- (void)chatKeyboardWillShow:(id)keyboard;
 
-- (void) chatKeyboardDidShow:(id)keyboard;
+- (void)chatKeyboardDidShow:(id)keyboard;
 
-- (void) chatKeyboardWillDismiss:(id)keyboard;
+- (void)chatKeyboardWillDismiss:(id)keyboard;
 
-- (void) chatKeyboardDidDismiss:(id)keyboard;
+- (void)chatKeyboardDidDismiss:(id)keyboard;
 
-- (void) chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height;
+- (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height;
 
 @end

@@ -12,6 +12,14 @@
 @synthesize imagePath = _imagePath;
 @synthesize imageURL = _imageURL;
 
+- (id)init
+{
+    if (self = [super init]) {
+        [self setMessageType:TLMessageTypeImage];
+    }
+    return self;
+}
+
 #pragma mark -
 - (NSString *)imagePath
 {

@@ -33,8 +33,9 @@
     if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
         return;
     }
-    TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
+    
+    TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     
     if ([message imagePath]) {
         NSString *imagePath = [NSFileManager pathUserChatImage:[message imagePath]];

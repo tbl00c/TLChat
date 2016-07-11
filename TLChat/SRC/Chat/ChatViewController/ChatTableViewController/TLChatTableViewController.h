@@ -13,6 +13,7 @@
 #import "TLTextMessage.h"
 #import "TLImageMessage.h"
 #import "TLExpressionMessage.h"
+#import "TLVoiceMessage.h"
 
 
 @interface TLChatTableViewController : UITableViewController

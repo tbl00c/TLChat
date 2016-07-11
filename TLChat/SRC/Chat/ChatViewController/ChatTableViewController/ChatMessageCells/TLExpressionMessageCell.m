@@ -29,9 +29,12 @@
 - (void)setMessage:(TLExpressionMessage *)message
 {
     [self.msgImageView setAlpha:1.0];       // 取消长按效果
-    TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
+    if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
+        return;
+    }
     [super setMessage:message];
     
+    TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     NSData *data = [NSData dataWithContentsOfFile:message.path];
     if (data) {
         [self.msgImageView setImage:[UIImage imageNamed:message.path]];

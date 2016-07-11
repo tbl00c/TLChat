@@ -10,4 +10,17 @@
 
 @interface TLTalkButton : UIView
 
+@property (nonatomic, strong) NSString *normalTitle;
+@property (nonatomic, strong) NSString *cancelTitle;
+@property (nonatomic, strong) NSString *highlightTitle;
+
+@property (nonatomic, strong) UIColor *highlightColor;
+
+@property (nonatomic, strong) UILabel *titleLabel;
+
+- (void)setTouchBeginAction:(void (^)())touchBegin
+      willTouchCancelAction:(void (^)(BOOL cancel))willTouchCancel
+             touchEndAction:(void (^)())touchEnd
+          touchCancelAction:(void (^)())touchCancel;
+
 @end

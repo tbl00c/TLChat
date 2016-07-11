@@ -77,7 +77,7 @@
 
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
-            TLMessage * message = [self p_createDBMessageByFMResultSet:retSet];
+            TLMessage *message = [self p_createDBMessageByFMResultSet:retSet];
             [data insertObject:message atIndex:0];
         }
         [retSet close];
@@ -188,7 +188,6 @@
     NSString *dateString = [retSet stringForColumn:@"date"];
     message.date = [NSDate dateWithTimeIntervalSince1970:dateString.doubleValue];
     message.ownerTyper = [retSet intForColumn:@"own_type"];
-    message.messageType = [retSet intForColumn:@"msg_type"];
     NSString *content = [retSet stringForColumn:@"content"];
     message.content = [[NSMutableDictionary alloc] initWithDictionary:[content mj_JSONObject]];
     message.sendState = [retSet intForColumn:@"send_status"];

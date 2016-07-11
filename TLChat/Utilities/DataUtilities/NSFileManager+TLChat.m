@@ -75,6 +75,20 @@
     return [path stringByAppendingString:imageName];
 }
 
++ (NSString *)pathUserChatVoice:(NSString *)voiceName
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Voices/", [NSFileManager documentsPath], [TLUserHelper sharedHelper].userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:voiceName];
+}
+
+
 + (NSString *)pathExpressionForGroupID:(NSString *)groupID
 {
     NSString *path = [NSString stringWithFormat:@"%@/Expression/%@/", [NSFileManager documentsPath], groupID];

@@ -7,9 +7,8 @@
 //
 
 #import "TLChatBar.h"
-#import "TLTalkButton.h"
 #import "TLChatMacros.h"
-#import "UIImage+Color.h"
+#import "TLTalkButton.h"
 
 @interface TLChatBar () <UITextViewDelegate>
 {
@@ -29,7 +28,7 @@
 
 @property (nonatomic, strong) UITextView *textView;
 
-@property (nonatomic, strong) UIButton *talkButton;
+@property (nonatomic, strong) TLTalkButton *talkButton;
 
 @property (nonatomic, strong) UIButton *emojiButton;
 
@@ -300,27 +299,6 @@
     }
 }
 
-- (void)talkButtonTouchDown:(UIButton *)sender
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(chatBarRecording:)]) {
-        [_delegate chatBarRecording:self];
-    }
-}
-
-- (void)talkButtonTouchUpInside:(UIButton *)sender
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(chatBarFinishedRecoding:)]) {
-        [_delegate chatBarFinishedRecoding:self];
-    }
-}
-
-- (void)talkButtonTouchCancel:(UIButton *)sender
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(chatBarDidCancelRecording:)]) {
-        [_delegate chatBarDidCancelRecording:self];
-    }
-}
-
 #pragma mark - Private Methods
 - (void)p_addMasonry
 {
@@ -421,24 +399,29 @@
     return _textView;
 }
 
-- (UIButton *)talkButton
+- (TLTalkButton *)talkButton
 {
     if (_talkButton == nil) {
-        _talkButton = [[UIButton alloc] init];
-        [_talkButton setTitle:@"按住 说话" forState:UIControlStateNormal];
-        [_talkButton setTitle:@"松开 结束" forState:UIControlStateHighlighted];
-        [_talkButton setTitleColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0] forState:UIControlStateNormal];
-        [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0.0 alpha:0.1]] forState:UIControlStateHighlighted];
-        [_talkButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
-        [_talkButton.layer setMasksToBounds:YES];
-        [_talkButton.layer setCornerRadius:4.0f];
-        [_talkButton.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_talkButton.layer setBorderColor:[UIColor colorWithWhite:0.0 alpha:0.3].CGColor];
+        _talkButton = [[TLTalkButton alloc] init];
         [_talkButton setHidden:YES];
-        [_talkButton addTarget:self action:@selector(talkButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
-        [_talkButton addTarget:self action:@selector(talkButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-        [_talkButton addTarget:self action:@selector(talkButtonTouchCancel:) forControlEvents:UIControlEventTouchUpOutside];
-        [_talkButton addTarget:self action:@selector(talkButtonTouchCancel:) forControlEvents:UIControlEventTouchCancel];
+        __weak typeof(self) weakSelf = self;
+        [_talkButton setTouchBeginAction:^{
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarStartRecording:)]) {
+                [weakSelf.delegate chatBarStartRecording:weakSelf];
+            }
+        } willTouchCancelAction:^(BOOL cancel) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarWillCancelRecording:cancel:)]) {
+                [weakSelf.delegate chatBarWillCancelRecording:weakSelf cancel:cancel];
+            }
+        } touchEndAction:^{
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarFinishedRecoding:)]) {
+                [weakSelf.delegate chatBarFinishedRecoding:weakSelf];
+            }
+        } touchCancelAction:^{
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarDidCancelRecording:)]) {
+                [weakSelf.delegate chatBarDidCancelRecording:weakSelf];
+            }
+        }];
     }
     return _talkButton;
 }

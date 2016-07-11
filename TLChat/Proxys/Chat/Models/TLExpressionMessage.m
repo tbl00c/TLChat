@@ -11,6 +11,14 @@
 @implementation TLExpressionMessage
 @synthesize emoji = _emoji;
 
+- (id)init
+{
+    if (self = [super init]) {
+        [self setMessageType:TLMessageTypeExpression];
+    }
+    return self;
+}
+
 - (void)setEmoji:(TLEmoji *)emoji
 {
     _emoji = emoji;

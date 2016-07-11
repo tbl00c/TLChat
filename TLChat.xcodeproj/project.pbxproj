@@ -27,6 +27,8 @@
 		C209BB741C8F2FD0001C15D2 /* TLAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C209BB731C8F2FD0001C15D2 /* TLAddFriendViewController.m */; };
 		C209F4381C7D5AAA001B9825 /* TLScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C209F4371C7D5AAA001B9825 /* TLScannerViewController.m */; };
 		C20A56B91D33572500C891B3 /* TLTalkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C20A56B81D33572500C891B3 /* TLTalkButton.m */; };
+		C20A56C41D3378A000C891B3 /* TLAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C20A56C31D3378A000C891B3 /* TLAudioRecorder.m */; };
+		C20A56C71D338A8C00C891B3 /* TLVoiceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C20A56C61D338A8C00C891B3 /* TLVoiceMessage.m */; };
 		C20DC9FF1CC336A30085DFFC /* TLDBGroupStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DC9FE1CC336A30085DFFC /* TLDBGroupStore.m */; };
 		C20DE50F1CAF6CB000902398 /* TLHost.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE50E1CAF6CB000902398 /* TLHost.m */; };
 		C20DE5141CAF6FB600902398 /* TLChatBackgroundSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE5131CAF6FB600902398 /* TLChatBackgroundSelectViewController.m */; };
@@ -260,6 +262,7 @@
 		C2E6B82C1C9A61190045A6EB /* TLConversationViewController+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E6B8291C9A61190045A6EB /* TLConversationViewController+Delegate.m */; };
 		C2E6B8301C9A62270045A6EB /* TLShakeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E6B82F1C9A62270045A6EB /* TLShakeButton.m */; };
 		C2E6B8341C9A62580045A6EB /* TLBottleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E6B8331C9A62580045A6EB /* TLBottleButton.m */; };
+		C2E843FB1D33B8950096E29A /* TLVoiceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E843FA1D33B8950096E29A /* TLVoiceImageView.m */; };
 		C2E8951D1CB1247500F4451E /* TLExpressionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E8951C1CB1247500F4451E /* TLExpressionProxy.m */; };
 		C2EBBD681CB7AE2600BDABCC /* TLExpressionPublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EBBD671CB7AE2600BDABCC /* TLExpressionPublicViewController.m */; };
 		C2EBBD6B1CB7B13100BDABCC /* TLExpressionPublicViewController+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EBBD6A1CB7B13100BDABCC /* TLExpressionPublicViewController+CollectionView.m */; };
@@ -350,6 +353,10 @@
 		C20A56B31D334E7000C891B3 /* TLKeyboardDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLKeyboardDelegate.h; sourceTree = "<group>"; };
 		C20A56B71D33572500C891B3 /* TLTalkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTalkButton.h; sourceTree = "<group>"; };
 		C20A56B81D33572500C891B3 /* TLTalkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTalkButton.m; sourceTree = "<group>"; };
+		C20A56C21D3378A000C891B3 /* TLAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAudioRecorder.h; sourceTree = "<group>"; };
+		C20A56C31D3378A000C891B3 /* TLAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAudioRecorder.m; sourceTree = "<group>"; };
+		C20A56C51D338A8C00C891B3 /* TLVoiceMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVoiceMessage.h; sourceTree = "<group>"; };
+		C20A56C61D338A8C00C891B3 /* TLVoiceMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVoiceMessage.m; sourceTree = "<group>"; };
 		C20DC9FC1CC3367E0085DFFC /* TLDBGroupSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBGroupSQL.h; sourceTree = "<group>"; };
 		C20DC9FD1CC336A30085DFFC /* TLDBGroupStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBGroupStore.h; sourceTree = "<group>"; };
 		C20DC9FE1CC336A30085DFFC /* TLDBGroupStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBGroupStore.m; sourceTree = "<group>"; };
@@ -827,6 +834,8 @@
 		C2E6B82F1C9A62270045A6EB /* TLShakeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShakeButton.m; sourceTree = "<group>"; };
 		C2E6B8321C9A62580045A6EB /* TLBottleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBottleButton.h; sourceTree = "<group>"; };
 		C2E6B8331C9A62580045A6EB /* TLBottleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLBottleButton.m; sourceTree = "<group>"; };
+		C2E843F91D33B8950096E29A /* TLVoiceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVoiceImageView.h; sourceTree = "<group>"; };
+		C2E843FA1D33B8950096E29A /* TLVoiceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVoiceImageView.m; sourceTree = "<group>"; };
 		C2E8951B1CB1247500F4451E /* TLExpressionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionProxy.h; sourceTree = "<group>"; };
 		C2E8951C1CB1247500F4451E /* TLExpressionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionProxy.m; sourceTree = "<group>"; };
 		C2EBBD661CB7AE2600BDABCC /* TLExpressionPublicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionPublicViewController.h; sourceTree = "<group>"; };
@@ -1129,6 +1138,15 @@
 			path = ChatBarViews;
 			sourceTree = "<group>";
 		};
+		C20A56C11D33788F00C891B3 /* MediaUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				C20A56C21D3378A000C891B3 /* TLAudioRecorder.h */,
+				C20A56C31D3378A000C891B3 /* TLAudioRecorder.m */,
+			);
+			path = MediaUtilities;
+			sourceTree = "<group>";
+		};
 		C20DE5101CAF6F9700902398 /* ChatBackgroundSelectViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1347,6 +1365,7 @@
 		C2142EDB1C5336C30030B29B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C20A56C11D33788F00C891B3 /* MediaUtilities */,
 				C2893A741CB03E640080C4BB /* UIUtilities */,
 				C2893A6C1CB03E640080C4BB /* DataUtilities */,
 				C29A7D3B1CB79397008ECA97 /* NetworkUtilities */,
@@ -1642,6 +1661,8 @@
 				C21573E31C9BAC4200B7AC67 /* TLImageMessageCell.m */,
 				C2E294C91C9D27B000721405 /* TLExpressionMessageCell.h */,
 				C2E294CA1C9D27B000721405 /* TLExpressionMessageCell.m */,
+				C2E843F91D33B8950096E29A /* TLVoiceImageView.h */,
+				C2E843FA1D33B8950096E29A /* TLVoiceImageView.m */,
 				C25F1C5F1CDC44F2001EECF3 /* TLVoiceMessageCell.h */,
 				C25F1C601CDC44F2001EECF3 /* TLVoiceMessageCell.m */,
 			);
@@ -2430,6 +2451,8 @@
 				C2FE2F401CA97FFE00E5155B /* TLImageMessage.m */,
 				C2FE2F421CA9802700E5155B /* TLExpressionMessage.h */,
 				C2FE2F431CA9802700E5155B /* TLExpressionMessage.m */,
+				C20A56C51D338A8C00C891B3 /* TLVoiceMessage.h */,
+				C20A56C61D338A8C00C891B3 /* TLVoiceMessage.m */,
 				C2DD839A1C96B3FD00E6300B /* TLMessageFrame.h */,
 				C2DD839B1C96B3FD00E6300B /* TLMessageFrame.m */,
 			);
@@ -3391,6 +3414,7 @@
 				C21574131C9BAC4200B7AC67 /* TLTextMessageCell.m in Sources */,
 				C29A7D3F1CB79397008ECA97 /* TLNetworking.m in Sources */,
 				C2893A7C1CB03E640080C4BB /* NSFileManager+TLChat.m in Sources */,
+				C2E843FB1D33B8950096E29A /* TLVoiceImageView.m in Sources */,
 				C25F1D2F1CDC6737001EECF3 /* TLGroup+ChatModel.m in Sources */,
 				C2994D361CA142DA00BAC038 /* TLDBFriendStore.m in Sources */,
 				C2028D1E1C8D1D360060E271 /* TLFriendHelper+Detail.m in Sources */,
@@ -3415,6 +3439,7 @@
 				C2E294C31C9D26A900721405 /* TLUserGroupItemCell.m in Sources */,
 				C209BB741C8F2FD0001C15D2 /* TLAddFriendViewController.m in Sources */,
 				C2B70AA71C951681005BECDD /* TLDBManager.m in Sources */,
+				C20A56C71D338A8C00C891B3 /* TLVoiceMessage.m in Sources */,
 				C215740E1C9BAC4200B7AC67 /* TLMoreKeyboard+CollectionView.m in Sources */,
 				C2DD839C1C96B3FD00E6300B /* TLMessageFrame.m in Sources */,
 				C2D851601C68ED11007DD697 /* TLNewMessageSettingViewController.m in Sources */,
@@ -3454,6 +3479,7 @@
 				C2F0EC121C7AB01A0090843C /* TLAboutViewController.m in Sources */,
 				C271A5021C83FA0B004372D4 /* TLInfoHeaderFooterView.m in Sources */,
 				C20DE51D1CAF7FE300902398 /* TLChatBackgroundSelectCell.m in Sources */,
+				C20A56C41D3378A000C891B3 /* TLAudioRecorder.m in Sources */,
 				C2C826751CCB84C3002ECE51 /* TLMomentDetailViewController.m in Sources */,
 				C2EBBD721CB7B3E600BDABCC /* TLExpressionPublicCell.m in Sources */,
 				C21431561CD5A12400CBD933 /* TLImageBrowserController.m in Sources */,

@@ -22,6 +22,9 @@
     else if (type == TLMessageTypeExpression) {
         className = @"TLExpressionMessage";
     }
+    else if (type == TLMessageTypeVoice) {
+        className = @"TLVoiceMessage";
+    }
     if (className) {
         return [[NSClassFromString(className) alloc] init];
     }

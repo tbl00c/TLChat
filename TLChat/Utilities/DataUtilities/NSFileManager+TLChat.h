@@ -42,6 +42,11 @@
 + (NSString *)pathContactsAvatar:(NSString *)imageName;
 
 /**
+ *  聊天语音
+ */
++ (NSString *)pathUserChatVoice:(NSString *)voiceName;
+
+/**
  *  表情
  */
 + (NSString *)pathExpressionForGroupID:(NSString *)groupID;

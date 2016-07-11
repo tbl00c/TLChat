@@ -9,7 +9,7 @@
 #import "TLTextMessage.h"
 #import "NSString+Message.h"
 
-static UILabel *textLabel;
+static UILabel *textLabel = nil;
 
 @implementation TLTextMessage
 @synthesize text = _text;
@@ -17,9 +17,12 @@ static UILabel *textLabel;
 - (id)init
 {
     if (self = [super init]) {
-        textLabel = [[UILabel alloc] init];
-        [textLabel setFont:[UIFont fontTextMessageText]];
-        [textLabel setNumberOfLines:0];
+        [self setMessageType:TLMessageTypeText];
+        if (textLabel == nil) {
+            textLabel = [[UILabel alloc] init];
+            [textLabel setFont:[UIFont fontTextMessageText]];
+            [textLabel setNumberOfLines:0];
+        }
     }
     return self;
 }
@@ -49,12 +52,9 @@ static UILabel *textLabel;
 {
     if (kMessageFrame == nil) {
         kMessageFrame = [[TLMessageFrame alloc] init];
-        kMessageFrame.height = 20 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0);
-        if (self.messageType == TLMessageTypeText) {
-            kMessageFrame.height += 20;
-            [textLabel setAttributedText:self.attrText];
-            kMessageFrame.contentSize = [textLabel sizeThatFits:CGSizeMake(MAX_MESSAGE_WIDTH, MAXFLOAT)];
-        }
+        kMessageFrame.height = 20 + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0) + 20;
+        [textLabel setAttributedText:self.attrText];
+        kMessageFrame.contentSize = [textLabel sizeThatFits:CGSizeMake(MAX_MESSAGE_WIDTH, MAXFLOAT)];
         kMessageFrame.height += kMessageFrame.contentSize.height;
     }
     return kMessageFrame;

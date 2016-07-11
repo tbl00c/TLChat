@@ -8,6 +8,7 @@
 
 #import "TLChatBaseViewController+ChatBar.h"
 #import "TLChatBaseViewController+DataDelegate.h"
+#import "TLAudioRecorder.h"
 
 @implementation TLChatBaseViewController (ChatBar)
 
@@ -57,14 +58,12 @@
 {
     TLTextMessage *message = [[TLTextMessage alloc] init];
     message.fromUser = self.user;
-    message.messageType = TLMessageTypeText;
     message.ownerTyper = TLMessageOwnerTypeSelf;
     message.text = text;
     [self sendMessage:message];
     if ([self.partner chat_userType] == TLChatUserTypeUser) {
         TLTextMessage *message1 = [[TLTextMessage alloc] init];
         message1.fromUser = self.partner;
-        message1.messageType = TLMessageTypeText;
         message1.ownerTyper = TLMessageOwnerTypeFriend;
         message1.text = text;
         [self sendMessage:message1];
@@ -74,7 +73,6 @@
             TLTextMessage *message1 = [[TLTextMessage alloc] init];
             message1.friendID = [user chat_userID];
             message1.fromUser = user;
-            message1.messageType = TLMessageTypeText;
             message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.text = text;
             [self sendMessage:message1];
@@ -82,24 +80,62 @@
     }
 }
 
-- (void)chatBarRecording:(TLChatBar *)chatBar
+- (void)chatBarStartRecording:(TLChatBar *)chatBar
 {
-    NSLog(@"rec...");
+    [[TLAudioRecorder sharedRecorder] startRecording];
 }
 
-- (void)chatBarWillCancelRecording:(TLChatBar *)chatBar
+- (void)chatBarWillCancelRecording:(TLChatBar *)chatBar cancel:(BOOL)cancel
 {
-    NSLog(@"will cancel");
-}
-
-- (void)chatBarDidCancelRecording:(TLChatBar *)chatBar
-{
-    NSLog(@"cancel");
+    cancel ? NSLog(@"will cancel") : NSLog(@"will continue");
 }
 
 - (void)chatBarFinishedRecoding:(TLChatBar *)chatBar
 {
-    NSLog(@"finished");
+    [[TLAudioRecorder sharedRecorder] stopRecording];
+    NSString *recFilePath = [TLAudioRecorder sharedRecorder].recFilePath;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:recFilePath]) {
+        NSString *fileName = [NSString stringWithFormat:@"%.0lf.caf", [NSDate date].timeIntervalSince1970 * 1000];
+        CGFloat time = 5;
+        NSString *path = [NSFileManager pathUserChatVoice:fileName];
+        NSError *error;
+        [[NSFileManager defaultManager] moveItemAtPath:recFilePath toPath:path error:&error];
+        if (error) {
+            
+            return;
+        }
+        
+        TLVoiceMessage *message = [[TLVoiceMessage alloc] init];
+        message.fromUser = self.user;
+        message.ownerTyper = TLMessageOwnerTypeSelf;
+        message.path = path;
+        message.time = time;
+        [self sendMessage:message];
+        if ([self.partner chat_userType] == TLChatUserTypeUser) {
+            TLVoiceMessage *message1 = [[TLVoiceMessage alloc] init];
+            message1.fromUser = self.partner;
+            message1.ownerTyper = TLMessageOwnerTypeFriend;
+            message1.path = path;
+            message1.time = time;
+            [self sendMessage:message1];
+        }
+        else {
+            for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
+                TLVoiceMessage *message1 = [[TLVoiceMessage alloc] init];
+                message1.friendID = [user chat_userID];
+                message1.fromUser = user;
+                message1.ownerTyper = TLMessageOwnerTypeFriend;
+                message1.path = path;
+                message1.time = time;
+                [self sendMessage:message1];
+            }
+        }
+    }
+}
+
+- (void)chatBarDidCancelRecording:(TLChatBar *)chatBar
+{
+    [[TLAudioRecorder sharedRecorder] stopRecording];
 }
 
 //MARK: TLChatBarUIDelegate
@@ -193,14 +229,12 @@
     else {
         TLExpressionMessage *message = [[TLExpressionMessage alloc] init];
         message.fromUser = self.user;
-        message.messageType = TLMessageTypeExpression;
         message.ownerTyper = TLMessageOwnerTypeSelf;
         message.emoji = emoji;
         [self sendMessage:message];
         if ([self.partner chat_userType] == TLChatUserTypeUser) {
             TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
             message1.fromUser = self.partner;
-            message1.messageType = TLMessageTypeExpression;
             message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.emoji = emoji;;
             [self sendMessage:message1];
@@ -210,7 +244,6 @@
                 TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
                 message1.friendID = [user chat_userID];
                 message1.fromUser = user;
-                message1.messageType = TLMessageTypeExpression;
                 message1.ownerTyper = TLMessageOwnerTypeFriend;
                 message1.emoji = emoji;
                 [self sendMessage:message1];

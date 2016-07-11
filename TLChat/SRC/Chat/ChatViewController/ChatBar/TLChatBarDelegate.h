@@ -34,9 +34,9 @@
 
 
 // 录音控制 
-- (void)chatBarRecording:(TLChatBar *)chatBar;
+- (void)chatBarStartRecording:(TLChatBar *)chatBar;
 
-- (void)chatBarWillCancelRecording:(TLChatBar *)chatBar;
+- (void)chatBarWillCancelRecording:(TLChatBar *)chatBar cancel:(BOOL)cancel;
 
 - (void)chatBarDidCancelRecording:(TLChatBar *)chatBar;
 

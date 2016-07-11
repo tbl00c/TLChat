@@ -10,7 +10,7 @@
 #import "TLChatMacros.h"
 
 @class TLChatBar;
-@protocol TLChatBarDelegate <NSObject>
+@protocol TLChatBarUIDelegate <NSObject>
 
 /**
  *  chatBar状态改变
@@ -26,7 +26,7 @@
 
 
 
-@protocol TLChatBarDataDelegate <NSObject>
+@protocol TLChatBarDelegate <NSObject>
 /**
  *  发送文字
  */

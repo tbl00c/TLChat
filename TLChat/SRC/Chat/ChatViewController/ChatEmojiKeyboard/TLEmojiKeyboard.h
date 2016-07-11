@@ -23,7 +23,7 @@
 
 @property (nonatomic, assign) NSMutableArray *emojiGroupData;
 
-@property (nonatomic, assign) id<TLEmojiKeyboardDelegate>delegate;
+@property (nonatomic, assign) id<TLEmojiKeyboardDelegate> delegate;
 
 @property (nonatomic, assign) id<TLKeyboardDelegate> keyboardDelegate;
 

@@ -1,17 +1,17 @@
 //
-//  TLEmojiKeyboard+GroupControlDelegate.m
+//  TLEmojiKeyboard+EmojiGroupControl.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLEmojiKeyboard+GroupControlDelegate.h"
-#import "TLEmojiKeyboard+CollectionViewDelegate.h"
+#import "TLEmojiKeyboard+EmojiGroupControl.h"
+#import "TLEmojiKeyboard+CollectionView.h"
 
-@implementation TLEmojiKeyboard (GroupControlDelegate)
+@implementation TLEmojiKeyboard (EmojiGroupControl)
 
-#pragma mark - Public Methods -
+#pragma mark - Public Methods
 - (void)updateSendButtonStatus
 {
     if (self.curGroup.type == TLEmojiTypeEmoji || self.curGroup.type == TLEmojiTypeFace) {
@@ -27,7 +27,7 @@
     }
 }
 
-#pragma mark - Delegate -
+#pragma mark - Delegate
 //MARK: TLEmojiGroupControlDelegate
 - (void)emojiGroupControl:(TLEmojiGroupControl *)emojiGroupControl didSelectedGroup:(TLEmojiGroup *)group
 {

@@ -7,7 +7,7 @@
 //
 
 #import "TLEmojiKeyboard+Gusture.h"
-#import "TLEmojiKeyboard+CollectionViewDataSource.h"
+#import "TLEmojiKeyboard+CollectionView.h"
 
 @implementation TLEmojiKeyboard (Gusture)
 

@@ -11,9 +11,9 @@
 
 @interface TLChatBar : UIView
 
-@property (nonatomic, assign) id<TLChatBarDelegate> delegate;
+@property (nonatomic, assign) id<TLChatBarUIDelegate> UIDelegate;
 
-@property (nonatomic, assign) id<TLChatBarDataDelegate> dataDelegate;
+@property (nonatomic, assign) id<TLChatBarDelegate> delegate;
 
 @property (nonatomic, assign) TLChatBarStatus status;
 

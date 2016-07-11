@@ -13,7 +13,7 @@
 
 #pragma mark - Delegate
 
-//MARK: TLChatBarDataDelegate
+//MARK: TLChatBarDelegate
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
     TLTextMessage *message = [[TLTextMessage alloc] init];

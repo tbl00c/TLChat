@@ -1,15 +1,15 @@
 //
-//  TLMoreKeyboard+CollectionViewDelegate.m
+//  TLMoreKeyboard+CollectionView.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLMoreKeyboard+CollectionViewDelegate.h"
+#import "TLMoreKeyboard+CollectionView.h"
 #import "TLMoreKeyboardCell.h"
 
-@implementation TLMoreKeyboard (CollectionViewDelegate)
+@implementation TLMoreKeyboard (CollectionView)
 
 #pragma mark - Public Methods -
 - (void)registerCellClass

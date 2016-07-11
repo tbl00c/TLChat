@@ -8,6 +8,6 @@
 
 #import "TLChatBaseViewController.h"
 
-@interface TLChatBaseViewController (ChatBarDelegate) <TLChatBarDataDelegate>
+@interface TLChatBaseViewController (ChatBarDelegate) <TLChatBarDelegate>
 
 @end

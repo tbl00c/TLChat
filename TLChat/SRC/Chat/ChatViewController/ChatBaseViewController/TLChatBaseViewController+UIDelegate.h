@@ -16,7 +16,7 @@
  *  2、响应chatBar的按钮点击事件
  */
 
-@interface TLChatBaseViewController (UIDelegate) <TLChatBarDelegate, TLKeyboardDelegate>
+@interface TLChatBaseViewController (UIDelegate) <TLChatBarUIDelegate, TLKeyboardDelegate>
 
 - (void)keyboardWillHide:(NSNotification *)notification;
 - (void)keyboardFrameWillChange:(NSNotification *)notification;

@@ -155,7 +155,7 @@
     if (_chatBar == nil) {
         _chatBar = [[TLChatBar alloc] init];
         [_chatBar setDelegate:self];
-        [_chatBar setDataDelegate:self];
+        [_chatBar setUIDelegate:self];
     }
     return _chatBar;
 }

@@ -1,5 +1,5 @@
 //
-//  TLMoreKeyboard+CollectionViewDelegate.h
+//  TLMoreKeyboard+CollectionView.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
@@ -8,7 +8,7 @@
 
 #import "TLMoreKeyboard.h"
 
-@interface TLMoreKeyboard (CollectionViewDelegate) <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface TLMoreKeyboard (CollectionView) <UICollectionViewDataSource, UICollectionViewDelegate>
 
 - (void)registerCellClass;
 

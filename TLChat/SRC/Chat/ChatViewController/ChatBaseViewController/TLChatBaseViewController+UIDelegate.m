@@ -51,7 +51,7 @@
 }
 
 #pragma mark - # Delegate
-//MARK: TLKeyboardDelegate
+//MARK: TLChatBarUIDelegate
 - (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
 {
     [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -71,7 +71,6 @@
     }
 }
 
-//MARK: TLChatBarDelegate
 - (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus
 {
     if (curStatus == toStatus) {

@@ -1,5 +1,5 @@
 //
-//  TLEmojiKeyboard+GroupControlDelegate.h
+//  TLEmojiKeyboard+EmojiGroupControl.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
@@ -8,7 +8,7 @@
 
 #import "TLEmojiKeyboard.h"
 
-@interface TLEmojiKeyboard (GroupControlDelegate) <TLEmojiGroupControlDelegate>
+@interface TLEmojiKeyboard (EmojiGroupControl) <TLEmojiGroupControlDelegate>
 
 - (void)updateSendButtonStatus;
 

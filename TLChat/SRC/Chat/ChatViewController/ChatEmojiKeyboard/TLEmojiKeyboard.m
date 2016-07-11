@@ -7,10 +7,8 @@
 //
 
 #import "TLEmojiKeyboard.h"
-#import "TLEmojiKeyboard+GroupControlDelegate.h"
-#import "TLEmojiKeyboard+CollectionViewDelegate.h"
-#import "TLEmojiKeyboard+CollectionViewDataSource.h"
-#import "TLEmojiKeyboard+GroupControlDelegate.h"
+#import "TLEmojiKeyboard+EmojiGroupControl.h"
+#import "TLEmojiKeyboard+CollectionView.h"
 #import "TLEmojiKeyboard+Gusture.h"
 #import "TLChatMacros.h"
 

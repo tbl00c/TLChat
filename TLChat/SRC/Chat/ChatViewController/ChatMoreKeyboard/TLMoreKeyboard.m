@@ -7,7 +7,7 @@
 //
 
 #import "TLMoreKeyboard.h"
-#import "TLMoreKeyboard+CollectionViewDelegate.h"
+#import "TLMoreKeyboard+CollectionView.h"
 #import "TLChatMacros.h"
 
 #define     HEIGHT_TOP_SPACE            15

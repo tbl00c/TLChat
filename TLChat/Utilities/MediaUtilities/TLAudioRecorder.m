@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) AVAudioRecorder *recorder;
 
+@property (nonatomic, strong) void (^completeBlcok)(NSString *path, CGFloat time);
+
 @end
 
 @implementation TLAudioRecorder
@@ -30,8 +32,9 @@
     return audioRecorder;
 }
 
-- (void)startRecording
+- (void)startRecordingWithCompleteBlock:(void (^)(NSString *, CGFloat))complete
 {
+    self.completeBlcok = complete;
     if ([[NSFileManager defaultManager] fileExistsAtPath:PATH_RECFILE]) {
         [[NSFileManager defaultManager] removeItemAtPath:PATH_RECFILE error:nil];
     }
@@ -40,6 +43,15 @@
 }
 
 - (void)stopRecording
+{
+    CGFloat time = self.recorder.currentTime;
+    [self.recorder stop];
+    if (self.completeBlcok) {
+        self.completeBlcok(PATH_RECFILE, time);
+    }
+}
+
+- (void)cancelRecording
 {
     [self.recorder stop];
 }

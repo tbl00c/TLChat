@@ -9,6 +9,7 @@
 #import "TLVoiceMessage.h"
 
 @implementation TLVoiceMessage
+@synthesize recFileName = _recFileName;
 @synthesize path = _path;
 @synthesize url = _url;
 @synthesize time = _time;
@@ -21,17 +22,26 @@
     return self;
 }
 
+- (NSString *)recFileName
+{
+    if (_recFileName == nil) {
+        _recFileName = [self.content objectForKey:@"path"];
+    }
+    return _recFileName;
+}
+- (void)setRecFileName:(NSString *)recFileName
+{
+    _recFileName = recFileName;
+    [self.content setObject:recFileName forKey:@"path"];
+}
+
+
 - (NSString *)path
 {
     if (_path == nil) {
-        _url = [self.content objectForKey:@"path"];
+        _path = [NSFileManager pathUserChatVoice:self.recFileName];;
     }
     return _path;
-}
-- (void)setPath:(NSString *)path
-{
-    _path = path;
-    [self.content setObject:path forKey:@"path"];
 }
 
 - (NSString *)url
@@ -61,7 +71,7 @@
 {
     if (kMessageFrame == nil) {
         kMessageFrame = [[TLMessageFrame alloc] init];
-        CGFloat width = 40 + (self.time > 20 ? 1.0 : self.time / 20.0)  * (MAX_MESSAGE_WIDTH - 40);
+        CGFloat width = 60 + (self.time > 20 ? 1.0 : self.time / 20.0)  * (MAX_MESSAGE_WIDTH - 60);
         CGFloat height = 54;
         kMessageFrame.contentSize = CGSizeMake(width, height);
         kMessageFrame.height = kMessageFrame.contentSize.height + (self.showTime ? 30 : 0) + (self.showName ? 15 : 0) + 3;

@@ -39,6 +39,11 @@
 - (void)deleteMessage:(TLMessage *)message;
 
 /**
+ *  更新消息状态
+ */
+- (void)updateMessage:(TLMessage *)message;
+
+/**
  *  滚动到底部
  *
  *  @param animation 是否执行动画

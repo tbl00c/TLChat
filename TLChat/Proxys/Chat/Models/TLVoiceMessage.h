@@ -8,10 +8,19 @@
 
 #import "TLMessage.h"
 
+typedef NS_ENUM(NSInteger, TLVoicePlayStatus) {
+    TLVoicePlayStatusStop,
+    TLVoicePlayStatusPlaying,
+};
+
 @interface TLVoiceMessage : TLMessage
 
-@property (nonatomic, strong) NSString *path;
+@property (nonatomic, strong) NSString *recFileName;
+
+@property (nonatomic, strong, readonly) NSString *path;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, assign) CGFloat time;
+
+@property (nonatomic, assign) TLVoicePlayStatus playStatus;
 
 @end

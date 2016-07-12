@@ -92,6 +92,7 @@
 		C237E9D81CB244830034CEA2 /* TLExpressionChosenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C237E9D71CB244830034CEA2 /* TLExpressionChosenViewController.m */; };
 		C237E9DC1CB2AA240034CEA2 /* TLExpressionChosenViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C237E9DB1CB2AA240034CEA2 /* TLExpressionChosenViewController+TableView.m */; };
 		C237E9E01CB2B3F40034CEA2 /* TLExpressionSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C237E9DF1CB2B3F40034CEA2 /* TLExpressionSearchViewController.m */; };
+		C23878FE1D34960400EED613 /* TLAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C23878FD1D34960400EED613 /* TLAudioPlayer.m */; };
 		C246F1101C6B867C00A5AFB2 /* TLShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */; };
 		C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F1131C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m */; };
 		C25F1C611CDC44F2001EECF3 /* TLVoiceMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25F1C601CDC44F2001EECF3 /* TLVoiceMessageCell.m */; };
@@ -494,6 +495,8 @@
 		C237E9DB1CB2AA240034CEA2 /* TLExpressionChosenViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLExpressionChosenViewController+TableView.m"; sourceTree = "<group>"; };
 		C237E9DE1CB2B3F40034CEA2 /* TLExpressionSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionSearchViewController.h; sourceTree = "<group>"; };
 		C237E9DF1CB2B3F40034CEA2 /* TLExpressionSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionSearchViewController.m; sourceTree = "<group>"; };
+		C23878FC1D34960400EED613 /* TLAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAudioPlayer.h; sourceTree = "<group>"; };
+		C23878FD1D34960400EED613 /* TLAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAudioPlayer.m; sourceTree = "<group>"; };
 		C246F10E1C6B867C00A5AFB2 /* TLShoppingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLShoppingViewController.h; sourceTree = "<group>"; };
 		C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShoppingViewController.m; sourceTree = "<group>"; };
 		C246F1121C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLHelpAndFeedbackViewController.h; sourceTree = "<group>"; };
@@ -1143,6 +1146,8 @@
 			children = (
 				C20A56C21D3378A000C891B3 /* TLAudioRecorder.h */,
 				C20A56C31D3378A000C891B3 /* TLAudioRecorder.m */,
+				C23878FC1D34960400EED613 /* TLAudioPlayer.h */,
+				C23878FD1D34960400EED613 /* TLAudioPlayer.m */,
 			);
 			path = MediaUtilities;
 			sourceTree = "<group>";
@@ -3415,6 +3420,7 @@
 				C29A7D3F1CB79397008ECA97 /* TLNetworking.m in Sources */,
 				C2893A7C1CB03E640080C4BB /* NSFileManager+TLChat.m in Sources */,
 				C2E843FB1D33B8950096E29A /* TLVoiceImageView.m in Sources */,
+				C23878FE1D34960400EED613 /* TLAudioPlayer.m in Sources */,
 				C25F1D2F1CDC6737001EECF3 /* TLGroup+ChatModel.m in Sources */,
 				C2994D361CA142DA00BAC038 /* TLDBFriendStore.m in Sources */,
 				C2028D1E1C8D1D360060E271 /* TLFriendHelper+Detail.m in Sources */,

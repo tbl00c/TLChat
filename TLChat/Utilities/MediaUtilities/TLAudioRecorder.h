@@ -10,11 +10,10 @@
 
 @interface TLAudioRecorder : NSObject
 
-@property (nonatomic, strong, readonly) NSString *recFilePath;
-
 + (TLAudioRecorder *)sharedRecorder;
 
-- (void)startRecording;
+- (void)startRecordingWithCompleteBlock:(void (^)(NSString *path, CGFloat time))complete;
 - (void)stopRecording;
+- (void)cancelRecording;
 
 @end

@@ -9,6 +9,7 @@
 #import "TLChatBaseViewController+ChatBar.h"
 #import "TLChatBaseViewController+DataDelegate.h"
 #import "TLAudioRecorder.h"
+#import "TLAudioPlayer.h"
 
 @implementation TLChatBaseViewController (ChatBar)
 
@@ -82,7 +83,52 @@
 
 - (void)chatBarStartRecording:(TLChatBar *)chatBar
 {
-    [[TLAudioRecorder sharedRecorder] startRecording];
+    // 先停止播放
+    if ([TLAudioPlayer sharedAudioPlayer].isPlaying) {
+        [[TLAudioPlayer sharedAudioPlayer] stopPlayingAudio];
+    }
+    [[TLAudioRecorder sharedRecorder] startRecordingWithCompleteBlock:^(NSString *filePath, CGFloat time) {
+        if (time < 1.0) {
+            
+            return;
+        }
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+            NSString *fileName = [NSString stringWithFormat:@"%.0lf.caf", [NSDate date].timeIntervalSince1970 * 1000];
+            NSString *path = [NSFileManager pathUserChatVoice:fileName];
+            NSError *error;
+            [[NSFileManager defaultManager] moveItemAtPath:filePath toPath:path error:&error];
+            if (error) {
+                DDLogError(@"录音文件出错: %@", error);
+                return;
+            }
+            
+            TLVoiceMessage *message = [[TLVoiceMessage alloc] init];
+            message.fromUser = self.user;
+            message.ownerTyper = TLMessageOwnerTypeSelf;
+            message.recFileName = fileName;
+            message.time = time;
+            [self sendMessage:message];
+            if ([self.partner chat_userType] == TLChatUserTypeUser) {
+                TLVoiceMessage *message1 = [[TLVoiceMessage alloc] init];
+                message1.fromUser = self.partner;
+                message1.ownerTyper = TLMessageOwnerTypeFriend;
+                message1.recFileName = fileName;
+                message1.time = time;
+                [self sendMessage:message1];
+            }
+            else {
+                for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
+                    TLVoiceMessage *message1 = [[TLVoiceMessage alloc] init];
+                    message1.friendID = [user chat_userID];
+                    message1.fromUser = user;
+                    message1.ownerTyper = TLMessageOwnerTypeFriend;
+                    message1.recFileName = fileName;
+                    message1.time = time;
+                    [self sendMessage:message1];
+                }
+            }
+        }
+    }];
 }
 
 - (void)chatBarWillCancelRecording:(TLChatBar *)chatBar cancel:(BOOL)cancel
@@ -93,44 +139,6 @@
 - (void)chatBarFinishedRecoding:(TLChatBar *)chatBar
 {
     [[TLAudioRecorder sharedRecorder] stopRecording];
-    NSString *recFilePath = [TLAudioRecorder sharedRecorder].recFilePath;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:recFilePath]) {
-        NSString *fileName = [NSString stringWithFormat:@"%.0lf.caf", [NSDate date].timeIntervalSince1970 * 1000];
-        CGFloat time = 5;
-        NSString *path = [NSFileManager pathUserChatVoice:fileName];
-        NSError *error;
-        [[NSFileManager defaultManager] moveItemAtPath:recFilePath toPath:path error:&error];
-        if (error) {
-            
-            return;
-        }
-        
-        TLVoiceMessage *message = [[TLVoiceMessage alloc] init];
-        message.fromUser = self.user;
-        message.ownerTyper = TLMessageOwnerTypeSelf;
-        message.path = path;
-        message.time = time;
-        [self sendMessage:message];
-        if ([self.partner chat_userType] == TLChatUserTypeUser) {
-            TLVoiceMessage *message1 = [[TLVoiceMessage alloc] init];
-            message1.fromUser = self.partner;
-            message1.ownerTyper = TLMessageOwnerTypeFriend;
-            message1.path = path;
-            message1.time = time;
-            [self sendMessage:message1];
-        }
-        else {
-            for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
-                TLVoiceMessage *message1 = [[TLVoiceMessage alloc] init];
-                message1.friendID = [user chat_userID];
-                message1.fromUser = user;
-                message1.ownerTyper = TLMessageOwnerTypeFriend;
-                message1.path = path;
-                message1.time = time;
-                [self sendMessage:message1];
-            }
-        }
-    }
 }
 
 - (void)chatBarDidCancelRecording:(TLChatBar *)chatBar

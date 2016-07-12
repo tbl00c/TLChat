@@ -9,6 +9,7 @@
 #import "TLChatTableViewController.h"
 #import "TLChatTableViewController+Delegate.h"
 #import <MJRefresh.h>
+#import "TLMessageBaseCell.h"
 
 #define     PAGE_MESSAGE_COUNT      15
 
@@ -91,6 +92,19 @@
         }
         else {
             [UIAlertView bk_alertViewWithTitle:@"错误" message:@"从数据库中删除消息失败。"];
+        }
+    }
+}
+
+- (void)updateMessage:(TLMessage *)message
+{
+    NSArray *visibleCells = [self.tableView visibleCells];
+    for (id cell in visibleCells) {
+        if ([cell isKindOfClass:[TLMessageBaseCell class]]) {
+            if ([[(TLMessageBaseCell *)cell message].messageID isEqualToString:message.messageID]) {
+                [cell setMessage:message];
+                return;
+            }
         }
     }
 }

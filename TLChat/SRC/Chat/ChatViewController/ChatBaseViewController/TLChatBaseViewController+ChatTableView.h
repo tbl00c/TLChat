@@ -7,6 +7,7 @@
 //
 
 #import "TLChatBaseViewController.h"
+#import "TLAudioPlayer.h"
 
 #define     MAX_SHOWTIME_MSG_COUNT      10
 #define     MAX_SHOWTIME_MSG_SECOND     30

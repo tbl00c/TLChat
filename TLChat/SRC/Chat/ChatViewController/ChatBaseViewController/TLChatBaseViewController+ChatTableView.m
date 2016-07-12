@@ -91,6 +91,7 @@
 - (void)chatTableViewController:(TLChatTableViewController *)chatTVC didClickMessage:(TLMessage *)message
 {
     if (message.messageType == TLMessageTypeImage && [self respondsToSelector:@selector(didClickedImageMessages:atIndex:)]) {
+        // 展示聊天图片
         [[TLMessageManager sharedInstance] chatImagesAndVideosForPartnerID:[self.partner chat_userID] completed:^(NSArray *imagesData) {
             NSInteger index = -1;
             for (int i = 0; i < imagesData.count; i ++) {
@@ -103,6 +104,21 @@
                 [self didClickedImageMessages:imagesData atIndex:index];
             }
         }];
+    }
+    else if (message.messageType == TLMessageTypeVoice) {
+        if ([(TLVoiceMessage *)message playStatus] == TLVoicePlayStatusStop) {
+            // 播放语音消息
+            [(TLVoiceMessage *)message setPlayStatus:TLVoicePlayStatusPlaying];
+            [[TLAudioPlayer sharedAudioPlayer] playAudioAtPath:[(TLVoiceMessage *)message path] complete:^(BOOL finished) {
+                [(TLVoiceMessage *)message setPlayStatus:TLVoicePlayStatusStop];
+                [self.chatTableVC updateMessage:message];
+            }];
+        }
+        else {
+            // 停止播放语音消息
+            [(TLVoiceMessage *)message setPlayStatus:TLVoicePlayStatusStop];
+            [[TLAudioPlayer sharedAudioPlayer] stopPlayingAudio];
+        }
     }
 }
 

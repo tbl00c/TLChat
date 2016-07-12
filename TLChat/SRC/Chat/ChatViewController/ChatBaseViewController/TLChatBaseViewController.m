@@ -37,6 +37,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [[TLAudioPlayer sharedAudioPlayer] stopPlayingAudio];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

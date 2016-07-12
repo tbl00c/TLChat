@@ -87,11 +87,20 @@
     if ([TLAudioPlayer sharedAudioPlayer].isPlaying) {
         [[TLAudioPlayer sharedAudioPlayer] stopPlayingAudio];
     }
-    [[TLAudioRecorder sharedRecorder] startRecordingWithCompleteBlock:^(NSString *filePath, CGFloat time) {
+    
+    [self.chatTableVC.view addSubview:self.recorderIndicatorView];
+    [self.recorderIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(150, 150));
+    }];
+    [[TLAudioRecorder sharedRecorder] startRecordingWithVolumeChangedBlock:^(CGFloat volume) {
+        [self.recorderIndicatorView setVolume:volume];
+    } completeBlock:^(NSString *filePath, CGFloat time) {
         if (time < 1.0) {
-            
+            [self.recorderIndicatorView setStatus:TLRecorderStatusTooShort];
             return;
         }
+        [self.recorderIndicatorView removeFromSuperview];
         if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
             NSString *fileName = [NSString stringWithFormat:@"%.0lf.caf", [NSDate date].timeIntervalSince1970 * 1000];
             NSString *path = [NSFileManager pathUserChatVoice:fileName];
@@ -128,12 +137,14 @@
                 }
             }
         }
+    } cancelBlock:^{
+        [self.recorderIndicatorView removeFromSuperview];
     }];
 }
 
 - (void)chatBarWillCancelRecording:(TLChatBar *)chatBar cancel:(BOOL)cancel
 {
-    cancel ? NSLog(@"will cancel") : NSLog(@"will continue");
+    [self.recorderIndicatorView setStatus:cancel ? TLRecorderStatusWillCancel : TLRecorderStatusRecording];
 }
 
 - (void)chatBarFinishedRecoding:(TLChatBar *)chatBar
@@ -143,7 +154,7 @@
 
 - (void)chatBarDidCancelRecording:(TLChatBar *)chatBar
 {
-    [[TLAudioRecorder sharedRecorder] stopRecording];
+    [[TLAudioRecorder sharedRecorder] cancelRecording];
 }
 
 //MARK: TLChatBarUIDelegate

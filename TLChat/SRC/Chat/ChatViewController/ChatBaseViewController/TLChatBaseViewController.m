@@ -189,4 +189,12 @@
     return _imageExpressionDisplayView;
 }
 
+- (TLRecorderIndicatorView *)recorderIndicatorView
+{
+    if (_recorderIndicatorView == nil) {
+        _recorderIndicatorView = [[TLRecorderIndicatorView alloc] init];
+    }
+    return _recorderIndicatorView;
+}
+
 @end

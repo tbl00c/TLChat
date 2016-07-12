@@ -16,7 +16,11 @@
 
 @property (nonatomic, strong) AVAudioRecorder *recorder;
 
-@property (nonatomic, strong) void (^completeBlcok)(NSString *path, CGFloat time);
+@property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong) void (^volumeChangedBlock)(CGFloat valume);
+@property (nonatomic, strong) void (^completeBlock)(NSString *path, CGFloat time);
+@property (nonatomic, strong) void (^cancelBlock)();
 
 @end
 
@@ -32,35 +36,56 @@
     return audioRecorder;
 }
 
-- (void)startRecordingWithCompleteBlock:(void (^)(NSString *, CGFloat))complete
+- (void)startRecordingWithVolumeChangedBlock:(void (^)(CGFloat volume))volumeChanged
+                               completeBlock:(void (^)(NSString *path, CGFloat time))complete
+                                 cancelBlock:(void (^)())cancel;
 {
-    self.completeBlcok = complete;
+    self.volumeChangedBlock = volumeChanged;
+    self.completeBlock = complete;
+    self.cancelBlock = cancel;
     if ([[NSFileManager defaultManager] fileExistsAtPath:PATH_RECFILE]) {
         [[NSFileManager defaultManager] removeItemAtPath:PATH_RECFILE error:nil];
     }
     [self.recorder prepareToRecord];
     [self.recorder record];
+    
+    if (self.timer && self.timer.isValid) {
+        [self.timer invalidate];
+    }
+    __weak typeof(self) weakSelf = self;
+    self.timer = [NSTimer bk_scheduledTimerWithTimeInterval:0.5 block:^(NSTimer *timer) {
+        [weakSelf.recorder updateMeters];
+        float peakPower = pow(10, (0.05 * [weakSelf.recorder peakPowerForChannel:0]));
+        if (weakSelf && weakSelf.volumeChangedBlock) {
+            weakSelf.volumeChangedBlock(peakPower);
+        }
+    } repeats:YES];
 }
 
 - (void)stopRecording
 {
+    [self.timer invalidate];
     CGFloat time = self.recorder.currentTime;
     [self.recorder stop];
-    if (self.completeBlcok) {
-        self.completeBlcok(PATH_RECFILE, time);
+    if (self.completeBlock) {
+        self.completeBlock(PATH_RECFILE, time);
     }
 }
 
 - (void)cancelRecording
 {
+    [self.timer invalidate];
     [self.recorder stop];
+    if (self.cancelBlock) {
+        self.cancelBlock();
+    }
 }
 
 #pragma mark - # Delegate
 //MARK: AVAudioRecorderDelegate
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag {
     if (flag) {
-        NSLog(@"录音成功");
+//        NSLog(@"录音成功");
     }
 }
 

@@ -12,7 +12,9 @@
 
 + (TLAudioRecorder *)sharedRecorder;
 
-- (void)startRecordingWithCompleteBlock:(void (^)(NSString *path, CGFloat time))complete;
+- (void)startRecordingWithVolumeChangedBlock:(void (^)(CGFloat volume))volumeChanged
+                               completeBlock:(void (^)(NSString *path, CGFloat time))complete
+                                 cancelBlock:(void (^)())cancel;
 - (void)stopRecording;
 - (void)cancelRecording;
 

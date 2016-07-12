@@ -11,6 +11,7 @@
 #import "TLChatTableViewController.h"
 #import "TLEmojiDisplayView.h"
 #import "TLImageExpressionDisplayView.h"
+#import "TLRecorderIndicatorView.h"
 
 #import "TLMoreKeyboardDelegate.h"
 #import "TLMessageManager+MessageRecord.h"
@@ -50,6 +51,9 @@
 
 /// 图片表情展示view
 @property (nonatomic, strong) TLImageExpressionDisplayView *imageExpressionDisplayView;
+
+/// 录音展示view
+@property (nonatomic, strong) TLRecorderIndicatorView *recorderIndicatorView;;
 
 /**
  *  设置“更多”键盘元素

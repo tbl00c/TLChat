@@ -109,6 +109,7 @@
         if ([(TLVoiceMessage *)message playStatus] == TLVoicePlayStatusStop) {
             // 播放语音消息
             [(TLVoiceMessage *)message setPlayStatus:TLVoicePlayStatusPlaying];
+            
             [[TLAudioPlayer sharedAudioPlayer] playAudioAtPath:[(TLVoiceMessage *)message path] complete:^(BOOL finished) {
                 [(TLVoiceMessage *)message setPlayStatus:TLVoicePlayStatusStop];
                 [self.chatTableVC updateMessage:message];
@@ -116,7 +117,6 @@
         }
         else {
             // 停止播放语音消息
-            [(TLVoiceMessage *)message setPlayStatus:TLVoicePlayStatusStop];
             [[TLAudioPlayer sharedAudioPlayer] stopPlayingAudio];
         }
     }

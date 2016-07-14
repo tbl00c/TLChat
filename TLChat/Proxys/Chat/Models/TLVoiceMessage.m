@@ -35,7 +35,6 @@
     [self.content setObject:recFileName forKey:@"path"];
 }
 
-
 - (NSString *)path
 {
     if (_path == nil) {

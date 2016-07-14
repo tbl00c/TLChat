@@ -24,4 +24,9 @@
 
 @property (nonatomic, strong) TLMessage *message;
 
+/**
+ *  更新消息，如果子类不重写，默认调用setMessage方法
+ */
+- (void)updateMessage:(TLMessage *)message;
+
 @end

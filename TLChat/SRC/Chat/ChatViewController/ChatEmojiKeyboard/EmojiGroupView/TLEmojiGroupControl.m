@@ -149,6 +149,21 @@
     }
 }
 
+#pragma mark - Event Response -
+- (void)emojiAddButtonDown
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControlEditButtonDown:)]) {
+        [_delegate emojiGroupControlEditButtonDown:self];
+    }
+}
+
+- (void)sendButtonDown
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControlSendButtonDown:)]) {
+        [_delegate emojiGroupControlSendButtonDown:self];
+    }
+}
+
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
@@ -186,21 +201,6 @@
     CGContextMoveToPoint(context, WIDTH_EMOJIGROUP_CELL, 5);
     CGContextAddLineToPoint(context, WIDTH_EMOJIGROUP_CELL, self.height - 5);
     CGContextStrokePath(context);
-}
-
-#pragma mark - Event Response -
-- (void)emojiAddButtonDown
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControlEditButtonDown:)]) {
-        [_delegate emojiGroupControlEditButtonDown:self];
-    }
-}
-
-- (void)sendButtonDown
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControlSendButtonDown:)]) {
-        [_delegate emojiGroupControlSendButtonDown:self];
-    }
 }
 
 #pragma mark - Getter -

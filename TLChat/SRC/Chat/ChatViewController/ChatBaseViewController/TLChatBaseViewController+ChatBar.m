@@ -8,6 +8,7 @@
 
 #import "TLChatBaseViewController+ChatBar.h"
 #import "TLChatBaseViewController+DataDelegate.h"
+#import "TLChatBaseViewController+ChatTableView.h"
 #import "TLAudioRecorder.h"
 #import "TLAudioPlayer.h"
 
@@ -58,29 +59,26 @@
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
     TLTextMessage *message = [[TLTextMessage alloc] init];
-    message.fromUser = self.user;
-    message.ownerTyper = TLMessageOwnerTypeSelf;
     message.text = text;
     [self sendMessage:message];
     if ([self.partner chat_userType] == TLChatUserTypeUser) {
         TLTextMessage *message1 = [[TLTextMessage alloc] init];
         message1.fromUser = self.partner;
-        message1.ownerTyper = TLMessageOwnerTypeFriend;
         message1.text = text;
-        [self sendMessage:message1];
+        [self receivedMessage:message1];
     }
     else {
         for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
             TLTextMessage *message1 = [[TLTextMessage alloc] init];
             message1.friendID = [user chat_userID];
             message1.fromUser = user;
-            message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.text = text;
-            [self sendMessage:message1];
+            [self receivedMessage:message1];
         }
     }
 }
 
+// 录音
 - (void)chatBarStartRecording:(TLChatBar *)chatBar
 {
     // 先停止播放
@@ -93,7 +91,19 @@
         make.center.mas_equalTo(self.view);
         make.size.mas_equalTo(CGSizeMake(150, 150));
     }];
+    
+    __block NSInteger time_count = 0;
+    TLVoiceMessage *message = [[TLVoiceMessage alloc] init];
+    message.ownerTyper = TLMessageOwnerTypeSelf;
+    message.userID = [TLUserHelper sharedHelper].userID;
+    message.fromUser = (id<TLChatUserProtocol>)[TLUserHelper sharedHelper].user;
+    message.msgStatus = TLVoiceMessageStatusRecording;
+    message.date = [NSDate date];
     [[TLAudioRecorder sharedRecorder] startRecordingWithVolumeChangedBlock:^(CGFloat volume) {
+        time_count ++;
+        if (time_count == 2) {
+            [self addToShowMessage:message];
+        }
         [self.recorderIndicatorView setVolume:volume];
     } completeBlock:^(NSString *filePath, CGFloat time) {
         if (time < 1.0) {
@@ -111,33 +121,31 @@
                 return;
             }
             
-            TLVoiceMessage *message = [[TLVoiceMessage alloc] init];
-            message.fromUser = self.user;
-            message.ownerTyper = TLMessageOwnerTypeSelf;
             message.recFileName = fileName;
             message.time = time;
+            message.msgStatus = TLVoiceMessageStatusNormal;
+            [message resetMessageFrame];
             [self sendMessage:message];
             if ([self.partner chat_userType] == TLChatUserTypeUser) {
                 TLVoiceMessage *message1 = [[TLVoiceMessage alloc] init];
                 message1.fromUser = self.partner;
-                message1.ownerTyper = TLMessageOwnerTypeFriend;
                 message1.recFileName = fileName;
                 message1.time = time;
-                [self sendMessage:message1];
+                [self receivedMessage:message1];
             }
             else {
                 for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
                     TLVoiceMessage *message1 = [[TLVoiceMessage alloc] init];
                     message1.friendID = [user chat_userID];
                     message1.fromUser = user;
-                    message1.ownerTyper = TLMessageOwnerTypeFriend;
                     message1.recFileName = fileName;
                     message1.time = time;
-                    [self sendMessage:message1];
+                    [self receivedMessage:message1];
                 }
             }
         }
     } cancelBlock:^{
+        [self.chatTableVC deleteMessage:message];
         [self.recorderIndicatorView removeFromSuperview];
     }];
 }
@@ -247,25 +255,21 @@
     }
     else {
         TLExpressionMessage *message = [[TLExpressionMessage alloc] init];
-        message.fromUser = self.user;
-        message.ownerTyper = TLMessageOwnerTypeSelf;
         message.emoji = emoji;
         [self sendMessage:message];
         if ([self.partner chat_userType] == TLChatUserTypeUser) {
             TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
             message1.fromUser = self.partner;
-            message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.emoji = emoji;;
-            [self sendMessage:message1];
+            [self receivedMessage:message1];
         }
         else {
             for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
                 TLExpressionMessage *message1 = [[TLExpressionMessage alloc] init];
                 message1.friendID = [user chat_userID];
                 message1.fromUser = user;
-                message1.ownerTyper = TLMessageOwnerTypeFriend;
                 message1.emoji = emoji;
-                [self sendMessage:message1];
+                [self receivedMessage:message1];
             }
         }
     }

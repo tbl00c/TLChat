@@ -70,8 +70,10 @@ typedef NS_ENUM(NSInteger, TLMessageReadState) {
 
 @property (nonatomic, strong) NSMutableDictionary *content;
 
-@property (nonatomic, strong) TLMessageFrame *messageFrame;         // 消息frame
+@property (nonatomic, strong, readonly) TLMessageFrame *messageFrame;         // 消息frame
 
 + (TLMessage *)createMessageByType:(TLMessageType)type;
+
+- (void)resetMessageFrame;
 
 @end

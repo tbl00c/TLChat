@@ -106,6 +106,11 @@
     _message = message;
 }
 
+- (void)updateMessage:(TLMessage *)message
+{
+    [self setMessage:message];
+}
+
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {

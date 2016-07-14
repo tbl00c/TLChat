@@ -82,12 +82,20 @@
 
 - (void)deleteMessage:(TLMessage *)message
 {
+    [self deleteMessage:message withAnimation:YES];
+}
+
+- (void)deleteMessage:(TLMessage *)message withAnimation:(BOOL)animation
+{
+    if (message == nil) {
+        return;
+    }
     NSInteger index = [self.data indexOfObject:message];
     if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewController:deleteMessage:)]) {
         BOOL ok = [_delegate chatTableViewController:self deleteMessage:message];
         if (ok) {
             [self.data removeObject:message];
-            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:animation ? UITableViewRowAnimationAutomatic : UITableViewRowAnimationNone];
             [MobClick event:EVENT_DELETE_MESSAGE];
         }
         else {
@@ -102,7 +110,7 @@
     for (id cell in visibleCells) {
         if ([cell isKindOfClass:[TLMessageBaseCell class]]) {
             if ([[(TLMessageBaseCell *)cell message].messageID isEqualToString:message.messageID]) {
-                [cell setMessage:message];
+                [cell updateMessage:message];
                 return;
             }
         }

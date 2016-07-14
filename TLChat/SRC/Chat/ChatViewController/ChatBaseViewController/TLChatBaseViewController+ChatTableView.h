@@ -15,7 +15,7 @@
 @interface TLChatBaseViewController (ChatTableView) <TLChatTableViewControllerDelegate>
 
 /**
- *  展示消息（添加到chatVC）
+ *  添加展示消息（添加到chatVC）
  */
 - (void)addToShowMessage:(TLMessage *)message;
 

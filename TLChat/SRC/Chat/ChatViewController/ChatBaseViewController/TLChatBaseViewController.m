@@ -108,7 +108,7 @@
         message1.ownerTyper = TLMessageOwnerTypeFriend;
         message1.imagePath = imageName;
         message1.imageSize = image.size;
-        [self sendMessage:message1];
+        [self receivedMessage:message1];
     }
     else {
         for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
@@ -118,7 +118,7 @@
             message1.ownerTyper = TLMessageOwnerTypeFriend;
             message1.imagePath = imageName;
             message1.imageSize = image.size;
-            [self sendMessage:message1];
+            [self receivedMessage:message1];
         }
     }
 }

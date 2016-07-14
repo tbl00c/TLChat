@@ -39,6 +39,11 @@
     return self;
 }
 
+- (void)resetMessageFrame
+{
+    kMessageFrame = nil;
+}
+
 
 #pragma mark - # Protocol
 - (NSString *)conversationContent

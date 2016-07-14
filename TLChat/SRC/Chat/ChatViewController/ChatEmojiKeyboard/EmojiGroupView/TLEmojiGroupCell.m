@@ -36,7 +36,7 @@
     [self.groupIconView setImage:[UIImage imageNamed:emojiGroup.groupIconPath]];
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void) p_addMasonry
 {
     [self.groupIconView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,6 +65,5 @@
     }
     return _groupIconView;
 }
-
 
 @end

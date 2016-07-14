@@ -19,6 +19,11 @@
     [self.chatTableVC scrollToBottomWithAnimation:YES];
 }
 
+- (void)addVoiceRecordingMessage:(TLMessage *)message
+{
+    message.date = [NSDate date];
+}
+
 - (void)resetChatTVC
 {
     [self.chatTableVC reloadData];
@@ -106,12 +111,12 @@
         }];
     }
     else if (message.messageType == TLMessageTypeVoice) {
-        if ([(TLVoiceMessage *)message playStatus] == TLVoicePlayStatusStop) {
+        if ([(TLVoiceMessage *)message msgStatus] == TLVoiceMessageStatusNormal) {
             // 播放语音消息
-            [(TLVoiceMessage *)message setPlayStatus:TLVoicePlayStatusPlaying];
+            [(TLVoiceMessage *)message setMsgStatus:TLVoiceMessageStatusPlaying];
             
             [[TLAudioPlayer sharedAudioPlayer] playAudioAtPath:[(TLVoiceMessage *)message path] complete:^(BOOL finished) {
-                [(TLVoiceMessage *)message setPlayStatus:TLVoicePlayStatusStop];
+                [(TLVoiceMessage *)message setMsgStatus:TLVoiceMessageStatusNormal];
                 [self.chatTableVC updateMessage:message];
             }];
         }

@@ -37,6 +37,7 @@
  *  删除消息
  */
 - (void)deleteMessage:(TLMessage *)message;
+- (void)deleteMessage:(TLMessage *)message withAnimation:(BOOL)animation;
 
 /**
  *  更新消息状态

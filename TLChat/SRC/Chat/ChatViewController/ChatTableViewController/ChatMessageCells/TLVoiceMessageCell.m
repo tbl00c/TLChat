@@ -33,9 +33,6 @@
 
 - (void)setMessage:(TLVoiceMessage *)message
 {
-//    if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
-//        return;
-//    }
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
     
@@ -74,10 +71,46 @@
         make.size.mas_equalTo(message.messageFrame.contentSize);
     }];
     
-    message.playStatus == TLVoicePlayStatusPlaying ? [self.voiceImageView startPlayingAnimation] : [self.voiceImageView stopPlayingAnimation];
+    if (message.msgStatus == TLVoiceMessageStatusRecording) {
+        [self.voiceTimeLabel setHidden:YES];
+        [self.voiceImageView setHidden:YES];
+        [self p_startRecordingAnimation];
+    }
+    else {
+        [self.voiceTimeLabel setHidden:NO];
+        [self.voiceImageView setHidden:NO];
+        [self p_stopRecordingAnimation];
+        [self.messageBackgroundView setAlpha:1.0];
+    }
+    message.msgStatus == TLVoiceMessageStatusPlaying ? [self.voiceImageView startPlayingAnimation] : [self.voiceImageView stopPlayingAnimation];
 }
 
-#pragma mark - # Private Methods
+- (void)updateMessage:(TLVoiceMessage *)message
+{
+    [super setMessage:message];
+    
+    [self.voiceTimeLabel setText:[NSString stringWithFormat:@"%.0lf\"\n", message.time]];
+    if (message.msgStatus == TLVoiceMessageStatusRecording) {
+        [self.voiceTimeLabel setHidden:YES];
+        [self.voiceImageView setHidden:YES];
+        [self p_startRecordingAnimation];
+    }
+    else {
+        [self.voiceTimeLabel setHidden:NO];
+        [self.voiceImageView setHidden:NO];
+        [self p_stopRecordingAnimation];
+    }
+    message.msgStatus == TLVoiceMessageStatusPlaying ? [self.voiceImageView startPlayingAnimation] : [self.voiceImageView stopPlayingAnimation];
+
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(message.messageFrame.contentSize);
+        }];
+        [self layoutIfNeeded];
+    }];
+}
+
+#pragma mark - # Event Response
 - (void)didTapMsgBGView
 {
     [self.voiceImageView startPlayingAnimation];
@@ -85,6 +118,39 @@
         [self.delegate messageCellTap:self.message];
     }
 }
+
+#pragma mark - # Private Methods
+static bool isStartAnimation = NO;
+static float bgAlpha = 1.0;
+- (void)p_startRecordingAnimation
+{
+    isStartAnimation = YES;
+    bgAlpha = 0.4;
+    [self p_repeatAnimation];
+}
+
+- (void)p_repeatAnimation
+{
+    [UIView animateWithDuration:1.0 animations:^{
+        [self.messageBackgroundView setAlpha:bgAlpha];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            bgAlpha = bgAlpha > 0.9 ? 0.4 : 1.0;
+            if (isStartAnimation) {
+                [self p_repeatAnimation];
+            }
+            else {
+                [self.messageBackgroundView setAlpha:1.0];
+            }
+        }
+    }];
+}
+
+- (void)p_stopRecordingAnimation
+{
+    isStartAnimation = NO;
+}
+
 
 #pragma mark - # Getter
 - (UILabel *)voiceTimeLabel

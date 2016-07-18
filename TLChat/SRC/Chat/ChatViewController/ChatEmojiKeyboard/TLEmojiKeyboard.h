@@ -14,8 +14,6 @@
 @interface TLEmojiKeyboard : UIView
 {
     CGSize cellSize;
-    CGSize headerReferenceSize;
-    CGSize footerReferenceSize;
     CGFloat minimumLineSpacing;
     CGFloat minimumInteritemSpacing;
     UIEdgeInsets sectionInsets;

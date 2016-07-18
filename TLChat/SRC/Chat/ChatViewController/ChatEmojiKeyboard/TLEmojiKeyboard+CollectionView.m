@@ -71,11 +71,9 @@
     }
     
     cellSize = CGSizeMake(cellWidth, cellHeight);
-    headerReferenceSize = CGSizeMake(hfSpace, HEIGHT_EMOJIVIEW);
-    footerReferenceSize = CGSizeMake(hfSpace, HEIGHT_EMOJIVIEW);
     minimumLineSpacing = (WIDTH_SCREEN - hfSpace * 2 - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber - 1);
     minimumInteritemSpacing = (HEIGHT_EMOJIVIEW - topSpace - btmSpace - cellHeight * self.curGroup.rowNumber) / (self.curGroup.rowNumber - 1);
-    sectionInsets = UIEdgeInsetsMake(topSpace, 0, btmSpace, 0);
+    sectionInsets = UIEdgeInsetsMake(topSpace, hfSpace, btmSpace, hfSpace);
 }
 
 #pragma mark - Delegate -
@@ -131,16 +129,6 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return cellSize;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return headerReferenceSize;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-{
-    return footerReferenceSize;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section

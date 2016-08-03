@@ -132,7 +132,9 @@
     }];
     [self.chatBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.mas_equalTo(self.view);
+        make.height.mas_greaterThanOrEqualTo(HEIGHT_TABBAR);
     }];
+    [self.view layoutIfNeeded];
 }
 
 #pragma mark - Getter -

@@ -28,7 +28,7 @@ static TLChatViewController *chatVC;
 
 @implementation TLChatViewController
 
-+ (TLChatViewController *) sharedChatVC
++ (TLChatViewController *)sharedChatVC
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
@@ -37,7 +37,7 @@ static TLChatViewController *chatVC;
     return chatVC;
 }
 
-- (void) viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.navigationItem setRightBarButtonItem:self.rightBarButton];

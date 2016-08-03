@@ -73,14 +73,14 @@
         }
     }
     [self.textView setText:@""];
-    [self textViewDidChange:self.textView];
+    [self p_reloadTextViewWithAnimation:YES];
 }
 
 - (void)addEmojiString:(NSString *)emojiString
 {
     NSString *str = [NSString stringWithFormat:@"%@%@", self.textView.text, emojiString];
     [self.textView setText:str];
-    [self textViewDidChange:self.textView];
+    [self p_reloadTextViewWithAnimation:YES];
 }
 
 - (void)setActivity:(BOOL)activity
@@ -166,24 +166,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    CGFloat height = [textView sizeThatFits:CGSizeMake(self.textView.width, MAXFLOAT)].height;
-    height = height > HEIGHT_CHATBAR_TEXTVIEW ? height : HEIGHT_CHATBAR_TEXTVIEW;
-    height = (height <= HEIGHT_MAX_CHATBAR_TEXTVIEW ? height : textView.height);
-    if (height != textView.height) {
-        [UIView animateWithDuration:0.2 animations:^{
-            [textView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(height);
-            }];
-            [self.superview layoutIfNeeded];
-            if (_delegate && [_delegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
-                [self.UIDelegate chatBar:self didChangeTextViewHeight:textView.height];
-            }
-        } completion:^(BOOL finished) {
-            if (_delegate && [_delegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
-                [self.UIDelegate chatBar:self didChangeTextViewHeight:textView.height];
-            }
-        }];
-    }
+    [self p_reloadTextViewWithAnimation:YES];
 }
 
 #pragma mark - Event Response
@@ -300,6 +283,71 @@
 }
 
 #pragma mark - Private Methods
+static BOOL isStartingAnimation = NO;
+- (void)p_reloadTextViewWithAnimation:(BOOL)animation
+{
+    if (isStartingAnimation) {
+        return;
+    }
+    CGFloat textHeight = [self.textView sizeThatFits:CGSizeMake(self.textView.width, MAXFLOAT)].height;
+    CGFloat height = textHeight > HEIGHT_CHATBAR_TEXTVIEW ? textHeight : HEIGHT_CHATBAR_TEXTVIEW;
+    height = (textHeight <= HEIGHT_MAX_CHATBAR_TEXTVIEW ? textHeight : HEIGHT_MAX_CHATBAR_TEXTVIEW);
+    [self.textView setScrollEnabled:textHeight > height];
+    if (height != self.textView.height) {
+        if (animation) {
+            isStartingAnimation = YES;
+            [UIView animateWithDuration:0.2 animations:^{
+                [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.height.mas_equalTo(height);
+                }];
+                if (self.superview) {
+                    [self.superview layoutIfNeeded];
+                }
+                if (self.UIDelegate && [self.UIDelegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
+                    [self.UIDelegate chatBar:self didChangeTextViewHeight:self.textView.height];
+                }
+            } completion:^(BOOL finished) {
+                isStartingAnimation = NO;
+                if (textHeight > height) {
+                    [self.textView setContentOffset:CGPointMake(0, textHeight - height) animated:YES];
+                }
+                if (self.UIDelegate && [self.UIDelegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
+                    [self.UIDelegate chatBar:self didChangeTextViewHeight:height];
+                }
+            }];
+        }
+        else {
+            [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(height);
+            }];
+            if (self.superview) {
+                [self.superview layoutIfNeeded];
+            }
+            if (self.UIDelegate && [self.UIDelegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
+                [self.UIDelegate chatBar:self didChangeTextViewHeight:height];
+            }
+            if (textHeight > height) {
+                [self.textView setContentOffset:CGPointMake(0, textHeight - height) animated:YES];
+            }
+        }
+    }
+    else if (textHeight > height) {
+        if (animation) {
+            isStartingAnimation = YES;
+            CGFloat offsetY = self.textView.contentSize.height - self.textView.height;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.textView setContentOffset:CGPointMake(0, offsetY) animated:YES];
+            });
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                isStartingAnimation = NO;
+            });
+        }
+        else {
+            [self.textView setContentOffset:CGPointMake(0, self.textView.contentSize.height - self.textView.height) animated:NO];
+        }
+    }
+}
+
 - (void)p_addMasonry
 {
     [self.modeButton mas_makeConstraints:^(MASConstraintMaker *make) {

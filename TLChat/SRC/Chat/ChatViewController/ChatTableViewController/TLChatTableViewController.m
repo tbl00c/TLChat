@@ -63,7 +63,9 @@
         }
         if (count > 0) {
             [self.tableView reloadData];
-            [self.tableView scrollToBottomWithAnimation:NO];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView scrollToBottomWithAnimation:NO];
+            });
         }
     }];
 }

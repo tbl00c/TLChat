@@ -16,7 +16,9 @@
 {
     message.showTime = [self p_needShowTime:message.date];
     [self.chatTableVC addMessage:message];
-    [self.chatTableVC scrollToBottomWithAnimation:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.chatTableVC scrollToBottomWithAnimation:YES];
+    });
 }
 
 - (void)addVoiceRecordingMessage:(TLMessage *)message

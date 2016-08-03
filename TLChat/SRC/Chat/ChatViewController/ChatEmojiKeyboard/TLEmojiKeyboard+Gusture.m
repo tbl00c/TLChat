@@ -23,10 +23,10 @@ static UICollectionViewCell *lastCell;
 - (void)longPressAction:(UILongPressGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {        // 长按停止
-        lastCell = nil;
-        if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboardCancelTouchEmojiItem:)]) {
+        if (lastCell && self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboardCancelTouchEmojiItem:)]) {
             [self.delegate emojiKeyboardCancelTouchEmojiItem:self];
         }
+        lastCell = nil;
     }
     else {
         CGPoint point = [sender locationInView:self.collectionView];

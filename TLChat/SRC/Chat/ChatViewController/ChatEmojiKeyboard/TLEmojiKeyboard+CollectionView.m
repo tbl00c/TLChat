@@ -146,9 +146,17 @@
     return sectionInsets;
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+//MARK: UIScrollViewDelegate
+static float lastX = 0;
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.pageControl setCurrentPage:(int)(scrollView.contentOffset.x / WIDTH_SCREEN)];
+    NSInteger page = (scrollView.contentOffset.x + 2.0) / scrollView.width;
+    if (scrollView.contentOffset.x < lastX) {       // 右滑坐标修复
+        page += (scrollView.contentOffset.x - scrollView.width * page > 3.0) ? 1 : 0;
+    }
+    lastX = scrollView.contentOffset.x;
+    
+    [self.pageControl setCurrentPage:page];
 }
 
 @end

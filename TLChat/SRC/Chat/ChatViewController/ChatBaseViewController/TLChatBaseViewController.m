@@ -46,6 +46,9 @@
 - (void)setPartner:(id<TLChatUserProtocol>)partner
 {
     if (_partner && [[_partner chat_userID] isEqualToString:[partner chat_userID]]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.chatTableVC scrollToBottomWithAnimation:NO];
+        });
         return;
     }
     _partner = partner;

@@ -6,12 +6,12 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TLBaseKeyboard.h"
 #import "TLKeyboardDelegate.h"
 #import "TLEmojiKeyboardDelegate.h"
 #import "TLEmojiGroupControl.h"
 
-@interface TLEmojiKeyboard : UIView
+@interface TLEmojiKeyboard : TLBaseKeyboard
 {
     CGSize cellSize;
     CGFloat minimumLineSpacing;
@@ -32,11 +32,5 @@
 @property (nonatomic, strong) TLEmojiGroupControl *groupControl;
 
 + (TLEmojiKeyboard *)keyboard;
-
-- (void)showInView:(UIView *)view withAnimation:(BOOL)animation;
-
-- (void)dismissWithAnimation:(BOOL)animation;
-
-- (void)reset;
 
 @end

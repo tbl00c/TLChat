@@ -106,7 +106,7 @@
 {
     if (self.status == TLChatBarStatusEmoji || self.status == TLChatBarStatusKeyboard || self.status == TLChatBarStatusMore) {
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
         }
         [self.textView resignFirstResponder];
         self.status = TLChatBarStatusInit;
@@ -123,7 +123,7 @@
     [self setActivity:YES];
     if (self.status != TLChatBarStatusKeyboard) {
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];
         }
         if (self.status == TLChatBarStatusEmoji) {
             [self.emojiButton setImage:kEmojiImage imageHL:kEmojiImageHL];
@@ -174,7 +174,7 @@
 {
     if (self.status == TLChatBarStatusEmoji) {
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
         }
         [self.emojiButton setImage:kEmojiImage imageHL:kEmojiImageHL];
         self.status = TLChatBarStatusInit;
@@ -182,7 +182,7 @@
     }
     else if (self.status == TLChatBarStatusMore) {
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
         }
         [self.moreButton setImage:kMoreImage imageHL:kMoreImageHL];
         self.status = TLChatBarStatusInit;
@@ -196,7 +196,7 @@
     // 开始文字输入
     if (self.status == TLChatBarStatusVoice) {
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];
         }
         [self.voiceButton setImage:kVoiceImage imageHL:kVoiceImageHL];
         [self.textView becomeFirstResponder];
@@ -206,7 +206,7 @@
     }
     else {          // 开始语音
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusVoice];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusVoice];
         }
         if (self.status == TLChatBarStatusKeyboard) {
             [self.textView resignFirstResponder];
@@ -229,7 +229,7 @@
     // 开始文字输入
     if (self.status == TLChatBarStatusEmoji) {
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];
         }
         [self.emojiButton setImage:kEmojiImage imageHL:kEmojiImageHL];
         [self.textView becomeFirstResponder];
@@ -237,7 +237,7 @@
     }
     else {      // 打开表情键盘
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusEmoji];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusEmoji];
         }
         if (self.status == TLChatBarStatusVoice) {
             [self.voiceButton setImage:kVoiceImage imageHL:kVoiceImageHL];
@@ -258,7 +258,7 @@
     // 开始文字输入
     if (self.status == TLChatBarStatusMore) {
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];
         }
         [self.moreButton setImage:kMoreImage imageHL:kMoreImageHL];
         [self.textView becomeFirstResponder];
@@ -266,7 +266,7 @@
     }
     else {      // 打开更多键盘
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.UIDelegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusMore];
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusMore];
         }
         if (self.status == TLChatBarStatusVoice) {
             [self.voiceButton setImage:kVoiceImage imageHL:kVoiceImageHL];
@@ -303,16 +303,16 @@ static BOOL isStartingAnimation = NO;
                 if (self.superview) {
                     [self.superview layoutIfNeeded];
                 }
-                if (self.UIDelegate && [self.UIDelegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
-                    [self.UIDelegate chatBar:self didChangeTextViewHeight:self.textView.height];
+                if (self.delegate && [self.delegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
+                    [self.delegate chatBar:self didChangeTextViewHeight:self.textView.height];
                 }
             } completion:^(BOOL finished) {
                 isStartingAnimation = NO;
                 if (textHeight > height) {
                     [self.textView setContentOffset:CGPointMake(0, textHeight - height) animated:YES];
                 }
-                if (self.UIDelegate && [self.UIDelegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
-                    [self.UIDelegate chatBar:self didChangeTextViewHeight:height];
+                if (self.delegate && [self.delegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
+                    [self.delegate chatBar:self didChangeTextViewHeight:height];
                 }
             }];
         }
@@ -323,8 +323,8 @@ static BOOL isStartingAnimation = NO;
             if (self.superview) {
                 [self.superview layoutIfNeeded];
             }
-            if (self.UIDelegate && [self.UIDelegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
-                [self.UIDelegate chatBar:self didChangeTextViewHeight:height];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
+                [self.delegate chatBar:self didChangeTextViewHeight:height];
             }
             if (textHeight > height) {
                 [self.textView setContentOffset:CGPointMake(0, textHeight - height) animated:YES];

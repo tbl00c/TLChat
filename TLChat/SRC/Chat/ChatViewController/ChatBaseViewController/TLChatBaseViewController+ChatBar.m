@@ -177,27 +177,6 @@
     [[TLAudioRecorder sharedRecorder] cancelRecording];
 }
 
-//MARK: TLChatBarUIDelegate
-- (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
-{
-    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view).mas_offset(-height);
-    }];
-    [self.view layoutIfNeeded];
-    [self.messageDisplayView scrollToBottomWithAnimation:YES];
-}
-
-- (void)chatKeyboardDidShow:(id)keyboard
-{
-    if (curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji) {
-        [self.emojiKeyboard dismissWithAnimation:NO];
-    }
-    else if (curStatus == TLChatBarStatusEmoji && lastStatus == TLChatBarStatusMore) {
-        [self.moreKeyboard dismissWithAnimation:NO];
-    }
-    [self.messageDisplayView scrollToBottomWithAnimation:YES];
-}
-
 - (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus
 {
     if (curStatus == toStatus) {
@@ -258,6 +237,27 @@
 - (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height
 {
     [self.messageDisplayView scrollToBottomWithAnimation:NO];
+}
+
+//MARK: TLKeyboardDelegate
+- (void)chatKeyboardDidShow:(id)keyboard animated:(BOOL)animated
+{
+    if (curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji) {
+        [self.emojiKeyboard dismissWithAnimation:NO];
+    }
+    else if (curStatus == TLChatBarStatusEmoji && lastStatus == TLChatBarStatusMore) {
+        [self.moreKeyboard dismissWithAnimation:NO];
+    }
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
+}
+
+- (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
+{
+    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view).mas_offset(-height);
+    }];
+    [self.view layoutIfNeeded];
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }
 
 //MARK: TLEmojiKeyboardDelegate

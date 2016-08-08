@@ -156,7 +156,6 @@
     if (_chatBar == nil) {
         _chatBar = [[TLChatBar alloc] init];
         [_chatBar setDelegate:self];
-        [_chatBar setUIDelegate:self];
     }
     return _chatBar;
 }
@@ -166,6 +165,7 @@
     if (_emojiKeyboard == nil) {
         _emojiKeyboard = [TLEmojiKeyboard keyboard];
         [_emojiKeyboard setDelegate:self];
+        [_emojiKeyboard setKeyboardDelegate:self];
     }
     return _emojiKeyboard;
 }
@@ -175,6 +175,7 @@
     if (_moreKeyboard == nil) {
         _moreKeyboard = [TLMoreKeyboard keyboard];
         [_moreKeyboard setDelegate:self];
+        [_moreKeyboard setKeyboardDelegate:self];
     }
     return _moreKeyboard;
 }

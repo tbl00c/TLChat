@@ -8,7 +8,7 @@
 
 #import "TLChatBaseViewController.h"
 
-@interface TLChatBaseViewController (ChatBar) <TLChatBarDelegate, TLChatBarUIDelegate, TLEmojiKeyboardDelegate>
+@interface TLChatBaseViewController (ChatBar) <TLChatBarDelegate, TLKeyboardDelegate, TLEmojiKeyboardDelegate>
 
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardDidShow:(NSNotification *)notification;

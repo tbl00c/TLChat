@@ -39,74 +39,7 @@ static TLMoreKeyboard *moreKB;
     return self;
 }
 
-#pragma mark - Public Methods -
-- (void)showInView:(UIView *)view withAnimation:(BOOL)animation;
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardWillShow:)]) {
-        [_delegate chatKeyboardWillShow:self];
-    }
-    [view addSubview:self];
-    [self mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.mas_equalTo(view);
-        make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
-        make.bottom.mas_equalTo(view).mas_offset(HEIGHT_CHAT_KEYBOARD);
-    }];
-    [view layoutIfNeeded];
-    if (animation) {
-        [UIView animateWithDuration:0.3 animations:^{
-            [self mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(view);
-            }];
-            [view layoutIfNeeded];
-            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_delegate chatKeyboard:self didChangeHeight:view.height - self.y];
-            }
-        } completion:^(BOOL finished) {
-            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
-                [_delegate chatKeyboardDidShow:self];
-            }
-        }];
-    }
-    else {
-        [self mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(view);
-        }];
-        [view layoutIfNeeded];
-        if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
-            [_delegate chatKeyboardDidShow:self];
-        }
-    }
-}
-
-- (void)dismissWithAnimation:(BOOL)animation
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardWillDismiss:)]) {
-        [_delegate chatKeyboardWillDismiss:self];
-    }
-    if (animation) {
-        [UIView animateWithDuration:0.3 animations:^{
-            [self mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(self.superview).mas_offset(HEIGHT_CHAT_KEYBOARD);
-            }];
-            [self.superview layoutIfNeeded];
-            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_delegate chatKeyboard:self didChangeHeight:self.superview.height - self.y];
-            }
-        } completion:^(BOOL finished) {
-            [self removeFromSuperview];
-            if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
-                [_delegate chatKeyboardDidDismiss:self];
-            }
-        }];
-    }
-    else {
-        [self removeFromSuperview];
-        if (_delegate && [_delegate respondsToSelector:@selector(chatKeyboardDidDismiss:)]) {
-            [_delegate chatKeyboardDidDismiss:self];
-        }
-    }
-}
-
+#pragma mark - # Public Methods
 - (void)reset
 {
     [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
@@ -120,7 +53,7 @@ static TLMoreKeyboard *moreKB;
     [self.pageControl setNumberOfPages:pageNumber];
 }
 
-#pragma mark - Event Response -
+#pragma mark - # Event Response
 - (void) pageControlChanged:(UIPageControl *)pageControl
 {
     [self.collectionView scrollRectToVisible:CGRectMake(self.collectionView.width * pageControl.currentPage, 0, self.collectionView.width, self.collectionView.height) animated:YES];
@@ -153,7 +86,7 @@ static TLMoreKeyboard *moreKB;
     CGContextStrokePath(context);
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getter
 - (UICollectionView *)collectionView
 {
     if (_collectionView == nil) {

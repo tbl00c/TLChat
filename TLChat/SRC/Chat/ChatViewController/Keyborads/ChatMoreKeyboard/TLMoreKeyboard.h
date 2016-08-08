@@ -6,12 +6,12 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TLBaseKeyboard.h"
 #import "TLKeyboardDelegate.h"
 #import "TLMoreKeyboardDelegate.h"
 #import "TLMoreKeyboardItem.h"
 
-@interface TLMoreKeyboard : UIView
+@interface TLMoreKeyboard : TLBaseKeyboard
 
 @property (nonatomic, assign) id<TLMoreKeyboardDelegate> delegate;
 
@@ -22,11 +22,5 @@
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 + (TLMoreKeyboard *)keyboard;
-
-- (void)reset;
-
-- (void)showInView:(UIView *)view withAnimation:(BOOL)animation;
-
-- (void)dismissWithAnimation:(BOOL)animation;
 
 @end

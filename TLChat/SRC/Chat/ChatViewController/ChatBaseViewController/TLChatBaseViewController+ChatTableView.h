@@ -12,7 +12,7 @@
 #define     MAX_SHOWTIME_MSG_COUNT      10
 #define     MAX_SHOWTIME_MSG_SECOND     30
 
-@interface TLChatBaseViewController (ChatTableView) <TLChatTableViewControllerDelegate>
+@interface TLChatBaseViewController (ChatTableView) <TLChatMessageDisplayViewDelegate>
 
 /**
  *  添加展示消息（添加到chatVC）

@@ -1,19 +1,19 @@
 //
-//  TLChatTableViewController.m
+//  TLChatMessageDisplayView.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/9.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLChatTableViewController.h"
-#import "TLChatTableViewController+Delegate.h"
+#import "TLChatMessageDisplayView.h"
+#import "TLChatMessageDisplayView+Delegate.h"
 #import <MJRefresh.h>
 #import "TLMessageBaseCell.h"
 
 #define     PAGE_MESSAGE_COUNT      15
 
-@interface TLChatTableViewController ()
+@interface TLChatMessageDisplayView ()
 
 @property (nonatomic, strong) MJRefreshNormalHeader *refresHeader;
 
@@ -22,34 +22,29 @@
 
 @end
 
-@implementation TLChatTableViewController
+@implementation TLChatMessageDisplayView
+@synthesize tableView = _tableView;
 @synthesize data = _data;
 
-- (void)viewDidLoad
+- (id)initWithFrame:(CGRect)frame
 {
-    [super viewDidLoad];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.tableView setBackgroundColor:[UIColor clearColor]];
-    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 10)]];
-    if (!self.disablePullToRefresh) {
-        [self.tableView setMj_header:self.refresHeader];
+    if (self = [super initWithFrame:frame]) {
+        [self addSubview:self.tableView];
+        [self setDisablePullToRefresh:NO];
+        [self registerCellClassForTableView:self.tableView];
+        
+        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchTableView)];
+        [self.tableView addGestureRecognizer:tap];
     }
-    [self registerCellClass];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchTableView)];
-    [self.tableView addGestureRecognizer:tap];
+    return self;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    if ([[TLChatCellMenuView sharedMenuView] isShow]) {
-        [[TLChatCellMenuView sharedMenuView] dismiss];
-    }
-}
-
-#pragma mark - Public Methods -
-- (void)reloadData
+#pragma mark - # Public Methods
+- (void)resetMessageView
 {
     [self.data removeAllObjects];
     [self.tableView reloadData];
@@ -93,8 +88,8 @@
         return;
     }
     NSInteger index = [self.data indexOfObject:message];
-    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewController:deleteMessage:)]) {
-        BOOL ok = [_delegate chatTableViewController:self deleteMessage:message];
+    if (_delegate && [_delegate respondsToSelector:@selector(chatMessageDisplayView:deleteMessage:)]) {
+        BOOL ok = [_delegate chatMessageDisplayView:self deleteMessage:message];
         if (ok) {
             [self.data removeObject:message];
             [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:animation ? UITableViewRowAnimationAutomatic : UITableViewRowAnimationNone];
@@ -119,6 +114,11 @@
     }
 }
 
+- (void)reloadData
+{
+    [self.tableView reloadData];
+}
+
 - (void)scrollToBottomWithAnimation:(BOOL)animation
 {
     [self.tableView scrollToBottomWithAnimation:animation];
@@ -137,8 +137,8 @@
 #pragma mark - Event Response -
 - (void)didTouchTableView
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewControllerDidTouched:)]) {
-        [_delegate chatTableViewControllerDidTouched:self];
+    if (_delegate && [_delegate respondsToSelector:@selector(chatMessageDisplayViewDidTouched:)]) {
+        [_delegate chatMessageDisplayViewDidTouched:self];
     }
 }
 
@@ -148,8 +148,8 @@
  */
 - (void)p_tryToRefreshMoreRecord:(void (^)(NSInteger count, BOOL hasMore))complete
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(chatTableViewController:getRecordsFromDate:count:completed:)]) {
-        [_delegate chatTableViewController:self
+    if (_delegate && [_delegate respondsToSelector:@selector(chatMessageDisplayView:getRecordsFromDate:count:completed:)]) {
+        [_delegate chatMessageDisplayView:self
                         getRecordsFromDate:self.curDate
                                      count:PAGE_MESSAGE_COUNT
                                  completed:^(NSDate *date, NSArray *array, BOOL hasMore) {
@@ -165,7 +165,20 @@
     }
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getter
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] init];
+        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [_tableView setBackgroundColor:[UIColor clearColor]];
+        [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 10)]];
+        [_tableView setDelegate:self];
+        [_tableView setDataSource:self];
+    }
+    return _tableView;
+}
+
 - (NSMutableArray *)data
 {
     if (_data == nil) {

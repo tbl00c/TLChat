@@ -18,8 +18,7 @@
 {
     [super viewDidLoad];
     
-    [self.view addSubview:self.chatTableVC.tableView];
-    [self addChildViewController:self.chatTableVC];
+    [self.view addSubview:self.messageDisplayView];
     [self.view addSubview:self.chatBar];
     
     [self p_addMasonry];
@@ -47,7 +46,7 @@
 {
     if (_partner && [[_partner chat_userID] isEqualToString:[partner chat_userID]]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.chatTableVC scrollToBottomWithAnimation:NO];
+            [self.messageDisplayView scrollToBottomWithAnimation:NO];
         });
         return;
     }
@@ -126,10 +125,10 @@
     }
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
-    [self.chatTableVC.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.messageDisplayView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.chatBar.mas_top);
     }];
@@ -140,14 +139,14 @@
     [self.view layoutIfNeeded];
 }
 
-#pragma mark - Getter -
-- (TLChatTableViewController *)chatTableVC
+#pragma mark - # Getter
+- (TLChatMessageDisplayView *)messageDisplayView
 {
-    if (_chatTableVC == nil) {
-        _chatTableVC = [[TLChatTableViewController alloc] init];
-        [_chatTableVC setDelegate:self];
+    if (_messageDisplayView == nil) {
+        _messageDisplayView = [[TLChatMessageDisplayView alloc] init];
+        [_messageDisplayView setDelegate:self];
     }
-    return _chatTableVC;
+    return _messageDisplayView;
 }
 
 - (TLChatBar *)chatBar

@@ -31,7 +31,7 @@
         [self addToShowMessage:message];    // 添加到列表
     }
     else {
-        [self.chatTableVC updateMessage:message];
+        [self.messageDisplayView updateMessage:message];
     }
     
     [[TLMessageManager sharedInstance] sendMessage:message progress:^(TLMessage * message, CGFloat pregress) {

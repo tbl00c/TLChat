@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TLChatViewControllerProxy.h"
-#import "TLChatTableViewController.h"
+#import "TLChatMessageDisplayView.h"
 #import "TLEmojiDisplayView.h"
 #import "TLImageExpressionDisplayView.h"
 #import "TLRecorderIndicatorView.h"
@@ -35,7 +35,7 @@
 @property (nonatomic, strong) id<TLChatUserProtocol> partner;
 
 /// 消息展示页面
-@property (nonatomic, strong) TLChatTableViewController *chatTableVC;
+@property (nonatomic, strong) TLChatMessageDisplayView *messageDisplayView;
 
 /// 聊天输入栏
 @property (nonatomic, strong) TLChatBar *chatBar;

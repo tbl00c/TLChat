@@ -15,9 +15,9 @@
 - (void)addToShowMessage:(TLMessage *)message
 {
     message.showTime = [self p_needShowTime:message.date];
-    [self.chatTableVC addMessage:message];
+    [self.messageDisplayView addMessage:message];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.chatTableVC scrollToBottomWithAnimation:YES];
+        [self.messageDisplayView scrollToBottomWithAnimation:YES];
     });
 }
 
@@ -28,15 +28,15 @@
 
 - (void)resetChatTVC
 {
-    [self.chatTableVC reloadData];
+    [self.messageDisplayView resetMessageView];
     lastDateInterval = 0;
     msgAccumulate = 0;
 }
 
 #pragma mark - Delegate -
-//MARK: TLChatTableViewControllerDelegate
+//MARK: TLChatMessageDisplayViewDelegate
 // chatView 点击事件
-- (void)chatTableViewControllerDidTouched:(TLChatTableViewController *)chatTVC
+- (void)chatMessageDisplayViewDidTouched:(TLChatMessageDisplayView *)chatTVC
 {
     if ([self.chatBar isFirstResponder]) {
         [self.chatBar resignFirstResponder];
@@ -44,7 +44,7 @@
 }
 
 // chatView 获取历史记录
-- (void)chatTableViewController:(TLChatTableViewController *)chatTVC getRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *, BOOL))completed
+- (void)chatMessageDisplayView:(TLChatMessageDisplayView *)chatTVC getRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *, BOOL))completed
 {
     [[TLMessageManager sharedInstance] messageRecordForPartner:[self.partner chat_userID] fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
         if (array.count > 0) {
@@ -75,19 +75,19 @@
     }];
 }
 
-- (BOOL)chatTableViewController:(TLChatTableViewController *)chatTVC deleteMessage:(TLMessage *)message
+- (BOOL)chatMessageDisplayView:(TLChatMessageDisplayView *)chatTVC deleteMessage:(TLMessage *)message
 {
     return [[TLMessageManager sharedInstance] deleteMessageByMsgID:message.messageID];
 }
 
-- (void)chatTableViewController:(TLChatTableViewController *)chatTVC didClickUserAvatar:(TLUser *)user
+- (void)chatMessageDisplayView:(TLChatMessageDisplayView *)chatTVC didClickUserAvatar:(TLUser *)user
 {
     if ([self respondsToSelector:@selector(didClickedUserAvatar:)]) {
         [self didClickedUserAvatar:user];
     }
 }
 
-- (void)chatTableViewController:(TLChatTableViewController *)chatTVC didDoubleClickMessage:(TLMessage *)message
+- (void)chatMessageDisplayView:(TLChatMessageDisplayView *)chatTVC didDoubleClickMessage:(TLMessage *)message
 {
     if (message.messageType == TLMessageTypeText) {
         TLTextDisplayView *displayView = [[TLTextDisplayView alloc] init];
@@ -95,7 +95,7 @@
     }
 }
 
-- (void)chatTableViewController:(TLChatTableViewController *)chatTVC didClickMessage:(TLMessage *)message
+- (void)chatMessageDisplayView:(TLChatMessageDisplayView *)chatTVC didClickMessage:(TLMessage *)message
 {
     if (message.messageType == TLMessageTypeImage && [self respondsToSelector:@selector(didClickedImageMessages:atIndex:)]) {
         // 展示聊天图片
@@ -119,7 +119,7 @@
             
             [[TLAudioPlayer sharedAudioPlayer] playAudioAtPath:[(TLVoiceMessage *)message path] complete:^(BOOL finished) {
                 [(TLVoiceMessage *)message setMsgStatus:TLVoiceMessageStatusNormal];
-                [self.chatTableVC updateMessage:message];
+                [self.messageDisplayView updateMessage:message];
             }];
         }
         else {

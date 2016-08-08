@@ -7,13 +7,13 @@
 //
 
 #import "TLChatFontViewController.h"
-#import "TLChatTableViewController.h"
+#import "TLChatMessageDisplayView.h"
 #import "TLChatFontSettingView.h"
 #import "TLUser+ChatModel.h"
 
 @interface TLChatFontViewController ()
 
-@property (nonatomic, strong) TLChatTableViewController *chatTVC;
+@property (nonatomic, strong) TLChatMessageDisplayView *messageDisplayView;
 
 @property (nonatomic, strong) TLChatFontSettingView *chatFontSettingView;
 
@@ -27,26 +27,25 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"字体大小"];
     
-    [self.view addSubview:self.chatTVC.view];
-    [self addChildViewController:self.chatTVC];
+    [self.view addSubview:self.messageDisplayView];
     [self.view addSubview:self.chatFontSettingView];
     [self p_addMasonry];
     
     __weak typeof(self) weakSelf = self;
     [self.chatFontSettingView setFontSizeChangeTo:^(CGFloat size) {
         [[NSUserDefaults standardUserDefaults] setDouble:size forKey:@"CHAT_FONT_SIZE"];
-        weakSelf.chatTVC.data = [weakSelf p_chatTVCData];
-        [weakSelf.chatTVC.tableView reloadData];
+        weakSelf.messageDisplayView.data = [weakSelf p_messageDisplayViewData];
+        [weakSelf.messageDisplayView reloadData];
     }];
     CGFloat size = [[NSUserDefaults standardUserDefaults] doubleForKey:@"CHAT_FONT_SIZE"];
     [self.chatFontSettingView setCurFontSize:size];
-    self.chatTVC.data = [self p_chatTVCData];
+    self.messageDisplayView.data = [self p_messageDisplayViewData];
 }
 
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
-    [self.chatTVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.messageDisplayView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.chatFontSettingView.mas_top);
     }];
@@ -57,7 +56,7 @@
     }];
 }
 
-- (NSMutableArray *)p_chatTVCData
+- (NSMutableArray *)p_messageDisplayViewData
 {
     TLTextMessage *message = [[TLTextMessage alloc] init];
     message.fromUser = [TLUserHelper sharedHelper].user;
@@ -90,14 +89,14 @@
 
 
 #pragma mark - Getter -
-- (TLChatTableViewController *)chatTVC
+- (TLChatMessageDisplayView *)messageDisplayView
 {
-    if (_chatTVC == nil) {
-        _chatTVC = [[TLChatTableViewController alloc] init];
-        [_chatTVC setDisablePullToRefresh:YES];
-        [_chatTVC setDisableLongPressMenu:YES];
+    if (_messageDisplayView == nil) {
+        _messageDisplayView = [[TLChatMessageDisplayView alloc] init];
+        [_messageDisplayView setDisablePullToRefresh:YES];
+        [_messageDisplayView setDisableLongPressMenu:YES];
     }
-    return _chatTVC;
+    return _messageDisplayView;
 }
 
 - (TLChatFontSettingView *)chatFontSettingView

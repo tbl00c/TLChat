@@ -1,24 +1,24 @@
 //
-//  TLChatTableViewController+Delegate.m
+//  TLChatMessageDisplayView+Delegate.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLChatTableViewController+Delegate.h"
+#import "TLChatMessageDisplayView+Delegate.h"
 #import "TLTextDisplayView.h"
 
-@implementation TLChatTableViewController (Delegate)
+@implementation TLChatMessageDisplayView (Delegate)
 
 #pragma mark - Public Methods -
-- (void)registerCellClass
+- (void)registerCellClassForTableView:(UITableView *)tableView
 {
-    [self.tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
-    [self.tableView registerClass:[TLImageMessageCell class] forCellReuseIdentifier:@"TLImageMessageCell"];
-    [self.tableView registerClass:[TLExpressionMessageCell class] forCellReuseIdentifier:@"TLExpressionMessageCell"];
-    [self.tableView registerClass:[TLVoiceMessageCell class] forCellReuseIdentifier:@"TLVoiceMessageCell"];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
+    [tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
+    [tableView registerClass:[TLImageMessageCell class] forCellReuseIdentifier:@"TLImageMessageCell"];
+    [tableView registerClass:[TLExpressionMessageCell class] forCellReuseIdentifier:@"TLExpressionMessageCell"];
+    [tableView registerClass:[TLVoiceMessageCell class] forCellReuseIdentifier:@"TLVoiceMessageCell"];
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
 #pragma mark - Delegate -
@@ -72,15 +72,15 @@
 //MARK: TLMessageCellDelegate
 - (void)messageCellDidClickAvatarForUser:(TLUser *)user
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:didClickUserAvatar:)]) {
-        [self.delegate chatTableViewController:self didClickUserAvatar:user];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayView:didClickUserAvatar:)]) {
+        [self.delegate chatMessageDisplayView:self didClickUserAvatar:user];
     }
 }
 
 - (void)messageCellTap:(TLMessage *)message
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:didClickMessage:)]) {
-        [self.delegate chatTableViewController:self didClickMessage:message];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayView:didClickMessage:)]) {
+        [self.delegate chatMessageDisplayView:self didClickMessage:message];
     }
 }
 
@@ -89,8 +89,8 @@
  */
 - (void)messageCellDoubleClick:(TLMessage *)message
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:didDoubleClickMessage:)]) {
-        [self.delegate chatTableViewController:self didDoubleClickMessage:message];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayView:didDoubleClickMessage:)]) {
+        [self.delegate chatMessageDisplayView:self didDoubleClickMessage:message];
     }
 }
 
@@ -109,7 +109,7 @@
     CGRect cellRect = [self.tableView rectForRowAtIndexPath:indexPath];
     rect.origin.y += cellRect.origin.y - self.tableView.contentOffset.y;
     __weak typeof(self)weakSelf = self;
-    [[TLChatCellMenuView sharedMenuView] showInView:self.navigationController.view withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
+    [[TLChatCellMenuView sharedMenuView] showInView:self withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
         [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         if (type == TLChatMenuItemTypeCopy) {
             NSString *str = [message messageCopy];
@@ -126,8 +126,8 @@
 //MARK: UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewControllerDidTouched:)]) {
-        [self.delegate chatTableViewControllerDidTouched:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayViewDidTouched:)]) {
+        [self.delegate chatMessageDisplayViewDidTouched:self];
     }
 }
 
@@ -143,12 +143,10 @@
 #pragma mark - Private Methods -
 - (void)p_deleteMessage:(TLMessage *)message
 {
-    NSInteger index = [self.data indexOfObject:message];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(chatTableViewController:deleteMessage:)]) {
-        BOOL ok = [self.delegate chatTableViewController:self deleteMessage:message];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayView:deleteMessage:)]) {
+        BOOL ok = [self.delegate chatMessageDisplayView:self deleteMessage:message];
         if (ok) {
-            [self.data removeObject:message];
-            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self deleteMessage:message withAnimation:YES];
             [MobClick event:EVENT_DELETE_MESSAGE];
         }
         else {

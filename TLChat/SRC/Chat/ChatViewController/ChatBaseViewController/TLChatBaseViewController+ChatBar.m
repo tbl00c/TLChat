@@ -41,7 +41,7 @@
         make.bottom.mas_equalTo(self.view).mas_offset(-keyboardFrame.size.height);
     }];
     [self.view layoutIfNeeded];
-    [self.chatTableVC scrollToBottomWithAnimation:NO];
+    [self.messageDisplayView scrollToBottomWithAnimation:NO];
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification
@@ -86,7 +86,7 @@
         [[TLAudioPlayer sharedAudioPlayer] stopPlayingAudio];
     }
     
-    [self.chatTableVC.view addSubview:self.recorderIndicatorView];
+    [self.messageDisplayView addSubview:self.recorderIndicatorView];
     [self.recorderIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.view);
         make.size.mas_equalTo(CGSizeMake(150, 150));
@@ -145,7 +145,7 @@
             }
         }
     } cancelBlock:^{
-        [self.chatTableVC deleteMessage:message];
+        [self.messageDisplayView deleteMessage:message];
         [self.recorderIndicatorView removeFromSuperview];
     }];
 }
@@ -172,7 +172,7 @@
         make.bottom.mas_equalTo(self.view).mas_offset(-height);
     }];
     [self.view layoutIfNeeded];
-    [self.chatTableVC scrollToBottomWithAnimation:NO];
+    [self.messageDisplayView scrollToBottomWithAnimation:NO];
 }
 
 - (void)chatKeyboardDidShow:(id)keyboard
@@ -244,7 +244,7 @@
 
 - (void)chatBar:(TLChatBar *)chatBar didChangeTextViewHeight:(CGFloat)height
 {
-    [self.chatTableVC scrollToBottomWithAnimation:NO];
+    [self.messageDisplayView scrollToBottomWithAnimation:NO];
 }
 
 //MARK: TLEmojiKeyboardDelegate

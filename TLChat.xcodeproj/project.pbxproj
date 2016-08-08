@@ -46,6 +46,15 @@
 		C20B1AC41D5827A500D9F710 /* TLMoreKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1AB31D5827A500D9F710 /* TLMoreKeyboard.m */; };
 		C20B1AD11D58287E00D9F710 /* TLEmojiGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1ACE1D58287E00D9F710 /* TLEmojiGroupCell.m */; };
 		C20B1AD21D58287E00D9F710 /* TLEmojiGroupControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1AD01D58287E00D9F710 /* TLEmojiGroupControl.m */; };
+		C20B1AE91D5833C700D9F710 /* TLExpressionMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1AD61D5833C700D9F710 /* TLExpressionMessageCell.m */; };
+		C20B1AEA1D5833C700D9F710 /* TLImageMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1AD81D5833C700D9F710 /* TLImageMessageCell.m */; };
+		C20B1AEB1D5833C700D9F710 /* TLMessageBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1ADA1D5833C700D9F710 /* TLMessageBaseCell.m */; };
+		C20B1AEC1D5833C700D9F710 /* TLMessageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1ADD1D5833C700D9F710 /* TLMessageImageView.m */; };
+		C20B1AED1D5833C700D9F710 /* TLTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1ADF1D5833C700D9F710 /* TLTextMessageCell.m */; };
+		C20B1AEE1D5833C700D9F710 /* TLVoiceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1AE11D5833C700D9F710 /* TLVoiceImageView.m */; };
+		C20B1AEF1D5833C700D9F710 /* TLVoiceMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1AE31D5833C700D9F710 /* TLVoiceMessageCell.m */; };
+		C20B1AF01D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1AE51D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.m */; };
+		C20B1AF11D5833C700D9F710 /* TLChatMessageDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B1AE71D5833C700D9F710 /* TLChatMessageDisplayView.m */; };
 		C20DC9FF1CC336A30085DFFC /* TLDBGroupStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DC9FE1CC336A30085DFFC /* TLDBGroupStore.m */; };
 		C20DE50F1CAF6CB000902398 /* TLHost.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE50E1CAF6CB000902398 /* TLHost.m */; };
 		C20DE5141CAF6FB600902398 /* TLChatBackgroundSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20DE5131CAF6FB600902398 /* TLChatBackgroundSelectViewController.m */; };
@@ -71,12 +80,6 @@
 		C21573FB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573AB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m */; };
 		C21573FC1C9BAC4200B7AC67 /* TLImageExpressionDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573AE1C9BAC4200B7AC67 /* TLImageExpressionDisplayView.m */; };
 		C21573FD1C9BAC4200B7AC67 /* TLTextDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573B11C9BAC4200B7AC67 /* TLTextDisplayView.m */; };
-		C21574101C9BAC4200B7AC67 /* TLImageMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573E31C9BAC4200B7AC67 /* TLImageMessageCell.m */; };
-		C21574111C9BAC4200B7AC67 /* TLMessageBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573E51C9BAC4200B7AC67 /* TLMessageBaseCell.m */; };
-		C21574121C9BAC4200B7AC67 /* TLMessageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573E81C9BAC4200B7AC67 /* TLMessageImageView.m */; };
-		C21574131C9BAC4200B7AC67 /* TLTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573EA1C9BAC4200B7AC67 /* TLTextMessageCell.m */; };
-		C21574141C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573EC1C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.m */; };
-		C21574151C9BAC4200B7AC67 /* TLChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573EE1C9BAC4200B7AC67 /* TLChatTableViewController.m */; };
 		C21C6E1E1C8D7B6B0018C570 /* FriendGroupList.json in Resources */ = {isa = PBXBuildFile; fileRef = C21C6E1D1C8D7B6B0018C570 /* FriendGroupList.json */; };
 		C220EF2B1C7EB89300DE3B86 /* TLScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C220EF2A1C7EB89300DE3B86 /* TLScanningViewController.m */; };
 		C2232E2B1C9FA38E0010CDF8 /* TLMessageManager+ConversationRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E261C9FA38E0010CDF8 /* TLMessageManager+ConversationRecord.m */; };
@@ -96,7 +99,6 @@
 		C23879061D34E09C00EED613 /* TLRecorderIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C23879051D34E09C00EED613 /* TLRecorderIndicatorView.m */; };
 		C246F1101C6B867C00A5AFB2 /* TLShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */; };
 		C246F1141C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C246F1131C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m */; };
-		C25F1C611CDC44F2001EECF3 /* TLVoiceMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25F1C601CDC44F2001EECF3 /* TLVoiceMessageCell.m */; };
 		C25F1D2C1CDC57E7001EECF3 /* TLUser+ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C25F1D2B1CDC57E7001EECF3 /* TLUser+ChatModel.m */; };
 		C25F1D2F1CDC6737001EECF3 /* TLGroup+ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C25F1D2E1CDC6737001EECF3 /* TLGroup+ChatModel.m */; };
 		C267E9A11CA0EE07001A71B5 /* TLChatFontSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C267E9A01CA0EE07001A71B5 /* TLChatFontSettingView.m */; };
@@ -235,7 +237,6 @@
 		C2E294C21C9D26A900721405 /* TLUserGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E294BF1C9D26A900721405 /* TLUserGroupCell.m */; };
 		C2E294C31C9D26A900721405 /* TLUserGroupItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E294C11C9D26A900721405 /* TLUserGroupItemCell.m */; };
 		C2E294C81C9D271400721405 /* TLGroupQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E294C71C9D271400721405 /* TLGroupQRCodeViewController.m */; };
-		C2E294CB1C9D27B000721405 /* TLExpressionMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E294CA1C9D27B000721405 /* TLExpressionMessageCell.m */; };
 		C2E2B13B1CB0EE46006DFAF4 /* TLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E2B13A1CB0EE46006DFAF4 /* TLLoginViewController.m */; };
 		C2E2B13E1CB0EE5E006DFAF4 /* TLRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E2B13D1CB0EE5E006DFAF4 /* TLRegisterViewController.m */; };
 		C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E56FF21C8936DE009662AB /* TLGameViewController.m */; };
@@ -264,7 +265,6 @@
 		C2E6B82C1C9A61190045A6EB /* TLConversationViewController+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E6B8291C9A61190045A6EB /* TLConversationViewController+Delegate.m */; };
 		C2E6B8301C9A62270045A6EB /* TLShakeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E6B82F1C9A62270045A6EB /* TLShakeButton.m */; };
 		C2E6B8341C9A62580045A6EB /* TLBottleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E6B8331C9A62580045A6EB /* TLBottleButton.m */; };
-		C2E843FB1D33B8950096E29A /* TLVoiceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E843FA1D33B8950096E29A /* TLVoiceImageView.m */; };
 		C2E8951D1CB1247500F4451E /* TLExpressionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E8951C1CB1247500F4451E /* TLExpressionProxy.m */; };
 		C2EBBD681CB7AE2600BDABCC /* TLExpressionPublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EBBD671CB7AE2600BDABCC /* TLExpressionPublicViewController.m */; };
 		C2EBBD6B1CB7B13100BDABCC /* TLExpressionPublicViewController+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EBBD6A1CB7B13100BDABCC /* TLExpressionPublicViewController+CollectionView.m */; };
@@ -395,6 +395,26 @@
 		C20B1ACE1D58287E00D9F710 /* TLEmojiGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiGroupCell.m; sourceTree = "<group>"; };
 		C20B1ACF1D58287E00D9F710 /* TLEmojiGroupControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiGroupControl.h; sourceTree = "<group>"; };
 		C20B1AD01D58287E00D9F710 /* TLEmojiGroupControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiGroupControl.m; sourceTree = "<group>"; };
+		C20B1AD51D5833C700D9F710 /* TLExpressionMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionMessageCell.h; sourceTree = "<group>"; };
+		C20B1AD61D5833C700D9F710 /* TLExpressionMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionMessageCell.m; sourceTree = "<group>"; };
+		C20B1AD71D5833C700D9F710 /* TLImageMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImageMessageCell.h; sourceTree = "<group>"; };
+		C20B1AD81D5833C700D9F710 /* TLImageMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageMessageCell.m; sourceTree = "<group>"; };
+		C20B1AD91D5833C700D9F710 /* TLMessageBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageBaseCell.h; sourceTree = "<group>"; };
+		C20B1ADA1D5833C700D9F710 /* TLMessageBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessageBaseCell.m; sourceTree = "<group>"; };
+		C20B1ADB1D5833C700D9F710 /* TLMessageCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageCellDelegate.h; sourceTree = "<group>"; };
+		C20B1ADC1D5833C700D9F710 /* TLMessageImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageImageView.h; sourceTree = "<group>"; };
+		C20B1ADD1D5833C700D9F710 /* TLMessageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessageImageView.m; sourceTree = "<group>"; };
+		C20B1ADE1D5833C700D9F710 /* TLTextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTextMessageCell.h; sourceTree = "<group>"; };
+		C20B1ADF1D5833C700D9F710 /* TLTextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTextMessageCell.m; sourceTree = "<group>"; };
+		C20B1AE01D5833C700D9F710 /* TLVoiceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVoiceImageView.h; sourceTree = "<group>"; };
+		C20B1AE11D5833C700D9F710 /* TLVoiceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVoiceImageView.m; sourceTree = "<group>"; };
+		C20B1AE21D5833C700D9F710 /* TLVoiceMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVoiceMessageCell.h; sourceTree = "<group>"; };
+		C20B1AE31D5833C700D9F710 /* TLVoiceMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVoiceMessageCell.m; sourceTree = "<group>"; };
+		C20B1AE41D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLChatMessageDisplayView+Delegate.h"; sourceTree = "<group>"; };
+		C20B1AE51D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatMessageDisplayView+Delegate.m"; sourceTree = "<group>"; };
+		C20B1AE61D5833C700D9F710 /* TLChatMessageDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatMessageDisplayView.h; sourceTree = "<group>"; };
+		C20B1AE71D5833C700D9F710 /* TLChatMessageDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatMessageDisplayView.m; sourceTree = "<group>"; };
+		C20B1AE81D5833C700D9F710 /* TLChatMessageDisplayViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatMessageDisplayViewDelegate.h; sourceTree = "<group>"; };
 		C20DC9FC1CC3367E0085DFFC /* TLDBGroupSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBGroupSQL.h; sourceTree = "<group>"; };
 		C20DC9FD1CC336A30085DFFC /* TLDBGroupStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBGroupStore.h; sourceTree = "<group>"; };
 		C20DC9FE1CC336A30085DFFC /* TLDBGroupStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBGroupStore.m; sourceTree = "<group>"; };
@@ -450,19 +470,6 @@
 		C21573AE1C9BAC4200B7AC67 /* TLImageExpressionDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageExpressionDisplayView.m; sourceTree = "<group>"; };
 		C21573B01C9BAC4200B7AC67 /* TLTextDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTextDisplayView.h; sourceTree = "<group>"; };
 		C21573B11C9BAC4200B7AC67 /* TLTextDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTextDisplayView.m; sourceTree = "<group>"; };
-		C21573E21C9BAC4200B7AC67 /* TLImageMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImageMessageCell.h; sourceTree = "<group>"; };
-		C21573E31C9BAC4200B7AC67 /* TLImageMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageMessageCell.m; sourceTree = "<group>"; };
-		C21573E41C9BAC4200B7AC67 /* TLMessageBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageBaseCell.h; sourceTree = "<group>"; };
-		C21573E51C9BAC4200B7AC67 /* TLMessageBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessageBaseCell.m; sourceTree = "<group>"; };
-		C21573E61C9BAC4200B7AC67 /* TLMessageCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageCellDelegate.h; sourceTree = "<group>"; };
-		C21573E71C9BAC4200B7AC67 /* TLMessageImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageImageView.h; sourceTree = "<group>"; };
-		C21573E81C9BAC4200B7AC67 /* TLMessageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessageImageView.m; sourceTree = "<group>"; };
-		C21573E91C9BAC4200B7AC67 /* TLTextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTextMessageCell.h; sourceTree = "<group>"; };
-		C21573EA1C9BAC4200B7AC67 /* TLTextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTextMessageCell.m; sourceTree = "<group>"; };
-		C21573EB1C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLChatTableViewController+Delegate.h"; sourceTree = "<group>"; };
-		C21573EC1C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatTableViewController+Delegate.m"; sourceTree = "<group>"; };
-		C21573ED1C9BAC4200B7AC67 /* TLChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatTableViewController.h; sourceTree = "<group>"; };
-		C21573EE1C9BAC4200B7AC67 /* TLChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatTableViewController.m; sourceTree = "<group>"; };
 		C21C6E1D1C8D7B6B0018C570 /* FriendGroupList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendGroupList.json; sourceTree = "<group>"; };
 		C220EF291C7EB89300DE3B86 /* TLScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScanningViewController.h; sourceTree = "<group>"; };
 		C220EF2A1C7EB89300DE3B86 /* TLScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScanningViewController.m; sourceTree = "<group>"; };
@@ -482,7 +489,6 @@
 		C2232E3A1C9FAC120010CDF8 /* TLMessageManagerConvVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageManagerConvVCDelegate.h; sourceTree = "<group>"; };
 		C2232E6C1CA013CB0010CDF8 /* TLChatFontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatFontViewController.h; sourceTree = "<group>"; };
 		C2232E6D1CA013CB0010CDF8 /* TLChatFontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatFontViewController.m; sourceTree = "<group>"; };
-		C223341D1CA286CD00548E59 /* TLChatTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatTableViewControllerDelegate.h; sourceTree = "<group>"; };
 		C225799E1C959CC5003B1B85 /* TLDBMessageStoreSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBMessageStoreSQL.h; sourceTree = "<group>"; };
 		C225AFB51CB2E4AA000477F3 /* TLMomentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentsViewController.h; sourceTree = "<group>"; };
 		C225AFB61CB2E4AA000477F3 /* TLMomentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentsViewController.m; sourceTree = "<group>"; };
@@ -504,8 +510,6 @@
 		C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShoppingViewController.m; sourceTree = "<group>"; };
 		C246F1121C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLHelpAndFeedbackViewController.h; sourceTree = "<group>"; };
 		C246F1131C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLHelpAndFeedbackViewController.m; sourceTree = "<group>"; };
-		C25F1C5F1CDC44F2001EECF3 /* TLVoiceMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVoiceMessageCell.h; sourceTree = "<group>"; };
-		C25F1C601CDC44F2001EECF3 /* TLVoiceMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVoiceMessageCell.m; sourceTree = "<group>"; };
 		C25F1D271CDC565B001EECF3 /* TLChatMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatMacros.h; sourceTree = "<group>"; };
 		C25F1D281CDC5685001EECF3 /* TLChatUserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatUserProtocol.h; sourceTree = "<group>"; };
 		C25F1D2A1CDC57E7001EECF3 /* TLUser+ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLUser+ChatModel.h"; sourceTree = "<group>"; };
@@ -782,8 +786,6 @@
 		C2E294C11C9D26A900721405 /* TLUserGroupItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserGroupItemCell.m; sourceTree = "<group>"; };
 		C2E294C61C9D271400721405 /* TLGroupQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLGroupQRCodeViewController.h; sourceTree = "<group>"; };
 		C2E294C71C9D271400721405 /* TLGroupQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGroupQRCodeViewController.m; sourceTree = "<group>"; };
-		C2E294C91C9D27B000721405 /* TLExpressionMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionMessageCell.h; sourceTree = "<group>"; };
-		C2E294CA1C9D27B000721405 /* TLExpressionMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionMessageCell.m; sourceTree = "<group>"; };
 		C2E2B1391CB0EE46006DFAF4 /* TLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLLoginViewController.h; sourceTree = "<group>"; };
 		C2E2B13A1CB0EE46006DFAF4 /* TLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLLoginViewController.m; sourceTree = "<group>"; };
 		C2E2B13C1CB0EE5E006DFAF4 /* TLRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLRegisterViewController.h; sourceTree = "<group>"; };
@@ -840,8 +842,6 @@
 		C2E6B82F1C9A62270045A6EB /* TLShakeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShakeButton.m; sourceTree = "<group>"; };
 		C2E6B8321C9A62580045A6EB /* TLBottleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBottleButton.h; sourceTree = "<group>"; };
 		C2E6B8331C9A62580045A6EB /* TLBottleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLBottleButton.m; sourceTree = "<group>"; };
-		C2E843F91D33B8950096E29A /* TLVoiceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVoiceImageView.h; sourceTree = "<group>"; };
-		C2E843FA1D33B8950096E29A /* TLVoiceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVoiceImageView.m; sourceTree = "<group>"; };
 		C2E8951B1CB1247500F4451E /* TLExpressionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionProxy.h; sourceTree = "<group>"; };
 		C2E8951C1CB1247500F4451E /* TLExpressionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionProxy.m; sourceTree = "<group>"; };
 		C2EBBD661CB7AE2600BDABCC /* TLExpressionPublicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionPublicViewController.h; sourceTree = "<group>"; };
@@ -1254,6 +1254,41 @@
 			path = EmojiKeyoboardBar;
 			sourceTree = "<group>";
 		};
+		C20B1AD31D5833C700D9F710 /* ChatMessageDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				C20B1AD41D5833C700D9F710 /* ChatMessageCells */,
+				C20B1AE41D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.h */,
+				C20B1AE51D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.m */,
+				C20B1AE61D5833C700D9F710 /* TLChatMessageDisplayView.h */,
+				C20B1AE71D5833C700D9F710 /* TLChatMessageDisplayView.m */,
+				C20B1AE81D5833C700D9F710 /* TLChatMessageDisplayViewDelegate.h */,
+			);
+			path = ChatMessageDisplayView;
+			sourceTree = "<group>";
+		};
+		C20B1AD41D5833C700D9F710 /* ChatMessageCells */ = {
+			isa = PBXGroup;
+			children = (
+				C20B1AD51D5833C700D9F710 /* TLExpressionMessageCell.h */,
+				C20B1AD61D5833C700D9F710 /* TLExpressionMessageCell.m */,
+				C20B1AD71D5833C700D9F710 /* TLImageMessageCell.h */,
+				C20B1AD81D5833C700D9F710 /* TLImageMessageCell.m */,
+				C20B1AD91D5833C700D9F710 /* TLMessageBaseCell.h */,
+				C20B1ADA1D5833C700D9F710 /* TLMessageBaseCell.m */,
+				C20B1ADB1D5833C700D9F710 /* TLMessageCellDelegate.h */,
+				C20B1ADC1D5833C700D9F710 /* TLMessageImageView.h */,
+				C20B1ADD1D5833C700D9F710 /* TLMessageImageView.m */,
+				C20B1ADE1D5833C700D9F710 /* TLTextMessageCell.h */,
+				C20B1ADF1D5833C700D9F710 /* TLTextMessageCell.m */,
+				C20B1AE01D5833C700D9F710 /* TLVoiceImageView.h */,
+				C20B1AE11D5833C700D9F710 /* TLVoiceImageView.m */,
+				C20B1AE21D5833C700D9F710 /* TLVoiceMessageCell.h */,
+				C20B1AE31D5833C700D9F710 /* TLVoiceMessageCell.m */,
+			);
+			path = ChatMessageCells;
+			sourceTree = "<group>";
+		};
 		C20DE5101CAF6F9700902398 /* ChatBackgroundSelectViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1565,8 +1600,8 @@
 				C25F1D261CDC5645001EECF3 /* Models */,
 				C21573931C9BAC4200B7AC67 /* ChatBar */,
 				C20B1A881D5827A500D9F710 /* Keyborads */,
+				C20B1AD31D5833C700D9F710 /* ChatMessageDisplayView */,
 				C21573A51C9BAC4200B7AC67 /* ChatCommonViews */,
-				C21573E01C9BAC4200B7AC67 /* ChatTableViewController */,
 				C21573981C9BAC4200B7AC67 /* ChatBaseViewController */,
 				C2E2949C1C9D1DAA00721405 /* TLChatViewController.h */,
 				C2E2949D1C9D1DAA00721405 /* TLChatViewController.m */,
@@ -1649,41 +1684,6 @@
 				C21573B11C9BAC4200B7AC67 /* TLTextDisplayView.m */,
 			);
 			path = TLTextDisplayView;
-			sourceTree = "<group>";
-		};
-		C21573E01C9BAC4200B7AC67 /* ChatTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C21573E11C9BAC4200B7AC67 /* ChatMessageCells */,
-				C223341D1CA286CD00548E59 /* TLChatTableViewControllerDelegate.h */,
-				C21573ED1C9BAC4200B7AC67 /* TLChatTableViewController.h */,
-				C21573EE1C9BAC4200B7AC67 /* TLChatTableViewController.m */,
-				C21573EB1C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.h */,
-				C21573EC1C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.m */,
-			);
-			path = ChatTableViewController;
-			sourceTree = "<group>";
-		};
-		C21573E11C9BAC4200B7AC67 /* ChatMessageCells */ = {
-			isa = PBXGroup;
-			children = (
-				C21573E61C9BAC4200B7AC67 /* TLMessageCellDelegate.h */,
-				C21573E41C9BAC4200B7AC67 /* TLMessageBaseCell.h */,
-				C21573E51C9BAC4200B7AC67 /* TLMessageBaseCell.m */,
-				C21573E91C9BAC4200B7AC67 /* TLTextMessageCell.h */,
-				C21573EA1C9BAC4200B7AC67 /* TLTextMessageCell.m */,
-				C21573E71C9BAC4200B7AC67 /* TLMessageImageView.h */,
-				C21573E81C9BAC4200B7AC67 /* TLMessageImageView.m */,
-				C21573E21C9BAC4200B7AC67 /* TLImageMessageCell.h */,
-				C21573E31C9BAC4200B7AC67 /* TLImageMessageCell.m */,
-				C2E294C91C9D27B000721405 /* TLExpressionMessageCell.h */,
-				C2E294CA1C9D27B000721405 /* TLExpressionMessageCell.m */,
-				C2E843F91D33B8950096E29A /* TLVoiceImageView.h */,
-				C2E843FA1D33B8950096E29A /* TLVoiceImageView.m */,
-				C25F1C5F1CDC44F2001EECF3 /* TLVoiceMessageCell.h */,
-				C25F1C601CDC44F2001EECF3 /* TLVoiceMessageCell.m */,
-			);
-			path = ChatMessageCells;
 			sourceTree = "<group>";
 		};
 		C2232E241C9FA38E0010CDF8 /* TLMessageManager */ = {
@@ -3267,9 +3267,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2BF17D51C86DB50003318CB /* UITableView+TLChat.m in Sources */,
+				C20B1AEE1D5833C700D9F710 /* TLVoiceImageView.m in Sources */,
 				C28C44661C883717005975FF /* TLShakeSettingViewController.m in Sources */,
 				C2893A7E1CB03E640080C4BB /* TLUIUtility.m in Sources */,
-				C21574101C9BAC4200B7AC67 /* TLImageMessageCell.m in Sources */,
 				C2994D8C1CA167CF00BAC038 /* TLUser.m in Sources */,
 				C2E294B81C9D268800721405 /* TLChatGroupDetailViewController.m in Sources */,
 				C2FB85E81CB6CD0600747B6D /* TLMomentComment.m in Sources */,
@@ -3284,7 +3284,6 @@
 				C2E6B82C1C9A61190045A6EB /* TLConversationViewController+Delegate.m in Sources */,
 				C2E294A01C9D1DAA00721405 /* TLChatViewController.m in Sources */,
 				C2D078D81CC7233E00C2B893 /* TLPictureCarouselViewCell.m in Sources */,
-				C25F1C611CDC44F2001EECF3 /* TLVoiceMessageCell.m in Sources */,
 				C225AFBA1CB2E7B4000477F3 /* TLMomentsViewController+TableView.m in Sources */,
 				C2986D491C9EC08400A74166 /* TLConversation.m in Sources */,
 				C2994D901CA167CF00BAC038 /* TLUserSetting.m in Sources */,
@@ -3314,8 +3313,10 @@
 				C2D500DD1C55CA170088997C /* TLRootViewController.m in Sources */,
 				C2E294B21C9D264100721405 /* TLChatFileViewController.m in Sources */,
 				C2EBBD681CB7AE2600BDABCC /* TLExpressionPublicViewController.m in Sources */,
+				C20B1AED1D5833C700D9F710 /* TLTextMessageCell.m in Sources */,
 				C20B1ABE1D5827A500D9F710 /* TLEmojiKeyboard+EmojiGroupControl.m in Sources */,
 				C2E6B8091C9A5B570045A6EB /* TLGroupCell.m in Sources */,
+				C20B1AEC1D5833C700D9F710 /* TLMessageImageView.m in Sources */,
 				C2AF1F931C6B20C400617D98 /* TLMineInfoViewController.m in Sources */,
 				C20B1AD21D58287E00D9F710 /* TLEmojiGroupControl.m in Sources */,
 				C2D69D911C929AE100EE91D7 /* TLAddMenuView.m in Sources */,
@@ -3337,13 +3338,11 @@
 				C2AF1F9A1C6B538300617D98 /* TLAccountAndSafetyViewController.m in Sources */,
 				C2028D311C8D2D420060E271 /* TLTagsViewController.m in Sources */,
 				C2E6B8021C9A579E0045A6EB /* TLContactsViewController+Delegate.m in Sources */,
-				C21574111C9BAC4200B7AC67 /* TLMessageBaseCell.m in Sources */,
 				C2BF17DD1C86E08F003318CB /* NSFileManager+Paths.m in Sources */,
 				C28D207E1C9D616D00145792 /* TLChatBackgroundSettingViewController.m in Sources */,
 				C2E6B7FE1C9A57860045A6EB /* TLContactsSearchViewController.m in Sources */,
 				C2E6B8111C9A5BC50045A6EB /* TLGroupViewController+Delegate.m in Sources */,
 				C2D851591C68D952007DD697 /* TLBaseDataModel.m in Sources */,
-				C2E294CB1C9D27B000721405 /* TLExpressionMessageCell.m in Sources */,
 				C2AF1FA01C6B603300617D98 /* TLMineInfoHelper.m in Sources */,
 				C2CF4C701C802DBD0054637A /* TLFriendDetailViewController.m in Sources */,
 				C2B9730F1C6A52F0004B9B71 /* TLPrivacySettingHelper.m in Sources */,
@@ -3354,6 +3353,7 @@
 				C28CA6231C9D905600CD6A73 /* UIImage+Size.m in Sources */,
 				C21573FD1C9BAC4200B7AC67 /* TLTextDisplayView.m in Sources */,
 				C2B70AB01C952FCD005BECDD /* TLRootProxy.m in Sources */,
+				C20B1AEB1D5833C700D9F710 /* TLMessageBaseCell.m in Sources */,
 				C2BF17D21C86DB50003318CB /* UIButton+TLChat.m in Sources */,
 				C2CF4C8C1C804BFE0054637A /* TLSettingHeaderTitleView.m in Sources */,
 				C2994D8F1CA167CF00BAC038 /* TLUserGroup.m in Sources */,
@@ -3386,8 +3386,6 @@
 				C2D078D51CC7216F00C2B893 /* TLPictureCarouselView.m in Sources */,
 				C2EBBD6B1CB7B13100BDABCC /* TLExpressionPublicViewController+CollectionView.m in Sources */,
 				C267E9A11CA0EE07001A71B5 /* TLChatFontSettingView.m in Sources */,
-				C21574141C9BAC4200B7AC67 /* TLChatTableViewController+Delegate.m in Sources */,
-				C21574121C9BAC4200B7AC67 /* TLMessageImageView.m in Sources */,
 				C2EBBD6E1CB7B18500BDABCC /* TLExpressionPublicViewController+Proxy.m in Sources */,
 				C2BF17D41C86DB50003318CB /* UINavigationController+StackManager.m in Sources */,
 				C29A7D491CB79F4D008ECA97 /* TLExpressionDetailViewController+CollectionView.m in Sources */,
@@ -3402,7 +3400,6 @@
 				C20A56B91D33572500C891B3 /* TLTalkButton.m in Sources */,
 				C2B9E43A1C66451B00CEBA81 /* TLUserHelper.m in Sources */,
 				C274761F1CB6818900C667E6 /* TLMoment.m in Sources */,
-				C21574151C9BAC4200B7AC67 /* TLChatTableViewController.m in Sources */,
 				C2A5ACA01C8EB07E007A4574 /* TLChatDetailViewController.m in Sources */,
 				C2E570021C898305009662AB /* TLScannerButton.m in Sources */,
 				C2F0EC091C7A2BD20090843C /* TLShakeViewController.m in Sources */,
@@ -3416,11 +3413,13 @@
 				C2B9E4291C65E1BA00CEBA81 /* TLMenuItem.m in Sources */,
 				C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */,
 				C2E6B8151C9A5CEF0045A6EB /* TLTagCell.m in Sources */,
+				C20B1AEA1D5833C700D9F710 /* TLImageMessageCell.m in Sources */,
 				C2E56FF31C8936DE009662AB /* TLGameViewController.m in Sources */,
 				C21573FB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m in Sources */,
 				C20B1ABB1D5827A500D9F710 /* TLEmoji.m in Sources */,
 				C2CFDF131CD7972D00E9697C /* TLMomentDetailBaseView.m in Sources */,
 				C20B1AC41D5827A500D9F710 /* TLMoreKeyboard.m in Sources */,
+				C20B1AE91D5833C700D9F710 /* TLExpressionMessageCell.m in Sources */,
 				C2C8266B1CCB7AE3002ECE51 /* TLMomentBaseView.m in Sources */,
 				C2A1BBD71C5784340046CA1C /* TLFriendHeaderView.m in Sources */,
 				C2E6B80E1C9A5B8C0045A6EB /* TLFriendSearchViewController.m in Sources */,
@@ -3436,11 +3435,9 @@
 				C20B1AB81D5827A500D9F710 /* TLEmojiItemCell.m in Sources */,
 				C2FB85CA1CB6B8BE00747B6D /* TLMomentHeaderCell.m in Sources */,
 				C2A98BC51C89D57300029AD5 /* TLMyQRCodeViewController.m in Sources */,
-				C21574131C9BAC4200B7AC67 /* TLTextMessageCell.m in Sources */,
 				C29A7D3F1CB79397008ECA97 /* TLNetworking.m in Sources */,
 				C2893A7C1CB03E640080C4BB /* NSFileManager+TLChat.m in Sources */,
 				C20B1AD11D58287E00D9F710 /* TLEmojiGroupCell.m in Sources */,
-				C2E843FB1D33B8950096E29A /* TLVoiceImageView.m in Sources */,
 				C23878FE1D34960400EED613 /* TLAudioPlayer.m in Sources */,
 				C25F1D2F1CDC6737001EECF3 /* TLGroup+ChatModel.m in Sources */,
 				C2994D361CA142DA00BAC038 /* TLDBFriendStore.m in Sources */,
@@ -3455,6 +3452,7 @@
 				C20B1ABC1D5827A500D9F710 /* TLEmojiGroup.m in Sources */,
 				C271A5091C83FEF2004372D4 /* TLFriendDetailAlbumCell.m in Sources */,
 				C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */,
+				C20B1AF01D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.m in Sources */,
 				C2CF4C7E1C804BF30054637A /* TLSettingSwitchCell.m in Sources */,
 				C2D851551C68D811007DD697 /* TLSettingHelper.m in Sources */,
 				C2FB85E51CB6CCDD00747B6D /* TLMomentDetail.m in Sources */,
@@ -3499,6 +3497,7 @@
 				C20B1AC11D5827A500D9F710 /* TLMoreKeyboardCell.m in Sources */,
 				C21573FC1C9BAC4200B7AC67 /* TLImageExpressionDisplayView.m in Sources */,
 				C271A4FF1C83D6F9004372D4 /* TLInfoButtonCell.m in Sources */,
+				C20B1AF11D5833C700D9F710 /* TLChatMessageDisplayView.m in Sources */,
 				C2028D351C8D2D5E0060E271 /* TLPublicServerViewController.m in Sources */,
 				C2E6B81F1C9A5F120045A6EB /* TLNewFriendViewController+Delegate.m in Sources */,
 				C2F0EC121C7AB01A0090843C /* TLAboutViewController.m in Sources */,
@@ -3520,6 +3519,7 @@
 				C2028D391C8D354E0060E271 /* TLSearchController.m in Sources */,
 				C2F0EBF51C7A0DA80090843C /* TLCommonSettingViewController.m in Sources */,
 				C2142F111C53909C0030B29B /* TLTableViewCell.m in Sources */,
+				C20B1AEF1D5833C700D9F710 /* TLVoiceMessageCell.m in Sources */,
 				C28C445F1C8818FD005975FF /* NSDate+Utilities.m in Sources */,
 				C2BF17D31C86DB50003318CB /* UIImage+Color.m in Sources */,
 				C2FB85D61CB6C1F600747B6D /* TLMomentsViewController+Proxy.m in Sources */,

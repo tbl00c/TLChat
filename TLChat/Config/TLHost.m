@@ -23,12 +23,12 @@
 
 + (NSString *)expressionURLWithEid:(NSString *)eid
 {
-    return [NSString stringWithFormat:@"http://123.57.155.230:8080/ibiaoqing/admin/expre/downloadsuo.do?pId=%@", eid];
+    return [NSString stringWithFormat:@"%@expre/downloadsuo.do?pId=%@", IEXPRESSION_HOST_URL, eid];
 }
 
 + (NSString *)expressionDownloadURLWithEid:(NSString *)eid
 {
-    return [NSString stringWithFormat:@"http://123.57.155.230:8080/ibiaoqing/admin/expre/download.do?pId=%@", eid];
+    return [NSString stringWithFormat:@"%@expre/download.do?pId=%@", IEXPRESSION_HOST_URL, eid];
 }
 
 @end

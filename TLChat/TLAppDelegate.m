@@ -118,7 +118,7 @@
     TLEmojiGroup *group = [[TLEmojiGroup alloc] init];
     group.groupID = @"241";
     group.groupName = @"婉转的骂人";
-    group.groupIconURL = @"http://123.57.155.230:8080/ibiaoqing/admin/expre/downloadsuo.do?pId=10790";
+    group.groupIconURL = [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/downloadsuo.do?pId=10790"];
     group.groupInfo = @"婉转的骂人";
     group.groupDetailInfo = @"婉转的骂人表情，慎用";
     [proxy requestExpressionGroupDetailByGroupID:group.groupID pageIndex:1 success:^(id data) {
@@ -151,7 +151,7 @@
     TLEmojiGroup *group1 = [[TLEmojiGroup alloc] init];
     group1.groupID = @"223";
     group1.groupName = @"王锡玄";
-    group1.groupIconURL = @"http://123.57.155.230:8080/ibiaoqing/admin/expre/downloadsuo.do?pId=10482";
+    group1.groupIconURL = [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/downloadsuo.do?pId=10482"];
     group1.groupInfo = @"王锡玄 萌娃 冷笑宝宝";
     group1.groupDetailInfo = @"韩国萌娃，冷笑宝宝王锡玄表情包";
     [proxy requestExpressionGroupDetailByGroupID:group1.groupID pageIndex:1 success:^(id data) {

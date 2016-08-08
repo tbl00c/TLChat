@@ -11,12 +11,17 @@
 
 #define     APP_CHANNEL         @"Github"
 
-#pragma mark - Debug
+#pragma mark - # Debug
 #define     DEBUG_LOCAL_SERVER      // 使用本地测试服务器
 //#define     DEBUG_MEMERY            // 内存测试
 //#define     DEBUG_JSPATCH           // JSPatch本地测试
 
-#pragma mark - SIZE
+
+#pragma mark - # URL
+#define     IEXPRESSION_HOST_URL        @"http://123.57.155.230/ibiaoqing/admin/"
+
+
+#pragma mark - # SIZE
 #define     SIZE_SCREEN                 [UIScreen mainScreen].bounds.size
 #define     WIDTH_SCREEN                [UIScreen mainScreen].bounds.size.width
 #define     HEIGHT_SCREEN               [UIScreen mainScreen].bounds.size.height
@@ -33,18 +38,19 @@
 #define     MAX_MESSAGE_EXPRESSION_WIDTH    WIDTH_SCREEN * 0.35
 #define     MIN_MESSAGE_EXPRESSION_WIDTH    WIDTH_SCREEN * 0.2
 
-#define mark - Default
+
+#define mark - # Default
 #define     DEFAULT_AVATAR_PATH    @"default_head"
 
 
-#pragma mark - Methods
+#pragma mark - # Methods
 #define     TLURL(urlString)    [NSURL URLWithString:urlString]
 #define     TLNoNilString(str)  (str.length > 0 ? str : @"")
 #define     TLTimeStamp(date)   ([NSString stringWithFormat:@"%lf", [date timeIntervalSince1970]])
 #define     TLColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
 
 
-#pragma mark - ThirdPart KEY
+#pragma mark - # ThirdPart KEY
 // UMeng
 #define     UMENG_APPKEY        @"56b8ba33e0f55a15480020b0"
 // JSPatch

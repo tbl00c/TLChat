@@ -10,7 +10,6 @@
 #import "TLEmojiGroup.h"
 #import "NSString+UrlEncode.h"
 
-#define     IEXPRESSION_HOST_URL        @"http://123.57.155.230:8080/ibiaoqing/admin/"
 
 #define     IEXPRESSION_NEW_URL         [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/listBy.do?pageNumber=%ld&status=Y&status1=B"]
 #define     IEXPRESSION_BANNER_URL      [IEXPRESSION_HOST_URL stringByAppendingString: @"advertisement/getAll.do?status=on"]

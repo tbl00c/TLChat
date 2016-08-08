@@ -11,7 +11,7 @@
 
 @implementation TLChatBaseViewController (ChatTableView)
 
-#pragma mark - Public Methods -
+#pragma mark - # Public Methods
 - (void)addToShowMessage:(TLMessage *)message
 {
     message.showTime = [self p_needShowTime:message.date];
@@ -33,7 +33,7 @@
     msgAccumulate = 0;
 }
 
-#pragma mark - Delegate -
+#pragma mark - # Delegate
 //MARK: TLChatMessageDisplayViewDelegate
 // chatView 点击事件
 - (void)chatMessageDisplayViewDidTouched:(TLChatMessageDisplayView *)chatTVC
@@ -129,7 +129,7 @@
     }
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 static NSTimeInterval lastDateInterval = 0;
 static NSInteger msgAccumulate = 0;
 - (BOOL)p_needShowTime:(NSDate *)date

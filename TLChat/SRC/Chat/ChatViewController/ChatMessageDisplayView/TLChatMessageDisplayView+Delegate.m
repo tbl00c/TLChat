@@ -11,7 +11,7 @@
 
 @implementation TLChatMessageDisplayView (Delegate)
 
-#pragma mark - Public Methods -
+#pragma mark - # Public Methods
 - (void)registerCellClassForTableView:(UITableView *)tableView
 {
     [tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TLTextMessageCell"];
@@ -21,7 +21,7 @@
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
-#pragma mark - Delegate -
+#pragma mark - # Delegate
 //MARK: UITableViewDataSouce
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -140,7 +140,7 @@
     }
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)p_deleteMessage:(TLMessage *)message
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayView:deleteMessage:)]) {

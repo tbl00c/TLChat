@@ -15,6 +15,22 @@
 @implementation TLChatBaseViewController (ChatBar)
 
 #pragma mark - # Public Methods
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    if (lastStatus == TLChatBarStatusMore) {
+        [self.moreKeyboard dismissWithAnimation:NO];
+    }
+    else if (lastStatus == TLChatBarStatusEmoji) {
+        [self.emojiKeyboard dismissWithAnimation:NO];
+    }
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
+}
+
 - (void)keyboardWillHide:(NSNotification *)notification
 {
     if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
@@ -24,6 +40,12 @@
         make.bottom.mas_equalTo(self.view);
     }];
     [self.view layoutIfNeeded];
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
+}
+
+- (void)keyboardDidHide:(NSNotification *)notification
+{
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }
 
 - (void)keyboardFrameWillChange:(NSNotification *)notification
@@ -41,17 +63,7 @@
         make.bottom.mas_equalTo(self.view).mas_offset(-keyboardFrame.size.height);
     }];
     [self.view layoutIfNeeded];
-    [self.messageDisplayView scrollToBottomWithAnimation:NO];
-}
-
-- (void)keyboardDidShow:(NSNotification *)notification
-{
-    if (lastStatus == TLChatBarStatusMore) {
-        [self.moreKeyboard dismissWithAnimation:NO];
-    }
-    else if (lastStatus == TLChatBarStatusEmoji) {
-        [self.emojiKeyboard dismissWithAnimation:NO];
-    }
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }
 
 #pragma mark - Delegate
@@ -172,7 +184,7 @@
         make.bottom.mas_equalTo(self.view).mas_offset(-height);
     }];
     [self.view layoutIfNeeded];
-    [self.messageDisplayView scrollToBottomWithAnimation:NO];
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }
 
 - (void)chatKeyboardDidShow:(id)keyboard
@@ -183,6 +195,7 @@
     else if (curStatus == TLChatBarStatusEmoji && lastStatus == TLChatBarStatusMore) {
         [self.moreKeyboard dismissWithAnimation:NO];
     }
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }
 
 - (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus

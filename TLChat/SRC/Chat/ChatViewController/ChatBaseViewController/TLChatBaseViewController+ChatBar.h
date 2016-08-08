@@ -10,8 +10,11 @@
 
 @interface TLChatBaseViewController (ChatBar) <TLChatBarDelegate, TLChatBarUIDelegate, TLEmojiKeyboardDelegate>
 
-- (void)keyboardWillHide:(NSNotification *)notification;
-- (void)keyboardFrameWillChange:(NSNotification *)notification;
+- (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardDidShow:(NSNotification *)notification;
+- (void)keyboardWillHide:(NSNotification *)notification;
+- (void)keyboardDidHide:(NSNotification *)notification;
+- (void)keyboardFrameWillChange:(NSNotification *)notification;
+
 
 @end

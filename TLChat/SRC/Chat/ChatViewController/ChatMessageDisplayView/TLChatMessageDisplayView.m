@@ -39,8 +39,15 @@
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchTableView)];
         [self.tableView addGestureRecognizer:tap];
+        
+        [self.tableView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [self.tableView removeObserver:self forKeyPath:@"bounds"];
 }
 
 #pragma mark - # Public Methods
@@ -134,7 +141,20 @@
     }
 }
 
-#pragma mark - Event Response -
+#pragma mark - # Event Response
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if (object == self.tableView && [keyPath isEqualToString:@"bounds"]) {  // tableView变小时，消息贴底
+        CGRect oldBounds, newBounds;
+        [change[@"old"] getValue:&oldBounds];
+        [change[@"new"] getValue:&newBounds];
+        CGFloat t = oldBounds.size.height - newBounds.size.height;
+        if (t > 0 && fabs(self.tableView.contentOffset.y + t + newBounds.size.height - self.tableView.contentSize.height) < 1.0) {
+            [self scrollToBottomWithAnimation:NO];
+        }
+    }
+}
+
 - (void)didTouchTableView
 {
     if (_delegate && [_delegate respondsToSelector:@selector(chatMessageDisplayViewDidTouched:)]) {
@@ -142,7 +162,7 @@
     }
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 /**
  *  获取聊天历史记录
  */

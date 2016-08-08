@@ -381,7 +381,6 @@
 		C20B1AA41D5827A500D9F710 /* TLEmojiKeyboard+Gusture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLEmojiKeyboard+Gusture.m"; sourceTree = "<group>"; };
 		C20B1AA51D5827A500D9F710 /* TLEmojiKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiKeyboard.h; sourceTree = "<group>"; };
 		C20B1AA61D5827A500D9F710 /* TLEmojiKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiKeyboard.m; sourceTree = "<group>"; };
-		C20B1AA71D5827A500D9F710 /* TLEmojiKeyboardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiKeyboardDelegate.h; sourceTree = "<group>"; };
 		C20B1AAA1D5827A500D9F710 /* TLMoreKeyboardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKeyboardCell.h; sourceTree = "<group>"; };
 		C20B1AAB1D5827A500D9F710 /* TLMoreKeyboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKeyboardCell.m; sourceTree = "<group>"; };
 		C20B1AAD1D5827A500D9F710 /* TLMoreKeyboardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKeyboardDelegate.h; sourceTree = "<group>"; };
@@ -415,6 +414,7 @@
 		C20B1AE61D5833C700D9F710 /* TLChatMessageDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatMessageDisplayView.h; sourceTree = "<group>"; };
 		C20B1AE71D5833C700D9F710 /* TLChatMessageDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatMessageDisplayView.m; sourceTree = "<group>"; };
 		C20B1AE81D5833C700D9F710 /* TLChatMessageDisplayViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatMessageDisplayViewDelegate.h; sourceTree = "<group>"; };
+		C20B1AF21D5837AE00D9F710 /* TLEmojiKeyboardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiKeyboardDelegate.h; sourceTree = "<group>"; };
 		C20DC9FC1CC3367E0085DFFC /* TLDBGroupSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBGroupSQL.h; sourceTree = "<group>"; };
 		C20DC9FD1CC336A30085DFFC /* TLDBGroupStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBGroupStore.h; sourceTree = "<group>"; };
 		C20DC9FE1CC336A30085DFFC /* TLDBGroupStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBGroupStore.m; sourceTree = "<group>"; };
@@ -1167,7 +1167,6 @@
 		C20B1A891D5827A500D9F710 /* ChatEmojiKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				C20B1AA71D5827A500D9F710 /* TLEmojiKeyboardDelegate.h */,
 				C20B1A9A1D5827A500D9F710 /* Models */,
 				C20B1A8A1D5827A500D9F710 /* EmojiCells */,
 				C20B1ACC1D58287E00D9F710 /* EmojiKeyoboardBar */,
@@ -1203,6 +1202,7 @@
 		C20B1A9A1D5827A500D9F710 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C20B1AF21D5837AE00D9F710 /* TLEmojiKeyboardDelegate.h */,
 				C20B1A9B1D5827A500D9F710 /* TLEmoji.h */,
 				C20B1A9C1D5827A500D9F710 /* TLEmoji.m */,
 				C20B1A9D1D5827A500D9F710 /* TLEmojiGroup.h */,
@@ -1214,12 +1214,12 @@
 		C20B1AA81D5827A500D9F710 /* ChatMoreKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				C20B1AA91D5827A500D9F710 /* MoreKeyboardCells */,
 				C20B1AAC1D5827A500D9F710 /* MoreKeyboardModels */,
-				C20B1AB01D5827A500D9F710 /* TLMoreKeyboard+CollectionView.h */,
-				C20B1AB11D5827A500D9F710 /* TLMoreKeyboard+CollectionView.m */,
+				C20B1AA91D5827A500D9F710 /* MoreKeyboardCells */,
 				C20B1AB21D5827A500D9F710 /* TLMoreKeyboard.h */,
 				C20B1AB31D5827A500D9F710 /* TLMoreKeyboard.m */,
+				C20B1AB01D5827A500D9F710 /* TLMoreKeyboard+CollectionView.h */,
+				C20B1AB11D5827A500D9F710 /* TLMoreKeyboard+CollectionView.m */,
 			);
 			path = ChatMoreKeyboard;
 			sourceTree = "<group>";
@@ -1257,12 +1257,12 @@
 		C20B1AD31D5833C700D9F710 /* ChatMessageDisplayView */ = {
 			isa = PBXGroup;
 			children = (
+				C20B1AE81D5833C700D9F710 /* TLChatMessageDisplayViewDelegate.h */,
 				C20B1AD41D5833C700D9F710 /* ChatMessageCells */,
-				C20B1AE41D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.h */,
-				C20B1AE51D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.m */,
 				C20B1AE61D5833C700D9F710 /* TLChatMessageDisplayView.h */,
 				C20B1AE71D5833C700D9F710 /* TLChatMessageDisplayView.m */,
-				C20B1AE81D5833C700D9F710 /* TLChatMessageDisplayViewDelegate.h */,
+				C20B1AE41D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.h */,
+				C20B1AE51D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.m */,
 			);
 			path = ChatMessageDisplayView;
 			sourceTree = "<group>";
@@ -1270,17 +1270,17 @@
 		C20B1AD41D5833C700D9F710 /* ChatMessageCells */ = {
 			isa = PBXGroup;
 			children = (
-				C20B1AD51D5833C700D9F710 /* TLExpressionMessageCell.h */,
-				C20B1AD61D5833C700D9F710 /* TLExpressionMessageCell.m */,
-				C20B1AD71D5833C700D9F710 /* TLImageMessageCell.h */,
-				C20B1AD81D5833C700D9F710 /* TLImageMessageCell.m */,
+				C20B1ADB1D5833C700D9F710 /* TLMessageCellDelegate.h */,
 				C20B1AD91D5833C700D9F710 /* TLMessageBaseCell.h */,
 				C20B1ADA1D5833C700D9F710 /* TLMessageBaseCell.m */,
-				C20B1ADB1D5833C700D9F710 /* TLMessageCellDelegate.h */,
-				C20B1ADC1D5833C700D9F710 /* TLMessageImageView.h */,
-				C20B1ADD1D5833C700D9F710 /* TLMessageImageView.m */,
 				C20B1ADE1D5833C700D9F710 /* TLTextMessageCell.h */,
 				C20B1ADF1D5833C700D9F710 /* TLTextMessageCell.m */,
+				C20B1ADC1D5833C700D9F710 /* TLMessageImageView.h */,
+				C20B1ADD1D5833C700D9F710 /* TLMessageImageView.m */,
+				C20B1AD71D5833C700D9F710 /* TLImageMessageCell.h */,
+				C20B1AD81D5833C700D9F710 /* TLImageMessageCell.m */,
+				C20B1AD51D5833C700D9F710 /* TLExpressionMessageCell.h */,
+				C20B1AD61D5833C700D9F710 /* TLExpressionMessageCell.m */,
 				C20B1AE01D5833C700D9F710 /* TLVoiceImageView.h */,
 				C20B1AE11D5833C700D9F710 /* TLVoiceImageView.m */,
 				C20B1AE21D5833C700D9F710 /* TLVoiceMessageCell.h */,

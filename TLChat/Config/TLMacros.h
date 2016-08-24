@@ -46,6 +46,8 @@
 #pragma mark - # Methods
 #define     TLURL(urlString)    [NSURL URLWithString:urlString]
 #define     TLNoNilString(str)  (str.length > 0 ? str : @"")
+#define     TLWeakSelf(type)    __weak typeof(type) weak##type = type;
+#define     TLStrongSelf(type)  __strong typeof(type) strong##type = type;
 #define     TLTimeStamp(date)   ([NSString stringWithFormat:@"%lf", [date timeIntervalSince1970]])
 #define     TLColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
 

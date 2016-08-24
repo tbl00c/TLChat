@@ -10,9 +10,9 @@
 
 @interface TLMessageImageView ()
 
-@property (nonatomic, strong) CAShapeLayer *maskLayer;
+@property (nonatomic, assign) CAShapeLayer *maskLayer;
 
-@property (nonatomic, strong) CALayer *contentLayer;
+@property (nonatomic, assign) CALayer *contentLayer;
 
 @end
 
@@ -21,9 +21,22 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        [self.layer addSublayer:self.contentLayer];
+        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+        maskLayer.contentsCenter = CGRectMake(0.5, 0.6, 0.1, 0.1);
+        maskLayer.contentsScale = [UIScreen mainScreen].scale;                 //非常关键设置自动拉伸的效果且不变形
+        CALayer *contentLayer = [[CALayer alloc] init];
+        [contentLayer setMask:maskLayer];
+        [self.layer addSublayer:contentLayer];
+        
+        self.maskLayer = maskLayer;
+        self.contentLayer = contentLayer;
     }
     return self;
+}
+
+- (void)dealloc
+{
+    NSLog(@"delloc TLMessageImageView");
 }
 
 - (void)layoutSubviews
@@ -39,7 +52,8 @@
         [self.contentLayer setContents:nil];
     }
     else {
-        [self.contentLayer setContents:(id)[UIImage imageNamed:imagePath].CGImage];
+        UIImage *image = [UIImage imageNamed:imagePath];
+        [self.contentLayer setContents:(id)(image.CGImage)];
     }
 }
 
@@ -48,26 +62,5 @@
     _backgroundImage = backgroundImage;
     [self.maskLayer setContents:(id)backgroundImage.CGImage];
 }
-
-#pragma mark - Getter -
-- (CAShapeLayer *)maskLayer
-{
-    if (_maskLayer == nil) {
-        _maskLayer = [CAShapeLayer layer];
-        _maskLayer.contentsCenter = CGRectMake(0.5, 0.6, 0.1, 0.1);
-        _maskLayer.contentsScale = [UIScreen mainScreen].scale;                 //非常关键设置自动拉伸的效果且不变形
-    }
-    return _maskLayer;
-}
-
-- (CALayer *)contentLayer
-{
-    if (_contentLayer == nil) {
-        _contentLayer = [[CALayer alloc] init];
-        [_contentLayer setMask:self.maskLayer];
-    }
-    return _contentLayer;
-}
-
 
 @end

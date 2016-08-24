@@ -41,6 +41,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+#ifdef DEBUG_MEMERY
+    NSLog(@"dealloc ChatBaseVC");
+#endif
+}
+
 #pragma mark - # Public Methods
 - (void)setPartner:(id<TLChatUserProtocol>)partner
 {

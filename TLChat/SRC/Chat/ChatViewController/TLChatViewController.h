@@ -10,6 +10,6 @@
 
 @interface TLChatViewController : TLChatBaseViewController
 
-+ (TLChatViewController *) sharedChatVC;
++ (TLChatViewController *)sharedChatVC;
 
 @end

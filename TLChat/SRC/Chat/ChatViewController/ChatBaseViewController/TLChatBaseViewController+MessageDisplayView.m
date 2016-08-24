@@ -46,6 +46,7 @@
 // chatView 获取历史记录
 - (void)chatMessageDisplayView:(TLChatMessageDisplayView *)chatTVC getRecordsFromDate:(NSDate *)date count:(NSUInteger)count completed:(void (^)(NSDate *, NSArray *, BOOL))completed
 {
+    TLWeakSelf(self);
     [[TLMessageManager sharedInstance] messageRecordForPartner:[self.partner chat_userID] fromDate:date count:count complete:^(NSArray *array, BOOL hasMore) {
         if (array.count > 0) {
             int count = 0;
@@ -57,15 +58,15 @@
                     message.showTime = YES;
                 }
                 if (message.ownerTyper == TLMessageOwnerTypeSelf) {
-                    message.fromUser = self.user;
+                    message.fromUser = weakself.user;
                 }
                 else {
-                    if ([self.partner chat_userType] == TLChatUserTypeUser) {
-                        message.fromUser = self.partner;
+                    if ([weakself.partner chat_userType] == TLChatUserTypeUser) {
+                        message.fromUser = weakself.partner;
                     }
-                    else if ([self.partner chat_userType] == TLChatUserTypeGroup){
-                        if ([self.partner respondsToSelector:@selector(groupMemberByID:)]) {
-                            message.fromUser = [self.partner groupMemberByID:message.friendID];
+                    else if ([weakself.partner chat_userType] == TLChatUserTypeGroup){
+                        if ([weakself.partner respondsToSelector:@selector(groupMemberByID:)]) {
+                            message.fromUser = [weakself.partner groupMemberByID:message.friendID];
                         }
                     }
                 }

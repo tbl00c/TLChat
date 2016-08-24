@@ -58,6 +58,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+#ifdef DEBUG_MEMERY
+    NSLog(@"dealloc ChatBar");
+#endif
+}
+
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];

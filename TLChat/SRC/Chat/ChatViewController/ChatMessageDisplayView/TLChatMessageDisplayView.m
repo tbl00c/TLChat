@@ -48,6 +48,9 @@
 - (void)dealloc
 {
     [self.tableView removeObserver:self forKeyPath:@"bounds"];
+#ifdef DEBUG_MEMERY
+    NSLog(@"dealloc MessageDisplayView");
+#endif
 }
 
 #pragma mark - # Public Methods
@@ -59,14 +62,15 @@
     if (!self.disablePullToRefresh) {
         [self.tableView setMj_header:self.refresHeader];
     }
+    TLWeakSelf(self);
     [self p_tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {
         if (!hasMore) {
-            self.tableView.mj_header = nil;
+            weakself.tableView.mj_header = nil;
         }
         if (count > 0) {
-            [self.tableView reloadData];
+            [weakself.tableView reloadData];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView scrollToBottomWithAnimation:NO];
+                [weakself.tableView scrollToBottomWithAnimation:NO];
             });
         }
     }];
@@ -95,8 +99,8 @@
         return;
     }
     NSInteger index = [self.data indexOfObject:message];
-    if (_delegate && [_delegate respondsToSelector:@selector(chatMessageDisplayView:deleteMessage:)]) {
-        BOOL ok = [_delegate chatMessageDisplayView:self deleteMessage:message];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayView:deleteMessage:)]) {
+        BOOL ok = [self.delegate chatMessageDisplayView:self deleteMessage:message];
         if (ok) {
             [self.data removeObject:message];
             [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:animation ? UITableViewRowAnimationAutomatic : UITableViewRowAnimationNone];
@@ -157,8 +161,8 @@
 
 - (void)didTouchTableView
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(chatMessageDisplayViewDidTouched:)]) {
-        [_delegate chatMessageDisplayViewDidTouched:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayViewDidTouched:)]) {
+        [self.delegate chatMessageDisplayViewDidTouched:self];
     }
 }
 
@@ -168,19 +172,20 @@
  */
 - (void)p_tryToRefreshMoreRecord:(void (^)(NSInteger count, BOOL hasMore))complete
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(chatMessageDisplayView:getRecordsFromDate:count:completed:)]) {
-        [_delegate chatMessageDisplayView:self
-                        getRecordsFromDate:self.curDate
-                                     count:PAGE_MESSAGE_COUNT
-                                 completed:^(NSDate *date, NSArray *array, BOOL hasMore) {
-                                     if (array.count > 0 && [date isEqualToDate:self.curDate]) {
-                                         self.curDate = [array[0] date];
-                                         [self.data insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, array.count)]];
-                                         complete(array.count, hasMore);
-                                     }
-                                     else {
-                                         complete(0, hasMore);
-                                     }
+    TLWeakSelf(self);
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayView:getRecordsFromDate:count:completed:)]) {
+        [self.delegate chatMessageDisplayView:self
+                           getRecordsFromDate:self.curDate
+                                        count:PAGE_MESSAGE_COUNT
+                                    completed:^(NSDate *date, NSArray *array, BOOL hasMore) {
+                                        if (array.count > 0 && [date isEqualToDate:weakself.curDate]) {
+                                            weakself.curDate = [array[0] date];
+                                            [weakself.data insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, array.count)]];
+                                            complete(array.count, hasMore);
+                                        }
+                                        else {
+                                            complete(0, hasMore);
+                                        }
                                  }];
     }
 }
@@ -210,15 +215,16 @@
 - (MJRefreshNormalHeader *)refresHeader
 {
     if (_refresHeader == nil) {
+        TLWeakSelf(self);
         _refresHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [self p_tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {
-                [self.tableView.mj_header endRefreshing];
+            [weakself p_tryToRefreshMoreRecord:^(NSInteger count, BOOL hasMore) {
+                [weakself.tableView.mj_header endRefreshing];
                 if (!hasMore) {
-                    self.tableView.mj_header = nil;
+                    weakself.tableView.mj_header = nil;
                 }
                 if (count > 0) {
-                    [self.tableView reloadData];
-                    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                    [weakself.tableView reloadData];
+                    [weakself.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
                 }
             }];
         }];

@@ -1265,8 +1265,8 @@
 		C20B1AD31D5833C700D9F710 /* ChatMessageDisplayView */ = {
 			isa = PBXGroup;
 			children = (
-				C20B1AE81D5833C700D9F710 /* TLChatMessageDisplayViewDelegate.h */,
 				C20B1AD41D5833C700D9F710 /* ChatMessageCells */,
+				C20B1AE81D5833C700D9F710 /* TLChatMessageDisplayViewDelegate.h */,
 				C20B1AE61D5833C700D9F710 /* TLChatMessageDisplayView.h */,
 				C20B1AE71D5833C700D9F710 /* TLChatMessageDisplayView.m */,
 				C20B1AE41D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.h */,

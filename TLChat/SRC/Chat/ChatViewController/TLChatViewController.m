@@ -30,11 +30,12 @@ static TLChatViewController *chatVC;
 
 + (TLChatViewController *)sharedChatVC
 {
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
-        chatVC = [[TLChatViewController alloc] init];
-    });
-    return chatVC;
+//    static dispatch_once_t once;
+//    dispatch_once(&once, ^{
+//        chatVC = [[TLChatViewController alloc] init];
+//    });
+//    return chatVC;
+    return [[TLChatViewController alloc] init];
 }
 
 - (void)viewDidLoad
@@ -46,8 +47,9 @@ static TLChatViewController *chatVC;
     self.moreKBhelper = [[TLMoreKBHelper alloc] init];
     [self setChatMoreKeyboardData:self.moreKBhelper.chatMoreKeyboardData];
     self.emojiKBHelper = [TLEmojiKBHelper sharedKBHelper];
+    TLWeakSelf(self);
     [self.emojiKBHelper emojiGroupDataByUserID:[TLUserHelper sharedHelper].userID complete:^(NSMutableArray *emojiGroups) {
-        [self setChatEmojiKeyboardData:emojiGroups];
+        [weakself setChatEmojiKeyboardData:emojiGroups];
     }];
 }
 

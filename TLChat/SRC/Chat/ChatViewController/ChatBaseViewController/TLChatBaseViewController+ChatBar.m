@@ -7,8 +7,8 @@
 //
 
 #import "TLChatBaseViewController+ChatBar.h"
-#import "TLChatBaseViewController+DataDelegate.h"
-#import "TLChatBaseViewController+ChatTableView.h"
+#import "TLChatBaseViewController+Proxy.h"
+#import "TLChatBaseViewController+MessageDisplayView.h"
 #import "TLAudioRecorder.h"
 #import "TLAudioPlayer.h"
 
@@ -40,12 +40,6 @@
         make.bottom.mas_equalTo(self.view);
     }];
     [self.view layoutIfNeeded];
-    [self.messageDisplayView scrollToBottomWithAnimation:YES];
-}
-
-- (void)keyboardDidHide:(NSNotification *)notification
-{
-    [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }
 
 - (void)keyboardFrameWillChange:(NSNotification *)notification
@@ -240,6 +234,11 @@
 }
 
 //MARK: TLKeyboardDelegate
+- (void)chatKeyboardWillShow:(id)keyboard animated:(BOOL)animated
+{
+    [self.messageDisplayView scrollToBottomWithAnimation:YES];
+}
+
 - (void)chatKeyboardDidShow:(id)keyboard animated:(BOOL)animated
 {
     if (curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji) {

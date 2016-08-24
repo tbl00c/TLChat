@@ -1,15 +1,15 @@
 //
-//  TLChatBaseViewController+DataDelegate.m
+//  TLChatBaseViewController+Proxy.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLChatBaseViewController+DataDelegate.h"
-#import "TLChatBaseViewController+ChatTableView.h"
+#import "TLChatBaseViewController+Proxy.h"
+#import "TLChatBaseViewController+MessageDisplayView.h"
 
-@implementation TLChatBaseViewController (DataDelegate)
+@implementation TLChatBaseViewController (Proxy)
 
 - (void)sendMessage:(TLMessage *)message
 {

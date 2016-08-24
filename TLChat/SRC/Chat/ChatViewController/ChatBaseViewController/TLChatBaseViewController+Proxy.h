@@ -1,5 +1,5 @@
 //
-//  TLChatBaseViewController+DataDelegate.h
+//  TLChatBaseViewController+Proxy.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
@@ -8,7 +8,7 @@
 
 #import "TLChatBaseViewController.h"
 
-@interface TLChatBaseViewController (DataDelegate)
+@interface TLChatBaseViewController (Proxy)
 
 /**
  *  发送消息

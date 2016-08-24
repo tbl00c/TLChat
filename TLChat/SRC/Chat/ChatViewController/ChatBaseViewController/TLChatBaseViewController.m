@@ -7,9 +7,9 @@
 //
 
 #import "TLChatBaseViewController.h"
-#import "TLChatBaseViewController+DataDelegate.h"
+#import "TLChatBaseViewController+Proxy.h"
 #import "TLChatBaseViewController+ChatBar.h"
-#import "TLChatBaseViewController+ChatTableView.h"
+#import "TLChatBaseViewController+MessageDisplayView.h"
 #import "UIImage+Size.h"
 
 @implementation TLChatBaseViewController
@@ -31,7 +31,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
@@ -41,7 +40,6 @@
     [[TLAudioPlayer sharedAudioPlayer] stopPlayingAudio];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 
 #pragma mark - # Public Methods
 - (void)setPartner:(id<TLChatUserProtocol>)partner

@@ -13,7 +13,6 @@
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardDidShow:(NSNotification *)notification;
 - (void)keyboardWillHide:(NSNotification *)notification;
-- (void)keyboardDidHide:(NSNotification *)notification;
 - (void)keyboardFrameWillChange:(NSNotification *)notification;
 
 

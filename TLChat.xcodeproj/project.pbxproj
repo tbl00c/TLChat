@@ -74,8 +74,8 @@
 		C214315B1CD6336600CBD933 /* TLActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C214315A1CD6336600CBD933 /* TLActionSheet.m */; };
 		C21573F31C9BAC4200B7AC67 /* TLChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573951C9BAC4200B7AC67 /* TLChatBar.m */; };
 		C21573F41C9BAC4200B7AC67 /* TLChatBaseViewController+ChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C215739A1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatBar.m */; };
-		C21573F51C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C215739C1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableView.m */; };
-		C21573F61C9BAC4200B7AC67 /* TLChatBaseViewController+DataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C215739E1C9BAC4200B7AC67 /* TLChatBaseViewController+DataDelegate.m */; };
+		C21573F51C9BAC4200B7AC67 /* TLChatBaseViewController+MessageDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C215739C1C9BAC4200B7AC67 /* TLChatBaseViewController+MessageDisplayView.m */; };
+		C21573F61C9BAC4200B7AC67 /* TLChatBaseViewController+Proxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C215739E1C9BAC4200B7AC67 /* TLChatBaseViewController+Proxy.m */; };
 		C21573F91C9BAC4200B7AC67 /* TLChatBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573A41C9BAC4200B7AC67 /* TLChatBaseViewController.m */; };
 		C21573FA1C9BAC4200B7AC67 /* TLChatCellMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573A81C9BAC4200B7AC67 /* TLChatCellMenuView.m */; };
 		C21573FB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573AB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m */; };
@@ -460,10 +460,10 @@
 		C21573961C9BAC4200B7AC67 /* TLChatBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBarDelegate.h; sourceTree = "<group>"; };
 		C21573991C9BAC4200B7AC67 /* TLChatBaseViewController+ChatBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLChatBaseViewController+ChatBar.h"; sourceTree = "<group>"; };
 		C215739A1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatBaseViewController+ChatBar.m"; sourceTree = "<group>"; };
-		C215739B1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLChatBaseViewController+ChatTableView.h"; sourceTree = "<group>"; };
-		C215739C1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatBaseViewController+ChatTableView.m"; sourceTree = "<group>"; };
-		C215739D1C9BAC4200B7AC67 /* TLChatBaseViewController+DataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLChatBaseViewController+DataDelegate.h"; sourceTree = "<group>"; };
-		C215739E1C9BAC4200B7AC67 /* TLChatBaseViewController+DataDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatBaseViewController+DataDelegate.m"; sourceTree = "<group>"; };
+		C215739B1C9BAC4200B7AC67 /* TLChatBaseViewController+MessageDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLChatBaseViewController+MessageDisplayView.h"; sourceTree = "<group>"; };
+		C215739C1C9BAC4200B7AC67 /* TLChatBaseViewController+MessageDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatBaseViewController+MessageDisplayView.m"; sourceTree = "<group>"; };
+		C215739D1C9BAC4200B7AC67 /* TLChatBaseViewController+Proxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLChatBaseViewController+Proxy.h"; sourceTree = "<group>"; };
+		C215739E1C9BAC4200B7AC67 /* TLChatBaseViewController+Proxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLChatBaseViewController+Proxy.m"; sourceTree = "<group>"; };
 		C21573A31C9BAC4200B7AC67 /* TLChatBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatBaseViewController.h; sourceTree = "<group>"; };
 		C21573A41C9BAC4200B7AC67 /* TLChatBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChatBaseViewController.m; sourceTree = "<group>"; };
 		C21573A71C9BAC4200B7AC67 /* TLChatCellMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatCellMenuView.h; sourceTree = "<group>"; };
@@ -1636,12 +1636,12 @@
 				C21431571CD5C53100CBD933 /* TLChatViewControllerProxy.h */,
 				C21573A31C9BAC4200B7AC67 /* TLChatBaseViewController.h */,
 				C21573A41C9BAC4200B7AC67 /* TLChatBaseViewController.m */,
+				C215739B1C9BAC4200B7AC67 /* TLChatBaseViewController+MessageDisplayView.h */,
+				C215739C1C9BAC4200B7AC67 /* TLChatBaseViewController+MessageDisplayView.m */,
 				C21573991C9BAC4200B7AC67 /* TLChatBaseViewController+ChatBar.h */,
 				C215739A1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatBar.m */,
-				C215739B1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableView.h */,
-				C215739C1C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableView.m */,
-				C215739D1C9BAC4200B7AC67 /* TLChatBaseViewController+DataDelegate.h */,
-				C215739E1C9BAC4200B7AC67 /* TLChatBaseViewController+DataDelegate.m */,
+				C215739D1C9BAC4200B7AC67 /* TLChatBaseViewController+Proxy.h */,
+				C215739E1C9BAC4200B7AC67 /* TLChatBaseViewController+Proxy.m */,
 			);
 			path = ChatBaseViewController;
 			sourceTree = "<group>";
@@ -3330,7 +3330,7 @@
 				C2D69D911C929AE100EE91D7 /* TLAddMenuView.m in Sources */,
 				C2F0EBF81C7A0DC90090843C /* TLCommonSettingHelper.m in Sources */,
 				C2CF4C9A1C80655D0054637A /* TLInfo.m in Sources */,
-				C21573F61C9BAC4200B7AC67 /* TLChatBaseViewController+DataDelegate.m in Sources */,
+				C21573F61C9BAC4200B7AC67 /* TLChatBaseViewController+Proxy.m in Sources */,
 				C271A5061C83FEC8004372D4 /* TLFriendDetailUserCell.m in Sources */,
 				C2C826711CCB7CD6002ECE51 /* TLMomentImageView.m in Sources */,
 				C2E570051C89831A009662AB /* TLScannerView.m in Sources */,
@@ -3365,7 +3365,7 @@
 				C2BF17D21C86DB50003318CB /* UIButton+TLChat.m in Sources */,
 				C2CF4C8C1C804BFE0054637A /* TLSettingHeaderTitleView.m in Sources */,
 				C2994D8F1CA167CF00BAC038 /* TLUserGroup.m in Sources */,
-				C21573F51C9BAC4200B7AC67 /* TLChatBaseViewController+ChatTableView.m in Sources */,
+				C21573F51C9BAC4200B7AC67 /* TLChatBaseViewController+MessageDisplayView.m in Sources */,
 				C2B9E4311C65F53700CEBA81 /* TLMineHelper.m in Sources */,
 				C29A7D461CB79A17008ECA97 /* TLExpressionDetailViewController.m in Sources */,
 				C2232E6E1CA013CB0010CDF8 /* TLChatFontViewController.m in Sources */,
@@ -3675,7 +3675,7 @@
 				INFOPLIST_FILE = TLChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3699,7 +3699,7 @@
 				INFOPLIST_FILE = TLChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

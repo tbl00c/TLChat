@@ -1,15 +1,15 @@
 //
-//  TLChatBaseViewController+ChatTableView.m
+//  TLChatBaseViewController+MessageDisplayView.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLChatBaseViewController+ChatTableView.h"
+#import "TLChatBaseViewController+MessageDisplayView.h"
 #import "TLTextDisplayView.h"
 
-@implementation TLChatBaseViewController (ChatTableView)
+@implementation TLChatBaseViewController (MessageDisplayView)
 
 #pragma mark - # Public Methods
 - (void)addToShowMessage:(TLMessage *)message

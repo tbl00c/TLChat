@@ -1,5 +1,5 @@
 //
-//  TLChatBaseViewController+ChatTableView.h
+//  TLChatBaseViewController+MessageDisplayView.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/3/17.
@@ -12,7 +12,7 @@
 #define     MAX_SHOWTIME_MSG_COUNT      10
 #define     MAX_SHOWTIME_MSG_SECOND     30
 
-@interface TLChatBaseViewController (ChatTableView) <TLChatMessageDisplayViewDelegate>
+@interface TLChatBaseViewController (MessageDisplayView) <TLChatMessageDisplayViewDelegate>
 
 /**
  *  添加展示消息（添加到chatVC）

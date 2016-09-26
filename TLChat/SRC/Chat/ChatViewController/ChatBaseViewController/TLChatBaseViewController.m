@@ -75,7 +75,10 @@
 
 - (void)resetChatVC
 {
-    NSString *chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:[@"CHAT_BG_" stringByAppendingString:[self.partner chat_userID]]];
+    NSString *chatViewBGImage;
+    if (self.partner) {
+        chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:[@"CHAT_BG_" stringByAppendingString:[self.partner chat_userID]]];
+    }
     if (chatViewBGImage == nil) {
         chatViewBGImage = [[NSUserDefaults standardUserDefaults] objectForKey:@"CHAT_BG_ALL"];
         if (chatViewBGImage == nil) {

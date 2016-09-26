@@ -30,6 +30,7 @@
 {
     [self.msgImageView setAlpha:1.0];       // 取消长按效果
     if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
+        NSLog(@"%@ %@", self.message.messageID, message.messageID);
         return;
     }
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
@@ -56,7 +57,7 @@
                         [data writeToFile:cachePath atomically:NO];      // 再写入到缓存中
                         if ([[imageURL description] isEqualToString:[(TLExpressionMessage *)weakSelf.message url]]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
+                                [weakSelf.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
                             });
                         }
                     });

@@ -44,33 +44,38 @@
 {
     if (_sendButtonStatus != sendButtonStatus) {
         if (_sendButtonStatus == TLGroupControlSendButtonStatusNone) {
-            [UIView animateWithDuration:BORDER_WIDTH_1PX animations:^{
-                [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
-                    make.right.mas_equalTo(self);
-                }];
+            [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self);
+            }];
+            [UIView animateWithDuration:0.3 animations:^{
                 [self layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                [self.collectionView reloadData];
+                [self.collectionView selectItemAtIndexPath:self.curIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            }];
+            if (sendButtonStatus == TLGroupControlSendButtonStatusBlue) {
+                [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_blue"] forState:UIControlStateNormal];
+                [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_blueHL"] forState:UIControlStateHighlighted];
+                [_sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            }
+            else if (sendButtonStatus == TLGroupControlSendButtonStatusGray) {
+                [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateNormal];
+                [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateHighlighted];
+                [_sendButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            }
+        }
+        else if (sendButtonStatus == TLGroupControlSendButtonStatusNone) {
+            [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(self).mas_offset(WIDTH_SENDBUTTON);
+            }];
+            [UIView animateWithDuration:0.3 animations:^{
+                [self layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                [self.collectionView reloadData];
+                [self.collectionView selectItemAtIndexPath:self.curIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
             }];
         }
-        
         _sendButtonStatus = sendButtonStatus;
-        if (sendButtonStatus == TLGroupControlSendButtonStatusNone) {
-            [UIView animateWithDuration:BORDER_WIDTH_1PX animations:^{
-                [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
-                    make.right.mas_equalTo(self).mas_offset(WIDTH_SENDBUTTON);
-                }];
-                [self layoutIfNeeded];
-            }];
-        }
-        else if (sendButtonStatus == TLGroupControlSendButtonStatusBlue) {
-            [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_blue"] forState:UIControlStateNormal];
-            [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_blueHL"] forState:UIControlStateHighlighted];
-            [_sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        }
-        else if (sendButtonStatus == TLGroupControlSendButtonStatusGray) {
-            [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateNormal];
-            [_sendButton setBackgroundImage:[UIImage imageNamed:@"emojiKB_sendBtn_gray"] forState:UIControlStateHighlighted];
-            [_sendButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        }
     }
 }
 
@@ -88,14 +93,17 @@
 
 - (void)setCurIndexPath:(NSIndexPath *)curIndexPath
 {
-    [self.collectionView selectItemAtIndexPath:curIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-    if (_curIndexPath && _curIndexPath.section == curIndexPath.section && _curIndexPath.row == curIndexPath.row) {
-        return;
-    }
-    _curIndexPath = curIndexPath;
-    if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControl:didSelectedGroup:)]) {
-        TLEmojiGroup *group = [self.emojiGroupData[curIndexPath.section] objectAtIndex:curIndexPath.row];
-        [_delegate emojiGroupControl:self didSelectedGroup:group];
+    [self.collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
+    if (curIndexPath.row < self.emojiGroupData.count) {
+        [self.collectionView selectItemAtIndexPath:curIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+        if (_curIndexPath && _curIndexPath.section == curIndexPath.section && _curIndexPath.row == curIndexPath.row) {
+            return;
+        }
+        _curIndexPath = curIndexPath;
+        if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControl:didSelectedGroup:)]) {
+            TLEmojiGroup *group = [self.emojiGroupData[curIndexPath.section] objectAtIndex:curIndexPath.row];
+            [_delegate emojiGroupControl:self didSelectedGroup:group];
+        }
     }
 }
 

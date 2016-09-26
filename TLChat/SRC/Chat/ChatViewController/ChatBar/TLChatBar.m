@@ -291,19 +291,14 @@
 }
 
 #pragma mark - Private Methods
-static BOOL isStartingAnimation = NO;
 - (void)p_reloadTextViewWithAnimation:(BOOL)animation
 {
-    if (isStartingAnimation) {
-        return;
-    }
     CGFloat textHeight = [self.textView sizeThatFits:CGSizeMake(self.textView.width, MAXFLOAT)].height;
     CGFloat height = textHeight > HEIGHT_CHATBAR_TEXTVIEW ? textHeight : HEIGHT_CHATBAR_TEXTVIEW;
     height = (textHeight <= HEIGHT_MAX_CHATBAR_TEXTVIEW ? textHeight : HEIGHT_MAX_CHATBAR_TEXTVIEW);
     [self.textView setScrollEnabled:textHeight > height];
     if (height != self.textView.height) {
         if (animation) {
-            isStartingAnimation = YES;
             [UIView animateWithDuration:0.2 animations:^{
                 [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.height.mas_equalTo(height);
@@ -315,7 +310,6 @@ static BOOL isStartingAnimation = NO;
                     [self.delegate chatBar:self didChangeTextViewHeight:self.textView.height];
                 }
             } completion:^(BOOL finished) {
-                isStartingAnimation = NO;
                 if (textHeight > height) {
                     [self.textView setContentOffset:CGPointMake(0, textHeight - height) animated:YES];
                 }
@@ -341,13 +335,9 @@ static BOOL isStartingAnimation = NO;
     }
     else if (textHeight > height) {
         if (animation) {
-            isStartingAnimation = YES;
             CGFloat offsetY = self.textView.contentSize.height - self.textView.height;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.textView setContentOffset:CGPointMake(0, offsetY) animated:YES];
-            });
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                isStartingAnimation = NO;
             });
         }
         else {

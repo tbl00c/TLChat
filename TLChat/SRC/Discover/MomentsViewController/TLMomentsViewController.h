@@ -7,12 +7,9 @@
 //
 
 #import "TLTableViewController.h"
-#import "TLMomentsProxy.h"
 
 @interface TLMomentsViewController : TLTableViewController
 
 @property (nonatomic, strong) NSMutableArray *data;
-
-@property (nonatomic, strong) TLMomentsProxy *proxy;
 
 @end

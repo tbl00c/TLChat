@@ -7,7 +7,6 @@
 //
 
 #import "TLViewController.h"
-#import "TLExpressionProxy.h"
 
 @interface TLExpressionPublicViewController : TLViewController
 {
@@ -15,8 +14,6 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *data;
-
-@property (nonatomic, strong) TLExpressionProxy *proxy;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 

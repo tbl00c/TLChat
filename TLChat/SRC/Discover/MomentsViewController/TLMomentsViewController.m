@@ -31,13 +31,4 @@
     [self loadData];
 }
 
-#pragma mark - # Getter
-- (TLMomentsProxy *)proxy
-{
-    if (_proxy == nil) {
-        _proxy = [[TLMomentsProxy alloc] init];
-    }
-    return _proxy;
-}
-
 @end

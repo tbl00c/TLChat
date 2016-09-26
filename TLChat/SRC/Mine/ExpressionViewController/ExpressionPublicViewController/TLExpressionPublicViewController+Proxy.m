@@ -8,6 +8,7 @@
 
 #import "TLExpressionPublicViewController+Proxy.h"
 #import "TLExpressionHelper.h"
+#import "TLExpressionProxy.h"
 #import <MJRefresh.h>
 
 @implementation TLExpressionPublicViewController (Proxy)
@@ -18,11 +19,11 @@
         [SVProgressHUD show];
     }
     kPageIndex = 1;
-    __weak typeof(self) weakSelf = self;
-    [self.proxy requestExpressionPublicListByPageIndex:kPageIndex success:^(id data) {
+    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
+    [proxy requestExpressionPublicListByPageIndex:kPageIndex success:^(id data) {
         [SVProgressHUD dismiss];
         kPageIndex ++;
-        weakSelf.data = [[NSMutableArray alloc] init];
+        self.data = [[NSMutableArray alloc] init];
         for (TLEmojiGroup *group in data) {     // 优先使用本地表情
             TLEmojiGroup *localEmojiGroup = [[TLExpressionHelper sharedHelper] emojiGroupByID:group.groupID];
             if (localEmojiGroup) {
@@ -32,7 +33,7 @@
                 [self.data addObject:group];
             }
         }
-        [weakSelf.collectionView reloadData];
+        [self.collectionView reloadData];
     } failure:^(NSString *error) {
         [SVProgressHUD dismiss];
     }];
@@ -40,8 +41,8 @@
 
 - (void)loadMoreData
 {
-    __weak typeof(self) weakSelf = self;
-    [self.proxy requestExpressionPublicListByPageIndex:kPageIndex success:^(NSMutableArray *data) {
+    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
+    [proxy requestExpressionPublicListByPageIndex:kPageIndex success:^(NSMutableArray *data) {
         [SVProgressHUD dismiss];
         if (data.count == 0) {
             [self.collectionView.mj_footer endRefreshingWithNoMoreData];
@@ -58,7 +59,7 @@
                     [self.data addObject:group];
                 }
             }
-            [weakSelf.collectionView reloadData];
+            [self.collectionView reloadData];
         }
     } failure:^(NSString *error) {
         [self.collectionView.mj_footer endRefreshingWithNoMoreData];

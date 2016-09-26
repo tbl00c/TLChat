@@ -46,14 +46,6 @@
 }
 
 #pragma mark - # Getter
-- (TLExpressionProxy *)proxy
-{
-    if (_proxy == nil) {
-        _proxy = [[TLExpressionProxy alloc] init];
-    }
-    return _proxy;
-}
-
 - (TLSearchController *)searchController
 {
     if (_searchController == nil) {

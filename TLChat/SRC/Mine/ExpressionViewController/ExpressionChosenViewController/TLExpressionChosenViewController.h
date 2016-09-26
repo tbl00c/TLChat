@@ -8,7 +8,6 @@
 
 #import "TLTableViewController.h"
 #import "TLExpressionHelper.h"
-#import "TLExpressionProxy.h"
 
 @interface TLExpressionChosenViewController : TLTableViewController
 {
@@ -18,8 +17,6 @@
 @property (nonatomic, strong) NSMutableArray *data;
 
 @property (nonatomic, strong) NSArray *bannerData;
-
-@property (nonatomic, strong) TLExpressionProxy *proxy;
 
 
 @end

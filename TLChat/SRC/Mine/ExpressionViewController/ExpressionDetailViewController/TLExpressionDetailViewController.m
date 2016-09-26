@@ -15,8 +15,6 @@
     NSInteger kPageIndex;
 }
 
-@property (nonatomic, strong) TLExpressionProxy *proxy;
-
 @end
 
 @implementation TLExpressionDetailViewController
@@ -61,25 +59,17 @@
 - (void)p_loadData
 {
     kPageIndex = 1;
-    __weak typeof(self) weakSelf = self;
-    [self.proxy requestExpressionGroupDetailByGroupID:self.group.groupID pageIndex:kPageIndex success:^(id data) {
+    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
+    [proxy requestExpressionGroupDetailByGroupID:self.group.groupID pageIndex:kPageIndex success:^(id data) {
         [SVProgressHUD dismiss];
-        weakSelf.group.data = data;
-        [weakSelf.collectionView reloadData];
+        self.group.data = data;
+        [self.collectionView reloadData];
     } failure:^(NSString *error) {
         [SVProgressHUD dismiss];
     }];
 }
 
 #pragma mark - # Getter
-- (TLExpressionProxy *)proxy
-{
-    if (_proxy == nil) {
-        _proxy = [[TLExpressionProxy alloc] init];
-    }
-    return _proxy;
-}
-
 - (UICollectionView *)collectionView
 {
     if (_collectionView == nil) {

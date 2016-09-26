@@ -9,6 +9,7 @@
 #import "TLExpressionChosenViewController+TableView.h"
 #import "TLExpressionDetailViewController.h"
 #import "TLExpressionHelper.h"
+#import "TLExpressionProxy.h"
 
 @implementation TLExpressionChosenViewController (TableView)
 
@@ -86,7 +87,8 @@
 - (void)expressionCellDownloadButtonDown:(TLEmojiGroup *)group
 {
     group.status = TLEmojiGroupStatusDownloading;
-    [self.proxy requestExpressionGroupDetailByGroupID:group.groupID pageIndex:1 success:^(id data) {
+    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
+    [proxy requestExpressionGroupDetailByGroupID:group.groupID pageIndex:1 success:^(id data) {
         group.data = data;
         [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
             

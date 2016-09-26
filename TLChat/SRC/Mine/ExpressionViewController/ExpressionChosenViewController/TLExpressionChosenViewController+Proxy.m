@@ -7,6 +7,7 @@
 //
 
 #import "TLExpressionChosenViewController+Proxy.h"
+#import "TLExpressionProxy.h"
 #import <MJRefresh.h>
 
 @implementation TLExpressionChosenViewController (Proxy)
@@ -17,11 +18,11 @@
         [SVProgressHUD show];
     }
     kPageIndex = 1;
-    __weak typeof(self) weakSelf = self;
-    [self.proxy requestExpressionChosenListByPageIndex:kPageIndex success:^(id data) {
+    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
+    [proxy requestExpressionChosenListByPageIndex:kPageIndex success:^(id data) {
         [SVProgressHUD dismiss];
         kPageIndex ++;
-        weakSelf.data = [[NSMutableArray alloc] init];
+        self.data = [[NSMutableArray alloc] init];
         for (TLEmojiGroup *group in data) {     // 优先使用本地表情
             TLEmojiGroup *localEmojiGroup = [[TLExpressionHelper sharedHelper] emojiGroupByID:group.groupID];
             if (localEmojiGroup) {
@@ -31,12 +32,12 @@
                 [self.data addObject:group];
             }
         }
-        [weakSelf.tableView reloadData];
+        [self.tableView reloadData];
     } failure:^(NSString *error) {
         [SVProgressHUD dismiss];
     }];
     
-    [self.proxy requestExpressionChosenBannerSuccess:^(id data) {
+    [proxy requestExpressionChosenBannerSuccess:^(id data) {
         self.bannerData = data;
         [self.tableView reloadData];
     } failure:^(NSString *error) {
@@ -46,8 +47,8 @@
 
 - (void)loadMoreData
 {
-    __weak typeof(self) weakSelf = self;
-    [self.proxy requestExpressionChosenListByPageIndex:kPageIndex success:^(NSMutableArray *data) {
+    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
+    [proxy requestExpressionChosenListByPageIndex:kPageIndex success:^(NSMutableArray *data) {
         [SVProgressHUD dismiss];
         if (data.count == 0) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
@@ -64,7 +65,7 @@
                     [self.data addObject:group];
                 }
             }
-            [weakSelf.tableView reloadData];
+            [self.tableView reloadData];
         }
     } failure:^(NSString *error) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];

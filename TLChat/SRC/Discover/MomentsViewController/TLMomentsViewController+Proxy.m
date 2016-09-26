@@ -7,12 +7,14 @@
 //
 
 #import "TLMomentsViewController+Proxy.h"
+#import "TLMomentsProxy.h"
 
 @implementation TLMomentsViewController (Proxy)
 
 - (void)loadData
 {
-    self.data = [NSMutableArray arrayWithArray:self.proxy.testData];
+    TLMomentsProxy *proxy = [[TLMomentsProxy alloc] init];
+    self.data = [NSMutableArray arrayWithArray:proxy.testData];
     [self.tableView reloadData];
 }
 

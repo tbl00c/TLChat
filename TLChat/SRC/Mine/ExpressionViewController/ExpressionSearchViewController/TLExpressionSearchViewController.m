@@ -17,8 +17,6 @@
 
 @interface TLExpressionSearchViewController () <TLExpressionCellDelegate>
 
-@property (nonatomic, strong) TLExpressionProxy *proxy;
-
 @property (nonatomic, strong) NSArray *data;
 
 @end
@@ -90,7 +88,8 @@
     NSString *keyword = searchBar.text;
     if (keyword.length > 0) {
         [SVProgressHUD show];
-        [self.proxy requestExpressionSearchByKeyword:keyword success:^(NSArray *data) {
+        TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
+        [proxy requestExpressionSearchByKeyword:keyword success:^(NSArray *data) {
             self.data = data;
             [self.tableView reloadData];
             [SVProgressHUD dismiss];
@@ -106,7 +105,8 @@
 - (void)expressionCellDownloadButtonDown:(TLEmojiGroup *)group
 {
     group.status = TLEmojiGroupStatusDownloading;
-    [self.proxy requestExpressionGroupDetailByGroupID:group.groupID pageIndex:1 success:^(id data) {
+    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
+    [proxy requestExpressionGroupDetailByGroupID:group.groupID pageIndex:1 success:^(id data) {
         group.data = data;
         [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
             
@@ -132,15 +132,6 @@
 //MARK: UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
 
-}
-
-#pragma mark - # Getter
-- (TLExpressionProxy *)proxy
-{
-    if (_proxy == nil) {
-        _proxy = [[TLExpressionProxy alloc] init];
-    }
-    return _proxy;
 }
 
 @end

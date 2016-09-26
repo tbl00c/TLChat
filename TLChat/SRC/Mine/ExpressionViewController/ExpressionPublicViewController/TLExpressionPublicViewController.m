@@ -76,14 +76,6 @@
     return _searchVC;
 }
 
-- (TLExpressionProxy *)proxy
-{
-    if (_proxy == nil) {
-        _proxy = [[TLExpressionProxy alloc] init];
-    }
-    return _proxy;
-}
-
 - (UICollectionView *)collectionView
 {
     if (_collectionView == nil) {

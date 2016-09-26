@@ -92,6 +92,7 @@
         [[TLAudioPlayer sharedAudioPlayer] stopPlayingAudio];
     }
     
+    [self.recorderIndicatorView setStatus:TLRecorderStatusRecording];
     [self.messageDisplayView addSubview:self.recorderIndicatorView];
     [self.recorderIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.view);

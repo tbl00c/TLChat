@@ -39,7 +39,7 @@ static TLUserHelper *helper;
         self.user.detailInfo.location = @"山东 滨州";
         self.user.detailInfo.sex = @"男";
         self.user.detailInfo.motto = @"Hello world!";
-        self.user.detailInfo.momentsWallURL = @"http://www.jszhongzhu.com/img/aHR0cDovL2ltZy5wY29ubGluZS5jb20uY24vaW1hZ2VzL3VwbG9hZC91cGMvdHgvd2FsbHBhcGVyLzEzMDEvMDgvYzEvMTcyMjg4OThfMTM1NzYyNzQ2MDEwNl84MDB4NjAwLmpwZw==.jpg";
+        self.user.detailInfo.momentsWallURL = @"http://img06.tooopen.com/images/20160913/tooopen_sy_178786212749.jpg";
     }
     return self;
 }

@@ -30,12 +30,11 @@ static TLChatViewController *chatVC;
 
 + (TLChatViewController *)sharedChatVC
 {
-//    static dispatch_once_t once;
-//    dispatch_once(&once, ^{
-//        chatVC = [[TLChatViewController alloc] init];
-//    });
-//    return chatVC;
-    return [[TLChatViewController alloc] init];
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        chatVC = [[TLChatViewController alloc] init];
+    });
+    return chatVC;
 }
 
 - (void)viewDidLoad

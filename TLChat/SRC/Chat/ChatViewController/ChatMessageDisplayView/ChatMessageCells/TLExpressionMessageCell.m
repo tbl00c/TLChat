@@ -29,10 +29,9 @@
 - (void)setMessage:(TLExpressionMessage *)message
 {
     [self.msgImageView setAlpha:1.0];       // 取消长按效果
-    if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
-        NSLog(@"%@ %@", self.message.messageID, message.messageID);
-        return;
-    }
+//    if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
+//        return;
+//    }
     TLMessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
     

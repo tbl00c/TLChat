@@ -8,7 +8,9 @@
 
 #import "TLMoreKeyboard.h"
 
-@interface TLMoreKeyboard (CollectionView) <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface TLMoreKeyboard (CollectionView) <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, assign, readonly) NSInteger pageItemCount;
 
 - (void)registerCellClass;
 

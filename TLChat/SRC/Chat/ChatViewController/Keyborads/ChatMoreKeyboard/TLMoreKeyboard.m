@@ -10,10 +10,6 @@
 #import "TLMoreKeyboard+CollectionView.h"
 #import "TLChatMacros.h"
 
-#define     HEIGHT_TOP_SPACE            15
-#define     HEIGHT_COLLECTIONVIEW       (HEIGHT_CHAT_KEYBOARD * 0.85 - HEIGHT_TOP_SPACE)
-#define     WIDTH_COLLECTION_CELL       60
-
 static TLMoreKeyboard *moreKB;
 
 @implementation TLMoreKeyboard
@@ -34,27 +30,33 @@ static TLMoreKeyboard *moreKB;
         [self addSubview:self.collectionView];
         [self addSubview:self.pageControl];
         [self p_addMasonry];
+        
         [self registerCellClass];
     }
     return self;
 }
 
+- (CGFloat)keyboardHeight
+{
+    return HEIGHT_CHAT_KEYBOARD;
+}
+
 #pragma mark - # Public Methods
+- (void)setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData
+{
+    _chatMoreKeyboardData = chatMoreKeyboardData;
+    [self.collectionView reloadData];
+    NSUInteger pageNumber = chatMoreKeyboardData.count / self.pageItemCount + (chatMoreKeyboardData.count % self.pageItemCount == 0 ? 0 : 1);
+    [self.pageControl setNumberOfPages:pageNumber];
+}
+
 - (void)reset
 {
     [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
 }
 
-- (void)setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData
-{
-    _chatMoreKeyboardData = chatMoreKeyboardData;
-    [self.collectionView reloadData];
-    NSUInteger pageNumber = chatMoreKeyboardData.count / 8 + (chatMoreKeyboardData.count % 8 == 0 ? 0 : 1);
-    [self.pageControl setNumberOfPages:pageNumber];
-}
-
 #pragma mark - # Event Response
-- (void) pageControlChanged:(UIPageControl *)pageControl
+- (void)pageControlChanged:(UIPageControl *)pageControl
 {
     [self.collectionView scrollRectToVisible:CGRectMake(self.collectionView.width * pageControl.currentPage, 0, self.collectionView.width, self.collectionView.height) animated:YES];
 }
@@ -62,15 +64,18 @@ static TLMoreKeyboard *moreKB;
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(WIDTH_SCREEN, self.keyboardHeight));
+    }];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self).mas_offset(HEIGHT_TOP_SPACE);
+        make.top.mas_equalTo(self);
         make.left.and.right.mas_equalTo(self);
-        make.height.mas_equalTo(HEIGHT_COLLECTIONVIEW);
+        make.bottom.mas_equalTo(-25);
     }];
     [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self);
-        make.top.mas_equalTo(self.collectionView.mas_bottom);
-        make.bottom.mas_equalTo(self).mas_offset(-2);
+        make.height.mas_equalTo(20);
+        make.bottom.mas_equalTo(-2);
     }];
 }
 
@@ -92,14 +97,6 @@ static TLMoreKeyboard *moreKB;
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        float h = HEIGHT_COLLECTIONVIEW / 2 * 0.93;
-        float spaceX = (WIDTH_SCREEN - WIDTH_COLLECTION_CELL * 4) / 5;
-        float spaceY = HEIGHT_COLLECTIONVIEW - h * 2;
-        [layout setItemSize:CGSizeMake(WIDTH_COLLECTION_CELL, h)];
-        [layout setMinimumInteritemSpacing:spaceY];
-        [layout setMinimumLineSpacing:spaceX];
-        [layout setHeaderReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
-        [layout setFooterReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor clearColor]];
         [_collectionView setPagingEnabled:YES];
@@ -116,7 +113,6 @@ static TLMoreKeyboard *moreKB;
 {
     if (_pageControl == nil) {
         _pageControl = [[UIPageControl alloc] init];
-        _pageControl.centerX = self.centerX;
         [_pageControl setPageIndicatorTintColor:[UIColor colorGrayLine]];
         [_pageControl setCurrentPageIndicatorTintColor:[UIColor grayColor]];
         [_pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];

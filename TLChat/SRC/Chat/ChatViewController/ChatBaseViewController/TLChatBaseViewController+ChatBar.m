@@ -31,9 +31,8 @@
     else if (curStatus == TLChatBarStatusEmoji) {
         [self.emojiKeyboard dismissWithAnimation:YES];
     }
-    else {
-        [self.chatBar resignFirstResponder];
-    }
+ 
+    [self.chatBar resignFirstResponder];
 }
 
 //MARK: 系统键盘回调
@@ -301,6 +300,11 @@
 - (void)emojiKeyboardSendButtonDown
 {
     [self.chatBar sendCurrentText];
+}
+
+- (void)emojiKeyboardDeleteButtonDown
+{
+    [self.chatBar deleteLastCharacter];
 }
 
 - (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didTouchEmojiItem:(TLEmoji *)emoji atRect:(CGRect)rect

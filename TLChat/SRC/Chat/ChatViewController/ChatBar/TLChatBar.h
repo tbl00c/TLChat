@@ -30,4 +30,9 @@
  */
 - (void)sendCurrentText;
 
+/**
+ *  删除最后一个字符
+ */
+- (void)deleteLastCharacter;
+
 @end

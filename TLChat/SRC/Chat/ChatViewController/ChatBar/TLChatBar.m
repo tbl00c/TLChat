@@ -91,6 +91,11 @@
     [self p_reloadTextViewWithAnimation:YES];
 }
 
+- (void)deleteLastCharacter
+{
+    [self textView:self.textView shouldChangeTextInRange:NSMakeRange(self.textView.text.length - 1, 1) replacementText:@""];
+}
+
 - (void)setActivity:(BOOL)activity
 {
     _activity = activity;
@@ -112,15 +117,16 @@
 
 - (BOOL)resignFirstResponder
 {
-    if (self.status == TLChatBarStatusKeyboard) {
-        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
-        }
-        [self.textView resignFirstResponder];
-        self.status = TLChatBarStatusInit;
-        [_moreButton setImage:kMoreImage imageHL:kMoreImageHL];
-        [_emojiButton setImage:kEmojiImage imageHL:kEmojiImageHL];
+    [self.textView resignFirstResponder];
+    [self.moreButton setImage:kMoreImage imageHL:kMoreImageHL];
+    [self.emojiButton setImage:kEmojiImage imageHL:kEmojiImageHL];
+    
+    TLChatBarStatus status = (self.status == TLChatBarStatusVoice ? TLChatBarStatusVoice : TLChatBarStatusInit);
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+        [self.delegate chatBar:self changeStatusFrom:self.status to:status];
     }
+    self.status = status;
+    
     return [super resignFirstResponder];
 }
 
@@ -160,6 +166,7 @@
                 char c = [textView.text characterAtIndex:location];
                 if (c == '[') {
                     textView.text = [textView.text stringByReplacingCharactersInRange:NSMakeRange(location, length) withString:@""];
+                    [self p_reloadTextViewWithAnimation:YES];
                     return NO;
                 }
                 else if (c == ']') {
@@ -170,6 +177,11 @@
     }
     
     return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [self p_reloadTextViewWithAnimation:YES];
 }
 
 - (void)textViewDidChange:(UITextView *)textView

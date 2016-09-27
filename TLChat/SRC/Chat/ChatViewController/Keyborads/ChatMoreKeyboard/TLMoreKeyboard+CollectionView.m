@@ -60,7 +60,7 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return (WIDTH_SCREEN - WIDTH_CELL * self.pageItemCount / 2) / (self.pageItemCount / 2 + 1);
+    return (collectionView.width - WIDTH_CELL * self.pageItemCount / 2) / (self.pageItemCount / 2 + 1);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
@@ -70,13 +70,13 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    CGFloat space = (WIDTH_SCREEN - WIDTH_CELL * self.pageItemCount / 2) / (self.pageItemCount / 2 + 1);
+    CGFloat space = (collectionView.width - WIDTH_CELL * self.pageItemCount / 2) / (self.pageItemCount / 2 + 1);
     return UIEdgeInsetsMake(SPACE_TOP, space, 0, space);
 }
 //Mark: UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self.pageControl setCurrentPage:(int)(scrollView.contentOffset.x / WIDTH_SCREEN)];
+    [self.pageControl setCurrentPage:(int)(scrollView.contentOffset.x / scrollView.width)];
 }
 
 #pragma mark - Private Methods -

@@ -64,9 +64,6 @@ static TLMoreKeyboard *moreKB;
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(WIDTH_SCREEN, self.keyboardHeight));
-    }];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self);
         make.left.and.right.mas_equalTo(self);

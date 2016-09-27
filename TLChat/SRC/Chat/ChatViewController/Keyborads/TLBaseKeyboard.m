@@ -29,7 +29,7 @@
     CGFloat keyboardHeight = [self keyboardHeight];
     [self mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(view);
-        make.size.mas_equalTo(keyboardHeight);
+        make.height.mas_equalTo(keyboardHeight);
         make.bottom.mas_equalTo(view).mas_offset(keyboardHeight);
     }];
     [view layoutIfNeeded];

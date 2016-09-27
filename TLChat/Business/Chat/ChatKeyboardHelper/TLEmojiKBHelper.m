@@ -16,7 +16,7 @@ static TLEmojiKBHelper *helper;
 
 @property (nonatomic, strong) NSString *userID;
 
-@property (nonatomic, strong) NSMutableArray *systemEmojiGroups;
+@property (nonatomic, strong) TLEmojiGroup *systemEditGroup;
 
 @property (nonatomic, strong) void (^complete)(NSMutableArray *);
 
@@ -48,24 +48,23 @@ static TLEmojiKBHelper *helper;
         NSMutableArray *emojiGroupData = [[NSMutableArray alloc] init];
         
         // 默认表情包
-        NSArray *defaultEmojiGroups = @[[TLExpressionHelper sharedHelper].defaultFaceGroup,
-                                        [TLExpressionHelper sharedHelper].defaultSystemEmojiGroup];
-        [emojiGroupData addObject:defaultEmojiGroups];
+        [emojiGroupData addObject:[TLExpressionHelper sharedHelper].defaultFaceGroup];
+        [emojiGroupData addObject:[TLExpressionHelper sharedHelper].defaultSystemEmojiGroup];
         
         // 用户收藏的表情包
         TLEmojiGroup *preferEmojiGroup = [TLExpressionHelper sharedHelper].userPreferEmojiGroup;
         if (preferEmojiGroup && preferEmojiGroup.count > 0) {
-            [emojiGroupData addObject:@[preferEmojiGroup]];
+            [emojiGroupData addObject:preferEmojiGroup];
         }
         
         // 用户的表情包
         NSArray *userGroups = [TLExpressionHelper sharedHelper].userEmojiGroups;
         if (userGroups && userGroups.count > 0) {
-            [emojiGroupData addObject:userGroups];
+            [emojiGroupData addObjectsFromArray:userGroups];
         }
         
         // 系统设置
-        [emojiGroupData addObject:self.systemEmojiGroups];
+        [emojiGroupData addObject:self.systemEditGroup];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             complete(emojiGroupData);
@@ -73,16 +72,15 @@ static TLEmojiKBHelper *helper;
     });
 }
 
-#pragma mark - Getter -
-- (NSMutableArray *)systemEmojiGroups
+#pragma mark - # Getter
+- (TLEmojiGroup *)systemEditGroup
 {
-    if (_systemEmojiGroups == nil) {
-        TLEmojiGroup *editGroup = [[TLEmojiGroup alloc] init];
-        editGroup.type = TLEmojiTypeOther;
-        editGroup.groupIconPath = @"emojiKB_settingBtn";
-        _systemEmojiGroups = [[NSMutableArray alloc] initWithObjects:editGroup, nil];
+    if (_systemEditGroup == nil) {
+        _systemEditGroup = [[TLEmojiGroup alloc] init];
+        _systemEditGroup.type = TLEmojiTypeOther;
+        _systemEditGroup.groupIconPath = @"emojiKB_settingBtn";
     }
-    return _systemEmojiGroups;
+    return _systemEditGroup;
 }
 
 

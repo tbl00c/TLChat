@@ -112,7 +112,7 @@
 
 - (BOOL)resignFirstResponder
 {
-    if (self.status == TLChatBarStatusEmoji || self.status == TLChatBarStatusKeyboard || self.status == TLChatBarStatusMore) {
+    if (self.status == TLChatBarStatusKeyboard) {
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
             [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
         }

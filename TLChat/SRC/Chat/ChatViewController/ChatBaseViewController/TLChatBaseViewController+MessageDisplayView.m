@@ -7,6 +7,7 @@
 //
 
 #import "TLChatBaseViewController+MessageDisplayView.h"
+#import "TLChatBaseViewController+ChatBar.h"
 #import "TLTextDisplayView.h"
 
 @implementation TLChatBaseViewController (MessageDisplayView)
@@ -38,9 +39,7 @@
 // chatView 点击事件
 - (void)chatMessageDisplayViewDidTouched:(TLChatMessageDisplayView *)chatTVC
 {
-    if ([self.chatBar isFirstResponder]) {
-        [self.chatBar resignFirstResponder];
-    }
+    [self dismissKeyboard];
 }
 
 // chatView 获取历史记录

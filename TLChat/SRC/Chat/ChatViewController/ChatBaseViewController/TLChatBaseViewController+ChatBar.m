@@ -39,11 +39,17 @@
 //MARK: 系统键盘回调
 - (void)keyboardWillShow:(NSNotification *)notification
 {
+    if (curStatus != TLChatBarStatusKeyboard) {
+        return;
+    }
     [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification
 {
+    if (curStatus != TLChatBarStatusKeyboard) {
+        return;
+    }
     if (lastStatus == TLChatBarStatusMore) {
         [self.moreKeyboard dismissWithAnimation:NO];
     }
@@ -55,6 +61,9 @@
 
 - (void)keyboardFrameWillChange:(NSNotification *)notification
 {
+    if (curStatus != TLChatBarStatusKeyboard && lastStatus != TLChatBarStatusKeyboard) {
+        return;
+    }
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     if (lastStatus == TLChatBarStatusMore || lastStatus == TLChatBarStatusEmoji) {
         if (keyboardFrame.size.height <= HEIGHT_CHAT_KEYBOARD) {
@@ -73,6 +82,9 @@
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
+    if (curStatus != TLChatBarStatusKeyboard && lastStatus != TLChatBarStatusKeyboard) {
+        return;
+    }
     if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
         return;
     }

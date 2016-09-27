@@ -69,6 +69,7 @@
     [self.recorder stop];
     if (self.completeBlock) {
         self.completeBlock(PATH_RECFILE, time);
+        self.completeBlock = nil;
     }
 }
 
@@ -78,6 +79,7 @@
     [self.recorder stop];
     if (self.cancelBlock) {
         self.cancelBlock();
+        self.cancelBlock = nil;
     }
 }
 

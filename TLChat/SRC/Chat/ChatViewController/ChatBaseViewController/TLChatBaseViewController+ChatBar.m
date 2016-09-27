@@ -23,6 +23,20 @@
     [self.moreKeyboard setDelegate:self];
 }
 
+- (void)dismissKeyboard
+{
+    if (curStatus == TLChatBarStatusMore) {
+        [self.moreKeyboard dismissWithAnimation:YES];
+    }
+    else if (curStatus == TLChatBarStatusEmoji) {
+        [self.emojiKeyboard dismissWithAnimation:YES];
+    }
+    else {
+        [self.chatBar resignFirstResponder];
+    }
+}
+
+//MARK: 系统键盘回调
 - (void)keyboardWillShow:(NSNotification *)notification
 {
     [self.messageDisplayView scrollToBottomWithAnimation:YES];
@@ -37,17 +51,6 @@
         [self.emojiKeyboard dismissWithAnimation:NO];
     }
     [self.messageDisplayView scrollToBottomWithAnimation:YES];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification
-{
-    if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
-        return;
-    }
-    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view);
-    }];
-    [self.view layoutIfNeeded];
 }
 
 - (void)keyboardFrameWillChange:(NSNotification *)notification
@@ -68,8 +71,20 @@
     [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }
 
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    if (curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore) {
+        return;
+    }
+    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view);
+    }];
+    [self.view layoutIfNeeded];
+}
+
 #pragma mark - Delegate
 //MARK: TLChatBarDelegate
+// 发送文本消息
 - (void)chatBar:(TLChatBar *)chatBar sendText:(NSString *)text
 {
     TLTextMessage *message = [[TLTextMessage alloc] init];
@@ -92,7 +107,7 @@
     }
 }
 
-// 录音
+//MARK: - 录音相关
 - (void)chatBarStartRecording:(TLChatBar *)chatBar
 {
     // 先停止播放
@@ -180,6 +195,7 @@
     [[TLAudioRecorder sharedRecorder] cancelRecording];
 }
 
+//MARK: - chatBar状态切换
 - (void)chatBar:(TLChatBar *)chatBar changeStatusFrom:(TLChatBarStatus)fromStatus to:(TLChatBarStatus)toStatus
 {
     if (curStatus == toStatus) {
@@ -195,22 +211,6 @@
             [self.emojiKeyboard dismissWithAnimation:YES];
         }
     }
-    else if (toStatus == TLChatBarStatusKeyboard) {
-        if (fromStatus == TLChatBarStatusMore) {
-            [self.moreKeyboard mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.chatBar.mas_bottom);
-                make.left.and.right.mas_equalTo(self.view);
-                make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
-            }];
-        }
-        else if (fromStatus == TLChatBarStatusEmoji) {
-            [self.emojiKeyboard mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.chatBar.mas_bottom);
-                make.left.and.right.mas_equalTo(self.view);
-                make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
-            }];
-        }
-    }
     else if (toStatus == TLChatBarStatusVoice) {
         if (fromStatus == TLChatBarStatusMore) {
             [self.moreKeyboard dismissWithAnimation:YES];
@@ -220,20 +220,10 @@
         }
     }
     else if (toStatus == TLChatBarStatusEmoji) {
-        if (fromStatus == TLChatBarStatusKeyboard) {
-            [self.emojiKeyboard showInView:self.view withAnimation:YES];
-        }
-        else {
-            [self.emojiKeyboard showInView:self.view withAnimation:YES];
-        }
+        [self.emojiKeyboard showInView:self.view withAnimation:YES];
     }
     else if (toStatus == TLChatBarStatusMore) {
-        if (fromStatus == TLChatBarStatusKeyboard) {
-            [self.moreKeyboard showInView:self.view withAnimation:YES];
-        }
-        else {
-            [self.moreKeyboard showInView:self.view withAnimation:YES];
-        }
+        [self.moreKeyboard showInView:self.view withAnimation:YES];
     }
 }
 

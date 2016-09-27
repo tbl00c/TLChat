@@ -19,6 +19,7 @@
 @property (nonatomic, strong, readonly) TLMoreKeyboard *moreKeyboard;
 
 - (void)loadKeyboard;
+- (void)dismissKeyboard;
 
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardDidShow:(NSNotification *)notification;

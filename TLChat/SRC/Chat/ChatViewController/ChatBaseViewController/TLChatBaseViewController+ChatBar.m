@@ -15,6 +15,14 @@
 @implementation TLChatBaseViewController (ChatBar)
 
 #pragma mark - # Public Methods
+- (void)loadKeyboard
+{
+    [self.emojiKeyboard setKeyboardDelegate:self];
+    [self.emojiKeyboard setDelegate:self];
+    [self.moreKeyboard setKeyboardDelegate:self];
+    [self.moreKeyboard setDelegate:self];
+}
+
 - (void)keyboardWillShow:(NSNotification *)notification
 {
     [self.messageDisplayView scrollToBottomWithAnimation:YES];
@@ -332,6 +340,17 @@
 - (BOOL)chatInputViewHasText
 {
     return self.chatBar.curText.length == 0 ? NO : YES;
+}
+
+#pragma mark - # Getter
+- (TLEmojiKeyboard *)emojiKeyboard
+{
+    return [TLEmojiKeyboard keyboard];
+}
+
+- (TLMoreKeyboard *)moreKeyboard
+{
+    return [TLMoreKeyboard keyboard];
 }
 
 

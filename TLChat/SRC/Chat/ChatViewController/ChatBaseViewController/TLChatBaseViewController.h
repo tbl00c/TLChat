@@ -17,8 +17,7 @@
 #import "TLMessageManager+MessageRecord.h"
 
 #import "TLChatBar.h"
-#import "TLMoreKeyboard.h"
-#import "TLEmojiKeyboard.h"
+#import "TLMoreKeyboardDelegate.h"
 
 #import "TLChatUserProtocol.h"
 
@@ -39,12 +38,6 @@
 
 /// 聊天输入栏
 @property (nonatomic, strong) TLChatBar *chatBar;
-
-/// 更多键盘
-@property (nonatomic, strong) TLMoreKeyboard *moreKeyboard;
-
-/// 表情键盘
-@property (nonatomic, strong) TLEmojiKeyboard *emojiKeyboard;
 
 /// emoji展示view
 @property (nonatomic, strong) TLEmojiDisplayView *emojiDisplayView;

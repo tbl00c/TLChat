@@ -93,8 +93,8 @@
 
 - (void)setCurIndexPath:(NSIndexPath *)curIndexPath
 {
-    [self.collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
     if (curIndexPath.row < self.emojiGroupData.count) {
+        [self.collectionView scrollToItemAtIndexPath:curIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
         [self.collectionView selectItemAtIndexPath:curIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
         if (_curIndexPath && _curIndexPath.section == curIndexPath.section && _curIndexPath.row == curIndexPath.row) {
             return;

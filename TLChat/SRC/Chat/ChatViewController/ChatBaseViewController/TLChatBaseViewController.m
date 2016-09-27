@@ -14,14 +14,21 @@
 
 @implementation TLChatBaseViewController
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];
+    [super loadView];
     
     [self.view addSubview:self.messageDisplayView];
     [self.view addSubview:self.chatBar];
     
     [self p_addMasonry];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self loadKeyboard];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -167,26 +174,6 @@
         [_chatBar setDelegate:self];
     }
     return _chatBar;
-}
-
-- (TLEmojiKeyboard *)emojiKeyboard
-{
-    if (_emojiKeyboard == nil) {
-        _emojiKeyboard = [TLEmojiKeyboard keyboard];
-        [_emojiKeyboard setDelegate:self];
-        [_emojiKeyboard setKeyboardDelegate:self];
-    }
-    return _emojiKeyboard;
-}
-
-- (TLMoreKeyboard *)moreKeyboard
-{
-    if (_moreKeyboard == nil) {
-        _moreKeyboard = [TLMoreKeyboard keyboard];
-        [_moreKeyboard setDelegate:self];
-        [_moreKeyboard setKeyboardDelegate:self];
-    }
-    return _moreKeyboard;
 }
 
 - (TLEmojiDisplayView *)emojiDisplayView

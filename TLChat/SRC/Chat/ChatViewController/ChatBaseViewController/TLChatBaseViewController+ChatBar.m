@@ -27,11 +27,12 @@
 {
     if (curStatus == TLChatBarStatusMore) {
         [self.moreKeyboard dismissWithAnimation:YES];
+        curStatus = TLChatBarStatusInit;
     }
     else if (curStatus == TLChatBarStatusEmoji) {
         [self.emojiKeyboard dismissWithAnimation:YES];
+        curStatus = TLChatBarStatusInit;
     }
- 
     [self.chatBar resignFirstResponder];
 }
 

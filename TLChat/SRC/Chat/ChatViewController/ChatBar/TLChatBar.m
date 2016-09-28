@@ -119,15 +119,15 @@
 
 - (BOOL)resignFirstResponder
 {
-    [self.textView resignFirstResponder];
     [self.moreButton setImage:kMoreImage imageHL:kMoreImageHL];
     [self.emojiButton setImage:kEmojiImage imageHL:kEmojiImageHL];
-    
-    TLChatBarStatus status = (self.status == TLChatBarStatusVoice ? TLChatBarStatusVoice : TLChatBarStatusInit);
-    if (self.delegate && [self.delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
-        [self.delegate chatBar:self changeStatusFrom:self.status to:status];
+    if (self.status == TLChatBarStatusKeyboard) {
+        [self.textView resignFirstResponder];
+        self.status = TLChatBarStatusInit;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+            [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusInit];
+        }
     }
-    self.status = status;
     
     return [super resignFirstResponder];
 }
@@ -211,12 +211,18 @@
     }
 }
 
+static NSString *textRec = @"";
 - (void)voiceButtonDown
 {
     [self.textView resignFirstResponder];
     
     // 开始文字输入
     if (self.status == TLChatBarStatusVoice) {
+        if (textRec.length > 0) {
+            [self.textView setText:textRec];
+            textRec = @"";
+            [self p_reloadTextViewWithAnimation:YES];
+        }
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
             [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusKeyboard];
         }
@@ -227,6 +233,11 @@
         self.status = TLChatBarStatusKeyboard;
     }
     else {          // 开始语音
+        if (self.textView.text.length > 0) {
+            textRec = self.textView.text;
+            self.textView.text = @"";
+            [self p_reloadTextViewWithAnimation:YES];
+        }
         if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
             [self.delegate chatBar:self changeStatusFrom:self.status to:TLChatBarStatusVoice];
         }

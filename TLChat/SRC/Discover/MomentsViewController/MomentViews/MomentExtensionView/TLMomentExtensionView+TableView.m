@@ -43,6 +43,7 @@
     if (indexPath.section == 0 && self.extension.likedFriends.count > 0) {  // 点赞
         TLMomentExtensionLikedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentExtensionLikedCell"];
         [cell setLikedFriends:self.extension.likedFriends];
+        [cell setShowBottomLine:self.extension.comments.count > 0];
         return cell;
     }
     else {      // 评论

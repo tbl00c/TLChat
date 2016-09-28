@@ -10,6 +10,8 @@
 
 @interface TLMomentExtensionLikedCell : TLTableViewCell
 
+@property (nonatomic, assign) BOOL showBottomLine;
+
 @property (nonatomic, strong) NSArray *likedFriends;
 
 @end

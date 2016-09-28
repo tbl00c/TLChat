@@ -26,7 +26,7 @@
 {
     if (_commentFrame == nil) {
         _commentFrame = [[TLMomentCommentFrame alloc] init];
-        _commentFrame.height = 35.0f;
+        _commentFrame.height = 30.0f;
     }
     return _commentFrame;
 }

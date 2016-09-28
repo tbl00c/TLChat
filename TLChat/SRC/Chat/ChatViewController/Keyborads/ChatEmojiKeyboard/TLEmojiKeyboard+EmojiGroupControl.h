@@ -10,6 +10,4 @@
 
 @interface TLEmojiKeyboard (EmojiGroupControl) <TLEmojiGroupControlDelegate>
 
-- (void)updateSendButtonStatus;
-
 @end

@@ -91,6 +91,22 @@
     }
 }
 
+- (void)selectEmojiGroupAtIndex:(NSInteger)index
+{
+    if (index < self.emojiGroupData.count) {
+        _curIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.collectionView selectItemAtIndexPath:_curIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+        CGFloat width = WIDTH_EMOJIGROUP_CELL;
+        CGFloat x = width * index;
+        if (x < self.collectionView.contentOffset.x) {
+            [self.collectionView setContentOffset:CGPointMake(x, 0) animated:YES];
+        }
+        else if (x + width > self.collectionView.contentOffset.x + self.collectionView.width) {
+            [self.collectionView setContentOffset:CGPointMake(x + width - self.collectionView.width, 0) animated:YES];
+        }
+    }
+}
+
 - (void)setCurIndexPath:(NSIndexPath *)curIndexPath
 {
     if (curIndexPath.row < self.emojiGroupData.count) {
@@ -99,6 +115,16 @@
         if (_curIndexPath && _curIndexPath.section == curIndexPath.section && _curIndexPath.row == curIndexPath.row) {
             return;
         }
+        
+        CGFloat width = WIDTH_EMOJIGROUP_CELL;
+        CGFloat x = width * curIndexPath.row;
+        if (x < self.collectionView.contentOffset.x) {
+            [self.collectionView setContentOffset:CGPointMake(x, 0) animated:YES];
+        }
+        else if (x + width > self.collectionView.contentOffset.x + self.collectionView.width) {
+            [self.collectionView setContentOffset:CGPointMake(x + width - self.collectionView.width, 0) animated:YES];
+        }
+        
         _curIndexPath = curIndexPath;
         if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControl:didSelectedGroup:)]) {
             TLEmojiGroup *group = [self.emojiGroupData objectAtIndex:curIndexPath.row];
@@ -107,7 +133,7 @@
     }
 }
 
-#pragma mark - Delegate -
+#pragma mark - # Delegate
 //MARK: UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -152,7 +178,7 @@
     }
 }
 
-#pragma mark - Event Response -
+#pragma mark - # Event Response
 - (void)emojiAddButtonDown
 {
     if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControlEditButtonDown:)]) {
@@ -167,7 +193,7 @@
     }
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.addButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -206,7 +232,7 @@
     CGContextStrokePath(context);
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getter
 - (UIButton *)addButton
 {
     if (_addButton == nil) {

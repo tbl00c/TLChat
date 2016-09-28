@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "TLEmoji.h"
 
-@interface TLEmojiBaseCell : UICollectionViewCell
+@protocol TLEmojiCellProtocol <NSObject>
+
+- (CGRect)displayBaseRect;
+
+@end
+
+@interface TLEmojiBaseCell : UICollectionViewCell <TLEmojiCellProtocol>
 
 @property (nonatomic, strong) TLEmoji *emojiItem;
 

@@ -26,6 +26,14 @@
     return self;
 }
 
+- (CGRect)displayBaseRect
+{
+    CGRect rect = self.imageView.frame;
+    rect.origin.x += self.x;
+    rect.origin.y += self.y;
+    return rect;
+}
+
 - (void)setEmojiItem:(TLEmoji *)emojiItem
 {
     [super setEmojiItem:emojiItem];
@@ -36,7 +44,8 @@
 - (void)p_addMasonry
 {
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.contentView).mas_offset(UIEdgeInsetsMake(2, 2, 2, 2));
+        make.center.mas_equalTo(self.contentView);
+        make.size.mas_equalTo(CGSizeMake(52, 52));
     }];
 }
 

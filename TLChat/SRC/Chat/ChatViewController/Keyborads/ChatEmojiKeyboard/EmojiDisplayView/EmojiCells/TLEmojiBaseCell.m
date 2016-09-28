@@ -21,6 +21,11 @@
     return self;
 }
 
+- (CGRect)displayBaseRect
+{
+    return self.frame;
+}
+
 - (void)setShowHighlightImage:(BOOL)showHighlightImage
 {
     if (showHighlightImage) {

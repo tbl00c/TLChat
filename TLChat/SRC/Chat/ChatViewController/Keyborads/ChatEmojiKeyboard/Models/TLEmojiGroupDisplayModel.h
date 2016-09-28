@@ -11,17 +11,23 @@
 
 @interface TLEmojiGroupDisplayModel : NSObject
 
-/// 基本信息
+@property (nonatomic, assign) TLEmojiType type;
+
 @property (nonatomic, strong) NSString *groupID;
 
 @property (nonatomic, strong) NSString *groupName;
 
 @property (nonatomic, strong) NSString *groupIconPath;
 
-/// 总数
 @property (nonatomic, assign) NSUInteger count;
 
-@property (nonatomic, strong) NSMutableArray *data;
+@property (nonatomic, strong) NSArray *data;
+
+#pragma mark - 标记
+
+@property (nonatomic, assign) NSInteger emojiGroupIndex;
+
+@property (nonatomic, assign) NSInteger pageIndex;
 
 #pragma mark - 展示用
 
@@ -36,6 +42,10 @@
 
 /// 列数
 @property (nonatomic, assign) NSUInteger colNumber;
+
+@property (nonatomic, assign) CGSize cellSize;
+
+@property (nonatomic, assign) UIEdgeInsets sectionInsets;
 
 
 - (id)initWithEmojiGroup:(TLEmojiGroup *)emojiGroup pageNumber:(NSInteger)pageNumber andCount:(NSInteger)count;

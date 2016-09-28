@@ -7,9 +7,8 @@
 //
 
 #import "TLEmojiKeyboard.h"
+#import "TLEmojiKeyboard+DisplayView.h"
 #import "TLEmojiKeyboard+EmojiGroupControl.h"
-#import "TLEmojiKeyboard+CollectionView.h"
-#import "TLEmojiKeyboard+Gusture.h"
 #import "TLChatMacros.h"
 
 static TLEmojiKeyboard *emojiKB;
@@ -29,52 +28,49 @@ static TLEmojiKeyboard *emojiKB;
 {
     if (self = [super init]) {
         [self setBackgroundColor:[UIColor colorGrayForChatBar]];
-        [self addSubview:self.collectionView];
+        [self addSubview:self.displayView];
         [self addSubview:self.pageControl];
         [self addSubview:self.groupControl];
         [self p_addMasonry];
-        
-        [self registerCellClass];
-        [self addGusture];
     }
     return self;
 }
 
 - (void)setEmojiGroupData:(NSMutableArray *)emojiGroupData
 {
+    _emojiGroupData = emojiGroupData;
+    [self.displayView setData:emojiGroupData];
     [self.groupControl setEmojiGroupData:emojiGroupData];
 }
 
-#pragma mark - Public Methods -
+#pragma mark - # Public Methods
 - (void)reset
 {
-    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
-    // 更新发送按钮状态
-    [self updateSendButtonStatus];
+//    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
 }
 
-#pragma mark - Event Response -
-- (void) pageControlChanged:(UIPageControl *)pageControl
+#pragma mark - # Event Response
+- (void)pageControlChanged:(UIPageControl *)pageControl
 {
-    [self.collectionView scrollRectToVisible:CGRectMake(WIDTH_SCREEN * pageControl.currentPage, 0, WIDTH_SCREEN, HEIGHT_PAGECONTROL) animated:YES];
+//    [self.collectionView scrollRectToVisible:CGRectMake(WIDTH_SCREEN * pageControl.currentPage, 0, WIDTH_SCREEN, HEIGHT_PAGECONTROL) animated:YES];
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self).mas_offset(HEIGHT_TOP_SPACE);
+    [self.displayView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self);
         make.left.and.right.mas_equalTo(self);
-        make.height.mas_equalTo(HEIGHT_EMOJIVIEW);
+        make.bottom.mas_equalTo(self.pageControl.mas_top);
     }];
     [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self);
         make.bottom.mas_equalTo(self.groupControl.mas_top);
-        make.height.mas_equalTo(HEIGHT_PAGECONTROL);
+        make.height.mas_equalTo(20);
     }];
     [self.groupControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.mas_equalTo(self);
-        make.height.mas_equalTo(HEIGHT_GROUPCONTROL);
+        make.height.mas_equalTo(37);
     }];
 }
 
@@ -91,22 +87,14 @@ static TLEmojiKeyboard *emojiKB;
     CGContextStrokePath(context);
 }
 
-#pragma mark - Getter -
-- (UICollectionView *)collectionView
+#pragma mark - # Getter
+- (TLEmojiGroupDisplayView *)displayView
 {
-    if (_collectionView == nil) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-        [_collectionView setBackgroundColor:[UIColor clearColor]];
-        [_collectionView setPagingEnabled:YES];
-        [_collectionView setDataSource:self];
-        [_collectionView setDelegate:self];
-        [_collectionView setShowsHorizontalScrollIndicator:NO];
-        [_collectionView setShowsHorizontalScrollIndicator:NO];
-        [_collectionView setScrollsToTop:NO];
+    if (_displayView == nil) {
+        _displayView = [[TLEmojiGroupDisplayView alloc] init];
+        [_displayView setDelegate:self];
     }
-    return _collectionView;
+    return _displayView;
 }
 
 - (UIPageControl *)pageControl

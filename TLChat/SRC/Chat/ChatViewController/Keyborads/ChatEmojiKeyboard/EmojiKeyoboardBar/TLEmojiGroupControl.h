@@ -36,4 +36,6 @@ typedef NS_ENUM(NSInteger, TLGroupControlSendButtonStatus) {
 
 @property (nonatomic, assign) id<TLEmojiGroupControlDelegate>delegate;
 
+- (void)selectEmojiGroupAtIndex:(NSInteger)index;
+
 @end

@@ -7,17 +7,11 @@
 //
 
 #import "TLBaseKeyboard.h"
-#import "TLKeyboardDelegate.h"
 #import "TLEmojiKeyboardDelegate.h"
 #import "TLEmojiGroupControl.h"
+#import "TLEmojiGroupDisplayView.h"
 
 @interface TLEmojiKeyboard : TLBaseKeyboard
-{
-    CGSize cellSize;
-    CGFloat minimumLineSpacing;
-    CGFloat minimumInteritemSpacing;
-    UIEdgeInsets sectionInsets;
-}
 
 @property (nonatomic, assign) NSMutableArray *emojiGroupData;
 
@@ -25,7 +19,7 @@
 
 @property (nonatomic, strong) TLEmojiGroup *curGroup;
 
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) TLEmojiGroupDisplayView *displayView;
 
 @property (nonatomic, strong) UIPageControl *pageControl;
 

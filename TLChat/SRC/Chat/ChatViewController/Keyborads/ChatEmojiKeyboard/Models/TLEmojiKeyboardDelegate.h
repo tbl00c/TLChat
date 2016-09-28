@@ -36,6 +36,11 @@
 - (void)emojiKeyboardSendButtonDown;
 
 /**
+ *  点击事件 —— 删除按钮
+ */
+- (void)emojiKeyboardDeleteButtonDown;
+
+/**
  *  点击事件 —— 表情编辑按钮
  */
 - (void)emojiKeyboardEmojiEditButtonDown;

@@ -37,20 +37,29 @@
     [self.label setText:emojiItem.emojiName];
 }
 
+- (CGRect)displayBaseRect
+{
+    CGRect rect = self.imageView.frame;
+    rect.origin.x += self.x;
+    rect.origin.y += self.y;
+    return rect;
+}
+
 #pragma mark - Private Methods -
 - (void)p_addMasonry
 {
     [self.bgView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.top.mas_equalTo(self.contentView);
-        make.height.mas_equalTo(self.bgView.mas_width);
+        make.edges.mas_equalTo(self.imageView).mas_offset(UIEdgeInsetsMake(-3, -3, -3, -3));
     }];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.top.mas_equalTo(self.contentView).mas_offset(3);
-        make.right.mas_equalTo(self.contentView).mas_offset(-3);
-        make.height.mas_equalTo(self.imageView.mas_width);
+        make.top.mas_equalTo(3);
+        make.centerX.mas_equalTo(0);
+        make.size.mas_equalTo(CGSizeMake(50, 50));
     }];
     [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.bottom.mas_equalTo(self.contentView);
+        make.centerX.mas_equalTo(0);
+        make.width.mas_lessThanOrEqualTo(self).mas_offset(-8);
+        make.top.mas_equalTo(self.imageView.mas_bottom).mas_offset(4);
     }];
 }
 

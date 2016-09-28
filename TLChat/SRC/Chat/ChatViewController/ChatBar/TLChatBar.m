@@ -93,7 +93,9 @@
 
 - (void)deleteLastCharacter
 {
-    [self textView:self.textView shouldChangeTextInRange:NSMakeRange(self.textView.text.length - 1, 1) replacementText:@""];
+    if([self textView:self.textView shouldChangeTextInRange:NSMakeRange(self.textView.text.length - 1, 1) replacementText:@""]){
+        [self.textView deleteBackward];
+    }
 }
 
 - (void)setActivity:(BOOL)activity

@@ -7,25 +7,8 @@
 //
 
 #import "TLEmojiKeyboard+EmojiGroupControl.h"
-#import "TLEmojiKeyboard+CollectionView.h"
 
 @implementation TLEmojiKeyboard (EmojiGroupControl)
-
-#pragma mark - Public Methods
-- (void)updateSendButtonStatus
-{
-    if (self.curGroup.type == TLEmojiTypeEmoji || self.curGroup.type == TLEmojiTypeFace) {
-        if ([self.delegate chatInputViewHasText]) {
-            [self.groupControl setSendButtonStatus:TLGroupControlSendButtonStatusBlue];
-        }
-        else {
-            [self.groupControl setSendButtonStatus:TLGroupControlSendButtonStatusGray];
-        }
-    }
-    else {
-        [self.groupControl setSendButtonStatus:TLGroupControlSendButtonStatusNone];
-    }
-}
 
 #pragma mark - Delegate
 //MARK: TLEmojiGroupControlDelegate
@@ -33,13 +16,9 @@
 {
     // 显示Group表情
     self.curGroup = group;
-    [self resetCollectionSize];
+    [self.displayView scrollToEmojiGroupAtIndex:[self.emojiGroupData indexOfObject:group]];
     [self.pageControl setNumberOfPages:group.pageNumber];
     [self.pageControl setCurrentPage:0];
-    [self.collectionView reloadData];
-    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.width, self.collectionView.height) animated:NO];
-    // 更新发送按钮状态
-    [self updateSendButtonStatus];
     // 更新chatBar的textView状态
     if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboard:selectedEmojiGroupType:)]) {
         [self.delegate emojiKeyboard:self selectedEmojiGroupType:group.type];
@@ -65,8 +44,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboardSendButtonDown)]) {
         [self.delegate emojiKeyboardSendButtonDown];
     }
-    // 更新发送按钮状态
-    [self updateSendButtonStatus];
 }
 
 @end

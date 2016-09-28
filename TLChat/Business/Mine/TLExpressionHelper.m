@@ -141,6 +141,9 @@
         NSString *path = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
         NSData *data = [NSData dataWithContentsOfFile:path];
         _defaultFaceGroup.data = [TLEmoji mj_objectArrayWithKeyValuesArray:data];
+        for (TLEmoji *emoji in _defaultFaceGroup.data) {
+            emoji.type = TLEmojiTypeFace;
+        }
     }
     return _defaultFaceGroup;
 }

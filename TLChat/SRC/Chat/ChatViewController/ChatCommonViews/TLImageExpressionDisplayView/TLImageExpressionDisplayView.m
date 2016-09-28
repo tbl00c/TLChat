@@ -78,7 +78,7 @@ static NSString *curID;
 
 - (void)setRect:(CGRect)rect
 {
-    self.y = rect.origin.y - self.height + 13;
+    self.y = rect.origin.y - self.height + 3;
     CGFloat w = WIDTH_TIPS - WIDTH_CENTER;
     CGFloat centerX = rect.origin.x + rect.size.width / 2;
     if (rect.origin.x + rect.size.width < self.width) {     // 箭头在左边

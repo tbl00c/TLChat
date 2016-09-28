@@ -24,38 +24,6 @@
              };
 }
 
-- (id)init
-{
-    if (self = [super init]) {
-        [self setType:TLEmojiTypeImageWithTitle];
-    }
-    return self;
-}
-
-- (void)setType:(TLEmojiType)type
-{
-    _type = type;
-    switch (type) {
-        case TLEmojiTypeOther:
-            return;
-        case TLEmojiTypeFace:
-        case TLEmojiTypeEmoji:
-            self.rowNumber = 3;
-            self.colNumber = 7;
-            break;
-        case TLEmojiTypeImage:
-        case TLEmojiTypeFavorite:
-        case TLEmojiTypeImageWithTitle:
-            self.rowNumber = 2;
-            self.colNumber = 4;
-            break;
-        default:
-            break;
-    }
-    self.pageItemCount = self.rowNumber * self.colNumber;
-    self.pageNumber = self.count / self.pageItemCount + (self.count % self.pageItemCount == 0 ? 0 : 1);
-}
-
 - (void)setData:(NSMutableArray *)data
 {
     _data = data;
@@ -67,6 +35,35 @@
 - (id)objectAtIndex:(NSUInteger)index
 {
     return [self.data objectAtIndex:index];
+}
+
+- (NSUInteger)rowNumber
+{
+    if (self.type == TLEmojiTypeFace || self.type == TLEmojiTypeEmoji) {
+        return 3;
+    }
+    return 2;
+}
+
+- (NSUInteger)colNumber
+{
+    if (self.type == TLEmojiTypeFace || self.type == TLEmojiTypeEmoji) {
+        return 7;
+    }
+    return 4;
+}
+
+- (NSUInteger)pageItemCount
+{
+    if (self.type == TLEmojiTypeFace || self.type == TLEmojiTypeEmoji) {
+        return self.rowNumber * self.colNumber - 1;
+    }
+    return self.rowNumber * self.colNumber;
+}
+
+- (NSUInteger)pageNumber
+{
+    return self.count / self.pageItemCount + (self.count % self.pageItemCount == 0 ? 0 : 1);
 }
 
 - (NSString *)path

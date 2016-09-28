@@ -33,7 +33,7 @@
 
 #define     SQL_ADD_EXP_GROUP           @"REPLACE INTO %@ ( uid, gid, type, name, desc, detail, count, auth_id, auth_name, date, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )"
 
-#define     SQL_SELECT_EXP_GROUP        @"SELECT * FROM %@ WHERE uid = '%@'"
+#define     SQL_SELECT_EXP_GROUP        @"SELECT * FROM %@ WHERE uid = '%@' order by date desc"
 
 #define     SQL_DELETE_EXP_GROUP        @"DELETE FROM %@ WHERE uid = '%@' and gid = '%@'"
 

@@ -75,6 +75,7 @@
                                  success:(void (^)(TLEmojiGroup *))success
                                  failure:(void (^)(TLEmojiGroup *, NSString *))failure
 {
+    group.type = TLEmojiTypeImageWithTitle;
     dispatch_queue_t downloadQueue = dispatch_queue_create([group.groupID UTF8String], nil);
     dispatch_group_t downloadGroup = dispatch_group_create();
     

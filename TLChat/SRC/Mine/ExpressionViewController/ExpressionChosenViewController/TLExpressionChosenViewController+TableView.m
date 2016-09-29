@@ -93,7 +93,6 @@
         [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
             
         } success:^(TLEmojiGroup *group) {
-            group.type = TLEmojiTypeImageWithTitle;
             group.status = TLEmojiGroupStatusDownloaded;
             NSInteger index = [self.data indexOfObject:group];
             if (index < self.data.count) {

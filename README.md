@@ -1,11 +1,11 @@
 # TLChat
 高仿微信，iOSAppTemplate代码重构。
 
-![demo](Screenshot/1.png)
+![screenshot1](Screenshot/1.PNG)
 
-![demo1](Screenshot/2.png)
+![screenshot2](Screenshot/2.PNG)
 
-![demo2](Screenshot/3.png) 
+![screenshot3](Screenshot/3.PNG) 
 
 ## 已实现的功能
 1. 消息界面

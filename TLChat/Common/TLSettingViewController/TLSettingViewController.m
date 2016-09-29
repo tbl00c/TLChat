@@ -84,7 +84,7 @@
 }
 
 //MARK: UITableViewDelegate
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     TLSettingGroup *group = self.data[section];
     if (group.headerTitle == nil) {
@@ -95,7 +95,7 @@
     return view;
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     TLSettingGroup *group = self.data[section];
     if (group.footerTitle == nil) {
@@ -106,23 +106,23 @@
     return view;
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return HEIGHT_SETTING_CELL;
 }
 
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     TLSettingGroup *group = self.data[section];
     return 0.5 + (group.headerTitle == nil ? 0 : 5.0f + group.headerHeight);
 }
 
-- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     TLSettingGroup *group = self.data[section];
     return 20.0f + (group.footerTitle == nil ? 0 : 5.0f + group.footerHeight);

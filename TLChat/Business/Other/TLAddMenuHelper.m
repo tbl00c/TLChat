@@ -46,7 +46,7 @@
             return [TLAddMenuItem createWithType:TLAddMneuTypeAddFriend title:@"添加朋友" iconPath:@"nav_menu_addfriend" className:@"TLAddFriendViewController"];
             break;
         case TLAddMneuTypeWallet:           // 收付款
-            return [TLAddMenuItem createWithType:TLAddMneuTypeWallet title:@"收付款" iconPath:@"nav_menu_wallet" className:@""];
+            return [TLAddMenuItem createWithType:TLAddMneuTypeWallet title:@"收付款" iconPath:@"nav_menu_wallet" className:@"TLWalletViewController"];
             break;
         case TLAddMneuTypeScan:             // 扫一扫
             return [TLAddMenuItem createWithType:TLAddMneuTypeScan title:@"扫一扫" iconPath:@"nav_menu_scan" className:@"TLScanningViewController"];

@@ -15,6 +15,7 @@
 #import "TLMineHelper.h"
 
 #import "TLMineInfoViewController.h"
+#import "TLWalletViewController.h"
 #import "TLExpressionViewController.h"
 #import "TLMineSettingViewController.h"
 
@@ -68,7 +69,13 @@
         return;
     }
     TLMenuItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"表情"]) {
+    if ([item.title isEqualToString:@"钱包"]) {
+        TLWalletViewController *walletVC = [[TLWalletViewController alloc] init];
+        [self setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:walletVC animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
+    }
+    else if ([item.title isEqualToString:@"表情"]) {
         TLExpressionViewController *expressionVC = [[TLExpressionViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:expressionVC animated:YES];

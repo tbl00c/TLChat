@@ -16,6 +16,7 @@
 		C2028D391C8D354E0060E271 /* TLSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D381C8D354E0060E271 /* TLSearchController.m */; };
 		C2028D3C1C8D3ACE0060E271 /* TLPublicServerSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D3B1C8D3ACE0060E271 /* TLPublicServerSearchViewController.m */; };
 		C2045D011D9BB49600806BAB /* TLEmojiGroupDisplayView+Gesture.m in Sources */ = {isa = PBXBuildFile; fileRef = C2045D001D9BB49600806BAB /* TLEmojiGroupDisplayView+Gesture.m */; };
+		C2045D051D9BF63000806BAB /* TLWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2045D041D9BF63000806BAB /* TLWalletViewController.m */; };
 		C20829171C88113600034998 /* TLImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20829161C88113600034998 /* TLImagePickerController.m */; };
 		C20907451C97ED0700AB87A5 /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C20907441C97ED0700AB87A5 /* JSPatch.framework */; };
 		C209074B1C97ED7300AB87A5 /* FaceEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C20907471C97ED7300AB87A5 /* FaceEmoji.json */; };
@@ -335,6 +336,8 @@
 		C2028D3B1C8D3ACE0060E271 /* TLPublicServerSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLPublicServerSearchViewController.m; sourceTree = "<group>"; };
 		C2045CFF1D9BB49600806BAB /* TLEmojiGroupDisplayView+Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLEmojiGroupDisplayView+Gesture.h"; sourceTree = "<group>"; };
 		C2045D001D9BB49600806BAB /* TLEmojiGroupDisplayView+Gesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLEmojiGroupDisplayView+Gesture.m"; sourceTree = "<group>"; };
+		C2045D031D9BF63000806BAB /* TLWalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLWalletViewController.h; sourceTree = "<group>"; };
+		C2045D041D9BF63000806BAB /* TLWalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLWalletViewController.m; sourceTree = "<group>"; };
 		C20829151C88113600034998 /* TLImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImagePickerController.h; sourceTree = "<group>"; };
 		C20829161C88113600034998 /* TLImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImagePickerController.m; sourceTree = "<group>"; };
 		C20907441C97ED0700AB87A5 /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
@@ -1022,6 +1025,15 @@
 			path = TLSearchController;
 			sourceTree = "<group>";
 		};
+		C2045D021D9BF61900806BAB /* WalletViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2045D031D9BF63000806BAB /* TLWalletViewController.h */,
+				C2045D041D9BF63000806BAB /* TLWalletViewController.m */,
+			);
+			path = WalletViewController;
+			sourceTree = "<group>";
+		};
 		C20829141C88111100034998 /* TLImagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1489,6 +1501,7 @@
 			children = (
 				C2D500D11C55C9350088997C /* MineViewController */,
 				C2AF1F901C6B209500617D98 /* MineInfoViewController */,
+				C2045D021D9BF61900806BAB /* WalletViewController */,
 				C2F0EBF91C7A11230090843C /* ExpressionViewController */,
 			);
 			path = Mine;
@@ -3379,6 +3392,7 @@
 				C2B9730F1C6A52F0004B9B71 /* TLPrivacySettingHelper.m in Sources */,
 				C2CF4C851C804BF90054637A /* TLSettingItem.m in Sources */,
 				C2CF4C8B1C804BFE0054637A /* TLSettingFooterTitleView.m in Sources */,
+				C2045D051D9BF63000806BAB /* TLWalletViewController.m in Sources */,
 				C209F4381C7D5AAA001B9825 /* TLScannerViewController.m in Sources */,
 				C2BD59DA1C9DB8E600401524 /* TLDBConversationStore.m in Sources */,
 				C28CA6231C9D905600CD6A73 /* UIImage+Size.m in Sources */,

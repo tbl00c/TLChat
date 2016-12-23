@@ -10,9 +10,9 @@
 
 @interface TLMessageImageView ()
 
-@property (nonatomic, assign) CAShapeLayer *maskLayer;
+@property (nonatomic, weak) CAShapeLayer *maskLayer;
 
-@property (nonatomic, assign) CALayer *contentLayer;
+@property (nonatomic, weak) CALayer *contentLayer;
 
 @end
 
@@ -52,15 +52,15 @@
         [self.contentLayer setContents:nil];
     }
     else {
-        UIImage *image = [UIImage imageNamed:imagePath];
+        UIImage *image = [[UIImage imageNamed:imagePath] copy];
         [self.contentLayer setContents:(id)(image.CGImage)];
     }
 }
 
 - (void)setBackgroundImage:(UIImage *)backgroundImage
 {
-    _backgroundImage = backgroundImage;
-    [self.maskLayer setContents:(id)backgroundImage.CGImage];
+    UIImage *image = [backgroundImage copy];
+    [self.maskLayer setContents:(id)image.CGImage];
 }
 
 @end

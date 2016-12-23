@@ -50,9 +50,9 @@ PODS:
   - FMDB/standard (2.6.2)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
-  - MJExtension (3.0.10)
-  - MJRefresh (3.1.0)
-  - MWPhotoBrowser (2.1.1):
+  - MJExtension (3.0.11)
+  - MJRefresh (3.1.9)
+  - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
@@ -63,9 +63,9 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
   - SVProgressHUD (2.0.3)
   - UMengAnalytics (3.6.6)
 
@@ -93,11 +93,11 @@ SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
-  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
-  MWPhotoBrowser: ba0d0c09ffda3a7ea10093518738c502c1c7141c
+  MJExtension: f9ae6ddc0f1c482c3c9af750280ccebd14381958
+  MJRefresh: c5f1f1653e5a1b932c90f78074f2bc86f3f9bd5e
+  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 

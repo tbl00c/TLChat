@@ -283,6 +283,7 @@
 		C2F0EC151C7AB1BB0090843C /* TLAboutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC141C7AB1BB0090843C /* TLAboutHelper.m */; };
 		C2F0EC181C7AB6E30090843C /* TLAboutHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC171C7AB6E30090843C /* TLAboutHeaderView.m */; };
 		C2F0EC1C1C7ABF190090843C /* TLAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */; };
+		C2F74E361D9F896100F6CD28 /* TLVideoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F74E351D9F896100F6CD28 /* TLVideoMessage.m */; };
 		C2F9F6811C854F94000EE9ED /* FriendList.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F9F6801C854F94000EE9ED /* FriendList.json */; };
 		C2FB85CA1CB6B8BE00747B6D /* TLMomentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85C91CB6B8BE00747B6D /* TLMomentHeaderCell.m */; };
 		C2FB85CD1CB6B91E00747B6D /* TLMomentImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85CC1CB6B91E00747B6D /* TLMomentImagesCell.m */; };
@@ -884,6 +885,8 @@
 		C2F0EC171C7AB6E30090843C /* TLAboutHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAboutHeaderView.m; sourceTree = "<group>"; };
 		C2F0EC1A1C7ABF190090843C /* TLAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppHelper.h; sourceTree = "<group>"; };
 		C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppHelper.m; sourceTree = "<group>"; };
+		C2F74E341D9F896100F6CD28 /* TLVideoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVideoMessage.h; sourceTree = "<group>"; };
+		C2F74E351D9F896100F6CD28 /* TLVideoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVideoMessage.m; sourceTree = "<group>"; };
 		C2F9F67D1C854BDE000EE9ED /* TLInfoMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLInfoMacros.h; sourceTree = "<group>"; };
 		C2F9F6801C854F94000EE9ED /* FriendList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendList.json; sourceTree = "<group>"; };
 		C2FB85C81CB6B8BE00747B6D /* TLMomentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentHeaderCell.h; sourceTree = "<group>"; };
@@ -2519,6 +2522,8 @@
 				C2FE2F431CA9802700E5155B /* TLExpressionMessage.m */,
 				C20A56C51D338A8C00C891B3 /* TLVoiceMessage.h */,
 				C20A56C61D338A8C00C891B3 /* TLVoiceMessage.m */,
+				C2F74E341D9F896100F6CD28 /* TLVideoMessage.h */,
+				C2F74E351D9F896100F6CD28 /* TLVideoMessage.m */,
 				C2DD839A1C96B3FD00E6300B /* TLMessageFrame.h */,
 				C2DD839B1C96B3FD00E6300B /* TLMessageFrame.m */,
 			);
@@ -3489,6 +3494,7 @@
 				C2E6B81C1C9A5DEC0045A6EB /* TLNewFriendSearchViewController.m in Sources */,
 				C2E6B80A1C9A5B570045A6EB /* TLGroupSearchViewController.m in Sources */,
 				C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */,
+				C2F74E361D9F896100F6CD28 /* TLVideoMessage.m in Sources */,
 				C25F1D2C1CDC57E7001EECF3 /* TLUser+ChatModel.m in Sources */,
 				C2FB85D01CB6B93400747B6D /* TLMomentBaseCell.m in Sources */,
 				C2097EE81C52326500163B5C /* main.m in Sources */,
@@ -3711,7 +3717,7 @@
 				INFOPLIST_FILE = TLChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3735,7 +3741,7 @@
 				INFOPLIST_FILE = TLChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

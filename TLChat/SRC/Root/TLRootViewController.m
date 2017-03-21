@@ -48,6 +48,11 @@ static TLRootViewController *rootVC = nil;
     return [[self.childViewControllers objectAtIndex:index] rootViewController];
 }
 
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [(UINavigationController *)self.childViewControllers[self.selectedIndex] pushViewController:viewController animated:animated];
+}
+
 #pragma mark - Getters
 - (NSArray *) childVCArray
 {

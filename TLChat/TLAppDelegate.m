@@ -9,10 +9,13 @@
 #import "TLAppDelegate.h"
 #import "TLRootViewController.h"
 #import "TLAccountViewController.h"
+#import "TLWalletViewController.h"
 
 #import "TLRootProxy.h"
 #import "TLExpressionProxy.h"
 #import "TLExpressionHelper.h"
+
+#import "NSDate+Utilities.h"
 
 #import <AFNetworking.h>
 #import <JSPatch/JSPatch.h>
@@ -24,7 +27,6 @@
 {
     [self p_initThirdPartSDK];      // 初始化第三方SDK
     [self p_initAppData];           // 初始化应用信息
-    [self p_initUserData];          // 初始化用户信息
     [self p_initUI];                // 初始化UI
     
     [self p_urgentMethod];          // 紧急方法
@@ -92,12 +94,14 @@
     UIViewController *rootVC;
     if ([TLUserHelper sharedHelper].isLogin) {
         rootVC = [TLRootViewController sharedRootViewController];
+        [self p_initUserData];          // 初始化用户信息
     }
     else {
         rootVC = [[TLAccountViewController alloc] init];
         TLWeakSelf(self);
         TLWeakSelf(rootVC)
         [(TLAccountViewController *)rootVC setLoginSuccess:^{
+            [weakself p_initUserData];          // 初始化用户信息
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
             [weakrootVC.view removeFromSuperview];
             [weakself.window setRootViewController:[TLRootViewController sharedRootViewController]];
@@ -113,14 +117,37 @@
 
 - (void)p_initUserData
 {
-    DDLogVerbose(@"沙盒路径:\n%@", [NSFileManager documentsPath]);
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"IsFirstRunApp"] == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"IsFirstRunApp"];
+    NSNumber *lastRunDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastRunDate"];
+    
+    if (lastRunDate == nil) {
         [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"首次启动App，是否随机下载两组个性表情包，稍候也可在“我的”-“表情”中选择下载。" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 [self p_downloadDefaultExpression];
             }
         }];
+    }
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:lastRunDate.doubleValue];
+    NSNumber *sponsorStatus = [[NSUserDefaults standardUserDefaults] objectForKey:@"sponsorStatus"];
+    if ([date isSameDay:[NSDate date]]) {
+        if (sponsorStatus.integerValue == 3) {
+            [UIAlertView bk_showAlertViewWithTitle:nil message:@"如果此份源码对您有足够大帮助，您可以小额赞助我，以激励我继续维护，做得更好。" cancelButtonTitle:@"不了" otherButtonTitles:@[@"小额赞助"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if (buttonIndex == 1) {
+                    TLWalletViewController *walletVC = [[TLWalletViewController alloc] init];
+                    [[TLRootViewController sharedRootViewController] pushViewController:walletVC animated:YES];
+                }
+                else {
+                    [[NSUserDefaults standardUserDefaults] setObject:@(-1) forKey:@"sponsorStatus"];
+                }
+            }];
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:@(sponsorStatus.integerValue + 1) forKey:@"sponsorStatus"];
+    }
+    else {
+        [[NSUserDefaults standardUserDefaults] setObject:@([[NSDate date] timeIntervalSince1970]) forKey:@"lastRunDate"];
+        if (sponsorStatus.integerValue != -1) {
+            [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"sponsorStatus"];
+        }
     }
 }
 
@@ -198,6 +225,8 @@
 
 - (void)p_initAppData
 {
+    DDLogVerbose(@"沙盒路径:\n%@", [NSFileManager documentsPath]);
+    
     TLRootProxy *proxy = [[TLRootProxy alloc] init];
     [proxy requestClientInitInfoSuccess:^(id data) {
         

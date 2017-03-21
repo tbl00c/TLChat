@@ -37,7 +37,7 @@
     user.detailInfo.motto = @"Hello world!";
     user.detailInfo.momentsWallURL = @"http://img06.tooopen.com/images/20160913/tooopen_sy_178786212749.jpg";
 
-    self.user = user;
+    [self setUser:user];
 }
 
 - (void)setUser:(TLUser *)user
@@ -48,7 +48,7 @@
         DDLogError(@"登录数据存库失败");
     }
 
-    [[NSUserDefaults standardUserDefaults] setObject:self.user.userID forKey:@"loginUid"];
+    [[NSUserDefaults standardUserDefaults] setObject:user.userID forKey:@"loginUid"];
 }
 - (TLUser *)user
 {

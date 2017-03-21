@@ -118,6 +118,7 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
         [self presentViewController:loginVC animated:YES completion:nil];
     }
     else if (sender.tag == TLAccountButtonTypeTest) {
+        [[TLUserHelper sharedHelper] loginTestAccount];
         if (self.loginSuccess) {
             self.loginSuccess();
         }

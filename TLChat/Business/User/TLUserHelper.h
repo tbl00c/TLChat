@@ -19,4 +19,6 @@
 
 + (TLUserHelper *)sharedHelper;
 
+- (void)loginTestAccount;
+
 @end

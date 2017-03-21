@@ -15,8 +15,8 @@ static TLDBManager *manager;
 + (TLDBManager *)sharedInstance
 {
     static dispatch_once_t once;
+    NSString *userID = [TLUserHelper sharedHelper].userID;
     dispatch_once(&once, ^{
-        NSString *userID = [TLUserHelper sharedHelper].userID;
         manager = [[TLDBManager alloc] initWithUserID:userID];
     });
     return manager;

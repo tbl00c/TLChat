@@ -7,13 +7,14 @@
 //
 
 #import "TLUserHelper.h"
-
-static TLUserHelper *helper;
+#import "TLDBUserStore.h"
 
 @implementation TLUserHelper
+@synthesize user = _user;
 
 + (TLUserHelper *)sharedHelper
 {
+    static TLUserHelper *helper;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         helper = [[TLUserHelper alloc] init];
@@ -21,33 +22,57 @@ static TLUserHelper *helper;
     return helper;
 }
 
-- (id)init
+
+- (void)loginTestAccount
 {
-    if (self = [super init]) {
-        self.user = [[TLUser alloc] init];
-        self.user.userID = @"1000";
-        self.user.avatarURL = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
-        self.user.nikeName = @"李伯坤";
-        self.user.username = @"li-bokun";
-        self.user.detailInfo.qqNumber = @"1159197873";
-        self.user.detailInfo.email = @"libokun@126.com";
-        self.user.detailInfo.location = @"山东 滨州";
-        self.user.detailInfo.sex = @"男";
-        self.user.detailInfo.motto = @"Hello world!";
-        self.user.detailInfo.momentsWallURL = @"http://img06.tooopen.com/images/20160913/tooopen_sy_178786212749.jpg";
+    TLUser *user = [[TLUser alloc] init];
+    user.userID = @"1000";
+    user.avatarURL = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
+    user.nikeName = @"李伯坤";
+    user.username = @"li-bokun";
+    user.detailInfo.qqNumber = @"1159197873";
+    user.detailInfo.email = @"libokun@126.com";
+    user.detailInfo.location = @"山东 滨州";
+    user.detailInfo.sex = @"男";
+    user.detailInfo.motto = @"Hello world!";
+    user.detailInfo.momentsWallURL = @"http://img06.tooopen.com/images/20160913/tooopen_sy_178786212749.jpg";
+
+    self.user = user;
+}
+
+- (void)setUser:(TLUser *)user
+{
+    _user = user;
+    TLDBUserStore *userStore = [[TLDBUserStore alloc] init];
+    if (![userStore updateUser:user]) {
+        DDLogError(@"登录数据存库失败");
     }
-    return self;
+
+    [[NSUserDefaults standardUserDefaults] setObject:self.user.userID forKey:@"loginUid"];
+}
+- (TLUser *)user
+{
+    if (!_user) {
+        if (self.userID.length > 0) {
+            TLDBUserStore *userStore = [[TLDBUserStore alloc] init];
+            _user = [userStore userByID:self.userID];
+            if (!_user) {
+                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"loginUid"];
+            }
+        }
+    }
+    return _user;
 }
 
 - (NSString *)userID
 {
-    return self.user.userID;
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"loginUid"];
+    return uid;
 }
 
 - (BOOL)isLogin
 {
-    return NO;
-    return self.userID;
+    return self.user.userID.length > 0;
 }
 
 @end

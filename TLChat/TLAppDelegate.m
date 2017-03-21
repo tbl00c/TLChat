@@ -88,7 +88,7 @@
 - (void)p_initUI
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
+        
     UIViewController *rootVC;
     if ([TLUserHelper sharedHelper].isLogin) {
         rootVC = [TLRootViewController sharedRootViewController];
@@ -122,8 +122,6 @@
             }
         }];
     }
-    [TLUserHelper sharedHelper];
-    [TLFriendHelper sharedFriendHelper];
 }
 
 - (void)p_downloadDefaultExpression

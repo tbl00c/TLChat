@@ -298,7 +298,6 @@
 		C2FE2F3C1CA9733400E5155B /* TLTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F3B1CA9733400E5155B /* TLTextMessage.m */; };
 		C2FE2F411CA97FFE00E5155B /* TLImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F401CA97FFE00E5155B /* TLImageMessage.m */; };
 		C2FE2F441CA9802700E5155B /* TLExpressionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F431CA9802700E5155B /* TLExpressionMessage.m */; };
-		CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47069788539839E1FB073F9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -928,7 +927,6 @@
 			files = (
 				C20907451C97ED0700AB87A5 /* JSPatch.framework in Frameworks */,
 				C2AF1FAA1C6B78F600617D98 /* WebKit.framework in Frameworks */,
-				CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */,
 				88ADAC5B8F7198E35AF43F48 /* libPods-TLChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

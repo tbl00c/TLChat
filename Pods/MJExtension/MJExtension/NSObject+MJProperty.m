@@ -44,20 +44,22 @@ static NSMutableDictionary *cachedPropertiesDict_;
 
 + (NSMutableDictionary *)dictForKey:(const void *)key
 {
-    if (key == &MJReplacedKeyFromPropertyNameKey) return replacedKeyFromPropertyNameDict_;
-    if (key == &MJReplacedKeyFromPropertyName121Key) return replacedKeyFromPropertyName121Dict_;
-    if (key == &MJNewValueFromOldValueKey) return newValueFromOldValueDict_;
-    if (key == &MJObjectClassInArrayKey) return objectClassInArrayDict_;
-    if (key == &MJCachedPropertiesKey) return cachedPropertiesDict_;
-    return nil;
+    @synchronized (self) {
+        if (key == &MJReplacedKeyFromPropertyNameKey) return replacedKeyFromPropertyNameDict_;
+        if (key == &MJReplacedKeyFromPropertyName121Key) return replacedKeyFromPropertyName121Dict_;
+        if (key == &MJNewValueFromOldValueKey) return newValueFromOldValueDict_;
+        if (key == &MJObjectClassInArrayKey) return objectClassInArrayDict_;
+        if (key == &MJCachedPropertiesKey) return cachedPropertiesDict_;
+        return nil;
+    }
 }
 
 #pragma mark - --私有方法--
-+ (NSString *)propertyKey:(NSString *)propertyName
++ (id)propertyKey:(NSString *)propertyName
 {
     MJExtensionAssertParamNotNil2(propertyName, nil);
     
-    __block NSString *key = nil;
+    __block id key = nil;
     // 查看有没有需要替换的key
     if ([self respondsToSelector:@selector(mj_replacedKeyFromPropertyName121:)]) {
         key = [self mj_replacedKeyFromPropertyName121:propertyName];
@@ -79,21 +81,21 @@ static NSMutableDictionary *cachedPropertiesDict_;
     }
     
     // 查看有没有需要替换的key
-    if (!key && [self respondsToSelector:@selector(mj_replacedKeyFromPropertyName)]) {
+    if ((!key || [key isEqual:propertyName]) && [self respondsToSelector:@selector(mj_replacedKeyFromPropertyName)]) {
         key = [self mj_replacedKeyFromPropertyName][propertyName];
     }
     // 兼容旧版本
-    if (!key && [self respondsToSelector:@selector(replacedKeyFromPropertyName)]) {
+    if ((!key || [key isEqual:propertyName]) && [self respondsToSelector:@selector(replacedKeyFromPropertyName)]) {
         key = [self performSelector:@selector(replacedKeyFromPropertyName)][propertyName];
     }
     
-    if (!key) {
+    if (!key || [key isEqual:propertyName]) {
         [self mj_enumerateAllClasses:^(__unsafe_unretained Class c, BOOL *stop) {
             NSDictionary *dict = objc_getAssociatedObject(c, &MJReplacedKeyFromPropertyNameKey);
             if (dict) {
                 key = dict[propertyName];
             }
-            if (key) *stop = YES;
+            if (key && ![key isEqual:propertyName]) *stop = YES;
         }];
     }
     
@@ -161,13 +163,8 @@ static NSMutableDictionary *cachedPropertiesDict_;
             // 2.遍历每一个成员变量
             for (unsigned int i = 0; i<outCount; i++) {
                 MJProperty *property = [MJProperty cachedPropertyWithProperty:properties[i]];
-                // 过滤掉系统自动添加的元素
-                if ([property.name isEqualToString:@"hash"]
-                    || [property.name isEqualToString:@"superclass"]
-                    || [property.name isEqualToString:@"description"]
-                    || [property.name isEqualToString:@"debugDescription"]) {
-                    continue;
-                }
+                // 过滤掉Foundation框架类里面的属性
+                if ([MJFoundation isClassFromFoundation:property.srcClass]) continue;
                 property.srcClass = c;
                 [property setOriginKey:[self propertyKey:property.name] forClass:self];
                 [property setObjectClassInArray:[self propertyObjectClassInArray:property.name] forClass:self];

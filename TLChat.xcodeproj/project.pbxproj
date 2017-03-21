@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A980060F33D0DC79EA276E6 /* libPods-TLChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6FF863489BCC92EE4D7EB3 /* libPods-TLChat.a */; };
 		C2028D1B1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D1A1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m */; };
 		C2028D1E1C8D1D360060E271 /* TLFriendHelper+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D1D1C8D1D360060E271 /* TLFriendHelper+Detail.m */; };
 		C2028D281C8D2CF20060E271 /* TLNewFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D271C8D2CF20060E271 /* TLNewFriendViewController.m */; };
@@ -295,7 +296,6 @@
 		C2FE2F3C1CA9733400E5155B /* TLTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F3B1CA9733400E5155B /* TLTextMessage.m */; };
 		C2FE2F411CA97FFE00E5155B /* TLImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F401CA97FFE00E5155B /* TLImageMessage.m */; };
 		C2FE2F441CA9802700E5155B /* TLExpressionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE2F431CA9802700E5155B /* TLExpressionMessage.m */; };
-		CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47069788539839E1FB073F9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,8 +316,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		28C098D007CC6D63F81358AB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6E6FF863489BCC92EE4D7EB3 /* libPods-TLChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TLChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7ECEBD71E8D130D95D4C15D /* Pods-TLChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.debug.xcconfig"; sourceTree = "<group>"; };
 		C2028D191C8D1A3D0060E271 /* TLFriendDetailSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailSettingViewController.h; sourceTree = "<group>"; };
 		C2028D1A1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailSettingViewController.m; sourceTree = "<group>"; };
 		C2028D1C1C8D1D360060E271 /* TLFriendHelper+Detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLFriendHelper+Detail.h"; sourceTree = "<group>"; };
@@ -908,7 +908,7 @@
 		C2FE2F401CA97FFE00E5155B /* TLImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageMessage.m; sourceTree = "<group>"; };
 		C2FE2F421CA9802700E5155B /* TLExpressionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionMessage.h; sourceTree = "<group>"; };
 		C2FE2F431CA9802700E5155B /* TLExpressionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionMessage.m; sourceTree = "<group>"; };
-		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6554A691363F9F763088F09 /* Pods-TLChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -918,7 +918,7 @@
 			files = (
 				C20907451C97ED0700AB87A5 /* JSPatch.framework in Frameworks */,
 				C2AF1FAA1C6B78F600617D98 /* WebKit.framework in Frameworks */,
-				CB742FE0D4D07E4FA91FF04C /* libPods.a in Frameworks */,
+				5A980060F33D0DC79EA276E6 /* libPods-TLChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,11 +939,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08A21825AD082DD43B30E2DA /* Pods */ = {
+		332C50BE31310AC509A54EDA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */,
-				28C098D007CC6D63F81358AB /* Pods.release.xcconfig */,
+				B7ECEBD71E8D130D95D4C15D /* Pods-TLChat.debug.xcconfig */,
+				E6554A691363F9F763088F09 /* Pods-TLChat.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -952,7 +952,7 @@
 			isa = PBXGroup;
 			children = (
 				C2AF1FA91C6B78F600617D98 /* WebKit.framework */,
-				F47069788539839E1FB073F9 /* libPods.a */,
+				6E6FF863489BCC92EE4D7EB3 /* libPods-TLChat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1075,8 +1075,8 @@
 				C2097EFF1C52326500163B5C /* TLChatTests */,
 				C2097F0A1C52326500163B5C /* TLChatUITests */,
 				C2097EE41C52326500163B5C /* Products */,
-				08A21825AD082DD43B30E2DA /* Pods */,
 				445936A105939B47A48F4E03 /* Frameworks */,
+				332C50BE31310AC509A54EDA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3121,12 +3121,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2097F101C52326500163B5C /* Build configuration list for PBXNativeTarget "TLChat" */;
 			buildPhases = (
-				CC8B46C7F9BB79BD1D1E97BD /* Check Pods Manifest.lock */,
+				1D762FECCF01E083B66FEFC6 /* [CP] Check Pods Manifest.lock */,
 				C2097EDF1C52326500163B5C /* Sources */,
 				C2097EE01C52326500163B5C /* Frameworks */,
 				C2097EE11C52326500163B5C /* Resources */,
-				B46DBA6792C3E056B6484AA5 /* Embed Pods Frameworks */,
-				FF9F8C675570F5C5117DA386 /* Copy Pods Resources */,
+				8ABEE620BDB6BB0D0BE174FB /* [CP] Embed Pods Frameworks */,
+				C9236FB6D9C4C1E1E7FE6564 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3254,49 +3254,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B46DBA6792C3E056B6484AA5 /* Embed Pods Frameworks */ = {
+		1D762FECCF01E083B66FEFC6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CC8B46C7F9BB79BD1D1E97BD /* Check Pods Manifest.lock */ = {
+		8ABEE620BDB6BB0D0BE174FB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TLChat/Pods-TLChat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FF9F8C675570F5C5117DA386 /* Copy Pods Resources */ = {
+		C9236FB6D9C4C1E1E7FE6564 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TLChat/Pods-TLChat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3696,7 +3696,7 @@
 		};
 		C2097F111C52326500163B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = B7ECEBD71E8D130D95D4C15D /* Pods-TLChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3720,7 +3720,7 @@
 		};
 		C2097F121C52326500163B5C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28C098D007CC6D63F81358AB /* Pods.release.xcconfig */;
+			baseConfigurationReference = E6554A691363F9F763088F09 /* Pods-TLChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

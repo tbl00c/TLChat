@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		5A980060F33D0DC79EA276E6 /* libPods-TLChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6FF863489BCC92EE4D7EB3 /* libPods-TLChat.a */; };
+=======
+		88ADAC5B8F7198E35AF43F48 /* libPods-TLChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */; };
+>>>>>>> dev
 		C2028D1B1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D1A1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m */; };
 		C2028D1E1C8D1D360060E271 /* TLFriendHelper+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D1D1C8D1D360060E271 /* TLFriendHelper+Detail.m */; };
 		C2028D281C8D2CF20060E271 /* TLNewFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2028D271C8D2CF20060E271 /* TLNewFriendViewController.m */; };
@@ -85,6 +89,7 @@
 		C21573FB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573AB1C9BAC4200B7AC67 /* TLEmojiDisplayView.m */; };
 		C21573FC1C9BAC4200B7AC67 /* TLImageExpressionDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573AE1C9BAC4200B7AC67 /* TLImageExpressionDisplayView.m */; };
 		C21573FD1C9BAC4200B7AC67 /* TLTextDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21573B11C9BAC4200B7AC67 /* TLTextDisplayView.m */; };
+		C21B4E751E1FAB7E00A3E7A0 /* TLAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B4E741E1FAB7E00A3E7A0 /* TLAccountViewController.m */; };
 		C21C6E1E1C8D7B6B0018C570 /* FriendGroupList.json in Resources */ = {isa = PBXBuildFile; fileRef = C21C6E1D1C8D7B6B0018C570 /* FriendGroupList.json */; };
 		C220EF2B1C7EB89300DE3B86 /* TLScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C220EF2A1C7EB89300DE3B86 /* TLScanningViewController.m */; };
 		C2232E2B1C9FA38E0010CDF8 /* TLMessageManager+ConversationRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E261C9FA38E0010CDF8 /* TLMessageManager+ConversationRecord.m */; };
@@ -96,6 +101,7 @@
 		C2232E6E1CA013CB0010CDF8 /* TLChatFontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2232E6D1CA013CB0010CDF8 /* TLChatFontViewController.m */; };
 		C225AFB71CB2E4AA000477F3 /* TLMomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C225AFB61CB2E4AA000477F3 /* TLMomentsViewController.m */; };
 		C225AFBA1CB2E7B4000477F3 /* TLMomentsViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C225AFB91CB2E7B4000477F3 /* TLMomentsViewController+TableView.m */; };
+		C231061F1E81085F00F52395 /* TLDBUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C231061E1E81085F00F52395 /* TLDBUserStore.m */; };
 		C237E9D51CB2445C0034CEA2 /* TLExpressionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C237E9D41CB2445C0034CEA2 /* TLExpressionCell.m */; };
 		C237E9D81CB244830034CEA2 /* TLExpressionChosenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C237E9D71CB244830034CEA2 /* TLExpressionChosenViewController.m */; };
 		C237E9DC1CB2AA240034CEA2 /* TLExpressionChosenViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C237E9DB1CB2AA240034CEA2 /* TLExpressionChosenViewController+TableView.m */; };
@@ -284,6 +290,7 @@
 		C2F0EC151C7AB1BB0090843C /* TLAboutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC141C7AB1BB0090843C /* TLAboutHelper.m */; };
 		C2F0EC181C7AB6E30090843C /* TLAboutHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC171C7AB6E30090843C /* TLAboutHeaderView.m */; };
 		C2F0EC1C1C7ABF190090843C /* TLAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */; };
+		C2F74E361D9F896100F6CD28 /* TLVideoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F74E351D9F896100F6CD28 /* TLVideoMessage.m */; };
 		C2F9F6811C854F94000EE9ED /* FriendList.json in Resources */ = {isa = PBXBuildFile; fileRef = C2F9F6801C854F94000EE9ED /* FriendList.json */; };
 		C2FB85CA1CB6B8BE00747B6D /* TLMomentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85C91CB6B8BE00747B6D /* TLMomentHeaderCell.m */; };
 		C2FB85CD1CB6B91E00747B6D /* TLMomentImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB85CC1CB6B91E00747B6D /* TLMomentImagesCell.m */; };
@@ -316,8 +323,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		6E6FF863489BCC92EE4D7EB3 /* libPods-TLChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TLChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7ECEBD71E8D130D95D4C15D /* Pods-TLChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.debug.xcconfig"; sourceTree = "<group>"; };
+=======
+		28C098D007CC6D63F81358AB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		99FC90F8BB6CC8FC216CB6EE /* Pods-TLChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.release.xcconfig"; sourceTree = "<group>"; };
+		ABEB57A4807F75774E29D2E1 /* Pods-TLChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.debug.xcconfig"; sourceTree = "<group>"; };
+>>>>>>> dev
 		C2028D191C8D1A3D0060E271 /* TLFriendDetailSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailSettingViewController.h; sourceTree = "<group>"; };
 		C2028D1A1C8D1A3D0060E271 /* TLFriendDetailSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailSettingViewController.m; sourceTree = "<group>"; };
 		C2028D1C1C8D1D360060E271 /* TLFriendHelper+Detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLFriendHelper+Detail.h"; sourceTree = "<group>"; };
@@ -484,6 +498,8 @@
 		C21573AE1C9BAC4200B7AC67 /* TLImageExpressionDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageExpressionDisplayView.m; sourceTree = "<group>"; };
 		C21573B01C9BAC4200B7AC67 /* TLTextDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTextDisplayView.h; sourceTree = "<group>"; };
 		C21573B11C9BAC4200B7AC67 /* TLTextDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTextDisplayView.m; sourceTree = "<group>"; };
+		C21B4E731E1FAB7E00A3E7A0 /* TLAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountViewController.h; sourceTree = "<group>"; };
+		C21B4E741E1FAB7E00A3E7A0 /* TLAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountViewController.m; sourceTree = "<group>"; };
 		C21C6E1D1C8D7B6B0018C570 /* FriendGroupList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendGroupList.json; sourceTree = "<group>"; };
 		C220EF291C7EB89300DE3B86 /* TLScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScanningViewController.h; sourceTree = "<group>"; };
 		C220EF2A1C7EB89300DE3B86 /* TLScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScanningViewController.m; sourceTree = "<group>"; };
@@ -508,6 +524,9 @@
 		C225AFB61CB2E4AA000477F3 /* TLMomentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentsViewController.m; sourceTree = "<group>"; };
 		C225AFB81CB2E7B4000477F3 /* TLMomentsViewController+TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLMomentsViewController+TableView.h"; sourceTree = "<group>"; };
 		C225AFB91CB2E7B4000477F3 /* TLMomentsViewController+TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLMomentsViewController+TableView.m"; sourceTree = "<group>"; };
+		C231061D1E81085F00F52395 /* TLDBUserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBUserStore.h; sourceTree = "<group>"; };
+		C231061E1E81085F00F52395 /* TLDBUserStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBUserStore.m; sourceTree = "<group>"; };
+		C23106201E81086E00F52395 /* TLDBUserStoreSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBUserStoreSQL.h; sourceTree = "<group>"; };
 		C237E9D31CB2445C0034CEA2 /* TLExpressionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionCell.h; sourceTree = "<group>"; };
 		C237E9D41CB2445C0034CEA2 /* TLExpressionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionCell.m; sourceTree = "<group>"; };
 		C237E9D61CB244830034CEA2 /* TLExpressionChosenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionChosenViewController.h; sourceTree = "<group>"; };
@@ -884,6 +903,8 @@
 		C2F0EC171C7AB6E30090843C /* TLAboutHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAboutHeaderView.m; sourceTree = "<group>"; };
 		C2F0EC1A1C7ABF190090843C /* TLAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppHelper.h; sourceTree = "<group>"; };
 		C2F0EC1B1C7ABF190090843C /* TLAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppHelper.m; sourceTree = "<group>"; };
+		C2F74E341D9F896100F6CD28 /* TLVideoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVideoMessage.h; sourceTree = "<group>"; };
+		C2F74E351D9F896100F6CD28 /* TLVideoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVideoMessage.m; sourceTree = "<group>"; };
 		C2F9F67D1C854BDE000EE9ED /* TLInfoMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLInfoMacros.h; sourceTree = "<group>"; };
 		C2F9F6801C854F94000EE9ED /* FriendList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendList.json; sourceTree = "<group>"; };
 		C2FB85C81CB6B8BE00747B6D /* TLMomentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentHeaderCell.h; sourceTree = "<group>"; };
@@ -908,7 +929,12 @@
 		C2FE2F401CA97FFE00E5155B /* TLImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageMessage.m; sourceTree = "<group>"; };
 		C2FE2F421CA9802700E5155B /* TLExpressionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionMessage.h; sourceTree = "<group>"; };
 		C2FE2F431CA9802700E5155B /* TLExpressionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionMessage.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		E6554A691363F9F763088F09 /* Pods-TLChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.release.xcconfig"; sourceTree = "<group>"; };
+=======
+		EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TLChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> dev
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -918,7 +944,11 @@
 			files = (
 				C20907451C97ED0700AB87A5 /* JSPatch.framework in Frameworks */,
 				C2AF1FAA1C6B78F600617D98 /* WebKit.framework in Frameworks */,
+<<<<<<< HEAD
 				5A980060F33D0DC79EA276E6 /* libPods-TLChat.a in Frameworks */,
+=======
+				88ADAC5B8F7198E35AF43F48 /* libPods-TLChat.a in Frameworks */,
+>>>>>>> dev
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,8 +972,15 @@
 		332C50BE31310AC509A54EDA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				B7ECEBD71E8D130D95D4C15D /* Pods-TLChat.debug.xcconfig */,
 				E6554A691363F9F763088F09 /* Pods-TLChat.release.xcconfig */,
+=======
+				75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */,
+				28C098D007CC6D63F81358AB /* Pods.release.xcconfig */,
+				ABEB57A4807F75774E29D2E1 /* Pods-TLChat.debug.xcconfig */,
+				99FC90F8BB6CC8FC216CB6EE /* Pods-TLChat.release.xcconfig */,
+>>>>>>> dev
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -952,7 +989,12 @@
 			isa = PBXGroup;
 			children = (
 				C2AF1FA91C6B78F600617D98 /* WebKit.framework */,
+<<<<<<< HEAD
 				6E6FF863489BCC92EE4D7EB3 /* libPods-TLChat.a */,
+=======
+				F47069788539839E1FB073F9 /* libPods.a */,
+				EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */,
+>>>>>>> dev
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1511,12 +1553,11 @@
 			isa = PBXGroup;
 			children = (
 				C2B70A961C9514A5005BECDD /* Base */,
-				C2B70AA11C951626005BECDD /* User */,
+				C231061C1E8106F500F52395 /* User */,
 				C2B70A981C9514A5005BECDD /* Converstaion */,
 				C2B70A991C9514A5005BECDD /* Friends */,
 				C2B70A971C9514A5005BECDD /* Chat */,
 				C298E3D91CB95655009A0065 /* Expression */,
-				C2B70A9A1C9514A5005BECDD /* Setting */,
 				C2B70AA51C951681005BECDD /* TLDBManager.h */,
 				C2B70AA61C951681005BECDD /* TLDBManager.m */,
 			);
@@ -1526,6 +1567,7 @@
 		C2142EC71C532E6E0030B29B /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				C21B4E721E1FAB7E00A3E7A0 /* AccountViewController */,
 				C2B70AAB1C95284B005BECDD /* LoginViewController */,
 				C2B70AAC1C95284B005BECDD /* RegisterViewController */,
 				C2D500DB1C55CA170088997C /* TLRootViewController.h */,
@@ -1727,6 +1769,15 @@
 			path = TLTextDisplayView;
 			sourceTree = "<group>";
 		};
+		C21B4E721E1FAB7E00A3E7A0 /* AccountViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C21B4E731E1FAB7E00A3E7A0 /* TLAccountViewController.h */,
+				C21B4E741E1FAB7E00A3E7A0 /* TLAccountViewController.m */,
+			);
+			path = AccountViewController;
+			sourceTree = "<group>";
+		};
 		C2232E241C9FA38E0010CDF8 /* TLMessageManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1787,6 +1838,16 @@
 				C2FB85D51CB6C1F600747B6D /* TLMomentsViewController+Proxy.m */,
 			);
 			path = MomentsViewController;
+			sourceTree = "<group>";
+		};
+		C231061C1E8106F500F52395 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C23106201E81086E00F52395 /* TLDBUserStoreSQL.h */,
+				C231061D1E81085F00F52395 /* TLDBUserStore.h */,
+				C231061E1E81085F00F52395 /* TLDBUserStore.m */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		C237E9D11CB2445C0034CEA2 /* ExpressionChosenViewController */ = {
@@ -2238,20 +2299,6 @@
 			path = Friends;
 			sourceTree = "<group>";
 		};
-		C2B70A9A1C9514A5005BECDD /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
-		C2B70AA11C951626005BECDD /* User */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
 		C2B70AAB1C95284B005BECDD /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2519,6 +2566,8 @@
 				C2FE2F431CA9802700E5155B /* TLExpressionMessage.m */,
 				C20A56C51D338A8C00C891B3 /* TLVoiceMessage.h */,
 				C20A56C61D338A8C00C891B3 /* TLVoiceMessage.m */,
+				C2F74E341D9F896100F6CD28 /* TLVideoMessage.h */,
+				C2F74E351D9F896100F6CD28 /* TLVideoMessage.m */,
 				C2DD839A1C96B3FD00E6300B /* TLMessageFrame.h */,
 				C2DD839B1C96B3FD00E6300B /* TLMessageFrame.m */,
 			);
@@ -3121,12 +3170,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2097F101C52326500163B5C /* Build configuration list for PBXNativeTarget "TLChat" */;
 			buildPhases = (
+<<<<<<< HEAD
 				1D762FECCF01E083B66FEFC6 /* [CP] Check Pods Manifest.lock */,
 				C2097EDF1C52326500163B5C /* Sources */,
 				C2097EE01C52326500163B5C /* Frameworks */,
 				C2097EE11C52326500163B5C /* Resources */,
 				8ABEE620BDB6BB0D0BE174FB /* [CP] Embed Pods Frameworks */,
 				C9236FB6D9C4C1E1E7FE6564 /* [CP] Copy Pods Resources */,
+=======
+				CC8B46C7F9BB79BD1D1E97BD /* [CP] Check Pods Manifest.lock */,
+				C2097EDF1C52326500163B5C /* Sources */,
+				C2097EE01C52326500163B5C /* Frameworks */,
+				C2097EE11C52326500163B5C /* Resources */,
+				B46DBA6792C3E056B6484AA5 /* [CP] Embed Pods Frameworks */,
+				FF9F8C675570F5C5117DA386 /* [CP] Copy Pods Resources */,
+>>>>>>> dev
 			);
 			buildRules = (
 			);
@@ -3185,6 +3243,7 @@
 					C2097EE21C52326500163B5C = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 8ZE6MPGQ6N;
+						ProvisioningStyle = Automatic;
 					};
 					C2097EFB1C52326500163B5C = {
 						CreatedOnToolsVersion = 7.2;
@@ -3254,37 +3313,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+<<<<<<< HEAD
 		1D762FECCF01E083B66FEFC6 /* [CP] Check Pods Manifest.lock */ = {
+=======
+		B46DBA6792C3E056B6484AA5 /* [CP] Embed Pods Frameworks */ = {
+>>>>>>> dev
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+<<<<<<< HEAD
 			name = "[CP] Check Pods Manifest.lock";
+=======
+			name = "[CP] Embed Pods Frameworks";
+>>>>>>> dev
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
+<<<<<<< HEAD
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8ABEE620BDB6BB0D0BE174FB /* [CP] Embed Pods Frameworks */ = {
+=======
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TLChat/Pods-TLChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC8B46C7F9BB79BD1D1E97BD /* [CP] Check Pods Manifest.lock */ = {
+>>>>>>> dev
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+<<<<<<< HEAD
 			name = "[CP] Embed Pods Frameworks";
+=======
+			name = "[CP] Check Pods Manifest.lock";
+>>>>>>> dev
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
+<<<<<<< HEAD
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TLChat/Pods-TLChat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C9236FB6D9C4C1E1E7FE6564 /* [CP] Copy Pods Resources */ = {
+=======
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FF9F8C675570F5C5117DA386 /* [CP] Copy Pods Resources */ = {
+>>>>>>> dev
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3489,6 +3574,7 @@
 				C2E6B81C1C9A5DEC0045A6EB /* TLNewFriendSearchViewController.m in Sources */,
 				C2E6B80A1C9A5B570045A6EB /* TLGroupSearchViewController.m in Sources */,
 				C2B9E4361C663E8800CEBA81 /* TLMineHeaderCell.m in Sources */,
+				C2F74E361D9F896100F6CD28 /* TLVideoMessage.m in Sources */,
 				C25F1D2C1CDC57E7001EECF3 /* TLUser+ChatModel.m in Sources */,
 				C2FB85D01CB6B93400747B6D /* TLMomentBaseCell.m in Sources */,
 				C2097EE81C52326500163B5C /* main.m in Sources */,
@@ -3505,6 +3591,7 @@
 				C2B9E4261C65E1A300CEBA81 /* TLMenuCell.m in Sources */,
 				C20DC9FF1CC336A30085DFFC /* TLDBGroupStore.m in Sources */,
 				C2E294C31C9D26A900721405 /* TLUserGroupItemCell.m in Sources */,
+				C231061F1E81085F00F52395 /* TLDBUserStore.m in Sources */,
 				C209BB741C8F2FD0001C15D2 /* TLAddFriendViewController.m in Sources */,
 				C2B70AA71C951681005BECDD /* TLDBManager.m in Sources */,
 				C20A56C71D338A8C00C891B3 /* TLVoiceMessage.m in Sources */,
@@ -3568,6 +3655,7 @@
 				C20B1AEF1D5833C700D9F710 /* TLVoiceMessageCell.m in Sources */,
 				C28C445F1C8818FD005975FF /* NSDate+Utilities.m in Sources */,
 				C2BF17D31C86DB50003318CB /* UIImage+Color.m in Sources */,
+				C21B4E751E1FAB7E00A3E7A0 /* TLAccountViewController.m in Sources */,
 				C2FB85D61CB6C1F600747B6D /* TLMomentsViewController+Proxy.m in Sources */,
 				C2C9FFBB1CC79B40003844A1 /* UIScrollView+Pages.m in Sources */,
 				C2232E2C1C9FA38E0010CDF8 /* TLMessageManager+MessageRecord.m in Sources */,
@@ -3629,7 +3717,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3673,7 +3762,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -3696,22 +3786,28 @@
 		};
 		C2097F111C52326500163B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = B7ECEBD71E8D130D95D4C15D /* Pods-TLChat.debug.xcconfig */;
+=======
+			baseConfigurationReference = ABEB57A4807F75774E29D2E1 /* Pods-TLChat.debug.xcconfig */;
+>>>>>>> dev
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TLChat/Extensions/Vendors/JSPatch",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TLChat/PrefixHeader.pch";
 				INFOPLIST_FILE = TLChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat0;
+				OTHER_CODE_SIGN_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3720,22 +3816,28 @@
 		};
 		C2097F121C52326500163B5C /* Release */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = E6554A691363F9F763088F09 /* Pods-TLChat.release.xcconfig */;
+=======
+			baseConfigurationReference = 99FC90F8BB6CC8FC216CB6EE /* Pods-TLChat.release.xcconfig */;
+>>>>>>> dev
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TLChat/Extensions/Vendors/JSPatch",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TLChat/PrefixHeader.pch";
 				INFOPLIST_FILE = TLChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat0;
+				OTHER_CODE_SIGN_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

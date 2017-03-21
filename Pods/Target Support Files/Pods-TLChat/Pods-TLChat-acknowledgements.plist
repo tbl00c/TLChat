@@ -65,6 +65,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</dict>
 		<dict>
 			<key>FooterText</key>
+<<<<<<< HEAD:Pods/Target Support Files/Pods-TLChat/Pods-TLChat-acknowledgements.plist
 			<string>Public Domain License
 
 The CocoaAsyncSocket project is in the public domain.
@@ -81,6 +82,8 @@ Updated and maintained by Deusty LLC and the Apple development community.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+=======
+>>>>>>> dev:Pods/Target Support Files/Pods-TLChat/Pods-TLChat-acknowledgements.plist
 			<string>Software License Agreement (BSD License)
 
 Copyright (c) 2010-2015, Deusty, LLC

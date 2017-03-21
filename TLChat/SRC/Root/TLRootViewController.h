@@ -10,7 +10,7 @@
 
 @interface TLRootViewController : TLTabBarController
 
-+ (TLRootViewController *) sharedRootViewController;
++ (TLRootViewController *)sharedRootViewController;
 
 /**
  *  获取tabbarController的第Index个VC（不是navController）
@@ -18,5 +18,7 @@
  *  @return navController的rootVC
  */
 - (id)childViewControllerAtIndex:(NSUInteger)index;
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 
 @end

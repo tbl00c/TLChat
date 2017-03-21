@@ -15,6 +15,10 @@
 
 @property (nonatomic, strong, readonly) NSString *userID;
 
-+ (TLUserHelper *) sharedHelper;
+@property (nonatomic, assign, readonly) BOOL isLogin;
+
++ (TLUserHelper *)sharedHelper;
+
+- (void)loginTestAccount;
 
 @end

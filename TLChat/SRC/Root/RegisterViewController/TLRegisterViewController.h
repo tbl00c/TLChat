@@ -10,4 +10,6 @@
 
 @interface TLRegisterViewController : TLViewController
 
+@property (nonatomic, copy) void (^registerSuccess)();
+
 @end

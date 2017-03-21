@@ -76,7 +76,7 @@
 {
     [super viewDidLoad];
     [MobClick event:EVENT_WALLET_DONATE];
-    [self.label setText:@"如果此份源码对您有足够大帮助，您可以小额赞助我，已激励我继续维护，做得更好。"];
+    [self.label setText:@"如果此份源码对您有足够大帮助，您可以小额赞助我，以激励我继续维护，做得更好。"];
     [self.imageView setImage:[UIImage imageNamed:@"wallet_9_9"]];
 }
 

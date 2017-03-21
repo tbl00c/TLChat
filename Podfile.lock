@@ -29,13 +29,6 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - CocoaAsyncSocket (7.4.3):
-    - CocoaAsyncSocket/All (= 7.4.3)
-  - CocoaAsyncSocket/All (7.4.3):
-    - CocoaAsyncSocket/GCD
-    - CocoaAsyncSocket/RunLoop
-  - CocoaAsyncSocket/GCD (7.4.3)
-  - CocoaAsyncSocket/RunLoop (7.4.3)
   - CocoaLumberjack (2.2.0):
     - CocoaLumberjack/Default (= 2.2.0)
     - CocoaLumberjack/Extensions (= 2.2.0)
@@ -72,7 +65,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0.4)
   - BlocksKit (~> 2.2.5)
-  - CocoaAsyncSocket (~> 7.4.2)
   - CocoaLumberjack (~> 2.2.0)
   - FMDB (~> 2.6)
   - Masonry (~> 0.6.4)
@@ -87,7 +79,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
@@ -101,6 +92,10 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 
+<<<<<<< HEAD
 PODFILE CHECKSUM: 1d0f289c5dd3d2f9073e4299d70f21f199b1c22b
+=======
+PODFILE CHECKSUM: ad156b8fb4355d0af23cede6686120056a965dae
+>>>>>>> dev
 
 COCOAPODS: 1.2.0

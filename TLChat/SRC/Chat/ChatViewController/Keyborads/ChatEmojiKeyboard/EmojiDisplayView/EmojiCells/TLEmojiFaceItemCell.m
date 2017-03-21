@@ -25,7 +25,7 @@
         [self.contentView addSubview:self.imageView];
         [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.mas_equalTo(self);
-            make.size.mas_equalTo(CGSizeMake(31, 31));
+            make.size.mas_equalTo(CGSizeMake(32, 32));
         }];
         [self.contentView addSubview:self.label];
         [self.label mas_makeConstraints:^(MASConstraintMaker *make) {

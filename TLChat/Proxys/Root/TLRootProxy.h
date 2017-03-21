@@ -13,10 +13,15 @@
 - (void)requestClientInitInfoSuccess:(void (^)(id))clientInitInfo
                              failure:(void (^)(NSString *))error;
 
-- (void)userLoginWithUsername:(NSString *)username
-                     password:(NSString *)password
-                      success:(void (^)(id))userInfo
-                      failure:(void (^)(NSString *))error;
+- (void)userLoginWithPhoneNumber:(NSString *)phoneNumber
+                        password:(NSString *)password
+                         success:(TLBlockRequestSuccessWithDatas)success
+                         failure:(TLBlockRequestFailureWithErrorMessage)failure;
 
+
+- (void)userRegisterWithPhoneNumber:(NSString *)phoneNumber
+                           password:(NSString *)password
+                            success:(TLBlockRequestSuccessWithDatas)success
+                            failure:(TLBlockRequestFailureWithErrorMessage)failure;
 
 @end

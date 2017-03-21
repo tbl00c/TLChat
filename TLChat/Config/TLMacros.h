@@ -18,6 +18,8 @@
 
 
 #pragma mark - # URL
+#define     HOST_URL                    @"http://101.200.134.35:8000/"
+//#define     HOST_URL                    @"http://10.252.146.27:8000/"
 #define     IEXPRESSION_HOST_URL        @"http://123.57.155.230/ibiaoqing/admin/"
 
 

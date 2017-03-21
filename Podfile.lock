@@ -29,13 +29,6 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - CocoaAsyncSocket (7.4.3):
-    - CocoaAsyncSocket/All (= 7.4.3)
-  - CocoaAsyncSocket/All (7.4.3):
-    - CocoaAsyncSocket/GCD
-    - CocoaAsyncSocket/RunLoop
-  - CocoaAsyncSocket/GCD (7.4.3)
-  - CocoaAsyncSocket/RunLoop (7.4.3)
   - CocoaLumberjack (2.2.0):
     - CocoaLumberjack/Default (= 2.2.0)
     - CocoaLumberjack/Extensions (= 2.2.0)
@@ -50,8 +43,8 @@ PODS:
   - FMDB/standard (2.6.2)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
-  - MJExtension (3.0.11)
-  - MJRefresh (3.1.9)
+  - MJExtension (3.0.13)
+  - MJRefresh (3.1.12)
   - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
@@ -66,13 +59,12 @@ PODS:
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
-  - SVProgressHUD (2.0.3)
+  - SVProgressHUD (2.1.2)
   - UMengAnalytics (3.6.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0.4)
   - BlocksKit (~> 2.2.5)
-  - CocoaAsyncSocket (~> 7.4.2)
   - CocoaLumberjack (~> 2.2.0)
   - FMDB (~> 2.6)
   - Masonry (~> 0.6.4)
@@ -87,18 +79,19 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJExtension: f9ae6ddc0f1c482c3c9af750280ccebd14381958
-  MJRefresh: c5f1f1653e5a1b932c90f78074f2bc86f3f9bd5e
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
-  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: ad156b8fb4355d0af23cede6686120056a965dae
+
+COCOAPODS: 1.2.0

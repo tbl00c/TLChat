@@ -44,12 +44,14 @@ static NSMutableDictionary *cachedPropertiesDict_;
 
 + (NSMutableDictionary *)dictForKey:(const void *)key
 {
-    if (key == &MJReplacedKeyFromPropertyNameKey) return replacedKeyFromPropertyNameDict_;
-    if (key == &MJReplacedKeyFromPropertyName121Key) return replacedKeyFromPropertyName121Dict_;
-    if (key == &MJNewValueFromOldValueKey) return newValueFromOldValueDict_;
-    if (key == &MJObjectClassInArrayKey) return objectClassInArrayDict_;
-    if (key == &MJCachedPropertiesKey) return cachedPropertiesDict_;
-    return nil;
+    @synchronized (self) {
+        if (key == &MJReplacedKeyFromPropertyNameKey) return replacedKeyFromPropertyNameDict_;
+        if (key == &MJReplacedKeyFromPropertyName121Key) return replacedKeyFromPropertyName121Dict_;
+        if (key == &MJNewValueFromOldValueKey) return newValueFromOldValueDict_;
+        if (key == &MJObjectClassInArrayKey) return objectClassInArrayDict_;
+        if (key == &MJCachedPropertiesKey) return cachedPropertiesDict_;
+        return nil;
+    }
 }
 
 #pragma mark - --私有方法--
@@ -161,13 +163,8 @@ static NSMutableDictionary *cachedPropertiesDict_;
             // 2.遍历每一个成员变量
             for (unsigned int i = 0; i<outCount; i++) {
                 MJProperty *property = [MJProperty cachedPropertyWithProperty:properties[i]];
-                // 过滤掉系统自动添加的元素
-                if ([property.name isEqualToString:@"hash"]
-                    || [property.name isEqualToString:@"superclass"]
-                    || [property.name isEqualToString:@"description"]
-                    || [property.name isEqualToString:@"debugDescription"]) {
-                    continue;
-                }
+                // 过滤掉Foundation框架类里面的属性
+                if ([MJFoundation isClassFromFoundation:property.srcClass]) continue;
                 property.srcClass = c;
                 [property setOriginKey:[self propertyKey:property.name] forClass:self];
                 [property setObjectClassInArray:[self propertyObjectClassInArray:property.name] forClass:self];

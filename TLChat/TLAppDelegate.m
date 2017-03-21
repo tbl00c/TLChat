@@ -8,6 +8,7 @@
 
 #import "TLAppDelegate.h"
 #import "TLRootViewController.h"
+#import "TLAccountViewController.h"
 
 #import "TLRootProxy.h"
 #import "TLExpressionProxy.h"
@@ -87,7 +88,23 @@
 - (void)p_initUI
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    TLRootViewController *rootVC = [TLRootViewController sharedRootViewController];
+    
+    UIViewController *rootVC;
+    if ([TLUserHelper sharedHelper].isLogin) {
+        rootVC = [TLRootViewController sharedRootViewController];
+    }
+    else {
+        rootVC = [[TLAccountViewController alloc] init];
+        TLWeakSelf(self);
+        TLWeakSelf(rootVC)
+        [(TLAccountViewController *)rootVC setLoginSuccess:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            [weakrootVC.view removeFromSuperview];
+            [weakself.window setRootViewController:[TLRootViewController sharedRootViewController]];
+            [weakself.window addSubview:[TLRootViewController sharedRootViewController].view];
+        }];
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window setRootViewController:rootVC];
     [self.window addSubview:rootVC.view];

@@ -10,6 +10,8 @@
 
 @interface UIButton (TLChat)
 
-- (void) setImage:(UIImage *)image imageHL:(UIImage *)imageHL;
++ (UIButton *)defaultButton;
+
+- (void)setImage:(UIImage *)image imageHL:(UIImage *)imageHL;
 
 @end

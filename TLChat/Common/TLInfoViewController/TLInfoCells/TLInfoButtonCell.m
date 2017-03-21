@@ -41,7 +41,7 @@
     [self.button.layer setBorderColor:info.buttonBorderColor.CGColor];
 }
 
-#pragma mark - Event Response -
+#pragma mark - # Event Response
 - (void)cellButtonDown:(UIButton *)sender
 {
     if (_delegate && [_delegate respondsToSelector:@selector(infoButtonCellClicked:)]) {
@@ -49,7 +49,7 @@
     }
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,7 +59,7 @@
     }];
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getter
 - (UIButton *)button
 {
     if (_button == nil) {

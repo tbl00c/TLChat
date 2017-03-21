@@ -12,7 +12,7 @@ static TLUserHelper *helper;
 
 @implementation TLUserHelper
 
-+ (TLUserHelper *) sharedHelper
++ (TLUserHelper *)sharedHelper
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
@@ -21,12 +21,7 @@ static TLUserHelper *helper;
     return helper;
 }
 
-- (NSString *)userID
-{
-    return self.user.userID;
-}
-
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.user = [[TLUser alloc] init];
@@ -42,6 +37,17 @@ static TLUserHelper *helper;
         self.user.detailInfo.momentsWallURL = @"http://img06.tooopen.com/images/20160913/tooopen_sy_178786212749.jpg";
     }
     return self;
+}
+
+- (NSString *)userID
+{
+    return self.user.userID;
+}
+
+- (BOOL)isLogin
+{
+    return NO;
+    return self.userID;
 }
 
 @end

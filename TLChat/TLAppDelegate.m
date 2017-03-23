@@ -136,8 +136,11 @@
                 if (buttonIndex == 1) {
                     TLWalletViewController *walletVC = [[TLWalletViewController alloc] init];
                     [[TLRootViewController sharedRootViewController] pushViewController:walletVC animated:YES];
+                    [MobClick event:EVENT_DONATE_ALERT_YES];
+                    [[NSUserDefaults standardUserDefaults] setObject:@(-1) forKey:@"sponsorStatus"];
                 }
                 else {
+                    [MobClick event:EVENT_DONATE_ALERT_NO];
                     [[NSUserDefaults standardUserDefaults] setObject:@(-1) forKey:@"sponsorStatus"];
                 }
             }];

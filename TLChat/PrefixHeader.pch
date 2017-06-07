@@ -13,6 +13,7 @@
 #import "TLEnumerate.h"         // 枚举
 #import "TLEventStatistics.h"   // 数据统计
 #import "TLHost.h"              // 网络地址
+#import "TLNotificationKey.h"   // 广播
 
 #import "UIColor+TLChat.h"      // 颜色
 #import "UIFont+TLChat.h"       // 字体

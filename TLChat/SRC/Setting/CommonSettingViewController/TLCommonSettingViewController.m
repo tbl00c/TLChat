@@ -68,7 +68,7 @@
     if (actionSheet.tag == TAG_ACTIONSHEET_EMPTY_REC) {
         if (buttonIndex == 0) {
             [[TLMessageManager sharedInstance] deleteAllMessages];
-            [[TLChatViewController sharedChatVC] resetChatVC];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
         }
     }
 }

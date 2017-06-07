@@ -47,6 +47,7 @@
 
 - (void)dealloc
 {
+    [self.menuView dismiss];
     [self.tableView removeObserver:self forKeyPath:@"bounds"];
 #ifdef DEBUG_MEMERY
     NSLog(@"dealloc MessageDisplayView");
@@ -202,6 +203,14 @@
         [_tableView setDataSource:self];
     }
     return _tableView;
+}
+
+- (TLChatCellMenuView *)menuView
+{
+    if (!_menuView) {
+        _menuView = [[TLChatCellMenuView alloc] init];
+    }
+    return _menuView;
 }
 
 - (NSMutableArray *)data

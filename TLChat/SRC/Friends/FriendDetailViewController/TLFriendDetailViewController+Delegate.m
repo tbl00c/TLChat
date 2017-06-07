@@ -63,7 +63,7 @@
 - (void)infoButtonCellClicked:(TLInfo *)info
 {
     if ([info.title isEqualToString:@"发消息"]) {
-        TLChatViewController *chatVC = [TLChatViewController sharedChatVC];
+        TLChatViewController *chatVC = [[TLChatViewController alloc] init];
         if ([self.navigationController findViewController:@"TLChatViewController"]) {
             if ([[chatVC.partner chat_userID] isEqualToString:self.user.userID]) {
                 [self.navigationController popToViewControllerWithClassName:@"TLChatViewController" animated:YES];

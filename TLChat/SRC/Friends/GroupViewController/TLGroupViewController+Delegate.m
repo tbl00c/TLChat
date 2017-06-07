@@ -45,7 +45,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLGroup *group = [self.data objectAtIndex:indexPath.row];
-    TLChatViewController *chatVC = [TLChatViewController sharedChatVC];
+    TLChatViewController *chatVC = [[TLChatViewController alloc] init];
     [chatVC setPartner:group];
     UIViewController *vc = [[TLRootViewController sharedRootViewController] childViewControllerAtIndex:0];
     [[TLRootViewController sharedRootViewController] setSelectedIndex:0];

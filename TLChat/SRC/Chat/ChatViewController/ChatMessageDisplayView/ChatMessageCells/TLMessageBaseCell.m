@@ -145,8 +145,11 @@
     }
 }
 
-- (void)longPressMsgBGView
+- (void)longPressMsgBGView:(UIGestureRecognizer *)gestureRecognizer
 {
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
     [self.messageBackgroundView setHighlighted:YES];
     if (_delegate && [_delegate respondsToSelector:@selector(messageCellLongPress:rect:)]) {
         CGRect rect = self.messageBackgroundView.frame;
@@ -205,7 +208,7 @@
         _messageBackgroundView = [[UIImageView alloc] init];
         [_messageBackgroundView setUserInteractionEnabled:YES];
         
-        UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressMsgBGView)];
+        UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressMsgBGView:)];
         [_messageBackgroundView addGestureRecognizer:longPressGR];
         
         UITapGestureRecognizer *doubleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTabpMsgBGView)];

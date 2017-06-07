@@ -94,7 +94,7 @@
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
             }
         }
-        [[TLChatViewController sharedChatVC] resetChatVC];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
     }
 }
 
@@ -115,7 +115,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:imageName forKey:@"CHAT_BG_ALL"];
     }
     
-    [[TLChatViewController sharedChatVC] resetChatVC];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
 }
 
 @end

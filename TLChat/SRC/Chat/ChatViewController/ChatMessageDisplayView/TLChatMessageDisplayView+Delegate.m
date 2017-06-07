@@ -102,22 +102,19 @@
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         return;
     }
-    if ([[TLChatCellMenuView sharedMenuView] isShow]) {
-        return;
-    }
-    
+
     CGRect cellRect = [self.tableView rectForRowAtIndexPath:indexPath];
     rect.origin.y += cellRect.origin.y - self.tableView.contentOffset.y;
     __weak typeof(self)weakSelf = self;
-    [[TLChatCellMenuView sharedMenuView] showInView:self withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
+    [self.menuView showInView:self withMessageType:message.messageType rect:rect actionBlock:^(TLChatMenuItemType type) {
         [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         if (type == TLChatMenuItemTypeCopy) {
             NSString *str = [message messageCopy];
             [[UIPasteboard generalPasteboard] setString:str];
         }
         else if (type == TLChatMenuItemTypeDelete) {
-            TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:@"是否删除该条消息" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles: nil];
-            actionSheet.tag = [self.data indexOfObject:message];
+            TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:@"是否删除该条消息" delegate:weakSelf cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles: nil];
+            actionSheet.tag = [weakSelf.data indexOfObject:message];
             [actionSheet show];
         }
     }];

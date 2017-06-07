@@ -93,7 +93,7 @@
                 [UIAlertView bk_alertViewWithTitle:@"错误" message:@"清空聊天记录失败"];
             }
             else {
-                [[TLChatViewController sharedChatVC] resetChatVC];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
             }
         }
     }

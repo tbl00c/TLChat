@@ -534,6 +534,7 @@
 		C246F10F1C6B867C00A5AFB2 /* TLShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShoppingViewController.m; sourceTree = "<group>"; };
 		C246F1121C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLHelpAndFeedbackViewController.h; sourceTree = "<group>"; };
 		C246F1131C6B898A00A5AFB2 /* TLHelpAndFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLHelpAndFeedbackViewController.m; sourceTree = "<group>"; };
+		C25ACEE81EE79E4A00F36F6A /* TLNotificationKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLNotificationKey.h; sourceTree = "<group>"; };
 		C25F1D271CDC565B001EECF3 /* TLChatMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatMacros.h; sourceTree = "<group>"; };
 		C25F1D281CDC5685001EECF3 /* TLChatUserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChatUserProtocol.h; sourceTree = "<group>"; };
 		C25F1D2A1CDC57E7001EECF3 /* TLUser+ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLUser+ChatModel.h"; sourceTree = "<group>"; };
@@ -1385,6 +1386,7 @@
 				C20907541C981D5F00AB87A5 /* TLEventStatistics.h */,
 				C20DE50D1CAF6CB000902398 /* TLHost.h */,
 				C20DE50E1CAF6CB000902398 /* TLHost.m */,
+				C25ACEE81EE79E4A00F36F6A /* TLNotificationKey.h */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -3656,8 +3658,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3701,8 +3703,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -3730,8 +3732,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3742,9 +3744,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3756,8 +3759,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1159197873@qq.com (87WFH68S52)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3768,9 +3771,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tripleL.TLChat.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

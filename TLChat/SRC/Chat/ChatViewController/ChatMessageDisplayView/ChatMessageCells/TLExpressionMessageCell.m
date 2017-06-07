@@ -85,8 +85,11 @@
 }
 
 #pragma mark - Event Response -
-- (void)longPressMsgBGView
+- (void)longPressMsgBGView:(UIGestureRecognizer *)gestureRecognizer
 {
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
     [self.msgImageView setAlpha:0.7];   // 比较low的选中效果
     if (self.delegate && [self.delegate respondsToSelector:@selector(messageCellLongPress:rect:)]) {
         CGRect rect = self.msgImageView.frame;
@@ -108,7 +111,7 @@
         _msgImageView = [[UIImageView alloc] init];
         [_msgImageView setUserInteractionEnabled:YES];
         
-        UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressMsgBGView)];
+        UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressMsgBGView:)];
         [_msgImageView addGestureRecognizer:longPressGR];
         
         UITapGestureRecognizer *doubleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTabpMsgBGView)];

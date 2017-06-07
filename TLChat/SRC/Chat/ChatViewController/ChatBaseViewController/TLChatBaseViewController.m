@@ -50,6 +50,8 @@
 
 - (void)dealloc
 {
+    [[TLMoreKeyboard keyboard] dismissWithAnimation:NO];
+    [[TLEmojiKeyboard keyboard] dismissWithAnimation:NO];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 #ifdef DEBUG_MEMERY
     NSLog(@"dealloc ChatBaseVC");

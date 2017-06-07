@@ -45,7 +45,7 @@
 {
     BOOL ok = [self.messageStore deleteMessagesByUserID:self.userID partnerID:partnerID];
     if (ok) {
-        [[TLChatViewController sharedChatVC] resetChatVC];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
     }
     return ok;
 }
@@ -54,7 +54,7 @@
 {
     BOOL ok = [self.messageStore deleteMessagesByUserID:self.userID];
     if (ok) {
-        [[TLChatViewController sharedChatVC] resetChatVC];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
         ok = [self.conversationStore deleteConversationsByUid:self.userID];
     }
     return ok;

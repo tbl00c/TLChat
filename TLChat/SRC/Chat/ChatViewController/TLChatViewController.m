@@ -28,16 +28,6 @@ static TLChatViewController *chatVC;
 
 @implementation TLChatViewController
 
-+ (TLChatViewController *)sharedChatVC
-{
-    return [[TLChatViewController alloc] init];
-//    static dispatch_once_t once;
-//    dispatch_once(&once, ^{
-//        chatVC = [[TLChatViewController alloc] init];
-//    });
-//    return chatVC;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -51,6 +41,8 @@ static TLChatViewController *chatVC;
     [self.emojiKBHelper emojiGroupDataByUserID:[TLUserHelper sharedHelper].userID complete:^(NSMutableArray *emojiGroups) {
         [weakself setChatEmojiKeyboardData:emojiGroups];
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetChatVC) name:NOTI_CHAT_VIEW_RESET object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated

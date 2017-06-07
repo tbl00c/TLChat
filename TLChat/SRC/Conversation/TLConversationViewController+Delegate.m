@@ -64,7 +64,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    TLChatViewController *chatVC = [TLChatViewController sharedChatVC];
+    TLChatViewController *chatVC = [[TLChatViewController alloc] init];
     
     TLConversation *conversation = [self.data objectAtIndex:indexPath.row];
     if (conversation.convType == TLConversationTypePersonal) {

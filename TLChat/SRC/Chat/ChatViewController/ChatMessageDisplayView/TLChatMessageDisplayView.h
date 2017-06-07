@@ -30,6 +30,8 @@
 /// 禁用长按菜单
 @property (nonatomic, assign) BOOL disableLongPressMenu;
 
+@property (nonatomic, strong) TLChatCellMenuView *menuView;
+
 
 /**
  *  发送消息（在列表展示）

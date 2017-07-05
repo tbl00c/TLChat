@@ -7,6 +7,7 @@
 //
 
 #import "TLWebViewController.h"
+#import "WKWebView+Post.h"
 #import <MobClick.h>
 
 #define     WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE    9
@@ -32,6 +33,23 @@
     if (self = [super init]) {
         self.useMPageTitleAsNavTitle = YES;
         self.showLoadingProgress = YES;
+        self.showPageInfo = YES;
+    }
+    return self;
+}
+
+- (id)initWithUrl:(NSString *)urlString
+{
+    if (self = [self init]) {
+        [self setUrl:urlString];
+    }
+    return self;
+}
+
+- (id)initWithRequest:(NSURLRequest *)request
+{
+    if (self = [super init]) {
+        [self loadRequest:request];
     }
     return self;
 }
@@ -48,7 +66,7 @@
 {
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    [self.view setBackgroundColor:[UIColor colorBlackBG]];
+    [self.view setBackgroundColor:TLColor(46.0, 49.0, 50.0, 1.0)];
     [self.webView.scrollView setBackgroundColor:[UIColor clearColor]];
     for (id vc in self.webView.scrollView.subviews) {
         NSString *className = NSStringFromClass([vc class]);
@@ -61,21 +79,9 @@
     [self.webView.scrollView addObserver:self forKeyPath:@"backgroundColor" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [MobClick beginLogPageView:@"WebVC"];
-    [self.progressView setProgress:0.0f];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
-    if (!self.disableBackButton && self.navigationItem.leftBarButtonItems.count <= 2) {
-        [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem fixItemSpace:-WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE], self.backButtonItem]];
-    }
-}
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [MobClick endLogPageView:@"WebVC"];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
@@ -89,14 +95,15 @@
 }
 
 
-#pragma mark - Public Methods -
+#pragma mark - # Public Methods
 - (void)setUrl:(NSString *)url
 {
-    _url = url;
-    if ([self.view isFirstResponder]) {
-        [self.progressView setProgress:0.0f];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
+    if (_url && url && [_url isEqualToString:url]) {
+        return;
     }
+    _url = url;
+    [self.progressView setProgress:0.0f];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
 }
 
 - (void)setShowLoadingProgress:(BOOL)showLoadingProgress
@@ -105,50 +112,20 @@
     [self.progressView setHidden:!showLoadingProgress];
 }
 
-
-#pragma mark - Event Response -
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
-    if (self.showLoadingProgress && [keyPath isEqualToString:@"estimatedProgress"] && object == self.webView) {
-        [self.progressView setAlpha:1.0f];
-        [self.progressView setProgress:self.webView.estimatedProgress animated:YES];
-        
-        if(self.webView.estimatedProgress >= 1.0f) {
-            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                [self.progressView setAlpha:0.0f];
-            } completion:^(BOOL finished) {
-                [self.progressView setProgress:0.0f animated:NO];
-            }];
-        }
-    }
-    else if ([keyPath isEqualToString:@"backgroundColor"] && object == self.webView.scrollView) {
-        UIColor *color = [change objectForKey:@"new"];
-        if (!CGColorEqualToColor(color.CGColor, [UIColor clearColor].CGColor)) {
-            [object setBackgroundColor:[UIColor clearColor]];
-        }
-    }
-}
-
-- (void)navBackButotnDown
+- (void)loadRequest:(NSURLRequest *)request
 {
-    if (self.webView.canGoBack) {
-        [self.webView goBack];
-        [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem fixItemSpace:-WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE], self.backButtonItem, self.closeButtonItem]];
-    }
-    else {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    [self.webView loadRequest:request];
 }
 
-- (void)navCloseButtonDown
+- (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (string) {
+        [self.webView loadHTMLString:string baseURL:baseURL];
+    }
 }
 
-
-#pragma mark - Delegate -
+#pragma mark - # Delegate
 //MARK: WKNavigationDelegate
-
 // 开始加载页面
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
 {
@@ -158,7 +135,9 @@
 // 开始返回页面内容
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation
 {
-    
+    if (webView.canGoBack) {
+        [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem fixItemSpace:-WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE], self.backButtonItem, self.closeButtonItem]];
+    }
 }
 
 // 加载完成
@@ -167,7 +146,14 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     if (self.useMPageTitleAsNavTitle) {
         [self.navigationItem setTitle:webView.title];
-        [self.authLabel setText:[NSString stringWithFormat:@"网页由 %@ 提供", webView.URL.host]];
+    }
+    if (self.showPageInfo) {
+        if (webView.URL.host.length > 0) {
+            [self.authLabel setText:[NSString stringWithFormat:@"网页由 %@ 提供", webView.URL.host]];
+        }
+        else {
+            [self.authLabel setText:@""];
+        }
         [self.authLabel setHeight:[self.authLabel sizeThatFits:CGSizeMake(self.authLabel.width, MAXFLOAT)].height];
     }
 }
@@ -241,8 +227,45 @@
     completionHandler(@"Client Not handler");
 }
 
+#pragma mark - # Event Response
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    if (self.showLoadingProgress && [keyPath isEqualToString:@"estimatedProgress"] && object == self.webView) {
+        [self.progressView setAlpha:1.0f];
+        [self.progressView setProgress:self.webView.estimatedProgress animated:YES];
+        
+        if(self.webView.estimatedProgress >= 1.0f) {
+            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                [self.progressView setAlpha:0.0f];
+            } completion:^(BOOL finished) {
+                [self.progressView setProgress:0.0f animated:NO];
+            }];
+        }
+    }
+    else if ([keyPath isEqualToString:@"backgroundColor"] && object == self.webView.scrollView) {
+        UIColor *color = [change objectForKey:@"new"];
+        if (!CGColorEqualToColor(color.CGColor, [UIColor clearColor].CGColor)) {
+            [object setBackgroundColor:[UIColor clearColor]];
+        }
+    }
+}
 
-#pragma mark - Getter -
+- (void)navBackButotnDown
+{
+    if (self.webView.canGoBack) {
+        [self.webView goBack];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)navCloseButtonDown
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - # Getters
 - (WKWebView *)webView
 {
     if (_webView == nil) {
@@ -260,8 +283,9 @@
     if (_progressView == nil) {
         _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, 10.0f)];
         [_progressView setTransform: CGAffineTransformMakeScale(1.0f, 2.0f)];
-        [_progressView setProgressTintColor:[UIColor colorGreenDefault]];
+        [_progressView setProgressTintColor:TLColor(2.0, 187.0, 0.0, 1.0f)];
         [_progressView setTrackTintColor:[UIColor clearColor]];
+        [_progressView setProgress:0];
     }
     return _progressView;
 }
@@ -288,7 +312,7 @@
         _authLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, HEIGHT_NAVBAR + HEIGHT_STATUSBAR + 13, WIDTH_SCREEN - 40, 0)];
         [_authLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [_authLabel setTextAlignment:NSTextAlignmentCenter];
-        [_authLabel setTextColor:[UIColor colorTextGray]];
+        [_authLabel setTextColor:[UIColor grayColor]];
         [_authLabel setNumberOfLines:0];
     }
     return _authLabel;

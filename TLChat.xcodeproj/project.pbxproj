@@ -114,6 +114,7 @@
 		C271A5061C83FEC8004372D4 /* TLFriendDetailUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5051C83FEC8004372D4 /* TLFriendDetailUserCell.m */; };
 		C271A5091C83FEF2004372D4 /* TLFriendDetailAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C271A5081C83FEF2004372D4 /* TLFriendDetailAlbumCell.m */; };
 		C274761F1CB6818900C667E6 /* TLMoment.m in Sources */ = {isa = PBXBuildFile; fileRef = C274761E1CB6818900C667E6 /* TLMoment.m */; };
+		C27D2B641F0CB7D2005D83F5 /* WKWebView+Post.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D2B631F0CB7D2005D83F5 /* WKWebView+Post.m */; };
 		C2893A7B1CB03E640080C4BB /* NSDate+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A6E1CB03E640080C4BB /* NSDate+TLChat.m */; };
 		C2893A7C1CB03E640080C4BB /* NSFileManager+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A701CB03E640080C4BB /* NSFileManager+TLChat.m */; };
 		C2893A7D1CB03E640080C4BB /* NSString+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A721CB03E640080C4BB /* NSString+Message.m */; };
@@ -553,6 +554,8 @@
 		C271A5081C83FEF2004372D4 /* TLFriendDetailAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailAlbumCell.m; sourceTree = "<group>"; };
 		C274761D1CB6818900C667E6 /* TLMoment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoment.h; sourceTree = "<group>"; };
 		C274761E1CB6818900C667E6 /* TLMoment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoment.m; sourceTree = "<group>"; };
+		C27D2B621F0CB7D2005D83F5 /* WKWebView+Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebView+Post.h"; sourceTree = "<group>"; };
+		C27D2B631F0CB7D2005D83F5 /* WKWebView+Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+Post.m"; sourceTree = "<group>"; };
 		C2893A6D1CB03E640080C4BB /* NSDate+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TLChat.h"; sourceTree = "<group>"; };
 		C2893A6E1CB03E640080C4BB /* NSDate+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TLChat.m"; sourceTree = "<group>"; };
 		C2893A6F1CB03E640080C4BB /* NSFileManager+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TLChat.h"; sourceTree = "<group>"; };
@@ -2216,6 +2219,8 @@
 		C2AF1FA51C6B771F00617D98 /* TLWebViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C27D2B621F0CB7D2005D83F5 /* WKWebView+Post.h */,
+				C27D2B631F0CB7D2005D83F5 /* WKWebView+Post.m */,
 				C2AF1FA61C6B773000617D98 /* TLWebViewController.h */,
 				C2AF1FA71C6B773000617D98 /* TLWebViewController.m */,
 			);
@@ -3526,6 +3531,7 @@
 				C20B1AF01D5833C700D9F710 /* TLChatMessageDisplayView+Delegate.m in Sources */,
 				C2CF4C7E1C804BF30054637A /* TLSettingSwitchCell.m in Sources */,
 				C2D851551C68D811007DD697 /* TLSettingHelper.m in Sources */,
+				C27D2B641F0CB7D2005D83F5 /* WKWebView+Post.m in Sources */,
 				C2FB85E51CB6CCDD00747B6D /* TLMomentDetail.m in Sources */,
 				C237E9DC1CB2AA240034CEA2 /* TLExpressionChosenViewController+TableView.m in Sources */,
 				C2CF4C841C804BF90054637A /* TLSettingGroup.m in Sources */,

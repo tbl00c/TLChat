@@ -2,7 +2,7 @@ platform :ios, '8.0'
 inhibit_all_warnings!
 
 target :TLChat do
-    pod 'TLKit', '~> 0.0.3'
+    pod 'TLKit', :git => 'git@github.com:tbl00c/TLKit.git', :tag => '0.0.6'
     pod 'TLTabBarController', :git => 'git@github.com:tbl00c/TLTabBarController.git', :tag => '0.0.1'
     pod 'AFNetworking', '~> 3.0.4'
     pod 'SDWebImage', '~> 3.7.4'

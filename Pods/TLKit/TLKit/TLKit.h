@@ -16,4 +16,7 @@
 //MARK: 分类
 #import "TLCategories.h"
 
+//MARK: 通用控件
+#import "TLFunctional.h"
+
 #endif /* TLKit_h */

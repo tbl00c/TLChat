@@ -71,7 +71,7 @@
             else {
                 [chatVC setPartner:self.user];
                 __block UINavigationController *navController = self.navigationController;
-                [self.navigationController popToRootViewControllerAnimated:YES completion:^(BOOL finished) {
+                [self.navigationController jz_popToRootViewControllerAnimated:YES completion:^(UINavigationController *navigationController, BOOL finished) {
                     if (finished) {
                         [navController pushViewController:chatVC animated:YES];
                     }
@@ -83,7 +83,7 @@
             UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
             [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
             [vc setHidesBottomBarWhenPushed:YES];
-            [vc.navigationController pushViewController:chatVC animated:YES completion:^(BOOL finished) {
+            [vc.navigationController jz_pushViewController:chatVC animated:YES completion:^(UINavigationController *navigationController, BOOL finished) {
                 [self.navigationController popViewControllerAnimated:NO];
             }];
             [vc setHidesBottomBarWhenPushed:NO];

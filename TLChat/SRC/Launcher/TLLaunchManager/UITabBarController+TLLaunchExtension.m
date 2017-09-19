@@ -12,7 +12,13 @@
 
 - (id)childViewControllerAtIndex:(NSUInteger)index
 {
-    return [[self.childViewControllers objectAtIndex:index] rootViewController];
+    if (index < self.childViewControllers.count) {
+        UIViewController *vc = self.childViewControllers[index];
+        if ([vc isKindOfClass:[UINavigationController class]] || [vc isMemberOfClass:[UINavigationController class]]) {
+            return vc.childViewControllers.firstObject;
+        }
+    }
+    return nil;
 }
 
 - (BOOL)pushViewController:(UIViewController *)viewController animated:(BOOL)animated

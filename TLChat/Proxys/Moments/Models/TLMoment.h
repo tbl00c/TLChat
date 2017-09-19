@@ -6,7 +6,7 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseDataModel.h"
+#import <Foundation/Foundation.h>
 #import "TLMomentDetail.h"
 #import "TLMomentExtension.h"
 
@@ -23,7 +23,7 @@
 
 
 
-@interface TLMoment : TLBaseDataModel
+@interface TLMoment : NSObject
 
 @property (nonatomic, strong) NSString *momentID;
 

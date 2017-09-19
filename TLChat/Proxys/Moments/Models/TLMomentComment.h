@@ -6,7 +6,7 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseDataModel.h"
+#import <Foundation/Foundation.h>
 
 @interface TLMomentCommentFrame : NSObject
 
@@ -15,7 +15,7 @@
 @end
 
 
-@interface TLMomentComment : TLBaseDataModel
+@interface TLMomentComment : NSObject
 
 @property (nonatomic, strong) TLUser *user;
 

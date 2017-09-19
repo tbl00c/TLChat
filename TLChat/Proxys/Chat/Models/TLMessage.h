@@ -6,7 +6,7 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseDataModel.h"
+#import <Foundation/Foundation.h>
 #import "TLChatUserProtocol.h"
 #import "TLMessageProtocol.h"
 #import <MapKit/MapKit.h>
@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, TLMessageReadState) {
     TLMessageReaded,            // 消息已读
 };
 
-@interface TLMessage : TLBaseDataModel <TLMessageProtocol>
+@interface TLMessage : NSObject <TLMessageProtocol>
 {
     TLMessageFrame *kMessageFrame;
 }

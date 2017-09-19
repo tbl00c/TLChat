@@ -6,10 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseDataModel.h"
+#import <Foundation/Foundation.h>
 #import "TLChatMacros.h"
 
-@interface TLEmoji : TLBaseDataModel
+@interface TLEmoji : NSObject
 
 @property (nonatomic, assign) TLEmojiType type;
 

@@ -6,12 +6,12 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseDataModel.h"
+#import <Foundation/Foundation.h>
 #import "TLUserDetail.h"
 #import "TLUserSetting.h"
 #import "TLUserChatSetting.h"
 
-@interface TLUser : TLBaseDataModel
+@interface TLUser : NSObject
 
 /// 用户ID
 @property (nonatomic, strong) NSString *userID;

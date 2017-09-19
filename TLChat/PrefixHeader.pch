@@ -43,6 +43,8 @@
 #import "UIBarButtonItem+Action.h"
 #import "UINavigationItem+Fixed.h"
 
+#import <MJExtension/MJExtension.h>
+
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
 #endif /* PrefixHeader_pch */

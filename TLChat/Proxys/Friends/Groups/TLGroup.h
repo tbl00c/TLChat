@@ -6,10 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseDataModel.h"
+#import <Foundation/Foundation.h>
 #import "TLUser.h"
 
-@interface TLGroup : TLBaseDataModel
+@interface TLGroup : NSObject
 
 /**
  *  讨论组名称

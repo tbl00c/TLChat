@@ -6,7 +6,7 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseDataModel.h"
+#import <Foundation/Foundation.h>
 #import "TLMomentComment.h"
 
 @interface TLMomentExtensionFrame : NSObject
@@ -21,7 +21,7 @@
 
 
 
-@interface TLMomentExtension : TLBaseDataModel
+@interface TLMomentExtension : NSObject
 
 @property (nonatomic, strong) NSMutableArray *likedFriends;
 

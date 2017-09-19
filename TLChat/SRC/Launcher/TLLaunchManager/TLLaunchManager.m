@@ -23,7 +23,7 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
 {
     [vc.tabBarItem setTitle:title];
     [vc.tabBarItem setImage:[UIImage imageNamed:image]];
-    [vc.tabBarItem setSelectedImage:[UIImage imageNamed:image]];
+    [vc.tabBarItem setSelectedImage:[UIImage imageNamed:imageHL]];
     TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:vc];
     [tabBarController addChildViewController:navC];
 }

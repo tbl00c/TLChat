@@ -7,7 +7,6 @@
 //
 
 #import "TLLaunchManager+UserData.h"
-#import "NSDate+Utilities.h"
 #import "TLWalletViewController.h"
 #import "TLExpressionProxy.h"
 #import "TLEmojiGroup.h"

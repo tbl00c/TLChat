@@ -7,6 +7,7 @@
 //
 
 #import "TLWebViewController.h"
+#import "UIBarButtonItem+Back.h"
 #import "WKWebView+Post.h"
 #import <MobClick.h>
 

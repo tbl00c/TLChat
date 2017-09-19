@@ -9,7 +9,6 @@
 
 #import "TLGroupQRCodeViewController.h"
 #import "TLQRCodeViewController.h"
-#import "NSDate+Utilities.h"
 
 @interface TLGroupQRCodeViewController () <TLActionSheetDelegate>
 

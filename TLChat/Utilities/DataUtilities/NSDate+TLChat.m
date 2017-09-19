@@ -19,7 +19,7 @@
         return [NSString stringWithFormat:@"昨天 %@", self.formatHM];
     }
     else if ([self isThisWeek]){        // 本周
-        return [NSString stringWithFormat:@"%@ %@", self.dayFromWeekday, self.formatHM];
+        return [NSString stringWithFormat:@"%@ %@", self.formatWeekday, self.formatHM];
     }
     else {
         return [NSString stringWithFormat:@"%@ %@", self.formatYMD, self.formatHM];
@@ -35,10 +35,10 @@
         return @"昨天";
     }
     else if ([self isThisWeek]){        // 本周
-        return self.dayFromWeekday;
+        return self.formatWeekday;
     }
     else {
-        return [self formatYMDWith:@"/"];
+        return [self formatYMDWithSeparate:@"/"];
     }
 }
 

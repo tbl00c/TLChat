@@ -104,10 +104,10 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     // 轮播实现
-    if (scrollView.currentPageX == 0) {
+    if (scrollView.pageX == 0) {
         [scrollView setPageX:self.data.count animated:NO];
     }
-    else if (scrollView.currentPageX == self.data.count + 1) {
+    else if (scrollView.pageX == self.data.count + 1) {
         [scrollView setPageX:1 animated:NO];
     }
 }
@@ -116,12 +116,12 @@
 - (void)scrollToNextPage
 {
     NSInteger nextPage;
-    if (self.collectionView.currentPageX == self.data.count) {
+    if (self.collectionView.pageX == self.data.count) {
         [self.collectionView setPageX:0 animated:NO];
         nextPage = 1;
     }
     else {
-        nextPage = self.collectionView.currentPageX + 1;
+        nextPage = self.collectionView.pageX + 1;
     }
     [self.collectionView setPageX:nextPage animated:YES];
 }

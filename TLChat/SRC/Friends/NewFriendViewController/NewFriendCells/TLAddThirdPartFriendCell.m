@@ -44,7 +44,7 @@
     }
     _thridPartItems = thridPartItems;
     TLAddThirdPartFriendItem *lastItem;
-    [self.contentView removeAllSubViews];
+    [self.contentView removeAllSubviews];
     for (int i = 0; i < thridPartItems.count; i++) {
         NSString *keyStr = [thridPartItems objectAtIndex:i];
         TLAddThirdPartFriendItem *item = [self.itemsDic objectForKey:keyStr];

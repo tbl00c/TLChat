@@ -7,8 +7,8 @@
 //
 
 #import "TLGroupViewController+Delegate.h"
+#import "TLLaunchManager.h"
 #import "TLChatViewController.h"
-#import "TLRootViewController.h"
 #import "TLGroup+ChatModel.h"
 #import "TLGroupCell.h"
 
@@ -47,8 +47,8 @@
     TLGroup *group = [self.data objectAtIndex:indexPath.row];
     TLChatViewController *chatVC = [[TLChatViewController alloc] init];
     [chatVC setPartner:group];
-    UIViewController *vc = [[TLRootViewController sharedRootViewController] childViewControllerAtIndex:0];
-    [[TLRootViewController sharedRootViewController] setSelectedIndex:0];
+    UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
+    [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
     [vc setHidesBottomBarWhenPushed:YES];
     [vc.navigationController pushViewController:chatVC animated:YES completion:^(BOOL finished) {
         [self.navigationController popViewControllerAnimated:NO];

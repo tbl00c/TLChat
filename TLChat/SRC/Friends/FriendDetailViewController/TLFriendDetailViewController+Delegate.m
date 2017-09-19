@@ -7,8 +7,8 @@
 //
 
 #import "TLFriendDetailViewController+Delegate.h"
+#import "TLLaunchManager.h"
 #import "TLChatViewController.h"
-#import "TLRootViewController.h"
 #import <MWPhotoBrowser.h>
 #import "TLUser+ChatModel.h"
 #import "TLFriendDetailAlbumCell.h"
@@ -70,7 +70,7 @@
             }
             else {
                 [chatVC setPartner:self.user];
-                __block id navController = self.navigationController;
+                __block UINavigationController *navController = self.navigationController;
                 [self.navigationController popToRootViewControllerAnimated:YES completion:^(BOOL finished) {
                     if (finished) {
                         [navController pushViewController:chatVC animated:YES];
@@ -80,8 +80,8 @@
         }
         else {
             [chatVC setPartner:self.user];
-            UIViewController *vc = [[TLRootViewController sharedRootViewController] childViewControllerAtIndex:0];
-            [[TLRootViewController sharedRootViewController] setSelectedIndex:0];
+            UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
+            [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
             [vc setHidesBottomBarWhenPushed:YES];
             [vc.navigationController pushViewController:chatVC animated:YES completion:^(BOOL finished) {
                 [self.navigationController popViewControllerAnimated:NO];

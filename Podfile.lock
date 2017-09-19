@@ -60,6 +60,7 @@ PODS:
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
   - SVProgressHUD (2.1.2)
+  - TLTabBarController (0.0.1)
   - UMengAnalytics (3.6.6)
 
 DEPENDENCIES:
@@ -74,7 +75,18 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.7.4)
   - SVProgressHUD (~> 2.0-beta4)
+  - TLTabBarController (from `git@github.com:tbl00c/TLTabBarController.git`, tag `0.0.1`)
   - UMengAnalytics (~> 3.6.6)
+
+EXTERNAL SOURCES:
+  TLTabBarController:
+    :git: git@github.com:tbl00c/TLTabBarController.git
+    :tag: 0.0.1
+
+CHECKOUT OPTIONS:
+  TLTabBarController:
+    :git: git@github.com:tbl00c/TLTabBarController.git
+    :tag: 0.0.1
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -90,8 +102,9 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  TLTabBarController: 149a3df6517408d72e506c4c578b6758744e9251
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 
-PODFILE CHECKSUM: a01fa0d04169bd67756cc384afa6c4aab2a0c183
+PODFILE CHECKSUM: be072f52a605436845285b4c4c49f2dbae536b29
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

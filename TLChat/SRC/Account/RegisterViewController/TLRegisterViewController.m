@@ -347,9 +347,14 @@
 - (UIButton *)registerButton
 {
     if (!_registerButton) {
-        _registerButton = [UIButton defaultButton];
-        [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
-        [_registerButton addTarget:self action:@selector(registerButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *button = [[UIButton alloc] init];
+        [button.layer setMasksToBounds:YES];
+        [button.layer setCornerRadius:4.0f];
+        [button.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        [button setBackgroundColor:[UIColor colorGreenDefault]];
+        [button setTitle:@"注册" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(registerButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     }
     return _registerButton;
 }

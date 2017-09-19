@@ -42,13 +42,13 @@
 - (void) setHeaderTitle:(NSString *)headerTitle
 {
     _headerTitle = headerTitle;
-    _headerHeight = [TLUIUtility getTextHeightOfText:headerTitle font:[UIFont fontSettingHeaderAndFooterTitle] width:WIDTH_SCREEN - 30];
+    _headerHeight = [headerTitle tt_sizeWithFont:[UIFont fontSettingHeaderAndFooterTitle] constrainedToWidth:WIDTH_SCREEN - 30].height;
 }
 
 - (void) setFooterTitle:(NSString *)footerTitle
 {
     _footerTitle = footerTitle;
-    _footerHeight = [TLUIUtility getTextHeightOfText:footerTitle font:[UIFont fontSettingHeaderAndFooterTitle] width:WIDTH_SCREEN - 30];
+    _footerHeight = [footerTitle tt_sizeWithFont:[UIFont fontSettingHeaderAndFooterTitle] constrainedToWidth:WIDTH_SCREEN - 30].height;
 }
 
 #pragma mark - Getter

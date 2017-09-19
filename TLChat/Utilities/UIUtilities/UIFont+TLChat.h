@@ -19,7 +19,7 @@
 + (UIFont *)fontConversationTime;
 
 #pragma mark - Friends
-+ (UIFont *) fontFriendsUsername;
++ (UIFont *)fontFriendsUsername;
 
 #pragma mark - Mine
 + (UIFont *)fontMineNikename;

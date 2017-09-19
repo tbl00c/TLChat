@@ -50,7 +50,7 @@
     [super viewWillAppear:animated];
     
     [timer invalidate];
-    timer = [NSTimer bk_scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
+    timer = [NSTimer scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
         [tm invalidate];
         [self p_setNavBarHidden:YES];
     } repeats:NO];

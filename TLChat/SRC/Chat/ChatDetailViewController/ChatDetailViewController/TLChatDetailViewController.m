@@ -90,7 +90,7 @@
         if (buttonIndex == 0) {
             BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByPartnerID:self.user.userID];
             if (!ok) {
-                [UIAlertView bk_alertViewWithTitle:@"错误" message:@"清空聊天记录失败"];
+                [TLUIUtility showAlertWithTitle:@"错误" message:@"清空聊天记录失败"];
             }
             else {
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
@@ -110,7 +110,7 @@
 
 - (void)userGroupCellAddUserButtonDown
 {
-    [UIAlertView bk_alertViewWithTitle:@"提示" message:@"添加讨论组成员"];
+    [TLUIUtility showAlertWithTitle:@"提示" message:@"添加讨论组成员"];
 }
 
 @end

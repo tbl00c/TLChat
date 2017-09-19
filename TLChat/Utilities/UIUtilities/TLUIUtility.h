@@ -8,18 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class TLGroup;
 @interface TLUIUtility : NSObject
 
-+ (CGFloat)getTextHeightOfText:(NSString *)text
-                          font:(UIFont *)font
-                         width:(CGFloat)width;
-
-+ (void)createGroupAvatar:(TLGroup *)group
-                 finished:(void (^)(NSString *groupID))finished;
-
-+ (void)captureScreenshotFromView:(UIView *)view
-                             rect:(CGRect)rect
-                         finished:(void (^)(NSString *avatarPath))finished;
++ (void)showAlertWithTitle:(NSString *)title;
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message;
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle;
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle actionHandler:(void (^)(NSInteger buttonIndex))actionHandler;
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles actionHandler:(void (^)(NSInteger buttonIndex))actionHandler;
 
 @end

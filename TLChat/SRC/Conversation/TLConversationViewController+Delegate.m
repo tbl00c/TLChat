@@ -70,7 +70,7 @@
     if (conversation.convType == TLConversationTypePersonal) {
         TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:conversation.partnerID];
         if (user == nil) {
-            [UIAlertView bk_alertViewWithTitle:@"错误" message:@"您不存在此好友"];
+            [TLUIUtility showAlertWithTitle:@"错误" message:@"您不存在此好友"];
             return;
         }
         [chatVC setPartner:user];
@@ -78,7 +78,7 @@
     else if (conversation.convType == TLConversationTypeGroup){
         TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:conversation.partnerID];
         if (group == nil) {
-            [UIAlertView bk_alertViewWithTitle:@"错误" message:@"您不存在该讨论组"];
+            [TLUIUtility showAlertWithTitle:@"错误" message:@"您不存在该讨论组"];
             return;
         }
         [chatVC setPartner:group];
@@ -102,7 +102,7 @@
                                            [weakSelf.data removeObjectAtIndex:indexPath.row];
                                            BOOL ok = [[TLMessageManager sharedInstance] deleteConversationByPartnerID:conversation.partnerID];
                                            if (!ok) {
-                                               [UIAlertView bk_alertViewWithTitle:@"错误" message:@"从数据库中删除会话信息失败"];
+                                               [TLUIUtility showAlertWithTitle:@"错误" message:@"从数据库中删除会话信息失败"];
                                            }
                                            [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                            if (self.data.count > 0 && indexPath.row == self.data.count) {
@@ -158,7 +158,7 @@
         [self setHidesBottomBarWhenPushed:NO];
     }
     else {
-        [UIAlertView bk_alertViewWithTitle:item.title message:@"功能暂未实现"];
+        [TLUIUtility showAlertWithTitle:item.title message:@"功能暂未实现"];
     }
 }
 

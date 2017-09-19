@@ -48,7 +48,7 @@
 - (void)startScanner
 {
     [self stopScanner];
-    timer = [NSTimer bk_scheduledTimerWithTimeInterval:1.0 / 60 block:^(NSTimer *timer) {
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60 block:^(NSTimer *timer) {
         if (self.hiddenScannerIndicator) {
             return;
         }

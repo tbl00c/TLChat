@@ -108,7 +108,7 @@
             [MobClick event:EVENT_DELETE_MESSAGE];
         }
         else {
-            [UIAlertView bk_alertViewWithTitle:@"错误" message:@"从数据库中删除消息失败。"];
+            [TLUIUtility showAlertWithTitle:@"错误" message:@"从数据库中删除消息失败。"];
         }
     }
 }

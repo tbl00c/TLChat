@@ -9,6 +9,7 @@
 #import "TLFriendHelper.h"
 #import "TLDBFriendStore.h"
 #import "TLDBGroupStore.h"
+#import "TLGroup+CreateAvatar.h"
 
 static TLFriendHelper *friendHelper = nil;
 
@@ -199,7 +200,7 @@ static TLFriendHelper *friendHelper = nil;
     }
     // 生成Group Icon
     for (TLGroup *group in self.groupsData) {
-        [TLUIUtility createGroupAvatar:group finished:nil];
+        [group createGroupAvatarWithCompleteAction:nil];
     }
 }
 

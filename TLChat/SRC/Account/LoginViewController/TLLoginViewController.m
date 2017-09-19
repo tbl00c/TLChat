@@ -302,9 +302,15 @@
 - (UIButton *)loginButton
 {
     if (!_loginButton) {
-        _loginButton = [UIButton defaultButton];
-        [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
-        [_loginButton addTarget:self action:@selector(loginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *button = [[UIButton alloc] init];
+        [button.layer setMasksToBounds:YES];
+        [button.layer setCornerRadius:4.0f];
+        [button.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        [button setBackgroundColor:[UIColor colorGreenDefault]];
+        [button setTitle:@"登录" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(loginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        _loginButton = button;
     }
     return _loginButton;
 }

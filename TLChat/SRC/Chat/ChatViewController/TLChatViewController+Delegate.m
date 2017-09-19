@@ -29,7 +29,7 @@
                 [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
             }
             else {
-                [UIAlertView bk_alertViewWithTitle:@"错误" message:@"相机初始化失败"];
+                [TLUIUtility showAlertWithTitle:@"错误" message:@"相机初始化失败"];
                 return;
             }
         }

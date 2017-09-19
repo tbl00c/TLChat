@@ -53,7 +53,7 @@
         [self.timer invalidate];
     }
     __weak typeof(self) weakSelf = self;
-    self.timer = [NSTimer bk_scheduledTimerWithTimeInterval:0.5 block:^(NSTimer *timer) {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 block:^(NSTimer *timer) {
         [weakSelf.recorder updateMeters];
         float peakPower = pow(10, (0.05 * [weakSelf.recorder peakPowerForChannel:0]));
         if (weakSelf && weakSelf.volumeChangedBlock) {

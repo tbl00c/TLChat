@@ -62,7 +62,7 @@
     else if ([item.title isEqualToString:@"拍一张"]) {
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            [UIAlertView bk_alertViewWithTitle:@"错误" message:@"相机初始化失败"];
+            [TLUIUtility showAlertWithTitle:@"错误" message:@"相机初始化失败"];
         }
         else {
             [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];

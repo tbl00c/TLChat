@@ -42,7 +42,7 @@
         [self.collectionView setPageX:1 animated:NO];
         if (self.timer == nil && self.data.count > 1) {
             __weak typeof(self) weakSelf = self;
-            self.timer = [NSTimer bk_scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
                 [weakSelf scrollToNextPage];
             } repeats:YES];
         }
@@ -95,7 +95,7 @@
 {
     if (self.timer == nil && self.data.count > 1) {
         __weak typeof(self) weakSelf = self;
-        self.timer = [NSTimer bk_scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
             [weakSelf scrollToNextPage];
         } repeats:YES];
     }

@@ -76,8 +76,8 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
     }
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [window setRootViewController:self.rootVC];
-    [window addSubview:self.rootVC.view];
+    [window setRootViewController:rootVC];
+    [window addSubview:rootVC.view];
     [window makeKeyAndVisible];
 }
 

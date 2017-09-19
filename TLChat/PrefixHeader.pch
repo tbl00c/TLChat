@@ -24,22 +24,13 @@
 #import <ReactiveCocoa.h>
 #import <SVProgressHUD.h>
 #import <CocoaLumberjack.h>
-#import <BlocksKit.h>
-#import <BlocksKit+UIKit.h>
 
 #import "TLNavigationController.h"
 
 #import "TLUserHelper.h"
 #import "TLFriendHelper.h"
 
-#import "TLActionSheet.h"
-#import "UIView+Frame.h"
-#import "UIButton+TLChat.h"
-#import "UITableView+TLChat.h"
 #import "NSFileManager+TLChat.h"
-#import "UIImagePickerController+Fixed.h"
-#import "UIBarButtonItem+Action.h"
-#import "UINavigationItem+Fixed.h"
 
 #import <MJExtension/MJExtension.h>
 #import <TLKit/TLKit.h>

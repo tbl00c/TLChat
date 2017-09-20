@@ -13,7 +13,6 @@
 #import "TLUser+ChatModel.h"
 #import "TLFriendDetailAlbumCell.h"
 #import "NSFileManager+TLChat.h"
-#import "TLNavigationController.h"
 
 @implementation TLFriendDetailViewController (Delegate)
 
@@ -110,7 +109,7 @@
 
     MWPhoto *photo = [MWPhoto photoWithURL:url];
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:@[photo]];
-    TLNavigationController *broserNavC = [[TLNavigationController alloc] initWithRootViewController:browser];
+    UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
     [self presentViewController:broserNavC animated:NO completion:nil];
 }
 

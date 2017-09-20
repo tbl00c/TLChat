@@ -12,7 +12,6 @@
 #import "NSDate+TLChat.h"
 #import "TLMessageManager+MessageRecord.h"
 #import <MWPhotoBrowser.h>
-#import "TLNavigationController.h"
 #import "NSFileManager+TLChat.h"
 
 #define     HEIGHT_COLLECTIONVIEW_HEADER    28
@@ -103,7 +102,7 @@
             MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:self.browserData];
             [browser setDisplayNavArrows:YES];
             [browser setCurrentPhotoIndex:index];
-            TLNavigationController *broserNavC = [[TLNavigationController alloc] initWithRootViewController:browser];
+            UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
             [self presentViewController:broserNavC animated:NO completion:nil];
         }
     }

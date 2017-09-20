@@ -8,7 +8,7 @@
 
 #import "TLAddMenuView.h"
 #import "TLAddMenuCell.h"
-#import "TLAddMenuHelper.h"
+#import "TLAppConfig.h"
 
 #define     WIDTH_TABLEVIEW             140.0f
 #define     HEIGHT_TABLEVIEW_CELL       45.0f
@@ -16,11 +16,9 @@
 
 @interface TLAddMenuView () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) TLAddMenuHelper *helper;
-
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) NSMutableArray *data;
+@property (nonatomic, strong) NSArray *data;
 
 @end
 
@@ -36,7 +34,7 @@
         [self addGestureRecognizer:panGR];
         
         [self.tableView registerClass:[TLAddMenuCell class] forCellReuseIdentifier:@"TLAddMenuCell"];
-        self.data = self.helper.menuData;
+        self.data = [TLAppConfig sharedConfig].addMenuItems;
     }
     return self;
 }
@@ -137,12 +135,5 @@
     return _tableView;
 }
 
-- (TLAddMenuHelper *)helper
-{
-    if (_helper == nil) {
-        _helper = [[TLAddMenuHelper alloc] init];
-    }
-    return _helper;
-}
 
 @end

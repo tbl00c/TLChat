@@ -9,8 +9,6 @@
 #import "TLLaunchManager.h"
 #import "TLLaunchManager+UserData.h"
 
-#import "TLNavigationController.h"
-
 #import "TLAccountViewController.h"
 
 #import "TLConversationViewController.h"
@@ -25,7 +23,7 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
     [vc.tabBarItem setTitle:title];
     [vc.tabBarItem setImage:[UIImage imageNamed:image]];
     [vc.tabBarItem setSelectedImage:[UIImage imageNamed:imageHL]];
-    TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:vc];
+    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:vc];
     [tabBarController addChildViewController:navC];
 }
 
@@ -37,7 +35,7 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
     static TLLaunchManager *rootVCManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        rootVCManager = [[TLLaunchManager alloc] init];
+        rootVCManager = [[self alloc] init];
     });
     return rootVCManager;
 }

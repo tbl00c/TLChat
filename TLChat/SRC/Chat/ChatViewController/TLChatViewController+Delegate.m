@@ -11,7 +11,6 @@
 #import "TLMyExpressionViewController.h"
 #import "TLFriendDetailViewController.h"
 #import <MWPhotoBrowser.h>
-#import "TLNavigationController.h"
 #import "NSFileManager+TLChat.h"
 
 @interface TLChatViewController ()
@@ -59,14 +58,14 @@
 - (void)emojiKeyboardEmojiEditButtonDown
 {
     TLExpressionViewController *expressionVC = [[TLExpressionViewController alloc] init];
-    TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:expressionVC];
+    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:expressionVC];
     [self presentViewController:navC animated:YES completion:nil];
 }
 
 - (void)emojiKeyboardMyEmojiEditButtonDown
 {
     TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
-    TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:myExpressionVC];
+    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:myExpressionVC];
     [self presentViewController:navC animated:YES completion:nil];
 }
 
@@ -98,7 +97,7 @@
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];
     [browser setDisplayNavArrows:YES];
     [browser setCurrentPhotoIndex:index];
-    TLNavigationController *broserNavC = [[TLNavigationController alloc] initWithRootViewController:browser];
+    UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
     [self presentViewController:broserNavC animated:NO completion:nil];
 }
 @end

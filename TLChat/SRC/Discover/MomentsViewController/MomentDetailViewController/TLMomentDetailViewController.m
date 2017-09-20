@@ -9,7 +9,6 @@
 #import "TLMomentDetailViewController.h"
 #import "TLMomentImageView.h"
 #import <MWPhotoBrowser.h>
-#import "TLNavigationController.h"
 
 @interface TLMomentDetailViewController () <TLMomentViewDelegate>
 
@@ -55,7 +54,7 @@
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];
     [browser setDisplayNavArrows:YES];
     [browser setCurrentPhotoIndex:index];
-    TLNavigationController *broserNavC = [[TLNavigationController alloc] initWithRootViewController:browser];
+    UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
     [self presentViewController:broserNavC animated:NO completion:nil];
 }
 

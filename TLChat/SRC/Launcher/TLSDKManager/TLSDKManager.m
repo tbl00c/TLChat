@@ -9,7 +9,7 @@
 
 #import "TLSDKManager.h"
 #import <AFNetworking.h>
-#import <JSPatch/JSPatch.h>
+#import <JSPatchPlatform/JSPatch.h>
 #import "TLSDKConfigKey.h"
 
 @implementation TLSDKManager
@@ -19,7 +19,7 @@
     static TLSDKManager *manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [[TLSDKManager alloc] init];
+        manager = [[self alloc] init];
     });
     return manager;
 }

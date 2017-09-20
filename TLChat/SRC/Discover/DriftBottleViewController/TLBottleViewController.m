@@ -51,7 +51,6 @@
     
     [timer invalidate];
     timer = [NSTimer scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
-        [tm invalidate];
         [self p_setNavBarHidden:YES];
     } repeats:NO];
     tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView)];

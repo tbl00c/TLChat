@@ -12,7 +12,6 @@
 #import "TLMomentHeaderCell.h"
 #import "TLMomentImagesCell.h"
 #import "TLUserHelper.h"
-#import "TLNavigationController.h"
 
 @implementation TLMomentsViewController (TableView)
 
@@ -86,7 +85,7 @@
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];
     [browser setDisplayNavArrows:YES];
     [browser setCurrentPhotoIndex:index];
-    TLNavigationController *broserNavC = [[TLNavigationController alloc] initWithRootViewController:browser];
+    UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
     [self presentViewController:broserNavC animated:NO completion:nil];
 }
 

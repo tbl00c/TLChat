@@ -8,7 +8,7 @@
 
 #import "TLAboutViewController.h"
 #import "TLAboutHelper.h"
-#import "TLAppHelper.h"
+#import "TLAppConfig.h"
 #import "TLAboutHeaderView.h"
 
 #define     HEIGHT_TOPVIEW      100.0f
@@ -50,7 +50,7 @@
     if (section == 0) {
         TLAboutHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TLAboutHeaderView"];
         [headerView setImagePath:@"AppLogo"];
-        [headerView setTitle:[NSString stringWithFormat:@"微信 TLChat %@", [TLAppHelper sharedHelper].version]];
+        [headerView setTitle:[NSString stringWithFormat:@"微信 TLChat %@", [TLAppConfig sharedConfig].version]];
         return headerView;
     }
     return nil;

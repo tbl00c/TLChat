@@ -8,7 +8,6 @@
 
 #import "TLExpressionSearchViewController.h"
 #import "TLExpressionDetailViewController.h"
-#import "TLNavigationController.h"
 #import "TLExpressionProxy.h"
 #import "TLExpressionHelper.h"
 #import "TLExpressionCell.h"
@@ -64,7 +63,7 @@
     TLEmojiGroup *group = [self.data objectAtIndex:indexPath.row];
     TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
     [detailVC setGroup:group];
-    TLNavigationController *navC = [[TLNavigationController alloc] initWithRootViewController:detailVC];
+    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:detailVC];
     UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain actionBlick:^{
        [navC dismissViewControllerAnimated:YES completion:^{
            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];

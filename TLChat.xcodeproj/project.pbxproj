@@ -195,6 +195,8 @@
 		C2D69D941C92B0E300EE91D7 /* TLAddMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D69D931C92B0E300EE91D7 /* TLAddMenuCell.m */; };
 		C2D69D971C92B0FE00EE91D7 /* TLAddMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D69D961C92B0FE00EE91D7 /* TLAddMenuItem.m */; };
 		C2D69D9B1C92D8AE00EE91D7 /* TLAddMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D69D9A1C92D8AE00EE91D7 /* TLAddMenuHelper.m */; };
+		C2D7C8841F72101300648CED /* UIBarButtonItem+Back.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8831F72101300648CED /* UIBarButtonItem+Back.m */; };
+		C2D7C88A1F7217CA00648CED /* TLSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8891F7217CA00648CED /* TLSDKManager.m */; };
 		C2D851401C672B65007DD697 /* TLSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D8513F1C672B65007DD697 /* TLSettingViewController.m */; };
 		C2D851501C68D67F007DD697 /* TLMineSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D8514F1C68D67F007DD697 /* TLMineSettingViewController.m */; };
 		C2D851551C68D811007DD697 /* TLSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D851541C68D811007DD697 /* TLSettingHelper.m */; };
@@ -236,7 +238,6 @@
 		C2E6B8301C9A62270045A6EB /* TLShakeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E6B82F1C9A62270045A6EB /* TLShakeButton.m */; };
 		C2E6B8341C9A62580045A6EB /* TLBottleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E6B8331C9A62580045A6EB /* TLBottleButton.m */; };
 		C2E8951D1CB1247500F4451E /* TLExpressionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E8951C1CB1247500F4451E /* TLExpressionProxy.m */; };
-		C2EAC3161F71004300BA2ED3 /* UIBarButtonItem+Back.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EAC3041F71004300BA2ED3 /* UIBarButtonItem+Back.m */; };
 		C2EAC3181F71004300BA2ED3 /* UIImagePickerController+Fixed.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EAC30A1F71004300BA2ED3 /* UIImagePickerController+Fixed.m */; };
 		C2EAC3451F71247200BA2ED3 /* TLGroup+CreateAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EAC3441F71247200BA2ED3 /* TLGroup+CreateAvatar.m */; };
 		C2EBBD681CB7AE2600BDABCC /* TLExpressionPublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EBBD671CB7AE2600BDABCC /* TLExpressionPublicViewController.m */; };
@@ -709,6 +710,11 @@
 		C2D69D961C92B0FE00EE91D7 /* TLAddMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddMenuItem.m; sourceTree = "<group>"; };
 		C2D69D991C92D8AE00EE91D7 /* TLAddMenuHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddMenuHelper.h; sourceTree = "<group>"; };
 		C2D69D9A1C92D8AE00EE91D7 /* TLAddMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddMenuHelper.m; sourceTree = "<group>"; };
+		C2D7C8821F72101300648CED /* UIBarButtonItem+Back.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Back.h"; sourceTree = "<group>"; };
+		C2D7C8831F72101300648CED /* UIBarButtonItem+Back.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Back.m"; sourceTree = "<group>"; };
+		C2D7C8881F7217CA00648CED /* TLSDKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSDKManager.h; sourceTree = "<group>"; };
+		C2D7C8891F7217CA00648CED /* TLSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSDKManager.m; sourceTree = "<group>"; };
+		C2D7C88B1F72198000648CED /* TLSDKConfigKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLSDKConfigKey.h; sourceTree = "<group>"; };
 		C2D8513E1C672B65007DD697 /* TLSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingViewController.h; sourceTree = "<group>"; };
 		C2D8513F1C672B65007DD697 /* TLSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingViewController.m; sourceTree = "<group>"; };
 		C2D8514E1C68D67F007DD697 /* TLMineSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineSettingViewController.h; sourceTree = "<group>"; };
@@ -791,8 +797,6 @@
 		C2E6B8331C9A62580045A6EB /* TLBottleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLBottleButton.m; sourceTree = "<group>"; };
 		C2E8951B1CB1247500F4451E /* TLExpressionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionProxy.h; sourceTree = "<group>"; };
 		C2E8951C1CB1247500F4451E /* TLExpressionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionProxy.m; sourceTree = "<group>"; };
-		C2EAC3031F71004300BA2ED3 /* UIBarButtonItem+Back.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Back.h"; sourceTree = "<group>"; };
-		C2EAC3041F71004300BA2ED3 /* UIBarButtonItem+Back.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Back.m"; sourceTree = "<group>"; };
 		C2EAC3091F71004300BA2ED3 /* UIImagePickerController+Fixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+Fixed.h"; sourceTree = "<group>"; };
 		C2EAC30A1F71004300BA2ED3 /* UIImagePickerController+Fixed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+Fixed.m"; sourceTree = "<group>"; };
 		C2EAC3431F71247200BA2ED3 /* TLGroup+CreateAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLGroup+CreateAvatar.h"; sourceTree = "<group>"; };
@@ -1038,6 +1042,7 @@
 			isa = PBXGroup;
 			children = (
 				C2EAC3001F71004300BA2ED3 /* TLKitExtensions */,
+				C2D7C8851F72107D00648CED /* AppControlCenter */,
 				C2142EA21C531EFD0030B29B /* Store */,
 				C2142E961C531EFD0030B29B /* Proxys */,
 				C2DD58E01C58C821005419E4 /* Business */,
@@ -2044,6 +2049,8 @@
 		C2AF1FA51C6B771F00617D98 /* TLWebViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C2D7C8821F72101300648CED /* UIBarButtonItem+Back.h */,
+				C2D7C8831F72101300648CED /* UIBarButtonItem+Back.m */,
 				C27D2B621F0CB7D2005D83F5 /* WKWebView+Post.h */,
 				C27D2B631F0CB7D2005D83F5 /* WKWebView+Post.m */,
 				C2AF1FA61C6B773000617D98 /* TLWebViewController.h */,
@@ -2430,6 +2437,31 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		C2D7C8851F72107D00648CED /* AppControlCenter */ = {
+			isa = PBXGroup;
+			children = (
+				C2D7C8861F7210AD00648CED /* AppConfig */,
+			);
+			path = AppControlCenter;
+			sourceTree = "<group>";
+		};
+		C2D7C8861F7210AD00648CED /* AppConfig */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppConfig;
+			sourceTree = "<group>";
+		};
+		C2D7C8871F7217B100648CED /* TLSDKManager */ = {
+			isa = PBXGroup;
+			children = (
+				C2D7C88B1F72198000648CED /* TLSDKConfigKey.h */,
+				C2D7C8881F7217CA00648CED /* TLSDKManager.h */,
+				C2D7C8891F7217CA00648CED /* TLSDKManager.m */,
+			);
+			path = TLSDKManager;
+			sourceTree = "<group>";
+		};
 		C2D8514C1C68D618007DD697 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -2715,19 +2747,9 @@
 		C2EAC3011F71004300BA2ED3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				C2EAC3021F71004300BA2ED3 /* UIBarButtonItem */,
 				C2EAC3081F71004300BA2ED3 /* UIImagePickerController */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		C2EAC3021F71004300BA2ED3 /* UIBarButtonItem */ = {
-			isa = PBXGroup;
-			children = (
-				C2EAC3031F71004300BA2ED3 /* UIBarButtonItem+Back.h */,
-				C2EAC3041F71004300BA2ED3 /* UIBarButtonItem+Back.m */,
-			);
-			path = UIBarButtonItem;
 			sourceTree = "<group>";
 		};
 		C2EAC3081F71004300BA2ED3 /* UIImagePickerController */ = {
@@ -2767,6 +2789,7 @@
 			children = (
 				C2ED8EB01F70E59D00EAC836 /* TLAppDelegate */,
 				C2ED8EB31F70E59D00EAC836 /* TLLaunchManager */,
+				C2D7C8871F7217B100648CED /* TLSDKManager */,
 				C2ED8ED91F70EF4A00EAC836 /* Resources */,
 			);
 			path = Launcher;
@@ -3325,7 +3348,6 @@
 				C20A56B91D33572500C891B3 /* TLTalkButton.m in Sources */,
 				C2B9E43A1C66451B00CEBA81 /* TLUserHelper.m in Sources */,
 				C274761F1CB6818900C667E6 /* TLMoment.m in Sources */,
-				C2EAC3161F71004300BA2ED3 /* UIBarButtonItem+Back.m in Sources */,
 				C2ED8EC61F70EB5800EAC836 /* TLLoginViewController.m in Sources */,
 				C2A5ACA01C8EB07E007A4574 /* TLChatDetailViewController.m in Sources */,
 				C2E570021C898305009662AB /* TLScannerButton.m in Sources */,
@@ -3360,6 +3382,7 @@
 				C2FB85D31CB6C19500747B6D /* TLMomentsProxy.m in Sources */,
 				C2FB85CA1CB6B8BE00747B6D /* TLMomentHeaderCell.m in Sources */,
 				C2A98BC51C89D57300029AD5 /* TLMyQRCodeViewController.m in Sources */,
+				C2D7C8841F72101300648CED /* UIBarButtonItem+Back.m in Sources */,
 				C29A7D3F1CB79397008ECA97 /* TLNetworking.m in Sources */,
 				C2893A7C1CB03E640080C4BB /* NSFileManager+TLChat.m in Sources */,
 				C20B1AD11D58287E00D9F710 /* TLEmojiGroupCell.m in Sources */,
@@ -3375,6 +3398,7 @@
 				C2FB85D01CB6B93400747B6D /* TLMomentBaseCell.m in Sources */,
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C2D500DA1C55C9A20088997C /* TLDiscoverViewController.m in Sources */,
+				C2D7C88A1F7217CA00648CED /* TLSDKManager.m in Sources */,
 				C20B1ABC1D5827A500D9F710 /* TLEmojiGroup.m in Sources */,
 				C271A5091C83FEF2004372D4 /* TLFriendDetailAlbumCell.m in Sources */,
 				C2B973011C6A33EB004B9B71 /* TLNewMessageSettingHelper.m in Sources */,

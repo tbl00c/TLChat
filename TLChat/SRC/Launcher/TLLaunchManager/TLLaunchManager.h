@@ -12,13 +12,14 @@
 
 @interface TLLaunchManager : NSObject
 
+/// 根控制器
 @property (nonatomic, strong, readonly) TLTabBarController *rootVC;
 
 + (TLLaunchManager *)sharedInstance;
 
+/**
+ *  启动，初始化
+ */
 - (void)launchInWindow:(UIWindow *)window;
-
-
-
 
 @end

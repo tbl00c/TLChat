@@ -15,7 +15,7 @@
     if (index < self.childViewControllers.count) {
         UIViewController *vc = self.childViewControllers[index];
         if ([vc isKindOfClass:[UINavigationController class]] || [vc isMemberOfClass:[UINavigationController class]]) {
-            return vc.childViewControllers.firstObject;
+            return [(UINavigationController *)vc rootViewController];
         }
     }
     return nil;

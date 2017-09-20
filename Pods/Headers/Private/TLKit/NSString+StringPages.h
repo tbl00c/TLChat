@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSString/NSString+StringPages.h
+../../../../../../../TLPods/TLKit/TLKit/TLCategories/Foundation/NSString/NSString+StringPages.h

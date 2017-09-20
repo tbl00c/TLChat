@@ -7,6 +7,7 @@
 //
 
 #import "TLExpressionProxy.h"
+#import "TLNetworking.h"
 #import "TLEmojiGroup.h"
 #import "TLMacros.h"
 

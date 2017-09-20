@@ -9,11 +9,19 @@
 #ifndef TLMacros_h
 #define TLMacros_h
 
+
+// 网络请求成功回调
+typedef void(^TLBlockRequestSuccessWithDatas)(id datas);
+
+@class NSString;
+// 网络请求失败回调
+typedef void(^TLBlockRequestFailureWithErrorMessage)(NSString *errMsg);
+
+
 #pragma mark - # 调试相关宏
 #define     DEBUG_LOCAL_SERVER      // 使用本地测试服务器
 //#define     DEBUG_MEMERY            // 内存测试
 //#define     DEBUG_JSPATCH           // JSPatch本地测试
-
 
 
 #pragma mark - # 服务器地址
@@ -23,7 +31,6 @@
 
 // 表情服务器
 #define     IEXPRESSION_HOST_URL        @"http://123.57.155.230/ibiaoqing/admin/"
-
 
 
 #define mark - # Default

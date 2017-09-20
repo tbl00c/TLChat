@@ -6,9 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseProxy.h"
+#import <Foundation/Foundation.h>
 
-@interface TLRootProxy : TLBaseProxy
+@interface TLRootProxy : NSObject
 
 - (void)requestClientInitInfoSuccess:(void (^)(id))clientInitInfo
                              failure:(void (^)(NSString *))error;

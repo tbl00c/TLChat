@@ -10,7 +10,7 @@
 #import "TLChatMessageDisplayView+Delegate.h"
 #import <MJRefresh.h>
 #import "TLMessageBaseCell.h"
-#import "TLEventStatistics.h"
+#import "TLChatEventStatistics.h"
 
 #define     PAGE_MESSAGE_COUNT      15
 

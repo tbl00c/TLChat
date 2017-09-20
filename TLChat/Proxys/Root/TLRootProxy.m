@@ -7,7 +7,6 @@
 //
 
 #import "TLRootProxy.h"
-#import "TLHost.h"
 #import "TLMacros.h"
 
 #define     URL_LOGIN           @"account/login/"
@@ -18,12 +17,12 @@
 - (void)requestClientInitInfoSuccess:(void (^)(id)) clientInitInfo
                              failure:(void (^)(NSString *))error
 {
-    NSString *urlString = [TLHost clientInitInfoURL];
-    [TLNetworking postUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"OK");
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"NO");
-    }];
+//    NSString *urlString = [TLHost clientInitInfoURL];
+//    [TLNetworking postUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        NSLog(@"OK");
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        NSLog(@"NO");
+//    }];
 }
 
 - (void)userLoginWithPhoneNumber:(NSString *)phoneNumber

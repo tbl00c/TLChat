@@ -11,7 +11,7 @@
 #import "TLSearchController.h"
 #import "TLFriendHelper+Contacts.h"
 #import "TLUserGroup.h"
-#import "TLEventStatistics.h"
+#import "TLFriendEventStatistics.h"
 
 @interface TLContactsViewController () <UISearchBarDelegate>
 

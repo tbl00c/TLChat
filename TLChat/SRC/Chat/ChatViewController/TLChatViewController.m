@@ -13,7 +13,7 @@
 #import "TLMoreKBHelper.h"
 #import "TLEmojiKBHelper.h"
 #import "TLUserHelper.h"
-#import "TLNotificationKey.h"
+#import "TLChatNotificationKey.h"
 
 static TLChatViewController *chatVC;
 

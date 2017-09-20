@@ -9,7 +9,6 @@
 #import "TLExpressionDetailViewController+CollectionView.h"
 #import "TLExpressionHelper.h"
 #import "TLExpressionItemCell.h"
-#import "TLHost.h"
 
 #define         EDGE                20.0
 #define         SPACE_CELL          15.0
@@ -53,7 +52,7 @@
             NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
             TLEmoji *emoji = [self.group objectAtIndex:indexPath.row];
             [TLUIUtility showLoading:@"正在将表情保存到系统相册"];
-            NSString *urlString = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
+            NSString *urlString = [TLEmoji expressionDownloadURLWithEid:emoji.emojiID];
             NSData *data = [NSData dataWithContentsOfURL:TLURL(urlString)];
             if (!data) {
                 data = [NSData dataWithContentsOfFile:emoji.emojiPath];

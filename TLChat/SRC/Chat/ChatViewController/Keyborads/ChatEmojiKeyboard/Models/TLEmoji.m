@@ -8,8 +8,19 @@
 
 #import "TLEmoji.h"
 #import "NSFileManager+TLChat.h"
+#import "TLMacros.h"
 
 @implementation TLEmoji
+
++ (NSString *)expressionURLWithEid:(NSString *)eid
+{
+    return [NSString stringWithFormat:@"%@expre/downloadsuo.do?pId=%@", IEXPRESSION_HOST_URL, eid];
+}
+
++ (NSString *)expressionDownloadURLWithEid:(NSString *)eid
+{
+    return [NSString stringWithFormat:@"%@expre/download.do?pId=%@", IEXPRESSION_HOST_URL, eid];
+}
 
 + (NSDictionary *)replacedKeyFromPropertyName
 {

@@ -9,7 +9,6 @@
 #import "TLImageExpressionDisplayView.h"
 #import <UIImage+GIF.h>
 #import <UIImageView+WebCache.h>
-#import "TLHost.h"
 
 #define     WIDTH_TIPS      150
 #define     HEIGHT_TIPS     162
@@ -61,7 +60,7 @@ static NSString *curID;
         [self.imageView setImage:[UIImage sd_animatedGIFWithData:data]];
     }
     else {
-        NSString *urlString = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
+        NSString *urlString = [TLEmoji expressionDownloadURLWithEid:emoji.emojiID];
         [self.imageView sd_setImageWithURL:TLURL(emoji.emojiURL) completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             if ([urlString containsString:curID]) {
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{

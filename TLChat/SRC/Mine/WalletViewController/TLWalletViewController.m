@@ -7,7 +7,7 @@
 //
 
 #import "TLWalletViewController.h"
-#import "TLEventStatistics.h"
+#import "TLMineEventStatistics.h"
 
 @interface TLWalletViewController () <TLActionSheetDelegate>
 

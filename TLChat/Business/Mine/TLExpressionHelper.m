@@ -11,7 +11,6 @@
 #import "TLEmojiKBHelper.h"
 #import "TLUserHelper.h"
 #import "NSFileManager+TLChat.h"
-#import "TLHost.h"
 
 @interface TLExpressionHelper ()
 
@@ -93,10 +92,10 @@
             }
             else {
                 TLEmoji *emoji = group.data[i];
-                NSString *urlString = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
+                NSString *urlString = [TLEmoji expressionDownloadURLWithEid:emoji.emojiID];
                 data = [NSData dataWithContentsOfURL:TLURL(urlString)];
                 if (data == nil) {
-                    urlString = [TLHost expressionURLWithEid:emoji.emojiID];
+                    urlString = [TLEmoji expressionURLWithEid:emoji.emojiID];
                     data = [NSData dataWithContentsOfURL:TLURL(urlString)];
                 }
                 emojiPath = [NSString stringWithFormat:@"%@%@", groupPath, emoji.emojiID];

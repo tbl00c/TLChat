@@ -7,8 +7,6 @@
 //
 
 #import "TLExpressionMessage.h"
-#import "TLMacros.h"
-#import "TLHost.h"
 
 @implementation TLExpressionMessage
 @synthesize emoji = _emoji;
@@ -47,7 +45,7 @@
 
 - (NSString *)url
 {
-    return [TLHost expressionDownloadURLWithEid:self.emoji.emojiID];
+    return [TLEmoji expressionDownloadURLWithEid:self.emoji.emojiID];
 }
 
 - (CGSize)emojiSize

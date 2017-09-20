@@ -12,8 +12,7 @@
 #import "TLEmojiGroup.h"
 #import "TLExpressionHelper.h"
 
-#import "TLEventStatistics.h"
-#import "TLMacros.h"
+#import "TLMineEventStatistics.h"
 
 @implementation TLLaunchManager (UserData)
 

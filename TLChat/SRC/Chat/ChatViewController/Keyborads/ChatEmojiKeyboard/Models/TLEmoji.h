@@ -25,4 +25,8 @@
 
 @property (nonatomic, assign) CGFloat size;
 
++ (NSString *)expressionURLWithEid:(NSString *)eid;
+
++ (NSString *)expressionDownloadURLWithEid:(NSString *)eid;
+
 @end

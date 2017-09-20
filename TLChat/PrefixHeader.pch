@@ -9,6 +9,7 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#import "TLMacros.h"
 #import "UIColor+TLChat.h"      // 颜色
 #import "UIFont+TLChat.h"       // 字体
 

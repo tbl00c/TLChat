@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "TLDBManager.h"
 
+#define     TLTimeStamp(date)   ([NSString stringWithFormat:@"%lf", [date timeIntervalSince1970]])
+
 @interface TLDBBaseStore : NSObject
 
 /// 数据库操作队列(从TLDBManager中获取，默认使用commonQueue)

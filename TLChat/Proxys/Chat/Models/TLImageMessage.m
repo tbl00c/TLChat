@@ -7,7 +7,6 @@
 //
 
 #import "TLImageMessage.h"
-#import "TLMacros.h"
 
 @implementation TLImageMessage
 @synthesize imagePath = _imagePath;

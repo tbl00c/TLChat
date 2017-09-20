@@ -9,7 +9,7 @@
 #import "TLMessageManager+MessageRecord.h"
 #import "TLChatViewController.h"
 
-#import "TLNotificationKey.h"
+#import "TLChatNotificationKey.h"
 
 @implementation TLMessageManager (MessageRecord)
 

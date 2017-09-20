@@ -15,7 +15,7 @@
 #import "TLChatBackgroundSettingViewController.h"
 #import "TLMyExpressionViewController.h"
 
-#import "TLNotificationKey.h"
+#import "TLChatNotificationKey.h"
 
 #define     TAG_ACTIONSHEET_EMPTY_REC       1001
 

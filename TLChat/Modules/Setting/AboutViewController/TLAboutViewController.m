@@ -7,15 +7,12 @@
 //
 
 #import "TLAboutViewController.h"
-#import "TLAboutHelper.h"
 #import "TLAppConfig.h"
 #import "TLAboutHeaderView.h"
 
 #define     HEIGHT_TOPVIEW      100.0f
 
 @interface TLAboutViewController ()
-
-@property (nonatomic, strong) TLAboutHelper *helper;
 
 @property (nonatomic, strong) UILabel *cmpLabel;
 
@@ -27,8 +24,7 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"关于微信"];
     
-    self.helper = [[TLAboutHelper alloc] init];
-    self.data = self.helper.abouSettingtData;
+    [self p_initAboutData];
     
     [self.tableView registerClass:[TLAboutHeaderView class] forHeaderFooterViewReuseIdentifier:@"TLAboutHeaderView"];
 
@@ -43,7 +39,7 @@
     [self.tableView.tableFooterView setHeight:footerHeight];
 }
 
-#pragma mark - Delegate -
+#pragma mark - # Delegate
 //MARK: UITableViewDataSource
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -65,7 +61,7 @@
     return 0;
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.cmpLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -74,7 +70,18 @@
     }];
 }
 
-#pragma mark - Getter -
+- (void)p_initAboutData
+{
+    TLSettingItem *item1 = TLCreateSettingItem(@"去评分");
+    TLSettingItem *item2 = TLCreateSettingItem(@"欢迎页");
+    TLSettingItem *item3 = TLCreateSettingItem(@"功能介绍");
+    TLSettingItem *item4 = TLCreateSettingItem(@"系统通知");
+    TLSettingItem *item5 = TLCreateSettingItem(@"举报与投诉");
+    TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, (@[item1, item2, item3, item4, item5]));
+    self.data = @[group1].mutableCopy;
+}
+
+#pragma mark - # Getters
 - (UILabel *)cmpLabel
 {
     if (_cmpLabel == nil) {

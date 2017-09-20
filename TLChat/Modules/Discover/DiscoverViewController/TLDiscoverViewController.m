@@ -7,8 +7,6 @@
 //
 
 #import "TLDiscoverViewController.h"
-#import "TLDiscoverHelper.h"
-
 #import "TLMomentsViewController.h"
 #import "TLScanningViewController.h"
 #import "TLShakeViewController.h"
@@ -20,21 +18,19 @@
 
 @property (nonatomic, strong) TLMomentsViewController *momentsVC;
 
-@property (nonatomic, strong) TLDiscoverHelper *discoverHelper;
-
 @end
 
 @implementation TLDiscoverViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self.navigationItem setTitle:@"发现"];
     
-    self.discoverHelper = [[TLDiscoverHelper alloc] init];
-    self.data = self.discoverHelper.discoverMenuData;
+    [self p_initMomentsData];
 }
 
-#pragma mark - Delegate - 
+#pragma mark - # Delegate
 //MARK: UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -75,6 +71,24 @@
         [self setHidesBottomBarWhenPushed:NO];
     }
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
+#pragma mark - # Private Methods
+- (void)p_initMomentsData
+{
+    TLMenuItem *item1 = TLCreateMenuItem(@"discover_album", @"朋友圈");
+    item1.rightIconURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
+    item1.showRightRedPoint = YES;
+    TLMenuItem *item2 = TLCreateMenuItem(@"discover_QRcode", @"扫一扫");
+    TLMenuItem *item3 = TLCreateMenuItem(@"discover_shake", @"摇一摇");
+    TLMenuItem *item4 = TLCreateMenuItem(@"discover_location", @"附近的人");
+    TLMenuItem *item5 = TLCreateMenuItem(@"discover_bottle", @"漂流瓶");
+    TLMenuItem *item6 = TLCreateMenuItem(@"discover_shopping", @"购物");
+    TLMenuItem *item7 = TLCreateMenuItem(@"discover_game", @"游戏");
+    item7.rightIconURL = @"http://qq1234.org/uploads/allimg/140404/3_140404151205_8.jpg";
+    item7.subTitle = @"英雄联盟计算器版";
+    item7.showRightRedPoint = YES;
+    self.data = @[@[item1], @[item2, item3], @[item4, item5], @[item6, item7]].mutableCopy;
 }
 
 #pragma mark - # Getter 

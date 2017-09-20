@@ -22,7 +22,6 @@
     return helper;
 }
 
-
 - (void)loginTestAccount
 {
     TLUser *user = [[TLUser alloc] init];

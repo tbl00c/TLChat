@@ -16,8 +16,6 @@
 /// 消息页面，+菜单项
 @property (nonatomic, strong) NSArray *addMenuItems;
 
-
-
 + (TLAppConfig *)sharedConfig;
 
 - (instancetype)init NS_UNAVAILABLE;

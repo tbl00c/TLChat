@@ -7,9 +7,6 @@
 //
 
 #import "TLChatBackgroundSettingViewController.h"
-#import "TLCommonSettingHelper.h"
-#import "UIImage+Size.h"
-
 #import "TLChatBackgroundSelectViewController.h"
 #import "TLChatViewController.h"
 
@@ -22,14 +19,15 @@
 
 @implementation TLChatBackgroundSettingViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self.navigationItem setTitle:@"聊天背景"];
     
-    self.data = [TLCommonSettingHelper chatBackgroundSettingData];
+    [self p_initChatBackgroundSettingData];
 }
 
-#pragma mark - Delegate
+#pragma mark - # Delegate
 //MARK: UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -101,7 +99,7 @@
     }
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)p_setChatBackgroundImage:(UIImage *)image
 {
     image = [image scalingToSize:self.view.size];
@@ -119,6 +117,22 @@
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
+}
+
+- (void)p_initChatBackgroundSettingData
+{
+    TLSettingItem *select = TLCreateSettingItem(@"选择背景图");
+    TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[select]);
+    
+    TLSettingItem *album = TLCreateSettingItem(@"从手机相册中选择");
+    TLSettingItem *camera = TLCreateSettingItem(@"拍一张");
+    TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[album, camera]));
+    
+    TLSettingItem *toAll = TLCreateSettingItem(@"将背景应用到所有聊天场景");
+    toAll.type = TLSettingItemTypeTitleButton;
+    TLSettingGroup *group3 = TLCreateSettingGroup(nil, nil, @[toAll]);
+    
+    self.data = @[group1, group2, group3].mutableCopy;
 }
 
 @end

@@ -1,9 +1,9 @@
 //
 //  WKWebView+Post.m
-//  WKWebViewConteoller
+//  TLChat
 //
-//  Created by YLCHUN on 2017/3/11.
-//  Copyright © 2017年 ylchun. All rights reserved.
+//  Created by 李伯坤 on 17/9/10.
+//  Copyright © 2017年 李伯坤. All rights reserved.
 //
 
 #import "WKWebView+Post.h"
@@ -11,7 +11,8 @@
 
 @implementation WKWebView (Post)
 
-+ (void)load {
++ (void)load
+{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = [self class];
@@ -22,13 +23,15 @@
         BOOL success = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
         if (success) {
             class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-        } else {
+        }
+        else {
             method_exchangeImplementations(originalMethod, swizzledMethod);
         }
     });
 }
 
--(WKNavigation *)post_loadRequest:(NSURLRequest *)request {
+- (WKNavigation *)post_loadRequest:(NSURLRequest *)request
+{
     if ([[request.HTTPMethod uppercaseString] isEqualToString:@"POST"]){
         NSString *url = request.URL.absoluteString;
         NSString *params = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
@@ -36,7 +39,8 @@
             params = [params stringByReplacingOccurrencesOfString:@"=" withString:@"\":\""];
             params = [params stringByReplacingOccurrencesOfString:@"&" withString:@"\",\""];
             params = [NSString stringWithFormat:@"{\"%@\"}", params];
-        }else{
+        }
+        else {
             params = @"{}";
         }
         NSString *postJavaScript = [NSString stringWithFormat:@"\
@@ -64,10 +68,12 @@
                 });
             }
         }];
-        return nil;
-    }else{
+    }
+    else {
        return [self post_loadRequest:request];
     }
+    
+    return nil;
 }
 
 @end

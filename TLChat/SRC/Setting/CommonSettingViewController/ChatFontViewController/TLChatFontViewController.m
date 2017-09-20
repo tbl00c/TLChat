@@ -10,6 +10,8 @@
 #import "TLChatMessageDisplayView.h"
 #import "TLChatFontSettingView.h"
 #import "TLUser+ChatModel.h"
+#import "NSFileManager+TLChat.h"
+#import "TLUserHelper.h"
 
 @interface TLChatFontViewController ()
 

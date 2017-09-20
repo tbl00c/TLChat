@@ -17,11 +17,11 @@
 /**
  *  标记为未读
  */
-- (void) markAsUnread;
+- (void)markAsUnread;
 
 /**
  *  标记为已读
  */
-- (void) markAsRead;
+- (void)markAsRead;
 
 @end

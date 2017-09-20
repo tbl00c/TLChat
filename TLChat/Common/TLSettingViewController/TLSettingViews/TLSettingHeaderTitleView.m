@@ -10,7 +10,7 @@
 
 @implementation TLSettingHeaderTitleView
 
-- (id) initWithReuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         [self.contentView addSubview:self.titleLabel];
@@ -23,7 +23,7 @@
     return self;
 }
 
-- (void) setText:(NSString *)text
+- (void)setText:(NSString *)text
 {
     _text = text;
     [self.titleLabel setText:text];

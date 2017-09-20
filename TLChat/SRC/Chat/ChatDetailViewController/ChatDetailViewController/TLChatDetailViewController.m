@@ -16,6 +16,8 @@
 #import "TLChatFileViewController.h"
 #import "TLChatBackgroundSettingViewController.h"
 
+#import "TLNotificationKey.h"
+
 #define     TAG_EMPTY_CHAT_REC      1001
 
 @interface TLChatDetailViewController () <TLUserGroupCellDelegate, TLActionSheetDelegate>

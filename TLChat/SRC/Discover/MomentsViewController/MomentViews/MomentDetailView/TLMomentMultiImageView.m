@@ -10,8 +10,8 @@
 #import "UIView+Extensions.h"
 #import <UIButton+WebCache.h>
 
-#define     WIDTH_IMAGE_ONE     (WIDTH_SCREEN - 70) * 0.6
-#define     WIDTH_IMAGE         (WIDTH_SCREEN - 70) * 0.31
+#define     WIDTH_IMAGE_ONE     (SCREEN_WIDTH - 70) * 0.6
+#define     WIDTH_IMAGE         (SCREEN_WIDTH - 70) * 0.31
 #define     SPACE               4.0
 
 @interface TLMomentMultiImageView ()

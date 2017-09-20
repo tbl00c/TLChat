@@ -9,6 +9,7 @@
 #import "TLAccountAndSafetyViewController.h"
 #import "TLAccountAndSafetyHelper.h"
 #import "TLWebViewController.h"
+#import "TLUserHelper.h"
 
 @interface TLAccountAndSafetyViewController ()
 

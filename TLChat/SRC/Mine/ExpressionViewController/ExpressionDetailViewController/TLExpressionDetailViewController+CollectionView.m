@@ -9,10 +9,11 @@
 #import "TLExpressionDetailViewController+CollectionView.h"
 #import "TLExpressionHelper.h"
 #import "TLExpressionItemCell.h"
+#import "TLHost.h"
 
 #define         EDGE                20.0
 #define         SPACE_CELL          15.0
-#define         WIDTH_CELL          ((WIDTH_SCREEN - EDGE * 2 - SPACE_CELL * 3.0) / 4.0)
+#define         WIDTH_CELL          ((SCREEN_WIDTH - EDGE * 2 - SPACE_CELL * 3.0) / 4.0)
 
 @implementation TLExpressionDetailViewController (CollectionView)
 
@@ -51,7 +52,7 @@
         if (cell.x <= point.x && cell.y <= point.y && cell.x + cell.width >= point.x && cell.y + cell.height >= point.y) {
             NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
             TLEmoji *emoji = [self.group objectAtIndex:indexPath.row];
-            [SVProgressHUD showWithStatus:@"正在将表情保存到系统相册"];
+            [TLUIUtility showLoading:@"正在将表情保存到系统相册"];
             NSString *urlString = [TLHost expressionDownloadURLWithEid:emoji.emojiID];
             NSData *data = [NSData dataWithContentsOfURL:TLURL(urlString)];
             if (!data) {
@@ -72,7 +73,7 @@
         [TLUIUtility showAlertWithTitle:@"错误" message:[NSString stringWithFormat:@"保存图片到系统相册失败\n%@", [error description]]];
     }
     else {
-        [SVProgressHUD showSuccessWithStatus:@"已保存到系统相册"];
+        [TLUIUtility showSuccessHint:@"已保存到系统相册"];
     }
 }
 
@@ -141,12 +142,12 @@
         [self.collectionView reloadData];
         BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
         if (!ok) {
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.groupName]];
+            [TLUIUtility showErrorHint:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.groupName]];
         }
     } failure:^(TLEmojiGroup *group, NSString *error) {
         group.status = TLEmojiGroupStatusUnDownload;
         [self.collectionView reloadData];
-        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];
+        [TLUIUtility showErrorHint:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];
     }];
 }
 

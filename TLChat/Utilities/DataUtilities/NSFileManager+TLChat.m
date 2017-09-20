@@ -7,6 +7,7 @@
 //
 
 #import "NSFileManager+TLChat.h"
+#import "TLUserHelper.h"
 
 @implementation NSFileManager (TLChat)
 

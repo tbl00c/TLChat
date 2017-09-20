@@ -14,6 +14,8 @@
 #import <JSPatch/JSPatch.h>
 //#import <SMS_SDK/SMSSDK.h>
 
+#import "TLMacros.h"
+
 @implementation TLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -66,10 +68,6 @@
     
     // Mob SMS
 //    [SMSSDK registerApp:MOB_SMS_APPKEY withSecret:MOB_SMS_SECRET];
-    
-    // 提示框
-    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     
     // 日志
     [DDLog addLogger:[DDTTYLogger sharedInstance]];

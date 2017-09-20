@@ -17,7 +17,7 @@
 
 @property (nonatomic, assign, readonly) NSInteger count;
 
-- (id) initWithGroupName:(NSString *)groupName users:(NSMutableArray *)users;
+- (id)initWithGroupName:(NSString *)groupName users:(NSMutableArray *)users;
 
 - (void)addObject:(id)anObject;
 

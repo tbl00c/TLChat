@@ -10,6 +10,7 @@
 #import "TLShakeViewController.h"
 #import "TLShakeSettingViewController.h"
 #import "TLShakeButton.h"
+#import "NSFileManager+TLChat.h"
 
 #define     SHAKE_HEIGHT    90
 
@@ -155,7 +156,7 @@
     
     // bottom
     CGFloat widthButton = 40;
-    CGFloat space = (WIDTH_SCREEN - widthButton * 3) / 4 * 1.2;
+    CGFloat space = (SCREEN_WIDTH - widthButton * 3) / 4 * 1.2;
     [self.songButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.view).mas_offset(-15);

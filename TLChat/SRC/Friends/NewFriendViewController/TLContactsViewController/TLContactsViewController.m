@@ -11,6 +11,7 @@
 #import "TLSearchController.h"
 #import "TLFriendHelper+Contacts.h"
 #import "TLUserGroup.h"
+#import "TLEventStatistics.h"
 
 @interface TLContactsViewController () <UISearchBarDelegate>
 
@@ -32,9 +33,9 @@
     
     [self registerCellClass];
     
-    [SVProgressHUD showWithStatus:@"加载中"];
+    [TLUIUtility showLoading:@"加载中"];
     [TLFriendHelper tryToGetAllContactsSuccess:^(NSArray *data, NSArray *formatData, NSArray *headers) {
-        [SVProgressHUD dismiss];
+        [TLUIUtility hiddenLoading];
         self.data = formatData;
         self.contactsData = data;
         self.headers = headers;
@@ -42,7 +43,7 @@
         
         [MobClick event:EVENT_GET_CONTACTS];
     } failed:^{
-        [SVProgressHUD dismiss];
+        [TLUIUtility hiddenLoading];
         [TLUIUtility showAlertWithTitle:@"错误" message:@"未成功获取到通讯录信息"];
     }];
 }
@@ -50,8 +51,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if ([SVProgressHUD isVisible]) {
-        [SVProgressHUD dismiss];
+    if ([TLUIUtility isShowLoading]) {
+        [TLUIUtility hiddenLoading];
     }
 }
 

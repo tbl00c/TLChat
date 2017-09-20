@@ -11,6 +11,8 @@
 #import "TLMyExpressionViewController.h"
 #import "TLFriendDetailViewController.h"
 #import <MWPhotoBrowser.h>
+#import "TLNavigationController.h"
+#import "NSFileManager+TLChat.h"
 
 @interface TLChatViewController ()
 

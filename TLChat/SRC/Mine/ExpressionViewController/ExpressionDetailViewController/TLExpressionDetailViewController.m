@@ -43,7 +43,7 @@
     [super viewDidAppear:animated];
     
     if (self.group.data == nil) {
-        [SVProgressHUD show];
+        [TLUIUtility showLoading:nil];
         [self p_loadData];
     }
 }
@@ -61,11 +61,11 @@
     kPageIndex = 1;
     TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
     [proxy requestExpressionGroupDetailByGroupID:self.group.groupID pageIndex:kPageIndex success:^(id data) {
-        [SVProgressHUD dismiss];
+        [TLUIUtility hiddenLoading];
         self.group.data = data;
         [self.collectionView reloadData];
     } failure:^(NSString *error) {
-        [SVProgressHUD dismiss];
+        [TLUIUtility hiddenLoading];
     }];
 }
 

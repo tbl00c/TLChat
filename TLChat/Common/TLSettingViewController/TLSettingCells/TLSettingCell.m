@@ -8,6 +8,7 @@
 
 #import "TLSettingCell.h"
 #import <UIImageView+WebCache.h>
+#import "TLMacros.h"
 
 @interface TLSettingCell ()
 
@@ -21,7 +22,7 @@
 
 @implementation TLSettingCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self.contentView addSubview:self.titleLabel];
@@ -32,7 +33,7 @@
     return self;
 }
 
-- (void) setItem:(TLSettingItem *)item
+- (void)setItem:(TLSettingItem *)item
 {
     _item = item;
     [self.titleLabel setText:item.title];

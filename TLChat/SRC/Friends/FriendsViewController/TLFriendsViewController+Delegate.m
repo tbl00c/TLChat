@@ -16,6 +16,9 @@
 #import "TLPublicServerViewController.h"
 #import "TLFriendDetailViewController.h"
 
+#import "TLUserGroup.h"
+#import "TLFriendHelper.h"
+
 @implementation TLFriendsViewController (Delegate)
 
 #pragma mark - Public Methods -

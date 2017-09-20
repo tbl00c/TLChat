@@ -7,6 +7,7 @@
 //
 
 #import "TLMineInfoHelper.h"
+#import "TLUser.h"
 
 @interface TLMineInfoHelper ()
 
@@ -16,7 +17,7 @@
 
 @implementation TLMineInfoHelper
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         _mineInfoData = [[NSMutableArray alloc] init];

@@ -8,6 +8,7 @@
 
 #import "TLMineHeaderCell.h"
 #import <UIImageView+WebCache.h>
+#import "TLMacros.h"
 
 #define     MINE_SPACE_X        14.0f
 #define     MINE_SPACE_Y        12.0f
@@ -27,7 +28,7 @@
 
 @implementation TLMineHeaderCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -42,7 +43,7 @@
     return self;
 }
 
-- (void) addMasonry
+- (void)addMasonry
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(MINE_SPACE_X);
@@ -69,7 +70,7 @@
     }];
 }
 
-- (void) setUser:(TLUser *)user
+- (void)setUser:(TLUser *)user
 {
     _user = user;
     if (user.avatarPath) {

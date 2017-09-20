@@ -8,6 +8,7 @@
 
 #import "TLTagsViewController.h"
 #import "TLTagsViewController+Delegate.h"
+#import "TLFriendHelper.h"
 
 @implementation TLTagsViewController
 

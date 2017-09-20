@@ -15,7 +15,7 @@
 - (id)initWithSearchResultsController:(UIViewController *)searchResultsController
 {
     if (self = [super initWithSearchResultsController:searchResultsController]) {
-        [self.searchBar setFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_NAVBAR)];
+        [self.searchBar setFrame:CGRectMake(0, 0, SCREEN_WIDTH, NAVBAR_HEIGHT)];
         [self.searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
         [self.searchBar setBarTintColor:[UIColor colorGrayBG]];
         [self.searchBar setTintColor:[UIColor colorGreenDefault]];

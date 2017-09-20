@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, TLAddMneuType) {
+    TLAddMneuTypeGroupChat = 0,
+    TLAddMneuTypeAddFriend,
+    TLAddMneuTypeScan,
+    TLAddMneuTypeWallet,
+};
+
 @interface TLAddMenuItem : NSObject
 
 @property (nonatomic, assign) TLAddMneuType type;

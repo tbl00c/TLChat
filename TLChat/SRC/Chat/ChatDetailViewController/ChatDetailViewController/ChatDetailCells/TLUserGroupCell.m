@@ -8,11 +8,12 @@
 
 #import "TLUserGroupCell.h"
 #import "TLUserGroupItemCell.h"
+#import "TLUser.h"
 
 #define     USER_CELL_WIDTH         57
 #define     USER_CELL_HEIGHT        75
 #define     USER_CELL_ROWSPACE     15
-#define     USER_CELL_COLSPACE      ((WIDTH_SCREEN - USER_CELL_WIDTH * 4) / 5)
+#define     USER_CELL_COLSPACE      ((SCREEN_WIDTH - USER_CELL_WIDTH * 4) / 5)
 
 @interface TLUserGroupCell () <UICollectionViewDataSource, UICollectionViewDelegate>
 

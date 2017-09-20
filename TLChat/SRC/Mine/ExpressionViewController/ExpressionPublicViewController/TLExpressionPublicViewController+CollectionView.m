@@ -12,7 +12,7 @@
 
 #define         EDGE                20.0
 #define         SPACE_CELL          EDGE
-#define         WIDTH_CELL          ((WIDTH_SCREEN - EDGE * 2 - SPACE_CELL * 2.0) / 3.0)
+#define         WIDTH_CELL          ((SCREEN_WIDTH - EDGE * 2 - SPACE_CELL * 2.0) / 3.0)
 #define         HEIGHT_CELL         (WIDTH_CELL + 20)
 
 @implementation TLExpressionPublicViewController (CollectionView)

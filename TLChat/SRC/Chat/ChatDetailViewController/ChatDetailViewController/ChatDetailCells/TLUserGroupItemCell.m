@@ -8,6 +8,9 @@
 
 #import "TLUserGroupItemCell.h"
 #import <UIButton+WebCache.h>
+#import "TLUser.h"
+#import "NSFileManager+TLChat.h"
+#import "TLMacros.h"
 
 @interface TLUserGroupItemCell()
 

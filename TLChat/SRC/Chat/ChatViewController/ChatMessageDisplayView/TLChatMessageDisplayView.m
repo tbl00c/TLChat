@@ -10,6 +10,7 @@
 #import "TLChatMessageDisplayView+Delegate.h"
 #import <MJRefresh.h>
 #import "TLMessageBaseCell.h"
+#import "TLEventStatistics.h"
 
 #define     PAGE_MESSAGE_COUNT      15
 
@@ -198,7 +199,7 @@
         _tableView = [[UITableView alloc] init];
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_tableView setBackgroundColor:[UIColor clearColor]];
-        [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 10)]];
+        [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)]];
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
     }

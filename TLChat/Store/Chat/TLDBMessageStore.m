@@ -8,6 +8,7 @@
 
 #import "TLDBMessageStore.h"
 #import "TLDBMessageStoreSQL.h"
+#import "TLMacros.h"
 
 @implementation TLDBMessageStore
 

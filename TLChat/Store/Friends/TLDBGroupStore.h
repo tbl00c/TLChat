@@ -7,6 +7,7 @@
 //
 
 #import "TLDBBaseStore.h"
+#import "TLGroup.h"
 
 @interface TLDBGroupStore : TLDBBaseStore
 

@@ -10,7 +10,7 @@
 
 @implementation TLShoppingViewController
 
-- (void) viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     
@@ -22,7 +22,7 @@
 }
 
 #pragma mark - Event Response
-- (void) rightBarButtonDown:(UIBarButtonItem *)sender
+- (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
 
 }

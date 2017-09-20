@@ -9,28 +9,13 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#import "TLMacros.h"            // 宏
-#import "TLEnumerate.h"         // 枚举
-#import "TLEventStatistics.h"   // 数据统计
-#import "TLHost.h"              // 网络地址
-#import "TLNotificationKey.h"   // 广播
-
 #import "UIColor+TLChat.h"      // 颜色
 #import "UIFont+TLChat.h"       // 字体
-#import "TLUIUtility.h"
 
 #import <Masonry.h>
 #import <MobClick.h>
 #import <ReactiveCocoa.h>
-#import <SVProgressHUD.h>
 #import <CocoaLumberjack.h>
-
-#import "TLNavigationController.h"
-
-#import "TLUserHelper.h"
-#import "TLFriendHelper.h"
-
-#import "NSFileManager+TLChat.h"
 
 #import <MJExtension/MJExtension.h>
 #import <TLKit/TLKit.h>

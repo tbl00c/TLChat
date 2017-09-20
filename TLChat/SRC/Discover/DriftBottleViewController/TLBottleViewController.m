@@ -45,7 +45,7 @@
     [self p_addMasonry];
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
@@ -58,7 +58,7 @@
     [self.view addGestureRecognizer:tapGes];
 }
 
-- (void) viewWillDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
@@ -74,24 +74,24 @@
     [alert show];
 }
 
-- (void) didTapView
+- (void)didTapView
 {
     [timer invalidate];
     [self p_setNavBarHidden:![self.navigationController.navigationBar isHidden]];
 }
 
-- (void) rightBarButtonDown:(UIBarButtonItem *)sender
+- (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
 
 }
 
 #pragma mark - Private Methods
-- (void) p_setNavBarHidden:(BOOL)hidden
+- (void)p_setNavBarHidden:(BOOL)hidden
 {
     if (hidden) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         [UIView animateWithDuration:0.5 animations:^{
-            [self.navigationController.navigationBar setY: -HEIGHT_NAVBAR - HEIGHT_STATUSBAR];
+            [self.navigationController.navigationBar setY: -NAVBAR_HEIGHT - STATUSBAR_HEIGHT];
         } completion:^(BOOL finished) {
             [self.navigationController.navigationBar setHidden:YES];
         }];
@@ -100,7 +100,7 @@
         [self.navigationController.navigationBar setHidden:NO];
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
         [UIView animateWithDuration:0.2 animations:^{
-            [self.navigationController.navigationBar setY:HEIGHT_STATUSBAR];
+            [self.navigationController.navigationBar setY:STATUSBAR_HEIGHT];
         }];
     }
 }
@@ -112,7 +112,7 @@
     }];
     
     CGFloat widthButton = 75;
-    CGFloat space = (WIDTH_SCREEN - widthButton * 3) / 4;
+    CGFloat space = (SCREEN_WIDTH - widthButton * 3) / 4;
     [self.pickUpButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.and.bottom.mas_equalTo(self.view);
         make.width.mas_equalTo(widthButton);

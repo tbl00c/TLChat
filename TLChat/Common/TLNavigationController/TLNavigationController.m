@@ -10,7 +10,7 @@
 
 @implementation TLNavigationController
 
-- (void) viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     

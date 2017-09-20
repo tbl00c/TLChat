@@ -9,6 +9,7 @@
 #import "TLFriendHelper+Detail.h"
 #import "TLSettingGroup.h"
 #import "TLInfo.h"
+#import "TLUserHelper.h"
 
 @implementation TLFriendHelper (Detail)
 

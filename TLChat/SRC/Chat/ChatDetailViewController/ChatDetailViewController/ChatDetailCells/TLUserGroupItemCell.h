@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class TLUser;
 @interface TLUserGroupItemCell : UICollectionViewCell
 
 @property (nonatomic, strong) TLUser *user;

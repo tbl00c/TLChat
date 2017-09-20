@@ -26,11 +26,11 @@
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.tableView.y = HEIGHT_NAVBAR + HEIGHT_STATUSBAR;
-    self.tableView.height = HEIGHT_SCREEN - self.tableView.y;
+    self.tableView.y = NAVBAR_HEIGHT + STATUSBAR_HEIGHT;
+    self.tableView.height = SCREEN_HEIGHT - self.tableView.y;
 }
 
 #pragma mark - UITableViewDataSource

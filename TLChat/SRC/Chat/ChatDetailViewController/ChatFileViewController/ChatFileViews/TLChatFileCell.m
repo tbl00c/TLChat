@@ -8,6 +8,8 @@
 
 #import "TLChatFileCell.h"
 #import <UIImageView+WebCache.h>
+#import "NSFileManager+TLChat.h"
+#import "TLMacros.h"
 
 @interface TLChatFileCell ()
 

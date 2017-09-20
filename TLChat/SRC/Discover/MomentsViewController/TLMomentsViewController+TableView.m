@@ -11,6 +11,8 @@
 #import <MWPhotoBrowser.h>
 #import "TLMomentHeaderCell.h"
 #import "TLMomentImagesCell.h"
+#import "TLUserHelper.h"
+#import "TLNavigationController.h"
 
 @implementation TLMomentsViewController (TableView)
 

@@ -52,7 +52,7 @@ static TLEmojiKeyboard *emojiKB;
 #pragma mark - # Event Response
 - (void)pageControlChanged:(UIPageControl *)pageControl
 {
-//    [self.collectionView scrollRectToVisible:CGRectMake(WIDTH_SCREEN * pageControl.currentPage, 0, WIDTH_SCREEN, HEIGHT_PAGECONTROL) animated:YES];
+//    [self.collectionView scrollRectToVisible:CGRectMake(SCREEN_WIDTH * pageControl.currentPage, 0, SCREEN_WIDTH, HEIGHT_PAGECONTROL) animated:YES];
 }
 
 #pragma mark - # Private Methods
@@ -83,7 +83,7 @@ static TLEmojiKeyboard *emojiKB;
     CGContextSetStrokeColorWithColor(context, [UIColor colorGrayLine].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
-    CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);
+    CGContextAddLineToPoint(context, SCREEN_WIDTH, 0);
     CGContextStrokePath(context);
 }
 

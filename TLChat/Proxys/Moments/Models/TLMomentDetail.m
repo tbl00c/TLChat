@@ -8,7 +8,7 @@
 
 #import "TLMomentDetail.h"
 
-#define     WIDTH_MOMENT_CONTENT        (WIDTH_SCREEN - 70.0f)
+#define     WIDTH_MOMENT_CONTENT        (SCREEN_WIDTH - 70.0f)
 
 @implementation TLMomentDetail
 

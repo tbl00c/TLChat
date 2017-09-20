@@ -8,6 +8,7 @@
 
 #import "TLFriendCell.h"
 #import <UIImageView+WebCache.h>
+#import "TLMacros.h"
 
 #define     FRIENDS_SPACE_X         10.0f
 #define     FRIENDS_SPACE_Y         9.0f
@@ -24,7 +25,7 @@
 
 @implementation TLFriendCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.leftSeparatorSpace = FRIENDS_SPACE_X;

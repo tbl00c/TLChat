@@ -8,6 +8,7 @@
 
 #import "TLTagsViewController+Delegate.h"
 #import "TLTagCell.h"
+#import "TLUserGroup.h"
 
 @implementation TLTagsViewController (Delegate)
 

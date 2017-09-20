@@ -173,7 +173,7 @@
 #pragma mark - # Class Methods
 + (CGFloat)cellHeightForModel:(TLEmojiGroup *)group
 {
-    CGFloat detailHeight = [group.groupDetailInfo boundingRectWithSize:CGSizeMake(WIDTH_SCREEN - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:13.0f]} context:nil].size.height;
+    CGFloat detailHeight = [group.groupDetailInfo boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:13.0f]} context:nil].size.height;
     CGFloat bannerHeight = group.bannerURL.length > 0 ? HEIGHT_EXP_BANNER : 0;
     CGFloat height = 105.0 + detailHeight + bannerHeight;
     return height;

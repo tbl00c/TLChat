@@ -19,7 +19,7 @@
 
 @implementation TLEmojiImageTitleItemCell
 
-- (id) initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
         [self setHighlightImage:[UIImage imageNamed:@"emoji_hl_background"]];

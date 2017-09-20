@@ -8,6 +8,7 @@
 
 #import "TLFriendHelper+Contacts.h"
 #import <AddressBookUI/AddressBookUI.h>
+#import "NSFileManager+TLChat.h"
 
 @implementation TLFriendHelper (Contacts)
 

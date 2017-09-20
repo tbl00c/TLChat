@@ -15,12 +15,12 @@
 - (void)loadDataWithLoadingView:(BOOL)showLoadingView
 {
     if (showLoadingView) {
-        [SVProgressHUD show];
+        [TLUIUtility showLoading:nil];
     }
     kPageIndex = 1;
     TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
     [proxy requestExpressionChosenListByPageIndex:kPageIndex success:^(id data) {
-        [SVProgressHUD dismiss];
+        [TLUIUtility hiddenLoading];
         kPageIndex ++;
         self.data = [[NSMutableArray alloc] init];
         for (TLEmojiGroup *group in data) {     // 优先使用本地表情
@@ -34,7 +34,7 @@
         }
         [self.tableView reloadData];
     } failure:^(NSString *error) {
-        [SVProgressHUD dismiss];
+        [TLUIUtility hiddenLoading];
     }];
     
     [proxy requestExpressionChosenBannerSuccess:^(id data) {
@@ -49,7 +49,7 @@
 {
     TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
     [proxy requestExpressionChosenListByPageIndex:kPageIndex success:^(NSMutableArray *data) {
-        [SVProgressHUD dismiss];
+        [TLUIUtility hiddenLoading];
         if (data.count == 0) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
@@ -69,7 +69,7 @@
         }
     } failure:^(NSString *error) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        [SVProgressHUD dismiss];
+        [TLUIUtility hiddenLoading];
     }];
 }
 

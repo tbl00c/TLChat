@@ -9,6 +9,7 @@
 #import "TLFriendDetailUserCell.h"
 #import <UIButton+WebCache.h>
 #import "TLUser.h"
+#import "TLMacros.h"
 
 #define     MINE_SPACE_X        14.0f
 #define     MINE_SPACE_Y        12.0f
@@ -27,7 +28,7 @@
 
 @implementation TLFriendDetailUserCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -43,7 +44,7 @@
     return self;
 }
 
-- (void) addMasonry
+- (void)addMasonry
 {
     [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(MINE_SPACE_X);
@@ -69,7 +70,7 @@
     }];
 }
 
-- (void) setInfo:(TLInfo *)info
+- (void)setInfo:(TLInfo *)info
 {
     _info = info;
     TLUser *user = info.userInfo;

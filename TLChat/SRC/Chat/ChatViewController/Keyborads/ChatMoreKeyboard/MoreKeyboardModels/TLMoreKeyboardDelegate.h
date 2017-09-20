@@ -11,6 +11,6 @@
 
 @protocol TLMoreKeyboardDelegate <NSObject>
 @optional
-- (void) moreKeyboard:(id)keyboard didSelectedFunctionItem:(TLMoreKeyboardItem *)funcItem;
+- (void)moreKeyboard:(id)keyboard didSelectedFunctionItem:(TLMoreKeyboardItem *)funcItem;
 
 @end

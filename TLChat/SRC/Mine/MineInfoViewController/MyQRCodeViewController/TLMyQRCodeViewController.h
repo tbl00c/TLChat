@@ -7,6 +7,7 @@
 //
 
 #import "TLViewController.h"
+#import "TLUser.h"
 
 @interface TLMyQRCodeViewController : TLViewController
 

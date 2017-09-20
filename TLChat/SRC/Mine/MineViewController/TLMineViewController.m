@@ -13,6 +13,7 @@
 #import "TLMineViewController.h"
 #import "TLMineHeaderCell.h"
 #import "TLMineHelper.h"
+#import "TLUserHelper.h"
 
 #import "TLMineInfoViewController.h"
 #import "TLWalletViewController.h"
@@ -58,7 +59,7 @@
     return [super tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
         TLMineInfoViewController *mineInfoVC = [[TLMineInfoViewController alloc] init];

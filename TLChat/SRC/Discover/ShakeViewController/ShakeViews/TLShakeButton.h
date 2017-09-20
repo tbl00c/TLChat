@@ -26,6 +26,6 @@ typedef NS_ENUM(NSUInteger, TLShakeButtonType) {
 
 @property (nonatomic, assign) NSUInteger msgNumber;
 
-- (id) initWithType:(TLShakeButtonType)type title:(NSString *)title iconPath:(NSString *)iconPath iconHLPath:(NSString *)iconHLPath;
+- (id)initWithType:(TLShakeButtonType)type title:(NSString *)title iconPath:(NSString *)iconPath iconHLPath:(NSString *)iconHLPath;
 
 @end

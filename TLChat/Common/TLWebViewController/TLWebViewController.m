@@ -9,7 +9,6 @@
 #import "TLWebViewController.h"
 #import "UIBarButtonItem+Back.h"
 #import "WKWebView+Post.h"
-#import <MobClick.h>
 
 #define     WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE    9
 
@@ -67,7 +66,7 @@
 {
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    [self.view setBackgroundColor:TLColor(46.0, 49.0, 50.0, 1.0)];
+    [self.view setBackgroundColor:RGBAColor(46.0, 49.0, 50.0, 1.0)];
     [self.webView.scrollView setBackgroundColor:[UIColor clearColor]];
     for (id vc in self.webView.scrollView.subviews) {
         NSString *className = NSStringFromClass([vc class]);
@@ -270,7 +269,7 @@
 - (WKWebView *)webView
 {
     if (_webView == nil) {
-        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, HEIGHT_SCREEN - HEIGHT_NAVBAR - HEIGHT_STATUSBAR)];
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT + STATUSBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBAR_HEIGHT - STATUSBAR_HEIGHT)];
         [_webView setAllowsBackForwardNavigationGestures:YES];
         [_webView setNavigationDelegate:self];
         [_webView setUIDelegate:self];
@@ -282,9 +281,9 @@
 - (UIProgressView *)progressView
 {
     if (_progressView == nil) {
-        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, 10.0f)];
+        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT + STATUSBAR_HEIGHT, SCREEN_WIDTH, 10.0f)];
         [_progressView setTransform: CGAffineTransformMakeScale(1.0f, 2.0f)];
-        [_progressView setProgressTintColor:TLColor(2.0, 187.0, 0.0, 1.0f)];
+        [_progressView setProgressTintColor:RGBAColor(2.0, 187.0, 0.0, 1.0f)];
         [_progressView setTrackTintColor:[UIColor clearColor]];
         [_progressView setProgress:0];
     }
@@ -310,7 +309,7 @@
 - (UILabel *)authLabel
 {
     if (_authLabel == nil) {
-        _authLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, HEIGHT_NAVBAR + HEIGHT_STATUSBAR + 13, WIDTH_SCREEN - 40, 0)];
+        _authLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, NAVBAR_HEIGHT + STATUSBAR_HEIGHT + 13, SCREEN_WIDTH - 40, 0)];
         [_authLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [_authLabel setTextAlignment:NSTextAlignmentCenter];
         [_authLabel setTextColor:[UIColor grayColor]];

@@ -10,7 +10,7 @@
 
 @implementation TLSettingHelper
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.mineSettingData = [[NSMutableArray alloc] init];
@@ -19,7 +19,7 @@
     return self;
 }
 
-- (void) p_initTestData
+- (void)p_initTestData
 {
     TLSettingItem *item1 = TLCreateSettingItem(@"账号与安全");
 //    if () {

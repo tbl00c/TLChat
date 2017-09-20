@@ -8,6 +8,7 @@
 
 #import "TLMenuCell.h"
 #import <UIImageView+WebCache.h>
+#import "TLMacros.h"
 
 #define     REDPOINT_WIDTH      8.0f
 

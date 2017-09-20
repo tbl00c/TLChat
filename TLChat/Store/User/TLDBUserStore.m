@@ -8,6 +8,7 @@
 
 #import "TLDBUserStore.h"
 #import "TLDBUserStoreSQL.h"
+#import "TLUser.h"
 
 @implementation TLDBUserStore
 

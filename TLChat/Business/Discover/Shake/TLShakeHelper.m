@@ -11,7 +11,7 @@
 
 @implementation TLShakeHelper
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.shakeSettingData = [[NSMutableArray alloc] init];
@@ -20,7 +20,7 @@
     return self;
 }
 
-- (void) p_initTestData
+- (void)p_initTestData
 {
     TLSettingItem *item1 = TLCreateSettingItem(@"使用默认背景图片");
     item1.showDisclosureIndicator = NO;

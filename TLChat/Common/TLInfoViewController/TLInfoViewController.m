@@ -8,23 +8,22 @@
 
 #import "TLInfoViewController.h"
 #import "TLInfoHeaderFooterView.h"
-#import <MobClick.h>
 
 @implementation TLInfoViewController
 
-- (void) loadView
+- (void)loadView
 {
-    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN)];
+    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_INFO_TOP_SPACE)]];
-    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, HEIGHT_INFO_BOTTOM_SPACE)]];
+    [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, HEIGHT_INFO_TOP_SPACE)]];
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, HEIGHT_INFO_BOTTOM_SPACE)]];
     [self.tableView setBackgroundColor:[UIColor colorGrayBG]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_SCREEN, 10.0f)]];
+    [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10.0f)]];
     [self.tableView registerClass:[TLInfoHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TLInfoHeaderFooterView"];
     [self.tableView registerClass:[TLInfoCell class] forCellReuseIdentifier:@"TLInfoCell"];
     [self.tableView registerClass:[TLInfoButtonCell class] forCellReuseIdentifier:@"TLInfoButtonCell"];

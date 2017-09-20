@@ -9,6 +9,7 @@
 #import "TLImageExpressionDisplayView.h"
 #import <UIImage+GIF.h>
 #import <UIImageView+WebCache.h>
+#import "TLHost.h"
 
 #define     WIDTH_TIPS      150
 #define     HEIGHT_TIPS     162
@@ -87,7 +88,7 @@ static NSString *curID;
             make.width.mas_equalTo(w / 4);
         }];
     }
-    else if (WIDTH_SCREEN - rect.origin.x < self.width) {   // 箭头在右边
+    else if (SCREEN_WIDTH - rect.origin.x < self.width) {   // 箭头在右边
         self.centerX = centerX - (WIDTH_TIPS - w / 4 - WIDTH_CENTER) / 2 + SPACE_IMAGE;
         [self.bgLeftView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(w / 4 * 3);

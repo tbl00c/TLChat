@@ -9,6 +9,9 @@
 #import "TLExpressionHelper.h"
 #import "TLDBExpressionStore.h"
 #import "TLEmojiKBHelper.h"
+#import "TLUserHelper.h"
+#import "NSFileManager+TLChat.h"
+#import "TLHost.h"
 
 @interface TLExpressionHelper ()
 

@@ -10,7 +10,7 @@
 
 @implementation TLUserGroup
 
-- (id) initWithGroupName:(NSString *)groupName users:(NSMutableArray *)users
+- (id)initWithGroupName:(NSString *)groupName users:(NSMutableArray *)users
 {
     if (self = [super init]) {
         self.groupName = groupName;
@@ -50,7 +50,7 @@
     [self.users addObject:anObject];
 }
 
-- (id) objectAtIndex:(NSUInteger)index
+- (id)objectAtIndex:(NSUInteger)index
 {
     return [self.users objectAtIndex:index];
 }

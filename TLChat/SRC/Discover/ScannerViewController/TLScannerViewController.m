@@ -96,18 +96,18 @@
     CGFloat height = 0;
     if (scannerType == TLScannerTypeQR) {
         [self.introudctionLabel setText:@"将二维码/条码放入框内，即可自动扫描"];
-        width = height = WIDTH_SCREEN * 0.7;
+        width = height = SCREEN_WIDTH * 0.7;
     }
     else if (scannerType == TLScannerTypeCover) {
         [self.introudctionLabel setText:@"将书、CD、电影海报放入框内，即可自动扫描"];
-        width = height = WIDTH_SCREEN * 0.85;
+        width = height = SCREEN_WIDTH * 0.85;
     }
     else if (scannerType == TLScannerTypeStreet) {
         [self.introudctionLabel setText:@"扫一下周围环境，寻找附近街景"];
-        width = height = WIDTH_SCREEN * 0.85;
+        width = height = SCREEN_WIDTH * 0.85;
     }
     else if (scannerType == TLScannerTypeTranslate) {
-        width = WIDTH_SCREEN * 0.7;
+        width = SCREEN_WIDTH * 0.7;
         height = 55;
         [self.introudctionLabel setText:@"将英文单词放入框内"];
     }
@@ -121,7 +121,7 @@
     }];
     
     // rect值范围0-1，基准点在右上角
-    CGRect rect = CGRectMake(self.scannerView.y / HEIGHT_SCREEN, self.scannerView.x / WIDTH_SCREEN, self.scannerView.height / HEIGHT_SCREEN, self.scannerView.width / WIDTH_SCREEN);
+    CGRect rect = CGRectMake(self.scannerView.y / SCREEN_HEIGHT, self.scannerView.x / SCREEN_WIDTH, self.scannerView.height / SCREEN_HEIGHT, self.scannerView.width / SCREEN_WIDTH);
     [self.scannerSession.outputs[0] setRectOfInterest:rect];
     if (!self.isRunning) {
         [self startCodeReading];

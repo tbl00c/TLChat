@@ -7,6 +7,7 @@
 //
 
 #import "TLAccountAndSafetyHelper.h"
+#import "TLUser.h"
 
 @interface TLAccountAndSafetyHelper ()
 

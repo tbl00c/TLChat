@@ -9,6 +9,8 @@
 #import "TLConversationCell.h"
 #import <UIImageView+WebCache.h>
 #import "NSDate+TLChat.h"
+#import "TLMacros.h"
+#import "NSFileManager+TLChat.h"
 
 #define     CONV_SPACE_X            10.0f
 #define     CONV_SPACE_Y            9.5f
@@ -32,7 +34,7 @@
 
 @implementation TLConversationCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.leftSeparatorSpace = CONV_SPACE_X;
@@ -50,7 +52,7 @@
 }
 
 #pragma mark - Public Methods
-- (void) setConversation:(TLConversation *)conversation
+- (void)setConversation:(TLConversation *)conversation
 {
     _conversation = conversation;
     
@@ -94,7 +96,7 @@
 /**
  *  标记为未读
  */
-- (void) markAsUnread
+- (void)markAsUnread
 {
     if (_conversation) {
         switch (_conversation.clueType) {
@@ -116,7 +118,7 @@
 /**
  *  标记为已读
  */
-- (void) markAsRead
+- (void)markAsRead
 {
     if (_conversation) {
         switch (_conversation.clueType) {

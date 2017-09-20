@@ -23,28 +23,28 @@
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
     
-    [SVProgressHUD showWithStatus:@"加载中"];
+    [TLUIUtility showLoading:@"加载中"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if ([SVProgressHUD isVisible]) {
-        [SVProgressHUD dismiss];
+    if ([TLUIUtility isShowLoading]) {
+        [TLUIUtility hiddenLoading];
     }
 }
 
 #pragma mark - Delegate -
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
-    if ([SVProgressHUD isVisible]) {
-        [SVProgressHUD dismiss];
+    if ([TLUIUtility isShowLoading]) {
+        [TLUIUtility hiddenLoading];
     }
     [super webView:webView didFinishNavigation:navigation];
 }
 
 #pragma mark - Event Response
-- (void) rightBarButtonDown:(UIBarButtonItem *)sender
+- (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
     
 }

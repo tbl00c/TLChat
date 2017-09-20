@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIkit.h>
+#import "TLScannerButton.h"
 
 @class TLScannerViewController;
 @protocol TLScannerDelegate <NSObject>

@@ -9,6 +9,7 @@
 #import "TLMyQRCodeViewController.h"
 #import "TLScanningViewController.h"
 #import "TLQRCodeViewController.h"
+#import "TLUserHelper.h"
 
 #define         ACTIONTAG_SHOW_SCANNER          101
 

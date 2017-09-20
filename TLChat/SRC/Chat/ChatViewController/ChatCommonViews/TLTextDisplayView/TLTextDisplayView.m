@@ -53,7 +53,7 @@
     [mutableAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:25.0f] range:NSMakeRange(0, attrString.length)];
     [self.textView setAttributedText:mutableAttrString];
     CGSize size = [self.textView sizeThatFits:CGSizeMake(WIDTH_TEXTVIEW, MAXFLOAT)];
-    size.height = size.height > HEIGHT_SCREEN ? HEIGHT_SCREEN : size.height;
+    size.height = size.height > SCREEN_HEIGHT ? SCREEN_HEIGHT : size.height;
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(size);
     }];

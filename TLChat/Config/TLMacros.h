@@ -24,21 +24,15 @@
 
 
 #pragma mark - # SIZE
-#define     SIZE_SCREEN                 [UIScreen mainScreen].bounds.size
-#define     WIDTH_SCREEN                [UIScreen mainScreen].bounds.size.width
-#define     HEIGHT_SCREEN               [UIScreen mainScreen].bounds.size.height
-#define     HEIGHT_STATUSBAR            20.0f
-#define     HEIGHT_TABBAR               49.0f
-#define     HEIGHT_NAVBAR               44.0f
 #define     NAVBAR_ITEM_FIXED_SPACE     5.0f
 
 #define     BORDER_WIDTH_1PX            ([[UIScreen mainScreen] scale] > 0.0 ? 1.0 / [[UIScreen mainScreen] scale] : 1.0)
 
-#define     MAX_MESSAGE_WIDTH               WIDTH_SCREEN * 0.58
-#define     MAX_MESSAGE_IMAGE_WIDTH         WIDTH_SCREEN * 0.45
-#define     MIN_MESSAGE_IMAGE_WIDTH         WIDTH_SCREEN * 0.25
-#define     MAX_MESSAGE_EXPRESSION_WIDTH    WIDTH_SCREEN * 0.35
-#define     MIN_MESSAGE_EXPRESSION_WIDTH    WIDTH_SCREEN * 0.2
+#define     MAX_MESSAGE_WIDTH               SCREEN_WIDTH * 0.58
+#define     MAX_MESSAGE_IMAGE_WIDTH         SCREEN_WIDTH * 0.45
+#define     MIN_MESSAGE_IMAGE_WIDTH         SCREEN_WIDTH * 0.25
+#define     MAX_MESSAGE_EXPRESSION_WIDTH    SCREEN_WIDTH * 0.35
+#define     MIN_MESSAGE_EXPRESSION_WIDTH    SCREEN_WIDTH * 0.2
 
 
 #define mark - # Default
@@ -46,12 +40,8 @@
 
 
 #pragma mark - # Methods
-#define     TLURL(urlString)    [NSURL URLWithString:urlString]
 #define     TLNoNilString(str)  (str.length > 0 ? str : @"")
-#define     TLWeakSelf(type)    __weak typeof(type) weak##type = type;
-#define     TLStrongSelf(type)  __strong typeof(type) strong##type = type;
 #define     TLTimeStamp(date)   ([NSString stringWithFormat:@"%lf", [date timeIntervalSince1970]])
-#define     TLColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
 
 
 #pragma mark - # ThirdPart KEY

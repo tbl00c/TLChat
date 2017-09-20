@@ -10,7 +10,7 @@
 
 @implementation TLSettingButtonCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self.textLabel setTextAlignment:NSTextAlignmentCenter];
@@ -18,7 +18,7 @@
     return self;
 }
 
-- (void) setItem:(TLSettingItem *)item
+- (void)setItem:(TLSettingItem *)item
 {
     _item = item;
     [self.textLabel setText:item.title];

@@ -10,6 +10,7 @@
 #import "TLMineInfoHelper.h"
 #import "TLMineInfoAvatarCell.h"
 #import "TLMyQRCodeViewController.h"
+#import "TLUserHelper.h"
 
 @interface TLMineInfoViewController ()
 

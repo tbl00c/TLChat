@@ -10,6 +10,7 @@
 #import "TLChatUserProtocol.h"
 #import "TLMessageProtocol.h"
 #import <MapKit/MapKit.h>
+#import "TLEnumerate.h"
 
 /**
  *  消息所有者类型

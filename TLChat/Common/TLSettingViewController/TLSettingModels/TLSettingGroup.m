@@ -22,7 +22,7 @@
 }
 
 #pragma mark - Public Mthods
-- (id) objectAtIndex:(NSUInteger)index
+- (id)objectAtIndex:(NSUInteger)index
 {
     return [self.items objectAtIndex:index];
 }
@@ -39,16 +39,16 @@
 }
 
 #pragma mark - Setter
-- (void) setHeaderTitle:(NSString *)headerTitle
+- (void)setHeaderTitle:(NSString *)headerTitle
 {
     _headerTitle = headerTitle;
-    _headerHeight = [headerTitle tt_sizeWithFont:[UIFont fontSettingHeaderAndFooterTitle] constrainedToWidth:WIDTH_SCREEN - 30].height;
+    _headerHeight = [headerTitle tt_sizeWithFont:[UIFont fontSettingHeaderAndFooterTitle] constrainedToWidth:SCREEN_WIDTH - 30].height;
 }
 
-- (void) setFooterTitle:(NSString *)footerTitle
+- (void)setFooterTitle:(NSString *)footerTitle
 {
     _footerTitle = footerTitle;
-    _footerHeight = [footerTitle tt_sizeWithFont:[UIFont fontSettingHeaderAndFooterTitle] constrainedToWidth:WIDTH_SCREEN - 30].height;
+    _footerHeight = [footerTitle tt_sizeWithFont:[UIFont fontSettingHeaderAndFooterTitle] constrainedToWidth:SCREEN_WIDTH - 30].height;
 }
 
 #pragma mark - Getter

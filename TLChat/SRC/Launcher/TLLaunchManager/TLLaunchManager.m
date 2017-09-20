@@ -18,6 +18,7 @@
 #import "TLDiscoverViewController.h"
 #import "TLMineViewController.h"
 
+#import "TLUserHelper.h"
 
 void addBarChildViewController(UITabBarController *tabBarController, UIViewController *vc, NSString *title, NSString *image, NSString *imageHL)
 {

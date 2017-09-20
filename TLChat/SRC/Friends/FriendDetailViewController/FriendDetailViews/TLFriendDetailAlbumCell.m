@@ -9,6 +9,7 @@
 #import "TLFriendDetailAlbumCell.h"
 #import <UIImageView+WebCache.h>
 #import "TLInfoMacros.h"
+#import "TLMacros.h"
 
 @interface TLFriendDetailAlbumCell ()
 
@@ -35,9 +36,9 @@
     NSArray *arr = info.userInfo;
     
     CGFloat spaceY = 12;
-    NSUInteger count = (WIDTH_SCREEN - LEFT_INFOCELL_SUBTITLE_SPACE - 28) / (80 - spaceY * 2 + 3);
+    NSUInteger count = (SCREEN_WIDTH - LEFT_INFOCELL_SUBTITLE_SPACE - 28) / (80 - spaceY * 2 + 3);
     count = arr.count <= count ? arr.count : count;
-    CGFloat spaceX = (WIDTH_SCREEN - LEFT_INFOCELL_SUBTITLE_SPACE - 28 - count * (80 - spaceY * 2)) / count;
+    CGFloat spaceX = (SCREEN_WIDTH - LEFT_INFOCELL_SUBTITLE_SPACE - 28 - count * (80 - spaceY * 2)) / count;
     spaceX = spaceX > 7 ? 7 : spaceX;
     for (int i = 0; i < count; i ++) {
         NSString *imageURL = arr[i];

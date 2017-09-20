@@ -23,8 +23,8 @@
         [self setBackgroundColor:[UIColor clearColor]];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self setAccessoryType:UITableViewCellAccessoryNone];
-        [self setSeparatorInset:UIEdgeInsetsMake(0, WIDTH_SCREEN / 2, 0, WIDTH_SCREEN / 2)];
-        [self setLayoutMargins:UIEdgeInsetsMake(0, WIDTH_SCREEN / 2, 0, WIDTH_SCREEN / 2)];
+        [self setSeparatorInset:UIEdgeInsetsMake(0, SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2)];
+        [self setLayoutMargins:UIEdgeInsetsMake(0, SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2)];
         [self.contentView addSubview:self.button];
         [self p_addMasonry];
     }

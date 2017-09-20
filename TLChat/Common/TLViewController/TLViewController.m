@@ -7,7 +7,6 @@
 //
 
 #import "TLViewController.h"
-#import <MobClick.h>
 
 @implementation TLViewController
 

@@ -22,6 +22,11 @@ typedef NS_ENUM(NSInteger, TLButtonImagePosition) {
  */
 - (void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state;
 
+/**
+ *  快捷设置图片
+ */
+- (void)setImage:(UIImage *)image imageHL:(UIImage *)imageHL;
+
 
 /**
  *  image和title图文混排

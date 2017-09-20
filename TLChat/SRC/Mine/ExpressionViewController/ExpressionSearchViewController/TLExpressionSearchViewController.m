@@ -35,7 +35,7 @@
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     
-    [self.tableView setFrame:CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, HEIGHT_SCREEN - HEIGHT_STATUSBAR - HEIGHT_NAVBAR)];
+    [self.tableView setFrame:CGRectMake(0, NAVBAR_HEIGHT + STATUSBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -87,16 +87,16 @@
 {
     NSString *keyword = searchBar.text;
     if (keyword.length > 0) {
-        [SVProgressHUD show];
+        [TLUIUtility showLoading:nil];
         TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
         [proxy requestExpressionSearchByKeyword:keyword success:^(NSArray *data) {
             self.data = data;
             [self.tableView reloadData];
-            [SVProgressHUD dismiss];
+            [TLUIUtility hiddenLoading];
         } failure:^(NSString *error) {
             self.data = nil;
             [self.tableView reloadData];
-            [SVProgressHUD showErrorWithStatus:error];
+            [TLUIUtility showErrorHint:error];
         }];
     }
 }
@@ -118,13 +118,13 @@
             }
             BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
             if (!ok) {
-                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.groupName]];
+                [TLUIUtility showErrorHint:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.groupName]];
             }
         } failure:^(TLEmojiGroup *group, NSString *error) {
             
         }];
     } failure:^(NSString *error) {
-        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];
+        [TLUIUtility showErrorHint:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];
     }];
 }
 

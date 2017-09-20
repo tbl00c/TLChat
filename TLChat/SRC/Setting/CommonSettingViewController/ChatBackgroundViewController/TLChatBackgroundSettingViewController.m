@@ -13,6 +13,9 @@
 #import "TLChatBackgroundSelectViewController.h"
 #import "TLChatViewController.h"
 
+#import "TLNotificationKey.h"
+#import "NSFileManager+TLChat.h"
+
 @interface TLChatBackgroundSettingViewController () <TLActionSheetDelegate>
 
 @end

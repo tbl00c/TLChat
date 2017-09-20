@@ -8,6 +8,7 @@
 
 #import "TLChatMessageDisplayView+Delegate.h"
 #import "TLTextDisplayView.h"
+#import "TLEventStatistics.h"
 
 @implementation TLChatMessageDisplayView (Delegate)
 

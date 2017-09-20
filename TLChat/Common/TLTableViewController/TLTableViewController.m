@@ -7,11 +7,10 @@
 //
 
 #import "TLTableViewController.h"
-#import <MobClick.h>
 
 @implementation TLTableViewController
 
-- (void) viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorGrayBG]];

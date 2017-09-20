@@ -429,7 +429,7 @@ static NSString *textRec = @"";
     CGContextSetStrokeColorWithColor(context, [UIColor colorGrayLine].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
-    CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);
+    CGContextAddLineToPoint(context, SCREEN_WIDTH, 0);
     CGContextStrokePath(context);
 }
 

@@ -8,6 +8,8 @@
 
 #import "TLGroup+CreateAvatar.h"
 #import <UIImageView+WebCache.h>
+#import "NSFileManager+TLChat.h"
+#import "TLMacros.h"
 
 @implementation TLGroup (CreateAvatar)
 

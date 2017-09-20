@@ -8,6 +8,7 @@
 
 #import "TLMineInfoAvatarCell.h"
 #import <UIImageView+WebCache.h>
+#import "TLMacros.h"
 
 @interface TLMineInfoAvatarCell ()
 

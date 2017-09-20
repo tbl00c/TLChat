@@ -9,6 +9,8 @@
 #import "TLMessageManager+MessageRecord.h"
 #import "TLChatViewController.h"
 
+#import "TLNotificationKey.h"
+
 @implementation TLMessageManager (MessageRecord)
 
 - (void)messageRecordForPartner:(NSString *)partnerID

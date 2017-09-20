@@ -15,6 +15,8 @@
 #import "TLChatBackgroundSettingViewController.h"
 #import "TLMyExpressionViewController.h"
 
+#import "TLNotificationKey.h"
+
 #define     TAG_ACTIONSHEET_EMPTY_REC       1001
 
 @interface TLCommonSettingViewController () <TLActionSheetDelegate>

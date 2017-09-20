@@ -8,6 +8,7 @@
 //
 
 #import "TLMomentExtensionLikedCell.h"
+#import "TLUser.h"
 
 @interface TLMomentExtensionLikedCell ()
 

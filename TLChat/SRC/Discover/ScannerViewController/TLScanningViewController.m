@@ -119,9 +119,9 @@
     [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
         [imagePickerController dismissViewControllerAnimated:YES completion:^{
             UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
-            [SVProgressHUD showWithStatus:@"扫描中，请稍候"];
+            [TLUIUtility showLoading:@"扫描中，请稍候"];
             [TLScannerViewController scannerQRCodeFromImage:image ans:^(NSString *ansStr) {
-                [SVProgressHUD dismiss];
+                [TLUIUtility hiddenLoading];
                 if (ansStr == nil) {
                     [TLUIUtility showAlertWithTitle:@"扫描失败" message:@"请换张图片，或换个设备重试~" cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
                         [self.scanVC startCodeReading];
@@ -178,7 +178,7 @@
     // bottom
     CGFloat widthButton = 35;
     CGFloat hightButton = 55;
-    CGFloat space = (WIDTH_SCREEN - widthButton * 4) / 5;
+    CGFloat space = (SCREEN_WIDTH - widthButton * 4) / 5;
     [self.qrButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.bottomView);
         make.left.mas_equalTo(self.bottomView).mas_offset(space);

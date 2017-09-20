@@ -16,6 +16,12 @@
     [self setBackgroundImage:[UIImage imageWithColor:backgroundColor] forState:state];
 }
 
+- (void)setImage:(UIImage *)image imageHL:(UIImage *)imageHL
+{
+    [self setImage:image forState:UIControlStateNormal];
+    [self setImage:imageHL forState:UIControlStateHighlighted];
+}
+
 - (CGSize)setButtonImagePosition:(TLButtonImagePosition)position spacing:(CGFloat)spacing
 {
     CGSize imageSize = self.imageView.image.size;

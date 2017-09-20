@@ -28,7 +28,7 @@
 }
 
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.commonSettingData = [[NSMutableArray alloc] init];
@@ -37,7 +37,7 @@
     return self;
 }
 
-- (void) p_initTestData
+- (void)p_initTestData
 {
     TLSettingItem *item1 = TLCreateSettingItem(@"多语言");
     TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[item1]);

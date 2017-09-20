@@ -34,7 +34,7 @@
     _data = data;
     
     self.height = HEIGHT_CHAT_KEYBOARD - 57;
-    self.width = WIDTH_SCREEN;
+    self.width = SCREEN_WIDTH;
     
     NSMutableArray *displayData = [[NSMutableArray alloc] init];
     for (NSInteger emojiGroupIndex = 0; emojiGroupIndex < data.count; emojiGroupIndex++) {

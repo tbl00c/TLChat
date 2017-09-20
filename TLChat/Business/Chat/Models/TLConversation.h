@@ -8,6 +8,33 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  会话类型
+ */
+typedef NS_ENUM(NSInteger, TLConversationType) {
+    TLConversationTypePersonal,     // 个人
+    TLConversationTypeGroup,        // 群聊
+    TLConversationTypePublic,       // 公众号
+    TLConversationTypeServerGroup,  // 服务组（订阅号、企业号）
+};
+
+
+/**
+ *  会话提示类型
+ */
+typedef NS_ENUM(NSInteger, TLClueType) {
+    TLClueTypeNone,
+    TLClueTypePoint,
+    TLClueTypePointWithNumber,
+};
+
+typedef NS_ENUM(NSInteger, TLMessageRemindType) {
+    TLMessageRemindTypeNormal,    // 正常接受
+    TLMessageRemindTypeClosed,    // 不提示
+    TLMessageRemindTypeNotLook,   // 不看
+    TLMessageRemindTypeUnlike,    // 不喜欢
+};
+
 @interface TLConversation : NSObject
 
 

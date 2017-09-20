@@ -8,6 +8,7 @@
 
 #import "TLChatBaseViewController+Proxy.h"
 #import "TLChatBaseViewController+MessageDisplayView.h"
+#import "TLUserHelper.h"
 
 @implementation TLChatBaseViewController (Proxy)
 

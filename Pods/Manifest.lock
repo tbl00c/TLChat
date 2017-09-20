@@ -51,7 +51,7 @@ PODS:
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
-  - SVProgressHUD (2.1.2)
+  - SVProgressHUD (2.2)
   - TLKit (0.0.6):
     - TLKit/TLCategories (= 0.0.6)
     - TLKit/TLFunctional (= 0.0.6)
@@ -130,7 +130,12 @@ PODS:
   - TLKit/TLCategories/UIKit/UIWindow (0.0.6)
   - TLKit/TLFunctional (0.0.6):
     - TLKit/TLFunctional/TLActionSheet (= 0.0.6)
+    - TLKit/TLFunctional/TLUIUtility (= 0.0.6)
   - TLKit/TLFunctional/TLActionSheet (0.0.6)
+  - TLKit/TLFunctional/TLUIUtility (0.0.6):
+    - SVProgressHUD (~> 2.2)
+    - TLKit/TLCategories/UIKit/UIAlertView
+    - TLKit/TLCategories/UIKit/UIWindow
   - TLKit/TLShortcut (0.0.6)
   - TLTabBarController (0.0.1)
   - UMengAnalytics (3.6.6)
@@ -146,19 +151,22 @@ DEPENDENCIES:
   - MWPhotoBrowser (~> 2.1.1)
   - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.7.4)
-  - SVProgressHUD (~> 2.0-beta4)
-  - TLKit (from `~/TLPods/TLKit`)
+  - TLKit (from `git@github.com:tbl00c/TLKit.git`, tag `0.0.8`)
   - TLTabBarController (from `git@github.com:tbl00c/TLTabBarController.git`, tag `0.0.1`)
   - UMengAnalytics (~> 3.6.6)
 
 EXTERNAL SOURCES:
   TLKit:
-    :path: "~/TLPods/TLKit"
+    :git: git@github.com:tbl00c/TLKit.git
+    :tag: 0.0.8
   TLTabBarController:
     :git: git@github.com:tbl00c/TLTabBarController.git
     :tag: 0.0.1
 
 CHECKOUT OPTIONS:
+  TLKit:
+    :git: git@github.com:tbl00c/TLKit.git
+    :tag: 0.0.8
   TLTabBarController:
     :git: git@github.com:tbl00c/TLTabBarController.git
     :tag: 0.0.1
@@ -177,11 +185,11 @@ SPEC CHECKSUMS:
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  TLKit: 97a447b08cd1f4bf38c9a9f55b42e899fbf9e2b8
+  SVProgressHUD: 3f37f3409ddb15f35c99315ae7dc33c474aa3256
+  TLKit: a6c5dfd0a283ec269007311cbf6c97a89f3911c4
   TLTabBarController: 149a3df6517408d72e506c4c578b6758744e9251
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 
-PODFILE CHECKSUM: 0f943986180850bb4b06a404a2143687d5212d27
+PODFILE CHECKSUM: f2df45d7ca88905fbe1c34da7ed2eafd25e87303
 
 COCOAPODS: 1.2.1

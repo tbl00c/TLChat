@@ -108,7 +108,6 @@
 		C2893A7B1CB03E640080C4BB /* NSDate+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A6E1CB03E640080C4BB /* NSDate+TLChat.m */; };
 		C2893A7C1CB03E640080C4BB /* NSFileManager+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A701CB03E640080C4BB /* NSFileManager+TLChat.m */; };
 		C2893A7D1CB03E640080C4BB /* NSString+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A721CB03E640080C4BB /* NSString+Message.m */; };
-		C2893A7E1CB03E640080C4BB /* TLUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A761CB03E640080C4BB /* TLUIUtility.m */; };
 		C2893A7F1CB03E640080C4BB /* UIColor+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A781CB03E640080C4BB /* UIColor+TLChat.m */; };
 		C2893A801CB03E640080C4BB /* UIFont+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2893A7A1CB03E640080C4BB /* UIFont+TLChat.m */; };
 		C28C44661C883717005975FF /* TLShakeSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C44651C883717005975FF /* TLShakeSettingViewController.m */; };
@@ -532,8 +531,6 @@
 		C2893A701CB03E640080C4BB /* NSFileManager+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TLChat.m"; sourceTree = "<group>"; };
 		C2893A711CB03E640080C4BB /* NSString+Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Message.h"; sourceTree = "<group>"; };
 		C2893A721CB03E640080C4BB /* NSString+Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Message.m"; sourceTree = "<group>"; };
-		C2893A751CB03E640080C4BB /* TLUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUIUtility.h; sourceTree = "<group>"; };
-		C2893A761CB03E640080C4BB /* TLUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUIUtility.m; sourceTree = "<group>"; };
 		C2893A771CB03E640080C4BB /* UIColor+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TLChat.h"; sourceTree = "<group>"; };
 		C2893A781CB03E640080C4BB /* UIColor+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TLChat.m"; sourceTree = "<group>"; };
 		C2893A791CB03E640080C4BB /* UIFont+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TLChat.h"; sourceTree = "<group>"; };
@@ -1824,8 +1821,6 @@
 		C2893A741CB03E640080C4BB /* UIUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				C2893A751CB03E640080C4BB /* TLUIUtility.h */,
-				C2893A761CB03E640080C4BB /* TLUIUtility.m */,
 				C2893A771CB03E640080C4BB /* UIColor+TLChat.h */,
 				C2893A781CB03E640080C4BB /* UIColor+TLChat.m */,
 				C2893A791CB03E640080C4BB /* UIFont+TLChat.h */,
@@ -3205,7 +3200,6 @@
 				C20B1AEE1D5833C700D9F710 /* TLVoiceImageView.m in Sources */,
 				C2ED8EB71F70E5AD00EAC836 /* TLLaunchManager.m in Sources */,
 				C28C44661C883717005975FF /* TLShakeSettingViewController.m in Sources */,
-				C2893A7E1CB03E640080C4BB /* TLUIUtility.m in Sources */,
 				C209B5F71D9A657200877E75 /* TLEmojiFaceItemCell.m in Sources */,
 				C2994D8C1CA167CF00BAC038 /* TLUser.m in Sources */,
 				C2ED8EB41F70E59D00EAC836 /* TLAppDelegate.m in Sources */,

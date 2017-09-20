@@ -2,15 +2,14 @@ platform :ios, '8.0'
 inhibit_all_warnings!
 
 target :TLChat do
-#    pod 'TLKit', :git => 'git@github.com:tbl00c/TLKit.git', :tag => '0.0.6'
-    pod 'TLKit', :path => '~/TLPods/TLKit'
-    
+    pod 'TLKit', :git => 'git@github.com:tbl00c/TLKit.git', :tag => '0.0.8'
+#    pod 'TLKit', :path => '~/TLPods/TLKit'
+
     pod 'TLTabBarController', :git => 'git@github.com:tbl00c/TLTabBarController.git', :tag => '0.0.1'
     pod 'AFNetworking', '~> 3.0.4'
     pod 'SDWebImage', '~> 3.7.4'
     pod 'Masonry', '~> 0.6.4'
     pod 'MJRefresh', '~> 3.1.0'
-    pod 'SVProgressHUD', '~> 2.0-beta4'
     pod 'MJExtension', '~> 3.0.10'
     pod 'FMDB', '~> 2.6'
     pod 'UMengAnalytics', '~> 3.6.6'

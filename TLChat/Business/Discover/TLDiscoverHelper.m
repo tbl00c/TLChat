@@ -11,7 +11,7 @@
 
 @implementation TLDiscoverHelper
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.discoverMenuData = [[NSMutableArray alloc] init];
@@ -20,7 +20,7 @@
     return self;
 }
 
-- (void) p_initTestData
+- (void)p_initTestData
 {
     TLMenuItem *item1 = TLCreateMenuItem(@"discover_album", @"朋友圈");
     item1.rightIconURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";

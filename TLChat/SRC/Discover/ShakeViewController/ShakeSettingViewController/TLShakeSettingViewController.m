@@ -8,6 +8,7 @@
 
 #import "TLShakeSettingViewController.h"
 #import "TLShakeHelper.h"
+#import "NSFileManager+TLChat.h"
 
 @interface TLShakeSettingViewController ()
 

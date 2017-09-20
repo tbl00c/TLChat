@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TLEmojiGroup.h"
 
-#define         HEIGHT_EXP_BANNER       (WIDTH_SCREEN * 0.45)
+#define         HEIGHT_EXP_BANNER       (SCREEN_WIDTH * 0.45)
 
 @protocol TLExpressionDetailCellDelegate <NSObject>
 

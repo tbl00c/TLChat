@@ -8,6 +8,7 @@
 
 #import "TLFriendDetailSettingViewController.h"
 #import "TLFriendHelper+Detail.h"
+#import "TLFriendHelper.h"
 
 @interface TLFriendDetailSettingViewController ()
 

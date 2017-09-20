@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, TLMoreKeyboardItemType) {
+    TLMoreKeyboardItemTypeImage,
+    TLMoreKeyboardItemTypeCamera,
+    TLMoreKeyboardItemTypeVideo,
+    TLMoreKeyboardItemTypeVideoCall,
+    TLMoreKeyboardItemTypeWallet,
+    TLMoreKeyboardItemTypeTransfer,
+    TLMoreKeyboardItemTypePosition,
+    TLMoreKeyboardItemTypeFavorite,
+    TLMoreKeyboardItemTypeBusinessCard,
+    TLMoreKeyboardItemTypeVoice,
+    TLMoreKeyboardItemTypeCards,
+};
+
 @interface TLMoreKeyboardItem : NSObject
 
 @property (nonatomic, assign) TLMoreKeyboardItemType type;

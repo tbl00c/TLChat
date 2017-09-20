@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class TLUser;
 @class TLMessage;
 @class TLChatMessageDisplayView;
 @protocol TLChatMessageDisplayViewDelegate <NSObject>

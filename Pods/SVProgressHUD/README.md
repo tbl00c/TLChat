@@ -109,14 +109,6 @@ The HUD can be dismissed using:
 + (void)dismissWithDelay:(NSTimeInterval)delay;
 ```
 
-If you'd like to stack HUDs, you can balance out every show call using:
-
-```objective-c
-+ (void)popActivity;
-```
-
-The HUD will get dismissed once the `popActivity` calls will match the number of show calls.
-
 Or show a confirmation glyph before before getting dismissed a little bit later. The display time depends on `minimumDismissTimeInterval` and the length of the given string.
 
 ```objective-c
@@ -140,19 +132,24 @@ Or show a confirmation glyph before before getting dismissed a little bit later.
 + (void)setRingRadius:(CGFloat)radius;                              // default is 18 pt
 + (void)setRingNoTextRadius:(CGFloat)radius;                        // default is 24 pt
 + (void)setCornerRadius:(CGFloat)cornerRadius;                      // default is 14 pt
++ (void)setBorderColor:(nonnull UIColor*)color;                     // default is nil
++ (void)setBorderWidth:(CGFloat)width;                              // default is 0
 + (void)setFont:(UIFont*)font;                                      // default is [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
 + (void)setForegroundColor:(UIColor*)color;                         // default is [UIColor blackColor], only used for SVProgressHUDStyleCustom
 + (void)setBackgroundColor:(UIColor*)color;                         // default is [UIColor whiteColor], only used for SVProgressHUDStyleCustom
 + (void)setBackgroundLayerColor:(UIColor*)color;                    // default is [UIColor colorWithWhite:0 alpha:0.4], only used for SVProgressHUDMaskTypeCustom
++ (void)setImageViewSize:(CGSize)size;                              // default is 28x28 pt
 + (void)setInfoImage:(UIImage*)image;                               // default is the bundled info image provided by Freepik
 + (void)setSuccessImage:(UIImage*)image;                            // default is bundled success image from Freepik
 + (void)setErrorImage:(UIImage*)image;                              // default is bundled error image from Freepik
 + (void)setViewForExtension:(UIView*)view;                          // default is nil, only used if #define SV_APP_EXTENSIONS is set
++ (void)setGraceTimeInterval:(NSTimeInterval)interval;              // default is 0 seconds
 + (void)setMinimumDismissTimeInterval:(NSTimeInterval)interval;     // default is 5.0 seconds
-+ (void)setMaximumDismissTimeInterval:(NSTimeInterval)interval;     // default is infinite
++ (void)setMaximumDismissTimeInterval:(NSTimeInterval)interval;     // default is CGFLOAT_MAX
 + (void)setFadeInAnimationDuration:(NSTimeInterval)duration;        // default is 0.15 seconds
 + (void)setFadeOutAnimationDuration:(NSTimeInterval)duration;       // default is 0.15 seconds
 + (void)setMaxSupportedWindowLevel:(UIWindowLevel)windowLevel;      // default is UIWindowLevelNormal
++ (void)setHapticsEnabled:(BOOL)hapticsEnabled;						// default is NO
 ```
 
 Additionally `SVProgressHUD` supports the `UIAppearance` protocol for most of the above methods.
@@ -165,6 +162,18 @@ As standard `SVProgressHUD` offers two preconfigured styles:
 * `SVProgressHUDStyleDark`: Black background with white spinner and text
 
 If you want to use custom colors use `setForegroundColor` and `setBackgroundColor:`. These implicity set the HUD's style to `SVProgressHUDStyleCustom`.
+
+## Haptic Feedback
+
+For users with newer devices (starting with the iPhone 7), `SVProgressHUD` can automatically trigger haptic feedback depending on which HUD is being displayed. The feedback maps as follows:
+
+* `showSuccessWithStatus:` <-> `UINotificationFeedbackTypeSuccess`
+* `showInfoWithStatus:` <-> `UINotificationFeedbackTypeWarning`
+* `showErrorWithStatus:` <-> `UINotificationFeedbackTypeError`
+
+To enable this functionality, use `setHapticsEnabled:`.
+
+Users with devices prior to iPhone 7 will have no change in functionality.
 
 ## Notifications
 

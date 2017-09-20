@@ -7,6 +7,8 @@
 //
 
 #import "TLGroupCell.h"
+#import "NSFileManager+TLChat.h"
+#import "TLMacros.h"
 
 #define     FRIENDS_SPACE_X         10.0f
 #define     FRIENDS_SPACE_Y         9.5f
@@ -21,7 +23,7 @@
 
 @implementation TLGroupCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.leftSeparatorSpace = FRIENDS_SPACE_X;
@@ -34,7 +36,7 @@
     return self;
 }
 
-- (void) setGroup:(TLGroup *)group
+- (void)setGroup:(TLGroup *)group
 {
     _group = group;
     NSString *path = [NSFileManager pathUserAvatar:group.groupAvatarPath];
@@ -47,7 +49,7 @@
 }
 
 #pragma mark - Private Methods -
-- (void) p_addMasonry
+- (void)p_addMasonry
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(FRIENDS_SPACE_X);

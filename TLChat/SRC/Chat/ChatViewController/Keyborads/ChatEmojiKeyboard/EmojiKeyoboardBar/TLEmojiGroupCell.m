@@ -16,7 +16,7 @@
 
 @implementation TLEmojiGroupCell
 
-- (id) initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
         [self setBackgroundColor:[UIColor clearColor]];
@@ -37,7 +37,7 @@
 }
 
 #pragma mark - # Private Methods
-- (void) p_addMasonry
+- (void)p_addMasonry
 {
     [self.groupIconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.contentView);

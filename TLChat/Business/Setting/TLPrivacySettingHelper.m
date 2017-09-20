@@ -10,7 +10,7 @@
 
 @implementation TLPrivacySettingHelper
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.minePrivacySettingData = [[NSMutableArray alloc] init];
@@ -19,7 +19,7 @@
     return self;
 }
 
-- (void) p_initTestData
+- (void)p_initTestData
 {
     TLSettingItem *item1 = TLCreateSettingItem(@"加我为好友时需要验证");
     item1.type = TLSettingItemTypeSwitch;

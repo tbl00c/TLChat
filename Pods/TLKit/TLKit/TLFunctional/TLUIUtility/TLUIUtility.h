@@ -10,6 +10,20 @@
 
 @interface TLUIUtility : NSObject
 
+#pragma mark - # HUD
++ (void)showLoading:(NSString *)title;
++ (void)hiddenLoading;
++ (void)hiddenLoadingWithDelay:(NSTimeInterval)delay;
++ (void)hiddenLoadingWithCompletion:(void (^)())completion;
++ (void)hiddenLoadingWithDelay:(NSTimeInterval)delay completion:(void (^)())completion;
+
++ (void)showSuccessHint:(NSString *)hintText;
++ (void)showErrorHint:(NSString *)hintText;
++ (void)showInfoHint:(NSString *)hintText;
+
++ (BOOL)isShowLoading;
+
+#pragma mark - # Alert
 + (void)showAlertWithTitle:(NSString *)title;
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message;
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle;

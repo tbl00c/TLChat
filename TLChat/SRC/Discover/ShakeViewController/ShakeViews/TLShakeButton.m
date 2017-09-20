@@ -18,7 +18,7 @@
 
 @implementation TLShakeButton
 
-- (id) initWithType:(TLShakeButtonType)type title:(NSString *)title iconPath:(NSString *)iconPath iconHLPath:(NSString *)iconHLPath
+- (id)initWithType:(TLShakeButtonType)type title:(NSString *)title iconPath:(NSString *)iconPath iconHLPath:(NSString *)iconHLPath
 {
     if (self = [super init]) {
         [self addSubview:self.iconImageView];

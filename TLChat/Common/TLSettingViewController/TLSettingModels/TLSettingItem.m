@@ -17,7 +17,7 @@
     return item;
 }
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.showDisclosureIndicator = YES;

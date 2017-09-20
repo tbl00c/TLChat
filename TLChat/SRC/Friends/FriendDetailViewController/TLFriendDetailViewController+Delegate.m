@@ -12,6 +12,8 @@
 #import <MWPhotoBrowser.h>
 #import "TLUser+ChatModel.h"
 #import "TLFriendDetailAlbumCell.h"
+#import "NSFileManager+TLChat.h"
+#import "TLNavigationController.h"
 
 @implementation TLFriendDetailViewController (Delegate)
 

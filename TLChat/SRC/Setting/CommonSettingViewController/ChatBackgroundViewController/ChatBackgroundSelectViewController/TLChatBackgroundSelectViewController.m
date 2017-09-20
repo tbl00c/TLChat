@@ -11,8 +11,8 @@
 #import "TLChatBackgroundSelectViewController+Proxy.h"
 
 #define     SPACE_EDGE                      10
-#define     WIDTH_COLLECTIONVIEW_CELL       (WIDTH_SCREEN - SPACE_EDGE * 2) / 3 * 0.98
-#define     SPACE_COLLECTIONVIEW_CELL       (WIDTH_SCREEN - SPACE_EDGE * 2 - WIDTH_COLLECTIONVIEW_CELL * 3) / 2
+#define     WIDTH_COLLECTIONVIEW_CELL       (SCREEN_WIDTH - SPACE_EDGE * 2) / 3 * 0.98
+#define     SPACE_COLLECTIONVIEW_CELL       (SCREEN_WIDTH - SPACE_EDGE * 2 - WIDTH_COLLECTIONVIEW_CELL * 3) / 2
 
 @interface TLChatBackgroundSelectViewController ()
 

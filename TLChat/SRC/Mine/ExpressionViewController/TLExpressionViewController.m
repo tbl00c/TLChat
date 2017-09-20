@@ -11,7 +11,7 @@
 #import "TLExpressionPublicViewController.h"
 #import "TLMyExpressionViewController.h"
 
-#define     WIDTH_EXPRESSION_SEGMENT    WIDTH_SCREEN * 0.55
+#define     WIDTH_EXPRESSION_SEGMENT    SCREEN_WIDTH * 0.55
 
 @interface TLExpressionViewController ()
 

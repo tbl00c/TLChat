@@ -9,6 +9,7 @@
 #import "TLAccountViewController.h"
 #import "TLLoginViewController.h"
 #import "TLRegisterViewController.h"
+#import "TLUserHelper.h"
 
 #define     HEIGHT_BUTTON       50
 #define     EDGE_BUTTON         35
@@ -30,7 +31,7 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
 - (void)loadView {
     [super loadView];
     
-    CGSize viewSize = CGSizeMake(WIDTH_SCREEN, HEIGHT_SCREEN);
+    CGSize viewSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
     NSString *viewOrientation = @"Portrait";    //横屏请设置成 @"Landscape"
     NSArray *launchImages = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
     NSString *launchImageName = nil;
@@ -64,7 +65,7 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
     [registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(EDGE_BUTTON);
         make.bottom.mas_equalTo(-EDGE_BUTTON * 2);
-        make.width.mas_equalTo((WIDTH_SCREEN - EDGE_BUTTON * 3) / 2);
+        make.width.mas_equalTo((SCREEN_WIDTH - EDGE_BUTTON * 3) / 2);
         make.height.mas_equalTo(HEIGHT_BUTTON);
     }];
     

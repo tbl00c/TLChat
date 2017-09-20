@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TLSettingGroup.h"
 
+@class TLUser;
 @interface TLAccountAndSafetyHelper : NSObject
 
 - (NSMutableArray *)mineAccountAndSafetyDataByUserInfo:(TLUser *)userInfo;

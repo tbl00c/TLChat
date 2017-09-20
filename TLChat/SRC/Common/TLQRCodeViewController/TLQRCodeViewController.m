@@ -8,6 +8,7 @@
 
 #import "TLQRCodeViewController.h"
 #import <UIImageView+WebCache.h>
+#import "TLMacros.h"
 
 #define         SPACE_EDGE                  20
 #define         WIDTH_AVATAR                68
@@ -90,7 +91,7 @@
         [TLUIUtility showAlertWithTitle:@"错误" message:[NSString stringWithFormat:@"保存图片到系统相册失败\n%@", [error description]]];
     }
     else {
-        [SVProgressHUD showSuccessWithStatus:@"已保存到系统相册"];
+        [TLUIUtility showSuccessHint:@"已保存到系统相册"];
     }
 }
 
@@ -145,7 +146,7 @@
 {
     [self.whiteBGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
-        make.centerY.mas_equalTo(self.view).mas_offset(HEIGHT_NAVBAR / 2);
+        make.centerY.mas_equalTo(self.view).mas_offset(NAVBAR_HEIGHT / 2);
         make.width.mas_equalTo(self.view).multipliedBy(0.85);
         make.bottom.mas_equalTo(self.introductionLabel.mas_bottom).mas_offset(15);
     }];

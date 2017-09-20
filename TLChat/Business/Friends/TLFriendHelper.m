@@ -10,6 +10,7 @@
 #import "TLDBFriendStore.h"
 #import "TLDBGroupStore.h"
 #import "TLGroup+CreateAvatar.h"
+#import "TLUserHelper.h"
 
 static TLFriendHelper *friendHelper = nil;
 

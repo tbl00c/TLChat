@@ -12,6 +12,9 @@
 #import "TLEmojiGroup.h"
 #import "TLExpressionHelper.h"
 
+#import "TLEventStatistics.h"
+#import "TLMacros.h"
+
 @implementation TLLaunchManager (UserData)
 
 - (void)initUserData
@@ -57,7 +60,7 @@
 /// 下载默认表情包
 - (void)downloadDefaultExpression
 {
-    [SVProgressHUD show];
+    [TLUIUtility showLoading:nil];
     __block NSInteger count = 0;
     __block NSInteger successCount = 0;
     TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
@@ -81,7 +84,7 @@
             }
             count ++;
             if (count == 2) {
-                [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
+                [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
             }
         } failure:^(TLEmojiGroup *group, NSString *error) {
             
@@ -89,7 +92,7 @@
     } failure:^(NSString *error) {
         count ++;
         if (count == 2) {
-            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
+            [TLUIUtility showErrorHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
         }
     }];
     
@@ -114,7 +117,7 @@
             }
             count ++;
             if (count == 2) {
-                [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
+                [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
             }
         } failure:^(TLEmojiGroup *group, NSString *error) {
             
@@ -122,7 +125,7 @@
     } failure:^(NSString *error) {
         count ++;
         if (count == 2) {
-            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
+            [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
         }
     }];
 }

@@ -11,6 +11,7 @@
 #import "TLChatBaseViewController+ChatBar.h"
 #import "TLChatBaseViewController+MessageDisplayView.h"
 #import "UIImage+Size.h"
+#import "NSFileManager+TLChat.h"
 
 @implementation TLChatBaseViewController
 
@@ -154,7 +155,7 @@
     }];
     [self.chatBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.mas_equalTo(self.view);
-        make.height.mas_greaterThanOrEqualTo(HEIGHT_TABBAR);
+        make.height.mas_greaterThanOrEqualTo(TABBAR_HEIGHT);
     }];
     [self.view layoutIfNeeded];
 }

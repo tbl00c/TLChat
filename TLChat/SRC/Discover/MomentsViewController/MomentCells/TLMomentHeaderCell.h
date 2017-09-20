@@ -7,6 +7,7 @@
 //
 
 #import "TLTableViewCell.h"
+#import "TLUser.h"
 
 @interface TLMomentHeaderCell : TLTableViewCell
 

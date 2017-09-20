@@ -7,6 +7,8 @@
 //
 
 #import "TLRootProxy.h"
+#import "TLHost.h"
+#import "TLMacros.h"
 
 #define     URL_LOGIN           @"account/login/"
 #define     URL_REGISTER        @"account/register/"

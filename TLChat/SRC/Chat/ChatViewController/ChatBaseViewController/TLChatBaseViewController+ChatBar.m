@@ -11,6 +11,8 @@
 #import "TLChatBaseViewController+MessageDisplayView.h"
 #import "TLAudioRecorder.h"
 #import "TLAudioPlayer.h"
+#import "TLUserHelper.h"
+#import "NSFileManager+TLChat.h"
 
 @implementation TLChatBaseViewController (ChatBar)
 

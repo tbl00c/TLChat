@@ -41,7 +41,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [SVProgressHUD dismiss];
+    [TLUIUtility hiddenLoading];
 }
 
 #pragma mark - # Delegate
@@ -80,7 +80,7 @@
 {
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        CGRect rect = CGRectMake(0, HEIGHT_NAVBAR + HEIGHT_STATUSBAR, WIDTH_SCREEN, HEIGHT_SCREEN - HEIGHT_NAVBAR - HEIGHT_STATUSBAR);
+        CGRect rect = CGRectMake(0, NAVBAR_HEIGHT + STATUSBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBAR_HEIGHT - STATUSBAR_HEIGHT);
         _collectionView = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor whiteColor]];
         [_collectionView setDataSource:self];

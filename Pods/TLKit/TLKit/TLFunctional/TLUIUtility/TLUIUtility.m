@@ -8,10 +8,66 @@
 //
 
 #import "TLUIUtility.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "UIWindow+Extensions.h"
+#import "UIAlertView+ActionBlocks.h"
 
 static UILabel *hLabel = nil;
 
 @implementation TLUIUtility
++ (void)load
+{
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD setMinimumSize:CGSizeMake(110, 110)];
+    [SVProgressHUD setMinimumDismissTimeInterval:1.0f];
+    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
+}
+
+#pragma mark - # HUD
++ (void)showLoading:(NSString *)hintText
+{
+    [SVProgressHUD showWithStatus:nil];
+}
+
++ (void)hiddenLoading
+{
+    [self hiddenLoadingWithCompletion:nil];
+}
+
++ (void)hiddenLoadingWithDelay:(NSTimeInterval)delay
+{
+    [self hiddenLoadingWithDelay:delay completion:nil];
+}
+
++ (void)hiddenLoadingWithCompletion:(void (^)())completion
+{
+    [SVProgressHUD dismissWithCompletion:completion];
+}
+
++ (void)hiddenLoadingWithDelay:(NSTimeInterval)delay completion:(void (^)())completion
+{
+    [SVProgressHUD dismissWithDelay:delay completion:completion];
+}
+
++ (void)showSuccessHint:(NSString *)hintText
+{
+    [SVProgressHUD showSuccessWithStatus:hintText];
+}
+
++ (void)showErrorHint:(NSString *)hintText
+{
+    [SVProgressHUD showErrorWithStatus:hintText];
+}
+
++ (void)showInfoHint:(NSString *)hintText
+{
+    [SVProgressHUD showInfoWithStatus:hintText];
+}
+
++ (BOOL)isShowLoading
+{
+    return [SVProgressHUD isVisible];
+}
 
 #pragma mark - # Alert
 + (void)showAlertWithTitle:(NSString *)title
@@ -36,13 +92,13 @@ static UILabel *hLabel = nil;
 
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles actionHandler:(void (^)(NSInteger buttonIndex))actionHandler
 {
-    cancelButtonTitle = cancelButtonTitle ? cancelButtonTitle : LOCSTR(@"取消");
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+    cancelButtonTitle = cancelButtonTitle ? cancelButtonTitle : @"取消";
+    if (([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending)) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
         
-        TLWeakSelf(alertController);
+        __weak typeof(alertController) weakController = alertController;
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            NSInteger index = [weakalertController.actions indexOfObject:action];
+            NSInteger index = [weakController.actions indexOfObject:action];
             if (actionHandler) {
                 actionHandler(index);
             }
@@ -52,14 +108,14 @@ static UILabel *hLabel = nil;
         for (NSString *title in otherButtonTitles) {
             UIAlertAction *action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 if (actionHandler) {
-                    NSInteger index = [weakalertController.actions indexOfObject:action];
+                    NSInteger index = [weakController.actions indexOfObject:action];
                     actionHandler(index);
                 }
             }];
             [alertController addAction:action];
         }
         
-        UIViewController *curVC = [UIApplication sharedApplication].keyWindow.visibleViewController;
+        UIViewController *curVC = [(UIWindow *)[UIApplication sharedApplication].keyWindow visibleViewController];
         [curVC presentViewController:alertController animated:YES completion:nil];
     }
     else {

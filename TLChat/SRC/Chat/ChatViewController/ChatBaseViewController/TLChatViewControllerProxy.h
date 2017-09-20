@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class TLUser;
 @class TLImageMessage;
 @protocol TLChatViewControllerProxy <NSObject>
 

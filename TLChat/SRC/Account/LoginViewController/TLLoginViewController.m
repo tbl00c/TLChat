@@ -57,14 +57,14 @@
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView)];
     [self.scrollView addGestureRecognizer:tapGR];
     
-    [self.scrollView setContentSize:CGSizeMake(WIDTH_SCREEN, HEIGHT_SCREEN + BORDER_WIDTH_1PX)];
+    [self.scrollView setContentSize:CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT + BORDER_WIDTH_1PX)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    [SVProgressHUD dismiss];
+    [TLUIUtility hiddenLoading];
     [self.phoneNumberTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
 }
@@ -77,7 +77,7 @@
 
 - (void)didTapView
 {
-    [SVProgressHUD dismiss];
+    [TLUIUtility hiddenLoading];
     [self.phoneNumberTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
 }
@@ -86,21 +86,21 @@
 {
     NSString *phoneNumber = self.phoneNumberTextField.text;
     if (phoneNumber.length != 11 && ![phoneNumber hasPrefix:@"1"]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
+        [TLUIUtility showErrorHint:@"请输入正确的手机号"];
         return;
     }
     NSString *password = self.passwordTextField.text;
     
-    [SVProgressHUD show];
+    [TLUIUtility showLoading:nil];
     TLRootProxy *proxy = [[TLRootProxy alloc] init];
     TLWeakSelf(self);
     [proxy userLoginWithPhoneNumber:phoneNumber password:password success:^(id datas) {
-        [SVProgressHUD dismiss];
+        [TLUIUtility hiddenLoading];
         if (weakself.loginSuccess) {
             weakself.loginSuccess();
         }
     } failure:^(NSString *errMsg) {
-        [SVProgressHUD showErrorWithStatus:errMsg];
+        [TLUIUtility showErrorHint:errMsg];
     }];
 }
 
@@ -108,16 +108,16 @@
 - (void)p_addMasonry
 {
     [self.cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(HEIGHT_STATUSBAR);
+        make.top.mas_equalTo(STATUSBAR_HEIGHT);
         make.left.mas_equalTo(10);
-        make.height.mas_equalTo(HEIGHT_NAVBAR);
+        make.height.mas_equalTo(NAVBAR_HEIGHT);
     }];
     
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(HEIGHT_NAVBAR + HEIGHT_STATUSBAR + 20);
+        make.top.mas_equalTo(NAVBAR_HEIGHT + STATUSBAR_HEIGHT + 20);
         make.centerX.mas_equalTo(0);
         make.width.mas_lessThanOrEqualTo(self.scrollView);
     }];

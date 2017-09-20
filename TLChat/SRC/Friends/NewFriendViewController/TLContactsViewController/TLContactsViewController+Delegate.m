@@ -9,6 +9,7 @@
 #import "TLContactsViewController+Delegate.h"
 #import "TLFriendHeaderView.h"
 #import "TLContactCell.h"
+#import "TLUserGroup.h"
 
 @implementation TLContactsViewController (Delegate)
 

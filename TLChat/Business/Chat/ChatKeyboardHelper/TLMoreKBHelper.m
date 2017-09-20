@@ -11,7 +11,7 @@
 
 @implementation TLMoreKBHelper
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.chatMoreKeyboardData = [[NSMutableArray alloc] init];
@@ -20,7 +20,7 @@
     return self;
 }
 
-- (void) p_initTestData
+- (void)p_initTestData
 {
     TLMoreKeyboardItem *imageItem = [TLMoreKeyboardItem createByType:TLMoreKeyboardItemTypeImage
                                                                title:@"照片"

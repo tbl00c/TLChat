@@ -7,6 +7,7 @@
 //
 
 #import "TLEmoji.h"
+#import "NSFileManager+TLChat.h"
 
 @implementation TLEmoji
 

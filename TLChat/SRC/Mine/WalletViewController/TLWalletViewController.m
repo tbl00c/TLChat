@@ -7,6 +7,7 @@
 //
 
 #import "TLWalletViewController.h"
+#import "TLEventStatistics.h"
 
 @interface TLWalletViewController () <TLActionSheetDelegate>
 
@@ -24,7 +25,7 @@
     [self setTitle:@"钱包"];
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    [scrollView setContentSize:CGSizeMake(WIDTH_SCREEN, HEIGHT_SCREEN - HEIGHT_NAVBAR - HEIGHT_STATUSBAR + 0.5)];
+    [scrollView setContentSize:CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT - NAVBAR_HEIGHT - STATUSBAR_HEIGHT + 0.5)];
     [self.view addSubview:scrollView];
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);

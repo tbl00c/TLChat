@@ -92,7 +92,7 @@
 #pragma mark - # Getter
 - (NSInteger)pageItemCount
 {
-    return (int)(WIDTH_SCREEN / (WIDTH_CELL * 1.3)) * 2;
+    return (int)(SCREEN_WIDTH / (WIDTH_CELL * 1.3)) * 2;
 }
 
 @end

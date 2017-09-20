@@ -24,6 +24,6 @@ typedef NS_ENUM(NSUInteger, TLBottleButtonType) {
 
 @property (nonatomic, assign) NSUInteger msgNumber;
 
-- (id) initWithType:(TLBottleButtonType)type title:(NSString *)title iconPath:(NSString *)iconPath;
+- (id)initWithType:(TLBottleButtonType)type title:(NSString *)title iconPath:(NSString *)iconPath;
 
 @end

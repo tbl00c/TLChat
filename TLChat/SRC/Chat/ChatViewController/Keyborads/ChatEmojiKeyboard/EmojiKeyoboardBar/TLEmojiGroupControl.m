@@ -26,7 +26,7 @@
 
 @implementation TLEmojiGroupControl
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         [self setBackgroundColor:[UIColor whiteColor]];

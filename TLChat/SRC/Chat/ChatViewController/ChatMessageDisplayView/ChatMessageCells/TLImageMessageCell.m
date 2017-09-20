@@ -8,6 +8,7 @@
 
 #import "TLImageMessageCell.h"
 #import "TLMessageImageView.h"
+#import "NSFileManager+TLChat.h"
 
 #define     MSG_SPACE_TOP       2
 

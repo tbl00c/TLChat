@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TLSettingGroup.h"
 
+@class TLUser;
 @interface TLMineInfoHelper : NSObject
 
 - (NSMutableArray *)mineInfoDataByUserInfo:(TLUser *)userInfo;

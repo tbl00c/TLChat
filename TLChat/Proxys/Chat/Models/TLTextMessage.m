@@ -8,6 +8,7 @@
 
 #import "TLTextMessage.h"
 #import "NSString+Message.h"
+#import "TLMacros.h"
 
 static UILabel *textLabel = nil;
 

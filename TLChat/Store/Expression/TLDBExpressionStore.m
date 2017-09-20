@@ -9,6 +9,7 @@
 #import "TLDBExpressionStore.h"
 #import "TLDBExpressionSQL.h"
 #import "TLDBManager.h"
+#import "TLMacros.h"
 
 @implementation TLDBExpressionStore
 

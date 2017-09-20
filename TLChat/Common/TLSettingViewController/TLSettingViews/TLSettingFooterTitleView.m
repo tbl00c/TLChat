@@ -10,7 +10,7 @@
 
 @implementation TLSettingFooterTitleView
 
-- (id) initWithReuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {

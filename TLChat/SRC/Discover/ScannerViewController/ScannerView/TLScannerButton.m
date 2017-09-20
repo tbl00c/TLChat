@@ -18,7 +18,7 @@
 
 @implementation TLScannerButton
 
-- (id) initWithType:(TLScannerType)type title:(NSString *)title iconPath:(NSString *)iconPath iconHLPath:(NSString *)iconHLPath
+- (id)initWithType:(TLScannerType)type title:(NSString *)title iconPath:(NSString *)iconPath iconHLPath:(NSString *)iconHLPath
 {
     if (self = [super init]) {
         [self addSubview:self.iconImageView];

@@ -9,6 +9,7 @@
 #import "TLGroupViewController.h"
 #import "TLGroupViewController+Delegate.h"
 #import "TLSearchController.h"
+#import "TLFriendHelper.h"
 
 @interface TLGroupViewController () <UISearchBarDelegate>
 

@@ -20,6 +20,7 @@
 #import "TLMoreKeyboardDelegate.h"
 
 #import "TLChatUserProtocol.h"
+#import "TLUser.h"
 
 @interface TLChatBaseViewController : UIViewController <TLChatViewControllerProxy, TLMoreKeyboardDelegate>
 {

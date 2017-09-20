@@ -8,6 +8,7 @@
 
 #import "TLSettingViewController.h"
 
+@class TLUser;
 @interface TLFriendDetailSettingViewController : TLSettingViewController
 
 @property (nonatomic, strong) TLUser *user;

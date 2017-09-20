@@ -9,6 +9,7 @@
 #import "TLConversationViewController+Delegate.h"
 #import "TLConversation+TLUser.h"
 #import "TLConversationCell.h"
+#import "TLFriendHelper.h"
 
 @implementation TLConversationViewController (Delegate)
 

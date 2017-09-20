@@ -9,6 +9,6 @@
 #ifndef TLInfoMacros_h
 #define TLInfoMacros_h
 
-#define     LEFT_INFOCELL_SUBTITLE_SPACE     (WIDTH_SCREEN * 0.28)
+#define     LEFT_INFOCELL_SUBTITLE_SPACE     (SCREEN_WIDTH * 0.28)
 
 #endif /* TLInfoMacros_h */

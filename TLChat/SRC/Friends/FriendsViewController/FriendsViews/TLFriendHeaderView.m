@@ -16,7 +16,7 @@
 
 @implementation TLFriendHeaderView
 
-- (id) initWithReuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         UIView *bgView = [UIView new];
@@ -27,13 +27,13 @@
     return self;
 }
 
-- (void) layoutSubviews
+- (void)layoutSubviews
 {
     [super layoutSubviews];
     [self.titleLabel setFrame:CGRectMake(10, 0, self.width - 15, self.height)];
 }
 
-- (void) setTitle:(NSString *)title
+- (void)setTitle:(NSString *)title
 {
     _title = title;
     [_titleLabel setText:title];

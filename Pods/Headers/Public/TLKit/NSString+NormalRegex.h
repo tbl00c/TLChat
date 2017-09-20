@@ -1,1 +1,1 @@
-../../../../../../../TLPods/TLKit/TLKit/TLCategories/Foundation/NSString/NSString+NormalRegex.h
+../../../TLKit/TLKit/TLCategories/Foundation/NSString/NSString+NormalRegex.h

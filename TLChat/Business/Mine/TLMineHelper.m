@@ -11,7 +11,7 @@
 
 @implementation TLMineHelper
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.mineMenuData = [[NSMutableArray alloc] init];
@@ -21,7 +21,7 @@
 }
 
 
-- (void) p_initTestData
+- (void)p_initTestData
 {
     TLMenuItem *item0 = TLCreateMenuItem(nil, nil);
     TLMenuItem *item1 = TLCreateMenuItem(@"mine_album", @"相册");

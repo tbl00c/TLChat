@@ -8,6 +8,7 @@
 
 #import "TLDBBaseStore.h"
 
+@class TLUser;
 @interface TLDBUserStore : TLDBBaseStore
 
 /**

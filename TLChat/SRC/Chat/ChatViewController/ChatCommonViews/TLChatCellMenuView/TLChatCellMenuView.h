@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLEnumerate.h"
 
 typedef NS_ENUM(NSInteger, TLChatMenuItemType) {
     TLChatMenuItemTypeCancel,

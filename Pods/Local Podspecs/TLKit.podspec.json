@@ -33,6 +33,21 @@
         {
           "name": "TLActionSheet",
           "source_files": "TLKit/TLFunctional/TLActionSheet/*.{h,m}"
+        },
+        {
+          "name": "TLUIUtility",
+          "source_files": "TLKit/TLFunctional/TLUIUtility/*.{h,m}",
+          "dependencies": {
+            "TLKit/TLCategories/UIKit/UIAlertView": [
+
+            ],
+            "TLKit/TLCategories/UIKit/UIWindow": [
+
+            ],
+            "SVProgressHUD": [
+              "~> 2.2"
+            ]
+          }
         }
       ]
     },

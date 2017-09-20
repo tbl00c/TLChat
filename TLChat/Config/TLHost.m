@@ -7,6 +7,7 @@
 //
 
 #import "TLHost.h"
+#import "TLMacros.h"
 
 #ifdef  DEBUG_LOCAL_SERVER
 #define     HOST_URL        @"http://127.0.0.1:8000/"            // 本地测试服务器

@@ -103,7 +103,7 @@
         }
     }
     else {
-        [SVProgressHUD showErrorWithStatus:@"表情包删除失败"];
+        [TLUIUtility showErrorHint:@"表情包删除失败"];
     }
 }
 

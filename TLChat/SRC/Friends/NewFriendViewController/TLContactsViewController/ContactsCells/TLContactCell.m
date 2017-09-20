@@ -9,6 +9,9 @@
 #import "TLContactCell.h"
 #import <UIImageView+WebCache.h>
 
+#import "NSFileManager+TLChat.h"
+#import "TLMacros.h"
+
 #define     FRIENDS_SPACE_X         10.0f
 #define     FRIENDS_SPACE_Y         9.5f
 
@@ -26,7 +29,7 @@
 
 @implementation TLContactCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.leftSeparatorSpace = FRIENDS_SPACE_X;
@@ -42,7 +45,7 @@
 }
 
 #pragma mark - Public Methods
-- (void) setContact:(TLContact *)contact
+- (void)setContact:(TLContact *)contact
 {
     _contact = contact;
     if (contact.avatarPath) {
@@ -75,7 +78,7 @@
 }
 
 #pragma mark - Prvate Methods -
-- (void) p_addMasonry
+- (void)p_addMasonry
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(FRIENDS_SPACE_X);

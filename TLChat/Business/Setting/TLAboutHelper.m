@@ -10,7 +10,7 @@
 
 @implementation TLAboutHelper
 
-- (id) init
+- (id)init
 {
     if (self = [super init]) {
         self.abouSettingtData = [[NSMutableArray alloc] init];
@@ -19,7 +19,7 @@
     return self;
 }
 
-- (void) p_initTestData
+- (void)p_initTestData
 {
     TLSettingItem *item1 = TLCreateSettingItem(@"去评分");
     TLSettingItem *item2 = TLCreateSettingItem(@"欢迎页");

@@ -30,7 +30,7 @@
     
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:lastRunDate.doubleValue];
     NSNumber *sponsorStatus = [[NSUserDefaults standardUserDefaults] objectForKey:@"sponsorStatus"];
-    NSLog(@"今天第%ld次进入", sponsorStatus.integerValue);
+    NSLog(@"今天第%ld次进入", (long)sponsorStatus.integerValue);
     if ([date isSameDay:[NSDate date]]) {
         if (sponsorStatus.integerValue == 3) {
             [TLUIUtility showAlertWithTitle:nil message:@"如果此份源码对您有足够大帮助，您可以小额赞助我，以激励我继续维护，做得更好。" cancelButtonTitle:@"不了" otherButtonTitles:@[@"小额赞助"] actionHandler:^(NSInteger buttonIndex) {

@@ -1,0 +1,6 @@
+framework module ZZFlexibleLayoutFramework {
+  umbrella header "ZZFlexibleLayoutFramework.h"
+
+  export *
+  module * { export * }
+}

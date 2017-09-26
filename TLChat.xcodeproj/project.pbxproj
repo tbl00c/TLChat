@@ -32,6 +32,13 @@
 		C23EE47C1F7392550069885F /* TLExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4661F7392540069885F /* TLExpressionViewController.m */; };
 		C23EE47D1F7392550069885F /* TLMyExpressionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4691F7392540069885F /* TLMyExpressionCell.m */; };
 		C23EE47E1F7392550069885F /* TLMyExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE46B1F7392540069885F /* TLMyExpressionViewController.m */; };
+		C2A92CA71F7A24DD0038CFAE /* TLDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A92CA11F7A24D30038CFAE /* TLDiscoverViewController.m */; };
+		C2A92CA81F7A24DF0038CFAE /* TLDiscoverViewController+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A92C9F1F7A24D30038CFAE /* TLDiscoverViewController+Delegate.m */; };
+		C2A92CA91F7A24E40038CFAE /* TLMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A92CA41F7A24D40038CFAE /* TLMenuItem.m */; };
+		C2A92CAA1F7A24E60038CFAE /* TLMenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A92CA61F7A24D40038CFAE /* TLMenuItemCell.m */; };
+		C2A92CB31F7A2B010038CFAE /* TLMineViewController+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A92CAD1F7A29510038CFAE /* TLMineViewController+Delegate.m */; };
+		C2A92CB41F7A2B040038CFAE /* TLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A92CAF1F7A29510038CFAE /* TLMineViewController.m */; };
+		C2A92CB51F7A2B060038CFAE /* TLMineHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A92CB21F7A29510038CFAE /* TLMineHeaderCell.m */; };
 		C2AF1FAA1C6B78F600617D98 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AF1FA91C6B78F600617D98 /* WebKit.framework */; };
 		C2D7C89B1F722E6700648CED /* TLAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C89A1F722E6700648CED /* TLAppConfig.m */; };
 		C2D7C89F1F72307C00648CED /* UINavigationController+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C89E1F72307C00648CED /* UINavigationController+TLChat.m */; };
@@ -40,9 +47,6 @@
 		C2D7C8E51F72464A00648CED /* TLInfoHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8B81F72464A00648CED /* TLInfoHeaderFooterView.m */; };
 		C2D7C8E61F72464A00648CED /* TLInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8BC1F72464A00648CED /* TLInfo.m */; };
 		C2D7C8E71F72464A00648CED /* TLInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8BE1F72464A00648CED /* TLInfoViewController.m */; };
-		C2D7C8E81F72464A00648CED /* TLMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8C11F72464A00648CED /* TLMenuCell.m */; };
-		C2D7C8E91F72464A00648CED /* TLMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8C31F72464A00648CED /* TLMenuItem.m */; };
-		C2D7C8EA1F72464A00648CED /* TLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8C51F72464A00648CED /* TLMenuViewController.m */; };
 		C2D7C8EB1F72464A00648CED /* TLSettingButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8C91F72464A00648CED /* TLSettingButtonCell.m */; };
 		C2D7C8EC1F72464A00648CED /* TLSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8CB1F72464A00648CED /* TLSettingCell.m */; };
 		C2D7C8ED1F72464A00648CED /* TLSettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8CD1F72464A00648CED /* TLSettingSwitchCell.m */; };
@@ -134,7 +138,6 @@
 		C2D7CB571F72470400648CED /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D7C9D71F72470400648CED /* Conversation.xcassets */; };
 		C2D7CB581F72470400648CED /* TLConversationViewController+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9D91F72470400648CED /* TLConversationViewController+Delegate.m */; };
 		C2D7CB591F72470400648CED /* TLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9DB1F72470400648CED /* TLConversationViewController.m */; };
-		C2D7CB5A1F72470400648CED /* TLDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9DF1F72470400648CED /* TLDiscoverViewController.m */; };
 		C2D7CB5B1F72470400648CED /* TLBottleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9E31F72470400648CED /* TLBottleButton.m */; };
 		C2D7CB5C1F72470400648CED /* TLBottleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9E51F72470400648CED /* TLBottleViewController.m */; };
 		C2D7CB5D1F72470400648CED /* TLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9E81F72470400648CED /* TLGameViewController.m */; };
@@ -165,7 +168,6 @@
 		C2D7CB761F72470400648CED /* TLShakeSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA251F72470400648CED /* TLShakeSettingViewController.m */; };
 		C2D7CB771F72470400648CED /* TLShakeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA281F72470400648CED /* TLShakeButton.m */; };
 		C2D7CB781F72470400648CED /* TLShakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA2A1F72470400648CED /* TLShakeViewController.m */; };
-		C2D7CB791F72470400648CED /* TLShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA2D1F72470400648CED /* TLShoppingViewController.m */; };
 		C2D7CB7A1F72470400648CED /* TLAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA311F72470400648CED /* TLAddFriendViewController.m */; };
 		C2D7CB7B1F72470400648CED /* TLFriendDetailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA371F72470400648CED /* TLFriendDetailSettingViewController.m */; };
 		C2D7CB7C1F72470400648CED /* TLFriendDetailAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA3A1F72470400648CED /* TLFriendDetailAlbumCell.m */; };
@@ -208,8 +210,6 @@
 		C2D7CBB31F72470500648CED /* TLMineInfoAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CACB1F72470400648CED /* TLMineInfoAvatarCell.m */; };
 		C2D7CBB41F72470500648CED /* TLMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CACE1F72470400648CED /* TLMyQRCodeViewController.m */; };
 		C2D7CBB51F72470500648CED /* TLMineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CAD01F72470400648CED /* TLMineInfoViewController.m */; };
-		C2D7CBB61F72470500648CED /* TLMineHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CAD41F72470400648CED /* TLMineHeaderCell.m */; };
-		C2D7CBB71F72470500648CED /* TLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CAD61F72470400648CED /* TLMineViewController.m */; };
 		C2D7CBB81F72470500648CED /* Mine.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D7CAD81F72470400648CED /* Mine.xcassets */; };
 		C2D7CBB91F72470500648CED /* TLWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CADB1F72470400648CED /* TLWalletViewController.m */; };
 		C2D7CBBA1F72470500648CED /* TLSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CADF1F72470400648CED /* TLSearchController.m */; };
@@ -359,6 +359,20 @@
 		C23EE4691F7392540069885F /* TLMyExpressionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMyExpressionCell.m; sourceTree = "<group>"; };
 		C23EE46A1F7392540069885F /* TLMyExpressionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMyExpressionViewController.h; sourceTree = "<group>"; };
 		C23EE46B1F7392540069885F /* TLMyExpressionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMyExpressionViewController.m; sourceTree = "<group>"; };
+		C2A92C9E1F7A24D30038CFAE /* TLDiscoverViewController+Delegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLDiscoverViewController+Delegate.h"; sourceTree = "<group>"; };
+		C2A92C9F1F7A24D30038CFAE /* TLDiscoverViewController+Delegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TLDiscoverViewController+Delegate.m"; sourceTree = "<group>"; };
+		C2A92CA01F7A24D30038CFAE /* TLDiscoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDiscoverViewController.h; sourceTree = "<group>"; };
+		C2A92CA11F7A24D30038CFAE /* TLDiscoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLDiscoverViewController.m; sourceTree = "<group>"; };
+		C2A92CA31F7A24D40038CFAE /* TLMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMenuItem.h; sourceTree = "<group>"; };
+		C2A92CA41F7A24D40038CFAE /* TLMenuItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMenuItem.m; sourceTree = "<group>"; };
+		C2A92CA51F7A24D40038CFAE /* TLMenuItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMenuItemCell.h; sourceTree = "<group>"; };
+		C2A92CA61F7A24D40038CFAE /* TLMenuItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMenuItemCell.m; sourceTree = "<group>"; };
+		C2A92CAC1F7A29510038CFAE /* TLMineViewController+Delegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLMineViewController+Delegate.h"; sourceTree = "<group>"; };
+		C2A92CAD1F7A29510038CFAE /* TLMineViewController+Delegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TLMineViewController+Delegate.m"; sourceTree = "<group>"; };
+		C2A92CAE1F7A29510038CFAE /* TLMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMineViewController.h; sourceTree = "<group>"; };
+		C2A92CAF1F7A29510038CFAE /* TLMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMineViewController.m; sourceTree = "<group>"; };
+		C2A92CB11F7A29510038CFAE /* TLMineHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMineHeaderCell.h; sourceTree = "<group>"; };
+		C2A92CB21F7A29510038CFAE /* TLMineHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMineHeaderCell.m; sourceTree = "<group>"; };
 		C2AF1FA91C6B78F600617D98 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C2D7C8981F72200100648CED /* TLMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMacros.h; sourceTree = "<group>"; };
 		C2D7C8991F722E6700648CED /* TLAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppConfig.h; sourceTree = "<group>"; };
@@ -376,12 +390,6 @@
 		C2D7C8BC1F72464A00648CED /* TLInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfo.m; sourceTree = "<group>"; };
 		C2D7C8BD1F72464A00648CED /* TLInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfoViewController.h; sourceTree = "<group>"; };
 		C2D7C8BE1F72464A00648CED /* TLInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfoViewController.m; sourceTree = "<group>"; };
-		C2D7C8C01F72464A00648CED /* TLMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuCell.h; sourceTree = "<group>"; };
-		C2D7C8C11F72464A00648CED /* TLMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuCell.m; sourceTree = "<group>"; };
-		C2D7C8C21F72464A00648CED /* TLMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuItem.h; sourceTree = "<group>"; };
-		C2D7C8C31F72464A00648CED /* TLMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuItem.m; sourceTree = "<group>"; };
-		C2D7C8C41F72464A00648CED /* TLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuViewController.h; sourceTree = "<group>"; };
-		C2D7C8C51F72464A00648CED /* TLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuViewController.m; sourceTree = "<group>"; };
 		C2D7C8C81F72464A00648CED /* TLSettingButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingButtonCell.h; sourceTree = "<group>"; };
 		C2D7C8C91F72464A00648CED /* TLSettingButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingButtonCell.m; sourceTree = "<group>"; };
 		C2D7C8CA1F72464A00648CED /* TLSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingCell.h; sourceTree = "<group>"; };
@@ -572,8 +580,6 @@
 		C2D7C9D91F72470400648CED /* TLConversationViewController+Delegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLConversationViewController+Delegate.m"; sourceTree = "<group>"; };
 		C2D7C9DA1F72470400648CED /* TLConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversationViewController.h; sourceTree = "<group>"; };
 		C2D7C9DB1F72470400648CED /* TLConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLConversationViewController.m; sourceTree = "<group>"; };
-		C2D7C9DE1F72470400648CED /* TLDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDiscoverViewController.h; sourceTree = "<group>"; };
-		C2D7C9DF1F72470400648CED /* TLDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDiscoverViewController.m; sourceTree = "<group>"; };
 		C2D7C9E21F72470400648CED /* TLBottleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBottleButton.h; sourceTree = "<group>"; };
 		C2D7C9E31F72470400648CED /* TLBottleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLBottleButton.m; sourceTree = "<group>"; };
 		C2D7C9E41F72470400648CED /* TLBottleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLBottleViewController.h; sourceTree = "<group>"; };
@@ -633,8 +639,6 @@
 		C2D7CA281F72470400648CED /* TLShakeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShakeButton.m; sourceTree = "<group>"; };
 		C2D7CA291F72470400648CED /* TLShakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLShakeViewController.h; sourceTree = "<group>"; };
 		C2D7CA2A1F72470400648CED /* TLShakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShakeViewController.m; sourceTree = "<group>"; };
-		C2D7CA2C1F72470400648CED /* TLShoppingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLShoppingViewController.h; sourceTree = "<group>"; };
-		C2D7CA2D1F72470400648CED /* TLShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShoppingViewController.m; sourceTree = "<group>"; };
 		C2D7CA301F72470400648CED /* TLAddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddFriendViewController.h; sourceTree = "<group>"; };
 		C2D7CA311F72470400648CED /* TLAddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddFriendViewController.m; sourceTree = "<group>"; };
 		C2D7CA331F72470400648CED /* TLFriendEventStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendEventStatistics.h; sourceTree = "<group>"; };
@@ -718,10 +722,6 @@
 		C2D7CACE1F72470400648CED /* TLMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMyQRCodeViewController.m; sourceTree = "<group>"; };
 		C2D7CACF1F72470400648CED /* TLMineInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineInfoViewController.h; sourceTree = "<group>"; };
 		C2D7CAD01F72470400648CED /* TLMineInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineInfoViewController.m; sourceTree = "<group>"; };
-		C2D7CAD31F72470400648CED /* TLMineHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineHeaderCell.h; sourceTree = "<group>"; };
-		C2D7CAD41F72470400648CED /* TLMineHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineHeaderCell.m; sourceTree = "<group>"; };
-		C2D7CAD51F72470400648CED /* TLMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMineViewController.h; sourceTree = "<group>"; };
-		C2D7CAD61F72470400648CED /* TLMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineViewController.m; sourceTree = "<group>"; };
 		C2D7CAD81F72470400648CED /* Mine.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Mine.xcassets; sourceTree = "<group>"; };
 		C2D7CADA1F72470400648CED /* TLWalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLWalletViewController.h; sourceTree = "<group>"; };
 		C2D7CADB1F72470400648CED /* TLWalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLWalletViewController.m; sourceTree = "<group>"; };
@@ -1112,6 +1112,49 @@
 			path = TLMyExpressionViewController;
 			sourceTree = "<group>";
 		};
+		C2A92C9D1F7A24D30038CFAE /* TLDiscoverViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2A92CA01F7A24D30038CFAE /* TLDiscoverViewController.h */,
+				C2A92CA11F7A24D30038CFAE /* TLDiscoverViewController.m */,
+				C2A92C9E1F7A24D30038CFAE /* TLDiscoverViewController+Delegate.h */,
+				C2A92C9F1F7A24D30038CFAE /* TLDiscoverViewController+Delegate.m */,
+			);
+			path = TLDiscoverViewController;
+			sourceTree = "<group>";
+		};
+		C2A92CA21F7A24D40038CFAE /* TLMenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				C2A92CA31F7A24D40038CFAE /* TLMenuItem.h */,
+				C2A92CA41F7A24D40038CFAE /* TLMenuItem.m */,
+				C2A92CA51F7A24D40038CFAE /* TLMenuItemCell.h */,
+				C2A92CA61F7A24D40038CFAE /* TLMenuItemCell.m */,
+			);
+			path = TLMenuItem;
+			sourceTree = "<group>";
+		};
+		C2A92CAB1F7A29510038CFAE /* TLMineViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2A92CB01F7A29510038CFAE /* Views */,
+				C2A92CAE1F7A29510038CFAE /* TLMineViewController.h */,
+				C2A92CAF1F7A29510038CFAE /* TLMineViewController.m */,
+				C2A92CAC1F7A29510038CFAE /* TLMineViewController+Delegate.h */,
+				C2A92CAD1F7A29510038CFAE /* TLMineViewController+Delegate.m */,
+			);
+			path = TLMineViewController;
+			sourceTree = "<group>";
+		};
+		C2A92CB01F7A29510038CFAE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C2A92CB11F7A29510038CFAE /* TLMineHeaderCell.h */,
+				C2A92CB21F7A29510038CFAE /* TLMineHeaderCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C2D7C8851F72107D00648CED /* AppControlCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1148,7 +1191,6 @@
 			isa = PBXGroup;
 			children = (
 				C2D7C8B11F72464A00648CED /* TLInfoViewController */,
-				C2D7C8BF1F72464A00648CED /* TLMenuViewController */,
 				C2D7C8C61F72464A00648CED /* TLSettingViewController */,
 				C2D7C8DA1F72464A00648CED /* TLTableViewCell */,
 				C2D7C8DD1F72464A00648CED /* TLTableViewController */,
@@ -1189,19 +1231,6 @@
 				C2D7C8BC1F72464A00648CED /* TLInfo.m */,
 			);
 			path = TLInfoModel;
-			sourceTree = "<group>";
-		};
-		C2D7C8BF1F72464A00648CED /* TLMenuViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7C8C01F72464A00648CED /* TLMenuCell.h */,
-				C2D7C8C11F72464A00648CED /* TLMenuCell.m */,
-				C2D7C8C21F72464A00648CED /* TLMenuItem.h */,
-				C2D7C8C31F72464A00648CED /* TLMenuItem.m */,
-				C2D7C8C41F72464A00648CED /* TLMenuViewController.h */,
-				C2D7C8C51F72464A00648CED /* TLMenuViewController.m */,
-			);
-			path = TLMenuViewController;
 			sourceTree = "<group>";
 		};
 		C2D7C8C61F72464A00648CED /* TLSettingViewController */ = {
@@ -1344,6 +1373,7 @@
 		C2D7C9141F72470400648CED /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C2D7C9B71F72470400648CED /* Common */,
 				C2D7CA861F72470400648CED /* Launcher */,
 				C2D7C9151F72470400648CED /* Account */,
 				C2D7C9CB1F72470400648CED /* Conversation */,
@@ -1351,7 +1381,6 @@
 				C2D7C9DC1F72470400648CED /* Discover */,
 				C2D7CA971F72470400648CED /* Mine */,
 				C2D7C91F1F72470400648CED /* Chat */,
-				C2D7C9B71F72470400648CED /* Common */,
 				C2D7CBCD1F72472700648CED /* Web */,
 				C2D7CADC1F72470400648CED /* Search */,
 				C23EE3CD1F73914A0069885F /* Expression */,
@@ -1888,25 +1917,16 @@
 		C2D7C9DC1F72470400648CED /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				C2D7C9DD1F72470400648CED /* DiscoverViewController */,
+				C2A92CA21F7A24D40038CFAE /* TLMenuItem */,
+				C2A92C9D1F7A24D30038CFAE /* TLDiscoverViewController */,
 				C2D7C9E91F72470400648CED /* MomentsViewController */,
 				C2D7C9E01F72470400648CED /* DriftBottleViewController */,
 				C2D7C9E61F72470400648CED /* GameViewController */,
 				C2D7CA161F72470400648CED /* ScannerViewController */,
 				C2D7CA221F72470400648CED /* ShakeViewController */,
-				C2D7CA2B1F72470400648CED /* ShopingViewController */,
 				C2D7CA121F72470400648CED /* Resources */,
 			);
 			path = Discover;
-			sourceTree = "<group>";
-		};
-		C2D7C9DD1F72470400648CED /* DiscoverViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7C9DE1F72470400648CED /* TLDiscoverViewController.h */,
-				C2D7C9DF1F72470400648CED /* TLDiscoverViewController.m */,
-			);
-			path = DiscoverViewController;
 			sourceTree = "<group>";
 		};
 		C2D7C9E01F72470400648CED /* DriftBottleViewController */ = {
@@ -2090,15 +2110,6 @@
 				C2D7CA281F72470400648CED /* TLShakeButton.m */,
 			);
 			path = ShakeViews;
-			sourceTree = "<group>";
-		};
-		C2D7CA2B1F72470400648CED /* ShopingViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7CA2C1F72470400648CED /* TLShoppingViewController.h */,
-				C2D7CA2D1F72470400648CED /* TLShoppingViewController.m */,
-			);
-			path = ShopingViewController;
 			sourceTree = "<group>";
 		};
 		C2D7CA2E1F72470400648CED /* Friends */ = {
@@ -2410,11 +2421,11 @@
 		C2D7CA971F72470400648CED /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				C2A92CAB1F7A29510038CFAE /* TLMineViewController */,
 				C2D7CA981F72470400648CED /* Config */,
 				C2D7CAC81F72470400648CED /* MineInfoViewController */,
-				C2D7CAD11F72470400648CED /* MineViewController */,
-				C2D7CAD71F72470400648CED /* Resources */,
 				C2D7CAD91F72470400648CED /* WalletViewController */,
+				C2D7CAD71F72470400648CED /* Resources */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2454,25 +2465,6 @@
 				C2D7CACE1F72470400648CED /* TLMyQRCodeViewController.m */,
 			);
 			path = MyQRCodeViewController;
-			sourceTree = "<group>";
-		};
-		C2D7CAD11F72470400648CED /* MineViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7CAD21F72470400648CED /* MineViews */,
-				C2D7CAD51F72470400648CED /* TLMineViewController.h */,
-				C2D7CAD61F72470400648CED /* TLMineViewController.m */,
-			);
-			path = MineViewController;
-			sourceTree = "<group>";
-		};
-		C2D7CAD21F72470400648CED /* MineViews */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7CAD31F72470400648CED /* TLMineHeaderCell.h */,
-				C2D7CAD41F72470400648CED /* TLMineHeaderCell.m */,
-			);
-			path = MineViews;
 			sourceTree = "<group>";
 		};
 		C2D7CAD71F72470400648CED /* Resources */ = {
@@ -3165,10 +3157,11 @@
 				C2D7CBDF1F7249C500648CED /* TLUserHelper.m in Sources */,
 				C2D7CB611F72470400648CED /* TLMomentDetailViewController.m in Sources */,
 				C2D7CB501F72470400648CED /* TLPictureCarouselView.m in Sources */,
+				C2A92CA91F7A24E40038CFAE /* TLMenuItem.m in Sources */,
 				C2D7CB411F72470400648CED /* TLMoreKeyboardItem.m in Sources */,
+				C2A92CA81F7A24DF0038CFAE /* TLDiscoverViewController+Delegate.m in Sources */,
 				C2D7C8F21F72464A00648CED /* TLSettingHeaderTitleView.m in Sources */,
 				C2D7C8ED1F72464A00648CED /* TLSettingSwitchCell.m in Sources */,
-				C2D7CB5A1F72470400648CED /* TLDiscoverViewController.m in Sources */,
 				C2D7CB9C1F72470400648CED /* TLAppDelegate.m in Sources */,
 				C2D7CB541F72470400648CED /* TLAddMenuItem.m in Sources */,
 				C2D7CB901F72470400648CED /* TLContactsViewController.m in Sources */,
@@ -3180,7 +3173,6 @@
 				C2D7C90F1F7246CC00648CED /* TLAudioPlayer.m in Sources */,
 				C2D7C89F1F72307C00648CED /* UINavigationController+TLChat.m in Sources */,
 				C2D7CB2E1F72470400648CED /* TLVoiceMessageCell.m in Sources */,
-				C2D7C8EA1F72464A00648CED /* TLMenuViewController.m in Sources */,
 				C23EE4751F7392550069885F /* TLExpressionChosenViewController+TableView.m in Sources */,
 				C2D7CB261F72470400648CED /* TLRecorderIndicatorView.m in Sources */,
 				C23EE4761F7392550069885F /* TLExpressionChosenViewController.m in Sources */,
@@ -3219,19 +3211,20 @@
 				C23EE46D1F7392540069885F /* TLExpressionDetailCell.m in Sources */,
 				C2D7CB7A1F72470400648CED /* TLAddFriendViewController.m in Sources */,
 				C2D7CBBA1F72470500648CED /* TLSearchController.m in Sources */,
-				C2D7CB791F72470400648CED /* TLShoppingViewController.m in Sources */,
 				C2D7CB141F72470400648CED /* TLRegisterViewController.m in Sources */,
 				C2D7CB1C1F72470400648CED /* TLGroupQRCodeViewController.m in Sources */,
 				C2D7CB171F72470400648CED /* TLChatDetailViewController.m in Sources */,
-				C2D7C8E91F72464A00648CED /* TLMenuItem.m in Sources */,
 				C2D7C90C1F7246CC00648CED /* NSDate+TLChat.m in Sources */,
 				C2D7CB3D1F72470400648CED /* TLEmojiKeyboard+DisplayView.m in Sources */,
 				C23EE4701F7392540069885F /* TLExpressionDetailViewController.m in Sources */,
+				C2A92CA71F7A24DD0038CFAE /* TLDiscoverViewController.m in Sources */,
 				C2D7CC5F1F7281DA00648CED /* TLConversation.m in Sources */,
 				C2D7CC241F726D4900648CED /* TLUserSetting.m in Sources */,
 				C2D7CB2C1F72470400648CED /* TLTextMessageCell.m in Sources */,
+				C2A92CB41F7A2B040038CFAE /* TLMineViewController.m in Sources */,
 				C2D7CBB31F72470500648CED /* TLMineInfoAvatarCell.m in Sources */,
 				C2D7CC661F72844F00648CED /* TLDBBaseStore.m in Sources */,
+				C2A92CAA1F7A24E60038CFAE /* TLMenuItemCell.m in Sources */,
 				C2D7C8EF1F72464A00648CED /* TLSettingItem.m in Sources */,
 				C23EE4741F7392550069885F /* TLExpressionChosenViewController+Proxy.m in Sources */,
 				C2D7CB1A1F72470400648CED /* TLChatFileHeaderView.m in Sources */,
@@ -3252,6 +3245,7 @@
 				C23EE46E1F7392540069885F /* TLExpressionItemCell.m in Sources */,
 				C2D7CB421F72470400648CED /* TLMoreKeyboard+CollectionView.m in Sources */,
 				C2D7CBC21F72470500648CED /* TLChatBackgroundSettingViewController.m in Sources */,
+				C2A92CB31F7A2B010038CFAE /* TLMineViewController+Delegate.m in Sources */,
 				C2D7CB471F72470400648CED /* TLChatViewController+Delegate.m in Sources */,
 				C2D7CB841F72470400648CED /* TLFriendsViewController.m in Sources */,
 				C2D7CB321F72470400648CED /* TLEmojiFaceItemCell.m in Sources */,
@@ -3277,9 +3271,7 @@
 				C2D7CB781F72470400648CED /* TLShakeViewController.m in Sources */,
 				C2D7CB591F72470400648CED /* TLConversationViewController.m in Sources */,
 				C2D7CB7E1F72470400648CED /* TLFriendDetailViewController+Delegate.m in Sources */,
-				C2D7CBB61F72470500648CED /* TLMineHeaderCell.m in Sources */,
 				C2D7C9121F7246CC00648CED /* UIColor+TLChat.m in Sources */,
-				C2D7C8E81F72464A00648CED /* TLMenuCell.m in Sources */,
 				C2D7CB381F72470400648CED /* TLEmojiGroupCell.m in Sources */,
 				C2D7C8EE1F72464A00648CED /* TLSettingGroup.m in Sources */,
 				C2D7CB3B1F72470400648CED /* TLEmojiGroup.m in Sources */,
@@ -3312,7 +3304,6 @@
 				C2D7CBC81F72470500648CED /* TLPrivacySettingViewController.m in Sources */,
 				C2D7CC101F72680200648CED /* TLFriendHelper+Detail.m in Sources */,
 				C2D7CC791F72852E00648CED /* TLDBGroupStore.m in Sources */,
-				C2D7CBB71F72470500648CED /* TLMineViewController.m in Sources */,
 				C2D7CB9E1F72470500648CED /* TLLaunchManager.m in Sources */,
 				C2D7CB911F72470400648CED /* TLNewFriendViewController+Delegate.m in Sources */,
 				C2D7C90E1F7246CC00648CED /* NSString+Message.m in Sources */,
@@ -3329,6 +3320,7 @@
 				C2D7C89B1F722E6700648CED /* TLAppConfig.m in Sources */,
 				C2D7CBDC1F72498900648CED /* TLAccountManager.m in Sources */,
 				C2D7CB551F72470400648CED /* TLAddMenuView.m in Sources */,
+				C2A92CB51F7A2B060038CFAE /* TLMineHeaderCell.m in Sources */,
 				C2D7CB6A1F72470400648CED /* TLMomentBaseView.m in Sources */,
 				C2D7C90D1F7246CC00648CED /* NSFileManager+TLChat.m in Sources */,
 				C2D7CBBC1F72470500648CED /* TLAboutViewController.m in Sources */,
@@ -3484,9 +3476,6 @@
 				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TLChat/Extensions/Vendors/JSPatch",
-					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Vendors/JSPatch",
-					"$(PROJECT_DIR)/TLChat/TLKitExtensions/PrivateFramework",
 					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TLChat/PrefixHeader.pch";
@@ -3514,9 +3503,6 @@
 				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TLChat/Extensions/Vendors/JSPatch",
-					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Vendors/JSPatch",
-					"$(PROJECT_DIR)/TLChat/TLKitExtensions/PrivateFramework",
 					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TLChat/PrefixHeader.pch";

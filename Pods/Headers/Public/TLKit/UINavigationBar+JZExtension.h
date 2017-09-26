@@ -1,1 +1,1 @@
-../../../../../../../TLPods/TLKit/TLKit/TLCategories/UIKit/UINavigationController/JZNavigationExtension/Private/UINavigationBar+JZExtension.h
+../../../TLKit/TLKit/TLCategories/UIKit/UINavigationController/JZNavigationExtension/Private/UINavigationBar+JZExtension.h

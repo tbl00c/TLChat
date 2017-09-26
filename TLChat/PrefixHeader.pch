@@ -20,6 +20,8 @@
 
 #import <MJExtension/MJExtension.h>
 #import <TLKit/TLKit.h>
+#import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutFramework.h>
+#import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutViewProtocol.h>
 
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 

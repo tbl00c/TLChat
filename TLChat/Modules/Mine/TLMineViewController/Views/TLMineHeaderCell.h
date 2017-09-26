@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TLUser.h"
 
-@interface TLMineHeaderCell : UITableViewCell
+@interface TLMineHeaderCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 
 @property (nonatomic, strong) TLUser *user;
 

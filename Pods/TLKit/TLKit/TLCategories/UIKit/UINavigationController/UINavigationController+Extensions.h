@@ -11,7 +11,7 @@
 @interface UINavigationController (Extensions)
 
 /// 跟控制器
-@property (nonatomic, strong, readonly) UIViewController *ttRootViewController;
+@property (nonatomic, strong, readonly) UIViewController *rootViewController;
 
 /// 是不是只有rootVC
 @property (nonatomic, assign, readonly) BOOL isOnlyContainRootViewController;

@@ -151,18 +151,22 @@ DEPENDENCIES:
   - MWPhotoBrowser (~> 2.1.1)
   - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.7.4)
-  - TLKit (from `~/TLPods/TLKit`)
+  - TLKit (from `git@github.com:tbl00c/TLKit.git`, tag `0.0.9`)
   - TLTabBarController (from `git@github.com:tbl00c/TLTabBarController.git`, tag `0.0.1`)
   - UMengAnalytics (~> 3.6.6)
 
 EXTERNAL SOURCES:
   TLKit:
-    :path: "~/TLPods/TLKit"
+    :git: git@github.com:tbl00c/TLKit.git
+    :tag: 0.0.9
   TLTabBarController:
     :git: git@github.com:tbl00c/TLTabBarController.git
     :tag: 0.0.1
 
 CHECKOUT OPTIONS:
+  TLKit:
+    :git: git@github.com:tbl00c/TLKit.git
+    :tag: 0.0.9
   TLTabBarController:
     :git: git@github.com:tbl00c/TLTabBarController.git
     :tag: 0.0.1
@@ -186,6 +190,6 @@ SPEC CHECKSUMS:
   TLTabBarController: 149a3df6517408d72e506c4c578b6758744e9251
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 
-PODFILE CHECKSUM: 77960acd3e2f0ac798f56598ed57fab62ebf9dbd
+PODFILE CHECKSUM: 6aedf6d6982a56b2c18e9377126b3f765fb9acb9
 
 COCOAPODS: 1.2.1

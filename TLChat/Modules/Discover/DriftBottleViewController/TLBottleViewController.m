@@ -33,6 +33,7 @@
 {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"漂流瓶"];
+    [self setDisablePopGesture:YES];
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];

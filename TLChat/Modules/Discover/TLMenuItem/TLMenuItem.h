@@ -26,6 +26,11 @@
 @property (nonatomic, strong) NSString *title;
 
 /**
+ * 左侧气泡
+ */
+@property (nonatomic, strong) NSString *badge;
+
+/**
  * 副标题
  */
 @property (nonatomic, strong) NSString *subTitle;
@@ -34,8 +39,12 @@
  * 右侧图片URL
  */
 @property (nonatomic, strong) NSString *rightIconURL;
+/**
+ * 右侧图片红点
+ */
+@property (nonatomic, assign) BOOL showRightIconBadge;
+- (void)setRightIconURL:(NSString *)rightIconURL withRightIconBadge:(BOOL)rightIconBadge;
 
-@property (nonatomic, strong) NSString *badge;
 
 @property (nonatomic, assign, readonly) CGSize badgeSize;
 

@@ -27,6 +27,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [MobClick beginLogPageView:self.analyzeTitle];
     if ([UIApplication sharedApplication].statusBarStyle != self.statusBarStyle) {
         [UIApplication sharedApplication].statusBarStyle = self.statusBarStyle;
@@ -46,7 +47,7 @@
 #endif
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getter
 - (NSString *)analyzeTitle
 {
     if (_analyzeTitle == nil) {
@@ -54,5 +55,6 @@
     }
     return _analyzeTitle;
 }
+
 
 @end

@@ -25,4 +25,18 @@ TLMenuItem *createMenuItem(NSString *icon, NSString *title)
     _badgeSize = [TLBadge badgeSizeWithValue:badge];
 }
 
+- (void)setRightIconURL:(NSString *)rightIconURL withRightIconBadge:(BOOL)rightIconBadge
+{
+    [self setRightIconURL:rightIconURL];
+    [self setShowRightIconBadge:rightIconBadge];
+}
+
+- (BOOL)showRightIconBadge
+{
+    if (!self.rightIconURL) {
+        return NO;
+    }
+    return _showRightIconBadge;
+}
+
 @end

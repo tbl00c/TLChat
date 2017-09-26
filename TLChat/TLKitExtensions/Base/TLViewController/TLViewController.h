@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+PopGesture.h"
 
 @interface TLViewController : UIViewController
 

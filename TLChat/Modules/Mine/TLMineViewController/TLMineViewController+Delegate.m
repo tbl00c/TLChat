@@ -60,11 +60,13 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSString *badgeValue;
         NSArray *data = [self allDataModelArray];
-        for (id item in data) {
-            if ([item isKindOfClass:[TLMenuItem class]]) {
-                if ([(TLMenuItem *)item badge]) {
-                    badgeValue = @"";
-                    break;
+        for (NSArray *section in data) {
+            for (id item in section) {
+                if ([item isKindOfClass:[TLMenuItem class]]) {
+                    if ([(TLMenuItem *)item badge] || [(TLMenuItem *)item showRightIconBadge]) {
+                        badgeValue = @"";
+                        break;
+                    }
                 }
             }
         }

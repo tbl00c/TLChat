@@ -63,27 +63,26 @@
 - (void)setMenuItem:(TLMenuItem *)menuItem
 {
     _menuItem = menuItem;
+    
+    // icon
     if (menuItem.iconURL) {     // 优先展示网络配置的图片
         [self.iconView sd_setImageWithURL:menuItem.iconURL.toURL placeholderImage:[UIImage imageNamed:menuItem.iconName]];
     }
     else if (menuItem.iconName) {
         [self.iconView setImage:[UIImage imageNamed:menuItem.iconName]];
     }
+    
+    // 标题
     [self.titleLabel setText:menuItem.title];
     
+    // 气泡
     [self.badgeView setHidden:YES];
-    [self.rightBadgeView setHidden:YES];
     if (menuItem.badge) {
-        if (menuItem.rightIconURL.length > 0) {
-            [self.rightBadgeView setHidden:NO];
-        }
-        else {
-            [self.badgeView setHidden:NO];
-            [self.badgeView setBadgeValue:menuItem.badge];
-            [self.badgeView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.size.mas_equalTo(menuItem.badgeSize);
-            }];
-        }
+        [self.badgeView setHidden:NO];
+        [self.badgeView setBadgeValue:menuItem.badge];
+        [self.badgeView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(menuItem.badgeSize);
+        }];
     }
     else {
         [self.badgeView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -91,7 +90,11 @@
         }];
     }
     
+    // 右侧说明
     [self.detailLabel setText:menuItem.subTitle];
+    
+    // 右侧图片
+    [self.rightBadgeView setHidden:YES];
     if (menuItem.rightIconURL.length > 0) {
         [self.rightImageView setHidden:NO];
         [self.rightImageView sd_setImageWithURL:menuItem.rightIconURL.toURL];
@@ -99,6 +102,11 @@
             [self.detailLabel mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(self.arrowView.mas_left).mas_offset(-WIDTH_ICON_RIGHT - EGDE_RIGHT_IMAGE - EGDE_SUB_TITLE);
             }];
+        }
+        
+        // 图片上方气泡
+        if (menuItem.showRightIconBadge) {
+            [self.rightBadgeView setHidden:NO];
         }
     }
     else {

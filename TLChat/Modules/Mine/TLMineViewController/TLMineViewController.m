@@ -20,6 +20,14 @@
 
 @implementation TLMineViewController
 
+- (id)init
+{
+    if (self = [super init]) {
+         [self.tabBarItem setBadgeValue:@""];
+    }
+    return self;
+}
+
 - (void)loadView
 {
     [super loadView];

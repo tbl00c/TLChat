@@ -7,8 +7,6 @@
 //
 
 #import "TLContactCell.h"
-#import <UIImageView+WebCache.h>
-
 #import "NSFileManager+TLChat.h"
 #import "TLMacros.h"
 
@@ -53,7 +51,7 @@
         [self.avatarImageView setImage:[UIImage imageNamed:path]];
     }
     else {
-        [self.avatarImageView sd_setImageWithURL:TLURL(contact.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarImageView tt_setImageWithURL:TLURL(contact.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     
     [self.usernameLabel setText:contact.name];

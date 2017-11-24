@@ -8,7 +8,6 @@
 
 #import "TLExpressionMessageCell.h"
 #import <UIImage+GIF.h>
-#import <UIImageView+WebCache.h>
 #import "NSFileManager+TLChat.h"
 
 @interface TLExpressionMessageCell ()
@@ -50,7 +49,7 @@
         }
         else {
             __weak typeof(self) weakSelf = self;
-            [self.msgImageView sd_setImageWithURL:TLURL(message.url) completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [self.msgImageView tt_setImageWithURL:TLURL(message.url) completed:^(UIImage *image, NSError *error, TLImageCacheType cacheType, NSURL *imageURL) {
                 if ([[imageURL description] isEqualToString:[(TLExpressionMessage *)weakSelf.message url]]) {
                     dispatch_async(dispatch_get_global_queue(0, 0), ^{
                         NSData *data = [NSData dataWithContentsOfURL:imageURL];

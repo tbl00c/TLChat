@@ -7,7 +7,6 @@
 //
 
 #import "TLExpressionDetailCell.h"
-#import <UIImageView+WebCache.h>
 
 @interface TLExpressionDetailCell ()
 
@@ -40,7 +39,7 @@
 {
     _group = group;
     if (group.bannerURL.length > 0) {
-        [self.bannerView sd_setImageWithURL:TLURL(group.bannerURL)];
+        [self.bannerView tt_setImageWithURL:TLURL(group.bannerURL)];
         [self.bannerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(HEIGHT_EXP_BANNER);
         }];

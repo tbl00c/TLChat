@@ -7,7 +7,6 @@
 //
 
 #import "TLMessageBaseCell.h"
-#import <UIButton+WebCache.h>
 #import "NSDate+TLChat.h"
 #import "NSFileManager+TLChat.h"
 
@@ -57,7 +56,7 @@
         [self.avatarButton setImage:[UIImage imageNamed:path] forState:UIControlStateNormal];
     }
     else {
-        [self.avatarButton sd_setImageWithURL:TLURL([message.fromUser chat_avatarURL]) forState:UIControlStateNormal];
+        [self.avatarButton tt_setImageWithURL:TLURL([message.fromUser chat_avatarURL]) forState:UIControlStateNormal];
     }
     
     // 时间

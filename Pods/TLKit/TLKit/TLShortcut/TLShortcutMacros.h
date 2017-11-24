@@ -9,18 +9,31 @@
 #ifndef TLShortcutMacros_h
 #define TLShortcutMacros_h
 
+#define     IS_IPHONEX              ([UIScreen mainScreen].bounds.size.width == 375.0f && [UIScreen mainScreen].bounds.size.height == 812.0f)
+
+
 #pragma mark - # 屏幕尺寸
 #define     SCREEN_SIZE                 [UIScreen mainScreen].bounds.size
 #define     SCREEN_WIDTH                SCREEN_SIZE.width
 #define     SCREEN_HEIGHT               SCREEN_SIZE.height
 
 #pragma mark - # 常用控件高度
-#define     STATUSBAR_HEIGHT            20.0f
-#define     TABBAR_HEIGHT               49.0f
+#define     STATUSBAR_HEIGHT            (IS_IPHONEX ? 44.0f : 20.0f)
+#define     TABBAR_HEIGHT               (IS_IPHONEX ? 49.0f + 34.0f : 49.0f)
 #define     NAVBAR_HEIGHT               44.0f
 #define     SEARCHBAR_HEIGHT            44.0f
 #define     BORDER_WIDTH_1PX            ([[UIScreen mainScreen] scale] > 0.0 ? 1.0 / [[UIScreen mainScreen] scale] : 1.0)
 
+#define     SAFEAREA_INSETS     \
+({   \
+    UIEdgeInsets edgeInsets = UIEdgeInsetsZero; \
+    if (@available(iOS 11.0, *)) {      \
+        edgeInsets = [UIApplication sharedApplication].keyWindow.safeAreaInsets;     \
+    }   \
+    edgeInsets;  \
+})\
+
+#define     SAFEAREA_INSETS_BOTTOM      (SAFEAREA_INSETS.bottom)
 
 #pragma mark - # 设备(屏幕)类型
 #define     SCRREN_IPHONE4              (SCREEN_HEIGHT >= 480.0f)           // 320 * 480

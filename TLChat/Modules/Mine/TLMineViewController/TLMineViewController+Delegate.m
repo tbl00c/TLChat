@@ -35,7 +35,7 @@
     }
     
     if ([dataModel isKindOfClass:[TLMenuItem class]]) {
-        BOOL needResetTabBarBadge = dataModel.badge ? YES : NO;
+        BOOL needResetTabBarBadge = (dataModel.badge || (dataModel.rightIconURL && dataModel.showRightIconBadge));
         BOOL hasDesc = dataModel.subTitle.length > 0 || dataModel.rightIconURL.length > 0;
         
         if (needResetTabBarBadge) {

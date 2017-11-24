@@ -10,28 +10,12 @@
       "scale" : "3x"
     },
     {
-      "orientation" : "landscape",
-      "idiom" : "iphone",
-      "extent" : "full-screen",
-      "minimum-system-version" : "11.0",
-      "subtype" : "2436h",
-      "scale" : "3x"
-    },
-    {
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "736h",
       "filename" : "LaunchImage(1242*2208).png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
-      "scale" : "3x"
-    },
-    {
-      "orientation" : "landscape",
-      "idiom" : "iphone",
-      "extent" : "full-screen",
-      "minimum-system-version" : "8.0",
-      "subtype" : "736h",
       "scale" : "3x"
     },
     {

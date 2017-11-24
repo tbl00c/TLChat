@@ -7,7 +7,6 @@
 //
 
 #import "TLExpressionItemCell.h"
-#import <UIImageView+WebCache.h>
 #import <UIImage+GIF.h>
 #import "UIImage+Color.h"
 
@@ -37,7 +36,7 @@
         [self.imageView setImage:image];
     }
     else {
-        [self.imageView sd_setImageWithURL:TLURL(emoji.emojiURL)];
+        [self.imageView tt_setImageWithURL:TLURL(emoji.emojiURL)];
     }
 }
 

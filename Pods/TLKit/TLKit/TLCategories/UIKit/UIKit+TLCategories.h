@@ -57,7 +57,6 @@
 
 //MARK: UINavigationController
 #import "UINavigationController+Extensions.h"   // UINavigationController 获取rootVC，查找VC，pop到指定VC等
-#import "JZNavigationExtension.h"               // UINavigationController 动效拓展
 
 //MARK: UIViewController
 #import "UIViewController+NavBar.h"             // UIViewController navBar按钮

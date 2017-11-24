@@ -7,7 +7,6 @@
 //
 
 #import "TLChatFileCell.h"
-#import <UIImageView+WebCache.h>
 #import "NSFileManager+TLChat.h"
 #import "TLMacros.h"
 
@@ -37,7 +36,7 @@
             [self.imageView setImage:[UIImage imageNamed:imagePath]];
         }
         else if ([(TLImageMessage *)message imageURL].length > 0) {
-            [self.imageView sd_setImageWithURL:TLURL([(TLImageMessage *)message imageURL]) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+            [self.imageView tt_setImageWithURL:TLURL([(TLImageMessage *)message imageURL]) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
         }
         else {
             [self.imageView setImage:nil];

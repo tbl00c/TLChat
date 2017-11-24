@@ -96,6 +96,7 @@
 - (void)loadView
 {
     [super loadView];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     self.delegateEvent = [[TLTabBarControllerDelegateEvent alloc] initWithTabBarController:self];
     [self setValue:[TLTabBar new] forKey:@"tabBar"];
@@ -130,3 +131,4 @@
 }
 
 @end
+

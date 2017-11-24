@@ -7,7 +7,6 @@
 //
 
 #import "TLExpressionCell.h"
-#import <UIImageView+WebCache.h>
 
 #define         EDGE_TOP        10.0f
 #define         EDGE_LEFT       15.0f
@@ -51,7 +50,7 @@
         [self.iconImageView setImage:image];
     }
     else {
-        [self.iconImageView sd_setImageWithURL:TLURL(group.groupIconURL)];
+        [self.iconImageView tt_setImageWithURL:TLURL(group.groupIconURL)];
     }
     [self.titleLabel setText:group.groupName];
     [self.detailLabel setText:group.groupDetailInfo];

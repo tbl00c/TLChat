@@ -7,7 +7,6 @@
 //
 
 #import "TLUserGroupItemCell.h"
-#import <UIButton+WebCache.h>
 #import "TLUser.h"
 #import "NSFileManager+TLChat.h"
 #import "TLMacros.h"
@@ -37,7 +36,7 @@
 {
     _user = user;
     if (user != nil) {
-        [self.avatarView sd_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarView tt_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
         [self.usernameLabel setText:user.showName];
     }
     else {

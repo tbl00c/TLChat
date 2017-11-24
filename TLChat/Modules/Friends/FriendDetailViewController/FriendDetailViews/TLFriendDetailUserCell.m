@@ -7,7 +7,6 @@
 //
 
 #import "TLFriendDetailUserCell.h"
-#import <UIButton+WebCache.h>
 #import "TLUser.h"
 #import "TLMacros.h"
 
@@ -78,7 +77,7 @@
         [self.avatarView setImage:[UIImage imageNamed:user.avatarPath] forState:UIControlStateNormal];
     }
     else{
-        [self.avatarView sd_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarView tt_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     [self.shownameLabel setText:user.showName];
     if (user.username.length > 0) {

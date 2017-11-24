@@ -7,7 +7,6 @@
 //
 
 #import "TLMenuItemCell.h"
-#import <UIImageView+WebCache.h>
 
 #define     WIDTH_ICON_RIGHT        31
 #define     EGDE_RIGHT_IMAGE        13
@@ -66,7 +65,7 @@
     
     // icon
     if (menuItem.iconURL) {     // 优先展示网络配置的图片
-        [self.iconView sd_setImageWithURL:menuItem.iconURL.toURL placeholderImage:[UIImage imageNamed:menuItem.iconName]];
+        [self.iconView tt_setImageWithURL:menuItem.iconURL.toURL placeholderImage:[UIImage imageNamed:menuItem.iconName]];
     }
     else if (menuItem.iconName) {
         [self.iconView setImage:[UIImage imageNamed:menuItem.iconName]];
@@ -97,7 +96,7 @@
     [self.rightBadgeView setHidden:YES];
     if (menuItem.rightIconURL.length > 0) {
         [self.rightImageView setHidden:NO];
-        [self.rightImageView sd_setImageWithURL:menuItem.rightIconURL.toURL];
+        [self.rightImageView tt_setImageWithURL:menuItem.rightIconURL.toURL];
         if (menuItem.subTitle.length > 0) {
             [self.detailLabel mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(self.arrowView.mas_left).mas_offset(-WIDTH_ICON_RIGHT - EGDE_RIGHT_IMAGE - EGDE_SUB_TITLE);

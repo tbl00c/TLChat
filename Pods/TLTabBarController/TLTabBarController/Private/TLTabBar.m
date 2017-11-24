@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong, readonly) NSArray *barControlItems;
 
+@property (nonatomic, assign) UIEdgeInsets oldSafeAreaInsets;
+
 @end
 
 @implementation TLTabBar
@@ -21,6 +23,7 @@
 {
     if (self = [super init]) {
         self.plusButtonImageOffset = 18;
+        self.itemPositioning = UITabBarItemPositioningFill;
         [self setBarTintColor:[UIColor whiteColor]];
     }
     return self;
@@ -29,9 +32,8 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    [self p_resetImageOrigin];          // 重置图片位置
-    [self p_resetTabBarItems];          // 重置TabBarItem持有的Control
+
+    [self p_resetTabBarItems];
 }
 
 // 响应区域
@@ -41,16 +43,50 @@
     if (view) {
         return view;
     }
+    if (self.hidden) {
+        return nil;
+    }
     for (UITabBarItem *tabBarItem in self.items) {
         if (tabBarItem.isPlusButton && tabBarItem.tabBarControl) {
             CGRect rect = tabBarItem.tabBarControl.frame;
-            if (point.x > rect.origin.x && point.x < rect.origin.x + rect.size.width && point.y < rect.origin.y + rect.size.height && point.y > rect.origin.y - self.plusButtonImageOffset) {
-                return tabBarItem.tabBarControl;
+            if (point.x > rect.origin.x && point.x < rect.origin.x + rect.size.width) {
+                CGFloat startY = MIN((rect.size.height - tabBarItem.image.size.height) / 2 - self.plusButtonImageOffset, 0);
+                if (point.y < rect.origin.y + rect.size.height && point.y > startY) {
+                    return tabBarItem.tabBarControl;
+                }
             }
         }
     }
     return nil;
 }
+
+#pragma mark - # iOS11 Fixed
+- (void)safeAreaInsetsDidChange
+{
+    [super safeAreaInsetsDidChange];
+    if(self.oldSafeAreaInsets.left != self.safeAreaInsets.left ||
+       self.oldSafeAreaInsets.right != self.safeAreaInsets.right ||
+       self.oldSafeAreaInsets.top != self.safeAreaInsets.top ||
+       self.oldSafeAreaInsets.bottom != self.safeAreaInsets.bottom) {
+        self.oldSafeAreaInsets = self.safeAreaInsets;
+        [self invalidateIntrinsicContentSize];
+        [self.superview setNeedsLayout];
+        [self.superview layoutSubviews];
+    }
+}
+
+- (CGSize)sizeThatFits:(CGSize) size
+{
+    CGSize s = [super sizeThatFits:size];
+    if(@available(iOS 11.0, *)) {
+        CGFloat bottomInset = self.safeAreaInsets.bottom;
+        if( bottomInset > 0 && s.height < 50) {
+            s.height += bottomInset;
+        }
+    }
+    return s;
+}
+
 
 #pragma mark - # Private Methods
 /// 重置TabBarItem持有的Control
@@ -61,35 +97,40 @@
         NSLog(@"p_resetTabBarItems error");
         return;
     }
-    for (int i = 0; i < self.items.count; i++) {
-        UITabBarItem *item = self.items[i];
-        UIControl *control = controlItems[i];
-        [item setTabBarControl:control];
-    }
-}
-
-/// 重置图片位置
-- (void)p_resetImageOrigin
-{
+    
+    // 重置图片位置
     [self.items enumerateObjectsUsingBlock:^(UITabBarItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.title.length > 0) {
-            if (obj.isPlusButton) {
-                obj.imageInsets = UIEdgeInsetsMake(-self.plusButtonImageOffset, 0, self.plusButtonImageOffset, 0);
-            }
-            else {
-                obj.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-            }
+        if (obj.isPlusButton) {
+            obj.imageInsets = UIEdgeInsetsMake(-self.plusButtonImageOffset, 0, self.plusButtonImageOffset, 0);
         }
         else {
-            obj.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+            if (obj.title.length > 0) {
+                obj.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+            }
+            else {
+                obj.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+            }
         }
     }];
 }
 
+//- (void)p_resetTabBarItemFrames
+//{
+//    CGFloat itemWidth = self.itemWidth;
+//    __block CGFloat x = self.edgeLR;
+//    [self.items enumerateObjectsUsingBlock:^(UITabBarItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        CGFloat radio = obj.isPlusButton ? self.plusItemWidthRatio : 1.0;
+//        CGFloat width = itemWidth * radio;
+//        [obj.tabBarControl setX:x];
+//        [obj.tabBarControl setWidth:width];
+//        x += width;
+//    }];
+//}
+
 #pragma mark - # Getters
 - (NSArray *)barControlItems
 {
-    NSArray *barItems = [self.subviews sortedArrayUsingComparator:^NSComparisonResult(UIView * formerView, UIView * latterView) {
+    NSArray *barItems = [self.subviews sortedArrayUsingComparator:^NSComparisonResult(UIView *formerView, UIView *latterView) {
         CGFloat startX = formerView.frame.origin.x;
         CGFloat endX = latterView.frame.origin.x;
         return startX > endX ? NSOrderedDescending : NSOrderedAscending;

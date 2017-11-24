@@ -7,7 +7,6 @@
 //
 
 #import "TLMineInfoAvatarCell.h"
-#import <UIImageView+WebCache.h>
 #import "TLMacros.h"
 
 @interface TLMineInfoAvatarCell ()
@@ -39,7 +38,7 @@
         [self.avatarImageView setImage: [UIImage imageNamed:item.rightImagePath]];
     }
     else if (item.rightImageURL){
-        [self.avatarImageView sd_setImageWithURL:TLURL(item.rightImageURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarImageView tt_setImageWithURL:TLURL(item.rightImageURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     else {
         [self.avatarImageView setImage:nil];

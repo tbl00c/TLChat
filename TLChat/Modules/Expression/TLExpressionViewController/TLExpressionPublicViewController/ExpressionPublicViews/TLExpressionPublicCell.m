@@ -7,8 +7,6 @@
 //
 
 #import "TLExpressionPublicCell.h"
-#import <UIImageView+WebCache.h>
-#import "UIImage+Color.h"
 
 @interface TLExpressionPublicCell ()
 
@@ -39,7 +37,7 @@
         [self.imageView setImage:image];
     }
     else {
-        [self.imageView sd_setImageWithURL:TLURL(group.groupIconURL) placeholderImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
+        [self.imageView tt_setImageWithURL:TLURL(group.groupIconURL) placeholderImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "TLQRCodeViewController.h"
-#import <UIImageView+WebCache.h>
 #import "TLMacros.h"
 
 #define         SPACE_EDGE                  20
@@ -99,7 +98,7 @@
 - (void)setAvatarURL:(NSString *)avatarURL
 {
     _avatarURL = avatarURL;
-    [self.avatarImageView sd_setImageWithURL:TLURL(avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+    [self.avatarImageView tt_setImageWithURL:TLURL(avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
 }
 
 - (void)setAvatarPath:(NSString *)avatarPath

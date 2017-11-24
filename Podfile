@@ -5,13 +5,18 @@ target :TLChat do
     
     # 个人开源Pod
     # TLKit 基础库，包含常用宏定义、常用分类、常用功能组件（HUD、actionSheet等）
-    pod 'TLKit', :git => 'git@github.com:tbl00c/TLKit.git', :tag => '0.0.9'
+    pod 'TLKit', :git => 'git@github.com:tbl00c/TLKit.git', :tag => '0.0.13'
 #    pod 'TLKit', :path => '~/TLPods/TLKit'
 
     # 全能tabBarController
-    pod 'TLTabBarController', :git => 'git@github.com:tbl00c/TLTabBarController.git', :tag => '0.0.1'
+    pod 'TLTabBarController', :git => 'git@github.com:tbl00c/TLTabBarController.git', :tag => '0.0.2'
+#    pod 'TLKit', :path => '~/TLPods/TLTabBarController'
+
+    # Bug修复版JZ
+    pod 'JZNavigationExtension', :git => 'https://github.com/tbl00c/JZNavigationExtension.git', :tag => '3.7'
     
-    
+    #-----------------------------------------
+
     # 第三方Pod
     pod 'AFNetworking', '~> 3.0.4'
     pod 'SDWebImage', '~> 3.7.4'

@@ -22,7 +22,6 @@ UIImage *__tl_imageWithColor(UIColor *color)
     return theImage;
 }
 
-static char *tl_plusButtonImageOffset = "tl_plusButtonImageOffset";
 
 @implementation UITabBar (TLExtension)
 
@@ -53,13 +52,36 @@ static char *tl_plusButtonImageOffset = "tl_plusButtonImageOffset";
     }
 }
 
+static char *tl_plusButtonImageOffset = "tl_plusButtonImageOffset";
 - (void)setPlusButtonImageOffset:(CGFloat)plusButtonImageOffset
 {
-    objc_setAssociatedObject(self, tl_plusButtonImageOffset, @(plusButtonImageOffset), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &tl_plusButtonImageOffset, @(plusButtonImageOffset), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 - (CGFloat)plusButtonImageOffset
 {
-    return [(NSNumber *)objc_getAssociatedObject(self, tl_plusButtonImageOffset) doubleValue];
+    return [(NSNumber *)objc_getAssociatedObject(self, &tl_plusButtonImageOffset) doubleValue];
+}
+
+static char *tl_plusItemWidthRatio = "tl_plusItemWidthRatio";
+- (void)setPlusItemWidthRatio:(CGFloat)plusItemWidthRatio
+{
+    objc_setAssociatedObject(self, &tl_plusItemWidthRatio, @(plusItemWidthRatio), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (CGFloat)plusItemWidthRatio
+{
+    CGFloat radio = [(NSNumber *)objc_getAssociatedObject(self, &tl_plusItemWidthRatio) doubleValue];
+    return radio > 0.0 ? radio : 1.0;
+}
+
+static char *tl_edgeLR = "tl_edgeLR";
+- (void)setEdgeLR:(CGFloat)edgeLR
+{
+    objc_setAssociatedObject(self, &tl_edgeLR, @(edgeLR), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (CGFloat)edgeLR
+{
+    CGFloat radio = [(NSNumber *)objc_getAssociatedObject(self, &tl_edgeLR) doubleValue];
+    return radio > 0.0 ? radio : 1.0;
 }
 
 @end

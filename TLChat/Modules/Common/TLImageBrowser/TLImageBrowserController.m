@@ -7,7 +7,6 @@
 //
 
 #import "TLImageBrowserController.h"
-#import <UIImageView+WebCache.h>
 
 @interface TLImageBrowserController () <UIScrollViewDelegate>
 

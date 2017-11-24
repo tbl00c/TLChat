@@ -10,6 +10,7 @@
 
 @interface UITabBar (TLExtension)
 
+/// plusButton图片相对于底部的偏移量（凸出）
 @property (nonatomic, assign) CGFloat plusButtonImageOffset;
 
 /**

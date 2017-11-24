@@ -69,7 +69,11 @@
     // 更新圆角大小
     [self.layer setCornerRadius:self.frame.size.height / 2.0];
     // 更新titleLabel坐标和大小
-    if ([self.badgeValue isEqualToString:@""]) {
+    if (self.badgeValue == nil) {
+        [self.titleLabel setFrame:CGRectZero];
+        return;
+    }
+    else if ([self.badgeValue isEqualToString:@""]) {
         [self.titleLabel setFrame:CGRectMake(0, 0, self.minHeight, self.minHeight)];
     }
     else {

@@ -48,9 +48,9 @@ static char *tl_actionBlock = "__tl_actionBlock";
     if (!self.tabBarControl || self.badgeValue == nil) {
         return;
     }
-
+    
     [self.tabBarControl addSubview:self.tlBadge];
-    [self.tlBadge.layer setZPosition:1000];
+    [self.tlBadge.layer setZPosition:100];
 
     CGSize size = [TLBadge badgeSizeWithValue:self.badgeValue];
     CGFloat x, y;
@@ -103,7 +103,7 @@ static char *tl_actionBlock = "__tl_actionBlock";
 
 - (void)setIsPlusButton:(BOOL)isPlusButton
 {
-    objc_setAssociatedObject(self, tl_isPlusButton, @(isPlusButton), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, tl_isPlusButton, @(isPlusButton), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 - (BOOL)isPlusButton
 {

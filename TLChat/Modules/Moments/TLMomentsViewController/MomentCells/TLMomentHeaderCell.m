@@ -7,7 +7,6 @@
 //
 
 #import "TLMomentHeaderCell.h"
-#import <UIButton+WebCache.h>
 #import "TLMacros.h"
 
 #define         WIDTH_AVATAR        65
@@ -44,9 +43,9 @@
 - (void)setUser:(TLUser *)user
 {
     _user = user;
-    [self.backgroundWall sd_setImageWithURL:TLURL(user.detailInfo.momentsWallURL) forState:UIControlStateNormal];
-    [self.backgroundWall sd_setImageWithURL:TLURL(user.detailInfo.momentsWallURL) forState:UIControlStateHighlighted];
-    [self.avatarView sd_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+    [self.backgroundWall tt_setImageWithURL:TLURL(user.detailInfo.momentsWallURL) forState:UIControlStateNormal];
+    [self.backgroundWall tt_setImageWithURL:TLURL(user.detailInfo.momentsWallURL) forState:UIControlStateHighlighted];
+    [self.avatarView tt_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     [self.usernameLabel setText:user.nikeName];
     [self.mottoLabel setText:user.detailInfo.motto];
 }

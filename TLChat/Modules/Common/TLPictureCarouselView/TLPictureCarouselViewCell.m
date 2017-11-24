@@ -7,7 +7,6 @@
 //
 
 #import "TLPictureCarouselViewCell.h"
-#import <UIImageView+WebCache.h>
 
 @interface TLPictureCarouselViewCell ()
 
@@ -29,7 +28,7 @@
 
 - (void)setModel:(id<TLPictureCarouselProtocol>)model
 {
-    [self.imageView sd_setImageWithURL:TLURL([model pictureURL])];
+    [self.imageView tt_setImageWithURL:TLURL([model pictureURL])];
 }
 
 #pragma mark - # Private Methods

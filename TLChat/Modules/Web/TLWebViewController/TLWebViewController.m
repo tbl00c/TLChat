@@ -281,7 +281,7 @@
 - (UIProgressView *)progressView
 {
     if (_progressView == nil) {
-        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT + STATUSBAR_HEIGHT, SCREEN_WIDTH, 10.0f)];
+        _progressView = [[UIProgressView alloc] initWithFrame:self.view.bounds];
         [_progressView setTransform: CGAffineTransformMakeScale(1.0f, 2.0f)];
         [_progressView setProgressTintColor:RGBAColor(2.0, 187.0, 0.0, 1.0f)];
         [_progressView setTrackTintColor:[UIColor clearColor]];

@@ -1,6 +1,6 @@
 {
   "name": "TLKit",
-  "version": "0.0.8",
+  "version": "0.0.13",
   "platforms": {
     "ios": "8.0"
   },
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/tbl00c/TLKit.git",
-    "tag": "0.0.8"
+    "tag": "0.0.13"
   },
   "public_header_files": "TLKit/TLKit.h",
   "source_files": "TLKit/TLKit.h",
@@ -45,7 +45,7 @@
 
             ],
             "SVProgressHUD": [
-              "~> 2.2"
+              "~> 2.2.2"
             ]
           }
         }
@@ -183,7 +183,7 @@
             },
             {
               "name": "UINavigationController",
-              "source_files": "TLKit/TLCategories/UIKit/UINavigationController/**/*.{h,m}"
+              "source_files": "TLKit/TLCategories/UIKit/UINavigationController/*.{h,m}"
             },
             {
               "name": "UIColor",

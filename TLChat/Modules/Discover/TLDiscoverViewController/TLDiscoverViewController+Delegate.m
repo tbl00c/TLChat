@@ -61,11 +61,12 @@
         PushVC(gameVC);
     }
     else if (cellTag == TLDiscoverCellTagProgram) {     // 小程序
-        [TLUIUtility showAlertWithTitle:@"这么牛逼的功能，我还仿不出来~~"];
+        TLWebViewController *webVC = [[TLWebViewController alloc] initWithUrl:@"http://libokun.com"];
+        PushVC(webVC)
     }
 
     if ([dataModel isKindOfClass:[TLMenuItem class]]) {
-        BOOL needResetTabBarBadge = dataModel.badge ? YES : NO;
+        BOOL needResetTabBarBadge = (dataModel.badge || (dataModel.rightIconURL && dataModel.showRightIconBadge));
         BOOL hasDesc = dataModel.subTitle.length > 0 || dataModel.rightIconURL.length > 0;
         
         if (needResetTabBarBadge) {

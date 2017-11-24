@@ -7,7 +7,6 @@
 //
 
 #import "TLSettingCell.h"
-#import <UIImageView+WebCache.h>
 #import "TLMacros.h"
 
 @interface TLSettingCell ()
@@ -42,7 +41,7 @@
         [self.rightImageView setImage: [UIImage imageNamed:item.rightImagePath]];
     }
     else if (item.rightImageURL){
-        [self.rightImageView sd_setImageWithURL:TLURL(item.rightImageURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.rightImageView tt_setImageWithURL:TLURL(item.rightImageURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     else {
         [self.rightImageView setImage:nil];

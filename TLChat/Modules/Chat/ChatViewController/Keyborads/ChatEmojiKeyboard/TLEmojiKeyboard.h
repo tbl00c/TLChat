@@ -13,7 +13,7 @@
 
 @interface TLEmojiKeyboard : TLBaseKeyboard
 
-@property (nonatomic, assign) NSMutableArray *emojiGroupData;
+@property (nonatomic, strong) NSMutableArray *emojiGroupData;
 
 @property (nonatomic, assign) id<TLEmojiKeyboardDelegate> delegate;
 

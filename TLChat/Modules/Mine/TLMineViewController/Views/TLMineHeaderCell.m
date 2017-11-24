@@ -7,7 +7,6 @@
 //
 
 #import "TLMineHeaderCell.h"
-#import <UIImageView+WebCache.h>
 
 #define     MINE_SPACE_X        14.0f
 #define     MINE_SPACE_Y        12.0f
@@ -80,7 +79,7 @@
         [self.avatarImageView setImage:[UIImage imageNamed:user.avatarPath]];
     }
     else{
-        [self.avatarImageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarImageView tt_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     [self.nikenameLabel setText:user.nikeName];
     [self.wechatIDLabel setText:user.username ? [LOCSTR(@"微信号：") stringByAppendingString:user.username] : @""];

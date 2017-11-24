@@ -7,7 +7,6 @@
 //
 
 #import "TLMomentBaseView.h"
-#import <UIButton+WebCache.h>
 #import "TLMomentExtensionView.h"
 
 #define         EDGE_LEFT       10.0f
@@ -60,7 +59,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
 - (void)setMoment:(TLMoment *)moment
 {
     _moment = moment;
-    [self.avatarView sd_setImageWithURL:TLURL(moment.user.avatarURL) forState:UIControlStateNormal];
+    [self.avatarView tt_setImageWithURL:TLURL(moment.user.avatarURL) forState:UIControlStateNormal];
     [self.usernameView setTitle:moment.user.showName forState:UIControlStateNormal];
     [self.dateLabel setText:@"1小时前"];
     [self.originLabel setText:@"微博"];

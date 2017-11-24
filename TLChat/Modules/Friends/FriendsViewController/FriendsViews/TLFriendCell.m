@@ -7,7 +7,6 @@
 //
 
 #import "TLFriendCell.h"
-#import <UIImageView+WebCache.h>
 #import "TLMacros.h"
 
 #define     FRIENDS_SPACE_X         10.0f
@@ -47,7 +46,7 @@
         [self.avatarImageView setImage:[UIImage imageNamed:user.avatarPath]];
     }
     else {
-        [self.avatarImageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarImageView tt_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     
     [self.usernameLabel setText:user.showName];

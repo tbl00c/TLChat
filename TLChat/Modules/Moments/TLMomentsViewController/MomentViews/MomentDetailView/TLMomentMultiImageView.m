@@ -8,7 +8,6 @@
 
 #import "TLMomentMultiImageView.h"
 #import "UIView+Extensions.h"
-#import <UIButton+WebCache.h>
 
 #define     WIDTH_IMAGE_ONE     (SCREEN_WIDTH - 70) * 0.6
 #define     WIDTH_IMAGE         (SCREEN_WIDTH - 70) * 0.31
@@ -55,7 +54,7 @@
             [imageView addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self.imageViews addObject:imageView];
         }
-        [imageView sd_setImageWithURL:images[i] forState:UIControlStateNormal];
+        [imageView tt_setImageWithURL:images[i] forState:UIControlStateNormal];
         [imageView setFrame:CGRectMake(x, y, imageWidth, imageHeight)];
         [self addSubview:imageView];
         

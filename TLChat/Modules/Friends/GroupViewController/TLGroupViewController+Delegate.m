@@ -50,9 +50,7 @@
     UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
     [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
     [vc setHidesBottomBarWhenPushed:YES];
-    [vc.navigationController jz_pushViewController:chatVC animated:YES completion:^(UINavigationController *navigationController, BOOL finished) {
-        [self.navigationController popViewControllerAnimated:NO];
-    }];
+    [vc.navigationController pushViewController:chatVC animated:YES];
     [vc setHidesBottomBarWhenPushed:NO];
 }
 

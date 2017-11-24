@@ -33,7 +33,6 @@ PODS:
     - JSPatchPlatform/Core (= 1.6.6)
   - JSPatchPlatform/Core (1.6.6):
     - JSPatch
-  - JZNavigationExtension (3.7)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.13)
@@ -146,7 +145,6 @@ DEPENDENCIES:
   - CocoaLumberjack (~> 2.2.0)
   - FMDB (~> 2.6)
   - JSPatchPlatform (~> 1.6.6)
-  - JZNavigationExtension (from `https://github.com/tbl00c/JZNavigationExtension.git`, tag `3.7`)
   - Masonry (~> 0.6.4)
   - MJExtension (~> 3.0.10)
   - MJRefresh (~> 3.1.0)
@@ -158,9 +156,6 @@ DEPENDENCIES:
   - UMengAnalytics (~> 3.6.6)
 
 EXTERNAL SOURCES:
-  JZNavigationExtension:
-    :git: https://github.com/tbl00c/JZNavigationExtension.git
-    :tag: '3.7'
   TLKit:
     :git: git@github.com:tbl00c/TLKit.git
     :tag: 0.0.13
@@ -169,9 +164,6 @@ EXTERNAL SOURCES:
     :tag: 0.0.3
 
 CHECKOUT OPTIONS:
-  JZNavigationExtension:
-    :git: https://github.com/tbl00c/JZNavigationExtension.git
-    :tag: '3.7'
   TLKit:
     :git: git@github.com:tbl00c/TLKit.git
     :tag: 0.0.13
@@ -186,7 +178,6 @@ SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   JSPatch: 02cfed591cb907bbfe80a346666e5a35fc2d349d
   JSPatchPlatform: 8cc9aaebe21109d5fdfb4500384ddf38ed0990e9
-  JZNavigationExtension: 55dbcd4ac1abe4ff003019d324fce548de509255
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
@@ -199,6 +190,6 @@ SPEC CHECKSUMS:
   TLTabBarController: f5e5df41839298fbe0136c3bddcb49ee0991ae14
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 
-PODFILE CHECKSUM: 378c8a35a0a8283c3d048867b42ac676d6726145
+PODFILE CHECKSUM: 3f0468b52a1f963a4fb2b09918c8201b004ff6a4
 
 COCOAPODS: 1.2.1

@@ -151,15 +151,12 @@
         TLWebViewController *webVC = [[TLWebViewController alloc] init];
         [webVC setUrl:ansStr];
         __block id vc = self.navigationController.rootViewController;
-        [self.navigationController jz_popViewControllerAnimated:NO completion:^(UINavigationController *navigationController, BOOL finished) {
-            if (finished) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [vc setHidesBottomBarWhenPushed:YES];
-                    [[vc navigationController] pushViewController:webVC animated:YES];
-                    [vc setHidesBottomBarWhenPushed:NO];
-                });
-            }
-        }];
+        [self.navigationController popViewControllerAnimated:NO];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [vc setHidesBottomBarWhenPushed:YES];
+            [[vc navigationController] pushViewController:webVC animated:YES];
+            [vc setHidesBottomBarWhenPushed:NO];
+        });
     }
     else {
         [TLUIUtility showAlertWithTitle:@"扫描结果" message:ansStr cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {

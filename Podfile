@@ -13,8 +13,8 @@ target :TLChat do
 #    pod 'TLTabBarController', :path => '~/TLPods/TLTabBarController'
 
     # Bug修复版JZ
-    pod 'JZNavigationExtension', :git => 'https://github.com/tbl00c/JZNavigationExtension.git', :tag => '3.7'
-    
+#    pod 'JZNavigationExtension', :git => 'https://github.com/tbl00c/JZNavigationExtension.git', :tag => '3.8'
+
     #-----------------------------------------
 
     # 第三方Pod

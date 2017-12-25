@@ -56,7 +56,7 @@
     [self.backgroundWall mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self.contentView);
         make.bottom.mas_equalTo(self.mottoLabel.mas_top).mas_offset(- WIDTH_AVATAR / 3.0f - 8.0f);
-        make.top.mas_lessThanOrEqualTo(self.contentView.mas_top);
+        make.top.mas_equalTo(-60);
     }];
     
     [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,6 +83,8 @@
     if (_backgroundWall == nil) {
         _backgroundWall = [[UIButton alloc] init];
         [_backgroundWall setBackgroundColor:[UIColor colorGrayLine]];
+        [_backgroundWall setContentMode:UIViewContentModeScaleAspectFill];
+        [_backgroundWall setClipsToBounds:YES];
     }
     return _backgroundWall;
 }

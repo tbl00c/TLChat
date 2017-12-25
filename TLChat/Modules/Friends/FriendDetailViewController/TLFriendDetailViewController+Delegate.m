@@ -76,11 +76,7 @@
         }
         else {
             [chatVC setPartner:self.user];
-            UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
-            [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
-            [vc setHidesBottomBarWhenPushed:YES];
-            [vc.navigationController pushViewController:vc animated:YES];
-            [vc setHidesBottomBarWhenPushed:NO];
+            PushVC(chatVC)
         }
     }
     else {

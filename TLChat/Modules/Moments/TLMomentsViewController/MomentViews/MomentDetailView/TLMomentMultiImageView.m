@@ -50,6 +50,8 @@
         }
         else {
             imageView = [[UIButton alloc] init];
+            [imageView.imageView setContentMode:UIViewContentModeScaleAspectFill];
+            [imageView setClipsToBounds:YES];
             [imageView setTag:i];
             [imageView addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self.imageViews addObject:imageView];

@@ -34,7 +34,7 @@
     user.detailInfo.location = @"山东 滨州";
     user.detailInfo.sex = @"男";
     user.detailInfo.motto = @"Hello world!";
-    user.detailInfo.momentsWallURL = @"http://img06.tooopen.com/images/20160913/tooopen_sy_178786212749.jpg";
+    user.detailInfo.momentsWallURL = @"http://pic1.win4000.com/wallpaper/c/5791e49b37a5c.jpg";
 
     [self setUser:user];
 }

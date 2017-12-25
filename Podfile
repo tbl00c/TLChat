@@ -3,7 +3,7 @@ inhibit_all_warnings!
 
 target :TLChat do
     
-    # 个人开源Pod
+    # --------------------- 个人开源Pod  -----------------------
     # TLKit 基础库，包含常用宏定义、常用分类、常用功能组件（HUD、actionSheet等）
     pod 'TLKit', :git => 'git@github.com:tbl00c/TLKit.git', :tag => '0.0.13'
 #    pod 'TLKit', :path => '~/TLPods/TLKit'
@@ -13,11 +13,10 @@ target :TLChat do
 #    pod 'TLTabBarController', :path => '~/TLPods/TLTabBarController'
 
     # Bug修复版JZ
-#    pod 'JZNavigationExtension', :git => 'https://github.com/tbl00c/JZNavigationExtension.git', :tag => '3.8'
+    pod 'JZNavigationExtension', :git => 'https://github.com/tbl00c/JZNavigationExtension.git', :tag => '4.0'
 
-    #-----------------------------------------
 
-    # 第三方Pod
+    # --------------------- 第三方Pod -----------------------
     pod 'AFNetworking', '~> 3.0.4'
     pod 'SDWebImage', '~> 3.7.4'
     pod 'Masonry', '~> 0.6.4'

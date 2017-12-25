@@ -45,6 +45,8 @@
 		C243B65C1F7A5B810059A886 /* TLDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D3511F7A54AB007EB0A6 /* TLDownloadRequest.m */; };
 		C243B65D1F7A5B860059A886 /* TLBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D34D1F7A54AB007EB0A6 /* TLBaseRequest.m */; };
 		C243B65E1F7A5B890059A886 /* TLBaseRequest+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D34B1F7A54AB007EB0A6 /* TLBaseRequest+Private.m */; };
+		C26CA4321FF0E5F700B0AF2C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C26CA4301FF0E5F700B0AF2C /* Localizable.strings */; };
+		C26CA4331FF0E5F700B0AF2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C26CA4311FF0E5F700B0AF2C /* InfoPlist.strings */; };
 		C292D2AB1F7A378A007EB0A6 /* UIViewController+PopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D2AA1F7A378A007EB0A6 /* UIViewController+PopGesture.m */; };
 		C292D3221F7A4B5E007EB0A6 /* TLMomentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D2EF1F7A4B58007EB0A6 /* TLMomentDetailViewController.m */; };
 		C292D3231F7A4B67007EB0A6 /* TLMoment.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D2F31F7A4B58007EB0A6 /* TLMoment.m */; };
@@ -377,6 +379,8 @@
 		C23EE4691F7392540069885F /* TLMyExpressionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMyExpressionCell.m; sourceTree = "<group>"; };
 		C23EE46A1F7392540069885F /* TLMyExpressionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMyExpressionViewController.h; sourceTree = "<group>"; };
 		C23EE46B1F7392540069885F /* TLMyExpressionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMyExpressionViewController.m; sourceTree = "<group>"; };
+		C26CA4301FF0E5F700B0AF2C /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		C26CA4311FF0E5F700B0AF2C /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		C292D2A91F7A378A007EB0A6 /* UIViewController+PopGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PopGesture.h"; sourceTree = "<group>"; };
 		C292D2AA1F7A378A007EB0A6 /* UIViewController+PopGesture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PopGesture.m"; sourceTree = "<group>"; };
 		C292D2EE1F7A4B58007EB0A6 /* TLMomentDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMomentDetailViewController.h; sourceTree = "<group>"; };
@@ -1002,6 +1006,8 @@
 		C2097EE61C52326500163B5C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C26CA4311FF0E5F700B0AF2C /* InfoPlist.strings */,
+				C26CA4301FF0E5F700B0AF2C /* Localizable.strings */,
 				C2142EC61C5326C30030B29B /* PrefixHeader.pch */,
 				C2097EF71C52326500163B5C /* Info.plist */,
 				C2097EE71C52326500163B5C /* main.m */,
@@ -3206,6 +3212,8 @@
 				C2D7CB971F72470400648CED /* FriendList.json in Resources */,
 				C2D7CB4C1F72470400648CED /* Common.xcassets in Resources */,
 				C2D7CB491F72470400648CED /* Chat.xcassets in Resources */,
+				C26CA4321FF0E5F700B0AF2C /* Localizable.strings in Resources */,
+				C26CA4331FF0E5F700B0AF2C /* InfoPlist.strings in Resources */,
 				C2D7CB951F72470400648CED /* Friends.xcassets in Resources */,
 				C2D7CB961F72470400648CED /* FriendGroupList.json in Resources */,
 				C2D7CB6F1F72470400648CED /* Discover.xcassets in Resources */,

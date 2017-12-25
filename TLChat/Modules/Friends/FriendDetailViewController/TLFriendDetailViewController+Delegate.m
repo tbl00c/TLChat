@@ -71,12 +71,14 @@
             }
             else {
                 [chatVC setPartner:self.user];
+                [self setHidesBottomBarWhenPushed:YES];
                 [self.navigationController pushViewController:chatVC animated:YES];
             }
         }
         else {
             [chatVC setPartner:self.user];
-            PushVC(chatVC)
+            [self setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:chatVC animated:YES];
         }
     }
     else {

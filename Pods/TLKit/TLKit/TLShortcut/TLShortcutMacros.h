@@ -70,7 +70,7 @@
 #pragma mark - # 快捷方法
 /// PushVC
 #define     PushVC(vc)                  {\
-            [vc setHidesBottomBarWhenPushed:YES];\
+            [self setHidesBottomBarWhenPushed:YES];\
             [self.navigationController pushViewController:vc animated:YES];\
 }
 

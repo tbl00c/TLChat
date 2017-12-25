@@ -15,10 +15,13 @@
 
 @interface TLExpressionViewController ()
 
+/// navBar分段控制器
 @property (nonatomic, strong) UISegmentedControl *segmentedControl;
 
+/// 精选表情
 @property (nonatomic, strong) TLExpressionChosenViewController *expChosenVC;
 
+/// 更多表情
 @property (nonatomic, strong) TLExpressionPublicViewController *expPublicVC;
 
 @end
@@ -29,45 +32,42 @@
 {
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
+    
+    // navBar分段控制器
     [self.navigationItem setTitleView:self.segmentedControl];
+    
+    // 精选表情
+    self.expChosenVC = [[TLExpressionChosenViewController alloc] init];
     [self.view addSubview:self.expChosenVC.view];
     [self addChildViewController:self.expChosenVC];
+    
+    // 推荐表情
+    self.expPublicVC = [[TLExpressionPublicViewController alloc] init];
     [self addChildViewController:self.expPublicVC];
     
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown)];
-    [self.navigationItem setRightBarButtonItem:rightBarButton];
+    @weakify(self);
+    [self addRightBarButtonWithImage:[UIImage imageNamed:@"nav_setting"] actionBlick:^{
+        @strongify(self);
+        TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
+        PushVC(myExpressionVC);
+    }];
     
     if (self.navigationController.rootViewController == self) {
-        UIBarButtonItem *dismissBarButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain actionBlick:^{
+        [self addLeftBarButtonWithTitle:LOCSTR(@"取消") actionBlick:^{
+            @strongify(self);
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
-        [self.navigationItem setLeftBarButtonItem:dismissBarButton];
     }
 }
 
 #pragma mark - # Event Response
-- (void)rightBarButtonDown
-{
-    TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:myExpressionVC animated:YES];
-}
-
 - (void)segmentedControlChanged:(UISegmentedControl *)segmentedControl
 {
     if (segmentedControl.selectedSegmentIndex == 0) {
-        [self transitionFromViewController:self.expPublicVC toViewController:self.expChosenVC duration:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
-        } completion:^(BOOL finished) {
-            
-        }];
+        [self transitionFromViewController:self.expPublicVC toViewController:self.expChosenVC duration:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:nil];
     }
     else {
-        [self transitionFromViewController:self.expChosenVC toViewController:self.expPublicVC duration:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
-        } completion:^(BOOL finished) {
-            
-        }];
+        [self transitionFromViewController:self.expChosenVC toViewController:self.expPublicVC duration:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:nil];
     }
 }
 
@@ -81,22 +81,6 @@
         [_segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];
     }
     return _segmentedControl;
-}
-
-- (TLExpressionChosenViewController *)expChosenVC
-{
-    if (_expChosenVC == nil) {
-        _expChosenVC = [[TLExpressionChosenViewController alloc] init];
-    }
-    return _expChosenVC;
-}
-
-- (TLExpressionPublicViewController *)expPublicVC
-{
-    if (_expPublicVC == nil) {
-        _expPublicVC = [[TLExpressionPublicViewController alloc] init];
-    }
-    return _expPublicVC;
 }
 
 @end

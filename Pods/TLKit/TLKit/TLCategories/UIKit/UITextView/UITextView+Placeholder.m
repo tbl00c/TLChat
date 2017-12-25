@@ -11,9 +11,7 @@
 
 static const char *tt_placeholderTextView = "tt_placeholderTextView";
 
-
 @implementation UITextView (Placeholder)
-@dynamic placeholderTextView;
 
 - (UITextView *)placeHolderTextView
 {
@@ -40,7 +38,7 @@ static const char *tt_placeholderTextView = "tt_placeholderTextView";
 }
 - (NSString *)placeholder
 {
-    return self.placeholderTextView.text;
+    return self.placeHolderTextView.text;
 }
 
 #pragma mark - # Delegate

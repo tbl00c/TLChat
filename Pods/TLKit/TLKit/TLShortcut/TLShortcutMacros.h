@@ -21,7 +21,7 @@
 #define     STATUSBAR_HEIGHT            (IS_IPHONEX ? 44.0f : 20.0f)
 #define     TABBAR_HEIGHT               (IS_IPHONEX ? 49.0f + 34.0f : 49.0f)
 #define     NAVBAR_HEIGHT               44.0f
-#define     SEARCHBAR_HEIGHT            44.0f
+#define     SEARCHBAR_HEIGHT            (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.0") ? 52.0f : 44.0f)
 #define     BORDER_WIDTH_1PX            ([[UIScreen mainScreen] scale] > 0.0 ? 1.0 / [[UIScreen mainScreen] scale] : 1.0)
 
 #define     SAFEAREA_INSETS     \

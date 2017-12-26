@@ -49,9 +49,8 @@
     [chatVC setPartner:group];
     UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
     [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
-    [vc setHidesBottomBarWhenPushed:YES];
+    [chatVC setHidesBottomBarWhenPushed:YES];
     [vc.navigationController pushViewController:chatVC animated:YES];
-    [vc setHidesBottomBarWhenPushed:NO];
 }
 
 //MARK: UISearchBarDelegate

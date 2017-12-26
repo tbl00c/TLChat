@@ -68,8 +68,7 @@
         TLMoment *moment = [self.data objectAtIndex:indexPath.row - 1];
         TLMomentDetailViewController *detailVC = [[TLMomentDetailViewController alloc] init];
         [detailVC setMoment:moment];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:detailVC animated:YES];
+        PushVC(detailVC);
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

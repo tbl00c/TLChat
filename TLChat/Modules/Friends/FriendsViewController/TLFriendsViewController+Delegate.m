@@ -105,35 +105,25 @@
     if (indexPath.section == 0) {
         if ([user.userID isEqualToString:@"-1"]) {
             TLNewFriendViewController *newFriendVC = [[TLNewFriendViewController alloc] init];
-            [self setHidesBottomBarWhenPushed:YES];
-            [self.navigationController pushViewController:newFriendVC animated:YES];
-            [self setHidesBottomBarWhenPushed:NO];
+            PushVC(newFriendVC);
         }
         else if ([user.userID isEqualToString:@"-2"]) {
             TLGroupViewController *groupVC = [[TLGroupViewController alloc] init];
-            [self setHidesBottomBarWhenPushed:YES];
-            [self.navigationController pushViewController:groupVC animated:YES];
-            [self setHidesBottomBarWhenPushed:NO];
+            PushVC(groupVC);
         }
         else if ([user.userID isEqualToString:@"-3"]) {
             TLTagsViewController *tagsVC = [[TLTagsViewController alloc] init];
-            [self setHidesBottomBarWhenPushed:YES];
-            [self.navigationController pushViewController:tagsVC animated:YES];
-            [self setHidesBottomBarWhenPushed:NO];
+            PushVC(tagsVC)
         }
         else if ([user.userID isEqualToString:@"-4"]) {
             TLPublicServerViewController *publicServer = [[TLPublicServerViewController alloc] init];
-            [self setHidesBottomBarWhenPushed:YES];
-            [self.navigationController pushViewController:publicServer animated:YES];
-            [self setHidesBottomBarWhenPushed:NO];
+            PushVC(publicServer)
         }
     }
     else {
         TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
         [detailVC setUser:user];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:detailVC animated:YES];
-        [self setHidesBottomBarWhenPushed:NO];
+        PushVC(detailVC)
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

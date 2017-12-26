@@ -37,8 +37,7 @@
 {
     TLFriendDetailSettingViewController *detailSetiingVC = [[TLFriendDetailSettingViewController alloc] init];
     [detailSetiingVC setUser:self.user];
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:detailSetiingVC animated:YES];
+    PushVC(detailSetiingVC);
 }
 
 @end

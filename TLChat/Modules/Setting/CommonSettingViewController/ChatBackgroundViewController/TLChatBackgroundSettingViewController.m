@@ -43,8 +43,7 @@
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     if ([item.title isEqualToString:@"选择背景图"]) {
         TLChatBackgroundSelectViewController *bgSelectVC = [[TLChatBackgroundSelectViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:bgSelectVC animated:YES];
+        PushVC(bgSelectVC);
     }
     else if ([item.title isEqualToString:@"从手机相册中选择"]) {
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];

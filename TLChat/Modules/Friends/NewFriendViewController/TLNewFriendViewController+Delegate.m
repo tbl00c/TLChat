@@ -85,8 +85,7 @@
 {
     if ([TLThirdPartFriendTypeContacts isEqualToString:thirdPartFriendType]) {
         TLContactsViewController *contactsVC = [[TLContactsViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:contactsVC animated:YES];
+        PushVC(contactsVC);
     }
     else if ([TLThirdPartFriendTypeQQ isEqualToString:thirdPartFriendType]) {
         

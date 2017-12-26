@@ -72,8 +72,7 @@
         TLEmojiGroup *emojiGroup = [group objectAtIndex:indexPath.row];
         TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
         [detailVC setGroup:emojiGroup];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:detailVC animated:YES];
+        PushVC(detailVC);
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

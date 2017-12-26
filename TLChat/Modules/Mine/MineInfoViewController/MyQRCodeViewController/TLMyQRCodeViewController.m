@@ -52,8 +52,7 @@
     if (actionSheet.tag == ACTIONTAG_SHOW_SCANNER && buttonIndex == 2) {
         TLScanningViewController *scannerVC = [[TLScanningViewController alloc] init];
         [scannerVC setDisableFunctionBar:YES];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:scannerVC animated:YES];
+        PushVC(scannerVC);
     }
     else if (buttonIndex == 1) {
         [self.qrCodeVC saveQRCodeToSystemAlbum];

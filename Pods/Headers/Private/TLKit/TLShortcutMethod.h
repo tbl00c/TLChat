@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLShortcut/TLShortcutMethod.h
+../../../../../../../TLPods/TLKit/TLKit/TLShortcut/TLShortcutMethod.h

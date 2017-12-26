@@ -61,20 +61,17 @@
     if ([item.title isEqualToString:@"群二维码"]) {
         TLGroupQRCodeViewController *gorupQRCodeVC = [[TLGroupQRCodeViewController alloc] init];
         [gorupQRCodeVC setGroup:self.group];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:gorupQRCodeVC animated:YES];
+        PushVC(gorupQRCodeVC);
     }
     else if ([item.title isEqualToString:@"设置当前聊天背景"]) {
         TLChatBackgroundSettingViewController *chatBGSettingVC = [[TLChatBackgroundSettingViewController alloc] init];
         [chatBGSettingVC setPartnerID:self.group.groupID];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:chatBGSettingVC animated:YES];
+        PushVC(chatBGSettingVC);
     }
     else if ([item.title isEqualToString:@"聊天文件"]) {
         TLChatFileViewController *chatFileVC = [[TLChatFileViewController alloc] init];
         [chatFileVC setPartnerID:self.group.groupID];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:chatFileVC animated:YES];
+        PushVC(chatFileVC);
     }
     else if ([item.title isEqualToString:@"清空聊天记录"]) {
         TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清空聊天记录" otherButtonTitles: nil];
@@ -114,8 +111,7 @@
 {
     TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
     [detailVC setUser:user];
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    PushVC(detailVC);
 }
 
 - (void)userGroupCellAddUserButtonDown

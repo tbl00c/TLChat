@@ -84,9 +84,8 @@
         }
         [chatVC setPartner:group];
     }
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:chatVC animated:YES];
-    [self setHidesBottomBarWhenPushed:NO];
+   
+    PushVC(chatVC)
     
     // 标为已读
     [(TLConversationCell *)[self.tableView cellForRowAtIndexPath:indexPath] markAsRead];
@@ -154,9 +153,7 @@
 {
     if (item.className.length > 0) {
         id vc = [[NSClassFromString(item.className) alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:vc animated:YES];
-        [self setHidesBottomBarWhenPushed:NO];
+        PushVC(vc);
     }
     else {
         [TLUIUtility showAlertWithTitle:item.title message:@"功能暂未实现"];

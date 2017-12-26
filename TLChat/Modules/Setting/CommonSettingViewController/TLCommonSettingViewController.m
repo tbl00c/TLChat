@@ -33,18 +33,15 @@
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     if ([item.title isEqualToString:@"字体大小"]) {
         TLChatFontViewController *chatFontVC = [[TLChatFontViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:chatFontVC animated:YES];
+        PushVC(chatFontVC);
     }
     else if ([item.title isEqualToString:@"聊天背景"]) {
         TLChatBackgroundSettingViewController *chatBGSettingVC = [[TLChatBackgroundSettingViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:chatBGSettingVC animated:YES];
+        PushVC(chatBGSettingVC);
     }
     else if ([item.title isEqualToString:@"我的表情"]) {
         TLMyExpressionViewController *myExpressionVC = [[TLMyExpressionViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:myExpressionVC animated:YES];
+        PushVC(myExpressionVC);
     }
     else if ([item.title isEqualToString:@"清空聊天记录"]) {
         TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:@"将删除所有个人和群的聊天记录。" clickAction:^(NSInteger buttonIndex) {

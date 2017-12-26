@@ -26,8 +26,7 @@
     if ([item.title isEqualToString:@"微信安全中心"]) {
         TLWebViewController *webVC = [[TLWebViewController alloc] init];
         [webVC setUrl:@"http://weixin110.qq.com/"];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:webVC animated:YES];
+        PushVC(webVC)
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

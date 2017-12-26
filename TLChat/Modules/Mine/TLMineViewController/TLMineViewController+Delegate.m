@@ -33,11 +33,11 @@
         TLMineSettingViewController *settingVC = [[TLMineSettingViewController alloc] init];
         PushVC(settingVC);
     }
-    
+
     if ([dataModel isKindOfClass:[TLMenuItem class]]) {
         BOOL needResetTabBarBadge = (dataModel.badge || (dataModel.rightIconURL && dataModel.showRightIconBadge));
         BOOL hasDesc = dataModel.subTitle.length > 0 || dataModel.rightIconURL.length > 0;
-        
+
         if (needResetTabBarBadge) {
             [dataModel setBadge:nil];
             [self resetTabBarBadge];
@@ -46,10 +46,10 @@
             [dataModel setSubTitle:nil];
             [dataModel setRightIconURL:nil];
         }
-        
+
         if (needResetTabBarBadge || hasDesc) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self reloadCellAtIndexPath:indexPath];
+                [self reloadView];
             });
         }
     }

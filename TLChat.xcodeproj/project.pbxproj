@@ -2640,8 +2640,8 @@
 		C2D7CA971F72470400648CED /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				C2A92CAB1F7A29510038CFAE /* TLMineViewController */,
 				C2D7CA981F72470400648CED /* Config */,
+				C2A92CAB1F7A29510038CFAE /* TLMineViewController */,
 				C2D7CAC81F72470400648CED /* MineInfoViewController */,
 				C2D7CAD91F72470400648CED /* WalletViewController */,
 				C2D7CAD71F72470400648CED /* Resources */,

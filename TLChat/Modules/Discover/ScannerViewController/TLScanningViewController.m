@@ -140,8 +140,7 @@
 - (void)myQRButtonDown
 {
     TLMyQRCodeViewController *myQRCodeVC = [[TLMyQRCodeViewController alloc] init];
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:myQRCodeVC animated:YES];
+    PushVC(myQRCodeVC);
 }
 
 #pragma mark - Private Methods -
@@ -153,9 +152,8 @@
         __block id vc = self.navigationController.rootViewController;
         [self.navigationController popViewControllerAnimated:NO];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [vc setHidesBottomBarWhenPushed:YES];
+            [webVC setHidesBottomBarWhenPushed:YES];
             [[vc navigationController] pushViewController:webVC animated:YES];
-            [vc setHidesBottomBarWhenPushed:NO];
         });
     }
     else {

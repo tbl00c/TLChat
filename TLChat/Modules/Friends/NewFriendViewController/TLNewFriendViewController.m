@@ -39,8 +39,7 @@
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
     TLAddFriendViewController *addFriendVC = [[TLAddFriendViewController alloc] init];
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:addFriendVC animated:YES];
+    PushVC(addFriendVC);
 }
 
 #pragma mark - Getter -

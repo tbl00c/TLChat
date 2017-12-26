@@ -1,5 +1,5 @@
 //
-//  ZZFlexibleLayoutViewController+PrivateAPI.h
+//  ZZFlexibleLayoutViewController+Kernel.h
 //  zhuanzhuan
 //
 //  Created by 李伯坤 on 2017/8/15.
@@ -7,6 +7,9 @@
 //
 
 #import "ZZFlexibleLayoutViewController.h"
+#import "ZZFlexibleLayoutFlowLayout.h"
+#import "ZZFlexibleLayoutViewModel.h"
+#import "ZZFlexibleLayoutSectionModel.h"
 
 #define     CELL_SEPEARTOR          @"ZZFlexibleLayoutSeperatorCell"
 
@@ -14,9 +17,11 @@ void RegisterCollectionViewCell(UICollectionView *collectionView, NSString *cell
 void RegisterCollectionViewReusableView(UICollectionView *collectionView, NSString *kind, NSString *viewName);
 
 @class ZZFlexibleLayoutSectionModel;
-@interface ZZFlexibleLayoutViewController (PrivateAPI)
-
-@property (nonatomic, assign) BOOL isReloading;
+@interface ZZFlexibleLayoutViewController (Kernel) <
+UICollectionViewDataSource,
+UICollectionViewDelegate,
+ZZFlexibleLayoutFlowLayoutDelegate
+>
 
 - (ZZFlexibleLayoutSectionModel *)sectionModelAtIndex:(NSInteger)section;
 

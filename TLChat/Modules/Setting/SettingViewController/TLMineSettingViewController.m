@@ -36,33 +36,27 @@
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     if ([item.title isEqualToString:@"账号与安全"]) {
         TLAccountAndSafetyViewController *accountAndSafetyVC = [[TLAccountAndSafetyViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:accountAndSafetyVC animated:YES];
+        PushVC(accountAndSafetyVC);
     }
     else if ([item.title isEqualToString:@"新消息通知"]) {
         TLNewMessageSettingViewController *newMessageSettingVC = [[TLNewMessageSettingViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:newMessageSettingVC animated:YES];
+        PushVC(newMessageSettingVC);
     }
     else if ([item.title isEqualToString:@"隐私"]) {
         TLPrivacySettingViewController *privacySettingVC = [[TLPrivacySettingViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:privacySettingVC animated:YES];
+        PushVC(privacySettingVC);
     }
     else if ([item.title isEqualToString:@"通用"]) {
         TLCommonSettingViewController *commonSettingVC = [[TLCommonSettingViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:commonSettingVC animated:YES];
+        PushVC(commonSettingVC);
     }
     else if ([item.title isEqualToString:@"帮助与反馈"]) {
         TLHelpAndFeedbackViewController *helpAndFeedbackVC = [[TLHelpAndFeedbackViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:helpAndFeedbackVC animated:YES];
+        PushVC(helpAndFeedbackVC);
     }
     else if ([item.title isEqualToString:@"关于微信"]) {
         TLAboutViewController *aboutVC = [[TLAboutViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:aboutVC animated:YES];
+        PushVC(aboutVC);
     }
     else if ([item.title isEqualToString:@"退出登录"]) {
         TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:@"退出后不会删除任何历史数据，下次登录依然可以使用本账号。" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];

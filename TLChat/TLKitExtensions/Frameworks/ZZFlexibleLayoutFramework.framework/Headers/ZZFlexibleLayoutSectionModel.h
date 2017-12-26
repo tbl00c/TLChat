@@ -45,7 +45,7 @@
 
 #pragma mark - # Items
 /// section元素Model数组
-@property (nonatomic, strong) NSMutableArray<ZZFlexibleLayoutViewModel *> *itemsArray;
+@property (nonatomic, strong, readonly) NSMutableArray<ZZFlexibleLayoutViewModel *> *itemsArray;
 /// section元素个数
 @property (nonatomic, assign, readonly) NSUInteger count;
 
@@ -59,6 +59,7 @@
  * 为section插入元素
  */
 - (void)insertObject:(ZZFlexibleLayoutViewModel *)object atIndex:(NSUInteger)objectIndex;
+- (void)insertObjects:(NSArray<ZZFlexibleLayoutViewModel *> *)objects atIndexes:(NSIndexSet *)indexes;
 
 /*
  * 获取section的第index个元素

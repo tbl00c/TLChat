@@ -14,13 +14,17 @@
 
 @protocol ZZFlexibleLayoutViewProtocol <NSObject>
 
-@required;
+@optional;
 /**
- * 获取cell/view大小，必须实现
+ * 获取cell/view大小
  */
 + (CGSize)viewSizeByDataModel:(id)dataModel;
+/**
+ * 获取cell/view高度
+ */
++ (CGFloat)viewHeightByDataModel:(id)dataModel;
 
-@optional;
+
 /**
  *  设置cell/view的数据源
  */

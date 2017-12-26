@@ -12,10 +12,6 @@
 
 #define     NAME_DISCOVER_MENU_CELL         @"TLMenuItemCell"
 
-@interface TLDiscoverViewController ()
-
-@end
-
 @implementation TLDiscoverViewController
 
 #pragma mark - # Life Cycle

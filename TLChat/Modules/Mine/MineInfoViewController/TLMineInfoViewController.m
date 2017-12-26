@@ -42,8 +42,7 @@
     TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     if ([item.title isEqualToString:@"我的二维码"]) {
         TLMyQRCodeViewController *myQRCodeVC = [[TLMyQRCodeViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:myQRCodeVC animated:YES];
+        PushVC(myQRCodeVC);
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

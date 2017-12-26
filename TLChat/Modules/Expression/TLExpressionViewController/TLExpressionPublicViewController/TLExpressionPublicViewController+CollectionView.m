@@ -46,7 +46,7 @@
         TLEmojiGroup *group = [self.data objectAtIndex:indexPath.row];
         TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
         [detailVC setGroup:group];
-        [self.parentViewController setHidesBottomBarWhenPushed:YES];
+        [detailVC setHidesBottomBarWhenPushed:YES];
         [self.parentViewController.navigationController pushViewController:detailVC animated:YES];
     }
     [collectionView deselectItemAtIndexPath:indexPath animated:NO];

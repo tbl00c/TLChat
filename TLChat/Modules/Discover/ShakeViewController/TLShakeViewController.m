@@ -88,8 +88,7 @@
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
     TLShakeSettingViewController *shakeSettingVC = [[TLShakeSettingViewController alloc] init];
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:shakeSettingVC animated:YES];
+    PushVC(shakeSettingVC);
 }
 
 // 摇动手机

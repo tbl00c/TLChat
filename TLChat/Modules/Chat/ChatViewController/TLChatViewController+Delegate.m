@@ -74,8 +74,7 @@
 {
     TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
     [detailVC setUser:user];
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    PushVC(detailVC);
 }
 
 - (void)didClickedImageMessages:(NSArray *)imageMessages atIndex:(NSInteger)index

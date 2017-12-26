@@ -1,5 +1,3 @@
-
-
 //
 //  ZZFlexibleLayoutFramework.h
 //  zhuanzhuan
@@ -8,14 +6,18 @@
 //  Copyright © 2017年 转转. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#ifndef ZZFlexibleLayoutFramework_h
+#define ZZFlexibleLayoutFramework_h
 
-FOUNDATION_EXPORT double ZZFlexibleLayoutFrameworkVersionNumber;
+#import "ZZFLEXAngel.h"
 
-FOUNDATION_EXPORT const unsigned char ZZFlexibleLayoutFrameworkVersionString[];
-
-#import "ZZFlexibleLayoutViewController+API.h"
+#import "ZZFlexibleLayoutViewController.h"
 #import "ZZFlexibleLayoutViewController+OldAPI.h"
 
-#import "ZZFLRequestQueue.h"
+#import "ZZFlexibleLayoutViewController+EditExtension.h"
 
+#import "ZZFLEXRequestQueue.h"
+
+#import "UIView+ZZFLEX.h"
+
+#endif /* ZZFlexibleLayoutFramework_h */

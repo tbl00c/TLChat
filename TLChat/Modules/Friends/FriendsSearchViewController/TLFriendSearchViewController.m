@@ -8,10 +8,13 @@
 
 #import "TLFriendSearchViewController.h"
 #import "TLFriendCell.h"
+#import "TLFriendHelper.h"
 
 @interface TLFriendSearchViewController ()
 
 @property (nonatomic, strong) NSMutableArray *data;
+
+@property (nonatomic, strong) NSMutableArray *friendsData;
 
 @end
 
@@ -21,7 +24,7 @@
 {
     [super viewDidLoad];
     
-    self.data = [[NSMutableArray alloc] init];;
+    self.data = [TLFriendHelper sharedFriendHelper].friendsData;
     [self.tableView registerClass:[TLFriendCell class] forCellReuseIdentifier:@"FriendCell"];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
 }

@@ -14,6 +14,7 @@
 #import "TLEmojiKBHelper.h"
 #import "TLUserHelper.h"
 #import "TLChatNotificationKey.h"
+#import "TLFriendHelper.h"
 
 static TLChatViewController *chatVC;
 
@@ -28,6 +29,24 @@ static TLChatViewController *chatVC;
 @end
 
 @implementation TLChatViewController
+
+- (instancetype)initWithUserId:(NSString *)userId
+{
+    if (self = [super init]) {
+        TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userId];
+        self.partner = user;
+    }
+    return self;
+}
+
+- (instancetype)initWithGroupId:(NSString *)groupId
+{
+    if (self = [super init]) {
+        TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:groupId];
+        self.partner = group;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {

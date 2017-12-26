@@ -6,14 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewController.h"
-#import "TLMessageManager+ConversationRecord.h"
-#import "TLFriendSearchViewController.h"
+#import "TLViewController.h"
 
-@interface TLConversationViewController : TLTableViewController
+@interface TLConversationViewController : TLViewController
 
-@property (nonatomic, strong) TLFriendSearchViewController *searchVC;
-
-@property (nonatomic, strong) NSMutableArray *data;
 
 @end

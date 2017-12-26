@@ -10,5 +10,8 @@
 
 @interface TLChatViewController : TLChatBaseViewController
 
+- (instancetype)initWithUserId:(NSString *)userId;
+
+- (instancetype)initWithGroupId:(NSString *)groupId;
 
 @end

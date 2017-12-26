@@ -13,7 +13,6 @@
 #define     WIDTH_TABLEVIEW             140.0f
 #define     HEIGHT_TABLEVIEW_CELL       45.0f
 
-
 @interface TLAddMenuView () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -71,7 +70,7 @@
     [self dismiss];
 }
 
-#pragma mark - Delegate -
+#pragma mark - # Delegate
 //MARK: UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -90,6 +89,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLAddMenuItem *item = [self.data objectAtIndex:indexPath.row];
+    if (self.itemSelectedAction) {
+        self.itemSelectedAction(self, item);
+    }
     if (_delegate && [_delegate respondsToSelector:@selector(addMenuView:didSelectedItem:)]) {
         [_delegate addMenuView:self didSelectedItem:item];
     }
@@ -102,7 +104,7 @@
     return HEIGHT_TABLEVIEW_CELL;
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)drawRect:(CGRect)rect
 {
     CGFloat startX = self.width - 27;
@@ -119,7 +121,7 @@
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getters
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
@@ -134,6 +136,5 @@
     }
     return _tableView;
 }
-
 
 @end

@@ -19,6 +19,7 @@
 @interface TLAddMenuView : UIView
 
 @property (nonatomic, assign) id<TLAddMenuViewDelegate>delegate;
+@property (nonatomic, copy) void (^itemSelectedAction)(TLAddMenuView *addMenuView, TLAddMenuItem *item);
 
 /**
  *  显示AddMenu

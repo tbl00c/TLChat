@@ -37,7 +37,6 @@
     if (_searchController == nil) {
         _searchController = [[TLSearchController alloc] initWithSearchResultsController:self.searchVC];
         [_searchController setSearchResultsUpdater:self.searchVC];
-        [_searchController.searchBar setPlaceholder:@"搜索"];
         [_searchController.searchBar setDelegate:self];
     }
     return _searchController;

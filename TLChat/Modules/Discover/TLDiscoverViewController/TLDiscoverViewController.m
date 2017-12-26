@@ -18,6 +18,7 @@
 - (id)init
 {
     if (self = [super init]) {
+        initTabBarItem(self.tabBarItem, LOCSTR(@"发现"), @"tabbar_discover", @"tabbar_discoverHL");
         [self.tabBarItem setBadgeValue:@""];
     }
     return self;

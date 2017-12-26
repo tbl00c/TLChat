@@ -25,9 +25,16 @@
 
 @implementation TLFriendsViewController
 
+- (id)init
+{
+    if (self = [super init]) {
+        initTabBarItem(self.tabBarItem, LOCSTR(@"通讯录"), @"tabbar_contacts", @"tabbar_contactsHL");
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"通讯录"];
     
     [self p_initUI];        // 初始化界面UI
     [self registerCellClass];
@@ -74,11 +81,9 @@
 - (TLSearchController *)searchController
 {
     if (_searchController == nil) {
-        _searchController = [[TLSearchController alloc] initWithSearchResultsController:self.searchVC];
-        [_searchController setSearchResultsUpdater:self.searchVC];
-        [_searchController.searchBar setPlaceholder:@"搜索"];
+        _searchController = [TLSearchController createWithResultsContrller:self.searchVC];
         [_searchController.searchBar setDelegate:self];
-        [_searchController setShowVoiceButton:YES];
+        [_searchController setEnableVoiceInput:YES];
     }
     return _searchController;
 }

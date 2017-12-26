@@ -18,15 +18,6 @@
 
 #import "TLUserHelper.h"
 
-__kindof UINavigationController *__createTabBarChildVC(__kindof UIViewController *vc, NSString *title, NSString *image, NSString *imageHL)
-{
-    [vc.tabBarItem setTitle:title];
-    [vc.tabBarItem setImage:[UIImage imageNamed:image]];
-    [vc.tabBarItem setSelectedImage:[UIImage imageNamed:imageHL]];
-    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:vc];
-    return navC;
-}
-
 @interface TLLaunchManager ()
 
 @property (nonatomic, weak) UIWindow *window;
@@ -85,10 +76,15 @@ __kindof UINavigationController *__createTabBarChildVC(__kindof UIViewController
 #pragma mark - # Private Methods
 - (NSArray *)p_createTabBarChildViewController
 {
-    NSArray *data = @[__createTabBarChildVC([[TLConversationViewController alloc] init], @"消息", @"tabbar_mainframe", @"tabbar_mainframeHL"),
-                      __createTabBarChildVC([[TLFriendsViewController alloc] init], @"通讯录", @"tabbar_contacts", @"tabbar_contactsHL"),
-                      __createTabBarChildVC([[TLDiscoverViewController alloc] init], @"发现", @"tabbar_discover", @"tabbar_discoverHL"),
-                      __createTabBarChildVC([[TLMineViewController alloc] init], @"我", @"tabbar_me", @"tabbar_meHL"),
+    TLConversationViewController *conversationVC = [[TLConversationViewController alloc] init];
+    TLFriendsViewController *friendsVC = [[TLFriendsViewController alloc] init];
+    TLDiscoverViewController *discoverVC = [[TLDiscoverViewController alloc] init];
+    TLMineViewController *mineVC = [[TLMineViewController alloc] init];
+    
+    NSArray *data = @[addNavigationController(conversationVC),
+                      addNavigationController(friendsVC),
+                      addNavigationController(discoverVC),
+                      addNavigationController(mineVC),
                       ];
     return data;
 }

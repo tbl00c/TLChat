@@ -11,8 +11,6 @@
 #import "TLMacros.h"
 #import "NSFileManager+TLChat.h"
 
-#define     CONV_SPACE_X            10.0f
-#define     CONV_SPACE_Y            9.5f
 #define     REDPOINT_WIDTH          10.0f
 
 @interface TLConversationCell()
@@ -33,11 +31,24 @@
 
 @implementation TLConversationCell
 
++ (CGFloat)viewHeightByDataModel:(id)dataModel
+{
+    return HEIGHT_CONVERSATION_CELL;
+}
+
+- (void)setViewDataModel:(id)dataModel
+{
+    [self setConversation:dataModel];
+}
+
+- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+{
+    self.bottomSeperatorStyle = (indexPath.row == count - 1 ? TLConversationCellSeperatorStyleFill : TLConversationCellSeperatorStyleDefault);
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.leftSeparatorSpace = CONV_SPACE_X;
-        
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.usernameLabel];
         [self.contentView addSubview:self.detailLabel];
@@ -48,6 +59,24 @@
         [self p_addMasonry];
     }
     return self;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    
+    if (self.bottomSeperatorStyle == TLConversationCellSeperatorStyleDefault) {
+        self.addSeparator(TLSeparatorPositionBottom).beginAt(15);
+    }
+    else {
+        self.addSeparator(TLSeparatorPositionBottom);
+    }
+}
+
+- (void)setBottomSeperatorStyle:(TLConversationCellSeperatorStyle)bottomSeperatorStyle
+{
+    _bottomSeperatorStyle = bottomSeperatorStyle;
+    [self setNeedsDisplay];
 }
 
 #pragma mark - Public Methods
@@ -91,10 +120,7 @@
     self.conversation.isRead ? [self markAsRead] : [self markAsUnread];
 }
 
-
-/**
- *  标记为未读
- */
+/// 标记为未读
 - (void)markAsUnread
 {
     if (_conversation) {
@@ -114,9 +140,7 @@
     }
 }
 
-/**
- *  标记为已读
- */
+/// 标记为已读
 - (void)markAsRead
 {
     if (_conversation) {
@@ -136,19 +160,19 @@
     }
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)p_addMasonry
 {
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(CONV_SPACE_X);
-        make.top.mas_equalTo(CONV_SPACE_Y);
-        make.bottom.mas_equalTo(- CONV_SPACE_Y);
+        make.left.mas_equalTo(15);
+        make.top.mas_equalTo(9.5);
+        make.bottom.mas_equalTo(- 9.5);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
     
     [self.usernameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(CONV_SPACE_X);
+        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(9.5);
         make.top.mas_equalTo(self.avatarImageView).mas_offset(2.0);
         make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5);
     }];
@@ -163,7 +187,7 @@
     [self.timeLabel setContentCompressionResistancePriority:300 forAxis:UILayoutConstraintAxisHorizontal];
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.usernameLabel);
-        make.right.mas_equalTo(self.contentView).mas_offset(-CONV_SPACE_X);
+        make.right.mas_equalTo(self.contentView).mas_offset(-9.5);
     }];
     
     [self.remindImageView setContentCompressionResistancePriority:310 forAxis:UILayoutConstraintAxisHorizontal];

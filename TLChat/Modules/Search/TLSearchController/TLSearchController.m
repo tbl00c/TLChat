@@ -11,10 +11,33 @@
 #import "UIView+Extensions.h"
 
 @implementation TLSearchController
+{
+    UIStatusBarStyle lastBarStyle;
+}
+
++ (TLSearchController *)createWithResultsContrllerClassName:(NSString *)className
+{
+    if (!className || !NSClassFromString(className)) {
+        return nil;
+    }
+    id vc = [[NSClassFromString(className) alloc] init];
+    return [[self class] createWithResultsContrller:vc];
+}
+
++ (TLSearchController *)createWithResultsContrller:(UIViewController<UISearchResultsUpdating> *)resultVC
+{
+    if (!resultVC) {
+        return nil;
+    }
+    TLSearchController *searchController = [[TLSearchController alloc] initWithSearchResultsController:resultVC];
+    [searchController setSearchResultsUpdater:resultVC];
+    return searchController;
+}
 
 - (id)initWithSearchResultsController:(UIViewController *)searchResultsController
 {
     if (self = [super initWithSearchResultsController:searchResultsController]) {
+        [self.searchBar setPlaceholder:LOCSTR(@"搜索")];
         [self.searchBar setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SEARCHBAR_HEIGHT)];
         [self.searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
         [self.searchBar setBarTintColor:[UIColor colorGrayBG]];
@@ -48,9 +71,26 @@
     return self;
 }
 
-- (void)setShowVoiceButton:(BOOL)showVoiceButton
+- (void)viewWillAppear:(BOOL)animated
 {
-    _showVoiceButton = showVoiceButton;
+    [super viewWillAppear:animated];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        lastBarStyle = [UIApplication sharedApplication].statusBarStyle;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    });
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] setStatusBarStyle:lastBarStyle  animated:YES];
+    });
+}
+
+- (void)setEnableVoiceInput:(BOOL)showVoiceButton
+{
+    _enableVoiceInput = showVoiceButton;
     if (showVoiceButton) {
         [self.searchBar setShowsBookmarkButton:YES];
         [self.searchBar setImage:[UIImage imageNamed:@"searchBar_voice"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];

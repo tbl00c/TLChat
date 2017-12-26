@@ -151,6 +151,9 @@
         make.size.mas_equalTo(CGSizeMake(8, 13));
         make.right.mas_equalTo(-15);
     }];
+    
+    [self.detailLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.titleLabel setContentCompressionResistancePriority:600 forAxis:UILayoutConstraintAxisHorizontal];
 }
 
 #pragma mark - # Getters

@@ -23,7 +23,8 @@
 - (id)init
 {
     if (self = [super init]) {
-         [self.tabBarItem setBadgeValue:@""];
+        initTabBarItem(self.tabBarItem, LOCSTR(@"我"), @"tabbar_me", @"tabbar_meHL");
+        [self.tabBarItem setBadgeValue:@""];
     }
     return self;
 }

@@ -36,7 +36,8 @@
             [TLUIUtility showAlertWithTitle:nil message:@"如果此份源码对您有足够大帮助，您可以小额赞助我，以激励我继续维护，做得更好。" cancelButtonTitle:@"不了" otherButtonTitles:@[@"小额赞助"] actionHandler:^(NSInteger buttonIndex) {
                 if (buttonIndex == 1) {
                     TLWalletViewController *walletVC = [[TLWalletViewController alloc] init];
-                    [self.rootVC pushViewController:walletVC animated:YES];
+                    [walletVC setHidesBottomBarWhenPushed:YES];
+                    [self.tabBarController pushViewController:walletVC animated:YES];
                     [MobClick event:EVENT_DONATE_ALERT_YES];
                     [[NSUserDefaults standardUserDefaults] setObject:@(-1) forKey:@"sponsorStatus"];
                 }

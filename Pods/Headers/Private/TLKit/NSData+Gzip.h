@@ -1,1 +1,1 @@
-../../../../../../../TLPods/TLKit/TLKit/TLCategories/Foundation/NSData/NSData+Gzip.h
+../../../TLKit/TLKit/TLCategories/Foundation/NSData/NSData+Gzip.h

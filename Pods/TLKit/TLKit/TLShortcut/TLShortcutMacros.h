@@ -11,7 +11,6 @@
 
 #define     IS_IPHONEX              ([UIScreen mainScreen].bounds.size.width == 375.0f && [UIScreen mainScreen].bounds.size.height == 812.0f)
 
-
 #pragma mark - # 屏幕尺寸
 #define     SCREEN_SIZE                 [UIScreen mainScreen].bounds.size
 #define     SCREEN_WIDTH                SCREEN_SIZE.width
@@ -70,7 +69,7 @@
 #pragma mark - # 快捷方法
 /// PushVC
 #define     PushVC(vc)                  {\
-            [self setHidesBottomBarWhenPushed:YES];\
+            [vc setHidesBottomBarWhenPushed:YES];\
             [self.navigationController pushViewController:vc animated:YES];\
 }
 

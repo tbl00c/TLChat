@@ -44,13 +44,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    
     TLGroup *group = [self.data objectAtIndex:indexPath.row];
     TLChatViewController *chatVC = [[TLChatViewController alloc] init];
     [chatVC setPartner:group];
-    UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
-    [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
+    UINavigationController *navC = [TLLaunchManager sharedInstance].tabBarController.childViewControllers[0];
+    [[TLLaunchManager sharedInstance].tabBarController setSelectedIndex:0];
     [chatVC setHidesBottomBarWhenPushed:YES];
-    [vc.navigationController pushViewController:chatVC animated:YES];
+    [navC pushViewController:chatVC animated:YES];
 }
 
 //MARK: UISearchBarDelegate

@@ -8,14 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UITabBarController (TLLaunchExtension)
-
-/**
- *  获取tabbarController的第Index个VC（不是navController）
- *
- *  @return navController的rootVC
- */
-- (id)childViewControllerAtIndex:(NSUInteger)index;
+@interface UITabBarController (TLPush)
 
 /**
  *  获取当前VC的navController，并执行push操作

@@ -18,17 +18,23 @@
 
 #import "TLUserHelper.h"
 
-void addBarChildViewController(UITabBarController *tabBarController, UIViewController *vc, NSString *title, NSString *image, NSString *imageHL)
+__kindof UINavigationController *__createTabBarChildVC(__kindof UIViewController *vc, NSString *title, NSString *image, NSString *imageHL)
 {
     [vc.tabBarItem setTitle:title];
     [vc.tabBarItem setImage:[UIImage imageNamed:image]];
     [vc.tabBarItem setSelectedImage:[UIImage imageNamed:imageHL]];
     UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:vc];
-    [tabBarController addChildViewController:navC];
+    return navC;
 }
 
+@interface TLLaunchManager ()
+
+@property (nonatomic, weak) UIWindow *window;
+
+@end
+
 @implementation TLLaunchManager
-@synthesize rootVC = _rootVC;
+@synthesize tabBarController = _tabBarController;
 
 + (TLLaunchManager *)sharedInstance
 {
@@ -42,51 +48,62 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
 
 - (void)launchInWindow:(UIWindow *)window
 {
-    [window removeAllSubviews];
+    self.window = window;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    UIViewController *rootVC;
     if ([TLUserHelper sharedHelper].isLogin) {      // 已登录
-        [self p_resetRootVC];
+        [self.tabBarController setViewControllers:[self p_createTabBarChildViewController]];
+        [self setCurRootVC:self.tabBarController];
         
-        rootVC = self.rootVC;
         // 初始化用户信息
         [self initUserData];
     }
     else {  // 未登录
-        rootVC = [[TLAccountViewController alloc] init];
+        TLAccountViewController *accountVC = [[TLAccountViewController alloc] init];
         @weakify(self);
-        [(TLAccountViewController *)rootVC setLoginSuccess:^{
+        [accountVC setLoginSuccess:^{
             @strongify(self);
             [self launchInWindow:window];
         }];
+        [self setCurRootVC:accountVC];
     }
+}
+
+- (void)setCurRootVC:(__kindof UIViewController *)curRootVC
+{
+    _curRootVC = curRootVC;
     
-    [window setRootViewController:rootVC];
-    [window addSubview:rootVC.view];
-    [window makeKeyAndVisible];
+    {
+        UIWindow *window = self.window ? self.window : [UIApplication sharedApplication].keyWindow;
+        [window removeAllSubviews];
+        [window setRootViewController:curRootVC];
+        [window addSubview:curRootVC.view];
+        [window makeKeyAndVisible];
+    }
 }
 
 #pragma mark - # Private Methods
-- (void)p_resetRootVC
+- (NSArray *)p_createTabBarChildViewController
 {
-    _rootVC = nil;
-    
-    addBarChildViewController(self.rootVC, [[TLConversationViewController alloc] init], @"消息", @"tabbar_mainframe", @"tabbar_mainframeHL");
-    addBarChildViewController(self.rootVC, [[TLFriendsViewController alloc] init], @"通讯录", @"tabbar_contacts", @"tabbar_contactsHL");
-    addBarChildViewController(self.rootVC, [[TLDiscoverViewController alloc] init], @"发现", @"tabbar_discover", @"tabbar_discoverHL");
-    addBarChildViewController(self.rootVC, [[TLMineViewController alloc] init], @"我", @"tabbar_me", @"tabbar_meHL");
+    NSArray *data = @[__createTabBarChildVC([[TLConversationViewController alloc] init], @"消息", @"tabbar_mainframe", @"tabbar_mainframeHL"),
+                      __createTabBarChildVC([[TLFriendsViewController alloc] init], @"通讯录", @"tabbar_contacts", @"tabbar_contactsHL"),
+                      __createTabBarChildVC([[TLDiscoverViewController alloc] init], @"发现", @"tabbar_discover", @"tabbar_discoverHL"),
+                      __createTabBarChildVC([[TLMineViewController alloc] init], @"我", @"tabbar_me", @"tabbar_meHL"),
+                      ];
+    return data;
 }
 
+
 #pragma mark - # Getters
-- (TLTabBarController *)rootVC
+- (TLTabBarController *)tabBarController
 {
-    if (!_rootVC) {
-        _rootVC = [[TLTabBarController alloc] init];
-        [_rootVC.tabBar setBackgroundColor:[UIColor colorGrayBG]];
-        [_rootVC.tabBar setTintColor:[UIColor colorGreenDefault]];
+    if (!_tabBarController) {
+        TLTabBarController *tabbarController = [[TLTabBarController alloc] init];
+        [tabbarController.tabBar setBackgroundColor:[UIColor colorGrayBG]];
+        [tabbarController.tabBar setTintColor:[UIColor colorGreenDefault]];
+        _tabBarController = tabbarController;
     }
-    return _rootVC;
+    return _tabBarController;
 }
 
 @end

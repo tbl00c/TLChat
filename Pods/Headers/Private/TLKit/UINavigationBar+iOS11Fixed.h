@@ -1,1 +1,1 @@
-../../../../../../../TLPods/TLKit/TLKit/TLCategories/UIKit/UINavigationBar/UINavigationBar+iOS11Fixed.h
+../../../TLKit/TLKit/TLCategories/UIKit/UINavigationBar/UINavigationBar+iOS11Fixed.h

@@ -1,1 +1,1 @@
-../../../../../../../TLPods/TLKit/TLKit/TLCategories/Foundation/NSBundle/NSBundle+AppIcon.h
+../../../TLKit/TLKit/TLCategories/Foundation/NSBundle/NSBundle+AppIcon.h

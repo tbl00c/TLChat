@@ -1,1 +1,1 @@
-../../../../../../../TLPods/TLKit/TLKit/TLCategories/UIKit/UIImage/UIImage+Color.h
+../../../TLKit/TLKit/TLCategories/UIKit/UIImage/UIImage+Color.h

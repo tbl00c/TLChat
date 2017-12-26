@@ -1,1 +1,1 @@
-../../../../../../../TLPods/TLKit/TLKit/TLCategories/UIKit/UIImage/UIImage+Size.h
+../../../TLKit/TLKit/TLCategories/UIKit/UIImage/UIImage+Size.h

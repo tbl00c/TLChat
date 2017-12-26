@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <TLTabBarController/TLTabBarController.h>
-#import "UITabBarController+TLLaunchExtension.h"
 
 @interface TLLaunchManager : NSObject
 
-/// 根控制器
-@property (nonatomic, strong, readonly) TLTabBarController *rootVC;
+/// 当前根控制器
+@property (nonatomic, strong, readonly) __kindof UIViewController *curRootVC;
+
+/// 根tabBarController
+@property (nonatomic, strong, readonly) TLTabBarController *tabBarController;
 
 + (TLLaunchManager *)sharedInstance;
 
@@ -22,8 +24,8 @@
  */
 - (void)launchInWindow:(UIWindow *)window;
 
+
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
-
 
 @end

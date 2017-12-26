@@ -28,9 +28,6 @@
     return YES;
 }
 
-- (void)urgentMethod
-{
-
-}
+- (void)urgentMethod{}
 
 @end

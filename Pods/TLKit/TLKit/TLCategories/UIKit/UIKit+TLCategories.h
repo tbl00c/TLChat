@@ -58,6 +58,9 @@
 //MARK: UINavigationController
 #import "UINavigationController+Extensions.h"   // UINavigationController 获取rootVC，查找VC，pop到指定VC等
 
+//MARK: UITabBarController+TLPush
+#import "UITabBarController+TLPush.h"           // UITabBarController 当前VC Push
+
 //MARK: UIViewController
 #import "UIViewController+NavBar.h"             // UIViewController navBar按钮
 #import "UIViewController+TipView.h"            // UIViewController 错误提示View（依赖UIView+TipView）

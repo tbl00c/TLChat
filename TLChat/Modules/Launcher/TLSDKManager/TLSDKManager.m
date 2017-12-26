@@ -50,7 +50,6 @@
     fileLogger.rollingFrequency = 60 * 60 * 24;
     fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
     [DDLog addLogger:fileLogger];
-
 }
 
 @end

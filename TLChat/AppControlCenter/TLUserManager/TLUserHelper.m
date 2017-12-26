@@ -55,6 +55,7 @@
         if (self.userID.length > 0) {
             TLDBUserStore *userStore = [[TLDBUserStore alloc] init];
             _user = [userStore userByID:self.userID];
+            _user.detailInfo.momentsWallURL = @"http://pic1.win4000.com/wallpaper/c/5791e49b37a5c.jpg";
             if (!_user) {
                 [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"loginUid"];
             }

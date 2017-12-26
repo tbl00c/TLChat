@@ -42,6 +42,7 @@
         [self.searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
         [self.searchBar setBarTintColor:[UIColor colorGrayBG]];
         [self.searchBar setTintColor:[UIColor colorGreenDefault]];
+        [self.searchBar setDelegate:self];
         UITextField *tf = [[[self.searchBar.subviews firstObject] subviews] lastObject];
         [tf.layer setMasksToBounds:YES];
         [tf.layer setBorderWidth:BORDER_WIDTH_1PX];
@@ -99,6 +100,12 @@
     else {
         [self.searchBar setShowsBookmarkButton:NO];
     }
+}
+
+#pragma mark - # Delegate
+- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
+{
+    [TLUIUtility showAlertWithTitle:@"语音搜索按钮"];
 }
 
 @end

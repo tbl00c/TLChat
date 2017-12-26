@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TLSearchController : UISearchController
+@interface TLSearchController : UISearchController <
+    UISearchBarDelegate
+>
 
 @property (nonatomic, assign) BOOL enableVoiceInput;
 

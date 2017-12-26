@@ -30,7 +30,7 @@
                                                                                @strongify(self);
                                                                                [self p_tableView:tableView deleteItemAtIndexPath:indexPath];
                                                                            }];
-        UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
+        UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
                                                                               title:conversation.isRead ? @"标为未读" : @"标为已读"
                                                                             handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
                                                                                 TLConversation *conversation = self.dataModel.cellModelByIndexPath(indexPath);
@@ -38,7 +38,6 @@
                                                                                 conversation.isRead ? [cell markAsUnread] : [cell markAsRead];
                                                                                 [tableView setEditing:NO animated:YES];
                                                                             }];
-        moreAction.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
         return @[delAction, moreAction];
     }
     return nil;

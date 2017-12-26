@@ -19,7 +19,7 @@
 #pragma mark - # 好友
 
 /// 好友数据(原始)
-@property (nonatomic, strong) NSMutableArray *friendsData;
+@property (nonatomic, strong, readonly) NSMutableArray *friendsData;
 
 /// 格式化的好友数据（二维数组，列表用）
 @property (nonatomic, strong) NSMutableArray *data;

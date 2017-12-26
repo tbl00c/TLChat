@@ -36,6 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationItem setTitle:LOCSTR(@"通讯录")];
+    
     [self p_initUI];        // 初始化界面UI
     [self registerCellClass];
     
@@ -82,7 +84,6 @@
 {
     if (_searchController == nil) {
         _searchController = [TLSearchController createWithResultsContrller:self.searchVC];
-        [_searchController.searchBar setDelegate:self];
         [_searchController setEnableVoiceInput:YES];
     }
     return _searchController;

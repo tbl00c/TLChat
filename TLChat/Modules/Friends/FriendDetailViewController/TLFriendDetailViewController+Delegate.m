@@ -68,14 +68,23 @@
         if ([self.navigationController findViewController:@"TLChatViewController"]) {
             if ([[chatVC.partner chat_userID] isEqualToString:self.user.userID]) {
                 [self.navigationController popToViewControllerWithClassName:@"TLChatViewController" animated:YES];
+                return;
             }
             else {
                 [chatVC setPartner:self.user];
-                PushVC(chatVC);
             }
         }
         else {
             [chatVC setPartner:self.user];
+        }
+        if ([TLLaunchManager sharedInstance].tabBarController.selectedIndex != 0) {
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            UINavigationController *navC = [TLLaunchManager sharedInstance].tabBarController.childViewControllers[0];
+            [[TLLaunchManager sharedInstance].tabBarController setSelectedIndex:0];
+            [chatVC setHidesBottomBarWhenPushed:YES];
+            [navC pushViewController:chatVC animated:YES];
+        }
+        else {
             PushVC(chatVC);
         }
     }

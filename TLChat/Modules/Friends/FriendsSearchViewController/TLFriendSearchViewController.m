@@ -24,7 +24,8 @@
 {
     [super viewDidLoad];
     
-    self.data = [TLFriendHelper sharedFriendHelper].friendsData;
+    self.friendsData = [TLFriendHelper sharedFriendHelper].friendsData;
+    self.data = @[].mutableCopy;
     [self.tableView registerClass:[TLFriendCell class] forCellReuseIdentifier:@"FriendCell"];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
 }

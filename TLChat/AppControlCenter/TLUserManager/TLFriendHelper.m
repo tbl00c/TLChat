@@ -37,7 +37,7 @@ static TLFriendHelper *friendHelper = nil;
 {
     if (self = [super init]) {
         // 初始化好友数据
-        self.friendsData = [self.friendStore friendsDataByUid:[TLUserHelper sharedHelper].userID];
+        _friendsData = [self.friendStore friendsDataByUid:[TLUserHelper sharedHelper].userID];
         self.data = [[NSMutableArray alloc] initWithObjects:self.defaultGroup, nil];
         self.sectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
         // 初始化群数据

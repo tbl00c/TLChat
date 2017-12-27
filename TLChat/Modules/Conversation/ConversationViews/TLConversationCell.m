@@ -10,22 +10,27 @@
 #import "NSDate+TLChat.h"
 #import "TLMacros.h"
 #import "NSFileManager+TLChat.h"
-
-#define     REDPOINT_WIDTH          10.0f
+#import <TLBadge.h>
 
 @interface TLConversationCell()
 
-@property (nonatomic, strong) UIImageView *avatarImageView;
+/// 头像
+@property (nonatomic, strong) UIImageView *avatarView;
 
-@property (nonatomic, strong) UILabel *usernameLabel;
+/// 用户名
+@property (nonatomic, strong) UILabel *nameLabel;
 
+/// 正文
 @property (nonatomic, strong) UILabel *detailLabel;
 
+/// 时间
 @property (nonatomic, strong) UILabel *timeLabel;
 
+/// 免打扰标识
 @property (nonatomic, strong) UIImageView *remindImageView;
 
-@property (nonatomic, strong) UIView *redPointView;
+/// 气泡
+@property (nonatomic, strong) TLBadge *badge;
 
 @end
 
@@ -49,14 +54,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self.contentView addSubview:self.avatarImageView];
-        [self.contentView addSubview:self.usernameLabel];
-        [self.contentView addSubview:self.detailLabel];
-        [self.contentView addSubview:self.timeLabel];
-        [self.contentView addSubview:self.remindImageView];
-        [self.contentView addSubview:self.redPointView];
-        
-        [self p_addMasonry];
+        [self p_initViews];
     }
     return self;
 }
@@ -86,183 +84,135 @@
     
     if (conversation.avatarPath.length > 0) {
         NSString *path = [NSFileManager pathUserAvatar:conversation.avatarPath];
-        [self.avatarImageView setImage:[UIImage imageNamed:path]];
-    }
-    else if (conversation.avatarURL.length > 0){
-        [self.avatarImageView tt_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarView setImage:[UIImage imageNamed:path]];
     }
     else {
-        [self.avatarImageView setImage:nil];
+        [self.avatarView tt_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
-    [self.usernameLabel setText:conversation.partnerName];
+    [self.nameLabel setText:conversation.partnerName];
     [self.detailLabel setText:conversation.content];
     [self.timeLabel setText:conversation.date.conversaionTimeInfo];
+    [self.remindImageView setHidden:NO];
     switch (conversation.remindType) {
         case TLMessageRemindTypeNormal:
             [self.remindImageView setHidden:YES];
             break;
         case TLMessageRemindTypeClosed:
-            [self.remindImageView setHidden:NO];
             [self.remindImageView setImage:[UIImage imageNamed:@"conv_remind_close"]];
             break;
         case TLMessageRemindTypeNotLook:
-            [self.remindImageView setHidden:NO];
             [self.remindImageView setImage:[UIImage imageNamed:@"conv_remind_notlock"]];
             break;
         case TLMessageRemindTypeUnlike:
-            [self.remindImageView setHidden:NO];
             [self.remindImageView setImage:[UIImage imageNamed:@"conv_remind_unlike"]];
-            break;
-        default:
             break;
     }
     
-    self.conversation.isRead ? [self markAsRead] : [self markAsUnread];
+    // 更新气泡
+    [self updateBadge];
 }
 
 /// 标记为未读
 - (void)markAsUnread
 {
-    if (_conversation) {
-        switch (_conversation.clueType) {
-            case TLClueTypePointWithNumber:
-                
-                break;
-            case TLClueTypePoint:
-                [self.redPointView setHidden:NO];
-                break;
-            case TLClueTypeNone:
-                
-                break;
-            default:
-                break;
-        }
-    }
+    self.conversation.unreadCount = 1;
+    [self updateBadge];
 }
 
 /// 标记为已读
 - (void)markAsRead
 {
-    if (_conversation) {
-        switch (_conversation.clueType) {
-            case TLClueTypePointWithNumber:
-                
-                break;
-            case TLClueTypePoint:
-                [self.redPointView setHidden:YES];
-                break;
-            case TLClueTypeNone:
-                
-                break;
-            default:
-                break;
-        }
-    }
+    self.conversation.unreadCount = 0;
+    [self updateBadge];
+}
+
+- (void)updateBadge
+{
+    CGSize size = [TLBadge badgeSizeWithValue:self.conversation.badgeValue];
+    [self.badge setBadgeValue:self.conversation.badgeValue];
+    [self.badge mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(size);
+    }];
+}
+
+#pragma mark - # Overide
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    self.badge.backgroundColor = [UIColor redColor];
+}
+
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+    self.badge.backgroundColor = [UIColor redColor];
 }
 
 #pragma mark - # Private Methods
-- (void)p_addMasonry
+- (void)p_initViews
 {
-    [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    // 头像
+    self.avatarView = self.contentView.addImageView(1001)
+    .cornerRadius(3.0f)
+    .masonry(^ (MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
-        make.top.mas_equalTo(9.5);
-        make.bottom.mas_equalTo(- 9.5);
-        make.width.mas_equalTo(self.avatarImageView.mas_height);
+        make.top.mas_equalTo(10);
+        make.bottom.mas_equalTo(- 10);
+    })
+    .view;
+    [self.avatarView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(self.avatarView.mas_height);
     }];
-    
-    [self.usernameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
-    [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(9.5);
-        make.top.mas_equalTo(self.avatarImageView).mas_offset(2.0);
-        make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5);
-    }];
-    
-    [self.detailLabel setContentCompressionResistancePriority:110 forAxis:UILayoutConstraintAxisHorizontal];
-    [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.avatarImageView).mas_offset(-2.0);
-        make.left.mas_equalTo(self.usernameLabel);
-        make.right.mas_lessThanOrEqualTo(self.remindImageView.mas_left);
-    }];
-    
-    [self.timeLabel setContentCompressionResistancePriority:300 forAxis:UILayoutConstraintAxisHorizontal];
-    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.usernameLabel);
+
+    // 时间
+    self.timeLabel = self.contentView.addLabel(2001)
+    .font([UIFont fontConversationTime]).textColor([UIColor colorTextGray1])
+    .masonry(^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.avatarView).mas_offset(2);
         make.right.mas_equalTo(self.contentView).mas_offset(-9.5);
-    }];
+    })
+    .view;
+    [self.timeLabel setContentCompressionResistancePriority:300 forAxis:UILayoutConstraintAxisHorizontal];
     
-    [self.remindImageView setContentCompressionResistancePriority:310 forAxis:UILayoutConstraintAxisHorizontal];
-    [self.remindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    // 用户名
+    self.nameLabel = self.contentView.addLabel(1002)
+    .font([UIFont fontConversationUsername])
+    .masonry(^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
+        make.top.mas_equalTo(self.avatarView).mas_offset(1.5);
+        make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5);
+    })
+    .view;
+    [self.nameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
+    
+    // 免打扰标识
+    self.remindImageView = self.contentView.addImageView(2002)
+    .alpha(0.4)
+    .masonry(^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.timeLabel);
-        make.centerY.mas_equalTo(self.detailLabel);
-    }];
+        make.bottom.mas_equalTo(self.avatarView);
+    })
+    .view;
+    [self.remindImageView setContentCompressionResistancePriority:310 forAxis:UILayoutConstraintAxisHorizontal];
     
-    [self.redPointView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.avatarImageView.mas_right).mas_offset(-2);
-        make.centerY.mas_equalTo(self.avatarImageView.mas_top).mas_offset(2);
-        make.width.and.height.mas_equalTo(REDPOINT_WIDTH);
+    // 正文
+    self.detailLabel = self.contentView.addLabel(3)
+    .font([UIFont fontConversationDetail])
+    .textColor([UIColor colorTextGray])
+    .masonry(^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.nameLabel.mas_bottom).mas_offset(4);
+        make.left.mas_equalTo(self.nameLabel);
+        make.right.mas_lessThanOrEqualTo(self.remindImageView.mas_left);
+    })
+    .view;
+    [self.detailLabel setContentCompressionResistancePriority:110 forAxis:UILayoutConstraintAxisHorizontal];
+    
+    [self layoutIfNeeded];
+    // 气泡
+    self.badge = [[TLBadge alloc] init];
+    [self.contentView addSubview:self.badge];
+    [self.badge mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.avatarView.mas_right).mas_offset(-1.5);
+        make.centerY.mas_equalTo(self.avatarView.mas_top).mas_equalTo(1.5);
     }];
-}
-
-#pragma mark - Getter
-- (UIImageView *)avatarImageView
-{
-    if (_avatarImageView == nil) {
-        _avatarImageView = [[UIImageView alloc] init];
-        [_avatarImageView.layer setMasksToBounds:YES];
-        [_avatarImageView.layer setCornerRadius:3.0f];
-    }
-    return _avatarImageView;
-}
-
-- (UILabel *)usernameLabel
-{
-    if (_usernameLabel == nil) {
-        _usernameLabel = [[UILabel alloc] init];
-        [_usernameLabel setFont:[UIFont fontConversationUsername]];
-    }
-    return _usernameLabel;
-}
-
-- (UILabel *)detailLabel
-{
-    if (_detailLabel == nil) {
-        _detailLabel = [[UILabel alloc] init];
-        [_detailLabel setFont:[UIFont fontConversationDetail]];
-        [_detailLabel setTextColor:[UIColor colorTextGray]];
-    }
-    return _detailLabel;
-}
-
-- (UILabel *)timeLabel
-{
-    if (_timeLabel == nil) {
-        _timeLabel = [[UILabel alloc] init];
-        [_timeLabel setFont:[UIFont fontConversationTime]];
-        [_timeLabel setTextColor:[UIColor colorTextGray1]];
-    }
-    return _timeLabel;
-}
-
-- (UIImageView *)remindImageView
-{
-    if (_remindImageView == nil) {
-        _remindImageView = [[UIImageView alloc] init];
-        [_remindImageView setAlpha:0.4];
-    }
-    return _remindImageView;
-}
-
-- (UIView *)redPointView
-{
-    if (_redPointView == nil) {
-        _redPointView = [[UIView alloc] init];
-        [_redPointView setBackgroundColor:[UIColor redColor]];
-        
-        [_redPointView.layer setMasksToBounds:YES];
-        [_redPointView.layer setCornerRadius:REDPOINT_WIDTH / 2.0];
-        [_redPointView setHidden:YES];
-    }
-    return _redPointView;
 }
 
 @end

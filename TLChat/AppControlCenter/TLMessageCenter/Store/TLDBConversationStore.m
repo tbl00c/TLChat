@@ -77,7 +77,7 @@
             conversation.convType = [retSet intForColumn:@"conv_type"];
             NSString *dateString = [retSet stringForColumn:@"date"];
             conversation.date = [NSDate dateWithTimeIntervalSince1970:dateString.doubleValue];
-            conversation.unreadCount = [retSet intForColumn:@"unread_count"];
+            conversation.unreadCount = @([retSet intForColumn:@"unread_count"]).stringValue;
             [data addObject:conversation];
         }
         [retSet close];

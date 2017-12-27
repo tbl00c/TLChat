@@ -18,16 +18,6 @@ typedef NS_ENUM(NSInteger, TLConversationType) {
     TLConversationTypeServerGroup,  // 服务组（订阅号、企业号）
 };
 
-
-/**
- *  会话提示类型
- */
-typedef NS_ENUM(NSInteger, TLClueType) {
-    TLClueTypeNone,
-    TLClueTypePoint,
-    TLClueTypePointWithNumber,
-};
-
 typedef NS_ENUM(NSInteger, TLMessageRemindType) {
     TLMessageRemindTypeNormal,    // 正常接受
     TLMessageRemindTypeClosed,    // 不提示
@@ -79,17 +69,10 @@ typedef NS_ENUM(NSInteger, TLMessageRemindType) {
 @property (nonatomic, strong) NSString *content;
 
 /**
- *  提示红点类型
- */
-@property (nonatomic, assign, readonly) TLClueType clueType;
-
-
-@property (nonatomic, assign, readonly) BOOL isRead;
-
-/**
  *  未读数量
  */
 @property (nonatomic, assign) NSInteger unreadCount;
-
+@property (nonatomic, strong, readonly) NSString *badgeValue;
+@property (nonatomic, assign, readonly) BOOL isRead;
 
 @end

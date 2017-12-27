@@ -140,6 +140,7 @@
     .backgroundColor([UIColor whiteColor])
     .tableHeaderView(self.searchController.searchBar)
     .tableFooterView([UIView new])
+    .separatorStyle(UITableViewCellSeparatorStyleNone)
     .view;
     
     // 顶部logo

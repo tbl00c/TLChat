@@ -46,7 +46,9 @@
 #pragma mark - # Private Methods
 - (void)p_tableView:(UITableView *)tableView deleteItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    TLConversation *conversation = self.dataModel.cellModelByIndexPath(indexPath);
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
+    ZZFlexibleLayoutViewModel *viewModel = [sectionModel objectAtIndex:indexPath.row];
+    TLConversation *conversation = viewModel.dataModel;
     
     if (!conversation) {
         [TLUIUtility showErrorHint:@"获取会话信息时出现异常"];
@@ -66,7 +68,7 @@
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     // 分割线
-    if (self.data.count > 0 && indexPath.row == self.data.count) {
+    if (indexPath.row >= 0 && indexPath.row == sectionModel.itemsArray.count) {
         NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
         TLConversationCell *cell = [tableView cellForRowAtIndexPath:lastIndexPath];
         [cell setBottomSeperatorStyle:TLConversationCellSeperatorStyleFill];

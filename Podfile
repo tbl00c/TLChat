@@ -9,7 +9,7 @@ target :TLChat do
 #    pod 'TLKit', :path => '~/TLPods/TLKit'
 
     # 全能tabBarController
-    pod 'TLTabBarController', :git => 'git@github.com:tbl00c/TLTabBarController.git', :tag => '0.0.3'
+    pod 'TLTabBarController', :git => 'git@github.com:tbl00c/TLTabBarController.git', :tag => '0.0.4'
 #    pod 'TLTabBarController', :path => '~/TLPods/TLTabBarController'
 
     # Bug修复版JZ

@@ -10,26 +10,22 @@
 
 @implementation TLConversation
 
-- (void)setConvType:(TLConversationType)convType
-{
-    _convType = convType;
-    switch (convType) {
-        case TLConversationTypePersonal:
-        case TLConversationTypeGroup:
-            _clueType = TLClueTypePointWithNumber;
-            break;
-        case TLConversationTypePublic:
-        case TLConversationTypeServerGroup:
-            _clueType = TLClueTypePoint;
-            break;
-        default:
-            break;
-    }
-}
-
 - (BOOL)isRead
 {
-    return self.unreadCount == 0;
+    return self.unreadCount <= 0;
+}
+
+- (NSString *)badgeValue
+{
+    if (self.isRead) {
+        return nil;
+    }
+    if (self.convType == TLConversationTypePersonal || self.convType == TLConversationTypeGroup) {
+        return self.unreadCount <= 99 ? @(self.unreadCount).stringValue : @"99+";
+    }
+    else {
+        return @"";
+    }
 }
 
 @end

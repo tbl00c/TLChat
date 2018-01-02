@@ -33,7 +33,7 @@
 - (void)setEmojiGroup:(TLExpressionGroupModel *)emojiGroup
 {
     _emojiGroup = emojiGroup;
-    [self.groupIconView setImage:[UIImage imageNamed:emojiGroup.groupIconPath]];
+    [self.groupIconView setImage:[UIImage imageNamed:emojiGroup.iconPath]];
 }
 
 #pragma mark - # Private Methods

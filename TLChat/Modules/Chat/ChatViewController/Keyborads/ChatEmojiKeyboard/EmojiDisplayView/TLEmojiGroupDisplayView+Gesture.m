@@ -37,7 +37,7 @@ static UICollectionViewCell *lastCell;
                 NSInteger index = [self transformModelByRowCount:curGroup.rowNumber colCount:curGroup.colNumber andIndex:indexPath.row];  // 矩阵坐标转置
                 TLExpressionModel *emoji = [curGroup objectAtIndex:index];
                 if (emoji) {
-                    if ((emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) && [emoji.emojiID isEqualToString:@"-1"]) {        // 删除
+                    if ((emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) && [emoji.eId isEqualToString:@"-1"]) {        // 删除
                         
                     }
                     else {
@@ -62,7 +62,7 @@ static UICollectionViewCell *lastCell;
                 NSInteger index = [self transformModelByRowCount:curGroup.rowNumber colCount:curGroup.colNumber andIndex:indexPath.row];  // 矩阵坐标转置
                 TLExpressionModel *emoji = [curGroup objectAtIndex:index];
                 if (emoji) {
-                    if ((emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) && [emoji.emojiID isEqualToString:@"-1"]) {        // 删除
+                    if ((emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) && [emoji.eId isEqualToString:@"-1"]) {        // 删除
                         [self p_cancelLongPressEmoji];
                     }
                     else {

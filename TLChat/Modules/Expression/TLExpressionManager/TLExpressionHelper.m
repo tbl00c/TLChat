@@ -65,7 +65,7 @@
 - (TLExpressionGroupModel *)emojiGroupByID:(NSString *)groupID;
 {
     for (TLExpressionGroupModel *group in self.userEmojiGroups) {
-        if ([group.groupID isEqualToString:groupID]) {
+        if ([group.gId isEqualToString:groupID]) {
             return group;
         }
     }
@@ -78,27 +78,27 @@
                                  failure:(void (^)(TLExpressionGroupModel *, NSString *))failure
 {
     group.type = TLEmojiTypeImageWithTitle;
-    dispatch_queue_t downloadQueue = dispatch_queue_create([group.groupID UTF8String], nil);
+    dispatch_queue_t downloadQueue = dispatch_queue_create([group.gId UTF8String], nil);
     dispatch_group_t downloadGroup = dispatch_group_create();
     
     for (int i = 0; i <= group.data.count; i++) {
         dispatch_group_async(downloadGroup, downloadQueue, ^{
-            NSString *groupPath = [NSFileManager pathExpressionForGroupID:group.groupID];
+            NSString *groupPath = [NSFileManager pathExpressionForGroupID:group.gId];
             NSString *emojiPath;
             NSData *data = nil;
             if (i == group.data.count) {
-                emojiPath = [NSString stringWithFormat:@"%@icon_%@", groupPath, group.groupID];
-                data = [NSData dataWithContentsOfURL:TLURL(group.groupIconURL)];
+                emojiPath = [NSString stringWithFormat:@"%@icon_%@", groupPath, group.gId];
+                data = [NSData dataWithContentsOfURL:TLURL(group.iconURL)];
             }
             else {
                 TLExpressionModel *emoji = group.data[i];
-                NSString *urlString = [TLExpressionModel expressionDownloadURLWithEid:emoji.emojiID];
+                NSString *urlString = [TLExpressionModel expressionDownloadURLWithEid:emoji.eId];
                 data = [NSData dataWithContentsOfURL:TLURL(urlString)];
                 if (data == nil) {
-                    urlString = [TLExpressionModel expressionURLWithEid:emoji.emojiID];
+                    urlString = [TLExpressionModel expressionURLWithEid:emoji.eId];
                     data = [NSData dataWithContentsOfURL:TLURL(urlString)];
                 }
-                emojiPath = [NSString stringWithFormat:@"%@%@", groupPath, emoji.emojiID];
+                emojiPath = [NSString stringWithFormat:@"%@%@", groupPath, emoji.eId];
             }
             
             [data writeToFile:emojiPath atomically:YES];
@@ -140,7 +140,7 @@
     if (_defaultFaceGroup == nil) {
         _defaultFaceGroup = [[TLExpressionGroupModel alloc] init];
         _defaultFaceGroup.type = TLEmojiTypeFace;
-        _defaultFaceGroup.groupIconPath = @"emojiKB_group_face";
+        _defaultFaceGroup.iconPath = @"emojiKB_group_face";
         NSString *path = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
         NSData *data = [NSData dataWithContentsOfFile:path];
         _defaultFaceGroup.data = [TLExpressionModel mj_objectArrayWithKeyValuesArray:data];
@@ -156,7 +156,7 @@
     if (_defaultSystemEmojiGroup == nil) {
         _defaultSystemEmojiGroup = [[TLExpressionGroupModel alloc] init];
         _defaultSystemEmojiGroup.type = TLEmojiTypeEmoji;
-        _defaultSystemEmojiGroup.groupIconPath = @"emojiKB_group_face";
+        _defaultSystemEmojiGroup.iconPath = @"emojiKB_group_face";
         NSString *path = [[NSBundle mainBundle] pathForResource:@"SystemEmoji" ofType:@"json"];
         NSData *data = [NSData dataWithContentsOfFile:path];
         _defaultSystemEmojiGroup.data = [TLExpressionModel mj_objectArrayWithKeyValuesArray:data];

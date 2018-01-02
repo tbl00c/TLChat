@@ -10,18 +10,19 @@
 #import "NSFileManager+TLChat.h"
 
 @implementation TLExpressionGroupModel
+@synthesize path = _path;
 
 + (NSDictionary *)replacedKeyFromPropertyName
 {
     return @{
-             @"groupID" : @"eId",
-             @"groupIconURL" : @"coverUrl",
-             @"groupName" : @"eName",
-             @"groupInfo" : @"memo",
-             @"groupDetailInfo" : @"memo1",
+             @"gId" : @"eId",
+             @"iconURL" : @"coverUrl",
+             @"name" : @"eName",
+             @"detail" : @"memo1",
              @"count" : @"picCount",
-             @"bannerID" : @"aId",
+             @"bannerId" : @"aId",
              @"bannerURL" : @"URL",
+             @"groupInfo" : @"memo",
              };
 }
 
@@ -29,6 +30,14 @@
 {
     _data = data;
     self.count = data.count;
+    [self p_updateExpressionItemGid];
+}
+
+- (void)setGId:(NSString *)gId
+{
+    _gId = gId;
+    
+    [self p_updateExpressionItemGid];
 }
 
 - (id)objectAtIndex:(NSUInteger)index
@@ -36,21 +45,29 @@
     return [self.data objectAtIndex:index];
 }
 
+#pragma mark - # Private Methods
+- (void)p_updateExpressionItemGid
+{
+    for (TLExpressionModel *model in self.data) {
+        model.gid = self.gId;
+    }
+}
 
+#pragma mark - # Getters
 - (NSString *)path
 {
-    if (_path == nil && self.groupID != nil) {
-        _path = [NSFileManager pathExpressionForGroupID:self.groupID];
+    if (_path == nil && self.gId != nil) {
+        _path = [NSFileManager pathExpressionForGroupID:self.gId];
     }
     return _path;
 }
 
-- (NSString *)groupIconPath
+- (NSString *)iconPath
 {
-    if (_groupIconPath == nil && self.path != nil) {
-        _groupIconPath = [NSString stringWithFormat:@"%@icon_%@", self.path, self.groupID];
+    if (_iconPath == nil && self.path != nil) {
+        _iconPath = [NSString stringWithFormat:@"%@icon_%@", self.path, self.gId];
     }
-    return _groupIconPath;
+    return _iconPath;
 }
 
 @end

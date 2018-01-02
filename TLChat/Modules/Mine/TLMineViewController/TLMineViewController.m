@@ -54,11 +54,11 @@
     self.addCell(NAME_MINE_MENU_CELL).toSection(TLMineSectionTagWallet).withDataModel(wallet).viewTag(TLMineCellTagWallet);
     
     // 功能
-    self.addSection(TLMineSectionTagFounction).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
-    TLMenuItem *collect = createMenuItem(@"mine_favorites", LOCSTR(@"收藏"));
-    self.addCell(NAME_MINE_MENU_CELL).toSection(TLMineSectionTagFounction).withDataModel(collect).viewTag(TLMineCellTagCollect);
-    TLMenuItem *album = createMenuItem(@"mine_album", LOCSTR(@"相册"));
-    self.addCell(NAME_MINE_MENU_CELL).toSection(TLMineSectionTagFounction).withDataModel(album).viewTag(TLMineCellTagAlbum);
+//    self.addSection(TLMineSectionTagFounction).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+//    TLMenuItem *collect = createMenuItem(@"mine_favorites", LOCSTR(@"收藏"));
+//    self.addCell(NAME_MINE_MENU_CELL).toSection(TLMineSectionTagFounction).withDataModel(collect).viewTag(TLMineCellTagCollect);
+//    TLMenuItem *album = createMenuItem(@"mine_album", LOCSTR(@"相册"));
+//    self.addCell(NAME_MINE_MENU_CELL).toSection(TLMineSectionTagFounction).withDataModel(album).viewTag(TLMineCellTagAlbum);
 //    TLMenuItem *card = createMenuItem(@"mine_card", LOCSTR(@"卡包"));
 //    self.addCell(NAME_MINE_MENU_CELL).toSection(TLMineSectionTagFounction).withDataModel(card).viewTag(TLMineCellTagCard);
     

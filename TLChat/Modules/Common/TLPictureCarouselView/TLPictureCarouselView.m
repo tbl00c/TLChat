@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) NSTimer *timer;
 
-
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
@@ -25,26 +24,35 @@
 {
     if (self = [super initWithFrame:frame]) {
         self.timeInterval = DEFAULT_TIMEINTERVAL;
+        [self.collectionView setFrame:self.bounds];
         [self addSubview:self.collectionView];
-        
-        [self p_addMasonry];
         
         [self.collectionView registerClass:[TLPictureCarouselViewCell class] forCellWithReuseIdentifier:@"TLPictureCarouselViewCell"];
     }
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (!CGRectEqualToRect(self.bounds, self.collectionView.frame)) {
+        [self.collectionView setFrame:self.bounds];
+        [self.collectionView reloadData];
+    }
+}
+
 - (void)setData:(NSArray *)data
 {
     _data = data;
+    if ([_data isEqualToArray:data]) {
+        return;
+    }
     [self.collectionView reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.collectionView setPageX:1 animated:NO];
-        if (self.timer == nil && self.data.count > 1) {
-            __weak typeof(self) weakSelf = self;
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
-                [weakSelf scrollToNextPage];
-            } repeats:YES];
+        [self.timer invalidate];
+        if (data.count > 1) {
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(scrollToNextPage) userInfo:nil repeats:YES];
         }
     });
 }
@@ -74,6 +82,9 @@
 {
     NSInteger row = indexPath.row == 0 ? self.data.count - 1 : (indexPath.row == self.data.count - 1 ? 0 : indexPath.row - 1);
     id<TLPictureCarouselProtocol> model = self.data[row];
+    if (self.didSelectItem) {
+        self.didSelectItem(self, model);
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(pictureCarouselView:didSelectItem:)]) {
         [self.delegate pictureCarouselView:self didSelectItem:model];
     }
@@ -81,7 +92,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return collectionView.size;
+    return collectionView.frame.size;
 }
 
 //MARK: UIScrollViewDelegate
@@ -93,16 +104,16 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (self.timer == nil && self.data.count > 1) {
-        __weak typeof(self) weakSelf = self;
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 block:^(NSTimer *tm) {
-            [weakSelf scrollToNextPage];
-        } repeats:YES];
+    if (!decelerate) {
+        [self scrollViewDidEndDecelerating:scrollView];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    if (self.timer == nil && self.data.count > 1) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(scrollToNextPage) userInfo:nil repeats:YES];
+    }
     // 轮播实现
     if (scrollView.pageX == 0) {
         [scrollView setPageX:self.data.count animated:NO];
@@ -110,6 +121,11 @@
     else if (scrollView.pageX == self.data.count + 1) {
         [scrollView setPageX:1 animated:NO];
     }
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    [self scrollViewDidEndDecelerating:scrollView];
 }
 
 #pragma mark - # Event Response
@@ -124,14 +140,6 @@
         nextPage = self.collectionView.pageX + 1;
     }
     [self.collectionView setPageX:nextPage animated:YES];
-}
-
-#pragma mark - # Private Methods
-- (void)p_addMasonry
-{
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self);
-    }];
 }
 
 #pragma mark - # Getter
@@ -156,3 +164,4 @@
 }
 
 @end
+

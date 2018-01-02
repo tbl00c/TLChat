@@ -276,7 +276,7 @@
 - (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didSelectedEmojiItem:(TLExpressionModel *)emoji
 {
     if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
-        [self.chatBar addEmojiString:emoji.emojiName];
+        [self.chatBar addEmojiString:emoji.name];
     }
     else {
         TLExpressionMessage *message = [[TLExpressionMessage alloc] init];

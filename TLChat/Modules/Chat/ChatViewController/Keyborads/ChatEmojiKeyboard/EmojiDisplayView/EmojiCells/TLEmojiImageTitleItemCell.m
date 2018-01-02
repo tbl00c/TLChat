@@ -33,8 +33,8 @@
 - (void)setEmojiItem:(TLExpressionModel *)emojiItem
 {
     [super setEmojiItem:emojiItem];
-    [self.imageView setImage:emojiItem.emojiPath == nil ? nil : [UIImage imageNamed:emojiItem.emojiPath]];
-    [self.label setText:emojiItem.emojiName];
+    [self.imageView setImage:emojiItem.path == nil ? nil : [UIImage imageNamed:emojiItem.path]];
+    [self.label setText:emojiItem.name];
 }
 
 - (CGRect)displayBaseRect

@@ -67,7 +67,7 @@
     NSInteger index = [self transformModelByRowCount:group.rowNumber colCount:group.colNumber andIndex:indexPath.row];
     TLExpressionModel *emoji = [group objectAtIndex:index];
     if (emoji) {
-        if ([emoji.emojiID isEqualToString:@"-1"]) {
+        if ([emoji.eId isEqualToString:@"-1"]) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(emojiGroupDisplayViewDeleteButtonPressed:)]) {
                 [self.delegate emojiGroupDisplayViewDeleteButtonPressed:self];
             }

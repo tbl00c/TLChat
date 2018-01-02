@@ -22,8 +22,8 @@
 - (void)setEmoji:(TLExpressionModel *)emoji
 {
     _emoji = emoji;
-    [self.content setObject:emoji.groupID forKey:@"groupID"];
-    [self.content setObject:emoji.emojiID forKey:@"emojiID"];
+    [self.content setObject:emoji.gid forKey:@"groupID"];
+    [self.content setObject:emoji.eId forKey:@"emojiID"];
     CGSize imageSize = [UIImage imageNamed:self.path].size;
     [self.content setObject:[NSNumber numberWithDouble:imageSize.width] forKey:@"w"];
     [self.content setObject:[NSNumber numberWithDouble:imageSize.height] forKey:@"h"];
@@ -32,20 +32,20 @@
 {
     if (_emoji == nil) {
         _emoji = [[TLExpressionModel alloc] init];
-        _emoji.groupID = self.content[@"groupID"];
-        _emoji.emojiID = self.content[@"emojiID"];
+        _emoji.gid = self.content[@"groupID"];
+        _emoji.eId = self.content[@"emojiID"];
     }
     return _emoji;
 }
 
 - (NSString *)path
 {
-    return self.emoji.emojiPath;
+    return self.emoji.path;
 }
 
 - (NSString *)url
 {
-    return [TLExpressionModel expressionDownloadURLWithEid:self.emoji.emojiID];
+    return [TLExpressionModel expressionDownloadURLWithEid:self.emoji.eId];
 }
 
 - (CGSize)emojiSize

@@ -11,6 +11,7 @@
 #import "TLMacros.h"
 
 @implementation TLExpressionModel
+@synthesize path = _path;
 
 + (NSString *)expressionURLWithEid:(NSString *)eid
 {
@@ -25,21 +26,22 @@
 + (NSDictionary *)replacedKeyFromPropertyName
 {
     return @{
-             @"emojiID" : @"pId",
-             @"emojiURL" : @"Url",
-             @"emojiName" : @"credentialName",
+             @"eId" : @"pId",
+             @"url" : @"Url",
+             @"name" : @"credentialName",
              @"emojiPath" : @"imageFile",
              @"size" : @"size",
              };
 }
 
-- (NSString *)emojiPath
+#pragma mark - # Getters
+- (NSString *)path
 {
-    if (_emojiPath == nil) {
-        NSString *groupPath = [NSFileManager pathExpressionForGroupID:self.groupID];
-        _emojiPath = [NSString stringWithFormat:@"%@%@", groupPath, self.emojiID];
+    if (_path == nil) {
+        NSString *groupPath = [NSFileManager pathExpressionForGroupID:self.gid];
+        _path = [NSString stringWithFormat:@"%@%@", groupPath, self.eId];
     }
-    return _emojiPath;
+    return _path;
 }
 
 @end

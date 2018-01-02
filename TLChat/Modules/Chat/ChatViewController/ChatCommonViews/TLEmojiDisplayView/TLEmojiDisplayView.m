@@ -47,14 +47,14 @@
         [self.imageLabel setHidden:NO];
         [self.imageView setHidden:YES];
         [self.titleLabel setHidden:YES];
-        [self.imageLabel setText:emoji.emojiName];
+        [self.imageLabel setText:emoji.name];
     }
     else if (emoji.type == TLEmojiTypeFace) {
         [self.imageLabel setHidden:YES];
         [self.imageView setHidden:NO];
         [self.titleLabel setHidden:NO];
-        [self.imageView setImage:[UIImage imageNamed:emoji.emojiName]];
-        [self.titleLabel setText:[emoji.emojiName substringWithRange:NSMakeRange(1, emoji.emojiName.length - 2)]];
+        [self.imageView setImage:[UIImage imageNamed:emoji.name]];
+        [self.titleLabel setText:[emoji.name substringWithRange:NSMakeRange(1, emoji.name.length - 2)]];
     }
 }
 

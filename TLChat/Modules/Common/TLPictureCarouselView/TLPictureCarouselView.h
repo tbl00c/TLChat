@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TLPictureCarouselProtocol.h"
 
-#define         DEFAULT_TIMEINTERVAL        5.0f
+#define         DEFAULT_TIMEINTERVAL        3.0f
 
 @class TLPictureCarouselView;
 @protocol TLPictureCarouselDelegate <NSObject>
@@ -24,6 +24,8 @@
 @property (nonatomic, strong) NSArray *data;
 
 @property (nonatomic, assign) id<TLPictureCarouselDelegate> delegate;
+
+@property (nonatomic, copy) void (^didSelectItem)(TLPictureCarouselView *pictureCarouselView, id<TLPictureCarouselProtocol> model);
 
 @property (nonatomic, assign) NSTimeInterval timeInterval;
 

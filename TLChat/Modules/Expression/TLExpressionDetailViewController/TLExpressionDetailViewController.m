@@ -8,7 +8,7 @@
 
 #import "TLExpressionDetailViewController.h"
 #import "TLExpressionDetailViewController+CollectionView.h"
-#import "TLExpressionProxy.h"
+#import "TLExpressionGroupModel+DetailRequest.h"
 
 @interface TLExpressionDetailViewController ()
 {
@@ -51,7 +51,7 @@
 - (void)setGroup:(TLExpressionGroupModel *)group
 {
     _group = group;
-    [self.navigationItem setTitle:group.groupName];
+    [self.navigationItem setTitle:group.name];
 //    [self.collectionView reloadData];
 }
 
@@ -59,8 +59,9 @@
 - (void)p_loadData
 {
     kPageIndex = 1;
-    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
-    [proxy requestExpressionGroupDetailByGroupID:self.group.groupID pageIndex:kPageIndex success:^(id data) {
+    @weakify(self);
+    [self.group requestExpressionGroupDetailByPageIndex:kPageIndex success:^(id data) {
+        @strongify(self);
         [TLUIUtility hiddenLoading];
         self.group.data = data;
         [self.collectionView reloadData];

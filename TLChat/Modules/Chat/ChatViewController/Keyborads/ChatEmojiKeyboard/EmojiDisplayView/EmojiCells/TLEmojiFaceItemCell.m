@@ -38,7 +38,7 @@
 - (void)setEmojiItem:(TLExpressionModel *)emojiItem
 {
     [super setEmojiItem:emojiItem];
-    if ([emojiItem.emojiID isEqualToString:@"-1"]) {
+    if ([emojiItem.eId isEqualToString:@"-1"]) {
         [self.imageView setHidden:NO];
         [self.label setHidden:YES];
         [self.imageView setImage:[UIImage imageNamed:@"emojiKB_emoji_delete"]];
@@ -47,12 +47,12 @@
         if (emojiItem.type == TLEmojiTypeFace) {
             [self.imageView setHidden:NO];
             [self.label setHidden:YES];
-            [self.imageView setImage:emojiItem.emojiName == nil ? nil : [UIImage imageNamed:emojiItem.emojiName]];
+            [self.imageView setImage:emojiItem.name == nil ? nil : [UIImage imageNamed:emojiItem.name]];
         }
         else {
             [self.imageView setHidden:YES];
             [self.label setHidden:NO];
-            [self.label setText:emojiItem.emojiName];
+            [self.label setText:emojiItem.name];
         }
     }
 }

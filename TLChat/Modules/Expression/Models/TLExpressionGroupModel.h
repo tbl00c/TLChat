@@ -10,52 +10,54 @@
 #import "TLChatMacros.h"
 #import "TLExpressionModel.h"
 
-typedef NS_ENUM(NSInteger, TLEmojiGroupStatus) {
-    TLEmojiGroupStatusUnDownload,
-    TLEmojiGroupStatusDownloaded,
-    TLEmojiGroupStatusDownloading,
+typedef NS_ENUM(NSInteger, TLExpressionGroupStatus) {
+    TLExpressionGroupStatusNet,                     // 未下载
+    TLExpressionGroupStatusDownloading,             // 正在下载
+    TLExpressionGroupStatusLocal,                   // 已下载
 };
 
 @interface TLExpressionGroupModel: NSObject
 
 @property (nonatomic, assign) TLEmojiType type;
 
-/// 基本信息
-@property (nonatomic, strong) NSString *groupID;
+/// 表情包id
+@property (nonatomic, strong) NSString *gId;
 
-@property (nonatomic, strong) NSString *groupName;
+/// 表情包名称
+@property (nonatomic, strong) NSString *name;
+/// 表情包描述
+@property (nonatomic, strong) NSString *detail;
 
-@property (nonatomic, strong) NSString *path;
+/// 表情包icon路径
+@property (nonatomic, strong) NSString *iconPath;
+/// 表情包iconURL
+@property (nonatomic, strong) NSString *iconURL;
 
-@property (nonatomic, strong) NSString *groupIconPath;
-
-@property (nonatomic, strong) NSString *groupIconURL;
-
-/// Banner用
-@property (nonatomic, strong) NSString *bannerID;
-
+/// 表情包bannerId
+@property (nonatomic, strong) NSString *bannerId;
+/// 表情包bannerURL
 @property (nonatomic, strong) NSString *bannerURL;
 
-/// 总数
+/// 表情
+@property (nonatomic, strong) NSMutableArray *data;
+/// 表情总数
 @property (nonatomic, assign) NSUInteger count;
 
 /// 详细信息
 @property (nonatomic, strong) NSString *groupInfo;
-
-@property (nonatomic, strong) NSString *groupDetailInfo;
-
+/// 发布日期
 @property (nonatomic, strong) NSDate *date;
 
-@property (nonatomic, assign) TLEmojiGroupStatus status;
-
-/// 作者
+/// 作者姓名
 @property (nonatomic, strong) NSString *authName;
-
+/// 作者Id
 @property (nonatomic, strong) NSString *authID;
 
+/// 表情包状态
+@property (nonatomic, assign) TLExpressionGroupStatus status;
 
-#pragma mark - 本地信息
-@property (nonatomic, strong) NSMutableArray *data;
+/// 表情包路径
+@property (nonatomic, strong, readonly) NSString *path;
 
 - (id)objectAtIndex:(NSUInteger)index;
 

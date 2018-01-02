@@ -8,7 +8,7 @@
 
 #import "TLExpressionViewController.h"
 #import "TLExpressionChosenViewController.h"
-#import "TLExpressionPublicViewController.h"
+#import "TLExpressionMoreViewController.h"
 #import "TLMyExpressionViewController.h"
 
 #define     WIDTH_EXPRESSION_SEGMENT    SCREEN_WIDTH * 0.55
@@ -22,16 +22,15 @@
 @property (nonatomic, strong) TLExpressionChosenViewController *expChosenVC;
 
 /// 更多表情
-@property (nonatomic, strong) TLExpressionPublicViewController *expPublicVC;
+@property (nonatomic, strong) TLExpressionMoreViewController *expMoreVC;
 
 @end
 
 @implementation TLExpressionViewController
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];
-    [self setAutomaticallyAdjustsScrollViewInsets:NO];
+    [super loadView];
     
     // navBar分段控制器
     [self.navigationItem setTitleView:self.segmentedControl];
@@ -42,8 +41,8 @@
     [self addChildViewController:self.expChosenVC];
     
     // 推荐表情
-    self.expPublicVC = [[TLExpressionPublicViewController alloc] init];
-    [self addChildViewController:self.expPublicVC];
+    self.expMoreVC = [[TLExpressionMoreViewController alloc] init];
+    [self addChildViewController:self.expMoreVC];
     
     @weakify(self);
     [self addRightBarButtonWithImage:[UIImage imageNamed:@"nav_setting"] actionBlick:^{
@@ -60,14 +59,23 @@
     }
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.expChosenVC requestDataIfNeed];
+}
+
 #pragma mark - # Event Response
 - (void)segmentedControlChanged:(UISegmentedControl *)segmentedControl
 {
     if (segmentedControl.selectedSegmentIndex == 0) {
-        [self transitionFromViewController:self.expPublicVC toViewController:self.expChosenVC duration:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:nil];
+        [self transitionFromViewController:self.expMoreVC toViewController:self.expChosenVC duration:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:nil];
+        [self.expChosenVC requestDataIfNeed];
     }
     else {
-        [self transitionFromViewController:self.expChosenVC toViewController:self.expPublicVC duration:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:nil];
+        [self transitionFromViewController:self.expChosenVC toViewController:self.expMoreVC duration:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:nil];
+        [self.expMoreVC requestDataIfNeed];
     }
 }
 
@@ -75,7 +83,7 @@
 - (UISegmentedControl *)segmentedControl
 {
     if (_segmentedControl == nil) {
-        _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"精选表情", @"网络表情"]];
+        _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"精选表情", @"更多表情"]];
         [_segmentedControl setWidth:WIDTH_EXPRESSION_SEGMENT];
         [_segmentedControl setSelectedSegmentIndex:0];
         [_segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];

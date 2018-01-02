@@ -44,11 +44,11 @@
     NSString *sqlString = [NSString stringWithFormat:SQL_ADD_EXP_GROUP, EXP_GROUP_TABLE_NAME];
     NSArray *arr = [NSArray arrayWithObjects:
                     uid,
-                    group.groupID,
+                    group.gId,
                     [NSNumber numberWithInteger:group.type],
-                    TLNoNilString(group.groupName),
+                    TLNoNilString(group.name),
                     TLNoNilString(group.groupInfo),
-                    TLNoNilString(group.groupDetailInfo),
+                    TLNoNilString(group.detail),
                     [NSNumber numberWithInteger:group.count],
                     TLNoNilString(group.authID),
                     TLNoNilString(group.authName),
@@ -59,7 +59,7 @@
         return NO;
     }
     // 添加表情包里的所有表情
-    ok = [self addExpressions:group.data toGroupID:group.groupID];
+    ok = [self addExpressions:group.data toGroupID:group.gId];
     return ok;
 }
 
@@ -72,15 +72,15 @@
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             TLExpressionGroupModel *group = [[TLExpressionGroupModel alloc] init];
-            group.groupID = [retSet stringForColumn:@"gid"];
+            group.gId = [retSet stringForColumn:@"gid"];
             group.type = [retSet intForColumn:@"type"];
-            group.groupName = [retSet stringForColumn:@"name"];
+            group.name = [retSet stringForColumn:@"name"];
             group.groupInfo = [retSet stringForColumn:@"desc"];
-            group.groupDetailInfo = [retSet stringForColumn:@"detail"];
+            group.detail = [retSet stringForColumn:@"detail"];
             group.count = [retSet intForColumn:@"count"];
             group.authID = [retSet stringForColumn:@"auth_id"];
             group.authName = [retSet stringForColumn:@"auth_name"];
-            group.status = TLEmojiGroupStatusDownloaded;
+            group.status = TLExpressionGroupStatusLocal;
             [data addObject:group];
         }
         [retSet close];
@@ -88,7 +88,7 @@
     
     // 读取表情包的所有表情信息
     for (TLExpressionGroupModel *group in data) {
-        group.data = [self expressionsForGroupID:group.groupID];
+        group.data = [self expressionsForGroupID:group.gId];
     }
     
     return data;
@@ -118,8 +118,8 @@
         NSString *sqlString = [NSString stringWithFormat:SQL_ADD_EXP, EXPS_TABLE_NAME];
         NSArray *arr = [NSArray arrayWithObjects:
                         groupID,
-                        emoji.emojiID,
-                        TLNoNilString(emoji.emojiName),
+                        emoji.eId,
+                        TLNoNilString(emoji.name),
                         @"", @"", @"", @"", @"", nil];
         BOOL ok = [self excuteSQL:sqlString withArrParameter:arr];
         if (!ok) {
@@ -137,9 +137,9 @@
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             TLExpressionModel *emoji = [[TLExpressionModel alloc] init];
-            emoji.groupID = [retSet stringForColumn:@"gid"];
-            emoji.emojiID = [retSet stringForColumn:@"eid"];
-            emoji.emojiName = [retSet stringForColumn:@"name"];
+            emoji.gid = [retSet stringForColumn:@"gid"];
+            emoji.eId = [retSet stringForColumn:@"eid"];
+            emoji.name = [retSet stringForColumn:@"name"];
             [data addObject:emoji];
         }
         [retSet close];

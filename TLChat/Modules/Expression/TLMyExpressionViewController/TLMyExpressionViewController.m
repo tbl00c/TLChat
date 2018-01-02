@@ -80,9 +80,9 @@
 //MARK: TLMyExpressionCellDelegate
 - (void)myExpressionCellDeleteButtonDown:(TLExpressionGroupModel *)group
 {
-    BOOL ok = [self.helper deleteExpressionGroupByID:group.groupID];
+    BOOL ok = [self.helper deleteExpressionGroupByID:group.gId];
     if (ok) {
-        BOOL canDeleteFile = ![self.helper didExpressionGroupAlwaysInUsed:group.groupID];
+        BOOL canDeleteFile = ![self.helper didExpressionGroupAlwaysInUsed:group.gId];
         if (canDeleteFile) {
             NSError *error;
             ok = [[NSFileManager defaultManager] removeItemAtPath:group.path error:&error];

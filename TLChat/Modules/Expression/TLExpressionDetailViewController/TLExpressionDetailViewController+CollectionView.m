@@ -52,10 +52,10 @@
             NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
             TLExpressionModel *emoji = [self.group objectAtIndex:indexPath.row];
             [TLUIUtility showLoading:@"正在将表情保存到系统相册"];
-            NSString *urlString = [TLExpressionModel expressionDownloadURLWithEid:emoji.emojiID];
+            NSString *urlString = [TLExpressionModel expressionDownloadURLWithEid:emoji.eId];
             NSData *data = [NSData dataWithContentsOfURL:TLURL(urlString)];
             if (!data) {
-                data = [NSData dataWithContentsOfFile:emoji.emojiPath];
+                data = [NSData dataWithContentsOfFile:emoji.path];
             }
             if (data) {
                 UIImage *image = [UIImage imageWithData:data];
@@ -137,16 +137,16 @@
     [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
         
     } success:^(TLExpressionGroupModel *group) {
-        group.status = TLEmojiGroupStatusDownloaded;
+        group.status = TLExpressionGroupStatusLocal;
         [self.collectionView reloadData];
         BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
         if (!ok) {
-            [TLUIUtility showErrorHint:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.groupName]];
+            [TLUIUtility showErrorHint:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.name]];
         }
     } failure:^(TLExpressionGroupModel *group, NSString *error) {
-        group.status = TLEmojiGroupStatusUnDownload;
+        group.status = TLExpressionGroupStatusNet;
         [self.collectionView reloadData];
-        [TLUIUtility showErrorHint:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];
+        [TLUIUtility showErrorHint:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.name, error]];
     }];
 }
 

@@ -78,7 +78,7 @@ static TLEmojiKBHelper *helper;
     if (_systemEditGroup == nil) {
         _systemEditGroup = [[TLExpressionGroupModel alloc] init];
         _systemEditGroup.type = TLEmojiTypeOther;
-        _systemEditGroup.groupIconPath = @"emojiKB_settingBtn";
+        _systemEditGroup.iconPath = @"emojiKB_settingBtn";
     }
     return _systemEditGroup;
 }

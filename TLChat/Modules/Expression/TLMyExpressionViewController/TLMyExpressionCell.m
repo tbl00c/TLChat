@@ -36,8 +36,8 @@
 - (void)setGroup:(TLExpressionGroupModel *)group
 {
     _group = group;
-    [self.iconView setImage:[UIImage imageNamed:group.groupIconPath]];
-    [self.titleLabel setText:group.groupName];
+    [self.iconView setImage:[UIImage imageNamed:group.iconPath]];
+    [self.titleLabel setText:group.name];
 }
 
 #pragma mark - Event Response -

@@ -19,6 +19,12 @@
 @synthesize xmlResponseSerializer = _xmlResponseSerializer;
 @synthesize plistResponseSerializer = _plistResponseSerializer;
 
++ (void)load
+{
+    NSSet *acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", nil];
+    [AFHTTPSessionManager manager].responseSerializer.acceptableContentTypes = acceptableContentTypes;
+}
+
 + (TLNetworkSerializer *)sharedInstance
 {
     static TLNetworkSerializer *serializer;
@@ -85,7 +91,6 @@
     if (!_jsonResponseSerializer) {
         _jsonResponseSerializer = [AFJSONResponseSerializer serializer];
         _jsonResponseSerializer.acceptableStatusCodes = self.allStatusCodes;
-        _jsonResponseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
         [_jsonResponseSerializer setAcceptableStatusCodes:self.allStatusCodes];
     }
     return _jsonResponseSerializer;

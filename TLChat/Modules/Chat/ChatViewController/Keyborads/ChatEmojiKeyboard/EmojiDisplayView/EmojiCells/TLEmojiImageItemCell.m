@@ -37,7 +37,7 @@
 - (void)setEmojiItem:(TLExpressionModel *)emojiItem
 {
     [super setEmojiItem:emojiItem];
-    [self.imageView setImage:emojiItem.emojiPath == nil ? nil : [UIImage imageNamed:emojiItem.emojiPath]];
+    [self.imageView setImage:emojiItem.path == nil ? nil : [UIImage imageNamed:emojiItem.path]];
 }
 
 #pragma mark - Private Methods -

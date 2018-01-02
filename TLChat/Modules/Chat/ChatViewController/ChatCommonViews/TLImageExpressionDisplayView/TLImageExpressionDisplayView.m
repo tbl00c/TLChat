@@ -53,14 +53,14 @@ static NSString *curID;
         return;
     }
     _emoji = emoji;
-    curID = emoji.emojiID;
-    NSData *data = [NSData dataWithContentsOfFile:emoji.emojiPath];
+    curID = emoji.eId;
+    NSData *data = [NSData dataWithContentsOfFile:emoji.path];
     if (data) {
         [self.imageView setImage:[UIImage sd_animatedGIFWithData:data]];
     }
     else {
-        NSString *urlString = [TLExpressionModel expressionDownloadURLWithEid:emoji.emojiID];
-        [self.imageView tt_setImageWithURL:TLURL(emoji.emojiURL) completed:^(UIImage *image, NSError *error, TLImageCacheType cacheType, NSURL *imageURL) {
+        NSString *urlString = [TLExpressionModel expressionDownloadURLWithEid:emoji.eId];
+        [self.imageView tt_setImageWithURL:TLURL(emoji.url) completed:^(UIImage *image, NSError *error, TLImageCacheType cacheType, NSURL *imageURL) {
             if ([urlString containsString:curID]) {
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     NSData *data = [NSData dataWithContentsOfURL:TLURL(urlString)];

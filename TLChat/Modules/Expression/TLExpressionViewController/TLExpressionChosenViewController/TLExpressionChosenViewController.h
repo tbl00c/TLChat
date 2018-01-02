@@ -9,15 +9,7 @@
 #import "TLViewController.h"
 
 @interface TLExpressionChosenViewController : TLViewController
-{
-    NSInteger kPageIndex;
-}
 
-@property (nonatomic, strong) NSMutableArray *data;
-
-@property (nonatomic, strong) NSArray *bannerData;
-
-@property (nonatomic, strong) UITableView *tableView;
-
+- (void)requestDataIfNeed;
 
 @end

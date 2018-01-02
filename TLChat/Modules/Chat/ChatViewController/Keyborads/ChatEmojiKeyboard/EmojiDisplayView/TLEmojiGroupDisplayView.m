@@ -62,8 +62,8 @@
                 TLEmojiGroupDisplayModel *model = [[TLEmojiGroupDisplayModel alloc] initWithEmojiGroup:group pageNumber:pageIndex andCount:group.pageItemCount];
                 if (model.type == TLEmojiTypeEmoji || group.type == TLEmojiTypeFace) {     // 为默认表情包添加删除按钮
                     TLExpressionModel *emoji = [[TLExpressionModel alloc] init];
-                    emoji.emojiID = @"-1";
-                    emoji.emojiName = @"del";
+                    emoji.eId = @"-1";
+                    emoji.name = @"del";
                     [model addEmoji:emoji];
                     model.pageItemCount ++;
                 }

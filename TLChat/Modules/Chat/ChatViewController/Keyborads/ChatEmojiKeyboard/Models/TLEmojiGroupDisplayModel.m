@@ -13,8 +13,8 @@
 - (id)initWithEmojiGroup:(TLExpressionGroupModel *)emojiGroup pageNumber:(NSInteger)pageNumber andCount:(NSInteger)count
 {
     if (self = [super init]) {
-        self.groupID = emojiGroup.groupID;
-        self.groupName = emojiGroup.groupName;
+        self.groupID = emojiGroup.gId;
+        self.groupName = emojiGroup.name;
         self.type = emojiGroup.type;
         
         self.rowNumber = emojiGroup.rowNumber;

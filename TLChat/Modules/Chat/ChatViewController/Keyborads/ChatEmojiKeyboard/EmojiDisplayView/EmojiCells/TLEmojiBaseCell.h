@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLEmoji.h"
+#import "TLExpressionModel.h"
 
 @protocol TLEmojiCellProtocol <NSObject>
 
@@ -17,7 +17,7 @@
 
 @interface TLEmojiBaseCell : UICollectionViewCell <TLEmojiCellProtocol>
 
-@property (nonatomic, strong) TLEmoji *emojiItem;
+@property (nonatomic, strong) TLExpressionModel *emojiItem;
 
 @property (nonatomic, strong) UIImageView *bgView;
 

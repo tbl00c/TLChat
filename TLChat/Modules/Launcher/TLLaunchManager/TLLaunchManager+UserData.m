@@ -9,7 +9,7 @@
 #import "TLLaunchManager+UserData.h"
 #import "TLWalletViewController.h"
 #import "TLExpressionProxy.h"
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 #import "TLExpressionHelper.h"
 
 #import "TLMineEventStatistics.h"
@@ -64,7 +64,7 @@
     __block NSInteger count = 0;
     __block NSInteger successCount = 0;
     TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
-    TLEmojiGroup *group = [[TLEmojiGroup alloc] init];
+    TLExpressionGroupModel *group = [[TLExpressionGroupModel alloc] init];
     group.groupID = @"241";
     group.groupName = @"婉转的骂人";
     group.groupIconURL = [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/downloadsuo.do?pId=10790"];
@@ -74,7 +74,7 @@
         group.data = data;
         [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
             
-        } success:^(TLEmojiGroup *group) {
+        } success:^(TLExpressionGroupModel *group) {
             BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
             if (!ok) {
                 DDLogError(@"表情存储失败！");
@@ -86,7 +86,7 @@
             if (count == 2) {
                 [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
             }
-        } failure:^(TLEmojiGroup *group, NSString *error) {
+        } failure:^(TLExpressionGroupModel *group, NSString *error) {
             
         }];
     } failure:^(NSString *error) {
@@ -97,7 +97,7 @@
     }];
     
     
-    TLEmojiGroup *group1 = [[TLEmojiGroup alloc] init];
+    TLExpressionGroupModel *group1 = [[TLExpressionGroupModel alloc] init];
     group1.groupID = @"223";
     group1.groupName = @"王锡玄";
     group1.groupIconURL = [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/downloadsuo.do?pId=10482"];
@@ -107,7 +107,7 @@
         group1.data = data;
         [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group1 progress:^(CGFloat progress) {
             
-        } success:^(TLEmojiGroup *group) {
+        } success:^(TLExpressionGroupModel *group) {
             BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
             if (!ok) {
                 DDLogError(@"表情存储失败！");
@@ -119,7 +119,7 @@
             if (count == 2) {
                 [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
             }
-        } failure:^(TLEmojiGroup *group, NSString *error) {
+        } failure:^(TLExpressionGroupModel *group, NSString *error) {
             
         }];
     } failure:^(NSString *error) {

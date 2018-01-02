@@ -7,9 +7,10 @@
 //
 
 #import "TLEmojiGroupDisplayModel.h"
+#import "TLExpressionGroupModel+TLEmojiKB.h"
 
 @implementation TLEmojiGroupDisplayModel
-- (id)initWithEmojiGroup:(TLEmojiGroup *)emojiGroup pageNumber:(NSInteger)pageNumber andCount:(NSInteger)count
+- (id)initWithEmojiGroup:(TLExpressionGroupModel *)emojiGroup pageNumber:(NSInteger)pageNumber andCount:(NSInteger)count
 {
     if (self = [super init]) {
         self.groupID = emojiGroup.groupID;
@@ -34,7 +35,7 @@
     return index < self.data.count ? [self.data objectAtIndex:index] : nil;
 }
 
-- (void)addEmoji:(TLEmoji *)emoji
+- (void)addEmoji:(TLExpressionModel *)emoji
 {
     NSMutableArray *emojis = [NSMutableArray arrayWithArray:self.data];
     [emojis addObject:emoji];

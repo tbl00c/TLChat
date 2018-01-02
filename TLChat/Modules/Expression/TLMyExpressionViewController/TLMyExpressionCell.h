@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 @protocol TLMyExpressionCellDelegate <NSObject>
 
-- (void)myExpressionCellDeleteButtonDown:(TLEmojiGroup *)group;
+- (void)myExpressionCellDeleteButtonDown:(TLExpressionGroupModel *)group;
 
 @end
 
@@ -19,6 +19,6 @@
 
 @property (nonatomic, assign) id<TLMyExpressionCellDelegate>delegate;
 
-@property (nonatomic, strong) TLEmojiGroup *group;
+@property (nonatomic, strong) TLExpressionGroupModel *group;
 
 @end

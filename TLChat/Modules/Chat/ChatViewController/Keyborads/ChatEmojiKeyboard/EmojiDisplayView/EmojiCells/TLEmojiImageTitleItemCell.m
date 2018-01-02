@@ -30,7 +30,7 @@
     return self;
 }
 
-- (void)setEmojiItem:(TLEmoji *)emojiItem
+- (void)setEmojiItem:(TLExpressionModel *)emojiItem
 {
     [super setEmojiItem:emojiItem];
     [self.imageView setImage:emojiItem.emojiPath == nil ? nil : [UIImage imageNamed:emojiItem.emojiPath]];

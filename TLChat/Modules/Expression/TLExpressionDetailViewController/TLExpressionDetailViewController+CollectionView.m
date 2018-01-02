@@ -32,7 +32,7 @@
         for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
             if (cell.x <= point.x && cell.y <= point.y && cell.x + cell.width >= point.x && cell.y + cell.height >= point.y) {
                 NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-                TLEmoji *emoji = [self.group objectAtIndex:indexPath.row];
+                TLExpressionModel *emoji = [self.group objectAtIndex:indexPath.row];
                 CGRect rect = cell.frame;
                 rect.origin.y -= (self.collectionView.contentOffset.y + 13);
                 [self.emojiDisplayView removeFromSuperview];
@@ -50,9 +50,9 @@
     for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
         if (cell.x <= point.x && cell.y <= point.y && cell.x + cell.width >= point.x && cell.y + cell.height >= point.y) {
             NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-            TLEmoji *emoji = [self.group objectAtIndex:indexPath.row];
+            TLExpressionModel *emoji = [self.group objectAtIndex:indexPath.row];
             [TLUIUtility showLoading:@"正在将表情保存到系统相册"];
-            NSString *urlString = [TLEmoji expressionDownloadURLWithEid:emoji.emojiID];
+            NSString *urlString = [TLExpressionModel expressionDownloadURLWithEid:emoji.emojiID];
             NSData *data = [NSData dataWithContentsOfURL:TLURL(urlString)];
             if (!data) {
                 data = [NSData dataWithContentsOfFile:emoji.emojiPath];
@@ -99,7 +99,7 @@
         return cell;
     }
     TLExpressionItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLExpressionItemCell" forIndexPath:indexPath];
-    TLEmoji *emoji = [self.group objectAtIndex:indexPath.row];
+    TLExpressionModel *emoji = [self.group objectAtIndex:indexPath.row];
     [cell setEmoji:emoji];
     return cell;
 }
@@ -132,18 +132,18 @@
 }
 
 //MAKR: TLExpressionDetailCellDelegate
-- (void)expressionDetailCellDownloadButtonDown:(TLEmojiGroup *)group
+- (void)expressionDetailCellDownloadButtonDown:(TLExpressionGroupModel *)group
 {
     [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
         
-    } success:^(TLEmojiGroup *group) {
+    } success:^(TLExpressionGroupModel *group) {
         group.status = TLEmojiGroupStatusDownloaded;
         [self.collectionView reloadData];
         BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
         if (!ok) {
             [TLUIUtility showErrorHint:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.groupName]];
         }
-    } failure:^(TLEmojiGroup *group, NSString *error) {
+    } failure:^(TLExpressionGroupModel *group, NSString *error) {
         group.status = TLEmojiGroupStatusUnDownload;
         [self.collectionView reloadData];
         [TLUIUtility showErrorHint:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.groupName, error]];

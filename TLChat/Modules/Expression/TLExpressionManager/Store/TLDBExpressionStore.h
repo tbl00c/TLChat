@@ -7,14 +7,14 @@
 //
 
 #import "TLDBBaseStore.h"
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 @interface TLDBExpressionStore : TLDBBaseStore
 
 /**
  *  添加表情包
  */
-- (BOOL)addExpressionGroup:(TLEmojiGroup *)group forUid:(NSString *)uid;
+- (BOOL)addExpressionGroup:(TLExpressionGroupModel *)group forUid:(NSString *)uid;
 
 /**
  *  查询所有表情包

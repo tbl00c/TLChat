@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 #define         HEIGHT_EXP_BANNER       (SCREEN_WIDTH * 0.45)
 
 @protocol TLExpressionDetailCellDelegate <NSObject>
 
-- (void)expressionDetailCellDownloadButtonDown:(TLEmojiGroup *)group;
+- (void)expressionDetailCellDownloadButtonDown:(TLExpressionGroupModel *)group;
 
 @end
 
@@ -21,8 +21,8 @@
 
 @property (nonatomic, assign) id <TLExpressionDetailCellDelegate> delegate;
 
-@property (nonatomic, strong) TLEmojiGroup *group;
+@property (nonatomic, strong) TLExpressionGroupModel *group;
 
-+ (CGFloat)cellHeightForModel:(TLEmojiGroup *)group;
++ (CGFloat)cellHeightForModel:(TLExpressionGroupModel *)group;
 
 @end

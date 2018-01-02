@@ -35,7 +35,7 @@
     return self;
 }
 
-- (void)setEmojiItem:(TLEmoji *)emojiItem
+- (void)setEmojiItem:(TLExpressionModel *)emojiItem
 {
     [super setEmojiItem:emojiItem];
     if ([emojiItem.emojiID isEqualToString:@"-1"]) {

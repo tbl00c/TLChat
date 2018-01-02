@@ -8,7 +8,7 @@
 
 #import "TLExpressionProxy.h"
 #import "TLNetworking.h"
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 #import "TLMacros.h"
 
 #define     IEXPRESSION_NEW_URL         [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/listBy.do?pageNumber=%ld&status=Y&status1=B"]
@@ -29,7 +29,7 @@
         NSString *status = respArray[0];
         if ([status isEqualToString:@"OK"]) {
             NSArray *infoArray = respArray[2];
-            NSMutableArray *data = [TLEmojiGroup mj_objectArrayWithKeyValuesArray:infoArray];
+            NSMutableArray *data = [TLExpressionGroupModel mj_objectArrayWithKeyValuesArray:infoArray];
             success(data);
         }
         else {
@@ -49,7 +49,7 @@
         NSString *status = respArray[0];
         if ([status isEqualToString:@"OK"]) {
             NSArray *infoArray = respArray[2];
-            NSMutableArray *data = [TLEmojiGroup mj_objectArrayWithKeyValuesArray:infoArray];
+            NSMutableArray *data = [TLExpressionGroupModel mj_objectArrayWithKeyValuesArray:infoArray];
             success(data);
         }
         else {
@@ -71,7 +71,7 @@
         NSString *status = respArray[0];
         if ([status isEqualToString:@"OK"]) {
             NSArray *infoArray = respArray[2];
-            NSMutableArray *data = [TLEmojiGroup mj_objectArrayWithKeyValuesArray:infoArray];
+            NSMutableArray *data = [TLExpressionGroupModel mj_objectArrayWithKeyValuesArray:infoArray];
             success(data);
         }
         else {
@@ -92,7 +92,7 @@
         NSString *status = respArray[0];
         if ([status isEqualToString:@"OK"]) {
             NSArray *infoArray = respArray[2];
-            NSMutableArray *data = [TLEmojiGroup mj_objectArrayWithKeyValuesArray:infoArray];
+            NSMutableArray *data = [TLExpressionGroupModel mj_objectArrayWithKeyValuesArray:infoArray];
             success(data);
         }
         else {
@@ -114,7 +114,7 @@
         NSString *status = respArray[0];
         if ([status isEqualToString:@"OK"]) {
             NSArray *infoArray = respArray[2];
-            NSMutableArray *data = [TLEmoji mj_objectArrayWithKeyValuesArray:infoArray];
+            NSMutableArray *data = [TLExpressionModel mj_objectArrayWithKeyValuesArray:infoArray];
             success(data);
         }
         else {

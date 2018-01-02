@@ -40,14 +40,14 @@
     return self;
 }
 
-- (void)displayEmoji:(TLEmoji *)emoji atRect:(CGRect)rect
+- (void)displayEmoji:(TLExpressionModel *)emoji atRect:(CGRect)rect
 {
     [self setRect:rect];
     [self setEmoji:emoji];
 }
 
 static NSString *curID;
-- (void)setEmoji:(TLEmoji *)emoji
+- (void)setEmoji:(TLExpressionModel *)emoji
 {
     if (_emoji == emoji) {
         return;
@@ -59,7 +59,7 @@ static NSString *curID;
         [self.imageView setImage:[UIImage sd_animatedGIFWithData:data]];
     }
     else {
-        NSString *urlString = [TLEmoji expressionDownloadURLWithEid:emoji.emojiID];
+        NSString *urlString = [TLExpressionModel expressionDownloadURLWithEid:emoji.emojiID];
         [self.imageView tt_setImageWithURL:TLURL(emoji.emojiURL) completed:^(UIImage *image, NSError *error, TLImageCacheType cacheType, NSURL *imageURL) {
             if ([urlString containsString:curID]) {
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{

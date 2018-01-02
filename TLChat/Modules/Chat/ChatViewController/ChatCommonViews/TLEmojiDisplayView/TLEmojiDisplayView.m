@@ -34,13 +34,13 @@
     return self;
 }
 
-- (void)displayEmoji:(TLEmoji *)emoji atRect:(CGRect)rect
+- (void)displayEmoji:(TLExpressionModel *)emoji atRect:(CGRect)rect
 {
     [self setRect:rect];
     [self setEmoji:emoji];
 }
 
-- (void)setEmoji:(TLEmoji *)emoji
+- (void)setEmoji:(TLExpressionModel *)emoji
 {
     _emoji = emoji;
     if (emoji.type == TLEmojiTypeEmoji) {

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 @interface TLEmojiGroupDisplayModel : NSObject
 
@@ -48,10 +48,10 @@
 @property (nonatomic, assign) UIEdgeInsets sectionInsets;
 
 
-- (id)initWithEmojiGroup:(TLEmojiGroup *)emojiGroup pageNumber:(NSInteger)pageNumber andCount:(NSInteger)count;
+- (id)initWithEmojiGroup:(TLExpressionGroupModel *)emojiGroup pageNumber:(NSInteger)pageNumber andCount:(NSInteger)count;
 
 - (id)objectAtIndex:(NSUInteger)index;
 
-- (void)addEmoji:(TLEmoji *)emoji;
+- (void)addEmoji:(TLExpressionModel *)emoji;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class TLEmoji;
+@class TLExpressionModel;
 @class TLEmojiGroupDisplayView;
 @protocol TLEmojiGroupDisplayViewDelegate <NSObject>
 
@@ -20,7 +20,7 @@
 /**
  *  选中表情
  */
-- (void)emojiGroupDisplayView:(TLEmojiGroupDisplayView *)displayView didClickedEmoji:(TLEmoji *)emoji;
+- (void)emojiGroupDisplayView:(TLEmojiGroupDisplayView *)displayView didClickedEmoji:(TLExpressionModel *)emoji;
 
 /**
  *  翻页
@@ -30,7 +30,7 @@
 /**
  *  表情长按
  */
-- (void)emojiGroupDisplayView:(TLEmojiGroupDisplayView *)displayView didLongPressEmoji:(TLEmoji *)emoji atRect:(CGRect)rect;
+- (void)emojiGroupDisplayView:(TLEmojiGroupDisplayView *)displayView didLongPressEmoji:(TLExpressionModel *)emoji atRect:(CGRect)rect;
 
 /**
  *  停止表情长按

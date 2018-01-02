@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 typedef NS_ENUM(NSInteger, TLGroupControlSendButtonStatus) {
     TLGroupControlSendButtonStatusGray,
@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, TLGroupControlSendButtonStatus) {
 @class TLEmojiGroupControl;
 @protocol TLEmojiGroupControlDelegate <NSObject>
 
-- (void)emojiGroupControl:(TLEmojiGroupControl*)emojiGroupControl didSelectedGroup:(TLEmojiGroup *)group;
+- (void)emojiGroupControl:(TLEmojiGroupControl*)emojiGroupControl didSelectedGroup:(TLExpressionGroupModel *)group;
 
 - (void)emojiGroupControlEditButtonDown:(TLEmojiGroupControl *)emojiGroupControl;
 

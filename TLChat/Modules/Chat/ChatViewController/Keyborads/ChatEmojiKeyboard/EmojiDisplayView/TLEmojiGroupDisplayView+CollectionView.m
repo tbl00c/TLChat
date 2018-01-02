@@ -45,7 +45,7 @@
 {
     TLEmojiGroupDisplayModel *group = self.displayData[indexPath.section];
     NSInteger index = [self transformModelByRowCount:group.rowNumber colCount:group.colNumber andIndex:indexPath.row];
-    TLEmoji *emoji = [group objectAtIndex:index];
+    TLExpressionModel *emoji = [group objectAtIndex:index];
     TLEmojiBaseCell *cell;
     if (group.type == TLEmojiTypeEmoji || group.type == TLEmojiTypeFace) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiFaceItemCell" forIndexPath:indexPath];
@@ -65,7 +65,7 @@
 {
     TLEmojiGroupDisplayModel *group = self.displayData[indexPath.section];
     NSInteger index = [self transformModelByRowCount:group.rowNumber colCount:group.colNumber andIndex:indexPath.row];
-    TLEmoji *emoji = [group objectAtIndex:index];
+    TLExpressionModel *emoji = [group objectAtIndex:index];
     if (emoji) {
         if ([emoji.emojiID isEqualToString:@"-1"]) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(emojiGroupDisplayViewDeleteButtonPressed:)]) {

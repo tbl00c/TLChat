@@ -273,7 +273,7 @@
 }
 
 //MARK: TLEmojiKeyboardDelegate
-- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didSelectedEmojiItem:(TLEmoji *)emoji
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didSelectedEmojiItem:(TLExpressionModel *)emoji
 {
     if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
         [self.chatBar addEmojiString:emoji.emojiName];
@@ -310,7 +310,7 @@
     [self.chatBar deleteLastCharacter];
 }
 
-- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didTouchEmojiItem:(TLEmoji *)emoji atRect:(CGRect)rect
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didTouchEmojiItem:(TLExpressionModel *)emoji atRect:(CGRect)rect
 {
     if (emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace) {
         if (self.emojiDisplayView.superview == nil) {

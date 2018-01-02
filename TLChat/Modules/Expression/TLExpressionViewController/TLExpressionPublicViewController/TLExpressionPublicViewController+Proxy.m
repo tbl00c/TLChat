@@ -24,8 +24,8 @@
         [TLUIUtility hiddenLoading];
         kPageIndex ++;
         self.data = [[NSMutableArray alloc] init];
-        for (TLEmojiGroup *group in data) {     // 优先使用本地表情
-            TLEmojiGroup *localEmojiGroup = [[TLExpressionHelper sharedHelper] emojiGroupByID:group.groupID];
+        for (TLExpressionGroupModel *group in data) {     // 优先使用本地表情
+            TLExpressionGroupModel *localEmojiGroup = [[TLExpressionHelper sharedHelper] emojiGroupByID:group.groupID];
             if (localEmojiGroup) {
                 [self.data addObject:localEmojiGroup];
             }
@@ -50,8 +50,8 @@
         else {
             [self.collectionView.mj_footer endRefreshing];
             kPageIndex ++;
-            for (TLEmojiGroup *group in data) {     // 优先使用本地表情
-                TLEmojiGroup *localEmojiGroup = [[TLExpressionHelper sharedHelper] emojiGroupByID:group.groupID];
+            for (TLExpressionGroupModel *group in data) {     // 优先使用本地表情
+                TLExpressionGroupModel *localEmojiGroup = [[TLExpressionHelper sharedHelper] emojiGroupByID:group.groupID];
                 if (localEmojiGroup) {
                     [self.data addObject:localEmojiGroup];
                 }

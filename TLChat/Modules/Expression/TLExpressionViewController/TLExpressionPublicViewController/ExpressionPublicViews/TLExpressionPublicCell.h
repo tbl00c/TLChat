@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 @interface TLExpressionPublicCell : UICollectionViewCell
 
-@property (nonatomic, strong) TLEmojiGroup *group;
+@property (nonatomic, strong) TLExpressionGroupModel *group;
 
 @end

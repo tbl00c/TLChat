@@ -35,7 +35,7 @@
     return self;
 }
 
-- (void)setGroup:(TLEmojiGroup *)group
+- (void)setGroup:(TLExpressionGroupModel *)group
 {
     _group = group;
     if (group.bannerURL.length > 0) {
@@ -170,7 +170,7 @@
 }
 
 #pragma mark - # Class Methods
-+ (CGFloat)cellHeightForModel:(TLEmojiGroup *)group
++ (CGFloat)cellHeightForModel:(TLExpressionGroupModel *)group
 {
     CGFloat detailHeight = [group.groupDetailInfo boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:13.0f]} context:nil].size.height;
     CGFloat bannerHeight = group.bannerURL.length > 0 ? HEIGHT_EXP_BANNER : 0;

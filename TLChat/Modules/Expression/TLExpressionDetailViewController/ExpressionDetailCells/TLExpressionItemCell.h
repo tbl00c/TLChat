@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLEmoji.h"
+#import "TLExpressionModel.h"
 
 @interface TLExpressionItemCell : UICollectionViewCell
 
-@property (nonatomic, strong) TLEmoji *emoji;
+@property (nonatomic, strong) TLExpressionModel *emoji;
 
 @end

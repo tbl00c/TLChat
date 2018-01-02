@@ -7,12 +7,13 @@
 //
 
 #import "TLEmojiKeyboard+DisplayView.h"
+#import "TLExpressionGroupModel+TLEmojiKB.h"
 
 @implementation TLEmojiKeyboard (DisplayView)
 
 #pragma mark - # Delegate
 //MARK: TLEmojiGroupDisplayViewDelegate
-- (void)emojiGroupDisplayView:(TLEmojiGroupDisplayView *)displayView didClickedEmoji:(TLEmoji *)emoji
+- (void)emojiGroupDisplayView:(TLEmojiGroupDisplayView *)displayView didClickedEmoji:(TLExpressionModel *)emoji
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboard:didSelectedEmojiItem:)]) {
         [self.delegate emojiKeyboard:self didSelectedEmojiItem:emoji];
@@ -28,7 +29,7 @@
 
 - (void)emojiGroupDisplayView:(TLEmojiGroupDisplayView *)displayView didScrollToPageIndex:(NSInteger)pageIndex forGroupIndex:(NSInteger)groupIndex
 {
-    TLEmojiGroup *group = self.emojiGroupData[groupIndex];
+    TLExpressionGroupModel *group = self.emojiGroupData[groupIndex];
     if (self.curGroup != group) {
         self.curGroup = group;
         [self.pageControl setHidden:group.pageNumber <= 1];
@@ -43,7 +44,7 @@
 }
 
 static UICollectionViewCell *lastCell;
-- (void)emojiGroupDisplayView:(TLEmojiGroupDisplayView *)displayView didLongPressEmoji:(TLEmoji *)emoji atRect:(CGRect)rect
+- (void)emojiGroupDisplayView:(TLEmojiGroupDisplayView *)displayView didLongPressEmoji:(TLExpressionModel *)emoji atRect:(CGRect)rect
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboard:didTouchEmojiItem:atRect:)]) {
         [self.delegate emojiKeyboard:self didTouchEmojiItem:emoji atRect:rect];

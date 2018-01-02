@@ -38,7 +38,7 @@
 }
 
 #pragma mark - # 表情组
-- (BOOL)addExpressionGroup:(TLEmojiGroup *)group forUid:(NSString *)uid
+- (BOOL)addExpressionGroup:(TLExpressionGroupModel *)group forUid:(NSString *)uid
 {
     // 添加表情包
     NSString *sqlString = [NSString stringWithFormat:SQL_ADD_EXP_GROUP, EXP_GROUP_TABLE_NAME];
@@ -71,7 +71,7 @@
     // 读取表情包信息
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
-            TLEmojiGroup *group = [[TLEmojiGroup alloc] init];
+            TLExpressionGroupModel *group = [[TLExpressionGroupModel alloc] init];
             group.groupID = [retSet stringForColumn:@"gid"];
             group.type = [retSet intForColumn:@"type"];
             group.groupName = [retSet stringForColumn:@"name"];
@@ -87,7 +87,7 @@
     }];
     
     // 读取表情包的所有表情信息
-    for (TLEmojiGroup *group in data) {
+    for (TLExpressionGroupModel *group in data) {
         group.data = [self expressionsForGroupID:group.groupID];
     }
     
@@ -114,7 +114,7 @@
 #pragma mark - # 表情 
 - (BOOL)addExpressions:(NSArray *)expressions toGroupID:(NSString *)groupID
 {
-    for (TLEmoji *emoji in expressions) {
+    for (TLExpressionModel *emoji in expressions) {
         NSString *sqlString = [NSString stringWithFormat:SQL_ADD_EXP, EXPS_TABLE_NAME];
         NSArray *arr = [NSArray arrayWithObjects:
                         groupID,
@@ -136,7 +136,7 @@
     
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
-            TLEmoji *emoji = [[TLEmoji alloc] init];
+            TLExpressionModel *emoji = [[TLExpressionModel alloc] init];
             emoji.groupID = [retSet stringForColumn:@"gid"];
             emoji.emojiID = [retSet stringForColumn:@"eid"];
             emoji.emojiName = [retSet stringForColumn:@"name"];

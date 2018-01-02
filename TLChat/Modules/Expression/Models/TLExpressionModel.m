@@ -1,16 +1,16 @@
 //
-//  TLEmoji.m
+//  TLExpressionModel.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/20.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLEmoji.h"
+#import "TLExpressionModel.h"
 #import "NSFileManager+TLChat.h"
 #import "TLMacros.h"
 
-@implementation TLEmoji
+@implementation TLExpressionModel
 
 + (NSString *)expressionURLWithEid:(NSString *)eid
 {

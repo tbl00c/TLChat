@@ -37,8 +37,8 @@
         //获取原字符串中对应的值
         NSString *subStr = [self substringWithRange:range];
         
-        TLEmojiGroup *group = [[TLExpressionHelper sharedHelper] defaultFaceGroup];
-        for (TLEmoji *emoji in group.data) {
+        TLExpressionGroupModel *group = [[TLExpressionHelper sharedHelper] defaultFaceGroup];
+        for (TLExpressionModel *emoji in group.data) {
             if ([emoji.emojiName isEqualToString:subStr]) {
                 //face[i][@"png"]就是我们要加载的图片
                 //新建文字附件来存放我们的图片,iOS7才新加的对象

@@ -1,14 +1,14 @@
 //
-//  TLEmojiGroup+Banner.m
+//  TLExpressionGroupModel+Banner.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/4/20.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLEmojiGroup+Banner.h"
+#import "TLExpressionGroupModel+Banner.h"
 
-@implementation TLEmojiGroup (Banner)
+@implementation TLExpressionGroupModel(Banner)
 
 - (NSString *)pictureURL
 {

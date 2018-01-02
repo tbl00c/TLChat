@@ -7,11 +7,11 @@
 //
 
 #import "TLTableViewCell.h"
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 @protocol TLExpressionCellDelegate <NSObject>
 
-- (void)expressionCellDownloadButtonDown:(TLEmojiGroup *)group;
+- (void)expressionCellDownloadButtonDown:(TLExpressionGroupModel *)group;
 
 @end
 
@@ -19,6 +19,6 @@
 
 @property (nonatomic, assign) id<TLExpressionCellDelegate> delegate;
 
-@property (nonatomic, strong) TLEmojiGroup *group;
+@property (nonatomic, strong) TLExpressionGroupModel *group;
 
 @end

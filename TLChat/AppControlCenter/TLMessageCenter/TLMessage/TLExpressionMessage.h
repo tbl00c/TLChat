@@ -7,11 +7,11 @@
 //
 
 #import "TLMessage.h"
-#import "TLEmoji.h"
+#import "TLExpressionModel.h"
 
 @interface TLExpressionMessage : TLMessage
 
-@property (nonatomic, strong) TLEmoji *emoji;
+@property (nonatomic, strong) TLExpressionModel *emoji;
 
 @property (nonatomic, strong, readonly) NSString *path;
 

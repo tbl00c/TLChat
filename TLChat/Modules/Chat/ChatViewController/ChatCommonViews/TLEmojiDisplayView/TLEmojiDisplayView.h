@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLEmoji.h"
+#import "TLExpressionModel.h"
 
 @interface TLEmojiDisplayView : UIImageView
 
-@property (nonatomic, strong) TLEmoji *emoji;
+@property (nonatomic, strong) TLExpressionModel *emoji;
 
 @property (nonatomic, assign) CGRect rect;
 
-- (void)displayEmoji:(TLEmoji *)emoji atRect:(CGRect)rect;
+- (void)displayEmoji:(TLExpressionModel *)emoji atRect:(CGRect)rect;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  TLEmojiGroup.h
+//  TLExpressionGroupModel.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/19.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TLChatMacros.h"
-#import "TLEmoji.h"
+#import "TLExpressionModel.h"
 
 typedef NS_ENUM(NSInteger, TLEmojiGroupStatus) {
     TLEmojiGroupStatusUnDownload,
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, TLEmojiGroupStatus) {
     TLEmojiGroupStatusDownloading,
 };
 
-@interface TLEmojiGroup : NSObject
+@interface TLExpressionGroupModel: NSObject
 
 @property (nonatomic, assign) TLEmojiType type;
 
@@ -57,21 +57,8 @@ typedef NS_ENUM(NSInteger, TLEmojiGroupStatus) {
 #pragma mark - 本地信息
 @property (nonatomic, strong) NSMutableArray *data;
 
-
-#pragma mark - 展示用
-
-/// 每页个数
-@property (nonatomic, assign) NSUInteger pageItemCount;
-
-/// 页数
-@property (nonatomic, assign) NSUInteger pageNumber;
-
-/// 行数
-@property (nonatomic, assign) NSUInteger rowNumber;
-
-/// 列数
-@property (nonatomic, assign) NSUInteger colNumber;
-
 - (id)objectAtIndex:(NSUInteger)index;
 
 @end
+
+

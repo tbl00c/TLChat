@@ -1,5 +1,5 @@
 //
-//  TLEmoji.h
+//  TLExpressionModel.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/20.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TLChatMacros.h"
 
-@interface TLEmoji : NSObject
+@interface TLExpressionModel : NSObject
 
 @property (nonatomic, assign) TLEmojiType type;
 

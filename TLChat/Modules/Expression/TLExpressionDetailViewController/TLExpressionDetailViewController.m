@@ -48,7 +48,7 @@
     }
 }
 
-- (void)setGroup:(TLEmojiGroup *)group
+- (void)setGroup:(TLExpressionGroupModel *)group
 {
     _group = group;
     [self.navigationItem setTitle:group.groupName];

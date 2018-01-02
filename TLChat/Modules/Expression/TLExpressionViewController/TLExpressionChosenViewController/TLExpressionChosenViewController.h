@@ -6,10 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewController.h"
-#import "TLExpressionHelper.h"
+#import "TLViewController.h"
 
-@interface TLExpressionChosenViewController : TLTableViewController
+@interface TLExpressionChosenViewController : TLViewController
 {
     NSInteger kPageIndex;
 }
@@ -17,6 +16,8 @@
 @property (nonatomic, strong) NSMutableArray *data;
 
 @property (nonatomic, strong) NSArray *bannerData;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 
 @end

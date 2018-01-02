@@ -33,7 +33,7 @@
 {
     if (indexPath.row < self.data.count) {
         TLExpressionPublicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLExpressionPublicCell" forIndexPath:indexPath];
-        TLEmojiGroup *emojiGroup = [self.data objectAtIndex:indexPath.row];
+        TLExpressionGroupModel *emojiGroup = [self.data objectAtIndex:indexPath.row];
         [cell setGroup:emojiGroup];
         return cell;
     }
@@ -43,7 +43,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row < self.data.count) {
-        TLEmojiGroup *group = [self.data objectAtIndex:indexPath.row];
+        TLExpressionGroupModel *group = [self.data objectAtIndex:indexPath.row];
         TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
         [detailVC setGroup:group];
         [detailVC setHidesBottomBarWhenPushed:YES];

@@ -45,7 +45,7 @@
 {
     TLSettingGroup *group = self.data[indexPath.section];
     if (group.headerTitle) {    // 有标题的就是表情组
-        TLEmojiGroup *emojiGroup = [group objectAtIndex:indexPath.row];
+        TLExpressionGroupModel *emojiGroup = [group objectAtIndex:indexPath.row];
         TLMyExpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMyExpressionCell"];
         [cell setGroup:emojiGroup];
         [cell setDelegate:self];
@@ -69,7 +69,7 @@
 {
     TLSettingGroup *group = self.data[indexPath.section];
     if (group.headerTitle) {    // 有标题的就是表情组
-        TLEmojiGroup *emojiGroup = [group objectAtIndex:indexPath.row];
+        TLExpressionGroupModel *emojiGroup = [group objectAtIndex:indexPath.row];
         TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
         [detailVC setGroup:emojiGroup];
         PushVC(detailVC);
@@ -78,7 +78,7 @@
 }
 
 //MARK: TLMyExpressionCellDelegate
-- (void)myExpressionCellDeleteButtonDown:(TLEmojiGroup *)group
+- (void)myExpressionCellDeleteButtonDown:(TLExpressionGroupModel *)group
 {
     BOOL ok = [self.helper deleteExpressionGroupByID:group.groupID];
     if (ok) {

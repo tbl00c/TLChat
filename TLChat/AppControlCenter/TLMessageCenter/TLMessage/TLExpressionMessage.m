@@ -19,7 +19,7 @@
     return self;
 }
 
-- (void)setEmoji:(TLEmoji *)emoji
+- (void)setEmoji:(TLExpressionModel *)emoji
 {
     _emoji = emoji;
     [self.content setObject:emoji.groupID forKey:@"groupID"];
@@ -28,10 +28,10 @@
     [self.content setObject:[NSNumber numberWithDouble:imageSize.width] forKey:@"w"];
     [self.content setObject:[NSNumber numberWithDouble:imageSize.height] forKey:@"h"];
 }
-- (TLEmoji *)emoji
+- (TLExpressionModel *)emoji
 {
     if (_emoji == nil) {
-        _emoji = [[TLEmoji alloc] init];
+        _emoji = [[TLExpressionModel alloc] init];
         _emoji.groupID = self.content[@"groupID"];
         _emoji.emojiID = self.content[@"emojiID"];
     }
@@ -45,7 +45,7 @@
 
 - (NSString *)url
 {
-    return [TLEmoji expressionDownloadURLWithEid:self.emoji.emojiID];
+    return [TLExpressionModel expressionDownloadURLWithEid:self.emoji.emojiID];
 }
 
 - (CGSize)emojiSize

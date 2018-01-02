@@ -7,12 +7,13 @@
 //
 
 #import "TLEmojiKeyboard+EmojiGroupControl.h"
+#import "TLExpressionGroupModel+TLEmojiKB.h"
 
 @implementation TLEmojiKeyboard (EmojiGroupControl)
 
 #pragma mark - Delegate
 //MARK: TLEmojiGroupControlDelegate
-- (void)emojiGroupControl:(TLEmojiGroupControl *)emojiGroupControl didSelectedGroup:(TLEmojiGroup *)group
+- (void)emojiGroupControl:(TLEmojiGroupControl *)emojiGroupControl didSelectedGroup:(TLExpressionGroupModel *)group
 {
     // 显示Group表情
     self.curGroup = group;

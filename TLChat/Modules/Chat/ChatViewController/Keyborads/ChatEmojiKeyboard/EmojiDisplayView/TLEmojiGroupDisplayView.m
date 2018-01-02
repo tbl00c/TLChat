@@ -9,6 +9,7 @@
 #import "TLEmojiGroupDisplayView.h"
 #import "TLEmojiGroupDisplayView+CollectionView.h"
 #import "TLEmojiGroupDisplayView+Gesture.h"
+#import "TLExpressionGroupModel+TLEmojiKB.h"
 
 @implementation TLEmojiGroupDisplayView
 
@@ -38,7 +39,7 @@
     
     NSMutableArray *displayData = [[NSMutableArray alloc] init];
     for (NSInteger emojiGroupIndex = 0; emojiGroupIndex < data.count; emojiGroupIndex++) {
-        TLEmojiGroup *group = data[emojiGroupIndex];
+        TLExpressionGroupModel *group = data[emojiGroupIndex];
         if (group.count > 0) {      // 已下载的表情包
             NSInteger cellWidth, cellHeight;
             CGFloat spaceX, spaceYTop, spaceYBottom;
@@ -60,7 +61,7 @@
             for (NSInteger pageIndex = 0; pageIndex < group.pageNumber; pageIndex++) {
                 TLEmojiGroupDisplayModel *model = [[TLEmojiGroupDisplayModel alloc] initWithEmojiGroup:group pageNumber:pageIndex andCount:group.pageItemCount];
                 if (model.type == TLEmojiTypeEmoji || group.type == TLEmojiTypeFace) {     // 为默认表情包添加删除按钮
-                    TLEmoji *emoji = [[TLEmoji alloc] init];
+                    TLExpressionModel *emoji = [[TLExpressionModel alloc] init];
                     emoji.emojiID = @"-1";
                     emoji.emojiName = @"del";
                     [model addEmoji:emoji];
@@ -91,7 +92,7 @@
     _curPageIndex = index;
     NSInteger page = 0;
     for (int i = 0; i < index; i ++) {
-        TLEmojiGroup *group = self.data[i];
+        TLExpressionGroupModel *group = self.data[i];
         page += group.pageNumber;
     }
     [self.collectionView setContentOffset:CGPointMake(page * self.collectionView.width, 0)];

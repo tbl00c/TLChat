@@ -8,21 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import "TLSettingGroup.h"
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 @interface TLExpressionHelper : NSObject
 
 /// 默认表情（Face）
-@property (nonatomic, strong, readonly) TLEmojiGroup *defaultFaceGroup;
+@property (nonatomic, strong, readonly) TLExpressionGroupModel *defaultFaceGroup;
 
 /// 默认系统Emoji
-@property (nonatomic, strong, readonly) TLEmojiGroup *defaultSystemEmojiGroup;
+@property (nonatomic, strong, readonly) TLExpressionGroupModel *defaultSystemEmojiGroup;
 
 /// 用户表情组
 @property (nonatomic, strong, readonly) NSArray *userEmojiGroups;
 
 /// 用户收藏的表情
-@property (nonatomic, strong, readonly) TLEmojiGroup *userPreferEmojiGroup;
+@property (nonatomic, strong, readonly) TLExpressionGroupModel *userPreferEmojiGroup;
 
 
 + (TLExpressionHelper *)sharedHelper;
@@ -30,12 +30,12 @@
 /**
  *  根据groupID获取表情包
  */
-- (TLEmojiGroup *)emojiGroupByID:(NSString *)groupID;
+- (TLExpressionGroupModel *)emojiGroupByID:(NSString *)groupID;
 
 /**
  *  添加表情包
  */
-- (BOOL)addExpressionGroup:(TLEmojiGroup *)emojiGroup;
+- (BOOL)addExpressionGroup:(TLExpressionGroupModel *)emojiGroup;
 
 /**
  *  删除表情包
@@ -51,10 +51,10 @@
 
 
 #pragma mark - 下载表情包
-- (void)downloadExpressionsWithGroupInfo:(TLEmojiGroup *)group
+- (void)downloadExpressionsWithGroupInfo:(TLExpressionGroupModel *)group
                                 progress:(void (^)(CGFloat progress))progress
-                                 success:(void (^)(TLEmojiGroup *group))success
-                                 failure:(void (^)(TLEmojiGroup *group, NSString *error))failure;
+                                 success:(void (^)(TLExpressionGroupModel *group))success
+                                 failure:(void (^)(TLExpressionGroupModel *group, NSString *error))failure;
 
 
 #pragma mark - 列表用

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 @interface TLEmojiKBHelper : NSObject
 

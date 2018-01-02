@@ -45,7 +45,7 @@
         return bannerCell;
     }
     TLExpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLExpressionCell"];
-    TLEmojiGroup *group = self.data[indexPath.row];
+    TLExpressionGroupModel *group = self.data[indexPath.row];
     [cell setGroup:group];
     [cell setDelegate:self];
     return cell;
@@ -54,7 +54,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ((indexPath.section == 0 && self.bannerData.count == 0) || indexPath.section == 1) {
-        TLEmojiGroup *group = [self.data objectAtIndex:indexPath.row];
+        TLExpressionGroupModel *group = [self.data objectAtIndex:indexPath.row];
         TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
         [detailVC setGroup:group];
         [detailVC setHidesBottomBarWhenPushed:YES];
@@ -84,7 +84,7 @@
 }
 
 //MARK: TLExpressionCellDelegate
-- (void)expressionCellDownloadButtonDown:(TLEmojiGroup *)group
+- (void)expressionCellDownloadButtonDown:(TLExpressionGroupModel *)group
 {
     group.status = TLEmojiGroupStatusDownloading;
     TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
@@ -92,7 +92,7 @@
         group.data = data;
         [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
             
-        } success:^(TLEmojiGroup *group) {
+        } success:^(TLExpressionGroupModel *group) {
             group.status = TLEmojiGroupStatusDownloaded;
             NSInteger index = [self.data indexOfObject:group];
             if (index < self.data.count) {
@@ -102,7 +102,7 @@
             if (!ok) {
                 [TLUIUtility showErrorHint:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.groupName]];
             }
-        } failure:^(TLEmojiGroup *group, NSString *error) {
+        } failure:^(TLExpressionGroupModel *group, NSString *error) {
             
         }];
     } failure:^(NSString *error) {

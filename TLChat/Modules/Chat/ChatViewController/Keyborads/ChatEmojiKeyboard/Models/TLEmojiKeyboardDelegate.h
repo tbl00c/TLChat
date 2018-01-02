@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TLEmoji.h"
+#import "TLExpressionModel.h"
 
 @class TLEmojiKeyboard;
 @protocol TLEmojiKeyboardDelegate <NSObject>
@@ -18,7 +18,7 @@
 /**
  *  长按某个表情（展示）
  */
-- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didTouchEmojiItem:(TLEmoji *)emoji atRect:(CGRect)rect;
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didTouchEmojiItem:(TLExpressionModel *)emoji atRect:(CGRect)rect;
 
 /**
  *  取消长按某个表情（停止展示）
@@ -28,7 +28,7 @@
 /**
  *  点击事件 —— 选中某个表情
  */
-- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didSelectedEmojiItem:(TLEmoji *)emoji;
+- (void)emojiKeyboard:(TLEmojiKeyboard *)emojiKB didSelectedEmojiItem:(TLExpressionModel *)emoji;
 
 /**
  *  点击事件 —— 表情发送按钮

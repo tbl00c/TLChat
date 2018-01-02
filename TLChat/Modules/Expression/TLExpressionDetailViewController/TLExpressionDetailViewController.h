@@ -8,11 +8,11 @@
 
 #import "TLViewController.h"
 #import "TLImageExpressionDisplayView.h"
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 @interface TLExpressionDetailViewController : TLViewController
 
-@property (nonatomic, strong) TLEmojiGroup *group;
+@property (nonatomic, strong) TLExpressionGroupModel *group;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 

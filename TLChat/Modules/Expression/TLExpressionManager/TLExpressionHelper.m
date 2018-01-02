@@ -38,7 +38,7 @@
     return [self.store expressionGroupsByUid:[TLUserHelper sharedHelper].userID];
 }
 
-- (BOOL)addExpressionGroup:(TLEmojiGroup *)emojiGroup
+- (BOOL)addExpressionGroup:(TLExpressionGroupModel *)emojiGroup
 {
     BOOL ok = [self.store addExpressionGroup:emojiGroup forUid:[TLUserHelper sharedHelper].userID];
     if (ok) {       // 通知表情键盘
@@ -62,9 +62,9 @@
     return count > 0;
 }
 
-- (TLEmojiGroup *)emojiGroupByID:(NSString *)groupID;
+- (TLExpressionGroupModel *)emojiGroupByID:(NSString *)groupID;
 {
-    for (TLEmojiGroup *group in self.userEmojiGroups) {
+    for (TLExpressionGroupModel *group in self.userEmojiGroups) {
         if ([group.groupID isEqualToString:groupID]) {
             return group;
         }
@@ -72,10 +72,10 @@
     return nil;
 }
 
-- (void)downloadExpressionsWithGroupInfo:(TLEmojiGroup *)group
+- (void)downloadExpressionsWithGroupInfo:(TLExpressionGroupModel *)group
                                 progress:(void (^)(CGFloat))progress
-                                 success:(void (^)(TLEmojiGroup *))success
-                                 failure:(void (^)(TLEmojiGroup *, NSString *))failure
+                                 success:(void (^)(TLExpressionGroupModel *))success
+                                 failure:(void (^)(TLExpressionGroupModel *, NSString *))failure
 {
     group.type = TLEmojiTypeImageWithTitle;
     dispatch_queue_t downloadQueue = dispatch_queue_create([group.groupID UTF8String], nil);
@@ -91,11 +91,11 @@
                 data = [NSData dataWithContentsOfURL:TLURL(group.groupIconURL)];
             }
             else {
-                TLEmoji *emoji = group.data[i];
-                NSString *urlString = [TLEmoji expressionDownloadURLWithEid:emoji.emojiID];
+                TLExpressionModel *emoji = group.data[i];
+                NSString *urlString = [TLExpressionModel expressionDownloadURLWithEid:emoji.emojiID];
                 data = [NSData dataWithContentsOfURL:TLURL(urlString)];
                 if (data == nil) {
-                    urlString = [TLEmoji expressionURLWithEid:emoji.emojiID];
+                    urlString = [TLExpressionModel expressionURLWithEid:emoji.emojiID];
                     data = [NSData dataWithContentsOfURL:TLURL(urlString)];
                 }
                 emojiPath = [NSString stringWithFormat:@"%@%@", groupPath, emoji.emojiID];
@@ -135,31 +135,31 @@
     return data;
 }
 
-- (TLEmojiGroup *)defaultFaceGroup
+- (TLExpressionGroupModel *)defaultFaceGroup
 {
     if (_defaultFaceGroup == nil) {
-        _defaultFaceGroup = [[TLEmojiGroup alloc] init];
+        _defaultFaceGroup = [[TLExpressionGroupModel alloc] init];
         _defaultFaceGroup.type = TLEmojiTypeFace;
         _defaultFaceGroup.groupIconPath = @"emojiKB_group_face";
         NSString *path = [[NSBundle mainBundle] pathForResource:@"FaceEmoji" ofType:@"json"];
         NSData *data = [NSData dataWithContentsOfFile:path];
-        _defaultFaceGroup.data = [TLEmoji mj_objectArrayWithKeyValuesArray:data];
-        for (TLEmoji *emoji in _defaultFaceGroup.data) {
+        _defaultFaceGroup.data = [TLExpressionModel mj_objectArrayWithKeyValuesArray:data];
+        for (TLExpressionModel *emoji in _defaultFaceGroup.data) {
             emoji.type = TLEmojiTypeFace;
         }
     }
     return _defaultFaceGroup;
 }
 
-- (TLEmojiGroup *)defaultSystemEmojiGroup
+- (TLExpressionGroupModel *)defaultSystemEmojiGroup
 {
     if (_defaultSystemEmojiGroup == nil) {
-        _defaultSystemEmojiGroup = [[TLEmojiGroup alloc] init];
+        _defaultSystemEmojiGroup = [[TLExpressionGroupModel alloc] init];
         _defaultSystemEmojiGroup.type = TLEmojiTypeEmoji;
         _defaultSystemEmojiGroup.groupIconPath = @"emojiKB_group_face";
         NSString *path = [[NSBundle mainBundle] pathForResource:@"SystemEmoji" ofType:@"json"];
         NSData *data = [NSData dataWithContentsOfFile:path];
-        _defaultSystemEmojiGroup.data = [TLEmoji mj_objectArrayWithKeyValuesArray:data];
+        _defaultSystemEmojiGroup.data = [TLExpressionModel mj_objectArrayWithKeyValuesArray:data];
     }
     return _defaultSystemEmojiGroup;
 }

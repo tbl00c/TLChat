@@ -127,7 +127,7 @@
         
         _curIndexPath = curIndexPath;
         if (_delegate && [_delegate respondsToSelector:@selector(emojiGroupControl:didSelectedGroup:)]) {
-            TLEmojiGroup *group = [self.emojiGroupData objectAtIndex:curIndexPath.row];
+            TLExpressionGroupModel *group = [self.emojiGroupData objectAtIndex:curIndexPath.row];
             [_delegate emojiGroupControl:self didSelectedGroup:group];
         }
     }
@@ -143,7 +143,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TLEmojiGroupCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiGroupCell" forIndexPath:indexPath];
-    TLEmojiGroup *group = [self.emojiGroupData objectAtIndex:indexPath.row];
+    TLExpressionGroupModel *group = [self.emojiGroupData objectAtIndex:indexPath.row];
     [cell setEmojiGroup:group];
     return cell;
 }
@@ -165,7 +165,7 @@
 //MARK: UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    TLEmojiGroup *group = [self.emojiGroupData objectAtIndex:indexPath.row];
+    TLExpressionGroupModel *group = [self.emojiGroupData objectAtIndex:indexPath.row];
     if (group.type == TLEmojiTypeOther) {
         //???: 存在冲突：用户选中cellA,再此方法中立马调用方法选中cellB时，所有cell都不会被选中
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

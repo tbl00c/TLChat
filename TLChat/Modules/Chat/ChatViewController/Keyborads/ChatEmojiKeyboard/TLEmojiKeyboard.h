@@ -17,7 +17,7 @@
 
 @property (nonatomic, assign) id<TLEmojiKeyboardDelegate> delegate;
 
-@property (nonatomic, strong) TLEmojiGroup *curGroup;
+@property (nonatomic, strong) TLExpressionGroupModel *curGroup;
 
 @property (nonatomic, strong) TLEmojiGroupDisplayView *displayView;
 

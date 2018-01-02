@@ -42,7 +42,7 @@
     return self;
 }
 
-- (void)setGroup:(TLEmojiGroup *)group
+- (void)setGroup:(TLExpressionGroupModel *)group
 {
     _group = group;
     UIImage *image = [UIImage imageNamed:group.groupIconPath];

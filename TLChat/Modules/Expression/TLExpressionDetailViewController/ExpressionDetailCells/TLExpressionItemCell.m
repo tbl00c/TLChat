@@ -28,7 +28,7 @@
     return self;
 }
 
-- (void)setEmoji:(TLEmoji *)emoji
+- (void)setEmoji:(TLExpressionModel *)emoji
 {
     _emoji = emoji;
     UIImage *image = [UIImage imageNamed:emoji.emojiPath];

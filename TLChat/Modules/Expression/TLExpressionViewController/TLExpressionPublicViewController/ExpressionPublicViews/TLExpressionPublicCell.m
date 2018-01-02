@@ -28,7 +28,7 @@
     return self;
 }
 
-- (void)setGroup:(TLEmojiGroup *)group
+- (void)setGroup:(TLExpressionGroupModel *)group
 {
     _group = group;
     [self.titleLabel setText:group.groupName];

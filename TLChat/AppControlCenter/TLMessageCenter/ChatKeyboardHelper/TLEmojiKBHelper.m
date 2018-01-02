@@ -8,7 +8,7 @@
 
 #import "TLEmojiKBHelper.h"
 #import "TLExpressionHelper.h"
-#import "TLEmojiGroup.h"
+#import "TLExpressionGroupModel.h"
 
 static TLEmojiKBHelper *helper;
 
@@ -16,7 +16,7 @@ static TLEmojiKBHelper *helper;
 
 @property (nonatomic, strong) NSString *userID;
 
-@property (nonatomic, strong) TLEmojiGroup *systemEditGroup;
+@property (nonatomic, strong) TLExpressionGroupModel *systemEditGroup;
 
 @property (nonatomic, strong) void (^complete)(NSMutableArray *);
 
@@ -52,7 +52,7 @@ static TLEmojiKBHelper *helper;
         [emojiGroupData addObject:[TLExpressionHelper sharedHelper].defaultSystemEmojiGroup];
         
         // 用户收藏的表情包
-        TLEmojiGroup *preferEmojiGroup = [TLExpressionHelper sharedHelper].userPreferEmojiGroup;
+        TLExpressionGroupModel *preferEmojiGroup = [TLExpressionHelper sharedHelper].userPreferEmojiGroup;
         if (preferEmojiGroup && preferEmojiGroup.count > 0) {
             [emojiGroupData addObject:preferEmojiGroup];
         }
@@ -73,10 +73,10 @@ static TLEmojiKBHelper *helper;
 }
 
 #pragma mark - # Getter
-- (TLEmojiGroup *)systemEditGroup
+- (TLExpressionGroupModel *)systemEditGroup
 {
     if (_systemEditGroup == nil) {
-        _systemEditGroup = [[TLEmojiGroup alloc] init];
+        _systemEditGroup = [[TLExpressionGroupModel alloc] init];
         _systemEditGroup.type = TLEmojiTypeOther;
         _systemEditGroup.groupIconPath = @"emojiKB_settingBtn";
     }

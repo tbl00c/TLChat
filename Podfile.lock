@@ -133,6 +133,7 @@ PODS:
   - TLKit/TLShortcut (0.0.17)
   - TLTabBarController (0.0.4)
   - UMengAnalytics (3.6.6)
+  - WCDB (1.0.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -148,6 +149,7 @@ DEPENDENCIES:
   - TLKit (from `git@github.com:tbl00c/TLKit.git`, tag `0.0.17`)
   - TLTabBarController (from `git@github.com:tbl00c/TLTabBarController.git`, tag `0.0.4`)
   - UMengAnalytics (~> 3.6.6)
+  - WCDB (~> 1.0.5)
 
 EXTERNAL SOURCES:
   JZNavigationExtension:
@@ -188,7 +190,8 @@ SPEC CHECKSUMS:
   TLKit: 51c1589239718aef68ce4e992a96c79864384ca3
   TLTabBarController: 9f5b4f9edb270d2fd000a7aa5a7f0349fc812e7c
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
+  WCDB: 7ecc4ff9ba832a732e35fdda4f0ab0fd9abf52d9
 
-PODFILE CHECKSUM: 0b0408f51e1c5210522ee97ae905b24016722eb9
+PODFILE CHECKSUM: 88e3e4022c2103efc4e49410199c3b5c0fe2f01e
 
 COCOAPODS: 1.2.1

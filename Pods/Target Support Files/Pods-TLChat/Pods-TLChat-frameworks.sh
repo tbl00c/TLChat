@@ -104,6 +104,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TLKit/TLKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TLTabBarController/TLTabBarController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/WCDB/WCDB.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
@@ -121,6 +122,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TLKit/TLKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TLTabBarController/TLTabBarController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/WCDB/WCDB.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

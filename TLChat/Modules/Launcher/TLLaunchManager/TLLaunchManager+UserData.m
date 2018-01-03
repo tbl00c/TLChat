@@ -8,9 +8,7 @@
 
 #import "TLLaunchManager+UserData.h"
 #import "TLWalletViewController.h"
-#import "TLExpressionGroupModel.h"
-#import "TLExpressionHelper.h"
-
+#import "TLExpressionGroupModel+Download.h"
 #import "TLMineEventStatistics.h"
 
 @implementation TLLaunchManager (UserData)
@@ -59,74 +57,42 @@
 /// 下载默认表情包
 - (void)downloadDefaultExpression
 {
-//    [TLUIUtility showLoading:nil];
-//    __block NSInteger count = 0;
-//    __block NSInteger successCount = 0;
-//    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
-//    TLExpressionGroupModel *group = [[TLExpressionGroupModel alloc] init];
-//    group.gId = @"241";
-//    group.name = @"婉转的骂人";
-//    group.iconURL = [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/downloadsuo.do?pId=10790"];
-//    group.groupInfo = @"婉转的骂人";
-//    group.detail = @"婉转的骂人表情，慎用";
-//    [proxy requestExpressionGroupDetailByGroupID:group.gId pageIndex:1 success:^(id data) {
-//        group.data = data;
-//        [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
-//
-//        } success:^(TLExpressionGroupModel *group) {
-//            BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
-//            if (!ok) {
-//                DDLogError(@"表情存储失败！");
-//            }
-//            else {
-//                successCount ++;
-//            }
-//            count ++;
-//            if (count == 2) {
-//                [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
-//            }
-//        } failure:^(TLExpressionGroupModel *group, NSString *error) {
-//
-//        }];
-//    } failure:^(NSString *error) {
-//        count ++;
-//        if (count == 2) {
-//            [TLUIUtility showErrorHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
-//        }
-//    }];
-//
-//
-//    TLExpressionGroupModel *group1 = [[TLExpressionGroupModel alloc] init];
-//    group1.gId = @"223";
-//    group1.name = @"王锡玄";
-//    group1.iconURL = [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/downloadsuo.do?pId=10482"];
-//    group1.groupInfo = @"王锡玄 萌娃 冷笑宝宝";
-//    group1.detail = @"韩国萌娃，冷笑宝宝王锡玄表情包";
-//    [proxy requestExpressionGroupDetailByGroupID:group1.gId pageIndex:1 success:^(id data) {
-//        group1.data = data;
-//        [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group1 progress:^(CGFloat progress) {
-//
-//        } success:^(TLExpressionGroupModel *group) {
-//            BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
-//            if (!ok) {
-//                DDLogError(@"表情存储失败！");
-//            }
-//            else {
-//                successCount ++;
-//            }
-//            count ++;
-//            if (count == 2) {
-//                [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
-//            }
-//        } failure:^(TLExpressionGroupModel *group, NSString *error) {
-//
-//        }];
-//    } failure:^(NSString *error) {
-//        count ++;
-//        if (count == 2) {
-//            [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
-//        }
-//    }];
+    [TLUIUtility showLoading:nil];
+    __block NSInteger count = 0;
+    __block NSInteger successCount = 0;
+    TLExpressionGroupModel *group = [[TLExpressionGroupModel alloc] init];
+    group.gId = @"241";
+    group.name = @"婉转的骂人";
+    group.iconURL = [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/downloadsuo.do?pId=10790"];
+    group.groupInfo = @"婉转的骂人";
+    group.detail = @"婉转的骂人表情，慎用";
+    [group setDownloadCompleteAction:^(TLExpressionGroupModel *groupModel, BOOL success, id data) {
+        count ++;
+        if (success) {
+            successCount ++;
+        }
+        if (count == 2) {
+            [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
+        }
+    }];
+    [group startDownload];
+
+    TLExpressionGroupModel *group1 = [[TLExpressionGroupModel alloc] init];
+    group1.gId = @"223";
+    group1.name = @"王锡玄";
+    group1.iconURL = [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/downloadsuo.do?pId=10482"];
+    group1.groupInfo = @"王锡玄 萌娃 冷笑宝宝";
+    group1.detail = @"韩国萌娃，冷笑宝宝王锡玄表情包";
+    [group1 setDownloadCompleteAction:^(TLExpressionGroupModel *groupModel, BOOL success, id data) {
+        count ++;
+        if (success) {
+            successCount ++;
+        }
+        if (count == 2) {
+            [TLUIUtility showSuccessHint:[NSString stringWithFormat:@"成功下载%ld组表情！", (long)successCount]];
+        }
+    }];
+    [group1 startDownload];
 }
 
 

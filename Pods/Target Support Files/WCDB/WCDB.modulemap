@@ -1,0 +1,6 @@
+framework module WCDB {
+  umbrella header "WCDB-umbrella.h"
+
+  export *
+  module * { export * }
+}

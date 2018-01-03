@@ -1,5 +1,5 @@
 //
-//  ZZExpressionChosenAngel.h
+//  TLExpressionChosenAngel.h
 //  TLChat
 //
 //  Created by 李伯坤 on 2018/1/2.
@@ -8,6 +8,6 @@
 
 #import <ZZFlexibleLayoutFramework/ZZFLEXAngel+UITableView.h>
 
-@interface ZZExpressionChosenAngel : ZZFLEXAngel <UITableViewDelegate>
+@interface TLExpressionChosenAngel : ZZFLEXAngel <UITableViewDelegate>
 
 @end

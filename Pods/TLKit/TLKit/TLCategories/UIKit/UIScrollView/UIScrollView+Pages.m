@@ -31,7 +31,7 @@
 - (void)setPageX:(CGFloat)page animated:(BOOL)animated
 {
     CGFloat offsetX = self.frame.size.width * page;
-    [self setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    [self setContentOffset:CGPointMake(offsetX, 0) animated:animated];
 }
 
 #pragma mark - # 纵向分页
@@ -55,7 +55,7 @@
 - (void)setPageY:(CGFloat)page animated:(BOOL)animated
 {
     CGFloat offsetY = self.frame.size.height * page;
-    [self setContentOffset:CGPointMake(0, offsetY) animated:YES];
+    [self setContentOffset:CGPointMake(0, offsetY) animated:animated];
 }
 
 @end

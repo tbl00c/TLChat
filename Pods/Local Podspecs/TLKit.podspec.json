@@ -1,6 +1,6 @@
 {
   "name": "TLKit",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "platforms": {
     "ios": "8.0"
   },
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/tbl00c/TLKit.git",
-    "tag": "0.0.16"
+    "tag": "0.0.17"
   },
   "public_header_files": "TLKit/TLKit.h",
   "source_files": "TLKit/TLKit.h",

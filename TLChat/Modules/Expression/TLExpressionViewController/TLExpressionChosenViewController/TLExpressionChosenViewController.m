@@ -11,7 +11,7 @@
 #import "TLSearchController.h"
 #import "TLExpressionGroupModel+ChosenRequest.h"
 #import "TLExpressionHelper.h"
-#import "ZZExpressionChosenAngel.h"
+#import "TLExpressionChosenAngel.h"
 #import "TLExpressionDetailViewController.h"
 
 typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
 /// 列表
 @property (nonatomic, strong) UITableView *tableView;
 /// 列表管理器
-@property (nonatomic, strong) ZZExpressionChosenAngel *tableViewAngel;
+@property (nonatomic, strong) TLExpressionChosenAngel *tableViewAngel;
 /// 请求队列
 @property (nonatomic, strong) ZZFLEXRequestQueue *requestQueue;
 /// 搜索
@@ -80,32 +80,6 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     PushVC(detailVC);
 }
 
-- (void)startDownloadExpressionGroup:(TLExpressionGroupModel *)groupModel
-{
-//    groupModel.status = TLExpressionGroupStatusDownloading;
-//    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
-//    [proxy requestExpressionGroupDetailByGroupID:group.gId pageIndex:1 success:^(id data) {
-//        group.data = data;
-//        [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
-//
-//        } success:^(TLExpressionGroupModel *group) {
-//            group.status = TLExpressionGroupStatusLocal;
-//            NSInteger index = [self.data indexOfObject:group];
-//            if (index < self.data.count) {
-//                [self.tableView reloadData];
-//            }
-//            BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
-//            if (!ok) {
-//                [TLUIUtility showErrorHint:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.name]];
-//            }
-//        } failure:^(TLExpressionGroupModel *group, NSString *error) {
-//
-//        }];
-//    } failure:^(NSString *error) {
-//        [TLUIUtility showErrorHint:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.name, error]];
-//    }];
-}
-
 #pragma mark - # Private Methods
 - (void)p_loadUI
 {
@@ -118,7 +92,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     [self.view addSubview:self.tableView];
     
     /// 初始化列表管理器
-    self.tableViewAngel = [[ZZExpressionChosenAngel alloc] initWithHostView:self.tableView];
+    self.tableViewAngel = [[TLExpressionChosenAngel alloc] initWithHostView:self.tableView];
     
     /// 初始化基本模块
     self.tableViewAngel.addSection(TLExpressionChosenSectionTypeBanner);
@@ -150,7 +124,11 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
         if (!self) return;
         self.tableViewAngel.sectionForTag(TLExpressionChosenSectionTypeBanner).clear();
         if (requestModel.success) {
-            self.tableViewAngel.addCell(@"TLExpressionBannerCell").toSection(requestModel.tag).withDataModel(requestModel.data);
+            self.tableViewAngel.addCell(@"TLExpressionBannerCell").toSection(requestModel.tag).withDataModel(requestModel.data).eventAction(^id (NSInteger eventType, id data) {
+                @strongify(self);
+                [self didSelectedExpressionGroup:data];
+                return nil;
+            });
         }
         else {
             [TLUIUtility showErrorHint:requestModel.data];
@@ -175,14 +153,10 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
         self.tableViewAngel.sectionForTag(requestModel.tag).clear();
         if (requestModel.success) {
             self.tableViewAngel.setHeader(@"TLExpressionTitleView").withDataModel(LOCSTR(@"推荐表情")).toSection(requestModel.tag);
+            [[TLExpressionHelper sharedHelper] updateExpressionGroupModelsStatus:requestModel.data];
             self.tableViewAngel.addCells(@"TLExpressionCell").withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
                 @strongify(self);
                 [self didSelectedExpressionGroup:data];
-            })
-            .eventAction(^ id(NSInteger eventType, id data) {
-                @strongify(self);
-                [self startDownloadExpressionGroup:data];
-                return nil;
             });
         }
         [self.tableView reloadData];
@@ -197,10 +171,6 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     ZZFLEXRequestModel *requestModel = [ZZFLEXRequestModel requestModelWithTag:TLExpressionChosenSectionTypeChosen requestAction:^(ZZFLEXRequestModel *requestModel) {
         @strongify(self);
         if (!self) return;
-        requestModel.userInfo = @{@"pageIndex" : @(pageIndex)};
-        if (pageIndex == 1) {
-            [self.tableView tt_removeLoadMoreFooter];
-        }
         [TLExpressionGroupModel requestExpressionChosenListByPageIndex:pageIndex success:^(id successData) {
             [requestModel executeRequestCompleteMethodWithSuccess:YES data:successData];
         } failure:^(id failureData) {
@@ -209,30 +179,27 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     } requestCompleteAction:^(ZZFLEXRequestModel *requestModel) {
         @strongify(self);
         if (!self) return;
-        if ([requestModel.userInfo[@"pageIndex"] integerValue] == 1) {
-            self.tableViewAngel.sectionForTag(requestModel.tag).clear();
+        if (pageIndex == 1) {
+            
         }
         if (requestModel.success) {
-            if ([requestModel.userInfo[@"pageIndex"] integerValue] == 1) {
+            if (pageIndex == 1) {
+                self.tableViewAngel.sectionForTag(requestModel.tag).clear();
+                if ([requestModel.data count] > 0) {
+                    self.tableViewAngel.setHeader(@"TLExpressionTitleView").withDataModel(LOCSTR(@"更多精选")).toSection(requestModel.tag);
+                }
+                
                 [self.tableView tt_addLoadMoreFooterWithAction:^{
                     @strongify(self);
                     [[self listRequestModelWithPageIndex:self.pageIndex + 1] executeRequestMethod];
                 }];
-                
-                if ([requestModel.data count] > 0) {
-                    self.tableViewAngel.setHeader(@"TLExpressionTitleView").withDataModel(LOCSTR(@"更多精选")).toSection(requestModel.tag);
-                }
             }
             
             if ([requestModel.data count] > 0) {
+                [[TLExpressionHelper sharedHelper] updateExpressionGroupModelsStatus:requestModel.data];
                 self.tableViewAngel.addCells(@"TLExpressionCell").withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
                     @strongify(self);
                     [self didSelectedExpressionGroup:data];
-                })
-                .eventAction(^ id(NSInteger eventType, id data) {
-                    @strongify(self);
-                    [self startDownloadExpressionGroup:data];
-                    return nil;
                 });
                 [self.tableView tt_endLoadMore];
             }
@@ -241,8 +208,12 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
             }
         }
         else {
-            [self.tableView tt_endLoadMore];
-            [self showErrorViewWithTitle:requestModel.data];
+            if (pageIndex == 1) {
+                [self showErrorViewWithTitle:requestModel.data];
+            }
+            else {
+                [self.tableView tt_endLoadMoreWithNoMoreData];
+            }
         }
         [self.tableView reloadData];
     }];

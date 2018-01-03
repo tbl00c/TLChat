@@ -20,4 +20,6 @@
 
 @property (nonatomic, strong) NSArray *data;
 
+@property (nonatomic, copy) void (^bannerClickAction)(id bannerModel);
+
 @end

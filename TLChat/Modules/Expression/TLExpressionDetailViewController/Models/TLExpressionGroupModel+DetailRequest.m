@@ -22,13 +22,19 @@
         if ([status isEqualToString:@"OK"]) {
             NSArray *infoArray = respArray[2];
             NSMutableArray *data = [TLExpressionModel mj_objectArrayWithKeyValuesArray:infoArray];
-            success(data);
+            if (success) {
+                success(data);
+            }
         }
         else {
-            failure(status);
+            if (failure) {
+                failure(status);
+            }
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        failure([error description]);
+        if (failure) {
+            failure(TLNetworkErrorTip);
+        }
     }];
     
     return nil;

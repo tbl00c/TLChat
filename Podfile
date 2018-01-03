@@ -5,7 +5,7 @@ target :TLChat do
     
     # --------------------- 个人开源Pod  -----------------------
     # TLKit 基础库，包含常用宏定义、常用分类、常用功能组件（HUD、actionSheet等）
-    pod 'TLKit', :git => 'git@github.com:tbl00c/TLKit.git', :tag => '0.0.16'
+    pod 'TLKit', :git => 'git@github.com:tbl00c/TLKit.git', :tag => '0.0.17'
 #    pod 'TLKit', :path => '~/TLPods/TLKit'
 
     # 全能tabBarController

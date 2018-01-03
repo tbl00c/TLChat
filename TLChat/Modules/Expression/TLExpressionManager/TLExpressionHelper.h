@@ -49,6 +49,8 @@
  */
 - (BOOL)didExpressionGroupAlwaysInUsed:(NSString *)groupID;
 
+- (void)updateExpressionGroupModelsStatus:(NSArray *)groupModelArray;
+
 
 #pragma mark - 下载表情包
 - (void)downloadExpressionsWithGroupInfo:(TLExpressionGroupModel *)group

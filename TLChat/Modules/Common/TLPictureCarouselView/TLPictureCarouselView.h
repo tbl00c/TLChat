@@ -21,12 +21,12 @@
 
 @interface TLPictureCarouselView : UIView
 
-@property (nonatomic, strong) NSArray *data;
-
 @property (nonatomic, assign) id<TLPictureCarouselDelegate> delegate;
 
 @property (nonatomic, copy) void (^didSelectItem)(TLPictureCarouselView *pictureCarouselView, id<TLPictureCarouselProtocol> model);
 
 @property (nonatomic, assign) NSTimeInterval timeInterval;
+
+- (void)setData:(NSArray *)data;
 
 @end

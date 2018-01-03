@@ -81,6 +81,7 @@
     dispatch_queue_t downloadQueue = dispatch_queue_create([group.gId UTF8String], nil);
     dispatch_group_t downloadGroup = dispatch_group_create();
     
+    __block CGFloat p = 0;
     for (int i = 0; i <= group.data.count; i++) {
         dispatch_group_async(downloadGroup, downloadQueue, ^{
             NSString *groupPath = [NSFileManager pathExpressionForGroupID:group.gId];
@@ -102,11 +103,27 @@
             }
             
             [data writeToFile:emojiPath atomically:YES];
+            p += 1.0;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (progress) {
+                    progress(p / group.data.count);
+                }
+            });
         });
     }
     dispatch_group_notify(downloadGroup, dispatch_get_main_queue(), ^{
         success(group);
     });
+}
+
+- (void)updateExpressionGroupModelsStatus:(NSArray *)groupModelArray
+{
+    for (TLExpressionGroupModel *group in groupModelArray) {
+        TLExpressionGroupModel *localEmojiGroup = [[TLExpressionHelper sharedHelper] emojiGroupByID:group.gId];
+        if (localEmojiGroup) {
+            group.status = TLExpressionGroupStatusLocal;
+        }
+    }
 }
 
 #pragma mark - # Getter
@@ -165,3 +182,4 @@
 }
 
 @end
+

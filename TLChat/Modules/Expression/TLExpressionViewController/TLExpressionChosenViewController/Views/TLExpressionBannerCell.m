@@ -34,6 +34,15 @@
     [self setDelegate:delegate];
 }
 
+- (void)setViewEventAction:(id (^)(NSInteger, id))eventAction
+{
+    [self setBannerClickAction:^(id bannerModel) {
+        if (eventAction) {
+            eventAction(0, bannerModel);
+        }
+    }];
+}
+
 #pragma mark - # Public Methods
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -67,6 +76,9 @@
         @weakify(self);
         [_picCarouselView setDidSelectItem:^(TLPictureCarouselView *pictureCarouselView, id<TLPictureCarouselProtocol> model){
             @strongify(self);
+            if (self.bannerClickAction) {
+                self.bannerClickAction(model);
+            }
             if (self.delegate && [self.delegate respondsToSelector:@selector(expressionBannerCellDidSelectBanner:)]) {
                 [self.delegate expressionBannerCellDidSelectBanner:model];
             }

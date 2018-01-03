@@ -59,6 +59,13 @@ typedef NS_ENUM(NSInteger, TLExpressionGroupStatus) {
 /// 表情包路径
 @property (nonatomic, strong, readonly) NSString *path;
 
+/// 下载进度
+@property (nonatomic, assign) CGFloat downloadProgress;
+/// 下载进度block
+@property (nonatomic, copy) void (^downloadProgressAction)(TLExpressionGroupModel *groupModel, CGFloat progress);
+/// 下载完成block
+@property (nonatomic, copy) void (^downloadCompleteAction)(TLExpressionGroupModel *groupModel, BOOL success, id data);
+
 - (id)objectAtIndex:(NSUInteger)index;
 
 @end

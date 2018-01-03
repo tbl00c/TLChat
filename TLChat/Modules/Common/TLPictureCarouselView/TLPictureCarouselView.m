@@ -12,6 +12,8 @@
 
 @interface TLPictureCarouselView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, strong) NSArray *data;
+
 @property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -23,7 +25,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.timeInterval = DEFAULT_TIMEINTERVAL;
+        _timeInterval = DEFAULT_TIMEINTERVAL;
         [self.collectionView setFrame:self.bounds];
         [self addSubview:self.collectionView];
         
@@ -43,18 +45,36 @@
 
 - (void)setData:(NSArray *)data
 {
-    _data = data;
-    if ([_data isEqualToArray:data]) {
-        return;
+    if (data.count > 1) {
+        NSMutableArray *tempData = data.mutableCopy;
+        [tempData insertObject:data.lastObject atIndex:0];
+        [tempData addObject:data.firstObject];
+        _data = tempData;
+    }
+    else {
+        _data = data;
     }
     [self.collectionView reloadData];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.collectionView setPageX:1 animated:NO];
+    [self.collectionView setPageX:1 animated:NO];
+    
+    [self restartTimerIfNeed];
+}
+
+- (void)setTimeInterval:(NSTimeInterval)timeInterval
+{
+    if (_timeInterval != timeInterval) {
+        _timeInterval = timeInterval;
+        [self restartTimerIfNeed];
+    }
+}
+
+- (void)restartTimerIfNeed
+{
+    if (self.data.count > 1) {
         [self.timer invalidate];
-        if (data.count > 1) {
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(scrollToNextPage) userInfo:nil repeats:YES];
-        }
-    });
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(scrollToNextPage) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    }
 }
 
 - (void)dealloc
@@ -66,13 +86,12 @@
 #pragma mark - # Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.data.count == 0 ? 0 : self.data.count + 2;
+    return self.data.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger row = indexPath.row == 0 ? self.data.count - 1 : (indexPath.row == self.data.count + 1 ? 0 : indexPath.row - 1);
-    id<TLPictureCarouselProtocol> model = self.data[row];
+    id<TLPictureCarouselProtocol> model = self.data[indexPath.row];
     TLPictureCarouselViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLPictureCarouselViewCell" forIndexPath:indexPath];
     [cell setModel:model];
     return cell;
@@ -80,8 +99,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger row = indexPath.row == 0 ? self.data.count - 1 : (indexPath.row == self.data.count - 1 ? 0 : indexPath.row - 1);
-    id<TLPictureCarouselProtocol> model = self.data[row];
+    id<TLPictureCarouselProtocol> model = self.data[indexPath.row];
     if (self.didSelectItem) {
         self.didSelectItem(self, model);
     }
@@ -99,7 +117,6 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.timer invalidate];
-    self.timer = nil;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -111,16 +128,15 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (self.timer == nil && self.data.count > 1) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(scrollToNextPage) userInfo:nil repeats:YES];
-    }
     // 轮播实现
     if (scrollView.pageX == 0) {
-        [scrollView setPageX:self.data.count animated:NO];
+        [scrollView setPageX:self.data.count - 2 animated:NO];
     }
-    else if (scrollView.pageX == self.data.count + 1) {
+    else if (scrollView.pageX == self.data.count - 1) {
         [scrollView setPageX:1 animated:NO];
     }
+
+    [self restartTimerIfNeed];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView

@@ -8,6 +8,7 @@
 
 #import "TLExpressionGroupModel.h"
 #import "NSFileManager+TLChat.h"
+#import "TLExpressionHelper.h"
 
 @implementation TLExpressionGroupModel
 @synthesize path = _path;

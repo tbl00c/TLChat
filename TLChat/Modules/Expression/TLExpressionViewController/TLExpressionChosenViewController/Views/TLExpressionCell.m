@@ -7,6 +7,8 @@
 //
 
 #import "TLExpressionCell.h"
+#import "TLExpressionGroupModel+Download.h"
+#import "TLExpressionDownloadButton.h"
 #import "TLExpressionGroupModel.h"
 
 @interface TLExpressionCell ()
@@ -19,7 +21,7 @@
 
 @property (nonatomic, strong) UIImageView *tagView;
 
-@property (nonatomic, strong) UIButton *downloadButton;
+@property (nonatomic, strong) TLExpressionDownloadButton *downloadButton;
 
 @property (nonatomic, copy) id (^eventAction)(NSInteger eventType, id data);
 
@@ -34,7 +36,7 @@
 
 - (void)setViewDataModel:(id)dataModel
 {
-    [self setgroupModel:dataModel];
+    [self setGroupModel:dataModel];
 }
 
 - (void)setViewEventAction:(id (^)(NSInteger, id))eventAction
@@ -62,7 +64,7 @@
     return self;
 }
 
-- (void)setgroupModel:(TLExpressionGroupModel *)groupModel
+- (void)setGroupModel:(TLExpressionGroupModel *)groupModel
 {
     _groupModel = groupModel;
     UIImage *image = [UIImage imageNamed:groupModel.path];
@@ -76,32 +78,25 @@
     [self.detailLabel setText:groupModel.detail];
     
     if (groupModel.status == TLExpressionGroupStatusLocal) {
-        [self.downloadButton setTitle:@"已下载" forState:UIControlStateNormal];
-        [self.downloadButton.layer setBorderColor:[UIColor grayColor].CGColor];
-        [self.downloadButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.downloadButton setStatus:TLExpressionDownloadButtonStatusDownloaded];
     }
     else if (groupModel.status == TLExpressionGroupStatusDownloading) {
-        [self.downloadButton setTitle:@"下载中" forState:UIControlStateNormal];
-        [self.downloadButton.layer setBorderColor:[UIColor colorGreenDefault].CGColor];
-        [self.downloadButton setTitleColor:[UIColor colorGreenDefault] forState:UIControlStateNormal];
+        [self.downloadButton setStatus:TLExpressionDownloadButtonStatusDownloading];
     }
     else {
-        [self.downloadButton setTitle:@"下载" forState:UIControlStateNormal];
-        [self.downloadButton.layer setBorderColor:[UIColor colorGreenDefault].CGColor];
-        [self.downloadButton setTitleColor:[UIColor colorGreenDefault] forState:UIControlStateNormal];
+        [self.downloadButton setStatus:TLExpressionDownloadButtonStatusNet];
     }
-}
-
-#pragma mark - # Event Response
-- (void)downloadButtonDown:(UIButton *)sender
-{
-    if (self.groupModel.status == TLExpressionGroupStatusNet) {
-        self.groupModel.status = TLExpressionGroupStatusLocal;
-        [self setGroupModel:self.groupModel];
-        if (self.eventAction) {
-            self.eventAction(0, self.groupModel);
-        }
-    }
+    
+    @weakify(self);
+    [self.downloadButton setProgress:groupModel.downloadProgress];
+    [groupModel setDownloadProgressAction:^(TLExpressionGroupModel *groupModel, CGFloat progress) {
+        @strongify(self);
+        [self.downloadButton setProgress:progress];
+    }];
+    [groupModel setDownloadCompleteAction:^(TLExpressionGroupModel *groupModel, BOOL success, id data) {
+        @strongify(self);
+        [self setGroupModel:groupModel];
+    }];
 }
 
 #pragma mark - # Private Methods
@@ -129,7 +124,7 @@
     [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.contentView).mas_offset(-15);
         make.centerY.mas_equalTo(self.contentView);
-        make.size.mas_equalTo(CGSizeMake(60, 26));
+        make.size.mas_equalTo(CGSizeMake(70, 27));
     }];
 }
 
@@ -174,18 +169,18 @@
     return _tagView;
 }
 
-- (UIButton *)downloadButton
+- (TLExpressionDownloadButton *)downloadButton
 {
     if (_downloadButton == nil) {
-        _downloadButton = [[UIButton alloc] init];
-        [_downloadButton setTitle:@"下载" forState:UIControlStateNormal];
-        [_downloadButton.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
-        [_downloadButton setTitleColor:[UIColor colorGreenDefault] forState:UIControlStateNormal];
-        [_downloadButton.layer setMasksToBounds:YES];
-        [_downloadButton.layer setCornerRadius:3.0f];
-        [_downloadButton.layer setBorderWidth:1.0f];
-        [_downloadButton.layer setBorderColor:[UIColor colorGreenDefault].CGColor];
-        [_downloadButton addTarget:self action:@selector(downloadButtonDown:) forControlEvents:UIControlEventTouchUpInside];
+        _downloadButton = [[TLExpressionDownloadButton alloc] init];
+        @weakify(self);
+        [_downloadButton setDownloadButtonClick:^{
+            @strongify(self);
+            if (self.groupModel.status == TLExpressionGroupStatusNet) {
+                [self.groupModel startDownload];
+                [self setGroupModel:self.groupModel];
+            }
+        }];
     }
     return _downloadButton;
 }

@@ -95,10 +95,14 @@
         [self.data[0] removeObject:group];
         if ([self.data[0] count] == 0) {
             [self.data removeObjectAtIndex:0];
+            [self.tableView beginUpdates];
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView endUpdates];
         }
         else {
+            [self.tableView beginUpdates];
             [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView endUpdates];
         }
     }
     else {

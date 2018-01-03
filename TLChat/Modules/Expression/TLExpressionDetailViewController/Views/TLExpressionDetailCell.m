@@ -7,6 +7,7 @@
 //
 
 #import "TLExpressionDetailCell.h"
+#import "TLExpressionGroupModel+Download.h"
 
 @interface TLExpressionDetailCell ()
 
@@ -21,6 +22,19 @@
 @end
 
 @implementation TLExpressionDetailCell
+
++ (CGSize)viewSizeByDataModel:(TLExpressionGroupModel *)group
+{
+    CGFloat detailHeight = [group.detail boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:13.0f]} context:nil].size.height;
+    CGFloat bannerHeight = group.bannerURL.length > 0 ? HEIGHT_EXP_BANNER : 0;
+    CGFloat height = 105.0 + detailHeight + bannerHeight;
+    return CGSizeMake(SCREEN_WIDTH, height);
+}
+
+- (void)setViewDataModel:(id)dataModel
+{
+    [self setGroup:dataModel];
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -119,10 +133,20 @@
 #pragma mark - # Event Response
 - (void)downloadButtonDown:(UIButton *)sender
 {
-    [sender setTitle:@"下载中" forState:UIControlStateNormal];
-    if (_delegate && [_delegate respondsToSelector:@selector(expressionDetailCellDownloadButtonDown:)]) {
-        [_delegate expressionDetailCellDownloadButtonDown:self.group];
-    }
+    [self.group setStatus:TLExpressionGroupStatusDownloading];
+    [self setGroup:self.group];
+    [self.group startDownload];
+    @weakify(self);
+    [self.group setDownloadCompleteAction:^(TLExpressionGroupModel *groupModel, BOOL success, id data) {
+        @strongify(self);
+        if (success) {
+            [self.group setStatus:TLExpressionGroupStatusLocal];
+        }
+        else {
+            [self.group setStatus:TLExpressionGroupStatusNet];
+        }
+        [self setGroup:self.group];
+    }];
 }
 
 #pragma mark - # Getter
@@ -169,13 +193,5 @@
     return _detailLabel;
 }
 
-#pragma mark - # Class Methods
-+ (CGFloat)cellHeightForModel:(TLExpressionGroupModel *)group
-{
-    CGFloat detailHeight = [group.detail boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:13.0f]} context:nil].size.height;
-    CGFloat bannerHeight = group.bannerURL.length > 0 ? HEIGHT_EXP_BANNER : 0;
-    CGFloat height = 105.0 + detailHeight + bannerHeight;
-    return height;
-}
 
 @end

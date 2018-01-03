@@ -7,15 +7,12 @@
 //
 
 #import "TLViewController.h"
-#import "TLImageExpressionDisplayView.h"
-#import "TLExpressionGroupModel.h"
 
-@interface TLExpressionDetailViewController : TLViewController
+@class TLExpressionGroupModel;
+@interface TLExpressionDetailViewController : ZZFlexibleLayoutViewController
 
-@property (nonatomic, strong) TLExpressionGroupModel *group;
+@property (nonatomic, strong, readonly) TLExpressionGroupModel *groupModel;
 
-@property (nonatomic, strong) UICollectionView *collectionView;
-
-@property (nonatomic, strong) TLImageExpressionDisplayView *emojiDisplayView;
+- (id)initWithGroupModel:(TLExpressionGroupModel *)groupModel;
 
 @end

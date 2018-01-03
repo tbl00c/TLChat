@@ -11,18 +11,8 @@
 
 #define         HEIGHT_EXP_BANNER       (SCREEN_WIDTH * 0.45)
 
-@protocol TLExpressionDetailCellDelegate <NSObject>
-
-- (void)expressionDetailCellDownloadButtonDown:(TLExpressionGroupModel *)group;
-
-@end
-
-@interface TLExpressionDetailCell : UICollectionViewCell
-
-@property (nonatomic, assign) id <TLExpressionDetailCellDelegate> delegate;
+@interface TLExpressionDetailCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 
 @property (nonatomic, strong) TLExpressionGroupModel *group;
-
-+ (CGFloat)cellHeightForModel:(TLExpressionGroupModel *)group;
 
 @end

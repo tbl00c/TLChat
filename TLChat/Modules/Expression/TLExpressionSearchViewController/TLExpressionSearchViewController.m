@@ -62,8 +62,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLExpressionGroupModel *group = [self.data objectAtIndex:indexPath.row];
-    TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
-    [detailVC setGroup:group];
+    TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] initWithGroupModel:group];
     UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:detailVC];
     UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain actionBlick:^{
        [navC dismissViewControllerAnimated:YES completion:^{

@@ -18,6 +18,16 @@
 
 @implementation TLExpressionItemCell
 
++ (CGSize)viewSizeByDataModel:(id)dataModel
+{
+    return CGSizeMake(EXP_DETAIL_CELL_WIDTH, EXP_DETAIL_CELL_WIDTH);
+}
+
+- (void)setViewDataModel:(id)dataModel
+{
+    [self setEmoji:dataModel];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {

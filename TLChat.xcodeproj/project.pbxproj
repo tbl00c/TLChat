@@ -16,7 +16,6 @@
 		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
 		C23EE3CA1F738E590069885F /* ZZFlexibleLayoutFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */; };
 		C23EE3CC1F738F350069885F /* ZZFlexibleLayoutFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C23EE46F1F7392540069885F /* TLExpressionDetailViewController+CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4451F7392540069885F /* TLExpressionDetailViewController+CollectionView.m */; };
 		C23EE4701F7392540069885F /* TLExpressionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4471F7392540069885F /* TLExpressionDetailViewController.m */; };
 		C23EE4761F7392550069885F /* TLExpressionChosenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4571F7392540069885F /* TLExpressionChosenViewController.m */; };
 		C23EE47C1F7392550069885F /* TLExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4661F7392540069885F /* TLExpressionViewController.m */; };
@@ -358,8 +357,6 @@
 		C2097F0D1C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2142EC61C5326C30030B29B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZZFlexibleLayoutFramework.framework; sourceTree = "<group>"; };
-		C23EE4441F7392540069885F /* TLExpressionDetailViewController+CollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLExpressionDetailViewController+CollectionView.h"; sourceTree = "<group>"; };
-		C23EE4451F7392540069885F /* TLExpressionDetailViewController+CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLExpressionDetailViewController+CollectionView.m"; sourceTree = "<group>"; };
 		C23EE4461F7392540069885F /* TLExpressionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionDetailViewController.h; sourceTree = "<group>"; };
 		C23EE4471F7392540069885F /* TLExpressionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionDetailViewController.m; sourceTree = "<group>"; };
 		C23EE4561F7392540069885F /* TLExpressionChosenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionChosenViewController.h; sourceTree = "<group>"; };
@@ -1106,8 +1103,6 @@
 			children = (
 				C249935E1FFB8C7900F69B16 /* Models */,
 				C24993571FFB8C7400F69B16 /* Views */,
-				C23EE4441F7392540069885F /* TLExpressionDetailViewController+CollectionView.h */,
-				C23EE4451F7392540069885F /* TLExpressionDetailViewController+CollectionView.m */,
 				C23EE4461F7392540069885F /* TLExpressionDetailViewController.h */,
 				C23EE4471F7392540069885F /* TLExpressionDetailViewController.m */,
 			);
@@ -3408,7 +3403,6 @@
 				C2D7CB891F72470400648CED /* TLAddThirdPartFriendCell.m in Sources */,
 				C2D7CC231F726D4900648CED /* TLUserGroup.m in Sources */,
 				C2D674BD1FFC785E00FAA24D /* TLDownloadRequest.m in Sources */,
-				C23EE46F1F7392540069885F /* TLExpressionDetailViewController+CollectionView.m in Sources */,
 				C2D7CB801F72470400648CED /* TLFriendSearchViewController.m in Sources */,
 				C292D32B1F7A4B86007EB0A6 /* TLMomentDetailImagesView.m in Sources */,
 				C2D7CB511F72470400648CED /* TLPictureCarouselViewCell.m in Sources */,

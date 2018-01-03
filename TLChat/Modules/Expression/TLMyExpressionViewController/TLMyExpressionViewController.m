@@ -70,8 +70,7 @@
     TLSettingGroup *group = self.data[indexPath.section];
     if (group.headerTitle) {    // 有标题的就是表情组
         TLExpressionGroupModel *emojiGroup = [group objectAtIndex:indexPath.row];
-        TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
-        [detailVC setGroup:emojiGroup];
+        TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] initWithGroupModel:emojiGroup];
         PushVC(detailVC);
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];

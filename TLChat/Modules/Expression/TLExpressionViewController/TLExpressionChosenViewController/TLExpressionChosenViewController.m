@@ -75,8 +75,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
 #pragma mark - # Event Action
 - (void)didSelectedExpressionGroup:(TLExpressionGroupModel *)groupModel
 {
-    TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] init];
-    [detailVC setGroup:groupModel];
+    TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] initWithGroupModel:groupModel];
     PushVC(detailVC);
 }
 

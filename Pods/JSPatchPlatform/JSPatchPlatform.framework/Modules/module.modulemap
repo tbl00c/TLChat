@@ -1,6 +1,0 @@
-framework module JSPatchPlatform {
-  umbrella header "JSPatch.h"
-
-  export *
-  module * { export * }
-}

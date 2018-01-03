@@ -27,6 +27,13 @@
 /**
  *	Modifies the NSLayoutConstraint constant,
  *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
+ *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
+ */
+- (MASConstraint * (^)(CGFloat inset))inset;
+
+/**
+ *	Modifies the NSLayoutConstraint constant,
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
  *  NSLayoutAttributeWidth, NSLayoutAttributeHeight
  */
 - (MASConstraint * (^)(CGSize offset))sizeOffset;
@@ -66,17 +73,17 @@
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityLow
  */
-- (MASConstraint * (^)())priorityLow;
+- (MASConstraint * (^)(void))priorityLow;
 
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityMedium
  */
-- (MASConstraint * (^)())priorityMedium;
+- (MASConstraint * (^)(void))priorityMedium;
 
 /**
  *	Sets the NSLayoutConstraint priority to MASLayoutPriorityHigh
  */
-- (MASConstraint * (^)())priorityHigh;
+- (MASConstraint * (^)(void))priorityHigh;
 
 /**
  *	Sets the constraint relation to NSLayoutRelationEqual
@@ -127,7 +134,14 @@
 - (MASConstraint *)centerY;
 - (MASConstraint *)baseline;
 
-#if TARGET_OS_IPHONE || TARGET_OS_TV
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+
+- (MASConstraint *)firstBaseline;
+- (MASConstraint *)lastBaseline;
+
+#endif
+
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
 
 - (MASConstraint *)leftMargin;
 - (MASConstraint *)rightMargin;
@@ -155,6 +169,13 @@
  *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
  */
 - (void)setInsets:(MASEdgeInsets)insets;
+
+/**
+ *	Modifies the NSLayoutConstraint constant,
+ *  only affects MASConstraints in which the first item's NSLayoutAttribute is one of the following
+ *  NSLayoutAttributeTop, NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight
+ */
+- (void)setInset:(CGFloat)inset;
 
 /**
  *	Modifies the NSLayoutConstraint constant,

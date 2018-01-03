@@ -10,7 +10,7 @@
 #import "TLExpressionViewController.h"
 #import "TLMyExpressionViewController.h"
 #import "TLFriendDetailViewController.h"
-#import <MWPhotoBrowser.h>
+#import <MWPhotoBrowser/MWPhotoBrowser.h>
 #import "NSFileManager+TLChat.h"
 
 @interface TLChatViewController ()

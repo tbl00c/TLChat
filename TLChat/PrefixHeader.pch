@@ -11,10 +11,10 @@
 
 #import "TLKitExtension.h"
 
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 #import <MobClick.h>
-#import <ReactiveCocoa.h>
-#import <CocoaLumberjack.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import <MJExtension/MJExtension.h>
 
 #import <TLKit/TLKit.h>

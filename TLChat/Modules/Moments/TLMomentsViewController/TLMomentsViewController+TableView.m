@@ -8,7 +8,7 @@
 
 #import "TLMomentsViewController+TableView.h"
 #import "TLMomentDetailViewController.h"
-#import <MWPhotoBrowser.h>
+#import <MWPhotoBrowser/MWPhotoBrowser.h>
 #import "TLMomentHeaderCell.h"
 #import "TLMomentImagesCell.h"
 #import "TLUserHelper.h"

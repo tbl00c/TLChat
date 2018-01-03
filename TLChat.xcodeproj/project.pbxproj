@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		88ADAC5B8F7198E35AF43F48 /* libPods-TLChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */; };
+		0E5E03D88FD9865BD7F63532 /* Pods_TLChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB609F4A936B108997A231B8 /* Pods_TLChat.framework */; };
 		C2040F3B1FFB57D600A334F8 /* TLExpressionGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2040F391FFB57D600A334F8 /* TLExpressionGroupModel.m */; };
 		C2040F3C1FFB57D600A334F8 /* TLExpressionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2040F3A1FFB57D600A334F8 /* TLExpressionModel.m */; };
 		C2040F3F1FFB582E00A334F8 /* TLExpressionGroupModel+TLEmojiKB.m in Sources */ = {isa = PBXBuildFile; fileRef = C2040F3E1FFB582E00A334F8 /* TLExpressionGroupModel+TLEmojiKB.m */; };
@@ -182,7 +182,6 @@
 		C2D7CB4A1F72470400648CED /* FaceEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2D7C9B51F72470400648CED /* FaceEmoji.json */; };
 		C2D7CB4B1F72470400648CED /* SystemEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2D7C9B61F72470400648CED /* SystemEmoji.json */; };
 		C2D7CB4C1F72470400648CED /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D7C9B91F72470400648CED /* Common.xcassets */; };
-		C2D7CB4D1F72470400648CED /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = C2D7C9BB1F72470400648CED /* main.js */; };
 		C2D7CB4E1F72470400648CED /* TLImageBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9BE1F72470400648CED /* TLImageBrowserController.m */; };
 		C2D7CB4F1F72470400648CED /* TLImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9C11F72470400648CED /* TLImagePickerController.m */; };
 		C2D7CB501F72470400648CED /* TLPictureCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9C51F72470400648CED /* TLPictureCarouselView.m */; };
@@ -340,6 +339,7 @@
 		28C098D007CC6D63F81358AB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		99FC90F8BB6CC8FC216CB6EE /* Pods-TLChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.release.xcconfig"; sourceTree = "<group>"; };
+		AB609F4A936B108997A231B8 /* Pods_TLChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TLChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEB57A4807F75774E29D2E1 /* Pods-TLChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.debug.xcconfig"; sourceTree = "<group>"; };
 		C2040F371FFB57D600A334F8 /* TLExpressionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionModel.h; sourceTree = "<group>"; };
 		C2040F381FFB57D600A334F8 /* TLExpressionGroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionGroupModel.h; sourceTree = "<group>"; };
@@ -706,7 +706,6 @@
 		C2D7C9B51F72470400648CED /* FaceEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FaceEmoji.json; sourceTree = "<group>"; };
 		C2D7C9B61F72470400648CED /* SystemEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SystemEmoji.json; sourceTree = "<group>"; };
 		C2D7C9B91F72470400648CED /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
-		C2D7C9BB1F72470400648CED /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		C2D7C9BD1F72470400648CED /* TLImageBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImageBrowserController.h; sourceTree = "<group>"; };
 		C2D7C9BE1F72470400648CED /* TLImageBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageBrowserController.m; sourceTree = "<group>"; };
 		C2D7C9C01F72470400648CED /* TLImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImagePickerController.h; sourceTree = "<group>"; };
@@ -953,7 +952,6 @@
 		C2D7CC831F72859600648CED /* TLDBConversationSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBConversationSQL.h; sourceTree = "<group>"; };
 		C2D7CC841F72859600648CED /* TLDBConversationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBConversationStore.h; sourceTree = "<group>"; };
 		C2D7CC851F72859600648CED /* TLDBConversationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBConversationStore.m; sourceTree = "<group>"; };
-		EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TLChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -963,8 +961,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2AF1FAA1C6B78F600617D98 /* WebKit.framework in Frameworks */,
-				88ADAC5B8F7198E35AF43F48 /* libPods-TLChat.a in Frameworks */,
 				C23EE3CA1F738E590069885F /* ZZFlexibleLayoutFramework.framework in Frameworks */,
+				0E5E03D88FD9865BD7F63532 /* Pods_TLChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,7 +999,7 @@
 			children = (
 				C2AF1FA91C6B78F600617D98 /* WebKit.framework */,
 				F47069788539839E1FB073F9 /* libPods.a */,
-				EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */,
+				AB609F4A936B108997A231B8 /* Pods_TLChat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2262,17 +2260,8 @@
 			isa = PBXGroup;
 			children = (
 				C2D7C9B91F72470400648CED /* Common.xcassets */,
-				C2D7C9BA1F72470400648CED /* JSPatch */,
 			);
 			path = Resoueces;
-			sourceTree = "<group>";
-		};
-		C2D7C9BA1F72470400648CED /* JSPatch */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7C9BB1F72470400648CED /* main.js */,
-			);
-			path = JSPatch;
 			sourceTree = "<group>";
 		};
 		C2D7C9BC1F72470400648CED /* TLImageBrowser */ = {
@@ -3330,7 +3319,6 @@
 				C284AE991FF247BA00075E59 /* Localizable.strings in Resources */,
 				C2D7CB4B1F72470400648CED /* SystemEmoji.json in Resources */,
 				C2D7CB4A1F72470400648CED /* FaceEmoji.json in Resources */,
-				C2D7CB4D1F72470400648CED /* main.js in Resources */,
 				C2D7CB701F72470400648CED /* Moments.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3837,6 +3825,44 @@
 				INFOPLIST_FILE = TLChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking/AFNetworking.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack/CocoaLumberjack.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DACircularProgress/DACircularProgress.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FMDB/FMDB.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/JZNavigationExtension/JZNavigationExtension.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD/MBProgressHUD.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MJExtension/MJExtension.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh/MJRefresh.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Masonry/Masonry.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SDWebImage/SDWebImage.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD/SVProgressHUD.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TLKit/TLKit.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TLTabBarController/TLTabBarController.framework/Headers\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics\"",
+					"-Wno-ambiguous-macro",
+				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3864,6 +3890,44 @@
 				INFOPLIST_FILE = TLChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking/AFNetworking.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack/CocoaLumberjack.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DACircularProgress/DACircularProgress.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FMDB/FMDB.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/JZNavigationExtension/JZNavigationExtension.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD/MBProgressHUD.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MJExtension/MJExtension.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh/MJRefresh.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Masonry/Masonry.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SDWebImage/SDWebImage.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD/SVProgressHUD.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TLKit/TLKit.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TLTabBarController/TLTabBarController.framework/Headers\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics\"",
+					"-Wno-ambiguous-macro",
+				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";

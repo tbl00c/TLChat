@@ -32,7 +32,14 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_baseline;
 @property (nonatomic, strong, readonly) MASViewAttribute *(^mas_attribute)(NSLayoutAttribute attr);
 
-#if TARGET_OS_IPHONE || TARGET_OS_TV
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_firstBaseline;
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_lastBaseline;
+
+#endif
+
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
 
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_leftMargin;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_rightMargin;
@@ -42,6 +49,16 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_trailingMargin;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerXWithinMargins;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerYWithinMargins;
+
+#endif
+
+#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 110000) || (__TV_OS_VERSION_MAX_ALLOWED >= 110000)
+
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuide API_AVAILABLE(ios(11.0),tvos(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideTop API_AVAILABLE(ios(11.0),tvos(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideBottom API_AVAILABLE(ios(11.0),tvos(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideLeft API_AVAILABLE(ios(11.0),tvos(11.0));
+@property (nonatomic, strong, readonly) MASViewAttribute *mas_safeAreaLayoutGuideRight API_AVAILABLE(ios(11.0),tvos(11.0));
 
 #endif
 
@@ -67,7 +84,7 @@
  *
  *  @return Array of created MASConstraints
  */
-- (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_makeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
 /**
  *  Creates a MASConstraintMaker with the callee view.
@@ -78,7 +95,7 @@
  *
  *  @return Array of created/updated MASConstraints
  */
-- (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_updateConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
 /**
  *  Creates a MASConstraintMaker with the callee view.
@@ -89,6 +106,6 @@
  *
  *  @return Array of created/updated MASConstraints
  */
-- (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_remakeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
 @end

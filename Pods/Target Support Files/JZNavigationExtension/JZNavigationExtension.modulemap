@@ -1,0 +1,6 @@
+framework module JZNavigationExtension {
+  umbrella header "JZNavigationExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}

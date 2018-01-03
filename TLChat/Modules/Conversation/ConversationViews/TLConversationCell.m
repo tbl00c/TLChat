@@ -10,7 +10,7 @@
 #import "NSDate+TLChat.h"
 #import "TLMacros.h"
 #import "NSFileManager+TLChat.h"
-#import <TLBadge.h>
+#import <TLTabBarController/TLBadge.h>
 
 @interface TLConversationCell()
 

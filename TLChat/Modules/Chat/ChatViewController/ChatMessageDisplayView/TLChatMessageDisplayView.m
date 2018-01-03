@@ -8,7 +8,7 @@
 
 #import "TLChatMessageDisplayView.h"
 #import "TLChatMessageDisplayView+Delegate.h"
-#import <MJRefresh.h>
+#import <MJRefresh/MJRefresh.h>
 #import "TLMessageBaseCell.h"
 #import "TLChatEventStatistics.h"
 

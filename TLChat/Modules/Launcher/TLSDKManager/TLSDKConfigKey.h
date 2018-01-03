@@ -14,9 +14,6 @@
 /// UMeng
 #define     UMENG_APPKEY        @"56b8ba33e0f55a15480020b0"
 
-/// JSPatch
-#define     JSPATCH_APPKEY      @"7eadab71a29a784e"
-
 /// 七牛云存储
 #define     QINIU_APPKEY        @"28ed72E3r7nfEjApnsHWQhItdqyZqTLCtcfQZp9I"
 #define     QINIU_SECRET        @"aRYPqQYF9rK9EVJfcu849VY0PAky2Sfj97Sp349S"

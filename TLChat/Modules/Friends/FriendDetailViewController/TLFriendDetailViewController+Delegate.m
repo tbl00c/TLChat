@@ -9,7 +9,7 @@
 #import "TLFriendDetailViewController+Delegate.h"
 #import "TLLaunchManager.h"
 #import "TLChatViewController.h"
-#import <MWPhotoBrowser.h>
+#import <MWPhotoBrowser/MWPhotoBrowser.h>
 #import "TLUser+ChatModel.h"
 #import "TLFriendDetailAlbumCell.h"
 #import "NSFileManager+TLChat.h"

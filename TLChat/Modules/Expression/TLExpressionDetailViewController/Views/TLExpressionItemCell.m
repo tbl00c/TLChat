@@ -7,7 +7,7 @@
 //
 
 #import "TLExpressionItemCell.h"
-#import <UIImage+GIF.h>
+#import <SDWebImage/UIImage+GIF.h>
 #import "UIImage+Color.h"
 
 @interface TLExpressionItemCell ()

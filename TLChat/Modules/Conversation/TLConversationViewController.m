@@ -13,7 +13,6 @@
 #import "TLMessageManager+ConversationRecord.h"
 #import "TLFriendSearchViewController.h"
 #import "TLSearchController.h"
-#import <AFNetworking.h>
 
 #import "TLChatViewController+Conversation.h"
 #import "TLAddMenuView.h"
@@ -85,30 +84,6 @@
     
     if (self.addMenuView.isShow) {
         [self.addMenuView dismiss];
-    }
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - Event Response
-// 网络情况改变
-- (void)networkStatusChange:(NSNotification *)noti
-{
-    AFNetworkReachabilityStatus status = [noti.userInfo[@"AFNetworkingReachabilityNotificationStatusItem"] longValue];
-    switch (status) {
-        case AFNetworkReachabilityStatusReachableViaWiFi:
-        case AFNetworkReachabilityStatusReachableViaWWAN:
-        case AFNetworkReachabilityStatusUnknown:
-            [self.navigationItem setTitle:@"微信"];
-            break;
-        case AFNetworkReachabilityStatusNotReachable:
-            [self.navigationItem setTitle:@"微信(未连接)"];
-            break;
-        default:
-            break;
     }
 }
 

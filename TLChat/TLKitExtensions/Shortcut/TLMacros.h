@@ -21,7 +21,6 @@ typedef void(^TLBlockRequestFailureWithErrorMessage)(NSString *errMsg);
 #pragma mark - # 调试相关宏
 #define     DEBUG_LOCAL_SERVER      // 使用本地测试服务器
 //#define     DEBUG_MEMERY            // 内存测试
-//#define     DEBUG_JSPATCH           // JSPatch本地测试
 
 
 #pragma mark - # 服务器地址

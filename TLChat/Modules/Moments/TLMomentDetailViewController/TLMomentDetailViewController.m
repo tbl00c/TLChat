@@ -8,7 +8,7 @@
 
 #import "TLMomentDetailViewController.h"
 #import "TLMomentImageView.h"
-#import <MWPhotoBrowser.h>
+#import <MWPhotoBrowser/MWPhotoBrowser.h>
 
 @interface TLMomentDetailViewController () <TLMomentViewDelegate>
 

@@ -1,4 +1,4 @@
-#Masonry [![Build Status](https://travis-ci.org/SnapKit/Masonry.svg?branch=master)](https://travis-ci.org/SnapKit/Masonry) [![Coverage Status](https://img.shields.io/coveralls/SnapKit/Masonry.svg?style=flat-square)](https://coveralls.io/r/SnapKit/Masonry) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+# Masonry [![Build Status](https://travis-ci.org/SnapKit/Masonry.svg?branch=master)](https://travis-ci.org/SnapKit/Masonry) [![Coverage Status](https://img.shields.io/coveralls/SnapKit/Masonry.svg?style=flat-square)](https://coveralls.io/r/SnapKit/Masonry) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![Pod Version](https://img.shields.io/cocoapods/v/Masonry.svg?style=flat)
 
 **Masonry is still actively maintained, we are committed to fixing bugs and merging good quality PRs from the wider community. However if you're using Swift in your project, we recommend using [SnapKit](https://github.com/SnapKit/SnapKit) as it provides better type safety with a simpler API.**
 
@@ -12,7 +12,7 @@ For examples take a look at the **Masonry iOS Examples** project in the Masonry 
 Under the hood Auto Layout is a powerful and flexible way of organising and laying out your views. However creating constraints from code is verbose and not very descriptive.
 Imagine a simple example in which you want to have a view fill its superview but inset by 10 pixels on every side
 ```obj-c
-UIView *superview = self;
+UIView *superview = self.view;
 
 UIView *view1 = [[UIView alloc] init];
 view1.translatesAutoresizingMaskIntoConstraints = NO;
@@ -274,7 +274,7 @@ Alternatively if you are only updating the constant value of the constraint you 
 ### 3. mas_remakeConstraints
 `mas_updateConstraints` is useful for updating a set of constraints, but doing anything beyond updating constant values can get exhausting. That's where `mas_remakeConstraints` comes in.
 
-`mas_remakeConstraints` is similar to `mas_updateConstraints`, but instead of updating constant values, it will remove all of its contraints before installing them again. This lets you provide different constraints without having to keep around references to ones which you want to remove.
+`mas_remakeConstraints` is similar to `mas_updateConstraints`, but instead of updating constant values, it will remove all of its constraints before installing them again. This lets you provide different constraints without having to keep around references to ones which you want to remove.
 
 ```obj-c
 - (void)changeButtonPosition {
@@ -389,11 +389,17 @@ Get busy Masoning
 
 Copy the included code snippets to ``~/Library/Developer/Xcode/UserData/CodeSnippets`` to write your masonry blocks at lightning speed!
 
-`mas_make` -> `[<view> mas_makeConstraints:^(MASConstraintMaker *make){<code>}];`
+`mas_make` -> ` [<#view#> mas_makeConstraints:^(MASConstraintMaker *make) {
+     <#code#>
+ }];`
 
-`mas_update` -> `[<view> mas_updateConstraints:^(MASConstraintMaker *make){<code>}];`
+`mas_update` -> ` [<#view#> mas_updateConstraints:^(MASConstraintMaker *make) {
+     <#code#>
+ }];`
 
-`mas_remake` -> `[<view> mas_remakeConstraints:^(MASConstraintMaker *make){<code>}];`
+`mas_remake` -> ` [<#view#> mas_remakeConstraints:^(MASConstraintMaker *make) {
+     <#code#>
+ }];`
 
 ## Features
 * Not limited to subset of Auto Layout. Anything NSLayoutConstraint can do, Masonry can do too!

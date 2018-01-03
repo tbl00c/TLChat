@@ -1,5 +1,6 @@
 platform :ios, '8.0'
 inhibit_all_warnings!
+use_frameworks!
 
 target :TLChat do
     
@@ -17,16 +18,14 @@ target :TLChat do
 
 
     # --------------------- 第三方Pod -----------------------
-    pod 'AFNetworking', '~> 3.0.4'
-    pod 'SDWebImage', '~> 3.7.4'
-    pod 'Masonry', '~> 0.6.4'
-    pod 'MJRefresh', '~> 3.1.0'
-    pod 'MJExtension', '~> 3.0.10'
-    pod 'FMDB', '~> 2.6'
+    pod 'AFNetworking', '~> 3.1.0'
+    pod 'SDWebImage', '~> 3.7'
+    pod 'Masonry', '~> 1.1.0'
+    pod 'MJRefresh', '~> 3.1.15'
+    pod 'MJExtension', '~> 3.0.13'
+    pod 'FMDB', '~> 2.7.2'
     pod 'UMengAnalytics', '~> 3.6.6'
-    pod 'ReactiveCocoa', '~> 2.5' 
-    pod 'CocoaLumberjack', '~> 2.2.0'
-    pod 'MJRefresh', '~> 3.1.0'
-    pod 'MWPhotoBrowser', '~> 2.1.1'
-    pod 'JSPatchPlatform', '~> 1.6.6'
+    pod 'ReactiveCocoa', '~> 2.5'
+    pod 'CocoaLumberjack', '~> 3.3.0'
+    pod 'MWPhotoBrowser', '~> 2.1.2'
 end

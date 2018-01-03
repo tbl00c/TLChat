@@ -11,7 +11,7 @@
 #import "TLChatFileHeaderView.h"
 #import "NSDate+TLChat.h"
 #import "TLMessageManager+MessageRecord.h"
-#import <MWPhotoBrowser.h>
+#import <MWPhotoBrowser/MWPhotoBrowser.h>
 #import "NSFileManager+TLChat.h"
 
 #define     HEIGHT_COLLECTIONVIEW_HEADER    28

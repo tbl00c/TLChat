@@ -138,10 +138,4 @@
     });
 }
 
-#pragma mark - # TLPictureCarouselProtocol
-- (NSString *)pictureURL
-{
-    return self.bannerURL;
-}
-
 @end

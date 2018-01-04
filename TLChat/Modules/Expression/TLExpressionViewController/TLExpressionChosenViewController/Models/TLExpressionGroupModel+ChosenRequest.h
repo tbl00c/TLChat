@@ -9,7 +9,7 @@
 #import "TLExpressionGroupModel.h"
 #import "TLPictureCarouselProtocol.h"
 
-@interface TLExpressionGroupModel (ChosenRequest) <TLPictureCarouselProtocol>
+@interface TLExpressionGroupModel (ChosenRequest)
 
 /**
  *  表情精选 - Banner

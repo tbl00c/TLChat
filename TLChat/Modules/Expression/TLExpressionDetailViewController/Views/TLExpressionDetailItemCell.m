@@ -1,22 +1,22 @@
 //
-//  TLExpressionItemCell.m
+//  TLExpressionDetailItemCell.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/4/8.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLExpressionItemCell.h"
+#import "TLExpressionDetailItemCell.h"
 #import <SDWebImage/UIImage+GIF.h>
 #import "UIImage+Color.h"
 
-@interface TLExpressionItemCell ()
+@interface TLExpressionDetailItemCell ()
 
 @property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
-@implementation TLExpressionItemCell
+@implementation TLExpressionDetailItemCell
 
 + (CGSize)viewSizeByDataModel:(id)dataModel
 {
@@ -31,9 +31,12 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        [self.contentView addSubview:self.imageView];
-        
-        [self p_addMasonry];
+        self.imageView = self.contentView.addImageView(1)
+        .cornerRadius(3.0f)
+        .masonry(^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self.contentView);
+        })
+        .view;
     }
     return self;
 }
@@ -50,23 +53,5 @@
     }
 }
 
-#pragma mark - # Private Methods
-- (void)p_addMasonry
-{
-    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.contentView);
-    }];
-}
-
-#pragma mark - # Getter
-- (UIImageView *)imageView
-{
-    if (_imageView == nil) {
-        _imageView = [[UIImageView alloc] init];
-        [_imageView.layer setMasksToBounds:YES];
-        [_imageView.layer setCornerRadius:3.0f];
-    }
-    return _imageView;
-}
 
 @end

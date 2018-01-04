@@ -9,7 +9,7 @@
 #import "TLExpressionDetailViewController.h"
 #import "TLImageExpressionDisplayView.h"
 #import "TLExpressionGroupModel+DetailRequest.h"
-#import "TLExpressionItemCell.h"
+#import "TLExpressionDetailItemCell.h"
 
 typedef NS_ENUM(NSInteger, TLExpressionDetailVCSectionType) {
     TLExpressionDetailVCSectionTypeHeader,
@@ -41,34 +41,24 @@ typedef NS_ENUM(NSInteger, TLExpressionDetailVCSectionType) {
     [self setTitle:self.groupModel.name];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] init];
-    [longPressGR setMinimumPressDuration:1.0f];
-    [longPressGR addTarget:self action:@selector(didLongPressScreen:)];
-    [self.collectionView addGestureRecognizer:longPressGR];
+    // 添加表情长按浏览手势
+    [self p_addDisplayGesture];
     
-    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] init];
-    [tapGR setNumberOfTapsRequired:5];
-    [tapGR setNumberOfTouchesRequired:1];
-    [tapGR addTarget:self action:@selector(didTap5TimesScreen:)];
-    [self.collectionView addGestureRecognizer:tapGR];
-    
-    self.addSection(TLExpressionDetailVCSectionTypeHeader);
-    self.addSection(TLExpressionDetailVCSectionTypeItems)
-    .sectionInsets(UIEdgeInsetsMake(EXP_DETAIL_EDGE, EXP_DETAIL_EDGE, EXP_DETAIL_EDGE, EXP_DETAIL_EDGE))
-    .minimumLineSpacing(EXP_DETAIL_SPACE).minimumInteritemSpacing(EXP_DETAIL_SPACE);
-    
-    if (self.groupModel) {
-        self.addCell(@"TLExpressionDetailCell").toSection(TLExpressionDetailVCSectionTypeHeader).withDataModel(self.groupModel);
-        [self reloadView];
-    }
+    // 加载表情详情cells
+    [self p_loadGroupDetailCells];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [TLUIUtility showLoading:nil];
-    [self requestExpressionGroupDetailDataWithPageIndex:1];
+    if (self.groupModel.data.count == 0) {
+        [TLUIUtility showLoading:nil];
+        [self requestExpressionGroupDetailDataWithPageIndex:1];
+    }
+    else {
+        [self p_showExpressionItemsWithData:self.groupModel.data];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -82,16 +72,18 @@ typedef NS_ENUM(NSInteger, TLExpressionDetailVCSectionType) {
 - (void)requestExpressionGroupDetailDataWithPageIndex:(NSInteger)pageIndex
 {
     @weakify(self);
-    [self.groupModel requestExpressionGroupDetailByPageIndex:pageIndex success:^(id data) {
+    [self.groupModel requestExpressionGroupDetailByPageIndex:pageIndex success:^(NSArray *data) {
         @strongify(self);
         [TLUIUtility hiddenLoading];
         self.pageIndex = pageIndex;
-        self.groupModel.data = data;
         if (pageIndex == 1) {
+            self.groupModel.data = [data mutableCopy];
             self.sectionForTag(TLExpressionDetailVCSectionTypeItems).clear();
         }
-        self.addCells(@"TLExpressionItemCell").toSection(TLExpressionDetailVCSectionTypeItems).withDataModelArray(data);
-        [self reloadView];
+        else {
+            [self.groupModel.data addObjectsFromArray:data];
+        }
+        [self p_showExpressionItemsWithData:data];
     } failure:^(NSString *error) {
         [TLUIUtility hiddenLoading];
     }];
@@ -150,6 +142,48 @@ typedef NS_ENUM(NSInteger, TLExpressionDetailVCSectionType) {
     else {
         [TLUIUtility showSuccessHint:@"已保存到系统相册"];
     }
+}
+
+#pragma mark - # Private Methods
+- (void)p_loadGroupDetailCells
+{
+    self.addSection(TLExpressionDetailVCSectionTypeHeader);
+    self.addSection(TLExpressionDetailVCSectionTypeItems)
+    .sectionInsets(UIEdgeInsetsMake(EXP_DETAIL_EDGE, EXP_DETAIL_EDGE, EXP_DETAIL_EDGE, EXP_DETAIL_EDGE))
+    .minimumLineSpacing(EXP_DETAIL_SPACE).minimumInteritemSpacing(EXP_DETAIL_SPACE);
+
+    if (self.groupModel) {
+        // banner
+        if (self.groupModel.bannerURL.length > 0) {
+            self.addCell(@"TLExpressionDetailBannerCell").toSection(TLExpressionDetailVCSectionTypeHeader).withDataModel(self.groupModel.bannerURL);
+        }
+        // 介绍
+        self.addCell(@"TLExpressionDetailInfoCell").toSection(TLExpressionDetailVCSectionTypeHeader).withDataModel(self.groupModel);
+        // 分割线
+        self.addCell(@"TLExpressionDetailSeperatorCell").toSection(TLExpressionDetailVCSectionTypeHeader);
+        [self reloadView];
+    }
+}
+
+- (void)p_addDisplayGesture
+{
+    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] init];
+    [longPressGR setMinimumPressDuration:1.0f];
+    [longPressGR addTarget:self action:@selector(didLongPressScreen:)];
+    [self.collectionView addGestureRecognizer:longPressGR];
+    
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] init];
+    [tapGR setNumberOfTapsRequired:5];
+    [tapGR setNumberOfTouchesRequired:1];
+    [tapGR addTarget:self action:@selector(didTap5TimesScreen:)];
+    [self.collectionView addGestureRecognizer:tapGR];
+}
+
+- (void)p_showExpressionItemsWithData:(NSArray *)data
+{
+    // 表情
+    self.addCells(@"TLExpressionDetailItemCell").toSection(TLExpressionDetailVCSectionTypeItems).withDataModelArray(data);
+    [self reloadView];
 }
 
 #pragma mark - # Getter

@@ -1,5 +1,5 @@
 //
-//  TLExpressionDetailCell.h
+//  TLExpressionDetailInfoCell.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/4/11.
@@ -11,8 +11,8 @@
 
 #define         HEIGHT_EXP_BANNER       (SCREEN_WIDTH * 0.45)
 
-@interface TLExpressionDetailCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
+@interface TLExpressionDetailInfoCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 
-@property (nonatomic, strong) TLExpressionGroupModel *group;
+@property (nonatomic, strong) TLExpressionGroupModel *groupModel;
 
 @end

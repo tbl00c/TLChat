@@ -1,5 +1,5 @@
 //
-//  TLExpressionCell.h
+//  TLExpressionItemCell.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/4/4.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class TLExpressionGroupModel;
-@interface TLExpressionCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
+@interface TLExpressionItemCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
 
 @property (nonatomic, strong) TLExpressionGroupModel *groupModel;
 

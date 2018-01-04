@@ -44,6 +44,14 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     [self p_loadUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // 更新表情状态
+    [self.tableView reloadData];
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -153,7 +161,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
         if (requestModel.success) {
             self.tableViewAngel.setHeader(@"TLExpressionTitleView").withDataModel(LOCSTR(@"推荐表情")).toSection(requestModel.tag);
             [[TLExpressionHelper sharedHelper] updateExpressionGroupModelsStatus:requestModel.data];
-            self.tableViewAngel.addCells(@"TLExpressionCell").withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
+            self.tableViewAngel.addCells(@"TLExpressionItemCell").withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
                 @strongify(self);
                 [self didSelectedExpressionGroup:data];
             });
@@ -196,7 +204,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
             
             if ([requestModel.data count] > 0) {
                 [[TLExpressionHelper sharedHelper] updateExpressionGroupModelsStatus:requestModel.data];
-                self.tableViewAngel.addCells(@"TLExpressionCell").withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
+                self.tableViewAngel.addCells(@"TLExpressionItemCell").withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
                     @strongify(self);
                     [self didSelectedExpressionGroup:data];
                 });

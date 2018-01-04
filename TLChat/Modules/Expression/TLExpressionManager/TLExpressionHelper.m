@@ -140,12 +140,12 @@
     NSMutableArray *data = [[NSMutableArray alloc] init];
     NSMutableArray *myEmojiGroups = [NSMutableArray arrayWithArray:[self.store expressionGroupsByUid:[TLUserHelper sharedHelper].userID]];
     if (myEmojiGroups.count > 0) {
-        TLSettingGroup *group1 = TLCreateSettingGroup(@"聊天面板中的表情", nil, myEmojiGroups);
+        TLSettingGroup *group1 = TLCreateSettingGroup(LOCSTR(@"聊天面板中的表情"), nil, myEmojiGroups);
         [data addObject:group1];
     }
     
-    TLSettingItem *userEmojis = TLCreateSettingItem(@"添加的表情");
-    TLSettingItem *buyedEmojis = TLCreateSettingItem(@"购买的表情");
+    TLSettingItem *userEmojis = TLCreateSettingItem(LOCSTR(@"添加的表情"));
+    TLSettingItem *buyedEmojis = TLCreateSettingItem(LOCSTR(@"购买的表情"));
     TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[userEmojis, buyedEmojis]));
     [data addObject:group2];
     

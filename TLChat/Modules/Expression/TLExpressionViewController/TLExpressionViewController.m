@@ -83,7 +83,7 @@
 - (UISegmentedControl *)segmentedControl
 {
     if (_segmentedControl == nil) {
-        _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"精选表情", @"更多表情"]];
+        _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[LOCSTR(@"精选表情"), LOCSTR(@"更多表情")]];
         [_segmentedControl setWidth:WIDTH_EXPRESSION_SEGMENT];
         [_segmentedControl setSelectedSegmentIndex:0];
         [_segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents:UIControlEventValueChanged];

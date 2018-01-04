@@ -1,17 +1,17 @@
 //
-//  TLExpressionCell.m
+//  TLExpressionItemCell.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/4/4.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLExpressionCell.h"
+#import "TLExpressionItemCell.h"
 #import "TLExpressionGroupModel+Download.h"
 #import "TLExpressionDownloadButton.h"
 #import "TLExpressionGroupModel.h"
 
-@interface TLExpressionCell ()
+@interface TLExpressionItemCell ()
 
 @property (nonatomic, strong) UIImageView *iconView;
 
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation TLExpressionCell
+@implementation TLExpressionItemCell
 
 + (CGFloat)viewHeightByDataModel:(id)dataModel
 {

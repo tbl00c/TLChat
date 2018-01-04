@@ -21,7 +21,7 @@
 #pragma mark - # Protocol
 + (CGFloat)viewHeightByDataModel:(id)dataModel
 {
-    return 0.38 * SCREEN_WIDTH;
+    return 0.4 * SCREEN_WIDTH;
 }
 
 - (void)setViewDataModel:(id)dataModel

@@ -64,5 +64,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>如果不允许，你将无法发送系统相册里的照片给朋友，也无法将图片或视频保存到相册。</string>
 </dict>
 </plist>

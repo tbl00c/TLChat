@@ -1,5 +1,5 @@
 //
-//  TLExpressionItemCell.h
+//  TLExpressionDetailItemCell.h
 //  TLChat
 //
 //  Created by 李伯坤 on 16/4/8.
@@ -13,7 +13,7 @@
 #define         EXP_DETAIL_SPACE                15.0
 #define         EXP_DETAIL_CELL_WIDTH           ((SCREEN_WIDTH - EXP_DETAIL_EDGE * 2 - EXP_DETAIL_SPACE * 3.0) / 4.0)
 
-@interface TLExpressionItemCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
+@interface TLExpressionDetailItemCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 
 @property (nonatomic, strong) TLExpressionModel *emoji;
 

@@ -9,7 +9,7 @@
 #import "TLExpressionSearchViewController.h"
 #import "TLExpressionDetailViewController.h"
 #import "TLExpressionHelper.h"
-#import "TLExpressionCell.h"
+#import "TLExpressionItemCell.h"
 #import "TLExpressionGroupModel+SearchRequest.h"
 
 #define         HEGIHT_EXPCELL      80
@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    [self.tableView registerClass:[TLExpressionCell class] forCellReuseIdentifier:@"TLExpressionCell"];
+    [self.tableView registerClass:[TLExpressionItemCell class] forCellReuseIdentifier:@"TLExpressionItemCell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,7 +52,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
-//    TLExpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLExpressionCell"];
+//    TLExpressionItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLExpressionItemCell"];
 //    TLExpressionGroupModel *group = self.data[indexPath.row];
 //    [cell setGroup:group];
 //    [cell setDelegate:self];
@@ -99,7 +99,7 @@
     }
 }
 
-//MARK: TLExpressionCellDelegate
+//MARK: TLExpressionItemCellDelegate
 - (void)expressionCellDownloadButtonDown:(TLExpressionGroupModel *)group
 {
     group.status = TLExpressionGroupStatusDownloading;

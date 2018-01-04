@@ -22,16 +22,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"我的表情"];
+    [self.navigationItem setTitle:LOCSTR(@"我的表情")];
     
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"排序" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
-    [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
+    @weakify(self);
+    [self addRightBarButtonWithTitle:LOCSTR(@"排序") actionBlick:^{
+        
+    }];
     
     if (self.navigationController.rootViewController == self) {
-        UIBarButtonItem *dismissBarButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain actionBlick:^{
+        [self addLeftBarButtonWithTitle:LOCSTR(@"取消") actionBlick:^{
+            @strongify(self);
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
-        [self.navigationItem setLeftBarButtonItem:dismissBarButton];
     }
     
     [self.tableView registerClass:[TLMyExpressionCell class] forCellReuseIdentifier:@"TLMyExpressionCell"];
@@ -40,7 +42,7 @@
     self.data = [self.helper myExpressionListData];
 }
 
-#pragma mark - Delegate -
+#pragma mark - Delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLSettingGroup *group = self.data[indexPath.section];
@@ -107,12 +109,6 @@
     else {
         [TLUIUtility showErrorHint:@"表情包删除失败"];
     }
-}
-
-#pragma mark - Event Response -
-- (void)rightBarButtonDown:(UIBarButtonItem *)sender
-{
-
 }
 
 @end

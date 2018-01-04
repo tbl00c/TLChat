@@ -15,16 +15,7 @@
     UIStatusBarStyle lastBarStyle;
 }
 
-+ (TLSearchController *)createWithResultsContrllerClassName:(NSString *)className
-{
-    if (!className || !NSClassFromString(className)) {
-        return nil;
-    }
-    id vc = [[NSClassFromString(className) alloc] init];
-    return [[self class] createWithResultsContrller:vc];
-}
-
-+ (TLSearchController *)createWithResultsContrller:(UIViewController<UISearchResultsUpdating> *)resultVC
++ (TLSearchController *)createWithResultsContrller:(UIViewController<TLSearchControllerProtocol> *)resultVC
 {
     if (!resultVC) {
         return nil;
@@ -34,15 +25,23 @@
     return searchController;
 }
 
-- (id)initWithSearchResultsController:(UIViewController *)searchResultsController
+- (id)initWithSearchResultsController:(UIViewController<TLSearchControllerProtocol>  *)searchResultsController
 {
     if (self = [super initWithSearchResultsController:searchResultsController]) {
+        [self setDelegate:searchResultsController];
+        self.definesPresentationContext = YES;
+        
+        // searchResultsController
+        searchResultsController.edgesForExtendedLayout = UIRectEdgeNone;
+        
+        // searchBar
         [self.searchBar setPlaceholder:LOCSTR(@"搜索")];
-        [self.searchBar setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SEARCHBAR_HEIGHT)];
+//        [self.searchBar setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SEARCHBAR_HEIGHT)];
         [self.searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
         [self.searchBar setBarTintColor:[UIColor colorGrayBG]];
         [self.searchBar setTintColor:[UIColor colorGreenDefault]];
-        [self.searchBar setDelegate:self];
+        [self.searchBar setDelegate:searchResultsController];
+        [self.searchBar setTranslucent:NO];
         UITextField *tf = [[[self.searchBar.subviews firstObject] subviews] lastObject];
         [tf.layer setMasksToBounds:YES];
         [tf.layer setBorderWidth:BORDER_WIDTH_1PX];
@@ -75,18 +74,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        lastBarStyle = [UIApplication sharedApplication].statusBarStyle;
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    });
+    
+    lastBarStyle = [UIApplication sharedApplication].statusBarStyle;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[UIApplication sharedApplication] setStatusBarStyle:lastBarStyle  animated:YES];
-    });
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:lastBarStyle  animated:YES];
 }
 
 - (void)setEnableVoiceInput:(BOOL)showVoiceButton
@@ -100,12 +97,6 @@
     else {
         [self.searchBar setShowsBookmarkButton:NO];
     }
-}
-
-#pragma mark - # Delegate
-- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
-{
-    [TLUIUtility showAlertWithTitle:@"语音搜索按钮"];
 }
 
 @end

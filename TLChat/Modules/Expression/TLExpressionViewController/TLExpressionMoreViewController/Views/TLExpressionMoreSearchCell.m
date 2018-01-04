@@ -7,6 +7,7 @@
 //
 
 #import "TLExpressionMoreSearchCell.h"
+#import "TLExpressionSearchViewController.h"
 #import "TLSearchController.h"
 
 @interface TLExpressionMoreSearchCell ()
@@ -27,7 +28,14 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.searchController = [TLSearchController createWithResultsContrllerClassName:@"TLExpressionSearchViewController"];
+        [self setBackgroundColor:[UIColor whiteColor]];
+        @weakify(self);
+        TLExpressionSearchViewController *searchResultVC = [[TLExpressionSearchViewController alloc] init];
+        [searchResultVC setItemClickAction:^(TLExpressionSearchViewController *searchController, id data) {
+            @strongify(self);
+            
+        }];
+        self.searchController = [TLSearchController createWithResultsContrller:searchResultVC];
         [self.searchController.searchBar setPlaceholder:LOCSTR(@"搜索表情")];
         [self.contentView addSubview:self.searchController.searchBar];
     }

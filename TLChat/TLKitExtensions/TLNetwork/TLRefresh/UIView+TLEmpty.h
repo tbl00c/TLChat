@@ -11,25 +11,8 @@
 @interface UIView (TLEmpty)
 
 - (void)showEmptyViewWithTitle:(NSString *)title;
-- (void)showEmptyViewWithTitle:(NSString *)title atView:(UIView *)superView;
-- (void)showEmptyViewWithTitle:(NSString *)title rect:(CGRect)rect atView:(UIView *)superView;
-- (void)removeEmptyView;
 
-- (void)showErrorViewWithTitle:(NSString *)title;
-- (void)removeErrorView;
-
-@end
-
-@interface UIViewController (TLEmpty)
-
-- (void)showEmptyViewWithTitle:(NSString *)title;
-- (void)showEmptyViewWithTitle:(NSString *)title atView:(UIView *)superView;
-- (void)showEmptyViewWithTitle:(NSString *)title rect:(CGRect)rect atView:(UIView *)superView;
-- (void)removeEmptyView;
-
-- (void)showErrorViewWithTitle:(NSString *)title;
-- (void)removeErrorView;
-
-- (void)requestRetry:(UIButton *)sender;
+- (void)showErrorViewWithTitle:(NSString *)title retryAction:(void (^)(id userData))retryAction;
+- (void)showErrorViewWithTitle:(NSString *)title userData:(id)userData retryAction:(void (^)(id userData))retryAction;
 
 @end

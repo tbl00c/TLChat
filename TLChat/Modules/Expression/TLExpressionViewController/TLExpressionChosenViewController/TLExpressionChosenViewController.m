@@ -61,6 +61,9 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
 #pragma mark - # Requests
 - (void)requestDataIfNeed
 {
+    if (self.tableViewAngel.dataModel.cellsModelArrayForSection(TLExpressionChosenSectionTypeChosen).count > 0) {
+        return;
+    }
     if (self.requestQueue.isRuning) {
         return;
     }
@@ -72,12 +75,6 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     [self.requestQueue runAllRequestsWithCompleteAction:^(NSArray *data, NSInteger successCount, NSInteger failureCount) {
         [TLUIUtility hiddenLoading];
     }];
-}
-
-- (void)requestRetry:(UIButton *)sender
-{
-    [super requestRetry:sender];
-    [self requestDataIfNeed];
 }
 
 #pragma mark - # Event Action
@@ -94,9 +91,13 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.zz_make.backgroundColor([UIColor whiteColor])
     .separatorStyle(UITableViewCellSeparatorStyleNone)
-    .tableHeaderView(self.searchController.searchBar).tableFooterView([UIView new])
+    .tableHeaderView(self.searchController.searchBar)
+    .tableFooterView([UIView new])
     .estimatedRowHeight(0).estimatedSectionFooterHeight(0).estimatedSectionHeaderHeight(0);
     [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
     
     /// 初始化列表管理器
     self.tableViewAngel = [[TLExpressionChosenAngel alloc] initWithHostView:self.tableView];
@@ -111,7 +112,13 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
 - (TLSearchController *)searchController
 {
     if (!_searchController) {
-        _searchController = [TLSearchController createWithResultsContrllerClassName:NSStringFromClass([TLExpressionSearchViewController class])];
+        @weakify(self);
+        TLExpressionSearchViewController *searchResultVC = [[TLExpressionSearchViewController alloc] init];
+        [searchResultVC setItemClickAction:^(TLExpressionSearchViewController *searchController, id data) {
+            @strongify(self);
+            [self didSelectedExpressionGroup:data];
+        }];
+        _searchController = [TLSearchController createWithResultsContrller:searchResultVC];
         [_searchController.searchBar setPlaceholder:LOCSTR(@"搜索表情")];
     }
     return _searchController;
@@ -216,7 +223,10 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
         }
         else {
             if (pageIndex == 1) {
-                [self showErrorViewWithTitle:requestModel.data];
+                [self.view showErrorViewWithTitle:requestModel.data retryAction:^(id userData) {
+                    @weakify(self);
+                    [self requestDataIfNeed];
+                }];
             }
             else {
                 [self.tableView tt_endLoadMoreWithNoMoreData];

@@ -41,6 +41,8 @@
         [self setTintColor:[UIColor whiteColor]];
         
         self.titleLabel = self.contentView.addLabel(1)
+        .backgroundColor([UIColor whiteColor])
+        .clipsToBounds(YES)
         .font([UIFont systemFontOfSize:17])
         .masonry(^(MASConstraintMaker *make) {
             make.left.mas_equalTo(15);

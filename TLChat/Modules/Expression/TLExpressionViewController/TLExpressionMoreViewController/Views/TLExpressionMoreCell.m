@@ -75,6 +75,7 @@
 {
     if (_imageView == nil) {
         _imageView = [[UIImageView alloc] init];
+        [_imageView setBackgroundColor:[UIColor whiteColor]];
         [_imageView.layer setMasksToBounds:YES];
         [_imageView.layer setCornerRadius:10.0f];
         [_imageView.layer setBorderWidth:BORDER_WIDTH_1PX];
@@ -89,6 +90,8 @@
         _titleLabel = [[UILabel alloc] init];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
+        [_titleLabel setBackgroundColor:[UIColor whiteColor]];
+        [_titleLabel setClipsToBounds:YES];
     }
     return _titleLabel;
 }

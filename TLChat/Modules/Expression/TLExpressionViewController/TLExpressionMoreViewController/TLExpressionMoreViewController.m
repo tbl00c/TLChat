@@ -28,7 +28,9 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
 {
     [super loadView];
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
-    [self.collectionView setFrame:CGRectMake(0, STATUSBAR_HEIGHT + NAVBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT)];
+    [self.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
     
     // 搜索
     self.addSection(TLExpressionMoreSectionTypeSearch);
@@ -46,12 +48,6 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
         [TLUIUtility showLoading:nil];
         [self requestExpressionMoreDataWithPageIndex:1];
     }
-}
-
-- (void)requestRetry:(UIButton *)sender
-{
-    [super requestRetry:sender];
-    [self requestDataIfNeed];
 }
 
 #pragma mark - # Event Action
@@ -97,7 +93,10 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
         @strongify(self);
         [TLUIUtility hiddenLoading];
         [self.collectionView tt_endLoadMore];
-        [self showErrorViewWithTitle:failureData];
+        [self.view showErrorViewWithTitle:failureData retryAction:^(id userData) {
+            @strongify(self);
+            [self requestDataIfNeed];
+        }];
     }];
 }
 

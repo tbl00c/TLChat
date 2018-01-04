@@ -416,6 +416,7 @@
 		C259CE8E1FF2290D0058FD6E /* TLDBExpressionSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBExpressionSQL.h; sourceTree = "<group>"; };
 		C259CE8F1FF2290D0058FD6E /* TLDBExpressionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBExpressionStore.h; sourceTree = "<group>"; };
 		C264F7271FF3A52700AA3E78 /* TLFriendEventStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendEventStatistics.h; sourceTree = "<group>"; };
+		C26EBE331FFE20A200B7C360 /* TLSearchControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLSearchControllerProtocol.h; sourceTree = "<group>"; };
 		C27A49881FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLExpressionDetailBannerCell.h; sourceTree = "<group>"; };
 		C27A49891FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLExpressionDetailBannerCell.m; sourceTree = "<group>"; };
 		C27A498B1FFDCE4500EA5FD5 /* TLExpressionDetailSeperatorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLExpressionDetailSeperatorCell.h; sourceTree = "<group>"; };
@@ -2842,6 +2843,7 @@
 		C2D7CADD1F72470400648CED /* TLSearchController */ = {
 			isa = PBXGroup;
 			children = (
+				C26EBE331FFE20A200B7C360 /* TLSearchControllerProtocol.h */,
 				C2D7CADE1F72470400648CED /* TLSearchController.h */,
 				C2D7CADF1F72470400648CED /* TLSearchController.m */,
 			);

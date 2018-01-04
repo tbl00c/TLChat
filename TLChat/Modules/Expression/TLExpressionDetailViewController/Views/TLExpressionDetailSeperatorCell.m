@@ -27,7 +27,10 @@
 {
     UIView *line1 = self.contentView.addView(1).backgroundColor([UIColor colorGrayLine]).view;
     UIView *line2 = self.contentView.addView(2).backgroundColor([UIColor colorGrayLine]).view;
-    UILabel *label = self.contentView.addLabel(3).textColor([UIColor colorGrayLine]).font([UIFont systemFontOfSize:12.0f]).text(LOCSTR(@"长按表情可预览")).view;
+    UILabel *label = self.contentView.addLabel(3)
+    .backgroundColor([UIColor whiteColor]).clipsToBounds(YES)
+    .textColor([UIColor colorGrayLine]).font([UIFont systemFontOfSize:12.0f])
+    .text(LOCSTR(@"长按表情可预览")).view;
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-5.0f);
         make.left.mas_equalTo(line1.mas_right).mas_offset(5.0f);

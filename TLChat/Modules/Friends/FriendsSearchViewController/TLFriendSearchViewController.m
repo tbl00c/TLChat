@@ -27,16 +27,7 @@
     self.friendsData = [TLFriendHelper sharedFriendHelper].friendsData;
     self.data = @[].mutableCopy;
     [self.tableView registerClass:[TLFriendCell class] forCellReuseIdentifier:@"FriendCell"];
-    [self setAutomaticallyAdjustsScrollViewInsets:NO];
 }
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.tableView.y = NAVBAR_HEIGHT + STATUSBAR_HEIGHT;
-    self.tableView.height = SCREEN_HEIGHT - self.tableView.y;
-}
-
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -81,6 +72,12 @@
         }
     }
     [self.tableView reloadData];
+}
+
+//MARK: UISearchBarDelegate
+- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
+{
+    [TLUIUtility showAlertWithTitle:@"语音搜索按钮"];
 }
 
 @end

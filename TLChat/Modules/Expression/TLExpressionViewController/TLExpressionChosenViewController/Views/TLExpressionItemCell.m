@@ -145,6 +145,8 @@
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] init];
         [_titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        [_titleLabel setBackgroundColor:[UIColor whiteColor]];
+        [_titleLabel setClipsToBounds:YES];
     }
     return _titleLabel;
 }
@@ -155,6 +157,8 @@
         _detailLabel = [[UILabel alloc] init];
         [_detailLabel setFont:[UIFont systemFontOfSize:13.0f]];
         [_detailLabel setTextColor:[UIColor grayColor]];
+        [_detailLabel setBackgroundColor:[UIColor whiteColor]];
+        [_detailLabel setClipsToBounds:YES];
     }
     return _detailLabel;
 }

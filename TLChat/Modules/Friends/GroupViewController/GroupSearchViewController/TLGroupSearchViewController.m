@@ -23,14 +23,6 @@
     
     self.data = [[NSMutableArray alloc] init];;
     [self.tableView registerClass:[TLGroupCell class] forCellReuseIdentifier:@"TLGroupCell"];
-    [self setAutomaticallyAdjustsScrollViewInsets:NO];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.tableView.y = NAVBAR_HEIGHT + STATUSBAR_HEIGHT;
-    self.tableView.height = SCREEN_HEIGHT - self.tableView.y;
 }
 
 #pragma mark - UITableViewDataSource

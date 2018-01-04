@@ -6,8 +6,11 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewController.h"
+#import "TLViewController.h"
+#import "TLSearchControllerProtocol.h"
 
-@interface TLExpressionSearchViewController : TLTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
+@interface TLExpressionSearchViewController : TLViewController <TLSearchControllerProtocol>
+
+@property (nonatomic, copy) void (^itemClickAction)(TLExpressionSearchViewController *searchController, id data);
 
 @end

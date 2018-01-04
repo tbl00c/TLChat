@@ -8,128 +8,111 @@
 
 #import "TLExpressionSearchViewController.h"
 #import "TLExpressionDetailViewController.h"
-#import "TLExpressionHelper.h"
-#import "TLExpressionItemCell.h"
 #import "TLExpressionGroupModel+SearchRequest.h"
 
 #define         HEGIHT_EXPCELL      80
 
+typedef NS_ENUM(NSInteger, TLExpressionSearchVCSectionType) {
+    TLExpressionSearchVCSectionTypeItems,
+};
+
 @interface TLExpressionSearchViewController ()
 
-@property (nonatomic, strong) NSArray *data;
+/// 列表
+@property (nonatomic, strong) UITableView *tableView;
+/// 列表管理器
+@property (nonatomic, strong) ZZFLEXAngel *tableViewAngel;
 
 @end
 
 @implementation TLExpressionSearchViewController
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];
-    [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    [self.tableView registerClass:[TLExpressionItemCell class] forCellReuseIdentifier:@"TLExpressionItemCell"];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [super loadView];
+    [self setStatusBarStyle:UIStatusBarStyleDefault];
     
-    [self.tableView setFrame:CGRectMake(0, NAVBAR_HEIGHT + STATUSBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT)];
+    self.tableView = self.view.addTableView(1)
+    .tableHeaderView([UIView new])
+    .separatorStyle(UITableViewCellSeparatorStyleNone)
+    .estimatedRowHeight(0).estimatedSectionFooterHeight(0).estimatedSectionHeaderHeight(0)
+    .masonry(^ (MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    })
+    .view;
+
+    self.tableViewAngel = [[ZZFLEXAngel alloc] initWithHostView:self.tableView];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+#pragma mark - # Request
+- (void)requsetSearchExpressionGroupWithKeyword:(NSString *)keyword
 {
-    [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [TLUIUtility showLoading:nil];
+    @weakify(self);
+    [TLExpressionGroupModel requestExpressionSearchByKeyword:keyword success:^(NSArray *data) {
+        [TLUIUtility hiddenLoading];
+        if (data.count > 0) {
+            [self p_reloadViewWithData:data];
+        }
+        else {
+            [self p_reloadViewWithData:nil];
+            [self.tableView showEmptyViewWithTitle:@"未搜索到相关表情包"];
+        }
+    } failure:^(NSString *error) {
+        [TLUIUtility showErrorHint:error];
+        [self p_reloadViewWithData:nil];
+        [self.tableView showErrorViewWithTitle:error retryAction:^(id userData) {
+            @strongify(self);
+            [self requsetSearchExpressionGroupWithKeyword:keyword];
+        }];
+    }];
 }
 
 #pragma mark - # Delegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.data.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return nil;
-//    TLExpressionItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLExpressionItemCell"];
-//    TLExpressionGroupModel *group = self.data[indexPath.row];
-//    [cell setGroup:group];
-//    [cell setDelegate:self];
-//    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TLExpressionGroupModel *group = [self.data objectAtIndex:indexPath.row];
-    TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] initWithGroupModel:group];
-    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:detailVC];
-    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain actionBlick:^{
-       [navC dismissViewControllerAnimated:YES completion:^{
-           [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
-       }];
-    }];
-    [detailVC.navigationItem setLeftBarButtonItem:closeButton];
-    [self presentViewController:navC animated:YES completion:^{
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-    }];
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return HEGIHT_EXPCELL;
-}
-
 //MARK: UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [self.tableView removeTipView];
     NSString *keyword = searchBar.text;
     if (keyword.length > 0) {
-        [TLUIUtility showLoading:nil];
-        [TLExpressionGroupModel requestExpressionSearchByKeyword:keyword success:^(NSArray *data) {
-            self.data = data;
-            [self.tableView reloadData];
-            [TLUIUtility hiddenLoading];
-        } failure:^(NSString *error) {
-            self.data = nil;
-            [self.tableView reloadData];
-            [TLUIUtility showErrorHint:error];
-        }];
+        [self requsetSearchExpressionGroupWithKeyword:keyword];
     }
 }
 
-//MARK: TLExpressionItemCellDelegate
-- (void)expressionCellDownloadButtonDown:(TLExpressionGroupModel *)group
+//MARK: UISearchControllerDelegate
+- (void)willPresentSearchController:(UISearchController *)searchController;
 {
-    group.status = TLExpressionGroupStatusDownloading;
-//    TLExpressionProxy *proxy = [[TLExpressionProxy alloc] init];
-//    [TLExpressionGroupModel requestExpressionGroupDetailByGroupID:group.gId pageIndex:1 success:^(id data) {
-//        group.data = data;
-//        [[TLExpressionHelper sharedHelper] downloadExpressionsWithGroupInfo:group progress:^(CGFloat progress) {
-//
-//        } success:^(TLExpressionGroupModel *group) {
-//            group.status = TLExpressionGroupStatusLocal;
-//            NSInteger index = [self.data indexOfObject:group];
-//            if (index < self.data.count) {
-//                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-//            }
-//            BOOL ok = [[TLExpressionHelper sharedHelper] addExpressionGroup:group];
-//            if (!ok) {
-//                [TLUIUtility showErrorHint:[NSString stringWithFormat:@"表情 %@ 存储失败！", group.name]];
-//            }
-//        } failure:^(TLExpressionGroupModel *group, NSString *error) {
-//
-//        }];
-//    } failure:^(NSString *error) {
-//        [TLUIUtility showErrorHint:[NSString stringWithFormat:@"\"%@\" 下载失败: %@", group.name, error]];
-//    }];
+    [self p_clearView];
 }
-
 
 //MARK: UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *keyword = searchController.searchBar.text;
+    if (keyword.length == 0) {
+        [self p_clearView];
+    }
+}
 
+#pragma mark - # Private Methods
+- (void)p_clearView
+{
+    [self.tableView removeTipView];
+    self.tableViewAngel.clear();
+    self.tableViewAngel.addSection(TLExpressionSearchVCSectionTypeItems);
+    [self.tableView reloadData];
+}
+
+- (void)p_reloadViewWithData:(NSArray *)data
+{
+    @weakify(self);
+    self.tableViewAngel.sectionForTag(TLExpressionSearchVCSectionTypeItems).clear();
+    self.tableViewAngel.addCells(@"TLExpressionItemCell").toSection(TLExpressionSearchVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (TLExpressionGroupModel *model) {
+        @strongify(self);
+        if (self.itemClickAction) {
+            self.itemClickAction(self, model);
+        }
+    });
+    [self.tableView reloadData];
 }
 
 @end

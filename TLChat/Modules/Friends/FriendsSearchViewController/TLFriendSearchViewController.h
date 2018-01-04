@@ -10,7 +10,7 @@
 
 #define     HEIGHT_FRIEND_CELL      54.0f
 
-@interface TLFriendSearchViewController : TLTableViewController <UISearchResultsUpdating>
+@interface TLFriendSearchViewController : TLTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
 
 
 @end

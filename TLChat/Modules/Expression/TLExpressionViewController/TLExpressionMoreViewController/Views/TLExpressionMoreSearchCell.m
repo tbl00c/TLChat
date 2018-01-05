@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) TLSearchController *searchController;
 
+@property (nonatomic, copy) id (^eventAction)(NSInteger, id);
+
 @end
 
 @implementation TLExpressionMoreSearchCell
@@ -22,6 +24,11 @@
 + (CGSize)viewSizeByDataModel:(id)dataModel
 {
     return CGSizeMake(SCREEN_WIDTH, SEARCHBAR_HEIGHT);
+}
+
+- (void)setViewEventAction:(id (^)(NSInteger, id))eventAction
+{
+    self.eventAction = eventAction;
 }
 
 #pragma mark - # Public Methods
@@ -33,7 +40,10 @@
         TLExpressionSearchViewController *searchResultVC = [[TLExpressionSearchViewController alloc] init];
         [searchResultVC setItemClickAction:^(TLExpressionSearchViewController *searchController, id data) {
             @strongify(self);
-            
+            [self.searchController setActive:NO];
+            if (self.eventAction) {
+                self.eventAction(0, data);
+            }
         }];
         self.searchController = [TLSearchController createWithResultsContrller:searchResultVC];
         [self.searchController.searchBar setPlaceholder:LOCSTR(@"搜索表情")];

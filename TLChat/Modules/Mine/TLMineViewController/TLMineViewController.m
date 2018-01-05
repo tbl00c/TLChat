@@ -31,9 +31,18 @@
 - (void)loadView
 {
     [super loadView];
-
     [self.navigationItem setTitle:LOCSTR(@"我")];
+    
     [self loadMenus];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    if (!CGRectEqualToRect(self.view.bounds, self.collectionView.frame)) {
+        [self.collectionView setFrame:self.view.bounds];
+    }
 }
 
 #pragma mark - # Private Methods

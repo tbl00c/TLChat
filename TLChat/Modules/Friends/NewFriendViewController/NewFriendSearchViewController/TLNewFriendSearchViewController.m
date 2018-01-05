@@ -10,6 +10,12 @@
 
 @implementation TLNewFriendSearchViewController
 
+- (void)loadView
+{
+    [super loadView];
+    [self setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
 #pragma mark - Delegate -
 //MARK: UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {

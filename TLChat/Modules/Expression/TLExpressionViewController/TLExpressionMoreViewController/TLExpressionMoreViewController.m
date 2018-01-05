@@ -32,9 +32,14 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
         make.edges.mas_equalTo(0);
     }];
     
+    @weakify(self);
     // 搜索
     self.addSection(TLExpressionMoreSectionTypeSearch);
-    self.addCell(@"TLExpressionMoreSearchCell").toSection(TLExpressionMoreSectionTypeSearch);
+    self.addCell(@"TLExpressionMoreSearchCell").toSection(TLExpressionMoreSectionTypeSearch).eventAction(^ id(NSInteger eventType, id data) {
+        @strongify(self);
+        [self didSelectedExpressionGroup:data];
+        return nil;
+    });
     
     // 表情
     NSInteger col = SCREEN_WIDTH / (WIDTH_EXPRESSION_MORE_CELL + 10);

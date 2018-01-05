@@ -6,8 +6,8 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewController.h"
+#import "TLViewController.h"
 
-@interface TLNewFriendSearchViewController : TLTableViewController <UISearchResultsUpdating>
+@interface TLNewFriendSearchViewController : TLViewController <UISearchResultsUpdating>
 
 @end

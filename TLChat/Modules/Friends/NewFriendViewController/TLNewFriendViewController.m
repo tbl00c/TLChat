@@ -35,14 +35,14 @@
     [self registerCellClass];
 }
 
-#pragma mark - Event Response -
+#pragma mark - # Event Response
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender
 {
     TLAddFriendViewController *addFriendVC = [[TLAddFriendViewController alloc] init];
     PushVC(addFriendVC);
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getters
 - (TLSearchController *)searchController
 {
     if (_searchController == nil) {

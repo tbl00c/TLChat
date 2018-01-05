@@ -65,7 +65,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setAutomaticallyAdjustsScrollViewInsets:NO];
     [self.view setBackgroundColor:RGBAColor(46.0, 49.0, 50.0, 1.0)];
     [self.webView.scrollView setBackgroundColor:[UIColor clearColor]];
     for (id vc in self.webView.scrollView.subviews) {
@@ -94,6 +93,16 @@
 #endif
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
+    CGFloat width = self.view.bounds.size.width;
+    [self.progressView setFrame:CGRectMake(0, statusBarHeight + navBarHeight, width, 2)];
+    [self.authLabel setFrame:CGRectMake(20, statusBarHeight + navBarHeight + 13, width - 40, self.authLabel.frame.size.height)];
+}
 
 #pragma mark - # Public Methods
 - (void)setUrl:(NSString *)url
@@ -269,7 +278,7 @@
 - (WKWebView *)webView
 {
     if (_webView == nil) {
-        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT + STATUSBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBAR_HEIGHT - STATUSBAR_HEIGHT)];
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         [_webView setAllowsBackForwardNavigationGestures:YES];
         [_webView setNavigationDelegate:self];
         [_webView setUIDelegate:self];
@@ -281,7 +290,7 @@
 - (UIProgressView *)progressView
 {
     if (_progressView == nil) {
-        _progressView = [[UIProgressView alloc] initWithFrame:self.view.bounds];
+        _progressView = [[UIProgressView alloc] init];
         [_progressView setTransform: CGAffineTransformMakeScale(1.0f, 2.0f)];
         [_progressView setProgressTintColor:RGBAColor(2.0, 187.0, 0.0, 1.0f)];
         [_progressView setTrackTintColor:[UIColor clearColor]];
@@ -309,7 +318,7 @@
 - (UILabel *)authLabel
 {
     if (_authLabel == nil) {
-        _authLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, NAVBAR_HEIGHT + STATUSBAR_HEIGHT + 13, SCREEN_WIDTH - 40, 0)];
+        _authLabel = [[UILabel alloc] init];
         [_authLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [_authLabel setTextAlignment:NSTextAlignmentCenter];
         [_authLabel setTextColor:[UIColor grayColor]];

@@ -116,6 +116,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
         TLExpressionSearchViewController *searchResultVC = [[TLExpressionSearchViewController alloc] init];
         [searchResultVC setItemClickAction:^(TLExpressionSearchViewController *searchController, id data) {
             @strongify(self);
+            [self.searchController setActive:NO];
             [self didSelectedExpressionGroup:data];
         }];
         _searchController = [TLSearchController createWithResultsContrller:searchResultVC];

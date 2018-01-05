@@ -278,7 +278,7 @@
 - (WKWebView *)webView
 {
     if (_webView == nil) {
-        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, STATUSBAR_HEIGHT + NAVBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT)];
         [_webView setAllowsBackForwardNavigationGestures:YES];
         [_webView setNavigationDelegate:self];
         [_webView setUIDelegate:self];

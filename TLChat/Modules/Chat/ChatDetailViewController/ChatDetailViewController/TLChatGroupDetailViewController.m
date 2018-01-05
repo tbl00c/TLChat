@@ -13,7 +13,7 @@
 
 #import "TLChatViewController.h"
 
-#import "TLFriendDetailViewController.h"
+#import "TLUserDetailViewController.h"
 #import "TLGroupQRCodeViewController.h"
 #import "TLChatFileViewController.h"
 #import "TLChatBackgroundSettingViewController.h"
@@ -109,8 +109,7 @@
 //MARK: TLUserGroupCellDelegate
 - (void)userGroupCellDidSelectUser:(TLUser *)user
 {
-    TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
-    [detailVC setUser:user];
+    TLUserDetailViewController *detailVC = [[TLUserDetailViewController alloc] initWithUserModel:user];
     PushVC(detailVC);
 }
 

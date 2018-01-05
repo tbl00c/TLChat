@@ -111,11 +111,13 @@
 {
     // 列表
     self.tableView = self.view.addTableView(1)
-    .frame(self.view.bounds)
     .backgroundColor([UIColor whiteColor])
     .tableHeaderView(self.searchController.searchBar)
     .tableFooterView([UIView new])
     .separatorStyle(UITableViewCellSeparatorStyleNone)
+    .masonry(^ (MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    })
     .view;
     
     // 顶部logo

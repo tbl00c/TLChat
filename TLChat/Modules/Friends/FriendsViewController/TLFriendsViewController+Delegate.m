@@ -14,7 +14,7 @@
 #import "TLGroupViewController.h"
 #import "TLTagsViewController.h"
 #import "TLPublicServerViewController.h"
-#import "TLFriendDetailViewController.h"
+#import "TLUserDetailViewController.h"
 
 #import "TLUserGroup.h"
 #import "TLFriendHelper.h"
@@ -121,8 +121,7 @@
         }
     }
     else {
-        TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
-        [detailVC setUser:user];
+        TLUserDetailViewController *detailVC = [[TLUserDetailViewController alloc] initWithUserModel:user];
         PushVC(detailVC)
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

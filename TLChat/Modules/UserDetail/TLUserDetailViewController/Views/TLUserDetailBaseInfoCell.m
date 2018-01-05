@@ -1,72 +1,68 @@
 //
-//  TLFriendDetailUserCell.m
+//  TLUserDetailBaseInfoCell.m
 //  TLChat
 //
 //  Created by 李伯坤 on 16/2/29.
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLFriendDetailUserCell.h"
+#import "TLUserDetailBaseInfoCell.h"
 #import "TLUser.h"
 #import "TLMacros.h"
 
 #define     MINE_SPACE_X        14.0f
 #define     MINE_SPACE_Y        12.0f
 
-@interface TLFriendDetailUserCell ()
+@interface TLUserDetailBaseInfoCell ()
 
 @property (nonatomic, strong) UIButton *avatarView;
-
 @property (nonatomic, strong) UILabel *shownameLabel;
-
 @property (nonatomic, strong) UILabel *usernameLabel;
-
 @property (nonatomic, strong) UILabel *nikenameLabel;
 
 @end
 
-@implementation TLFriendDetailUserCell
+@implementation TLUserDetailBaseInfoCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
++ (CGSize)viewSizeByDataModel:(id)dataModel
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-        self.leftSeparatorSpace = 15.0f;
+    return CGSizeMake(SCREEN_WIDTH, 90);
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        [self setBackgroundColor:[UIColor whiteColor]];
         
-        [self.contentView addSubview:self.avatarView];
-        [self.contentView addSubview:self.shownameLabel];
-        [self.contentView addSubview:self.usernameLabel];
-        [self.contentView addSubview:self.nikenameLabel];
-        
-        [self addMasonry];
+        [self p_initUI];
     }
     return self;
 }
 
-- (void)addMasonry
+- (void)p_initUI
 {
-    [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(MINE_SPACE_X);
-        make.top.mas_equalTo(MINE_SPACE_Y);
-        make.bottom.mas_equalTo(- MINE_SPACE_Y);
-        make.width.mas_equalTo(self.avatarView.mas_height);
-    }];
-    
-    [self.shownameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
-    [self.shownameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(MINE_SPACE_Y);
-        make.top.mas_equalTo(self.avatarView.mas_top).mas_offset(3);
-    }];
-    
-    [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.shownameLabel);
-        make.top.mas_equalTo(self.shownameLabel.mas_bottom).mas_offset(5);
-    }];
-    
-    [self.nikenameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.shownameLabel);
-        make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(3);
-    }];
+//    [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(MINE_SPACE_X);
+//        make.top.mas_equalTo(MINE_SPACE_Y);
+//        make.bottom.mas_equalTo(- MINE_SPACE_Y);
+//        make.width.mas_equalTo(self.avatarView.mas_height);
+//    }];
+//
+//    [self.shownameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
+//    [self.shownameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(MINE_SPACE_Y);
+//        make.top.mas_equalTo(self.avatarView.mas_top).mas_offset(3);
+//    }];
+//
+//    [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.shownameLabel);
+//        make.top.mas_equalTo(self.shownameLabel.mas_bottom).mas_offset(5);
+//    }];
+//
+//    [self.nikenameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.shownameLabel);
+//        make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(3);
+//    }];
 }
 
 - (void)setInfo:(TLInfo *)info
@@ -91,15 +87,7 @@
     }
 }
 
-#pragma mark - # Event Response 
-- (void)avatarViewButtonDown:(UIButton *)sender
-{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(friendDetailUserCellDidClickAvatar:)]) {
-        [self.delegate friendDetailUserCellDidClickAvatar:self.info];
-    }
-}
-
-#pragma mark - Getter
+#pragma mark - # Getters
 - (UIButton *)avatarView
 {
     if (_avatarView == nil) {

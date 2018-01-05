@@ -14,6 +14,10 @@
 		C2097EE81C52326500163B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097EE71C52326500163B5C /* main.m */; };
 		C2097F011C52326500163B5C /* TLChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F001C52326500163B5C /* TLChatTests.m */; };
 		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
+		C23234281FFF56FB004480B2 /* TLUserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C232341F1FFF56FB004480B2 /* TLUserDetailViewController.m */; };
+		C23234291FFF56FB004480B2 /* TLFriendDetailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23234241FFF56FB004480B2 /* TLFriendDetailSettingViewController.m */; };
+		C232342F1FFF581C004480B2 /* TLUserDetailBaseInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C232342B1FFF581C004480B2 /* TLUserDetailBaseInfoCell.m */; };
+		C23234301FFF581C004480B2 /* TLUserDetailAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C232342E1FFF581C004480B2 /* TLUserDetailAlbumCell.m */; };
 		C23EE3CA1F738E590069885F /* ZZFlexibleLayoutFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */; };
 		C23EE3CC1F738F350069885F /* ZZFlexibleLayoutFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C23EE4701F7392540069885F /* TLExpressionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4471F7392540069885F /* TLExpressionDetailViewController.m */; };
@@ -208,11 +212,6 @@
 		C2D7CB771F72470400648CED /* TLShakeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA281F72470400648CED /* TLShakeButton.m */; };
 		C2D7CB781F72470400648CED /* TLShakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA2A1F72470400648CED /* TLShakeViewController.m */; };
 		C2D7CB7A1F72470400648CED /* TLAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA311F72470400648CED /* TLAddFriendViewController.m */; };
-		C2D7CB7B1F72470400648CED /* TLFriendDetailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA371F72470400648CED /* TLFriendDetailSettingViewController.m */; };
-		C2D7CB7C1F72470400648CED /* TLFriendDetailAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA3A1F72470400648CED /* TLFriendDetailAlbumCell.m */; };
-		C2D7CB7D1F72470400648CED /* TLFriendDetailUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA3C1F72470400648CED /* TLFriendDetailUserCell.m */; };
-		C2D7CB7E1F72470400648CED /* TLFriendDetailViewController+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA3E1F72470400648CED /* TLFriendDetailViewController+Delegate.m */; };
-		C2D7CB7F1F72470400648CED /* TLFriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA401F72470400648CED /* TLFriendDetailViewController.m */; };
 		C2D7CB801F72470400648CED /* TLFriendSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA431F72470400648CED /* TLFriendSearchViewController.m */; };
 		C2D7CB811F72470400648CED /* TLFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA471F72470400648CED /* TLFriendCell.m */; };
 		C2D7CB821F72470400648CED /* TLFriendHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA491F72470400648CED /* TLFriendHeaderView.m */; };
@@ -358,6 +357,14 @@
 		C2097F0B1C52326500163B5C /* TLChatUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLChatUITests.m; sourceTree = "<group>"; };
 		C2097F0D1C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2142EC61C5326C30030B29B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C232341F1FFF56FB004480B2 /* TLUserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailViewController.m; sourceTree = "<group>"; };
+		C23234201FFF56FB004480B2 /* TLUserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserDetailViewController.h; sourceTree = "<group>"; };
+		C23234231FFF56FB004480B2 /* TLFriendDetailSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailSettingViewController.h; sourceTree = "<group>"; };
+		C23234241FFF56FB004480B2 /* TLFriendDetailSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailSettingViewController.m; sourceTree = "<group>"; };
+		C232342B1FFF581C004480B2 /* TLUserDetailBaseInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailBaseInfoCell.m; sourceTree = "<group>"; };
+		C232342C1FFF581C004480B2 /* TLUserDetailAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserDetailAlbumCell.h; sourceTree = "<group>"; };
+		C232342D1FFF581C004480B2 /* TLUserDetailBaseInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserDetailBaseInfoCell.h; sourceTree = "<group>"; };
+		C232342E1FFF581C004480B2 /* TLUserDetailAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailAlbumCell.m; sourceTree = "<group>"; };
 		C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZZFlexibleLayoutFramework.framework; sourceTree = "<group>"; };
 		C23EE4461F7392540069885F /* TLExpressionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionDetailViewController.h; sourceTree = "<group>"; };
 		C23EE4471F7392540069885F /* TLExpressionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionDetailViewController.m; sourceTree = "<group>"; };
@@ -758,16 +765,6 @@
 		C2D7CA2A1F72470400648CED /* TLShakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShakeViewController.m; sourceTree = "<group>"; };
 		C2D7CA301F72470400648CED /* TLAddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddFriendViewController.h; sourceTree = "<group>"; };
 		C2D7CA311F72470400648CED /* TLAddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddFriendViewController.m; sourceTree = "<group>"; };
-		C2D7CA361F72470400648CED /* TLFriendDetailSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailSettingViewController.h; sourceTree = "<group>"; };
-		C2D7CA371F72470400648CED /* TLFriendDetailSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailSettingViewController.m; sourceTree = "<group>"; };
-		C2D7CA391F72470400648CED /* TLFriendDetailAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailAlbumCell.h; sourceTree = "<group>"; };
-		C2D7CA3A1F72470400648CED /* TLFriendDetailAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailAlbumCell.m; sourceTree = "<group>"; };
-		C2D7CA3B1F72470400648CED /* TLFriendDetailUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailUserCell.h; sourceTree = "<group>"; };
-		C2D7CA3C1F72470400648CED /* TLFriendDetailUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailUserCell.m; sourceTree = "<group>"; };
-		C2D7CA3D1F72470400648CED /* TLFriendDetailViewController+Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLFriendDetailViewController+Delegate.h"; sourceTree = "<group>"; };
-		C2D7CA3E1F72470400648CED /* TLFriendDetailViewController+Delegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLFriendDetailViewController+Delegate.m"; sourceTree = "<group>"; };
-		C2D7CA3F1F72470400648CED /* TLFriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendDetailViewController.h; sourceTree = "<group>"; };
-		C2D7CA401F72470400648CED /* TLFriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendDetailViewController.m; sourceTree = "<group>"; };
 		C2D7CA421F72470400648CED /* TLFriendSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendSearchViewController.h; sourceTree = "<group>"; };
 		C2D7CA431F72470400648CED /* TLFriendSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendSearchViewController.m; sourceTree = "<group>"; };
 		C2D7CA461F72470400648CED /* TLFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendCell.h; sourceTree = "<group>"; };
@@ -1080,6 +1077,45 @@
 				C2097F0D1C52326500163B5C /* Info.plist */,
 			);
 			path = TLChatUITests;
+			sourceTree = "<group>";
+		};
+		C23234051FFF56D4004480B2 /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C23234181FFF56FB004480B2 /* TLUserDetailViewController */,
+				C23234221FFF56FB004480B2 /* TLUserSettingViewController */,
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		C23234181FFF56FB004480B2 /* TLUserDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C232342A1FFF581C004480B2 /* Views */,
+				C23234201FFF56FB004480B2 /* TLUserDetailViewController.h */,
+				C232341F1FFF56FB004480B2 /* TLUserDetailViewController.m */,
+			);
+			path = TLUserDetailViewController;
+			sourceTree = "<group>";
+		};
+		C23234221FFF56FB004480B2 /* TLUserSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C23234231FFF56FB004480B2 /* TLFriendDetailSettingViewController.h */,
+				C23234241FFF56FB004480B2 /* TLFriendDetailSettingViewController.m */,
+			);
+			path = TLUserSettingViewController;
+			sourceTree = "<group>";
+		};
+		C232342A1FFF581C004480B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C232342D1FFF581C004480B2 /* TLUserDetailBaseInfoCell.h */,
+				C232342B1FFF581C004480B2 /* TLUserDetailBaseInfoCell.m */,
+				C232342C1FFF581C004480B2 /* TLUserDetailAlbumCell.h */,
+				C232342E1FFF581C004480B2 /* TLUserDetailAlbumCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C23EE3C81F738E500069885F /* Frameworks */ = {
@@ -1829,6 +1865,7 @@
 				C2D7CA2E1F72470400648CED /* Friends */,
 				C2D7C9DC1F72470400648CED /* Discover */,
 				C2D7CA971F72470400648CED /* Mine */,
+				C23234051FFF56D4004480B2 /* UserDetail */,
 				C292D2EC1F7A4B58007EB0A6 /* Moments */,
 				C2D7C91F1F72470400648CED /* Chat */,
 				C2D7CBCD1F72472700648CED /* Web */,
@@ -2475,7 +2512,6 @@
 			children = (
 				C264F7261FF3A52700AA3E78 /* Reoprt */,
 				C2D7CA2F1F72470400648CED /* AddFriendViewController */,
-				C2D7CA341F72470400648CED /* FriendDetailViewController */,
 				C2D7CA411F72470400648CED /* FriendsSearchViewController */,
 				C2D7CA441F72470400648CED /* FriendsViewController */,
 				C2D7CA4E1F72470400648CED /* GroupViewController */,
@@ -2494,39 +2530,6 @@
 				C2D7CA311F72470400648CED /* TLAddFriendViewController.m */,
 			);
 			path = AddFriendViewController;
-			sourceTree = "<group>";
-		};
-		C2D7CA341F72470400648CED /* FriendDetailViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7CA351F72470400648CED /* FriendDetailSettingViewController */,
-				C2D7CA381F72470400648CED /* FriendDetailViews */,
-				C2D7CA3D1F72470400648CED /* TLFriendDetailViewController+Delegate.h */,
-				C2D7CA3E1F72470400648CED /* TLFriendDetailViewController+Delegate.m */,
-				C2D7CA3F1F72470400648CED /* TLFriendDetailViewController.h */,
-				C2D7CA401F72470400648CED /* TLFriendDetailViewController.m */,
-			);
-			path = FriendDetailViewController;
-			sourceTree = "<group>";
-		};
-		C2D7CA351F72470400648CED /* FriendDetailSettingViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7CA361F72470400648CED /* TLFriendDetailSettingViewController.h */,
-				C2D7CA371F72470400648CED /* TLFriendDetailSettingViewController.m */,
-			);
-			path = FriendDetailSettingViewController;
-			sourceTree = "<group>";
-		};
-		C2D7CA381F72470400648CED /* FriendDetailViews */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7CA391F72470400648CED /* TLFriendDetailAlbumCell.h */,
-				C2D7CA3A1F72470400648CED /* TLFriendDetailAlbumCell.m */,
-				C2D7CA3B1F72470400648CED /* TLFriendDetailUserCell.h */,
-				C2D7CA3C1F72470400648CED /* TLFriendDetailUserCell.m */,
-			);
-			path = FriendDetailViews;
 			sourceTree = "<group>";
 		};
 		C2D7CA411F72470400648CED /* FriendsSearchViewController */ = {
@@ -3440,6 +3443,7 @@
 				C2D7CB771F72470400648CED /* TLShakeButton.m in Sources */,
 				C2D7C9101F7246CC00648CED /* TLAudioRecorder.m in Sources */,
 				C2D7CBC71F72470500648CED /* TLNewMessageSettingViewController.m in Sources */,
+				C232342F1FFF581C004480B2 /* TLUserDetailBaseInfoCell.m in Sources */,
 				C2D674C01FFC785E00FAA24D /* TLUploadRequest.m in Sources */,
 				C24993361FFB663A00F69B16 /* UIView+TLEmpty.m in Sources */,
 				C292D3301F7A4B95007EB0A6 /* TLMomentExtensionView+TableView.m in Sources */,
@@ -3482,6 +3486,7 @@
 				C243B6581F7A5B700059A886 /* TLNetworkStatusManager.m in Sources */,
 				C2D7CB241F72470400648CED /* TLEmojiDisplayView.m in Sources */,
 				C2D7CB311F72470400648CED /* TLEmojiBaseCell.m in Sources */,
+				C23234281FFF56FB004480B2 /* TLUserDetailViewController.m in Sources */,
 				C2D7C90F1F7246CC00648CED /* TLAudioPlayer.m in Sources */,
 				C2D7CB2E1F72470400648CED /* TLVoiceMessageCell.m in Sources */,
 				C2D7CB261F72470400648CED /* TLRecorderIndicatorView.m in Sources */,
@@ -3514,7 +3519,6 @@
 				C2D7CBC01F72470500648CED /* TLChatBackgroundSelectViewController+Proxy.m in Sources */,
 				C2D7CBC61F72470500648CED /* TLHelpAndFeedbackViewController.m in Sources */,
 				C2D7CBB91F72470500648CED /* TLWalletViewController.m in Sources */,
-				C2D7CB7D1F72470400648CED /* TLFriendDetailUserCell.m in Sources */,
 				C292D3351F7A4BAB007EB0A6 /* TLMomentsViewController+Proxy.m in Sources */,
 				C292D3281F7A4B75007EB0A6 /* TLMomentHeaderCell.m in Sources */,
 				C2040F3B1FFB57D600A334F8 /* TLExpressionGroupModel.m in Sources */,
@@ -3555,10 +3559,8 @@
 				C2D7C8E61F72464A00648CED /* TLInfo.m in Sources */,
 				C2D7CB1D1F72470400648CED /* TLTalkButton.m in Sources */,
 				C2D7CB3F1F72470400648CED /* TLEmojiKeyboard.m in Sources */,
-				C2D7CB7F1F72470400648CED /* TLFriendDetailViewController.m in Sources */,
 				C2D7CC2B1F726D7B00648CED /* TLGroup+CreateAvatar.m in Sources */,
 				C2D7CB8E1F72470400648CED /* TLContactsSearchViewController.m in Sources */,
-				C2D7CB7B1F72470400648CED /* TLFriendDetailSettingViewController.m in Sources */,
 				C292D3341F7A4BA8007EB0A6 /* TLMomentsProxy.m in Sources */,
 				C2D7C8F01F72464A00648CED /* TLSettingViewController.m in Sources */,
 				C2D7CB921F72470400648CED /* TLNewFriendViewController.m in Sources */,
@@ -3567,6 +3569,7 @@
 				C2D7CB421F72470400648CED /* TLMoreKeyboard+CollectionView.m in Sources */,
 				C2D7CBC21F72470500648CED /* TLChatBackgroundSettingViewController.m in Sources */,
 				C2A92CB31F7A2B010038CFAE /* TLMineViewController+Delegate.m in Sources */,
+				C23234291FFF56FB004480B2 /* TLFriendDetailSettingViewController.m in Sources */,
 				C2D7CB471F72470400648CED /* TLChatViewController+Delegate.m in Sources */,
 				C2D7CB841F72470400648CED /* TLFriendsViewController.m in Sources */,
 				C2D7CB321F72470400648CED /* TLEmojiFaceItemCell.m in Sources */,
@@ -3587,11 +3590,9 @@
 				C2D7CB251F72470400648CED /* TLImageExpressionDisplayView.m in Sources */,
 				C2D7CC011F7267F000648CED /* TLMoreKBHelper.m in Sources */,
 				C2D7CB181F72470400648CED /* TLChatGroupDetailViewController.m in Sources */,
-				C2D7CB7C1F72470400648CED /* TLFriendDetailAlbumCell.m in Sources */,
 				C2D7CB8D1F72470400648CED /* TLContact.m in Sources */,
 				C2D7CB781F72470400648CED /* TLShakeViewController.m in Sources */,
 				C2D7CB591F72470400648CED /* TLConversationViewController.m in Sources */,
-				C2D7CB7E1F72470400648CED /* TLFriendDetailViewController+Delegate.m in Sources */,
 				C249934E1FFB84E200F69B16 /* TLExpressionGroupModel+MoreRequest.m in Sources */,
 				C2D7C9121F7246CC00648CED /* UIColor+TLChat.m in Sources */,
 				C2D7CB381F72470400648CED /* TLEmojiGroupCell.m in Sources */,
@@ -3650,6 +3651,7 @@
 				C292D3701F7A54BC007EB0A6 /* NSHTTPURLResponse+TLNetwork.m in Sources */,
 				C25128E01FFB90DF00893400 /* TLExpressionDownloadButton.m in Sources */,
 				C2D7CB941F72470400648CED /* TLPublicServerViewController.m in Sources */,
+				C23234301FFF581C004480B2 /* TLUserDetailAlbumCell.m in Sources */,
 				C2D7CBC41F72470500648CED /* TLChatFontViewController.m in Sources */,
 				C2D7CB2D1F72470400648CED /* TLVoiceImageView.m in Sources */,
 				C2D7CBD71F72472700648CED /* WKWebView+Post.m in Sources */,

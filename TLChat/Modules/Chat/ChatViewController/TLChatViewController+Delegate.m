@@ -9,7 +9,7 @@
 #import "TLChatViewController+Delegate.h"
 #import "TLExpressionViewController.h"
 #import "TLMyExpressionViewController.h"
-#import "TLFriendDetailViewController.h"
+#import "TLUserDetailViewController.h"
 #import <MWPhotoBrowser/MWPhotoBrowser.h>
 #import "NSFileManager+TLChat.h"
 
@@ -72,8 +72,7 @@
 //MARK: TLChatViewControllerProxy
 - (void)didClickedUserAvatar:(TLUser *)user
 {
-    TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
-    [detailVC setUser:user];
+    TLUserDetailViewController *detailVC = [[TLUserDetailViewController alloc] initWithUserModel:user];
     PushVC(detailVC);
 }
 

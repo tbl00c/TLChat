@@ -16,11 +16,19 @@
 
 @implementation TLFriendDetailSettingViewController
 
+- (instancetype)initWithUserModel:(TLUser *)userModel
+{
+    if (self = [super init]) {
+        _userModel = userModel;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"资料设置"];
     
-    self.data = [[TLFriendHelper sharedFriendHelper] friendDetailSettingArrayByUserInfo:self.user];
+    self.data = [[TLFriendHelper sharedFriendHelper] friendDetailSettingArrayByUserInfo:self.userModel];
 }
 
 

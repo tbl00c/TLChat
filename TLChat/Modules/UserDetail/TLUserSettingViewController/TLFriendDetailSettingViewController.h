@@ -11,6 +11,9 @@
 @class TLUser;
 @interface TLFriendDetailSettingViewController : TLSettingViewController
 
-@property (nonatomic, strong) TLUser *user;
+@property (nonatomic, strong, readonly) TLUser *userModel;
+
+- (instancetype)initWithUserModel:(TLUser *)userModel;
+- (instancetype)init  __attribute__((unavailable("请使用 initWithUserModel:")));
 
 @end

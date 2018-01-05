@@ -7,7 +7,7 @@
 //
 
 #import "TLChatDetailViewController.h"
-#import "TLFriendDetailViewController.h"
+#import "TLUserDetailViewController.h"
 #import "TLMessageManager.h"
 #import "TLChatDetailHelper.h"
 #import "TLUserGroupCell.h"
@@ -102,8 +102,7 @@
 //MARK: TLUserGroupCellDelegate
 - (void)userGroupCellDidSelectUser:(TLUser *)user
 {
-    TLFriendDetailViewController *detailVC = [[TLFriendDetailViewController alloc] init];
-    [detailVC setUser:user];
+    TLUserDetailViewController *detailVC = [[TLUserDetailViewController alloc] initWithUserModel:user];
     PushVC(detailVC);
 }
 

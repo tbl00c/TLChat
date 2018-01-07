@@ -109,11 +109,6 @@
 		C2D674BF1FFC785E00FAA24D /* TLBaseRequest+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D674B91FFC785E00FAA24D /* TLBaseRequest+Private.m */; };
 		C2D674C01FFC785E00FAA24D /* TLUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D674BB1FFC785E00FAA24D /* TLUploadRequest.m */; };
 		C2D7C89B1F722E6700648CED /* TLAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C89A1F722E6700648CED /* TLAppConfig.m */; };
-		C2D7C8E31F72464A00648CED /* TLInfoButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8B41F72464A00648CED /* TLInfoButtonCell.m */; };
-		C2D7C8E41F72464A00648CED /* TLInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8B61F72464A00648CED /* TLInfoCell.m */; };
-		C2D7C8E51F72464A00648CED /* TLInfoHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8B81F72464A00648CED /* TLInfoHeaderFooterView.m */; };
-		C2D7C8E61F72464A00648CED /* TLInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8BC1F72464A00648CED /* TLInfo.m */; };
-		C2D7C8E71F72464A00648CED /* TLInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8BE1F72464A00648CED /* TLInfoViewController.m */; };
 		C2D7C8EB1F72464A00648CED /* TLSettingButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8C91F72464A00648CED /* TLSettingButtonCell.m */; };
 		C2D7C8EC1F72464A00648CED /* TLSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8CB1F72464A00648CED /* TLSettingCell.m */; };
 		C2D7C8ED1F72464A00648CED /* TLSettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8CD1F72464A00648CED /* TLSettingSwitchCell.m */; };
@@ -558,17 +553,6 @@
 		C2D674BC1FFC785E00FAA24D /* TLUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUploadRequest.h; sourceTree = "<group>"; };
 		C2D7C8991F722E6700648CED /* TLAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppConfig.h; sourceTree = "<group>"; };
 		C2D7C89A1F722E6700648CED /* TLAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppConfig.m; sourceTree = "<group>"; };
-		C2D7C8B31F72464A00648CED /* TLInfoButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfoButtonCell.h; sourceTree = "<group>"; };
-		C2D7C8B41F72464A00648CED /* TLInfoButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfoButtonCell.m; sourceTree = "<group>"; };
-		C2D7C8B51F72464A00648CED /* TLInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfoCell.h; sourceTree = "<group>"; };
-		C2D7C8B61F72464A00648CED /* TLInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfoCell.m; sourceTree = "<group>"; };
-		C2D7C8B71F72464A00648CED /* TLInfoHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfoHeaderFooterView.h; sourceTree = "<group>"; };
-		C2D7C8B81F72464A00648CED /* TLInfoHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfoHeaderFooterView.m; sourceTree = "<group>"; };
-		C2D7C8B91F72464A00648CED /* TLInfoMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfoMacros.h; sourceTree = "<group>"; };
-		C2D7C8BB1F72464A00648CED /* TLInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfo.h; sourceTree = "<group>"; };
-		C2D7C8BC1F72464A00648CED /* TLInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfo.m; sourceTree = "<group>"; };
-		C2D7C8BD1F72464A00648CED /* TLInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLInfoViewController.h; sourceTree = "<group>"; };
-		C2D7C8BE1F72464A00648CED /* TLInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLInfoViewController.m; sourceTree = "<group>"; };
 		C2D7C8C81F72464A00648CED /* TLSettingButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingButtonCell.h; sourceTree = "<group>"; };
 		C2D7C8C91F72464A00648CED /* TLSettingButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingButtonCell.m; sourceTree = "<group>"; };
 		C2D7C8CA1F72464A00648CED /* TLSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingCell.h; sourceTree = "<group>"; };
@@ -1706,47 +1690,12 @@
 		C2D7C8B01F72464A00648CED /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				C2D7C8B11F72464A00648CED /* TLInfoViewController */,
 				C2D7C8C61F72464A00648CED /* TLSettingViewController */,
 				C2D7C8DA1F72464A00648CED /* TLTableViewCell */,
 				C2D7C8DD1F72464A00648CED /* TLTableViewController */,
 				C2D7C8E01F72464A00648CED /* TLViewController */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		C2D7C8B11F72464A00648CED /* TLInfoViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7C8BA1F72464A00648CED /* TLInfoModel */,
-				C2D7C8B21F72464A00648CED /* TLInfoCells */,
-				C2D7C8B91F72464A00648CED /* TLInfoMacros.h */,
-				C2D7C8BD1F72464A00648CED /* TLInfoViewController.h */,
-				C2D7C8BE1F72464A00648CED /* TLInfoViewController.m */,
-			);
-			path = TLInfoViewController;
-			sourceTree = "<group>";
-		};
-		C2D7C8B21F72464A00648CED /* TLInfoCells */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7C8B31F72464A00648CED /* TLInfoButtonCell.h */,
-				C2D7C8B41F72464A00648CED /* TLInfoButtonCell.m */,
-				C2D7C8B51F72464A00648CED /* TLInfoCell.h */,
-				C2D7C8B61F72464A00648CED /* TLInfoCell.m */,
-				C2D7C8B71F72464A00648CED /* TLInfoHeaderFooterView.h */,
-				C2D7C8B81F72464A00648CED /* TLInfoHeaderFooterView.m */,
-			);
-			path = TLInfoCells;
-			sourceTree = "<group>";
-		};
-		C2D7C8BA1F72464A00648CED /* TLInfoModel */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7C8BB1F72464A00648CED /* TLInfo.h */,
-				C2D7C8BC1F72464A00648CED /* TLInfo.m */,
-			);
-			path = TLInfoModel;
 			sourceTree = "<group>";
 		};
 		C2D7C8C61F72464A00648CED /* TLSettingViewController */ = {
@@ -3466,7 +3415,6 @@
 				C2D7CB751F72470400648CED /* TLScanningViewController.m in Sources */,
 				C2D674BE1FFC785E00FAA24D /* TLBaseRequest.m in Sources */,
 				C243B6551F7A5B670059A886 /* TLResponse.m in Sources */,
-				C2D7C8E51F72464A00648CED /* TLInfoHeaderFooterView.m in Sources */,
 				C2D7CBBF1F72470500648CED /* TLChatBackgroundSelectViewController+CollectionView.m in Sources */,
 				C2D7CC051F7267F000648CED /* TLMessageManager+ConversationRecord.m in Sources */,
 				C2D7CC2A1F726D7B00648CED /* TLGroup.m in Sources */,
@@ -3486,7 +3434,6 @@
 				C292D3301F7A4B95007EB0A6 /* TLMomentExtensionView+TableView.m in Sources */,
 				C2D7CB8C1F72470400648CED /* TLContactCell.m in Sources */,
 				C243B65A1F7A5B7C0059A886 /* TLNetworkSerializer.m in Sources */,
-				C2D7C8E31F72464A00648CED /* TLInfoButtonCell.m in Sources */,
 				C2D7C8F41F72464A00648CED /* TLTableViewController.m in Sources */,
 				C2D7CBFF1F7267F000648CED /* TLChatDetailHelper.m in Sources */,
 				C2D7CB5C1F72470400648CED /* TLBottleViewController.m in Sources */,
@@ -3546,7 +3493,6 @@
 				C2D7CB871F72470400648CED /* TLGroupViewController+Delegate.m in Sources */,
 				C23EE47E1F7392550069885F /* TLMyExpressionViewController.m in Sources */,
 				C2D674BF1FFC785E00FAA24D /* TLBaseRequest+Private.m in Sources */,
-				C2D7C8E41F72464A00648CED /* TLInfoCell.m in Sources */,
 				C2D7CB831F72470400648CED /* TLFriendsViewController+Delegate.m in Sources */,
 				C2D7CC6B1F7284F500648CED /* TLDBUserStore.m in Sources */,
 				C2D7CB451F72470400648CED /* TLGroup+ChatModel.m in Sources */,
@@ -3593,7 +3539,6 @@
 				C2D7CB881F72470400648CED /* TLGroupViewController.m in Sources */,
 				C2D7CB931F72470400648CED /* TLPublicServerSearchViewController.m in Sources */,
 				C2D7CBBD1F72470500648CED /* TLAccountAndSafetyViewController.m in Sources */,
-				C2D7C8E61F72464A00648CED /* TLInfo.m in Sources */,
 				C2D7CB1D1F72470400648CED /* TLTalkButton.m in Sources */,
 				C2C66C1B2001C9A700150580 /* TLUserDetailTitleCell.m in Sources */,
 				C2D7CB3F1F72470400648CED /* TLEmojiKeyboard.m in Sources */,
@@ -3660,7 +3605,6 @@
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C292D32D1F7A4B8B007EB0A6 /* TLMomentMultiImageView.m in Sources */,
 				C2D7CB431F72470400648CED /* TLMoreKeyboard.m in Sources */,
-				C2D7C8E71F72464A00648CED /* TLInfoViewController.m in Sources */,
 				C2D7C8EC1F72464A00648CED /* TLSettingCell.m in Sources */,
 				C2D7CC531F7281D200648CED /* TLImageMessage.m in Sources */,
 				C2D7CC631F72844200648CED /* TLDBManager.m in Sources */,

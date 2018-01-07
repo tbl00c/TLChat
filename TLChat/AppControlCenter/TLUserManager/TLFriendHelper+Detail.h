@@ -10,8 +10,6 @@
 
 @interface TLFriendHelper (Detail)
 
-- (NSMutableArray *)friendDetailArrayByUserInfo:(TLUser *)userInfo;
-
 - (NSMutableArray *)friendDetailSettingArrayByUserInfo:(TLUser *)userInfo;
 
 @end

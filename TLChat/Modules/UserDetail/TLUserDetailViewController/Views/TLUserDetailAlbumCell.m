@@ -7,62 +7,96 @@
 //
 
 #import "TLUserDetailAlbumCell.h"
-#import "TLInfoMacros.h"
-#import "TLMacros.h"
+
+#define     HEIGHT_ALBUM_ITEM           60
+#define     SPACE_ALBUM_ITEM            8
 
 @interface TLUserDetailAlbumCell ()
 
-@property (nonatomic, strong) NSMutableArray *imageViewsArray;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) ZZFLEXAngel *angel;
 
 @end
 
 @implementation TLUserDetailAlbumCell
 
-- (id)initWithFrame:(CGRect)frame
++ (CGSize)viewSizeByDataModel:(id)dataModel
+{
+    return CGSizeMake(SCREEN_WIDTH, 90);
+}
+
+- (void)setViewDataModel:(TLUserDetailKVModel *)dataModel
+{
+    [super setViewDataModel:dataModel];
+    NSArray *data = dataModel.data;
+    
+    NSInteger maxCount = (SCREEN_WIDTH - 118) / (HEIGHT_ALBUM_ITEM + SPACE_ALBUM_ITEM);
+    
+    data = data.count > maxCount ? [data subarrayWithRange:NSMakeRange(0, maxCount)] : data;
+    
+    self.angel.clear();
+    self.angel.addSection(0).minimumInteritemSpacing(SPACE_ALBUM_ITEM).minimumLineSpacing(SPACE_ALBUM_ITEM);
+    self.angel.addCells(@"TLUserDetailAlbumItemCell").toSection(0).withDataModelArray(data);
+    [self.collectionView reloadData];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.imageViewsArray = [[NSMutableArray alloc] init];
-//        [self.textLabel setFont:[UIFont systemFontOfSize:15.0f]];
-//        [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        self.collectionView = self.detailContentView.addCollectionView(1)
+        .backgroundColor([UIColor clearColor])
+        .userInteractionEnabled(NO)
+        .masonry(^ (MASConstraintMaker *make) {
+            make.left.mas_equalTo(0);
+            make.right.mas_equalTo(-15);
+            make.height.mas_equalTo(HEIGHT_ALBUM_ITEM);
+            make.centerY.mas_equalTo(0);
+        })
+        .view;
+        
+        [(UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+        
+        self.angel = [[ZZFLEXAngel alloc] initWithHostView:self.collectionView];
     }
     return self;
 }
 
-- (void)setInfo:(TLInfo *)info
+@end
+
+@interface TLUserDetailAlbumItemCell :UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
+
+@property (nonatomic, strong) UIImageView *imageView;
+
+@end
+
+@implementation TLUserDetailAlbumItemCell
+
++ (CGSize)viewSizeByDataModel:(id)dataModel
 {
-//    _info = info;
-//    [self.textLabel setText:info.title];
-//    NSArray *arr = info.userInfo;
-//
-//    CGFloat spaceY = 12;
-//    NSUInteger count = (SCREEN_WIDTH - LEFT_INFOCELL_SUBTITLE_SPACE - 28) / (80 - spaceY * 2 + 3);
-//    count = arr.count <= count ? arr.count : count;
-//    CGFloat spaceX = (SCREEN_WIDTH - LEFT_INFOCELL_SUBTITLE_SPACE - 28 - count * (80 - spaceY * 2)) / count;
-//    spaceX = spaceX > 7 ? 7 : spaceX;
-//    for (int i = 0; i < count; i ++) {
-//        NSString *imageURL = arr[i];
-//        UIImageView *imageView;
-//        if (self.imageViewsArray.count <= i) {
-//            imageView = [[UIImageView alloc] init];
-//            [self.imageViewsArray addObject:imageView];
-//        }
-//        else {
-//            imageView = self.imageViewsArray[i];
-//        }
-//        [self.contentView addSubview:imageView];
-//        [imageView tt_setImageWithURL:TLURL(imageURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
-//        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(self.contentView).mas_offset(spaceY);
-//            make.bottom.mas_equalTo(self.contentView).mas_offset(-spaceY);
-//            make.width.mas_equalTo(imageView.mas_height);
-//            if (i == 0) {
-//                make.left.mas_equalTo(LEFT_INFOCELL_SUBTITLE_SPACE);
-//            }
-//            else {
-//                make.left.mas_equalTo([self.imageViewsArray[i - 1] mas_right]).mas_offset(spaceX);
-//            }
-//        }];
-//    }
+    return CGSizeMake(HEIGHT_ALBUM_ITEM, HEIGHT_ALBUM_ITEM);
+}
+
+- (void)setViewDataModel:(id)dataModel
+{
+    if (dataModel) {
+        [self.imageView tt_setImageWithURL:TLURL(dataModel) placeholderImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
+    }
+    else {
+        [self.imageView setImage:nil];
+    }
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        self.imageView = self.contentView.addImageView(1)
+        .contentMode(UIViewContentModeScaleAspectFill).clipsToBounds(YES)
+        .masonry(^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        })
+        .view;
+    }
+    return self;
 }
 
 @end

@@ -9,6 +9,11 @@
 #import "TLUserDetailViewController.h"
 #import "TLFriendDetailSettingViewController.h"
 #import "TLFriendHelper+Detail.h"
+#import "TLUserDetailBaseKVCell.h"
+#import "TLChatViewController.h"
+#import "TLLaunchManager.h"
+#import "TLUserHelper.h"
+#import "MWPhotoBrowser.h"
 
 typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
     TLUserDetailVCSectionTypeBaseInfo,
@@ -31,7 +36,7 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
 {
     [super loadView];
     [self setTitle:@"详细资料"];
-    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    [self.collectionView setBackgroundColor:[UIColor colorGrayBG]];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
@@ -54,71 +59,83 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
 #pragma mark - # UI
 - (void)loadUIWithUserModel:(TLUser *)userModel
 {
-//    // 2
-//    arr = [[NSMutableArray alloc] init];
-//    if (userInfo.detailInfo.phoneNumber.length > 0) {
-//        TLInfo *tel = TLCreateInfo(@"电话号码", userInfo.detailInfo.phoneNumber);
-//        tel.showDisclosureIndicator = NO;
-//        [arr addObject:tel];
-//    }
-//    if (userInfo.detailInfo.tags.count == 0) {
-//        TLInfo *remark = TLCreateInfo(@"设置备注和标签" , nil);
-//        [arr insertObject:remark atIndex:0];
-//    }
-//    else {
-//        NSString *str = [userInfo.detailInfo.tags componentsJoinedByString:@","];
-//        TLInfo *remark = TLCreateInfo(@"标签", str);
-//        [arr addObject:remark];
-//    }
-//    [data addObject:arr];
-//    arr = [[NSMutableArray alloc] init];
-//    
-//    // 3
-//    if (userInfo.detailInfo.location.length > 0) {
-//        TLInfo *location = TLCreateInfo(@"地区", userInfo.detailInfo.location);
-//        location.showDisclosureIndicator = NO;
-//        location.disableHighlight = YES;
-//        [arr addObject:location];
-//    }
-//    TLInfo *album = TLCreateInfo(@"个人相册", nil);
-//    album.userInfo = userInfo.detailInfo.albumArray;
-//    album.type = TLInfoTypeOther;
-//    [arr addObject:album];
-//    TLInfo *more = TLCreateInfo(@"更多", nil);
-//    [arr addObject:more];
-//    [data addObject:arr];
-//    arr = [[NSMutableArray alloc] init];
-//    
-//    // 4
-//    TLInfo *sendMsg = TLCreateInfo(@"发消息", nil);
-//    sendMsg.type = TLInfoTypeButton;
-//    sendMsg.titleColor = [UIColor whiteColor];
-//    sendMsg.buttonBorderColor = [UIColor colorGrayLine];
-//    [arr addObject:sendMsg];
-//    if (![userInfo.userID isEqualToString:[TLUserHelper sharedHelper].userID]) {
-//        TLInfo *video = TLCreateInfo(@"视频聊天", nil);
-//        video.type = TLInfoTypeButton;
-//        video.buttonBorderColor = [UIColor colorGrayLine];
-//        video.buttonColor = [UIColor whiteColor];
-//        [arr addObject:video];
-//    }
-//    [data addObject:arr];
-    
+    @weakify(self);
     
     self.clear();
     
     // 基本信息
     self.addSection(TLUserDetailVCSectionTypeBaseInfo).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
-    self.addCell(@"TLUserDetailBaseInfoCell").toSection(TLUserDetailVCSectionTypeBaseInfo).withDataModel(userModel);
+    self.addCell(@"TLUserDetailBaseInfoCell").toSection(TLUserDetailVCSectionTypeBaseInfo).withDataModel(userModel).eventAction(^ id(NSInteger eventType, id data) {
+        @strongify(self);
+        TLUser *userModel = data;
+        NSURL *url = TLURL(userModel.avatarURL);
+        MWPhoto *photo = [MWPhoto photoWithURL:url];
+        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:@[photo]];
+        UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
+        [self presentViewController:broserNavC animated:NO completion:nil];
+        return nil;
+    });
     
-    // 基本信息
+    // 自定义信息
     self.addSection(TLUserDetailVCSectionTypeCustom).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+    // 电话号码
+    if (userModel.detailInfo.phoneNumber.length > 0) {
+        TLUserDetailKVModel *model = createUserDetailKVModel(@"电话号码", userModel.detailInfo.phoneNumber);
+        model.hiddenArrow = YES;
+        self.addCell(@"TLUserDetailPhoneKVCell").toSection(TLUserDetailVCSectionTypeCustom).withDataModel(model);
+    }
+    // 备注及标签
+    if (userModel.detailInfo.tags.count == 0) {
+        self.addCell(@"TLUserDetailTitleCell").toSection(TLUserDetailVCSectionTypeCustom).withDataModel(@"设置备注和标签");
+    }
+    else {
+        NSString *tags = [userModel.detailInfo.tags componentsJoinedByString:@","];
+        self.addCell(@"TLUserDetailTagsKVCell").toSection(TLUserDetailVCSectionTypeCustom).withDataModel(createUserDetailKVModel(@"标签", tags));
+    }
     
-    // 基本信息
+    // 详细信息
     self.addSection(TLUserDetailVCSectionTypeDetailInfo).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+    // 地区
+    if (userModel.detailInfo.location.length > 0) {
+        TLUserDetailKVModel *model = createUserDetailKVModel(@"地区", userModel.detailInfo.location);
+        model.selectable = NO;
+        model.hiddenArrow = YES;
+        self.addCell(@"TLUserDetailNormalKVCell").toSection(TLUserDetailVCSectionTypeDetailInfo).withDataModel(model);
+    }
+    // 相册
+    if (userModel.detailInfo.albumArray.count > 0) {
+        TLUserDetailKVModel *model = createUserDetailKVModel(@"个人相册", userModel.detailInfo.albumArray);
+        self.addCell(@"TLUserDetailAlbumCell").toSection(TLUserDetailVCSectionTypeDetailInfo).withDataModel(model);
+    }
+    // 其他
+    self.addCell(@"TLUserDetailTitleCell").toSection(TLUserDetailVCSectionTypeDetailInfo).withDataModel(@"更多");
     
-    // 基本信息
-    self.addSection(TLUserDetailVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+    // 功能
+    self.addSection(TLUserDetailVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+    // 发消息
+    self.addCell(@"TLUserDetailChatButtonCell").toSection(TLUserDetailVCSectionTypeFunction).withDataModel(@"发消息").eventAction(^ id(NSInteger eventType, id data) {
+        @strongify(self);
+        TLChatViewController *chatVC = [[TLChatViewController alloc] initWithUserId:self.userModel.userID];
+        
+        if ([TLLaunchManager sharedInstance].tabBarController.selectedIndex != 0) {
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            UINavigationController *navC = [TLLaunchManager sharedInstance].tabBarController.childViewControllers[0];
+            [[TLLaunchManager sharedInstance].tabBarController setSelectedIndex:0];
+            [chatVC setHidesBottomBarWhenPushed:YES];
+            [navC pushViewController:chatVC animated:YES];
+        }
+        else {
+            PushVC(chatVC);
+        }
+        return nil;
+    });
+    // 语音聊天
+    if (![userModel.userID isEqualToString:[TLUserHelper sharedHelper].userID]) {
+        self.addCell(@"TLUserDetailViewChatButtonCell").toSection(TLUserDetailVCSectionTypeFunction).withDataModel(@"视频聊天").eventAction(^ id(NSInteger eventType, id data) {
+            @strongify(self);
+            return nil;
+        });
+    }
     
     [self reloadView];
 }

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLInfo.h"
+#import "TLUser.h"
 
 @interface TLUserDetailBaseInfoCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 
-@property (nonatomic, strong) TLInfo *info;
+@property (nonatomic, strong) TLUser *userModel;
 
 @end

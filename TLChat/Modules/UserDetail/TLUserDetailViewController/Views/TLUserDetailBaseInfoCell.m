@@ -20,6 +20,8 @@
 @property (nonatomic, strong) UILabel *usernameLabel;
 @property (nonatomic, strong) UILabel *nikenameLabel;
 
+@property (nonatomic, copy) id (^eventAction)(NSInteger, id);
+
 @end
 
 @implementation TLUserDetailBaseInfoCell
@@ -27,6 +29,30 @@
 + (CGSize)viewSizeByDataModel:(id)dataModel
 {
     return CGSizeMake(SCREEN_WIDTH, 90);
+}
+
+- (void)setViewDataModel:(id)dataModel
+{
+    [self setUserModel:dataModel];
+}
+
+- (void)setViewEventAction:(id (^)(NSInteger, id))eventAction
+{
+    self.eventAction = eventAction;
+}
+
+- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+{
+    if (indexPath.row == 0) {
+        self.addSeparator(TLSeparatorPositionTop);
+    }
+    
+    if (indexPath.row == count - 1) {
+        self.addSeparator(TLSeparatorPositionBottom);
+    }
+    else {
+        self.addSeparator(TLSeparatorPositionBottom).beginAt(15);
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -39,93 +65,81 @@
     return self;
 }
 
-- (void)p_initUI
+- (void)setUserModel:(TLUser *)userModel
 {
-//    [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(MINE_SPACE_X);
-//        make.top.mas_equalTo(MINE_SPACE_Y);
-//        make.bottom.mas_equalTo(- MINE_SPACE_Y);
-//        make.width.mas_equalTo(self.avatarView.mas_height);
-//    }];
-//
-//    [self.shownameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
-//    [self.shownameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(MINE_SPACE_Y);
-//        make.top.mas_equalTo(self.avatarView.mas_top).mas_offset(3);
-//    }];
-//
-//    [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(self.shownameLabel);
-//        make.top.mas_equalTo(self.shownameLabel.mas_bottom).mas_offset(5);
-//    }];
-//
-//    [self.nikenameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(self.shownameLabel);
-//        make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(3);
-//    }];
-}
-
-- (void)setInfo:(TLInfo *)info
-{
-    _info = info;
-    TLUser *user = info.userInfo;
-    if (user.avatarPath) {
-        [self.avatarView setImage:[UIImage imageNamed:user.avatarPath] forState:UIControlStateNormal];
+    _userModel = userModel;
+    if (userModel.avatarPath) {
+        [self.avatarView setImage:[UIImage imageNamed:userModel.avatarPath] forState:UIControlStateNormal];
     }
     else{
-        [self.avatarView tt_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarView tt_setImageWithURL:TLURL(userModel.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
-    [self.shownameLabel setText:user.showName];
-    if (user.username.length > 0) {
-        [self.usernameLabel setText:[@"微信号：" stringByAppendingString:user.username]];
-        if (user.nikeName.length > 0) {
-            [self.nikenameLabel setText:[@"昵称：" stringByAppendingString:user.nikeName]];
+    [self.shownameLabel setText:userModel.showName];
+    if (userModel.username.length > 0) {
+        [self.usernameLabel setText:[@"微信号：" stringByAppendingString:userModel.username]];
+        if (userModel.nikeName.length > 0) {
+            [self.nikenameLabel setText:[@"昵称：" stringByAppendingString:userModel.nikeName]];
         }
     }
-    else if (user.nikeName.length > 0){
-        [self.nikenameLabel setText:[@"昵称：" stringByAppendingString:user.nikeName]];
+    else if (userModel.nikeName.length > 0){
+        [self.nikenameLabel setText:[@"昵称：" stringByAppendingString:userModel.nikeName]];
     }
 }
 
-#pragma mark - # Getters
-- (UIButton *)avatarView
+#pragma mark - # UI
+- (void)p_initUI
 {
-    if (_avatarView == nil) {
-        _avatarView = [[UIButton alloc] init];
-        [_avatarView.layer setMasksToBounds:YES];
-        [_avatarView.layer setCornerRadius:5.0f];
-        [_avatarView addTarget:self action:@selector(avatarViewButtonDown:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _avatarView;
-}
-
-- (UILabel *)shownameLabel
-{
-    if (_shownameLabel == nil) {
-        _shownameLabel = [[UILabel alloc] init];
-        [_shownameLabel setFont:[UIFont fontMineNikename]];
-    }
-    return _shownameLabel;
-}
-
-- (UILabel *)usernameLabel
-{
-    if (_usernameLabel == nil) {
-        _usernameLabel = [[UILabel alloc] init];
-        [_usernameLabel setFont:[UIFont fontMineUsername]];
-        [_usernameLabel setTextColor:[UIColor grayColor]];
-    }
-    return _usernameLabel;
-}
-
-- (UILabel *)nikenameLabel
-{
-    if (_nikenameLabel == nil) {
-        _nikenameLabel = [[UILabel alloc] init];
-        [_nikenameLabel setTextColor:[UIColor grayColor]];
-        [_nikenameLabel setFont:[UIFont fontMineUsername]];
-    }
-    return _nikenameLabel;
+    @weakify(self);
+    
+    // 头像
+    self.avatarView = self.contentView.addButton(1)
+    .cornerRadius(5)
+    .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
+        @strongify(self);
+        if (self.eventAction) {
+            self.eventAction(0, self.userModel);
+        }
+    })
+    .masonry(^ (MASConstraintMaker *make) {
+        make.left.mas_equalTo(14);
+        make.top.mas_equalTo(12);
+        make.bottom.mas_equalTo(-12);
+    })
+    .view;
+    
+    [self.avatarView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(self.avatarView.mas_height);
+    }];
+    
+    // 用户昵称
+    self.shownameLabel = self.contentView.addLabel(2)
+    .font([UIFont systemFontOfSize:17.0f])
+    .masonry(^ (MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(MINE_SPACE_Y);
+        make.top.mas_equalTo(self.avatarView.mas_top).mas_offset(3);
+    })
+    .view;
+    [self.shownameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
+    
+    // 用户名
+    self.usernameLabel = self.contentView.addLabel(3)
+    .font([UIFont systemFontOfSize:14.0f])
+    .textColor([UIColor grayColor])
+    .masonry(^ (MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.shownameLabel);
+        make.top.mas_equalTo(self.shownameLabel.mas_bottom).mas_offset(5);
+    })
+    .view;
+    
+    // 昵称
+    self.nikenameLabel = self.contentView.addLabel(4)
+    .textColor([UIColor grayColor])
+    .font([UIFont systemFontOfSize:14.0f])
+    .masonry(^ (MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.shownameLabel);
+        make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(3);
+    })
+    .view;
 }
 
 @end

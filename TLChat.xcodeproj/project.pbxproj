@@ -101,6 +101,9 @@
 		C2A92CB41F7A2B040038CFAE /* TLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A92CAF1F7A29510038CFAE /* TLMineViewController.m */; };
 		C2A92CB51F7A2B060038CFAE /* TLMineHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A92CB21F7A29510038CFAE /* TLMineHeaderCell.m */; };
 		C2AF1FAA1C6B78F600617D98 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AF1FA91C6B78F600617D98 /* WebKit.framework */; };
+		C2C66C182001C78500150580 /* TLUserDetailBaseKVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C66C172001C78500150580 /* TLUserDetailBaseKVCell.m */; };
+		C2C66C1B2001C9A700150580 /* TLUserDetailTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C66C1A2001C9A700150580 /* TLUserDetailTitleCell.m */; };
+		C2C66C1E2001CE1D00150580 /* TLUserDetailNormalKVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C66C1D2001CE1D00150580 /* TLUserDetailNormalKVCell.m */; };
 		C2D674BD1FFC785E00FAA24D /* TLDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D674B21FFC785E00FAA24D /* TLDownloadRequest.m */; };
 		C2D674BE1FFC785E00FAA24D /* TLBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D674B51FFC785E00FAA24D /* TLBaseRequest.m */; };
 		C2D674BF1FFC785E00FAA24D /* TLBaseRequest+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D674B91FFC785E00FAA24D /* TLBaseRequest+Private.m */; };
@@ -303,6 +306,10 @@
 		C2D7CC791F72852E00648CED /* TLDBGroupStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CC771F72852E00648CED /* TLDBGroupStore.m */; };
 		C2D7CC7E1F72854200648CED /* TLDBMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CC7C1F72854200648CED /* TLDBMessageStore.m */; };
 		C2D7CC861F72859600648CED /* TLDBConversationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CC851F72859600648CED /* TLDBConversationStore.m */; };
+		C2DBF07920024C4C00005827 /* TLUserDetailPhoneKVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DBF07820024C4C00005827 /* TLUserDetailPhoneKVCell.m */; };
+		C2DBF07C2002558E00005827 /* TLUserDetailTagsKVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DBF07B2002558E00005827 /* TLUserDetailTagsKVCell.m */; };
+		C2DBF07F2002620E00005827 /* TLUserDetailChatButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DBF07E2002620E00005827 /* TLUserDetailChatButtonCell.m */; };
+		C2DBF0822002697D00005827 /* TLUserDetailViewChatButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DBF0812002697D00005827 /* TLUserDetailViewChatButtonCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -534,6 +541,12 @@
 		C2A92CB11F7A29510038CFAE /* TLMineHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMineHeaderCell.h; sourceTree = "<group>"; };
 		C2A92CB21F7A29510038CFAE /* TLMineHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMineHeaderCell.m; sourceTree = "<group>"; };
 		C2AF1FA91C6B78F600617D98 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C2C66C162001C78500150580 /* TLUserDetailBaseKVCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLUserDetailBaseKVCell.h; sourceTree = "<group>"; };
+		C2C66C172001C78500150580 /* TLUserDetailBaseKVCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailBaseKVCell.m; sourceTree = "<group>"; };
+		C2C66C192001C9A700150580 /* TLUserDetailTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLUserDetailTitleCell.h; sourceTree = "<group>"; };
+		C2C66C1A2001C9A700150580 /* TLUserDetailTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailTitleCell.m; sourceTree = "<group>"; };
+		C2C66C1C2001CE1D00150580 /* TLUserDetailNormalKVCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLUserDetailNormalKVCell.h; sourceTree = "<group>"; };
+		C2C66C1D2001CE1D00150580 /* TLUserDetailNormalKVCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailNormalKVCell.m; sourceTree = "<group>"; };
 		C2D674B21FFC785E00FAA24D /* TLDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDownloadRequest.m; sourceTree = "<group>"; };
 		C2D674B31FFC785E00FAA24D /* TLDownloadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDownloadRequest.h; sourceTree = "<group>"; };
 		C2D674B51FFC785E00FAA24D /* TLBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLBaseRequest.m; sourceTree = "<group>"; };
@@ -953,6 +966,14 @@
 		C2D7CC831F72859600648CED /* TLDBConversationSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBConversationSQL.h; sourceTree = "<group>"; };
 		C2D7CC841F72859600648CED /* TLDBConversationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBConversationStore.h; sourceTree = "<group>"; };
 		C2D7CC851F72859600648CED /* TLDBConversationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBConversationStore.m; sourceTree = "<group>"; };
+		C2DBF07720024C4C00005827 /* TLUserDetailPhoneKVCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLUserDetailPhoneKVCell.h; sourceTree = "<group>"; };
+		C2DBF07820024C4C00005827 /* TLUserDetailPhoneKVCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailPhoneKVCell.m; sourceTree = "<group>"; };
+		C2DBF07A2002558E00005827 /* TLUserDetailTagsKVCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLUserDetailTagsKVCell.h; sourceTree = "<group>"; };
+		C2DBF07B2002558E00005827 /* TLUserDetailTagsKVCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailTagsKVCell.m; sourceTree = "<group>"; };
+		C2DBF07D2002620E00005827 /* TLUserDetailChatButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLUserDetailChatButtonCell.h; sourceTree = "<group>"; };
+		C2DBF07E2002620E00005827 /* TLUserDetailChatButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailChatButtonCell.m; sourceTree = "<group>"; };
+		C2DBF0802002697D00005827 /* TLUserDetailViewChatButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLUserDetailViewChatButtonCell.h; sourceTree = "<group>"; };
+		C2DBF0812002697D00005827 /* TLUserDetailViewChatButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLUserDetailViewChatButtonCell.m; sourceTree = "<group>"; };
 		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1112,8 +1133,22 @@
 			children = (
 				C232342D1FFF581C004480B2 /* TLUserDetailBaseInfoCell.h */,
 				C232342B1FFF581C004480B2 /* TLUserDetailBaseInfoCell.m */,
+				C2C66C192001C9A700150580 /* TLUserDetailTitleCell.h */,
+				C2C66C1A2001C9A700150580 /* TLUserDetailTitleCell.m */,
+				C2C66C162001C78500150580 /* TLUserDetailBaseKVCell.h */,
+				C2C66C172001C78500150580 /* TLUserDetailBaseKVCell.m */,
+				C2C66C1C2001CE1D00150580 /* TLUserDetailNormalKVCell.h */,
+				C2C66C1D2001CE1D00150580 /* TLUserDetailNormalKVCell.m */,
+				C2DBF07720024C4C00005827 /* TLUserDetailPhoneKVCell.h */,
+				C2DBF07820024C4C00005827 /* TLUserDetailPhoneKVCell.m */,
+				C2DBF07A2002558E00005827 /* TLUserDetailTagsKVCell.h */,
+				C2DBF07B2002558E00005827 /* TLUserDetailTagsKVCell.m */,
 				C232342C1FFF581C004480B2 /* TLUserDetailAlbumCell.h */,
 				C232342E1FFF581C004480B2 /* TLUserDetailAlbumCell.m */,
+				C2DBF07D2002620E00005827 /* TLUserDetailChatButtonCell.h */,
+				C2DBF07E2002620E00005827 /* TLUserDetailChatButtonCell.m */,
+				C2DBF0802002697D00005827 /* TLUserDetailViewChatButtonCell.h */,
+				C2DBF0812002697D00005827 /* TLUserDetailViewChatButtonCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3427,6 +3462,7 @@
 				C24993341FFB663A00F69B16 /* UIScrollView+TLRefreshHeader.m in Sources */,
 				C23EE47D1F7392550069885F /* TLMyExpressionCell.m in Sources */,
 				C249933C1FFB7E1200F69B16 /* TLExpressionChosenAngel.m in Sources */,
+				C2C66C182001C78500150580 /* TLUserDetailBaseKVCell.m in Sources */,
 				C2D7CB751F72470400648CED /* TLScanningViewController.m in Sources */,
 				C2D674BE1FFC785E00FAA24D /* TLBaseRequest.m in Sources */,
 				C243B6551F7A5B670059A886 /* TLResponse.m in Sources */,
@@ -3441,6 +3477,7 @@
 				C2D7CB481F72470400648CED /* TLChatViewController.m in Sources */,
 				C2D7CB8A1F72470400648CED /* TLAddThirdPartFriendItem.m in Sources */,
 				C2D7CB771F72470400648CED /* TLShakeButton.m in Sources */,
+				C2DBF07920024C4C00005827 /* TLUserDetailPhoneKVCell.m in Sources */,
 				C2D7C9101F7246CC00648CED /* TLAudioRecorder.m in Sources */,
 				C2D7CBC71F72470500648CED /* TLNewMessageSettingViewController.m in Sources */,
 				C232342F1FFF581C004480B2 /* TLUserDetailBaseInfoCell.m in Sources */,
@@ -3558,6 +3595,7 @@
 				C2D7CBBD1F72470500648CED /* TLAccountAndSafetyViewController.m in Sources */,
 				C2D7C8E61F72464A00648CED /* TLInfo.m in Sources */,
 				C2D7CB1D1F72470400648CED /* TLTalkButton.m in Sources */,
+				C2C66C1B2001C9A700150580 /* TLUserDetailTitleCell.m in Sources */,
 				C2D7CB3F1F72470400648CED /* TLEmojiKeyboard.m in Sources */,
 				C2D7CC2B1F726D7B00648CED /* TLGroup+CreateAvatar.m in Sources */,
 				C2D7CB8E1F72470400648CED /* TLContactsSearchViewController.m in Sources */,
@@ -3571,6 +3609,7 @@
 				C2A92CB31F7A2B010038CFAE /* TLMineViewController+Delegate.m in Sources */,
 				C23234291FFF56FB004480B2 /* TLFriendDetailSettingViewController.m in Sources */,
 				C2D7CB471F72470400648CED /* TLChatViewController+Delegate.m in Sources */,
+				C2C66C1E2001CE1D00150580 /* TLUserDetailNormalKVCell.m in Sources */,
 				C2D7CB841F72470400648CED /* TLFriendsViewController.m in Sources */,
 				C2D7CB321F72470400648CED /* TLEmojiFaceItemCell.m in Sources */,
 				C292D32C1F7A4B89007EB0A6 /* TLMomentDetailTextView.m in Sources */,
@@ -3595,6 +3634,7 @@
 				C2D7CB591F72470400648CED /* TLConversationViewController.m in Sources */,
 				C249934E1FFB84E200F69B16 /* TLExpressionGroupModel+MoreRequest.m in Sources */,
 				C2D7C9121F7246CC00648CED /* UIColor+TLChat.m in Sources */,
+				C2DBF07F2002620E00005827 /* TLUserDetailChatButtonCell.m in Sources */,
 				C2D7CB381F72470400648CED /* TLEmojiGroupCell.m in Sources */,
 				C2D7C8EE1F72464A00648CED /* TLSettingGroup.m in Sources */,
 				C2D7CB5D1F72470400648CED /* TLGameViewController.m in Sources */,
@@ -3603,6 +3643,7 @@
 				C2D7CB4E1F72470400648CED /* TLImageBrowserController.m in Sources */,
 				C2D7CB281F72470400648CED /* TLExpressionMessageCell.m in Sources */,
 				C292D3221F7A4B5E007EB0A6 /* TLMomentDetailViewController.m in Sources */,
+				C2DBF07C2002558E00005827 /* TLUserDetailTagsKVCell.m in Sources */,
 				C2D7CB151F72470400648CED /* TLUserGroupCell.m in Sources */,
 				C2D7C8F51F72464A00648CED /* TLViewController.m in Sources */,
 				C2D7CB161F72470400648CED /* TLUserGroupItemCell.m in Sources */,
@@ -3658,6 +3699,7 @@
 				C2D7CC7E1F72854200648CED /* TLDBMessageStore.m in Sources */,
 				C259CE911FF2290D0058FD6E /* TLDBExpressionStore.m in Sources */,
 				C2D7CB361F72470400648CED /* TLEmojiGroupDisplayView+Gesture.m in Sources */,
+				C2DBF0822002697D00005827 /* TLUserDetailViewChatButtonCell.m in Sources */,
 				C24993351FFB663A00F69B16 /* UIScrollView+TLLoadMoreFooter.m in Sources */,
 				C2D7CB271F72470400648CED /* TLTextDisplayView.m in Sources */,
 				C2D7CC571F7281D200648CED /* TLVideoMessage.m in Sources */,

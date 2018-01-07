@@ -12,9 +12,14 @@
 
 - (void)setSelectedBackgrounColor:(UIColor *)selectedBackgrounColor
 {
-    UIView *selectedBGView = [[UIView alloc] init];
-    [selectedBGView setBackgroundColor:selectedBackgrounColor];
-    [self setSelectedBackgroundView:selectedBGView];
+    if (selectedBackgrounColor) {
+        UIView *selectedBGView = [[UIView alloc] init];
+        [selectedBGView setBackgroundColor:selectedBackgrounColor];
+        [self setSelectedBackgroundView:selectedBGView];
+    }
+    else {
+        [self setSelectedBackgroundView:nil];
+    }
 }
 - (UIColor *)selectedBackgrounColor
 {

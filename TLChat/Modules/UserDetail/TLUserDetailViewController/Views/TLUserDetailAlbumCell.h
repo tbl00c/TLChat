@@ -6,11 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "TLInfo.h"
+#import "TLUserDetailBaseKVCell.h"
 
-@interface TLUserDetailAlbumCell : UICollectionViewCell
+@interface TLUserDetailAlbumCell : TLUserDetailBaseKVCell
 
-@property (nonatomic, strong) TLInfo *info;
 
 @end

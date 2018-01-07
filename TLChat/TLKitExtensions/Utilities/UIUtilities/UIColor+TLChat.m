@@ -52,6 +52,9 @@
     return RGBAColor(2.0, 187.0, 0.0, 1.0f);
 }
 
++ (UIColor *)colorGreenHL {
+    return RGBAColor(46, 139, 46, 1.0f);
+}
 
 #pragma mark - 蓝色
 + (UIColor *)colorBlueMoment {

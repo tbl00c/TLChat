@@ -27,6 +27,7 @@
 
 #pragma mark - 绿色
 + (UIColor *)colorGreenDefault;
++ (UIColor *)colorGreenHL;
 
 
 #pragma mark - 蓝色

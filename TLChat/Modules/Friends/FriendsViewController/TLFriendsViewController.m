@@ -12,6 +12,7 @@
 #import "TLFriendHelper.h"
 
 #import "TLAddFriendViewController.h"
+#import "TLUserDetailViewController.h"
 
 @interface TLFriendsViewController ()
 

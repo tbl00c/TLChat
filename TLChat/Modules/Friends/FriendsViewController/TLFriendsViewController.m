@@ -93,6 +93,13 @@
 {
     if (_searchVC == nil) {
         _searchVC = [[TLFriendSearchViewController alloc] init];
+        @weakify(self);
+        [_searchVC setItemSelectedAction:^(TLFriendSearchViewController *searchVC, TLUser *userModel) {
+            @strongify(self);
+            [self.searchController setActive:NO];
+            TLUserDetailViewController *detailVC = [[TLUserDetailViewController alloc] initWithUserModel:userModel];
+            PushVC(detailVC);
+        }];
     }
     return _searchVC;
 }

@@ -13,6 +13,7 @@
 #import "TLMessageManager+ConversationRecord.h"
 #import "TLFriendSearchViewController.h"
 #import "TLSearchController.h"
+#import "TLUserDetailViewController.h"
 
 #import "TLChatViewController+Conversation.h"
 #import "TLAddMenuView.h"
@@ -203,6 +204,13 @@
 {
     if (!_searchController) {
         TLFriendSearchViewController *searchVC = [[TLFriendSearchViewController alloc] init];
+        @weakify(self);
+        [searchVC setItemSelectedAction:^(TLFriendSearchViewController *searchVC, TLUser *userModel) {
+            @strongify(self);
+            [self.searchController setActive:NO];
+            TLUserDetailViewController *detailVC = [[TLUserDetailViewController alloc] initWithUserModel:userModel];
+            PushVC(detailVC);
+        }];
         _searchController = [TLSearchController createWithResultsContrller:searchVC];
         [_searchController setEnableVoiceInput:YES];
     }

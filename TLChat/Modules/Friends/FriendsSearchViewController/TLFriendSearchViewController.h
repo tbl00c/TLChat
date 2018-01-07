@@ -7,10 +7,13 @@
 //
 
 #import "TLTableViewController.h"
+#import "TLSearchControllerProtocol.h"
 
 #define     HEIGHT_FRIEND_CELL      54.0f
 
-@interface TLFriendSearchViewController : TLTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
+@class TLUser;
+@interface TLFriendSearchViewController : TLTableViewController <TLSearchControllerProtocol>
 
+@property (nonatomic, copy) void (^itemSelectedAction)(TLFriendSearchViewController *searchVC, TLUser *userModel);
 
 @end

@@ -28,7 +28,8 @@
     self.data = @[].mutableCopy;
     [self.tableView registerClass:[TLFriendCell class] forCellReuseIdentifier:@"FriendCell"];
 }
-#pragma mark - UITableViewDataSource
+
+#pragma mark - # Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -55,11 +56,19 @@
     return cell;
 }
 
-#pragma mark - Delegate -
 //MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return HEIGHT_FRIEND_CELL;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TLUser *user = [self.data objectAtIndex:indexPath.row];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.itemSelectedAction) {
+        self.itemSelectedAction(self, user);
+    }
 }
 
 //MARK: UISearchResultsUpdating

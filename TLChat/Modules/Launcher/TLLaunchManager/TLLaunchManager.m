@@ -12,7 +12,7 @@
 #import "TLAccountViewController.h"
 
 #import "TLConversationViewController.h"
-#import "TLFriendsViewController.h"
+#import "TLContactsViewController.h"
 #import "TLDiscoverViewController.h"
 #import "TLMineViewController.h"
 
@@ -77,7 +77,7 @@
 - (NSArray *)p_createTabBarChildViewController
 {
     TLConversationViewController *conversationVC = [[TLConversationViewController alloc] init];
-    TLFriendsViewController *friendsVC = [[TLFriendsViewController alloc] init];
+    TLContactsViewController *friendsVC = [[TLContactsViewController alloc] init];
     TLDiscoverViewController *discoverVC = [[TLDiscoverViewController alloc] init];
     TLMineViewController *mineVC = [[TLMineViewController alloc] init];
     

@@ -7,7 +7,7 @@
 //
 
 #import "TLExpressionMoreSearchCell.h"
-#import "TLExpressionSearchViewController.h"
+#import "TLExpressionSearchResultViewController.h"
 #import "TLSearchController.h"
 
 @interface TLExpressionMoreSearchCell ()
@@ -37,8 +37,8 @@
     if (self = [super initWithFrame:frame]) {
         [self setBackgroundColor:[UIColor whiteColor]];
         @weakify(self);
-        TLExpressionSearchViewController *searchResultVC = [[TLExpressionSearchViewController alloc] init];
-        [searchResultVC setItemClickAction:^(TLExpressionSearchViewController *searchController, id data) {
+        TLExpressionSearchResultViewController *searchResultVC = [[TLExpressionSearchResultViewController alloc] init];
+        [searchResultVC setItemClickAction:^(TLExpressionSearchResultViewController *searchController, id data) {
             @strongify(self);
             [self.searchController setActive:NO];
             if (self.eventAction) {

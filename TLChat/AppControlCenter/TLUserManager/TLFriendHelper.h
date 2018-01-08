@@ -12,10 +12,6 @@
 
 @interface TLFriendHelper : NSObject
 
-/// 好友列表默认项
-@property (nonatomic, strong) TLUserGroup *defaultGroup;
-
-
 #pragma mark - # 好友
 
 /// 好友数据(原始)

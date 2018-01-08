@@ -38,7 +38,7 @@ static TLFriendHelper *friendHelper = nil;
     if (self = [super init]) {
         // 初始化好友数据
         _friendsData = [self.friendStore friendsDataByUid:[TLUserHelper sharedHelper].userID];
-        self.data = [[NSMutableArray alloc] initWithObjects:self.defaultGroup, nil];
+        self.data = [[NSMutableArray alloc] init];
         self.sectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
         // 初始化群数据
         self.groupsData = [self.groupStore groupsDataByUid:[TLUserHelper sharedHelper].userID];
@@ -104,13 +104,14 @@ static TLFriendHelper *friendHelper = nil;
     }];
     
     // 2、分组
-    NSMutableArray *ansData = [[NSMutableArray alloc] initWithObjects:self.defaultGroup, nil];
+    NSMutableArray *ansData = [[NSMutableArray alloc] init];
     NSMutableArray *ansSectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
     NSMutableDictionary *tagsDic = [[NSMutableDictionary alloc] init];
     char lastC = '1';
     TLUserGroup *curGroup;
     TLUserGroup *othGroup = [[TLUserGroup alloc] init];
     [othGroup setGroupName:@"#"];
+    [othGroup setTag:27];
     for (TLUser *user in serializeArray) {
         // 获取拼音失败
         if (user.pinyin == nil || user.pinyin.length == 0) {
@@ -131,6 +132,7 @@ static TLFriendHelper *friendHelper = nil;
             curGroup = [[TLUserGroup alloc] init];
             [curGroup setGroupName:[NSString stringWithFormat:@"%c", c]];
             [curGroup addObject:user];
+            [curGroup setTag:(NSInteger)c];
         }
         else {
             [curGroup addObject:user];
@@ -206,30 +208,6 @@ static TLFriendHelper *friendHelper = nil;
 }
 
 #pragma mark - Getter
-- (TLUserGroup *)defaultGroup
-{
-    if (_defaultGroup == nil) {
-        TLUser *item_new = [[TLUser alloc] init];
-        item_new.userID = @"-1";
-        item_new.avatarPath = @"friends_new";
-        item_new.remarkName = @"新的朋友";
-        TLUser *item_group = [[TLUser alloc] init];
-        item_group.userID = @"-2";
-        item_group.avatarPath = @"friends_group";
-        item_group.remarkName = @"群聊";
-        TLUser *item_tag = [[TLUser alloc] init];
-        item_tag.userID = @"-3";
-        item_tag.avatarPath = @"friends_tag";
-        item_tag.remarkName = @"标签";
-        TLUser *item_public = [[TLUser alloc] init];
-        item_public.userID = @"-4";
-        item_public.avatarPath = @"friends_public";
-        item_public.remarkName = @"公共号";
-        _defaultGroup = [[TLUserGroup alloc] initWithGroupName:nil users:[NSMutableArray arrayWithObjects:item_new, item_group, item_tag, item_public, nil]];
-    }
-    return _defaultGroup;
-}
-
 - (NSInteger)friendCount
 {
     return self.friendsData.count;

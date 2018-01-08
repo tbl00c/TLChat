@@ -7,7 +7,7 @@
 //
 
 #import "TLExpressionChosenViewController.h"
-#import "TLExpressionSearchViewController.h"
+#import "TLExpressionSearchResultViewController.h"
 #import "TLSearchController.h"
 #import "TLExpressionGroupModel+ChosenRequest.h"
 #import "TLExpressionHelper.h"
@@ -121,8 +121,8 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
 {
     if (!_searchController) {
         @weakify(self);
-        TLExpressionSearchViewController *searchResultVC = [[TLExpressionSearchViewController alloc] init];
-        [searchResultVC setItemClickAction:^(TLExpressionSearchViewController *searchController, id data) {
+        TLExpressionSearchResultViewController *searchResultVC = [[TLExpressionSearchResultViewController alloc] init];
+        [searchResultVC setItemClickAction:^(TLExpressionSearchResultViewController *searchController, id data) {
             @strongify(self);
             [self.searchController setActive:NO];
             [self didSelectedExpressionGroup:data];

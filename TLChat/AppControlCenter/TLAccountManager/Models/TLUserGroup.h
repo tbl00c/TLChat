@@ -11,6 +11,9 @@
 
 @interface TLUserGroup : NSObject
 
+/// tag
+@property (nonatomic, assign) NSInteger tag;
+
 @property (nonatomic, strong) NSString *groupName;
 
 @property (nonatomic, strong) NSMutableArray *users;

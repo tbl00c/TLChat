@@ -11,7 +11,7 @@
 #import "TLNetworkStatusManager.h"
 
 #import "TLMessageManager+ConversationRecord.h"
-#import "TLFriendSearchViewController.h"
+#import "TLContactsSearchResultViewController.h"
 #import "TLSearchController.h"
 #import "TLUserDetailViewController.h"
 
@@ -203,9 +203,9 @@
 - (TLSearchController *)searchController
 {
     if (!_searchController) {
-        TLFriendSearchViewController *searchVC = [[TLFriendSearchViewController alloc] init];
+        TLContactsSearchResultViewController *searchVC = [[TLContactsSearchResultViewController alloc] init];
         @weakify(self);
-        [searchVC setItemSelectedAction:^(TLFriendSearchViewController *searchVC, TLUser *userModel) {
+        [searchVC setItemSelectedAction:^(TLContactsSearchResultViewController *searchVC, TLUser *userModel) {
             @strongify(self);
             [self.searchController setActive:NO];
             TLUserDetailViewController *detailVC = [[TLUserDetailViewController alloc] initWithUserModel:userModel];

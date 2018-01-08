@@ -1,5 +1,5 @@
 //
-//  ZZFLEXChainViewArrayModel.h
+//  ZZFLEXChainViewBatchModel.h
 //  zhuanzhuan
 //
 //  Created by 李伯坤 on 2017/8/15.
@@ -12,8 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
-#pragma mark - ## ZZFLEXChainViewArrayBaseModel
-@interface ZZFLEXChainViewArrayBaseModel<ZZFLEXReturnType> : NSObject
+#pragma mark - ## ZZFLEXChainViewBatchBaseModel (批量，基类)
+@interface ZZFLEXChainViewBatchBaseModel<ZZFLEXReturnType> : NSObject
 
 /// 将cells添加到某个section
 - (ZZFLEXReturnType (^)(NSInteger section))toSection;
@@ -32,30 +32,28 @@
 /// cells tag
 - (ZZFLEXReturnType (^)(NSInteger viewTag))viewTag;
 
-#pragma mark - 框架内部使用
+/// 框架内部使用
 - (id)initWithClassName:(NSString *)className listData:(NSMutableArray *)listData;
 
 @end
 
-#pragma mark - ## ZZFLEXChainViewArrayModel
-@class ZZFLEXChainViewArrayModel;
-@interface ZZFLEXChainViewArrayModel : ZZFLEXChainViewArrayBaseModel<ZZFLEXChainViewArrayModel *>
-
+#pragma mark - ## ZZFLEXChainViewBatchModel (批量，添加)
+@class ZZFLEXChainViewBatchModel;
+@interface ZZFLEXChainViewBatchModel : ZZFLEXChainViewBatchBaseModel<ZZFLEXChainViewBatchModel *>
 
 @end
 
-#pragma mark - ## ZZFLEXChainViewArrayInsertModel
-@class ZZFLEXChainViewArrayInsertModel;
-@interface ZZFLEXChainViewArrayInsertModel : ZZFLEXChainViewArrayBaseModel<ZZFLEXChainViewArrayInsertModel *>
+#pragma mark - ## ZZFLEXChainViewBatchInsertModel (批量，插入)
+@class ZZFLEXChainViewBatchInsertModel;
+@interface ZZFLEXChainViewBatchInsertModel : ZZFLEXChainViewBatchBaseModel<ZZFLEXChainViewBatchInsertModel *>
 
 /// 插入到指定Index
-- (ZZFLEXChainViewArrayInsertModel *(^)(NSInteger index))atIndex;
+- (ZZFLEXChainViewBatchInsertModel *(^)(NSInteger index))atIndex;
 
 /// 插入到某个cell前
-- (ZZFLEXChainViewArrayInsertModel *(^)(NSInteger sectionTag))beforeCell;
+- (ZZFLEXChainViewBatchInsertModel *(^)(NSInteger sectionTag))beforeCell;
 
 /// 插入到某个cell后
-- (ZZFLEXChainViewArrayInsertModel *(^)(NSInteger sectionTag))afterCell;
-
+- (ZZFLEXChainViewBatchInsertModel *(^)(NSInteger sectionTag))afterCell;
 
 @end

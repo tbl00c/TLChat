@@ -58,10 +58,21 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     [TLUIUtility hiddenLoading];
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    if (!CGRectEqualToRect(self.view.bounds, self.tableView.frame)) {
+        [self.tableView setFrame:self.view.bounds];
+        self.tableViewAngel.updateCells.all();
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - # Requests
 - (void)requestDataIfNeed
 {
-    if (self.tableViewAngel.dataModel.cellsModelArrayForSection(TLExpressionChosenSectionTypeChosen).count > 0) {
+    if (self.tableViewAngel.sectionForTag(TLExpressionChosenSectionTypeChosen).dataModelArray.count > 0) {
         return;
     }
     if (self.requestQueue.isRuning) {
@@ -95,9 +106,6 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     .tableFooterView([UIView new])
     .estimatedRowHeight(0).estimatedSectionFooterHeight(0).estimatedSectionHeaderHeight(0);
     [self.view addSubview:self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-    }];
     
     /// 初始化列表管理器
     self.tableViewAngel = [[TLExpressionChosenAngel alloc] initWithHostView:self.tableView];

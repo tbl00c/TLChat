@@ -9,10 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "ZZFLEXChainSectionModel.h"
 #import "ZZFLEXChainViewModel.h"
-#import "ZZFLEXChainViewArrayModel.h"
-#import "ZZFLEXChainCellEditModel.h"
-#import "ZZFLEXChainAllCellsEditModel.h"
-#import "ZZFLEXChainDataModel.h"
+#import "ZZFLEXChainViewBatchModel.h"
+#import "ZZFLEXChainViewEditModel.h"
 
 #define     ZZFLEX_CHAINAPI_TYPE            @property (nonatomic, copy, readonly)
 
@@ -71,7 +69,7 @@ ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewModel *(^setFooter)(NSString *className);
 /// 添加cell
 ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewModel *(^ addCell)(NSString *className);
 /// 批量添加cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewArrayModel *(^ addCells)(NSString *className);
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchModel *(^ addCells)(NSString *className);
 /// 添加空白cell
 ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewModel *(^ addSeperatorCell)(CGSize size, UIColor *color);
 
@@ -79,26 +77,28 @@ ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewModel *(^ addSeperatorCell)(CGSize size, UIC
 /// 插入cell
 ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewInsertModel *(^ insertCell)(NSString *className);
 /// 批量插入cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewArrayInsertModel *(^ insertCells)(NSString *className);
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchInsertModel *(^ insertCells)(NSString *className);
 
 
-/// 删除第一个符合条件的cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainCellEditModel *deleteCell;
+/// 删除符合条件的cell
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewEditModel *deleteCell;
 /// 删除所有符合条件的cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainAllCellsEditModel *deleteCells;
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchEditModel *deleteCells;
 
 
-/// 更新第一个符合条件的cell高度
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainCellEditModel *updateCell;
+/// 更新符合条件的cell高度
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewEditModel *updateCell;
 /// 更新所有符合条件的cell高度
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainAllCellsEditModel *updateCells;
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchEditModel *updateCells;
 
 
 /// 是否包含cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainCellEditModel *hasCell;
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewEditModel *hasCell;
 
-#pragma mark - # DataModel 数据源获取
-/// 数据源获取
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainDataModel *dataModel;
+
+/// cell数据源获取
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewEditModel *dataModel;
+/// 批量cell数据源获取
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchEditModel *dataModelArray;
 
 @end

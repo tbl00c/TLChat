@@ -23,7 +23,7 @@
     if (sectionModel.sectionTag == TLConversationSectionTagTopConversation
         || sectionModel.sectionTag == TLConversationSectionTagConv) {
         @weakify(self);
-        TLConversation *conversation = self.dataModel.cellModelByIndexPath(indexPath);
+        TLConversation *conversation = self.dataModel.atIndexPath(indexPath);
         UITableViewRowAction *delAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
                                                                              title:@"删除"
                                                                            handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
@@ -33,7 +33,7 @@
         UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
                                                                               title:conversation.isRead ? @"标为未读" : @"标为已读"
                                                                             handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                                                                                TLConversation *conversation = self.dataModel.cellModelByIndexPath(indexPath);
+                                                                                TLConversation *conversation = self.dataModel.atIndexPath(indexPath);
                                                                                 TLConversationCell *cell = [tableView cellForRowAtIndexPath:indexPath];
                                                                                 conversation.isRead ? [cell markAsUnread] : [cell markAsRead];
                                                                                 [tableView setEditing:NO animated:YES];
@@ -63,7 +63,7 @@
     }
     
     // 删除列表数据源
-    self.deleteCell.byModel(conversation);
+    self.deleteCell.byViewDataModel(conversation);
     // 删除列表cell
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     

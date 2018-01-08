@@ -52,4 +52,13 @@
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (!CGSizeEqualToSize(self.bounds.size, self.searchController.searchBar.frame.size)) {
+        [self.searchController.searchBar setSize:self.bounds.size];
+    }
+}
+
 @end

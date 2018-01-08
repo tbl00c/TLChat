@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-#pragma mark - ## ZZFLEXChainViewBaseModel (基类)
+#pragma mark - ## ZZFLEXChainViewBaseModel (单个，基类)
 typedef NS_ENUM(NSInteger, ZZFLEXChainViewType) {
     ZZFLEXChainViewTypeCell,
     ZZFLEXChainViewTypeHeader,
@@ -39,21 +39,19 @@ typedef NS_ENUM(NSInteger, ZZFLEXChainViewType) {
 /// cell tag
 - (ZZFLEXReturnType (^)(NSInteger viewTag))viewTag;
 
-#pragma mark - 框架内部使用
+/// 框架内部使用
 @property (nonatomic, assign, readonly) ZZFLEXChainViewType type;
 - (id)initWithListData:(NSMutableArray *)listData viewModel:(ZZFlexibleLayoutViewModel *)viewModel andType:(ZZFLEXChainViewType)type;
 
 @end
 
-
-#pragma mark - ## ZZFLEXChainViewModel （添加）
+#pragma mark - ## ZZFLEXChainViewModel （单个，添加）
 @class ZZFLEXChainViewModel;
 @interface ZZFLEXChainViewModel : ZZFLEXChainViewBaseModel <ZZFLEXChainViewModel *>
 
 @end
 
-
-#pragma mark - ## ZZFLEXChainViewInsertModel （插入）
+#pragma mark - ## ZZFLEXChainViewInsertModel （单个，插入）
 @class ZZFLEXChainViewInsertModel;
 @interface ZZFLEXChainViewInsertModel : ZZFLEXChainViewBaseModel <ZZFLEXChainViewInsertModel *>
 
@@ -66,7 +64,4 @@ typedef NS_ENUM(NSInteger, ZZFLEXChainViewType) {
 /// 插入到某个cell后
 - (ZZFLEXChainViewInsertModel *(^)(NSInteger sectionTag))afterCell;
 
-
 @end
-
-

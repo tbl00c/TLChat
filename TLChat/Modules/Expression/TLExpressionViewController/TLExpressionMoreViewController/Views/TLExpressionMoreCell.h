@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TLExpressionGroupModel.h"
 
-#define     WIDTH_EXPRESSION_MORE_CELL          (SCREEN_WIDTH * 0.28 - BORDER_WIDTH_1PX)
+#define     WIDTH_EXPRESSION_MORE_CELL          MIN(((SCREEN_WIDTH - 15 * 4) / 3 - 1), 115)
 
 @interface TLExpressionMoreCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 

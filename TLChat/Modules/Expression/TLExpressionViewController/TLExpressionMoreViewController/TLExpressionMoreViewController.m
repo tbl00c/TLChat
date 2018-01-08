@@ -8,7 +8,6 @@
 
 #import "TLExpressionMoreViewController.h"
 #import "TLExpressionDetailViewController.h"
-#import "TLExpressionMoreCell.h"
 #import "TLExpressionGroupModel+MoreRequest.h"
 
 typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
@@ -28,9 +27,6 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
 {
     [super loadView];
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
-    [self.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-    }];
     
     @weakify(self);
     // 搜索
@@ -42,9 +38,18 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
     });
     
     // 表情
-    NSInteger col = SCREEN_WIDTH / (WIDTH_EXPRESSION_MORE_CELL + 10);
-    CGFloat edge = (SCREEN_WIDTH - col * WIDTH_EXPRESSION_MORE_CELL) / (col + 1);
-    self.addSection(TLExpressionMoreSectionTypeExprs).backgrounColor([UIColor whiteColor]).sectionInsets(UIEdgeInsetsMake(15, edge, 0, edge));
+    self.addSection(TLExpressionMoreSectionTypeExprs).backgrounColor([UIColor whiteColor]).sectionInsets(UIEdgeInsetsMake(15, 15, 0, 15)).minimumInteritemSpacing(15);
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    if (!CGRectEqualToRect(self.collectionView.frame, self.view.bounds)) {
+        [self.collectionView setFrame:self.view.bounds];
+        self.updateCells.all();
+        [self.collectionView reloadData];
+    }
 }
 
 - (void)requestDataIfNeed

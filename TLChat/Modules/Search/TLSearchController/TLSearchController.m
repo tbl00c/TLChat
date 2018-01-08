@@ -36,7 +36,7 @@
         
         // searchBar
         [self.searchBar setPlaceholder:LOCSTR(@"搜索")];
-//        [self.searchBar setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SEARCHBAR_HEIGHT)];
+        [self.searchBar setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SEARCHBAR_HEIGHT)];
         [self.searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorGrayBG]]];
         [self.searchBar setBarTintColor:[UIColor colorGrayBG]];
         [self.searchBar setTintColor:[UIColor colorGreenDefault]];

@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ZZFLEXChainSectionModel.h"
 #import "ZZFLEXChainViewModel.h"
-#import "ZZFLEXChainViewArrayModel.h"
-#import "ZZFLEXChainCellEditModel.h"
-#import "ZZFLEXChainAllCellsEditModel.h"
-#import "ZZFLEXChainDataModel.h"
+#import "ZZFLEXChainViewBatchModel.h"
+#import "ZZFLEXChainViewEditModel.h"
 
 /**
  *  动态布局页面框架类 3.0
@@ -135,35 +133,37 @@ ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewModel *(^setFooter)(NSString *className);
 ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewModel *(^ addCell)(NSString *className);
 
 /// 批量添加cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewArrayModel *(^ addCells)(NSString *className);
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchModel *(^ addCells)(NSString *className);
 
 /// 插入cell
 ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewInsertModel *(^ insertCell)(NSString *className);
 
 /// 批量插入cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewArrayInsertModel *(^ insertCells)(NSString *className);
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchInsertModel *(^ insertCells)(NSString *className);
 
 /// 添加空白cell
 ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewModel *(^ addSeperatorCell)(CGSize size, UIColor *color);
 
 /// 删除第一个符合条件的cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainCellEditModel *deleteCell;
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewEditModel *deleteCell;
 
 /// 删除所有符合条件的cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainAllCellsEditModel *deleteCells;
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchEditModel *deleteCells;
 
 /// 更新第一个符合条件的cell高度
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainCellEditModel *updateCell;
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewEditModel *updateCell;
 
 /// 更新所有符合条件的cell高度
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainAllCellsEditModel *updateCells;
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchEditModel *updateCells;
 
 /// 是否包含cell
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainCellEditModel *hasCell;
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewEditModel *hasCell;
 
 #pragma mark - # DataModel 数据源获取
 /// 数据源获取
-ZZFLEX_CHAINAPI_TYPE ZZFLEXChainDataModel *dataModel;
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewEditModel *dataModel;
+/// 批量数据源获取
+ZZFLEX_CHAINAPI_TYPE ZZFLEXChainViewBatchEditModel *dataModelArray;
 
 @end
 

@@ -13,7 +13,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"隐私"];
+    [self.navigationItem setTitle:LOCSTR(@"隐私")];
     
     [self p_initPrivacySettingData];
 }

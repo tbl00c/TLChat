@@ -7,11 +7,26 @@
 //
 
 #import "TLGroupViewController.h"
-#import "TLGroupViewController+Delegate.h"
+#import "TLGroupSearchResultViewController.h"
 #import "TLSearchController.h"
 #import "TLFriendHelper.h"
+#import "TLLaunchManager.h"
+#import "TLChatViewController.h"
+#import "TLGroup+ChatModel.h"
+#import "TLGroupItemCell.h"
 
-@interface TLGroupViewController () <UISearchBarDelegate>
+typedef NS_ENUM(NSInteger, TLGroupVCSectionType) {
+    TLGroupVCSectionTypeItems,
+};
+
+@interface TLGroupViewController ()
+
+/// 总群数
+@property (nonatomic, strong) UILabel *footerLabel;
+
+@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) ZZFLEXAngel *tableViewAngel;
 
 @property (nonatomic, strong) TLSearchController *searchController;
 
@@ -19,35 +34,84 @@
 
 @implementation TLGroupViewController
 
+- (void)loadView
+{
+    [super loadView];
+    [self setTitle:LOCSTR(@"群聊")];
+    
+    self.tableView = self.view.addTableView(1)
+    .backgroundColor([UIColor colorGrayBG]).separatorStyle(UITableViewCellSeparatorStyleNone)
+    .tableFooterView(self.footerLabel)
+    .masonry(^ (MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    })
+    .view;;
+    
+    self.tableViewAngel = [[ZZFLEXAngel alloc] initWithHostView:self.tableView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"群聊"];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    [self.tableView setTableHeaderView:self.searchController.searchBar];
-    
-    [self registerCellClass];
-    
-    self.data = [TLFriendHelper sharedFriendHelper].groupsData;
+
+    NSArray *data = [TLFriendHelper sharedFriendHelper].groupsData;
+    [self loadListUIWithData:data];
 }
 
-#pragma mark - Getter -
+#pragma mark - # UI
+- (void)loadListUIWithData:(NSArray *)data
+{
+    @weakify(self);
+    self.tableViewAngel.clear();
+    if (data.count == 0) {
+        [self.tableView setTableHeaderView:nil];
+        [self.tableView showEmptyViewWithTitle:@"你可通过群聊中的“保存到通讯录”选项，将其保存在这里"];
+    }
+    else {
+        [self.tableView setTableHeaderView:self.searchController.searchBar];
+        [self.footerLabel setText:[NSString stringWithFormat:@"%ld%@", data.count, LOCSTR(@"个群聊")]];
+        self.tableViewAngel.addSection(TLGroupVCSectionTypeItems);
+        self.tableViewAngel.addCells(@"TLGroupItemCell").toSection(TLGroupVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (TLGroup *group) {
+            @strongify(self);
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            TLChatViewController *chatVC = [[TLChatViewController alloc] initWithGroupId:group.groupID];
+            UINavigationController *navC = [TLLaunchManager sharedInstance].tabBarController.childViewControllers[0];
+            [[TLLaunchManager sharedInstance].tabBarController setSelectedIndex:0];
+            [chatVC setHidesBottomBarWhenPushed:YES];
+            [navC pushViewController:chatVC animated:YES];
+        });
+    }
+    [self.tableView reloadData];
+}
+
+#pragma mark - # Getters
 - (TLSearchController *)searchController
 {
     if (_searchController == nil) {
-        _searchController = [[TLSearchController alloc] initWithSearchResultsController:self.searchVC];
-        [_searchController setSearchResultsUpdater:self.searchVC];
-        [_searchController.searchBar setDelegate:self];
+        @weakify(self);
+        TLGroupSearchResultViewController *searchResultVC = [[TLGroupSearchResultViewController alloc] initWithJumpAction:^(__kindof UIViewController *vc) {
+            @strongify(self);
+            [self.searchController setActive:NO];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            UINavigationController *navC = [TLLaunchManager sharedInstance].tabBarController.childViewControllers[0];
+            [[TLLaunchManager sharedInstance].tabBarController setSelectedIndex:0];
+            [vc setHidesBottomBarWhenPushed:YES];
+            [navC pushViewController:vc animated:YES];
+        }];
+        _searchController = [TLSearchController createWithResultsContrller:searchResultVC];
     }
     return _searchController;
 }
 
-- (TLGroupSearchViewController *)searchVC
+- (UILabel *)footerLabel
 {
-    if (_searchVC == nil) {
-        _searchVC = [[TLGroupSearchViewController alloc] init];
+    if (_footerLabel == nil) {
+        _footerLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50.0f)];
+        [_footerLabel setTextAlignment:NSTextAlignmentCenter];
+        [_footerLabel setFont:[UIFont systemFontOfSize:17.0f]];
+        [_footerLabel setTextColor:[UIColor grayColor]];
     }
-    return _searchVC;
+    return _footerLabel;
 }
 
 @end

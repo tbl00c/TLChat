@@ -76,13 +76,13 @@
     }
     [self.shownameLabel setText:userModel.showName];
     if (userModel.username.length > 0) {
-        [self.usernameLabel setText:[@"微信号：" stringByAppendingString:userModel.username]];
+        [self.usernameLabel setText:[NSString stringWithFormat:@"%@：%@", LOCSTR(@"微信号"), userModel.username]];
         if (userModel.nikeName.length > 0) {
-            [self.nikenameLabel setText:[@"昵称：" stringByAppendingString:userModel.nikeName]];
+            [self.nikenameLabel setText:[NSString stringWithFormat:@"%@：%@", LOCSTR(@"昵称"), userModel.nikeName]];
         }
     }
     else if (userModel.nikeName.length > 0){
-        [self.nikenameLabel setText:[@"昵称：" stringByAppendingString:userModel.nikeName]];
+        [self.nikenameLabel setText:[NSString stringWithFormat:@"%@：%@", LOCSTR(@"昵称"), userModel.nikeName]];
     }
 }
 

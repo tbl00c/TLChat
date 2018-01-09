@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"关于微信"];
+    [self.navigationItem setTitle:LOCSTR(@"关于微信")];
     
     [self p_initAboutData];
     

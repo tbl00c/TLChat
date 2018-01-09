@@ -7,12 +7,12 @@
 //
 
 #import "TLViewController.h"
-#import "TLSearchControllerProtocol.h"
+#import "TLSearchResultControllerProtocol.h"
 
 #define     HEIGHT_FRIEND_CELL      54.0f
 
 @class TLUser;
-@interface TLContactsSearchResultViewController : TLViewController <TLSearchControllerProtocol>
+@interface TLContactsSearchResultViewController : TLViewController <TLSearchResultControllerProtocol>
 
 @property (nonatomic, copy) void (^itemSelectedAction)(TLContactsSearchResultViewController *searchVC, TLUser *userModel);
 

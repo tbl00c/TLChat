@@ -14,7 +14,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"账号与安全"];
+    [self.navigationItem setTitle:LOCSTR(@"账号与安全")];
 
     [self p_initAccountAndSafetyData];
 }

@@ -7,13 +7,15 @@
 //
 
 #import "TLContactsAngel.h"
+#import <ZZFlexibleLayoutFramework/ZZFLEXAngel+Private.h>
+#import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutSectionModel.h>
 #import "TLUserGroup.h"
 #import "TLContactsItemCell.h"
 
 #import "TLNewFriendViewController.h"
 #import "TLGroupViewController.h"
 #import "TLTagsViewController.h"
-#import "TLServiceAccountViewController.h"
+#import "TLOfficialAccountViewController.h"
 #import "TLUserDetailViewController.h"
 
 @interface TLContactsAngel ()
@@ -35,6 +37,8 @@
 
 - (void)resetListWithContactsData:(NSArray *)contactsData sectionHeaders:(NSArray *)sectionHeaders
 {
+    self.sectionHeaders = sectionHeaders;
+    
     @weakify(self);
     self.clear();
     
@@ -44,7 +48,7 @@
         TLContactsItemModel *newModel = createContactsItemModelWithTag(TLContactsVCCellTypeNew, @"friends_new", nil, LOCSTR(@"新的朋友"), nil, nil);
         TLContactsItemModel *groupModel = createContactsItemModelWithTag(TLContactsVCCellTypeGroup, @"friends_group", nil, LOCSTR(@"群聊"), nil, nil);
         TLContactsItemModel *tagModel = createContactsItemModelWithTag(TLContactsVCCellTypeTag, @"friends_tag", nil, LOCSTR(@"标签"), nil, nil);
-        TLContactsItemModel *publicModel = createContactsItemModelWithTag(TLContactsVCCellTypePublic, @"friends_public", nil, LOCSTR(@"公共号"), nil, nil);
+        TLContactsItemModel *publicModel = createContactsItemModelWithTag(TLContactsVCCellTypePublic, @"friends_public", nil, LOCSTR(@"公众号"), nil, nil);
         NSArray *funcationData = @[newModel, groupModel, tagModel, publicModel];
         self.addCells(NSStringFromClass([TLContactsItemCell class])).toSection(TLContactsVCSectionTypeFuncation).withDataModelArray(funcationData).selectedAction(^ (TLContactsItemModel *model) {
             @strongify(self);
@@ -61,7 +65,7 @@
                 [self tryPushVC:tagsVC];
             }
             else if (model.tag == TLContactsVCCellTypePublic) {
-                TLServiceAccountViewController *publicServerVC = [[TLServiceAccountViewController alloc] init];
+                TLOfficialAccountViewController *publicServerVC = [[TLOfficialAccountViewController alloc] init];
                 [self tryPushVC:publicServerVC];
             }
         });
@@ -115,6 +119,25 @@
         return -1;
     }
     return index;
+}
+
+// 备注
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
+    if (sectionModel.sectionTag != TLContactsVCSectionTypeFuncation && sectionModel.sectionTag != TLContactsVCSectionTypeEnterprise) {
+        @weakify(self);
+        TLContactsItemModel *itemModel = self.dataModel.atIndexPath(indexPath);
+        UITableViewRowAction *remarkAction;
+        remarkAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
+                                                          title:@"备注"
+                                                        handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                                                            @strongify(self);
+                                                            [TLUIUtility showSuccessHint:@"备注：暂未实现"];
+                                                        }];
+        return @[remarkAction];
+    }
+    return @[];
 }
 
 @end

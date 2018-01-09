@@ -11,7 +11,7 @@
 #import "TLSearchController.h"
 #import "TLContactsSearchResultViewController.h"
 #import "TLUserDetailViewController.h"
-#import "TLAddFriendViewController.h"
+#import "TLAddContactsViewController.h"
 #import "TLFriendHelper.h"
 
 @interface TLContactsViewController ()
@@ -64,7 +64,7 @@
     @weakify(self);
     [self addRightBarButtonWithImage:TLImage(@"nav_add_friend") actionBlick:^{
         @strongify(self);
-        TLAddFriendViewController *addFriendVC = [[TLAddFriendViewController alloc] init];
+        TLAddContactsViewController *addFriendVC = [[TLAddContactsViewController alloc] init];
         PushVC(addFriendVC);
     }];
     
@@ -88,14 +88,14 @@
 - (void)p_startMonitorContactsData
 {
     [self.listAngel resetListWithContactsData:[TLFriendHelper sharedFriendHelper].data sectionHeaders:[TLFriendHelper sharedFriendHelper].sectionHeaders];
-    [self.footerLabel setText:[NSString stringWithFormat:@"%ld位联系人", (long)[TLFriendHelper sharedFriendHelper].friendCount]];
+    [self.footerLabel setText:[NSString stringWithFormat:@"%ld%@", (long)[TLFriendHelper sharedFriendHelper].friendCount, LOCSTR(@"位联系人")]];
     [self.tableView reloadData];
     
     @weakify(self);
     [[TLFriendHelper sharedFriendHelper] setDataChangedBlock:^(NSMutableArray *data, NSMutableArray *headers, NSInteger friendCount) {
         @strongify(self);
         [self.listAngel resetListWithContactsData:[TLFriendHelper sharedFriendHelper].data sectionHeaders:[TLFriendHelper sharedFriendHelper].sectionHeaders];
-        [self.footerLabel setText:[NSString stringWithFormat:@"%ld位联系人", (long)friendCount]];
+        [self.footerLabel setText:[NSString stringWithFormat:@"%ld%@", (long)friendCount, LOCSTR(@"位联系人")]];
         [self.tableView reloadData];
     }];
 }

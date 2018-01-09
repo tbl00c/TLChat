@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"字体大小"];
+    [self.navigationItem setTitle:LOCSTR(@"字体大小")];
     
     [self.view addSubview:self.messageDisplayView];
     [self.view addSubview:self.chatFontSettingView];

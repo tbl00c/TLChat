@@ -62,7 +62,17 @@
     [self setTt_tipView:tipView];
     [self set__tt_tipview_userData:userData];
     [self set__tt_tipview_retryAction:retryAction];
-    [tipView setFrame:self.bounds];
+    if (CGRectEqualToRect(tipView.frame, CGRectZero)) {
+        if (!CGRectEqualToRect(self.bounds, CGRectZero)) {
+            [tipView setFrame:self.bounds];
+        }
+        else {
+            CGRect rect = [UIScreen mainScreen].bounds;
+            rect.size.height -= [UIApplication sharedApplication].statusBarFrame.size.height - 44;
+            [tipView setFrame:rect];
+        }
+    }
+    
     [self addSubview:tipView];
     
     if (retryAction) {

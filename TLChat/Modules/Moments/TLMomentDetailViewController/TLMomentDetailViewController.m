@@ -23,7 +23,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        [self.navigationItem setTitle:@"详情"];
+        [self.navigationItem setTitle:LOCSTR(@"详情")];
         [self.view setBackgroundColor:[UIColor whiteColor]];
         [self.view addSubview:self.scrollView];
         [self.scrollView addSubview:self.momentView];

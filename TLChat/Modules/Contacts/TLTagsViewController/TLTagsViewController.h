@@ -6,10 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewController.h"
+#import "TLViewController.h"
 
-@interface TLTagsViewController : TLTableViewController
+@interface TLTagsViewController : TLViewController
 
-@property (nonatomic, strong) NSMutableArray *data;
 
 @end

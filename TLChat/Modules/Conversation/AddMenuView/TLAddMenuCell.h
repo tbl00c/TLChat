@@ -6,10 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewCell.h"
+#import <UIKit/UIKit.h>
 #import "TLAddMenuItem.h"
 
-@interface TLAddMenuCell : TLTableViewCell
+@interface TLAddMenuCell : UITableViewCell
 
 @property (nonatomic, strong) TLAddMenuItem *item;
 

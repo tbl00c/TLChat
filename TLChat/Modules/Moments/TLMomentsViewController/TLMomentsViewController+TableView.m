@@ -19,7 +19,7 @@
 {
     [tableView registerClass:[TLMomentHeaderCell class] forCellReuseIdentifier:@"TLMomentHeaderCell"];
     [tableView registerClass:[TLMomentImagesCell class] forCellReuseIdentifier:@"TLMomentImagesCell"];
-    [tableView registerClass:[TLTableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
 #pragma mark - # Delegate

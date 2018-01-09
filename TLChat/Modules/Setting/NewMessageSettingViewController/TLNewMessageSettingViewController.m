@@ -13,7 +13,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"新消息通知"];
+    [self.navigationItem setTitle:LOCSTR(@"新消息通知")];
 
     [self p_initNewMessageSettingData];
 }

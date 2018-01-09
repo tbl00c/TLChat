@@ -24,7 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"选择背景图"];
+    [self.navigationItem setTitle:LOCSTR(@"选择背景图")];
     [self.collectionView setBackgroundColor:[UIColor colorBlackBG]];
     [self.view addSubview:self.collectionView];
     

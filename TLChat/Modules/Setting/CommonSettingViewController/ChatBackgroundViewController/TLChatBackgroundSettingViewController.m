@@ -22,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"聊天背景"];
+    [self.navigationItem setTitle:LOCSTR(@"聊天背景")];
     
     [self p_initChatBackgroundSettingData];
 }

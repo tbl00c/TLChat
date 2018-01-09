@@ -26,16 +26,16 @@
 {
     switch (type) {
         case TLAddMneuTypeGroupChat:        // 群聊
-            return [TLAddMenuItem createWithType:TLAddMneuTypeGroupChat title:@"发起群聊" iconPath:@"nav_menu_groupchat" className:@""];
+            return [TLAddMenuItem createWithType:TLAddMneuTypeGroupChat title:LOCSTR(@"发起群聊") iconPath:@"nav_menu_groupchat" className:@""];
             break;
         case TLAddMneuTypeAddFriend:        // 添加好友
-            return [TLAddMenuItem createWithType:TLAddMneuTypeAddFriend title:@"添加朋友" iconPath:@"nav_menu_addfriend" className:@"TLAddFriendViewController"];
+            return [TLAddMenuItem createWithType:TLAddMneuTypeAddFriend title:LOCSTR(@"添加朋友") iconPath:@"nav_menu_addfriend" className:@"TLAddContactsViewController"];
             break;
         case TLAddMneuTypeWallet:           // 收付款
-            return [TLAddMenuItem createWithType:TLAddMneuTypeWallet title:@"收付款" iconPath:@"nav_menu_wallet" className:@"TLWalletViewController"];
+            return [TLAddMenuItem createWithType:TLAddMneuTypeWallet title:LOCSTR(@"收付款") iconPath:@"nav_menu_wallet" className:@"TLWalletViewController"];
             break;
         case TLAddMneuTypeScan:             // 扫一扫
-            return [TLAddMenuItem createWithType:TLAddMneuTypeScan title:@"扫一扫" iconPath:@"nav_menu_scan" className:@"TLScanningViewController"];
+            return [TLAddMenuItem createWithType:TLAddMneuTypeScan title:LOCSTR(@"扫一扫") iconPath:@"nav_menu_scan" className:@"TLScanningViewController"];
             break;
         default:
             break;

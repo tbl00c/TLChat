@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"朋友圈"];
+    [self.navigationItem setTitle:LOCSTR(@"朋友圈")];
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 60.0f)]];
     

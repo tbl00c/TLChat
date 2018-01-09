@@ -21,7 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"通用"];
+    [self.navigationItem setTitle:LOCSTR(@"通用")];
     
     [self p_initCommonSettingData];
 }

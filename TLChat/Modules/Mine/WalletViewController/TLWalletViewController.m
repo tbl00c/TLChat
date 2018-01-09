@@ -22,7 +22,7 @@
 - (void)loadView
 {
     [super loadView];
-    [self setTitle:@"钱包"];
+    [self setTitle:LOCSTR(@"钱包")];
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     [scrollView setContentSize:CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT - NAVBAR_HEIGHT - STATUSBAR_HEIGHT + 0.5)];

@@ -15,7 +15,7 @@
     UIStatusBarStyle lastBarStyle;
 }
 
-+ (TLSearchController *)createWithResultsContrller:(UIViewController<TLSearchControllerProtocol> *)resultVC
++ (TLSearchController *)createWithResultsContrller:(UIViewController<TLSearchResultControllerProtocol> *)resultVC
 {
     if (!resultVC) {
         return nil;
@@ -25,7 +25,7 @@
     return searchController;
 }
 
-- (id)initWithSearchResultsController:(UIViewController<TLSearchControllerProtocol>  *)searchResultsController
+- (id)initWithSearchResultsController:(UIViewController<TLSearchResultControllerProtocol>  *)searchResultsController
 {
     if (self = [super initWithSearchResultsController:searchResultsController]) {
         [self setDelegate:searchResultsController];

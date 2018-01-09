@@ -17,7 +17,7 @@
     [self setShowLoadingProgress:NO];
     [self setDisableBackButton:YES];
     
-    [self.navigationItem setTitle:@"游戏"];
+    [self.navigationItem setTitle:LOCSTR(@"游戏")];
     [self setUrl:@"http://m.le890.com"];
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];

@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorBlackBG]];
-    [self.navigationItem setTitle:@"我的二维码"];
+    [self.navigationItem setTitle:LOCSTR(@"我的二维码")];
     
     [self.view addSubview:self.qrCodeVC.view];
     [self addChildViewController:self.qrCodeVC];

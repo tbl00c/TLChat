@@ -14,7 +14,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"摇一摇设置"];
+    [self.navigationItem setTitle:LOCSTR(@"摇一摇设置")];
     
     [self p_initShakeSettingData];
 }

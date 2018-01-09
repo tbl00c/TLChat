@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"聊天详情"];
+    [self.navigationItem setTitle:LOCSTR(@"聊天详情")];
     
     self.helper = [[TLChatDetailHelper alloc] init];
     self.data = [self.helper chatDetailDataByGroupInfo:self.group];

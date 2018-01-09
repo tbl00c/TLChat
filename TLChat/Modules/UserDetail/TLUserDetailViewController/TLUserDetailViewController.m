@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
 - (void)loadView
 {
     [super loadView];
-    [self setTitle:@"详细资料"];
+    [self setTitle:LOCSTR(@"详细资料")];
     [self.collectionView setBackgroundColor:[UIColor colorGrayBG]];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
@@ -80,40 +80,40 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
     self.addSection(TLUserDetailVCSectionTypeCustom).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
     // 电话号码
     if (userModel.detailInfo.phoneNumber.length > 0) {
-        TLUserDetailKVModel *model = createUserDetailKVModel(@"电话号码", userModel.detailInfo.phoneNumber);
+        TLUserDetailKVModel *model = createUserDetailKVModel(LOCSTR(@"电话号码"), userModel.detailInfo.phoneNumber);
         model.hiddenArrow = YES;
         self.addCell(@"TLUserDetailPhoneKVCell").toSection(TLUserDetailVCSectionTypeCustom).withDataModel(model);
     }
     // 备注及标签
     if (userModel.detailInfo.tags.count == 0) {
-        self.addCell(@"TLUserDetailTitleCell").toSection(TLUserDetailVCSectionTypeCustom).withDataModel(@"设置备注和标签");
+        self.addCell(@"TLUserDetailTitleCell").toSection(TLUserDetailVCSectionTypeCustom).withDataModel(LOCSTR(@"设置备注和标签"));
     }
     else {
         NSString *tags = [userModel.detailInfo.tags componentsJoinedByString:@","];
-        self.addCell(@"TLUserDetailTagsKVCell").toSection(TLUserDetailVCSectionTypeCustom).withDataModel(createUserDetailKVModel(@"标签", tags));
+        self.addCell(@"TLUserDetailTagsKVCell").toSection(TLUserDetailVCSectionTypeCustom).withDataModel(createUserDetailKVModel(LOCSTR(@"标签"), tags));
     }
     
     // 详细信息
     self.addSection(TLUserDetailVCSectionTypeDetailInfo).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
     // 地区
     if (userModel.detailInfo.location.length > 0) {
-        TLUserDetailKVModel *model = createUserDetailKVModel(@"地区", userModel.detailInfo.location);
+        TLUserDetailKVModel *model = createUserDetailKVModel(LOCSTR(@"地区"), userModel.detailInfo.location);
         model.selectable = NO;
         model.hiddenArrow = YES;
         self.addCell(@"TLUserDetailNormalKVCell").toSection(TLUserDetailVCSectionTypeDetailInfo).withDataModel(model);
     }
     // 相册
     if (userModel.detailInfo.albumArray.count > 0) {
-        TLUserDetailKVModel *model = createUserDetailKVModel(@"个人相册", userModel.detailInfo.albumArray);
+        TLUserDetailKVModel *model = createUserDetailKVModel(LOCSTR(@"个人相册"), userModel.detailInfo.albumArray);
         self.addCell(@"TLUserDetailAlbumCell").toSection(TLUserDetailVCSectionTypeDetailInfo).withDataModel(model);
     }
     // 其他
-    self.addCell(@"TLUserDetailTitleCell").toSection(TLUserDetailVCSectionTypeDetailInfo).withDataModel(@"更多");
+    self.addCell(@"TLUserDetailTitleCell").toSection(TLUserDetailVCSectionTypeDetailInfo).withDataModel(LOCSTR(@"更多"));
     
     // 功能
-    self.addSection(TLUserDetailVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+    self.addSection(TLUserDetailVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 20, 0));
     // 发消息
-    self.addCell(@"TLUserDetailChatButtonCell").toSection(TLUserDetailVCSectionTypeFunction).withDataModel(@"发消息").eventAction(^ id(NSInteger eventType, id data) {
+    self.addCell(@"TLUserDetailChatButtonCell").toSection(TLUserDetailVCSectionTypeFunction).withDataModel(LOCSTR(@"发消息")).eventAction(^ id(NSInteger eventType, id data) {
         @strongify(self);
         TLChatViewController *chatVC = [[TLChatViewController alloc] initWithUserId:self.userModel.userID];
         
@@ -131,8 +131,9 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
     });
     // 语音聊天
     if (![userModel.userID isEqualToString:[TLUserHelper sharedHelper].userID]) {
-        self.addCell(@"TLUserDetailViewChatButtonCell").toSection(TLUserDetailVCSectionTypeFunction).withDataModel(@"视频聊天").eventAction(^ id(NSInteger eventType, id data) {
+        self.addCell(@"TLUserDetailViewChatButtonCell").toSection(TLUserDetailVCSectionTypeFunction).withDataModel(LOCSTR(@"视频聊天")).eventAction(^ id(NSInteger eventType, id data) {
             @strongify(self);
+            [TLUIUtility showInfoHint:@"暂未实现"];
             return nil;
         });
     }

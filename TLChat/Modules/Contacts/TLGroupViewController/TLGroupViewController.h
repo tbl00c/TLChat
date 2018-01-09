@@ -6,13 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewController.h"
-#import "TLGroupSearchViewController.h"
+#import "TLViewController.h"
 
-@interface TLGroupViewController : TLTableViewController
+@interface TLGroupViewController : TLViewController
 
-@property (nonatomic, strong) NSMutableArray *data;
-
-@property (nonatomic, strong) TLGroupSearchViewController *searchVC;
 
 @end

@@ -10,7 +10,7 @@
 
 @interface TLAddMenuCell()
 
-@property (nonatomic, strong) UIImageView *iconImageView;
+@property (nonatomic, strong) UIImageView *iconView;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
@@ -21,58 +21,49 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.rightSeparatorSpace = 16;
         [self setBackgroundColor:[UIColor colorBlackForAddMenu]];
         UIView *selectedView = [[UIView alloc] init];
         [selectedView setBackgroundColor:[UIColor colorBlackForAddMenuHL]];
         [self setSelectedBackgroundView:selectedView];
-        
-        [self.contentView addSubview:self.iconImageView];
-        [self.contentView addSubview:self.titleLabel];
-
-        [self p_addMasonry];
+    
+        [self p_initUI];
     }
     return self;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.addSeparator(TLSeparatorPositionBottom).beginAt(15).endAt(-15).color([UIColor colorGrayLine]);
 }
 
 - (void)setItem:(TLAddMenuItem *)item
 {
     _item = item;
-    [self.iconImageView setImage:[UIImage imageNamed:item.iconPath]];
+    [self.iconView setImage:[UIImage imageNamed:item.iconPath]];
     [self.titleLabel setText:item.title];
 }
 
-#pragma mark - Private Methods -
-- (void)p_addMasonry
+#pragma mark - Private Methods
+- (void)p_initUI
 {
-    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.iconView = self.contentView.addImageView(1)
+    .masonry(^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self).mas_offset(15.0f);
         make.centerY.mas_equalTo(self);
         make.height.and.width.mas_equalTo(32);
-    }];
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.iconImageView.mas_right).mas_offset(10.0f);
-        make.centerY.mas_equalTo(self.iconImageView);
-    }];
-}
-
-#pragma mark - Getter
-- (UIImageView *)iconImageView
-{
-    if (_iconImageView == nil) {
-        _iconImageView = [[UIImageView alloc] init];
-    }
-    return _iconImageView;
-}
-
-- (UILabel *)titleLabel
-{
-    if (_titleLabel == nil) {
-        _titleLabel = [[UILabel alloc] init];
-        [_titleLabel setTextColor:[UIColor whiteColor]];
-        [_titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
-    }
-    return _titleLabel;
+    })
+    .view;
+    
+    self.titleLabel = self.contentView.addLabel(2)
+    .font([UIFont systemFontOfSize:16.0f])
+    .textColor([UIColor whiteColor])
+    .masonry(^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.iconView.mas_right).mas_offset(10.0f);
+        make.centerY.mas_equalTo(self.iconView);
+    })
+    .view;
 }
 
 @end

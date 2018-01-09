@@ -84,7 +84,7 @@
 {
     if (_delButton == nil) {
         _delButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-        [_delButton setTitle:@"移除" forState:UIControlStateNormal];
+        [_delButton setTitle:LOCSTR(@"移除") forState:UIControlStateNormal];
         [_delButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [_delButton setBackgroundColor:[UIColor colorGrayBG]];
         [_delButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorGrayLine]] forState:UIControlStateHighlighted];

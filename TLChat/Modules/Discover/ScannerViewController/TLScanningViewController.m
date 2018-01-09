@@ -92,19 +92,19 @@
     if (sender.type == TLScannerTypeQR) {
         [self.navigationItem setRightBarButtonItem:self.albumBarButton];
         [self.myQRButton setHidden:NO];
-        [self.navigationItem  setTitle:@"二维码/条码"];
+        [self.navigationItem setTitle:LOCSTR(@"二维码/条码")];
     }
     else {
         [self.navigationItem setRightBarButtonItem:nil];
         [self.myQRButton setHidden:YES];
         if (sender.type == TLScannerTypeCover) {
-            [self.navigationItem setTitle:@"封面"];
+            [self.navigationItem setTitle:LOCSTR(@"封面")];
         }
         else if (sender.type == TLScannerTypeStreet) {
-            [self.navigationItem setTitle:@"街景"];
+            [self.navigationItem setTitle:LOCSTR(@"街景")];
         }
         else if (sender.type == TLScannerTypeTranslate) {
-            [self.navigationItem setTitle:@"翻译"];
+            [self.navigationItem setTitle:LOCSTR(@"翻译")];
         }
     }
     [self.scanVC setScannerType:sender.type];
@@ -271,7 +271,7 @@
 {
     if (_myQRButton == nil) {
         _myQRButton = [[UIButton alloc] init];
-        [_myQRButton setTitle:@"我的二维码" forState:UIControlStateNormal];
+        [_myQRButton setTitle:LOCSTR(@"我的二维码") forState:UIControlStateNormal];
         [_myQRButton.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
         [_myQRButton setTitleColor:[UIColor colorGreenDefault] forState:UIControlStateNormal];
         [_myQRButton addTarget:self action:@selector(myQRButtonDown) forControlEvents:UIControlEventTouchUpInside];

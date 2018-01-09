@@ -24,7 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"设置"];
+    [self.navigationItem setTitle:LOCSTR(@"设置")];
     
     [self p_initMineSettingData];
 }

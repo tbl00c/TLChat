@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"聊天文件"];
+    [self.navigationItem setTitle:LOCSTR(@"聊天文件")];
     [self.view setBackgroundColor:[UIColor colorBlackBG]];
     
     [self.view addSubview:self.collectionView];

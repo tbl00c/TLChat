@@ -250,7 +250,7 @@
 {
     if (!_cancelButton) {
         _cancelButton = [[UIButton alloc] init];
-        [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+        [_cancelButton setTitle:LOCSTR(@"取消") forState:UIControlStateNormal];
         [_cancelButton setTitleColor:[UIColor colorGreenDefault] forState:UIControlStateNormal];
         [_cancelButton.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
         [_cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -263,7 +263,7 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         [_titleLabel setFont:[UIFont systemFontOfSize:28.0]];
-        [_titleLabel setText:@"通过手机号注册"];
+        [_titleLabel setText:LOCSTR(@"通过手机号注册")];
     }
     return _titleLabel;
 }
@@ -273,7 +273,7 @@
     if (!_originTitleLabel) {
         _originTitleLabel = [[UILabel alloc] init];
         [_originTitleLabel setFont:[UIFont systemFontOfSize:17.0f]];
-        [_originTitleLabel setText:@"国家/地区"];
+        [_originTitleLabel setText:LOCSTR(@"国家/地区")];
     }
     return _originTitleLabel;
 }
@@ -299,7 +299,7 @@
 {
     if (!_phoneNumberTextField) {
         _phoneNumberTextField = [[UITextField alloc] init];
-        [_phoneNumberTextField setPlaceholder:@"请填写手机号码"];
+        [_phoneNumberTextField setPlaceholder:LOCSTR(@"请填写手机号码")];
         [_phoneNumberTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [_phoneNumberTextField setKeyboardType:UIKeyboardTypePhonePad];
     }
@@ -310,7 +310,7 @@
 {
     if (!_passwordTitleLabel) {
         _passwordTitleLabel = [[UILabel alloc] init];
-        [_passwordTitleLabel setText:@"密码"];
+        [_passwordTitleLabel setText:LOCSTR(@"密码")];
     }
     return _passwordTitleLabel;
 }
@@ -318,7 +318,7 @@
 {
     if (!_passwordTextField) {
         _passwordTextField = [[UITextField alloc] init];
-        [_passwordTextField setPlaceholder:@"请填写密码"];
+        [_passwordTextField setPlaceholder:LOCSTR(@"请填写密码")];
         [_passwordTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [_passwordTextField setSecureTextEntry:YES];
     }
@@ -329,7 +329,7 @@
 {
     if (!_repeatPasswordTitleLabel) {
         _repeatPasswordTitleLabel = [[UILabel alloc] init];
-        [_repeatPasswordTitleLabel setText:@"确认密码"];
+        [_repeatPasswordTitleLabel setText:LOCSTR(@"确认密码")];
     }
     return _repeatPasswordTitleLabel;
 }
@@ -337,7 +337,7 @@
 {
     if (!_repeatPasswordTextField) {
         _repeatPasswordTextField = [[UITextField alloc] init];
-        [_repeatPasswordTextField setPlaceholder:@"请再填写一次密码"];
+        [_repeatPasswordTextField setPlaceholder:LOCSTR(@"请再填写一次密码")];
         [_repeatPasswordTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [_repeatPasswordTextField setSecureTextEntry:YES];
     }
@@ -353,7 +353,7 @@
         [button.layer setBorderWidth:BORDER_WIDTH_1PX];
         [button.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
         [button setBackgroundColor:[UIColor colorGreenDefault]];
-        [button setTitle:@"注册" forState:UIControlStateNormal];
+        [button setTitle:LOCSTR(@"注册") forState:UIControlStateNormal];
         [button addTarget:self action:@selector(registerButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     }
     return _registerButton;

@@ -23,6 +23,7 @@
 {
     self.groupName = [decoder decodeObjectForKey:@"name"];
     self.users = [decoder decodeObjectForKey:@"users"];
+    self.tag = [decoder decodeIntegerForKey:@"tag"];
     return self;
 }
 
@@ -30,6 +31,7 @@
 {
     [encoder encodeObject:self.groupName forKey:@"name"];
     [encoder encodeObject:self.users forKey:@"users"];
+    [encoder encodeInteger:self.tag forKey:@"tag"];
 }
 
 - (NSMutableArray *) users

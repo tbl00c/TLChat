@@ -7,9 +7,9 @@
 //
 
 #import "TLViewController.h"
-#import "TLSearchControllerProtocol.h"
+#import "TLSearchResultControllerProtocol.h"
 
-@interface TLExpressionSearchResultViewController : TLViewController <TLSearchControllerProtocol>
+@interface TLExpressionSearchResultViewController : TLViewController <TLSearchResultControllerProtocol>
 
 @property (nonatomic, copy) void (^itemClickAction)(TLExpressionSearchResultViewController *searchController, id data);
 

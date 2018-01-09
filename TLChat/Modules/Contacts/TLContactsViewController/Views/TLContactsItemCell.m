@@ -26,9 +26,6 @@ TLContactsItemModel *createContactsItemModelWithTag(NSInteger tag, NSString *pat
 }
 
 @interface TLContactsItemCell ()
-{
-    BOOL showSeperator;
-}
 
 @property (nonatomic, strong) UIImageView *avatarView;
 
@@ -52,8 +49,12 @@ TLContactsItemModel *createContactsItemModelWithTag(NSInteger tag, NSString *pat
 
 - (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
-    showSeperator = indexPath.row < count - 1;
-    [self setNeedsDisplay];
+    if (indexPath.row == count - 1) {
+        self.removeSeparator(TLSeparatorPositionBottom);
+    }
+    else {
+        self.addSeparator(TLSeparatorPositionBottom).beginAt(10);
+    }
 }
 
 #pragma mark - # Cell
@@ -63,18 +64,6 @@ TLContactsItemModel *createContactsItemModelWithTag(NSInteger tag, NSString *pat
         [self p_initUI];
     }
     return self;
-}
-
-- (void)drawRect:(CGRect)rect
-{
-    [super drawRect:rect];
-    
-    if (showSeperator) {
-        self.addSeparator(TLSeparatorPositionBottom).beginAt(10);
-    }
-    else {
-        self.removeSeparator(TLSeparatorPositionBottom);
-    }
 }
 
 - (void)setModel:(TLContactsItemModel *)model

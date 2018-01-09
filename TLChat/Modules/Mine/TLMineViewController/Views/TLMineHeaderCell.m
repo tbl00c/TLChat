@@ -82,7 +82,7 @@
         [self.avatarImageView tt_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     [self.nikenameLabel setText:user.nikeName];
-    [self.wechatIDLabel setText:user.username ? [LOCSTR(@"微信号：") stringByAppendingString:user.username] : @""];
+    [self.wechatIDLabel setText:user.username ? [NSString stringWithFormat:@"%@：%@", LOCSTR(@"微信号"), user.username] : @""];
 }
 
 #pragma mark - # Private Methods

@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"资料设置"];
+    [self.navigationItem setTitle:LOCSTR(@"资料设置")];
     
     self.data = [[TLFriendHelper sharedFriendHelper] friendDetailSettingArrayByUserInfo:self.userModel];
 }

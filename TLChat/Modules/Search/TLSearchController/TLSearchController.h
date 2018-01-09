@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLSearchControllerProtocol.h"
+#import "TLSearchResultControllerProtocol.h"
 
 @interface TLSearchController : UISearchController
 
 @property (nonatomic, assign) BOOL enableVoiceInput;
 
-+ (TLSearchController *)createWithResultsContrller:(UIViewController<TLSearchControllerProtocol> *)resultVC;
++ (TLSearchController *)createWithResultsContrller:(UIViewController<TLSearchResultControllerProtocol> *)resultVC;
 
 @end

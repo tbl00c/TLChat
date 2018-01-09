@@ -13,7 +13,8 @@
 
 - (void)showEmptyViewWithTitle:(NSString *)title
 {
-    UILabel *label = [[UILabel alloc] initWithFrame:self.bounds];
+    CGRect rect = CGRectEqualToRect(self.bounds, CGRectZero) ? CGRectMake(15, 0, SCREEN_WIDTH - 30, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT) : self.bounds;
+    UILabel *label = [[UILabel alloc] initWithFrame:rect];
     [label setNumberOfLines:0];
     [label setFont:[UIFont systemFontOfSize:16]];
     [label setTextColor:[UIColor grayColor]];
@@ -34,12 +35,12 @@
 
 - (void)showErrorViewWithTitle:(NSString *)title userData:(id)userData retryAction:(void (^)(id userData))retryAction
 {
-    UILabel *label = [[UILabel alloc] initWithFrame:self.bounds];
+    CGRect rect = CGRectEqualToRect(self.bounds, CGRectZero) ? CGRectMake(15, 0, SCREEN_WIDTH - 30, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT) : self.bounds;
+    UILabel *label = [[UILabel alloc] initWithFrame:rect];
     [label setNumberOfLines:0];
     [label setFont:[UIFont systemFontOfSize:16]];
     [label setTextColor:[UIColor grayColor]];
     [label setTextAlignment:NSTextAlignmentCenter];
-    [self showTipView:(label ? label : @"没有请求到相应数据") retryAction:nil];
     [self showTipView:label userData:userData retryAction:retryAction];
 }
 

@@ -6,10 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewCell.h"
+#import <UIKit/UIKit.h>
 #import "TLMomentComment.h"
 
-@interface TLMomentExtensionCommentCell : TLTableViewCell
+@interface TLMomentExtensionCommentCell : UITableViewCell
 
 @property (nonatomic, strong) TLMomentComment *comment;
 

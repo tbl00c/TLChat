@@ -8,11 +8,12 @@
 
 #import "TLContactsViewController.h"
 #import "TLContactsAngel.h"
+#import "TLFriendHelper.h"
+
 #import "TLSearchController.h"
 #import "TLContactsSearchResultViewController.h"
 #import "TLUserDetailViewController.h"
 #import "TLAddContactsViewController.h"
-#import "TLFriendHelper.h"
 
 @interface TLContactsViewController ()
 

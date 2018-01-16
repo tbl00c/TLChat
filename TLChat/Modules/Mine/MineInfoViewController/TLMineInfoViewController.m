@@ -11,7 +11,6 @@
 #import "TLMyQRCodeViewController.h"
 #import "TLUserHelper.h"
 
-
 @implementation TLMineInfoViewController
 
 - (void)viewDidLoad {

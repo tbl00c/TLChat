@@ -6,10 +6,8 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewController.h"
+#import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutFramework.h>
 
-@interface TLMomentsViewController : TLTableViewController
-
-@property (nonatomic, strong) NSMutableArray *data;
+@interface TLMomentsViewController : ZZFlexibleLayoutViewController
 
 @end

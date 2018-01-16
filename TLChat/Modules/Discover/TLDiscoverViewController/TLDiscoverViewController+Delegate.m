@@ -14,8 +14,6 @@
 #import "TLGameViewController.h"
 #import "TLGameViewController.h"
 
-#import "TLMenuItem.h"
-
 @implementation TLDiscoverViewController (Delegate)
 
 - (void)collectionViewDidSelectItem:(TLMenuItem *)dataModel sectionTag:(NSInteger)sectionTag cellTag:(NSInteger)cellTag className:(NSString *)className indexPath:(NSIndexPath *)indexPath

@@ -21,7 +21,6 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setBackgroundColor:[UIColor clearColor]];
-        [self setBottomLineStyle:TLCellLineStyleNone];
         [self.contentView addSubview:self.label];
         [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self.contentView).mas_offset(UIEdgeInsetsMake(2, 8, 2, 8));

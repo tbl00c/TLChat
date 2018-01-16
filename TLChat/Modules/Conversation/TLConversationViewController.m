@@ -9,20 +9,15 @@
 #import "TLConversationViewController.h"
 #import "TLConversationAngel.h"
 #import "TLNetworkStatusManager.h"
-
 #import "TLMessageManager+ConversationRecord.h"
-#import "TLContactsSearchResultViewController.h"
-#import "TLSearchController.h"
-#import "TLUserDetailViewController.h"
-
-#import "TLChatViewController+Conversation.h"
+#import "TLConversation+TLUser.h"
+#import "TLFriendHelper.h"
 #import "TLAddMenuView.h"
 
-#import "TLMessageManager+ConversationRecord.h"
-
-#import "TLConversation+TLUser.h"
-#import "TLConversationCell.h"
-#import "TLFriendHelper.h"
+#import "TLSearchController.h"
+#import "TLContactsSearchResultViewController.h"
+#import "TLChatViewController+Conversation.h"
+#import "TLUserDetailViewController.h"
 
 @interface TLConversationViewController () <TLMessageManagerConvVCDelegate>
 {

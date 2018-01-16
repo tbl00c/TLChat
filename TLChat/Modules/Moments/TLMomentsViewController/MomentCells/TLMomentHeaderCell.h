@@ -6,10 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewCell.h"
+#import <UIKit/UIKit.h>
 #import "TLUser.h"
 
-@interface TLMomentHeaderCell : TLTableViewCell
+@interface TLMomentHeaderCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 
 @property (nonatomic, strong) TLUser *user;
 

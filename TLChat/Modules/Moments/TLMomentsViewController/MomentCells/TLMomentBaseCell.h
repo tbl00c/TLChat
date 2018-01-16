@@ -6,11 +6,11 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewCell.h"
+#import <UIKit/UIKit.h>
 #import "TLMoment.h"
 #import "TLMomentViewDelegate.h"
 
-@interface TLMomentBaseCell : TLTableViewCell
+@interface TLMomentBaseCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 
 @property (nonatomic, assign) id<TLMomentViewDelegate> delegate;
 

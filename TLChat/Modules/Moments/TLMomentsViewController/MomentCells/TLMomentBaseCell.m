@@ -10,13 +10,37 @@
 
 @implementation TLMomentBaseCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+#pragma mark - # Protocol
++ (CGSize)viewSizeByDataModel:(TLMoment *)dataModel
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setBottomLineStyle:TLCellLineStyleFill];
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    CGFloat height = dataModel.momentFrame.height;
+    return CGSizeMake(SCREEN_WIDTH, height);
+}
+
+- (void)setViewDataModel:(id)dataModel
+{
+    [self setMoment:dataModel];
+}
+
+- (void)setViewDelegate:(id)delegate
+{
+    self.delegate = delegate;
+}
+
+#pragma mark - # Protocol
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        [self setBackgroundColor:[UIColor whiteColor]];
     }
     return self;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.addSeparator(TLSeparatorPositionBottom);
 }
 
 @end

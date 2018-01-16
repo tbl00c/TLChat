@@ -6,9 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLTableViewCell.h"
+#import <UIKit/UIKit.h>
 
-@interface TLMomentExtensionLikedCell : TLTableViewCell
+@interface TLMomentExtensionLikedCell : UITableViewCell
 
 @property (nonatomic, assign) BOOL showBottomLine;
 

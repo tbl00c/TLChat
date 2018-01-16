@@ -8,7 +8,6 @@
 
 #import "TLDiscoverViewController.h"
 #import "TLDiscoverViewController+Delegate.h"
-#import "TLMenuItem.h"
 
 #define     NAME_DISCOVER_MENU_CELL         @"TLMenuItemCell"
 

@@ -11,7 +11,6 @@
 #import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutSectionModel.h>
 #import "TLConversation.h"
 #import "TLMessageManager+ConversationRecord.h"
-
 #import "TLConversationCell.h"
 
 @implementation TLConversationAngel

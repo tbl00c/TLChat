@@ -7,28 +7,101 @@
 //
 
 #import "TLMomentsViewController.h"
-#import "TLMomentsViewController+TableView.h"
-#import "TLMomentsViewController+Proxy.h"
+#import "TLMomentViewDelegate.h"
+#import "TLMomentDetailViewController.h"
+#import <MWPhotoBrowser/MWPhotoBrowser.h>
+#import "TLMomentHeaderCell.h"
+#import "TLMomentImagesCell.h"
+#import "TLUserHelper.h"
+#import "TLMomentsProxy.h"
+
+typedef NS_ENUM(NSInteger, TLMomentsVCSectionType) {
+    TLMomentsVCSectionTypeHeader,
+    TLMomentsVCSectionTypeItems,
+};
+
+typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
+    TLMomentsVCNewDataPositionHead,
+    TLMomentsVCNewDataPositionTail,
+};
+
 
 @interface TLMomentsViewController ()
+
+@property (nonatomic, assign) NSInteger pageIndex;
 
 @end
 
 @implementation TLMomentsViewController
 
+- (void)loadView
+{
+    [super loadView];
+    [self setTitle:LOCSTR(@"朋友圈")];
+    
+    [self loadUI];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:LOCSTR(@"朋友圈")];
-    [self.tableView setBackgroundColor:[UIColor whiteColor]];
-    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 60.0f)]];
-    
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_camera"] style:UIBarButtonItemStylePlain actionBlick:^{
-        
+
+    [self requestDataWithPageIndex:0];
+}
+
+#pragma mark - # Request
+- (void)requestDataWithPageIndex:(NSInteger)pageIndex
+{
+    TLMomentsProxy *proxy = [[TLMomentsProxy alloc] init];
+    NSArray *data = [NSMutableArray arrayWithArray:proxy.testData];
+    [self addMomentsData:data postion:TLMomentsVCNewDataPositionTail];
+}
+
+#pragma mark - # UI
+- (void)loadUI
+{
+    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
     }];
-    [self.navigationItem setRightBarButtonItem:rightBarButton];
     
-    [self registerCellForTableView:self.tableView];
-    [self loadData];
+    @weakify(self);
+    [self addRightBarButtonWithImage:TLImage(@"nav_camera") actionBlick:^{
+        @strongify(self);
+    }];
+    
+    // 头图
+    self.addSection(TLMomentsVCSectionTypeHeader);
+    TLUser *user = [TLUserHelper sharedHelper].user;
+    self.addCell(@"TLMomentHeaderCell").toSection(TLMomentsVCSectionTypeHeader).withDataModel(user);
+    
+    // 列表
+    self.addSection(TLMomentsVCSectionTypeItems);
+}
+
+- (void)addMomentsData:(NSArray *)momentsData postion:(TLMomentsVCNewDataPosition)position
+{
+    if (position == TLMomentsVCSectionTypeHeader) {
+        self.insertCells(@"TLMomentImagesCell").atIndex(0).toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
+    }
+    else {
+        self.addCells(@"TLMomentImagesCell").toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
+    }
+}
+
+#pragma mark - # Delegate
+//MARK: TLMomentViewDelegate
+- (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index
+{
+    NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:images.count];
+    for (NSString *imageUrl in images) {
+        MWPhoto *photo = [MWPhoto photoWithURL:TLURL(imageUrl)];
+        [data addObject:photo];
+    }
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];
+    [browser setDisplayNavArrows:YES];
+    [browser setCurrentPhotoIndex:index];
+    UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
+    [self presentViewController:broserNavC animated:NO completion:nil];
 }
 
 @end

@@ -92,8 +92,6 @@
 		C292D3321F7A4B9B007EB0A6 /* TLMomentBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D3151F7A4B58007EB0A6 /* TLMomentBaseView.m */; };
 		C292D3331F7A4B9E007EB0A6 /* TLMomentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D3171F7A4B58007EB0A6 /* TLMomentImageView.m */; };
 		C292D3341F7A4BA8007EB0A6 /* TLMomentsProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D31B1F7A4B58007EB0A6 /* TLMomentsProxy.m */; };
-		C292D3351F7A4BAB007EB0A6 /* TLMomentsViewController+Proxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D31D1F7A4B58007EB0A6 /* TLMomentsViewController+Proxy.m */; };
-		C292D3361F7A4BAD007EB0A6 /* TLMomentsViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D31F1F7A4B58007EB0A6 /* TLMomentsViewController+TableView.m */; };
 		C292D3371F7A4BAF007EB0A6 /* TLMomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D3211F7A4B58007EB0A6 /* TLMomentsViewController.m */; };
 		C292D3701F7A54BC007EB0A6 /* NSHTTPURLResponse+TLNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D33B1F7A54AB007EB0A6 /* NSHTTPURLResponse+TLNetwork.m */; };
 		C292D3711F7A54C0007EB0A6 /* NSMutableURLRequest+TLNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D33D1F7A54AB007EB0A6 /* NSMutableURLRequest+TLNetwork.m */; };
@@ -147,8 +145,6 @@
 		C2D7C8F01F72464A00648CED /* TLSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8D41F72464A00648CED /* TLSettingViewController.m */; };
 		C2D7C8F11F72464A00648CED /* TLSettingFooterTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8D71F72464A00648CED /* TLSettingFooterTitleView.m */; };
 		C2D7C8F21F72464A00648CED /* TLSettingHeaderTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8D91F72464A00648CED /* TLSettingHeaderTitleView.m */; };
-		C2D7C8F31F72464A00648CED /* TLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8DC1F72464A00648CED /* TLTableViewCell.m */; };
-		C2D7C8F41F72464A00648CED /* TLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8DF1F72464A00648CED /* TLTableViewController.m */; };
 		C2D7C8F51F72464A00648CED /* TLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8E21F72464A00648CED /* TLViewController.m */; };
 		C2D7C90C1F7246CC00648CED /* NSDate+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8F91F7246CC00648CED /* NSDate+TLChat.m */; };
 		C2D7C90D1F7246CC00648CED /* NSFileManager+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C8FB1F7246CC00648CED /* NSFileManager+TLChat.m */; };
@@ -494,10 +490,6 @@
 		C292D3181F7A4B58007EB0A6 /* TLMomentViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMomentViewDelegate.h; sourceTree = "<group>"; };
 		C292D31A1F7A4B58007EB0A6 /* TLMomentsProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMomentsProxy.h; sourceTree = "<group>"; };
 		C292D31B1F7A4B58007EB0A6 /* TLMomentsProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMomentsProxy.m; sourceTree = "<group>"; };
-		C292D31C1F7A4B58007EB0A6 /* TLMomentsViewController+Proxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLMomentsViewController+Proxy.h"; sourceTree = "<group>"; };
-		C292D31D1F7A4B58007EB0A6 /* TLMomentsViewController+Proxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TLMomentsViewController+Proxy.m"; sourceTree = "<group>"; };
-		C292D31E1F7A4B58007EB0A6 /* TLMomentsViewController+TableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLMomentsViewController+TableView.h"; sourceTree = "<group>"; };
-		C292D31F1F7A4B58007EB0A6 /* TLMomentsViewController+TableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TLMomentsViewController+TableView.m"; sourceTree = "<group>"; };
 		C292D3201F7A4B58007EB0A6 /* TLMomentsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMomentsViewController.h; sourceTree = "<group>"; };
 		C292D3211F7A4B58007EB0A6 /* TLMomentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMomentsViewController.m; sourceTree = "<group>"; };
 		C292D33A1F7A54AB007EB0A6 /* NSHTTPURLResponse+TLNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+TLNetwork.h"; sourceTree = "<group>"; };
@@ -622,10 +614,6 @@
 		C2D7C8D71F72464A00648CED /* TLSettingFooterTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingFooterTitleView.m; sourceTree = "<group>"; };
 		C2D7C8D81F72464A00648CED /* TLSettingHeaderTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLSettingHeaderTitleView.h; sourceTree = "<group>"; };
 		C2D7C8D91F72464A00648CED /* TLSettingHeaderTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLSettingHeaderTitleView.m; sourceTree = "<group>"; };
-		C2D7C8DB1F72464A00648CED /* TLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTableViewCell.h; sourceTree = "<group>"; };
-		C2D7C8DC1F72464A00648CED /* TLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTableViewCell.m; sourceTree = "<group>"; };
-		C2D7C8DE1F72464A00648CED /* TLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTableViewController.h; sourceTree = "<group>"; };
-		C2D7C8DF1F72464A00648CED /* TLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTableViewController.m; sourceTree = "<group>"; };
 		C2D7C8E11F72464A00648CED /* TLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLViewController.h; sourceTree = "<group>"; };
 		C2D7C8E21F72464A00648CED /* TLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLViewController.m; sourceTree = "<group>"; };
 		C2D7C8F81F7246CC00648CED /* NSDate+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TLChat.h"; sourceTree = "<group>"; };
@@ -1421,10 +1409,6 @@
 				C292D2FA1F7A4B58007EB0A6 /* MomentCells */,
 				C292D3011F7A4B58007EB0A6 /* MomentViews */,
 				C292D3191F7A4B58007EB0A6 /* Proxys */,
-				C292D31C1F7A4B58007EB0A6 /* TLMomentsViewController+Proxy.h */,
-				C292D31D1F7A4B58007EB0A6 /* TLMomentsViewController+Proxy.m */,
-				C292D31E1F7A4B58007EB0A6 /* TLMomentsViewController+TableView.h */,
-				C292D31F1F7A4B58007EB0A6 /* TLMomentsViewController+TableView.m */,
 				C292D3201F7A4B58007EB0A6 /* TLMomentsViewController.h */,
 				C292D3211F7A4B58007EB0A6 /* TLMomentsViewController.m */,
 			);
@@ -1919,8 +1903,6 @@
 			isa = PBXGroup;
 			children = (
 				C2D7C8C61F72464A00648CED /* TLSettingViewController */,
-				C2D7C8DA1F72464A00648CED /* TLTableViewCell */,
-				C2D7C8DD1F72464A00648CED /* TLTableViewController */,
 				C2D7C8E01F72464A00648CED /* TLViewController */,
 			);
 			path = Base;
@@ -1971,24 +1953,6 @@
 				C2D7C8D91F72464A00648CED /* TLSettingHeaderTitleView.m */,
 			);
 			path = TLSettingViews;
-			sourceTree = "<group>";
-		};
-		C2D7C8DA1F72464A00648CED /* TLTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7C8DB1F72464A00648CED /* TLTableViewCell.h */,
-				C2D7C8DC1F72464A00648CED /* TLTableViewCell.m */,
-			);
-			path = TLTableViewCell;
-			sourceTree = "<group>";
-		};
-		C2D7C8DD1F72464A00648CED /* TLTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7C8DE1F72464A00648CED /* TLTableViewController.h */,
-				C2D7C8DF1F72464A00648CED /* TLTableViewController.m */,
-			);
-			path = TLTableViewController;
 			sourceTree = "<group>";
 		};
 		C2D7C8E01F72464A00648CED /* TLViewController */ = {
@@ -3435,7 +3399,6 @@
 				C249DB852003AC4300702FA4 /* TLGroupViewController.m in Sources */,
 				C2D7CBBB1F72470500648CED /* TLAboutHeaderView.m in Sources */,
 				C2D7CB721F72470400648CED /* TLScannerButton.m in Sources */,
-				C292D3361F7A4BAD007EB0A6 /* TLMomentsViewController+TableView.m in Sources */,
 				C29C6A94200494DD0058ED75 /* TLUserDetailViewController.m in Sources */,
 				C249DBBD2003AE5800702FA4 /* TLExpressionSearchResultViewController.m in Sources */,
 				C2D7CC211F726D4900648CED /* TLUserChatSetting.m in Sources */,
@@ -3453,7 +3416,6 @@
 				C249DB472003AA3F00702FA4 /* TLContactsSearchResultViewController.m in Sources */,
 				C29C6A90200494DD0058ED75 /* TLUserDetailBaseKVCell.m in Sources */,
 				C29C6A93200494DD0058ED75 /* TLUserDetailTagsKVCell.m in Sources */,
-				C2D7C8F41F72464A00648CED /* TLTableViewController.m in Sources */,
 				C2D7CBFF1F7267F000648CED /* TLChatDetailHelper.m in Sources */,
 				C2D7CB5C1F72470400648CED /* TLBottleViewController.m in Sources */,
 				C2D7CB761F72470400648CED /* TLShakeSettingViewController.m in Sources */,
@@ -3519,7 +3481,6 @@
 				C2D7CBC01F72470500648CED /* TLChatBackgroundSelectViewController+Proxy.m in Sources */,
 				C2D7CBC61F72470500648CED /* TLHelpAndFeedbackViewController.m in Sources */,
 				C2D7CBB91F72470500648CED /* TLWalletViewController.m in Sources */,
-				C292D3351F7A4BAB007EB0A6 /* TLMomentsViewController+Proxy.m in Sources */,
 				C292D3281F7A4B75007EB0A6 /* TLMomentHeaderCell.m in Sources */,
 				C2040F3B1FFB57D600A334F8 /* TLExpressionGroupModel.m in Sources */,
 				C2D7CB741F72470400648CED /* TLScannerViewController.m in Sources */,
@@ -3674,7 +3635,6 @@
 				C284AEAA1FF25D9F00075E59 /* TLConversationAngel.m in Sources */,
 				C29C6A8C200494DD0058ED75 /* TLUserDetailChatButtonCell.m in Sources */,
 				C2D7CB231F72470400648CED /* TLChatCellMenuView.m in Sources */,
-				C2D7C8F31F72464A00648CED /* TLTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3768,7 +3728,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3807,7 +3767,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3872,7 +3832,7 @@
 					"-Wno-ambiguous-macro",
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3937,7 +3897,7 @@
 					"-Wno-ambiguous-macro",
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -44,14 +44,15 @@
     [self.label setText:str];
 }
 
-- (void)setShowBottomLine:(BOOL)showBottomLine
+- (void)layoutSubviews
 {
-    _showBottomLine = showBottomLine;
-    if (showBottomLine) {
-        [self setBottomLineStyle:TLCellLineStyleFill];
+    [super layoutSubviews];
+    
+    if (self.showBottomLine) {
+        self.addSeparator(TLSeparatorPositionBottom);
     }
     else {
-        [self setBottomLineStyle:TLCellLineStyleNone];
+        self.removeSeparator(TLSeparatorPositionBottom);
     }
 }
 

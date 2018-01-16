@@ -25,11 +25,21 @@
 
 @implementation TLMomentHeaderCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+#pragma mark - # Protocol
++ (CGSize)viewSizeByDataModel:(id)dataModel
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setBottomLineStyle:TLCellLineStyleNone];
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    return CGSizeMake(SCREEN_WIDTH, 260.0f);
+}
+
+- (void)setViewDataModel:(id)dataModel
+{
+    [self setUser:dataModel];
+}
+
+#pragma mark - # Cell
+- (id)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
         [self.contentView addSubview:self.backgroundWall];
         [self.contentView addSubview:self.avatarView];
         [self.contentView addSubview:self.usernameLabel];

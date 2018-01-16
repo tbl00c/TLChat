@@ -8,15 +8,13 @@
 
 #import "TLLaunchManager.h"
 #import "TLLaunchManager+UserData.h"
-
-#import "TLAccountViewController.h"
+#import "TLUserHelper.h"
 
 #import "TLConversationViewController.h"
 #import "TLContactsViewController.h"
 #import "TLDiscoverViewController.h"
 #import "TLMineViewController.h"
-
-#import "TLUserHelper.h"
+#import "TLAccountViewController.h"
 
 @interface TLLaunchManager ()
 

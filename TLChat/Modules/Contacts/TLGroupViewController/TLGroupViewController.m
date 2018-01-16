@@ -13,7 +13,6 @@
 #import "TLLaunchManager.h"
 #import "TLChatViewController.h"
 #import "TLGroup+ChatModel.h"
-#import "TLGroupItemCell.h"
 
 typedef NS_ENUM(NSInteger, TLGroupVCSectionType) {
     TLGroupVCSectionTypeItems,

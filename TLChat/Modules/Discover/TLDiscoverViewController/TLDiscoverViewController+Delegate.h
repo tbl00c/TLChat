@@ -7,6 +7,7 @@
 //
 
 #import "TLDiscoverViewController.h"
+#import "TLMenuItem.h"
 
 typedef NS_ENUM(NSInteger, TLDiscoverSectionTag) {
     TLDiscoverSectionTagMoments,

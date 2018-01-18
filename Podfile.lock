@@ -131,7 +131,7 @@ PODS:
     - TLKit/TLCategories/UIKit/UIAlertView
     - TLKit/TLCategories/UIKit/UIWindow
   - TLKit/TLShortcut (0.0.19)
-  - TLTabBarController (0.0.4)
+  - TLTabBarController (0.0.5)
   - UMengAnalytics (3.6.6)
   - WCDB (1.0.5)
 
@@ -147,7 +147,7 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.7)
   - TLKit (from `git@github.com:tbl00c/TLKit.git`, tag `0.0.19`)
-  - TLTabBarController (from `git@github.com:tbl00c/TLTabBarController.git`, tag `0.0.4`)
+  - TLTabBarController (from `git@github.com:tbl00c/TLTabBarController.git`, tag `0.0.5`)
   - UMengAnalytics (~> 3.6.6)
   - WCDB (~> 1.0.5)
 
@@ -160,7 +160,7 @@ EXTERNAL SOURCES:
     :tag: 0.0.19
   TLTabBarController:
     :git: git@github.com:tbl00c/TLTabBarController.git
-    :tag: 0.0.4
+    :tag: 0.0.5
 
 CHECKOUT OPTIONS:
   JZNavigationExtension:
@@ -171,7 +171,7 @@ CHECKOUT OPTIONS:
     :tag: 0.0.19
   TLTabBarController:
     :git: git@github.com:tbl00c/TLTabBarController.git
-    :tag: 0.0.4
+    :tag: 0.0.5
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -188,10 +188,10 @@ SPEC CHECKSUMS:
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   TLKit: 76fabb8e3ec4380fc8cf0690ab9523e5d5b2396e
-  TLTabBarController: 9f5b4f9edb270d2fd000a7aa5a7f0349fc812e7c
+  TLTabBarController: 07df5809fc66467ca6cd3d3973c68362c2d0c1b9
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
   WCDB: 535e8d9b6513dd8cc647d9fdde84695a1fde290c
 
-PODFILE CHECKSUM: bb89770a58b3bcbf2f7e4c788336fbc13cd500c8
+PODFILE CHECKSUM: 857bda8b77fd310a26a455d87e2840987f475a21
 
 COCOAPODS: 1.2.1

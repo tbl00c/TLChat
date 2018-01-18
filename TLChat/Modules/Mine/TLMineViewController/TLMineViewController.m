@@ -24,6 +24,7 @@
 {
     if (self = [super init]) {
         initTabBarItem(self.tabBarItem, LOCSTR(@"我"), @"tabbar_me", @"tabbar_meHL");
+        [self.tabBarItem setBadgeValue:@""];
     }
     return self;
 }

@@ -1,6 +1,6 @@
 {
   "name": "TLTabBarController",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "platforms": {
     "ios": "8.0"
   },
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/tbl00c/TLTabBarController.git",
-    "tag": "0.0.4"
+    "tag": "0.0.5"
   },
   "requires_arc": true,
   "source_files": "TLTabBarController/**/*.{h,m}"

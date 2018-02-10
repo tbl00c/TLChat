@@ -40,6 +40,12 @@ ZZFLEX_CHAINAPI_TYPE BOOL (^clear)(void);
 /// 删除所有Cell
 ZZFLEX_CHAINAPI_TYPE BOOL (^clearAllCells)(void);
 
+/// 更新所有元素
+ZZFLEX_CHAINAPI_TYPE BOOL (^upadte)(void);
+
+/// 更新所有Cell
+ZZFLEX_CHAINAPI_TYPE BOOL (^upadteAllCells)(void);
+
 #pragma mark - # Section操作
 /// 添加section
 ZZFLEX_CHAINAPI_TYPE ZZFLEXChainSectionModel *(^addSection)(NSInteger tag);

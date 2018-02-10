@@ -29,9 +29,16 @@
     [self.mj_footer endRefreshing];
 }
 
-- (void)tt_endLoadMoreWithNoMoreData
+- (void)tt_showNoMoreFooter
 {
     [self.mj_footer endRefreshingWithNoMoreData];
+}
+
+- (void)tt_showNoMoreFooterWithTitle:(NSString *)title
+{
+    MJRefreshAutoNormalFooter *footer = (MJRefreshAutoNormalFooter *)self.mj_footer;
+    [footer setTitle:title forState:MJRefreshStateNoMoreData];
+    [self tt_showNoMoreFooter];
 }
 
 - (void)tt_removeLoadMoreFooter

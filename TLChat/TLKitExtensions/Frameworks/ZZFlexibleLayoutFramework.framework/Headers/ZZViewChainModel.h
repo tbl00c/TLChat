@@ -13,4 +13,4 @@
 
 @end
 
-ZZFLEX_EX_INTERFACE(UIView, ZZBaseViewChainModel)
+ZZFLEX_EX_INTERFACE(UIView, ZZViewChainModel)

@@ -19,6 +19,7 @@ ZZFLEX_CHAIN_PROPERTY ZZLabelChainModel *(^ attributedText)(NSAttributedString *
 ZZFLEX_CHAIN_PROPERTY ZZLabelChainModel *(^ textAlignment)(NSTextAlignment textAlignment);
 ZZFLEX_CHAIN_PROPERTY ZZLabelChainModel *(^ numberOfLines)(NSInteger numberOfLines);
 ZZFLEX_CHAIN_PROPERTY ZZLabelChainModel *(^ lineBreakMode)(NSLineBreakMode lineBreakMode);
+ZZFLEX_CHAIN_PROPERTY ZZLabelChainModel *(^ adjustsFontSizeToFitWidth)(BOOL adjustsFontSizeToFitWidth);
 
 @end
 

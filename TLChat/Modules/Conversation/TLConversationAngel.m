@@ -62,7 +62,7 @@
     }
     
     // 删除列表数据源
-    self.deleteCell.byViewDataModel(conversation);
+    self.deleteCell.byDataModel(conversation);
     // 删除列表cell
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     

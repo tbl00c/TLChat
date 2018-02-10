@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, ZZFLEXChainViewEditType) {
 - (id (^)(NSInteger viewTag))byViewTag;
 
 /// 根据数据源
-- (id (^)(id dataModel))byViewDataModel;
+- (id (^)(id dataModel))byDataModel;
 
 /// 根据类名
 - (id (^)(NSString *className))byViewClassName;
@@ -52,7 +52,7 @@ typedef NS_ENUM(NSInteger, ZZFLEXChainViewEditType) {
 - (NSArray *(^)(NSInteger viewTag))byViewTag;
 
 /// 根据数据源
-- (NSArray *(^)(id dataModel))byViewDataModel;
+- (NSArray *(^)(id dataModel))byDataModel;
 
 /// 根据类名
 - (NSArray *(^)(NSString *className))byViewClassName;

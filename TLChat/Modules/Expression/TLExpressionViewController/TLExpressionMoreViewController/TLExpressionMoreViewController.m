@@ -96,7 +96,7 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
             [self.collectionView tt_endLoadMore];
         }
         else {
-            [self.collectionView tt_endLoadMoreWithNoMoreData];
+            [self.collectionView tt_showNoMoreFooter];
         }
         [self reloadView];
     } failure:^(id failureData) {

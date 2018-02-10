@@ -227,7 +227,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
                 [self.tableView tt_endLoadMore];
             }
             else {
-                [self.tableView tt_endLoadMoreWithNoMoreData];
+                [self.tableView tt_showNoMoreFooter];
             }
         }
         else {
@@ -238,7 +238,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
                 }];
             }
             else {
-                [self.tableView tt_endLoadMoreWithNoMoreData];
+                [self.tableView tt_showNoMoreFooter];
             }
         }
         [self.tableView reloadData];

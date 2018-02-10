@@ -28,5 +28,5 @@ target :TLChat do
     pod 'ReactiveCocoa', '~> 2.5'
     pod 'CocoaLumberjack', '~> 3.3.0'
     pod 'MWPhotoBrowser', '~> 2.1.2'
-    pod 'WCDB', '~> 1.0.5'
+#    pod 'WCDB', '~> 1.0.5'
 end

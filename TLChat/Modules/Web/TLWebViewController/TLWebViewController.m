@@ -100,7 +100,7 @@
     CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
     CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
     CGFloat width = self.view.bounds.size.width;
-    [self.progressView setFrame:CGRectMake(0, statusBarHeight + navBarHeight, width, 2)];
+    [self.progressView setY:statusBarHeight + navBarHeight];
     [self.authLabel setFrame:CGRectMake(20, statusBarHeight + navBarHeight + 13, width - 40, self.authLabel.frame.size.height)];
 }
 
@@ -191,7 +191,12 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
     NSString *urlString = navigationAction.request.URL.absoluteString;
-    if ([urlString hasPrefix:@"itms-apps://itunes.apple.com"] || [urlString hasPrefix:@"https://itunes.apple.com"] || [urlString hasPrefix:@"itms-services:"]) {
+    if ([urlString hasPrefix:@"itms-apps://itunes.apple.com"]
+        || [urlString hasPrefix:@"https://itunes.apple.com"]
+        || [urlString hasPrefix:@"itms-services:"]
+        || [urlString hasPrefix:@"tel:"]
+        || [urlString hasPrefix:@"mailto:"]
+        || [urlString hasPrefix:@"mqqwpa:"]) {
         [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
         decisionHandler(WKNavigationActionPolicyCancel);
     }
@@ -291,8 +296,8 @@
 - (UIProgressView *)progressView
 {
     if (_progressView == nil) {
-        _progressView = [[UIProgressView alloc] init];
-        [_progressView setTransform: CGAffineTransformMakeScale(1.0f, 2.0f)];
+        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT + STATUSBAR_HEIGHT, SCREEN_WIDTH, 10.0f)];
+        [_progressView setTransform:CGAffineTransformMakeScale(1.0f, 2.0f)];
         [_progressView setProgressTintColor:RGBAColor(2.0, 187.0, 0.0, 1.0f)];
         [_progressView setTrackTintColor:[UIColor clearColor]];
         [_progressView setProgress:0];

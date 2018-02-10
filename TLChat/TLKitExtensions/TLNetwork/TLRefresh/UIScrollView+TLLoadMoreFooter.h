@@ -13,7 +13,8 @@
 - (void)tt_addLoadMoreFooterWithAction:(void (^)())loadMoreAction;
 - (void)tt_beginLoadMore;
 - (void)tt_endLoadMore;
-- (void)tt_endLoadMoreWithNoMoreData;
+- (void)tt_showNoMoreFooter;
+- (void)tt_showNoMoreFooterWithTitle:(NSString *)title;
 - (void)tt_removeLoadMoreFooter;
 
 @end

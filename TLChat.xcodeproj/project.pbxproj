@@ -14,8 +14,6 @@
 		C2097EE81C52326500163B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097EE71C52326500163B5C /* main.m */; };
 		C2097F011C52326500163B5C /* TLChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F001C52326500163B5C /* TLChatTests.m */; };
 		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
-		C23EE3CA1F738E590069885F /* ZZFlexibleLayoutFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */; };
-		C23EE3CC1F738F350069885F /* ZZFlexibleLayoutFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C23EE4701F7392540069885F /* TLExpressionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4471F7392540069885F /* TLExpressionDetailViewController.m */; };
 		C23EE4761F7392550069885F /* TLExpressionChosenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4571F7392540069885F /* TLExpressionChosenViewController.m */; };
 		C23EE47C1F7392550069885F /* TLExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EE4661F7392540069885F /* TLExpressionViewController.m */; };
@@ -324,7 +322,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C23EE3CC1F738F350069885F /* ZZFlexibleLayoutFramework.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,7 +349,6 @@
 		C2097F0B1C52326500163B5C /* TLChatUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLChatUITests.m; sourceTree = "<group>"; };
 		C2097F0D1C52326500163B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2142EC61C5326C30030B29B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZZFlexibleLayoutFramework.framework; sourceTree = "<group>"; };
 		C23EE4461F7392540069885F /* TLExpressionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionDetailViewController.h; sourceTree = "<group>"; };
 		C23EE4471F7392540069885F /* TLExpressionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionDetailViewController.m; sourceTree = "<group>"; };
 		C23EE4561F7392540069885F /* TLExpressionChosenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionChosenViewController.h; sourceTree = "<group>"; };
@@ -945,7 +941,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2AF1FAA1C6B78F600617D98 /* WebKit.framework in Frameworks */,
-				C23EE3CA1F738E590069885F /* ZZFlexibleLayoutFramework.framework in Frameworks */,
 				0E5E03D88FD9865BD7F63532 /* Pods_TLChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1067,7 +1062,6 @@
 			children = (
 				C284AEA61FF258D900075E59 /* ZZBaseViewChainModel+Fix.h */,
 				C284AEA51FF258D900075E59 /* ZZBaseViewChainModel+Fix.m */,
-				C23EE3C91F738E590069885F /* ZZFlexibleLayoutFramework.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";

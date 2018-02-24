@@ -6,7 +6,7 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutFramework.h>
+#import <ZZFLEX/ZZFlexibleLayoutFramework.h>
 
 @interface TLMomentsViewController : ZZFlexibleLayoutViewController
 

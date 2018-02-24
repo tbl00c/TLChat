@@ -6,7 +6,7 @@
 //  Copyright © 2017年 李伯坤. All rights reserved.
 //
 
-#import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutFramework.h>
+#import <ZZFLEX/ZZFlexibleLayoutFramework.h>
 
 typedef NS_ENUM(NSInteger, TLConversationSectionTag) {
     TLConversationSectionTagAlert,

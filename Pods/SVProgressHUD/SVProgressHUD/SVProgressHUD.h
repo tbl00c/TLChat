@@ -2,17 +2,11 @@
 //  SVProgressHUD.h
 //  SVProgressHUD, https://github.com/SVProgressHUD/SVProgressHUD
 //
-//  Copyright (c) 2011-2017 Sam Vermette and contributors. All rights reserved.
+//  Copyright (c) 2011-2018 Sam Vermette and contributors. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <AvailabilityMacros.h>
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < 70000
-
-#define UI_APPEARANCE_SELECTOR
-
-#endif
 
 extern NSString * _Nonnull const SVProgressHUDDidReceiveTouchEventNotification;
 extern NSString * _Nonnull const SVProgressHUDDidTouchDownInsideNotification;
@@ -63,6 +57,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 @property (strong, nonatomic, nonnull) UIColor *foregroundColor UI_APPEARANCE_SELECTOR;     // default is [UIColor blackColor]
 @property (strong, nonatomic, nonnull) UIColor *backgroundLayerColor UI_APPEARANCE_SELECTOR;// default is [UIColor colorWithWhite:0 alpha:0.4]
 @property (assign, nonatomic) CGSize imageViewSize UI_APPEARANCE_SELECTOR;                  // default is 28x28 pt
+@property (assign, nonatomic) BOOL shouldTintImages UI_APPEARANCE_SELECTOR;                 // default is YES
 @property (strong, nonatomic, nonnull) UIImage *infoImage UI_APPEARANCE_SELECTOR;           // default is the bundled info image provided by Freepik
 @property (strong, nonatomic, nonnull) UIImage *successImage UI_APPEARANCE_SELECTOR;        // default is the bundled success image provided by Freepik
 @property (strong, nonatomic, nonnull) UIImage *errorImage UI_APPEARANCE_SELECTOR;          // default is the bundled error image provided by Freepik
@@ -96,6 +91,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 + (void)setBackgroundColor:(nonnull UIColor*)color;                 // default is [UIColor whiteColor], only used for SVProgressHUDStyleCustom
 + (void)setBackgroundLayerColor:(nonnull UIColor*)color;            // default is [UIColor colorWithWhite:0 alpha:0.5], only used for SVProgressHUDMaskTypeCustom
 + (void)setImageViewSize:(CGSize)size;                              // default is 28x28 pt
++ (void)setShouldTintImages:(BOOL)shouldTintImages;                 // default is YES
 + (void)setInfoImage:(nonnull UIImage*)image;                       // default is the bundled info image provided by Freepik
 + (void)setSuccessImage:(nonnull UIImage*)image;                    // default is the bundled success image provided by Freepik
 + (void)setErrorImage:(nonnull UIImage*)image;                      // default is the bundled error image provided by Freepik

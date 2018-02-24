@@ -6,7 +6,7 @@
 //  Copyright © 2018年 李伯坤. All rights reserved.
 //
 
-#import <ZZFlexibleLayoutFramework/ZZFLEXAngel+UITableView.h>
+#import <ZZFLEX/ZZFLEXAngel+UITableView.h>
 
 @interface TLExpressionChosenAngel : ZZFLEXAngel <UITableViewDelegate>
 

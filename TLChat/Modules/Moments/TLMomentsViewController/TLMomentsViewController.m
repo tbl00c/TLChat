@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 - (void)addMomentsData:(NSArray *)momentsData postion:(TLMomentsVCNewDataPosition)position
 {
     if (position == TLMomentsVCSectionTypeHeader) {
-        self.insertCells(@"TLMomentImagesCell").atIndex(0).toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
+        self.insertCells(@"TLMomentImagesCell").toIndex(0).toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
     }
     else {
         self.addCells(@"TLMomentImagesCell").toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);

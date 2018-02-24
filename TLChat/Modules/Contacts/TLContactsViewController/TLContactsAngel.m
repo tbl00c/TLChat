@@ -7,8 +7,8 @@
 //
 
 #import "TLContactsAngel.h"
-#import <ZZFlexibleLayoutFramework/ZZFLEXAngel+Private.h>
-#import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutSectionModel.h>
+#import <ZZFLEX/ZZFLEXAngel+Private.h>
+#import <ZZFLEX/ZZFlexibleLayoutSectionModel.h>
 #import "TLUserGroup.h"
 #import "TLContactsItemCell.h"
 

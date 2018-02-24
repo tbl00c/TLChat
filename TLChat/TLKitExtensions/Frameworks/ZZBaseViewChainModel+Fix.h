@@ -6,7 +6,7 @@
 //  Copyright © 2017年 EIMS. All rights reserved.
 //
 
-#import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutFramework.h>
+#import <ZZFLEX/ZZFlexibleLayoutFramework.h>
 
 @interface ZZBaseViewChainModel (ZAFix)
 

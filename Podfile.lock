@@ -43,7 +43,7 @@ PODS:
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
-  - SVProgressHUD (2.2.2)
+  - SVProgressHUD (2.2.5)
   - TLKit (0.0.19):
     - TLKit/TLCategories (= 0.0.19)
     - TLKit/TLFunctional (= 0.0.19)
@@ -133,6 +133,7 @@ PODS:
   - TLKit/TLShortcut (0.0.19)
   - TLTabBarController (0.0.5)
   - UMengAnalytics (3.6.6)
+  - ZZFLEX (0.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -145,31 +146,38 @@ DEPENDENCIES:
   - MWPhotoBrowser (~> 2.1.2)
   - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.7)
-  - TLKit (from `git@github.com:tbl00c/TLKit.git`, tag `0.0.19`)
-  - TLTabBarController (from `git@github.com:tbl00c/TLTabBarController.git`, tag `0.0.5`)
+  - TLKit (from `https://github.com/tbl00c/TLKit.git`, tag `0.0.19`)
+  - TLTabBarController (from `https://github.com/tbl00c/TLTabBarController.git`, tag `0.0.5`)
   - UMengAnalytics (~> 3.6.6)
+  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`, tag `0.0.1`)
 
 EXTERNAL SOURCES:
   JZNavigationExtension:
     :git: https://github.com/tbl00c/JZNavigationExtension.git
     :tag: '4.0'
   TLKit:
-    :git: git@github.com:tbl00c/TLKit.git
+    :git: https://github.com/tbl00c/TLKit.git
     :tag: 0.0.19
   TLTabBarController:
-    :git: git@github.com:tbl00c/TLTabBarController.git
+    :git: https://github.com/tbl00c/TLTabBarController.git
     :tag: 0.0.5
+  ZZFLEX:
+    :git: https://github.com/tbl00c/ZZFLEX.git
+    :tag: 0.0.1
 
 CHECKOUT OPTIONS:
   JZNavigationExtension:
     :git: https://github.com/tbl00c/JZNavigationExtension.git
     :tag: '4.0'
   TLKit:
-    :git: git@github.com:tbl00c/TLKit.git
+    :git: https://github.com/tbl00c/TLKit.git
     :tag: 0.0.19
   TLTabBarController:
-    :git: git@github.com:tbl00c/TLTabBarController.git
+    :git: https://github.com/tbl00c/TLTabBarController.git
     :tag: 0.0.5
+  ZZFLEX:
+    :git: https://github.com/tbl00c/ZZFLEX.git
+    :tag: 0.0.1
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -184,11 +192,12 @@ SPEC CHECKSUMS:
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
-  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TLKit: 76fabb8e3ec4380fc8cf0690ab9523e5d5b2396e
   TLTabBarController: 07df5809fc66467ca6cd3d3973c68362c2d0c1b9
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
+  ZZFLEX: 3f8ac6ce1cfb54eb196cbf25d45b26dcab0743ab
 
-PODFILE CHECKSUM: 5823b0c0593d87d7671e68ed744295eef94f65d1
+PODFILE CHECKSUM: c65d4293cc610e2c7ee77fac51fe4978262a97db
 
 COCOAPODS: 1.2.1

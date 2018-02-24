@@ -7,8 +7,8 @@
 //
 
 #import "TLConversationAngel.h"
-#import <ZZFlexibleLayoutFramework/ZZFLEXAngel+Private.h>
-#import <ZZFlexibleLayoutFramework/ZZFlexibleLayoutSectionModel.h>
+#import <ZZFLEX/ZZFLEXAngel+Private.h>
+#import <ZZFLEX/ZZFlexibleLayoutSectionModel.h>
 #import "TLConversation.h"
 #import "TLMessageManager+ConversationRecord.h"
 #import "TLConversationCell.h"

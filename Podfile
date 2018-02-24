@@ -6,11 +6,13 @@ target :TLChat do
     
     # --------------------- 个人开源Pod  -----------------------
     # TLKit 基础库，包含常用宏定义、常用分类、常用功能组件（HUD、actionSheet等）
-    pod 'TLKit', :git => 'git@github.com:tbl00c/TLKit.git', :tag => '0.0.19'
+    pod 'TLKit', :git => 'https://github.com/tbl00c/TLKit.git', :tag => '0.0.19'
 #    pod 'TLKit', :path => '~/TLPods/TLKit'
 
+    pod 'ZZFLEX', :git => 'https://github.com/tbl00c/ZZFLEX.git', :tag => '0.0.1'
+
     # 全能tabBarController
-    pod 'TLTabBarController', :git => 'git@github.com:tbl00c/TLTabBarController.git', :tag => '0.0.5'
+    pod 'TLTabBarController', :git => 'https://github.com/tbl00c/TLTabBarController.git', :tag => '0.0.5'
 #    pod 'TLTabBarController', :path => '~/TLPods/TLTabBarController'
 
     # Bug修复版JZ

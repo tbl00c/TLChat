@@ -8,35 +8,38 @@
 
 #import "ZZBaseViewChainModel.h"
 #import "UIView+ZZFrame.h"
+#if __has_include(<Masonry.h>)
+#import <Masonry.h>
+#endif
 
 #define     ZZFLEX_CHAIN_VIEW_IMPLEMENTATION(methodName, ZZParamType)      ZZFLEX_CHAIN_IMPLEMENTATION(methodName, ZZParamType, id, UIView)
 
 #define     ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION(methodName, masonryMethod) \
 - (id (^)( void (^constraints)(MASConstraintMaker *)) )methodName    \
 {   \
-    return ^id ( void (^constraints)(MASConstraintMaker *) ) {  \
-        if (self.view.superview) { \
-            [self.view masonryMethod:constraints];    \
-        }   \
-        return self;    \
-    };  \
+return ^id ( void (^constraints)(MASConstraintMaker *) ) {  \
+if (self.view.superview) { \
+[self.view masonryMethod:constraints];    \
+}   \
+return self;    \
+};  \
 }
 
 #define     ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION_NULL(methodName, masonryMethod) \
 - (id (^)( void (^constraints)(MASConstraintMaker *)) )methodName    \
 {   \
-    return ^id ( void (^constraints)(MASConstraintMaker *) ) {  \
-        return self;    \
-    };  \
+return ^id ( void (^constraints)(MASConstraintMaker *) ) {  \
+return self;    \
+};  \
 }
 
 #define     ZZFLEX_CHAIN_LAYER_IMPLEMENTATION(methodName, ZZParamType) \
 - (id (^)(ZZParamType param))methodName    \
 {   \
-    return ^id (ZZParamType param) {    \
-        self.view.layer.methodName = param;   \
-        return self;    \
-    };\
+return ^id (ZZParamType param) {    \
+self.view.layer.methodName = param;   \
+return self;    \
+};\
 }
 
 @implementation ZZBaseViewChainModel
@@ -73,7 +76,7 @@ ZZFLEX_CHAIN_VIEW_IMPLEMENTATION(right, CGFloat);
 
 
 #pragma mark - # Layout
-#if __has_include("Masonry.h")
+#if __has_include(<Masonry.h>)
 ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION(masonry, mas_makeConstraints);
 ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION(updateMasonry, mas_updateConstraints);
 ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION(remakeMasonry, mas_remakeConstraints);

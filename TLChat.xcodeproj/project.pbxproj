@@ -60,6 +60,7 @@
 		C259CE881FF2283E0058FD6E /* UINavigationController+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C259CE861FF2283D0058FD6E /* UINavigationController+TLChat.m */; };
 		C259CE901FF2290D0058FD6E /* TLExpressionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C259CE8A1FF2290D0058FD6E /* TLExpressionHelper.m */; };
 		C259CE911FF2290D0058FD6E /* TLDBExpressionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C259CE8D1FF2290D0058FD6E /* TLDBExpressionStore.m */; };
+		C25E316720413A5D0086B65B /* ZZBaseViewChainModel+Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = C25E316620413A5C0086B65B /* ZZBaseViewChainModel+Fix.m */; };
 		C27A498A1FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C27A49891FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m */; };
 		C27A498D1FFDCE4500EA5FD5 /* TLExpressionDetailSeperatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C27A498C1FFDCE4500EA5FD5 /* TLExpressionDetailSeperatorCell.m */; };
 		C284AE981FF247BA00075E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C284AE941FF247B900075E59 /* InfoPlist.strings */; };
@@ -67,7 +68,6 @@
 		C284AE9B1FF2498400075E59 /* AddMenu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C284AE9A1FF2498400075E59 /* AddMenu.xcassets */; };
 		C284AE9E1FF24D0D00075E59 /* TLConversationNoNetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C284AE9D1FF24D0D00075E59 /* TLConversationNoNetCell.m */; };
 		C284AEA21FF24DAE00075E59 /* TLShortcutMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C284AEA11FF24DAD00075E59 /* TLShortcutMethod.m */; };
-		C284AEA71FF258D900075E59 /* ZZBaseViewChainModel+Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = C284AEA51FF258D900075E59 /* ZZBaseViewChainModel+Fix.m */; };
 		C284AEAA1FF25D9F00075E59 /* TLConversationAngel.m in Sources */ = {isa = PBXBuildFile; fileRef = C284AEA91FF25D9F00075E59 /* TLConversationAngel.m */; };
 		C284AEAE1FF261D800075E59 /* TLChatViewController+Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = C284AEAD1FF261D800075E59 /* TLChatViewController+Conversation.m */; };
 		C292D2AB1F7A378A007EB0A6 /* UIViewController+PopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D2AA1F7A378A007EB0A6 /* UIViewController+PopGesture.m */; };
@@ -423,6 +423,8 @@
 		C259CE8D1FF2290D0058FD6E /* TLDBExpressionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBExpressionStore.m; sourceTree = "<group>"; };
 		C259CE8E1FF2290D0058FD6E /* TLDBExpressionSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBExpressionSQL.h; sourceTree = "<group>"; };
 		C259CE8F1FF2290D0058FD6E /* TLDBExpressionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBExpressionStore.h; sourceTree = "<group>"; };
+		C25E316520413A5C0086B65B /* ZZBaseViewChainModel+Fix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZZBaseViewChainModel+Fix.h"; sourceTree = "<group>"; };
+		C25E316620413A5C0086B65B /* ZZBaseViewChainModel+Fix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZZBaseViewChainModel+Fix.m"; sourceTree = "<group>"; };
 		C26EBE331FFE20A200B7C360 /* TLSearchResultControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLSearchResultControllerProtocol.h; sourceTree = "<group>"; };
 		C27A49881FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLExpressionDetailBannerCell.h; sourceTree = "<group>"; };
 		C27A49891FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLExpressionDetailBannerCell.m; sourceTree = "<group>"; };
@@ -437,8 +439,6 @@
 		C284AEA11FF24DAD00075E59 /* TLShortcutMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLShortcutMethod.m; sourceTree = "<group>"; };
 		C284AEA31FF24DB600075E59 /* TLKitExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLKitExtension.h; sourceTree = "<group>"; };
 		C284AEA41FF24E3900075E59 /* TLMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMacros.h; sourceTree = "<group>"; };
-		C284AEA51FF258D900075E59 /* ZZBaseViewChainModel+Fix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZZBaseViewChainModel+Fix.m"; sourceTree = "<group>"; };
-		C284AEA61FF258D900075E59 /* ZZBaseViewChainModel+Fix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZZBaseViewChainModel+Fix.h"; sourceTree = "<group>"; };
 		C284AEA81FF25D9F00075E59 /* TLConversationAngel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLConversationAngel.h; sourceTree = "<group>"; };
 		C284AEA91FF25D9F00075E59 /* TLConversationAngel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLConversationAngel.m; sourceTree = "<group>"; };
 		C284AEAC1FF261D800075E59 /* TLChatViewController+Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLChatViewController+Conversation.h"; sourceTree = "<group>"; };
@@ -1060,8 +1060,8 @@
 		C23EE3C81F738E500069885F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C284AEA61FF258D900075E59 /* ZZBaseViewChainModel+Fix.h */,
-				C284AEA51FF258D900075E59 /* ZZBaseViewChainModel+Fix.m */,
+				C25E316520413A5C0086B65B /* ZZBaseViewChainModel+Fix.h */,
+				C25E316620413A5C0086B65B /* ZZBaseViewChainModel+Fix.m */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -3394,6 +3394,7 @@
 				C2D7CBBB1F72470500648CED /* TLAboutHeaderView.m in Sources */,
 				C2D7CB721F72470400648CED /* TLScannerButton.m in Sources */,
 				C29C6A94200494DD0058ED75 /* TLUserDetailViewController.m in Sources */,
+				C25E316720413A5D0086B65B /* ZZBaseViewChainModel+Fix.m in Sources */,
 				C249DBBD2003AE5800702FA4 /* TLExpressionSearchResultViewController.m in Sources */,
 				C2D7CC211F726D4900648CED /* TLUserChatSetting.m in Sources */,
 				C2D7CB481F72470400648CED /* TLChatViewController.m in Sources */,
@@ -3459,7 +3460,6 @@
 				C29C6A92200494DD0058ED75 /* TLUserDetailTitleCell.m in Sources */,
 				C243B65B1F7A5B7E0059A886 /* TLNetworkAgent.m in Sources */,
 				C29C6A2A20048E360058ED75 /* TLGroupSearchResultViewController.m in Sources */,
-				C284AEA71FF258D900075E59 /* ZZBaseViewChainModel+Fix.m in Sources */,
 				C29C6B1D2004B8010058ED75 /* TLMobileContactsItemCell.m in Sources */,
 				C2D7CC0E1F72680200648CED /* TLFriendHelper.m in Sources */,
 				C2D7CB9D1F72470500648CED /* TLLaunchManager+UserData.m in Sources */,

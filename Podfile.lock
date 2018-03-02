@@ -131,9 +131,9 @@ PODS:
     - TLKit/TLCategories/UIKit/UIAlertView
     - TLKit/TLCategories/UIKit/UIWindow
   - TLKit/TLShortcut (0.0.19)
-  - TLTabBarController (0.0.5)
+  - TLTabBarController (0.0.6)
   - UMengAnalytics (3.6.6)
-  - ZZFLEX (0.0.1)
+  - ZZFLEX (0.0.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -147,9 +147,9 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.7)
   - TLKit (from `https://github.com/tbl00c/TLKit.git`, tag `0.0.19`)
-  - TLTabBarController (from `https://github.com/tbl00c/TLTabBarController.git`, tag `0.0.5`)
+  - TLTabBarController (from `https://github.com/tbl00c/TLTabBarController.git`, tag `0.0.6`)
   - UMengAnalytics (~> 3.6.6)
-  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`, tag `0.0.1`)
+  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`)
 
 EXTERNAL SOURCES:
   JZNavigationExtension:
@@ -160,10 +160,9 @@ EXTERNAL SOURCES:
     :tag: 0.0.19
   TLTabBarController:
     :git: https://github.com/tbl00c/TLTabBarController.git
-    :tag: 0.0.5
+    :tag: 0.0.6
   ZZFLEX:
     :git: https://github.com/tbl00c/ZZFLEX.git
-    :tag: 0.0.1
 
 CHECKOUT OPTIONS:
   JZNavigationExtension:
@@ -174,10 +173,10 @@ CHECKOUT OPTIONS:
     :tag: 0.0.19
   TLTabBarController:
     :git: https://github.com/tbl00c/TLTabBarController.git
-    :tag: 0.0.5
+    :tag: 0.0.6
   ZZFLEX:
+    :commit: c7e0138cad36b3cf00ed240f4cdd7d081454da23
     :git: https://github.com/tbl00c/ZZFLEX.git
-    :tag: 0.0.1
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -194,10 +193,10 @@ SPEC CHECKSUMS:
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TLKit: 76fabb8e3ec4380fc8cf0690ab9523e5d5b2396e
-  TLTabBarController: 07df5809fc66467ca6cd3d3973c68362c2d0c1b9
+  TLTabBarController: 6e91813f0ae019e8cd2ae35d6f4f6315085f7c44
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
-  ZZFLEX: 3f8ac6ce1cfb54eb196cbf25d45b26dcab0743ab
+  ZZFLEX: ffcec569746c2fc018ec6e21f950fb956b438935
 
-PODFILE CHECKSUM: c65d4293cc610e2c7ee77fac51fe4978262a97db
+PODFILE CHECKSUM: 111ff5045cfd6872aad66eaf2e9e2b9fe64395b0
 
 COCOAPODS: 1.2.1

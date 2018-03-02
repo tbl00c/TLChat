@@ -9,10 +9,10 @@ target :TLChat do
     pod 'TLKit', :git => 'https://github.com/tbl00c/TLKit.git', :tag => '0.0.19'
 #    pod 'TLKit', :path => '~/TLPods/TLKit'
 
-    pod 'ZZFLEX', :git => 'https://github.com/tbl00c/ZZFLEX.git', :tag => '0.0.1'
+    pod 'ZZFLEX', :git => 'https://github.com/tbl00c/ZZFLEX.git'
 
     # 全能tabBarController
-    pod 'TLTabBarController', :git => 'https://github.com/tbl00c/TLTabBarController.git', :tag => '0.0.5'
+    pod 'TLTabBarController', :git => 'https://github.com/tbl00c/TLTabBarController.git', :tag => '0.0.6'
 #    pod 'TLTabBarController', :path => '~/TLPods/TLTabBarController'
 
     # Bug修复版JZ

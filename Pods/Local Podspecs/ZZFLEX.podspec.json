@@ -1,6 +1,6 @@
 {
   "name": "ZZFLEX",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "platforms": {
     "ios": "8.0"
   },
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/tbl00c/ZZFLEX.git",
-    "tag": "0.0.1"
+    "tag": "0.0.2"
   },
   "requires_arc": true,
   "source_files": "ZZFlexibleLayoutFramework/**/*.{h,m}"

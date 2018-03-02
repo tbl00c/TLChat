@@ -9,6 +9,8 @@
 #import "TLTabBar.h"
 #import "UITabBarItem+TLPrivateExtension.h"
 
+#define     IS_IPAD         [[UIDevice currentDevice].model isEqualToString:@"iPad"]
+
 @interface TLTabBar ()
 
 @property (nonatomic, strong, readonly) NSArray *barControlItems;
@@ -71,7 +73,6 @@
         self.oldSafeAreaInsets = self.safeAreaInsets;
         [self invalidateIntrinsicContentSize];
         [self.superview setNeedsLayout];
-        [self.superview layoutSubviews];
     }
 }
 
@@ -105,17 +106,37 @@
     
     // 重置图片位置
     [self.items enumerateObjectsUsingBlock:^(UITabBarItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIEdgeInsets imageInsets = UIEdgeInsetsZero;
         if (obj.isPlusButton) {
-            obj.imageInsets = UIEdgeInsetsMake(-self.plusButtonImageOffset, 0, self.plusButtonImageOffset, 0);
-        }
-        else {
-            if (obj.title.length > 0) {
-                obj.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+            if (IS_IPAD && obj.title.length == 0 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0f) {
+                obj.title = @"";
+                imageInsets = UIEdgeInsetsMake(-(self.plusButtonImageOffset + 5), 3, (self.plusButtonImageOffset + 5), -3);
             }
             else {
-                obj.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+                imageInsets = UIEdgeInsetsMake(-self.plusButtonImageOffset, 0, self.plusButtonImageOffset, 0);
             }
         }
+        else {
+            if (IS_IPAD) {
+                if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0f) {
+                    if (obj.title.length == 0) {
+                        obj.title = @"";
+                        imageInsets = UIEdgeInsetsMake(2, 3, -2, -3);
+                    }
+                }
+                else {
+                    if (obj.title.length == 0) {
+                        imageInsets = UIEdgeInsetsMake(7, 0, -7, 0);
+                    }
+                }
+            }
+            else {
+                if (obj.title.length == 0) {
+                    imageInsets = UIEdgeInsetsMake(7, 0, -7, 0);
+                }
+            }
+        }
+        obj.imageInsets = imageInsets;
     }];
 }
 

@@ -8,6 +8,7 @@
 //
 
 #import "MJRefreshFooter.h"
+#include "UIScrollView+MJRefresh.h"
 
 @interface MJRefreshFooter()
 
@@ -74,5 +75,10 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.state = MJRefreshStateIdle;
     });
+}
+
+- (void)setAutomaticallyHidden:(BOOL)automaticallyHidden
+{
+    _automaticallyHidden = automaticallyHidden;
 }
 @end

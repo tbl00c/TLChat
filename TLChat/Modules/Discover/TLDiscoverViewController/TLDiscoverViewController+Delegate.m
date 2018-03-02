@@ -59,7 +59,7 @@
         PushVC(gameVC);
     }
     else if (cellTag == TLDiscoverCellTagProgram) {     // 小程序
-        TLWebViewController *webVC = [[TLWebViewController alloc] initWithUrl:@"http://libokun.com"];
+        TLWebViewController *webVC = [[TLWebViewController alloc] initWithUrl:@"https://github.com/tbl00c"];
         PushVC(webVC)
     }
 

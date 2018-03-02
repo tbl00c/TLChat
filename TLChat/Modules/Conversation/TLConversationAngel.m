@@ -15,6 +15,32 @@
 
 @implementation TLConversationAngel
 
+- (instancetype)initWithHostView:(__kindof UIScrollView *)hostView badgeStatusChangeAction:(void (^)(NSString *))badgeStatusChangeAction
+{
+    if (self = [super initWithHostView:hostView]) {
+        self.badgeStatusChangeAction = badgeStatusChangeAction;
+    }
+    return self;
+}
+
+- (void)reloadBadge
+{
+    if (!self.badgeStatusChangeAction) {
+        return;
+    }
+    NSInteger count = 0;
+    NSArray *data = self.dataModelArray.all();
+    for (TLConversation *conversation in data) {
+        if ([conversation isKindOfClass:[TLConversation class]]) {
+            if (conversation.unreadCount > 0) {
+                count += conversation.unreadCount;
+            }
+        }
+    }
+    NSString *badge = count > 0 ? @(count).stringValue : nil;
+    self.badgeStatusChangeAction(badge);
+}
+
 #pragma mark - # Delegate
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -32,10 +58,12 @@
         UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
                                                                               title:conversation.isRead ? @"标为未读" : @"标为已读"
                                                                             handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                                                                                @strongify(self);
                                                                                 TLConversation *conversation = self.dataModel.atIndexPath(indexPath);
                                                                                 TLConversationCell *cell = [tableView cellForRowAtIndexPath:indexPath];
                                                                                 conversation.isRead ? [cell markAsUnread] : [cell markAsRead];
                                                                                 [tableView setEditing:NO animated:YES];
+                                                                                [self reloadBadge];
                                                                             }];
         return @[delAction, moreAction];
     }

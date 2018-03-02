@@ -21,8 +21,26 @@
         CGFloat space3 = (viewWidth - width * 3) / 4;               // 三张图时的边距（图与图之间的边距）
         CGFloat space2 = (viewWidth - width * 2 + space3) / 2;      // 两张图时的边距
         CGFloat space1 = (viewWidth - width) / 2;                   // 一张图时的边距
-        CGFloat y = usersCount > 6 ? space3 : (usersCount > 3 ? space2 : space1);
-        CGFloat x = usersCount % 3 == 0 ? space3 : (usersCount % 3 == 2 ? space2 : space1);
+        CGFloat y = ({
+            int ans = space1;
+            if (usersCount > 6) {
+                ans = space3;
+            }
+            else if (usersCount >= 3) {
+                ans = space2 - space3;
+            }
+            ans;
+        });
+        CGFloat x = ({
+            CGFloat ans = space1;
+            if (usersCount % 3 == 0) {
+                ans = usersCount == 3 ? space1 :space3;
+            }
+            else if (usersCount % 2 == 0) {
+                ans = space2 - space3;
+            }
+            ans;
+        });
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewWidth)];
         [view setBackgroundColor:[UIColor colorWithWhite:0.8 alpha:0.6]];

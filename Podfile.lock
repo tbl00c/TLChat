@@ -28,7 +28,7 @@ PODS:
   - Masonry (1.1.0)
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.13)
-  - MJRefresh (3.1.15)
+  - MJRefresh (3.1.15.3)
   - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
@@ -40,9 +40,9 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (3.7.6):
-    - SDWebImage/Core (= 3.7.6)
-  - SDWebImage/Core (3.7.6)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.2.5)
   - TLKit (0.0.19):
     - TLKit/TLCategories (= 0.0.19)
@@ -149,7 +149,7 @@ DEPENDENCIES:
   - TLKit (from `https://github.com/tbl00c/TLKit.git`, tag `0.0.19`)
   - TLTabBarController (from `https://github.com/tbl00c/TLTabBarController.git`, tag `0.0.6`)
   - UMengAnalytics (~> 3.6.6)
-  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`)
+  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`, tag `0.0.2`)
 
 EXTERNAL SOURCES:
   JZNavigationExtension:
@@ -163,6 +163,7 @@ EXTERNAL SOURCES:
     :tag: 0.0.6
   ZZFLEX:
     :git: https://github.com/tbl00c/ZZFLEX.git
+    :tag: 0.0.2
 
 CHECKOUT OPTIONS:
   JZNavigationExtension:
@@ -175,8 +176,8 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tbl00c/TLTabBarController.git
     :tag: 0.0.6
   ZZFLEX:
-    :commit: c7e0138cad36b3cf00ed240f4cdd7d081454da23
     :git: https://github.com/tbl00c/ZZFLEX.git
+    :tag: 0.0.2
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -187,16 +188,16 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
-  MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TLKit: 76fabb8e3ec4380fc8cf0690ab9523e5d5b2396e
   TLTabBarController: 6e91813f0ae019e8cd2ae35d6f4f6315085f7c44
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
   ZZFLEX: ffcec569746c2fc018ec6e21f950fb956b438935
 
-PODFILE CHECKSUM: 111ff5045cfd6872aad66eaf2e9e2b9fe64395b0
+PODFILE CHECKSUM: e42b7e424c920861769c4fb577caa09465689c34
 
 COCOAPODS: 1.2.1

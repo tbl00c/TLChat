@@ -25,4 +25,10 @@ typedef NS_ENUM(NSInteger, TLConversationCellTag) {
     UITableViewDelegate
 >
 
+@property (nonatomic, copy) void (^badgeStatusChangeAction)(NSString *badge);
+
+- (instancetype)initWithHostView:(__kindof UIScrollView *)hostView badgeStatusChangeAction:(void (^)(NSString *badge))badgeStatusChangeAction;
+
+- (void)reloadBadge;
+
 @end

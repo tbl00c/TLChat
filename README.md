@@ -1,11 +1,11 @@
 # TLChat
 高仿微信，iOSAppTemplate代码重构。
 
-<img src="./Screenshot/1.PNG" width = "375" height = "667" alt="screenshot1" align=center />
+<img src="./Screenshot/1.PNG" width = "375" height = "667" alt="screenshot1" align=center />  <img src="./Screenshot/2.PNG" width = "375" height = "667" alt="screenshot1" align=center />
 
-<img src="./Screenshot/2.PNG" width = "375" height = "667" alt="screenshot1" align=center />
+<img src="./Screenshot/3.PNG" width = "375" height = "667" alt="screenshot1" align=center /> <img src="./Screenshot/5.PNG" width = "375" height = "667" alt="screenshot1" align=center />
 
-<img src="./Screenshot/3.PNG" width = "375" height = "667" alt="screenshot1" align=center />
+<img src="./Screenshot/4.PNG" width = "375" height = "667" alt="screenshot1" align=center /> <img src="./Screenshot/6.PNG" width = "375" height = "667" alt="screenshot1" align=center />
 
 ## 近期计划
 近期将对项目结构进行整理，将在代码层面的实现整个项目模块化，主要包含：

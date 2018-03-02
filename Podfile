@@ -1,6 +1,6 @@
 platform :ios, '8.0'
 inhibit_all_warnings!
-use_frameworks!
+#use_frameworks!
 
 target :TLChat do
     
@@ -9,7 +9,7 @@ target :TLChat do
     pod 'TLKit', :git => 'https://github.com/tbl00c/TLKit.git', :tag => '0.0.19'
 #    pod 'TLKit', :path => '~/TLPods/TLKit'
 
-    pod 'ZZFLEX', :git => 'https://github.com/tbl00c/ZZFLEX.git'
+    pod 'ZZFLEX', :git => 'https://github.com/tbl00c/ZZFLEX.git', :tag => '0.0.2'
 
     # 全能tabBarController
     pod 'TLTabBarController', :git => 'https://github.com/tbl00c/TLTabBarController.git', :tag => '0.0.6'

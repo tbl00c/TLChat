@@ -139,7 +139,11 @@
 
 - (void)p_initListModule
 {
-    self.listAngel = [[TLConversationAngel alloc] initWithHostView:self.tableView];
+    @weakify(self);
+    self.listAngel = [[TLConversationAngel alloc] initWithHostView:self.tableView badgeStatusChangeAction:^(NSString *badge) {
+        @strongify(self);
+        [self.tabBarItem setBadgeValue:badge];
+    }];
     
     // 搜索，网络失败
     self.listAngel.addSection(TLConversationSectionTagAlert);
@@ -158,8 +162,12 @@
 /// 更新会话模块的信息
 - (void)p_updateConvsationModuleWithData:(NSArray *)data
 {
+    @weakify(self);
     self.listAngel.sectionForTag(TLConversationSectionTagConv).clear();
     self.listAngel.addCells(@"TLConversationCell").toSection(TLConversationSectionTagConv).withDataModelArray(data).selectedAction(^ (TLConversation *conversation) {
+        @strongify(self);
+        [conversation setUnreadCount:0];
+        [self.listAngel reloadBadge];
         TLChatViewController *chatVC = [[TLChatViewController alloc] initWithConversation:conversation];
         PushVC(chatVC);
     });

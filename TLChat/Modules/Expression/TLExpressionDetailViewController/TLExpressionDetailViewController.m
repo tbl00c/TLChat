@@ -74,6 +74,9 @@ typedef NS_ENUM(NSInteger, TLExpressionDetailVCSectionType) {
     @weakify(self);
     [self.groupModel requestExpressionGroupDetailByPageIndex:pageIndex success:^(NSArray *data) {
         @strongify(self);
+        if (!self) {
+            return;
+        }
         [TLUIUtility hiddenLoading];
         self.pageIndex = pageIndex;
         if (pageIndex == 1) {

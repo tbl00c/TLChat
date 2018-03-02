@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E5E03D88FD9865BD7F63532 /* Pods_TLChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB609F4A936B108997A231B8 /* Pods_TLChat.framework */; };
+		94C91D5C8FFE7E4519489AE3 /* libPods-TLChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5305AFC4232FAEA348C41139 /* libPods-TLChat.a */; };
 		C2040F3B1FFB57D600A334F8 /* TLExpressionGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2040F391FFB57D600A334F8 /* TLExpressionGroupModel.m */; };
 		C2040F3C1FFB57D600A334F8 /* TLExpressionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2040F3A1FFB57D600A334F8 /* TLExpressionModel.m */; };
 		C2040F3F1FFB582E00A334F8 /* TLExpressionGroupModel+TLEmojiKB.m in Sources */ = {isa = PBXBuildFile; fileRef = C2040F3E1FFB582E00A334F8 /* TLExpressionGroupModel+TLEmojiKB.m */; };
@@ -60,7 +60,6 @@
 		C259CE881FF2283E0058FD6E /* UINavigationController+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C259CE861FF2283D0058FD6E /* UINavigationController+TLChat.m */; };
 		C259CE901FF2290D0058FD6E /* TLExpressionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C259CE8A1FF2290D0058FD6E /* TLExpressionHelper.m */; };
 		C259CE911FF2290D0058FD6E /* TLDBExpressionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C259CE8D1FF2290D0058FD6E /* TLDBExpressionStore.m */; };
-		C25E316720413A5D0086B65B /* ZZBaseViewChainModel+Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = C25E316620413A5C0086B65B /* ZZBaseViewChainModel+Fix.m */; };
 		C27A498A1FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C27A49891FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m */; };
 		C27A498D1FFDCE4500EA5FD5 /* TLExpressionDetailSeperatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C27A498C1FFDCE4500EA5FD5 /* TLExpressionDetailSeperatorCell.m */; };
 		C284AE981FF247BA00075E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C284AE941FF247B900075E59 /* InfoPlist.strings */; };
@@ -224,7 +223,6 @@
 		C2D7CB5C1F72470400648CED /* TLBottleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9E51F72470400648CED /* TLBottleViewController.m */; };
 		C2D7CB5D1F72470400648CED /* TLGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9E81F72470400648CED /* TLGameViewController.m */; };
 		C2D7CB6F1F72470400648CED /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D7CA131F72470400648CED /* Discover.xcassets */; };
-		C2D7CB701F72470400648CED /* Moments.json in Resources */ = {isa = PBXBuildFile; fileRef = C2D7CA151F72470400648CED /* Moments.json */; };
 		C2D7CB711F72470400648CED /* TLScannerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA191F72470400648CED /* TLScannerBackgroundView.m */; };
 		C2D7CB721F72470400648CED /* TLScannerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA1B1F72470400648CED /* TLScannerButton.m */; };
 		C2D7CB731F72470400648CED /* TLScannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CA1D1F72470400648CED /* TLScannerView.m */; };
@@ -296,6 +294,7 @@
 		C2D7CC791F72852E00648CED /* TLDBGroupStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CC771F72852E00648CED /* TLDBGroupStore.m */; };
 		C2D7CC7E1F72854200648CED /* TLDBMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CC7C1F72854200648CED /* TLDBMessageStore.m */; };
 		C2D7CC861F72859600648CED /* TLDBConversationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7CC851F72859600648CED /* TLDBConversationStore.m */; };
+		C2ECC77E2049433F00D3D7AB /* Moments.json in Resources */ = {isa = PBXBuildFile; fileRef = C2ECC77D2049433E00D3D7AB /* Moments.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -329,9 +328,9 @@
 
 /* Begin PBXFileReference section */
 		28C098D007CC6D63F81358AB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5305AFC4232FAEA348C41139 /* libPods-TLChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TLChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		99FC90F8BB6CC8FC216CB6EE /* Pods-TLChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.release.xcconfig"; sourceTree = "<group>"; };
-		AB609F4A936B108997A231B8 /* Pods_TLChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TLChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEB57A4807F75774E29D2E1 /* Pods-TLChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.debug.xcconfig"; sourceTree = "<group>"; };
 		C2040F371FFB57D600A334F8 /* TLExpressionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionModel.h; sourceTree = "<group>"; };
 		C2040F381FFB57D600A334F8 /* TLExpressionGroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionGroupModel.h; sourceTree = "<group>"; };
@@ -423,8 +422,6 @@
 		C259CE8D1FF2290D0058FD6E /* TLDBExpressionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBExpressionStore.m; sourceTree = "<group>"; };
 		C259CE8E1FF2290D0058FD6E /* TLDBExpressionSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBExpressionSQL.h; sourceTree = "<group>"; };
 		C259CE8F1FF2290D0058FD6E /* TLDBExpressionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBExpressionStore.h; sourceTree = "<group>"; };
-		C25E316520413A5C0086B65B /* ZZBaseViewChainModel+Fix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZZBaseViewChainModel+Fix.h"; sourceTree = "<group>"; };
-		C25E316620413A5C0086B65B /* ZZBaseViewChainModel+Fix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZZBaseViewChainModel+Fix.m"; sourceTree = "<group>"; };
 		C26EBE331FFE20A200B7C360 /* TLSearchResultControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLSearchResultControllerProtocol.h; sourceTree = "<group>"; };
 		C27A49881FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLExpressionDetailBannerCell.h; sourceTree = "<group>"; };
 		C27A49891FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLExpressionDetailBannerCell.m; sourceTree = "<group>"; };
@@ -780,7 +777,6 @@
 		C2D7C9E71F72470400648CED /* TLGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLGameViewController.h; sourceTree = "<group>"; };
 		C2D7C9E81F72470400648CED /* TLGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGameViewController.m; sourceTree = "<group>"; };
 		C2D7CA131F72470400648CED /* Discover.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Discover.xcassets; sourceTree = "<group>"; };
-		C2D7CA151F72470400648CED /* Moments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Moments.json; sourceTree = "<group>"; };
 		C2D7CA181F72470400648CED /* TLScannerBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScannerBackgroundView.h; sourceTree = "<group>"; };
 		C2D7CA191F72470400648CED /* TLScannerBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLScannerBackgroundView.m; sourceTree = "<group>"; };
 		C2D7CA1A1F72470400648CED /* TLScannerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLScannerButton.h; sourceTree = "<group>"; };
@@ -932,6 +928,7 @@
 		C2D7CC831F72859600648CED /* TLDBConversationSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBConversationSQL.h; sourceTree = "<group>"; };
 		C2D7CC841F72859600648CED /* TLDBConversationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBConversationStore.h; sourceTree = "<group>"; };
 		C2D7CC851F72859600648CED /* TLDBConversationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBConversationStore.m; sourceTree = "<group>"; };
+		C2ECC77D2049433E00D3D7AB /* Moments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Moments.json; sourceTree = "<group>"; };
 		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -941,7 +938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2AF1FAA1C6B78F600617D98 /* WebKit.framework in Frameworks */,
-				0E5E03D88FD9865BD7F63532 /* Pods_TLChat.framework in Frameworks */,
+				94C91D5C8FFE7E4519489AE3 /* libPods-TLChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,7 +975,7 @@
 			children = (
 				C2AF1FA91C6B78F600617D98 /* WebKit.framework */,
 				F47069788539839E1FB073F9 /* libPods.a */,
-				AB609F4A936B108997A231B8 /* Pods_TLChat.framework */,
+				5305AFC4232FAEA348C41139 /* libPods-TLChat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1055,15 +1052,6 @@
 				C2097F0D1C52326500163B5C /* Info.plist */,
 			);
 			path = TLChatUITests;
-			sourceTree = "<group>";
-		};
-		C23EE3C81F738E500069885F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C25E316520413A5C0086B65B /* ZZBaseViewChainModel+Fix.h */,
-				C25E316620413A5C0086B65B /* ZZBaseViewChainModel+Fix.m */,
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		C23EE3CD1F73914A0069885F /* Expression */ = {
@@ -1383,6 +1371,7 @@
 			children = (
 				C292D2ED1F7A4B58007EB0A6 /* TLMomentDetailViewController */,
 				C292D2F01F7A4B58007EB0A6 /* TLMomentsViewController */,
+				C2ECC77B2049433E00D3D7AB /* Resources */,
 			);
 			path = Moments;
 			sourceTree = "<group>";
@@ -2612,17 +2601,8 @@
 			isa = PBXGroup;
 			children = (
 				C2D7CA131F72470400648CED /* Discover.xcassets */,
-				C2D7CA141F72470400648CED /* TestData */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		C2D7CA141F72470400648CED /* TestData */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7CA151F72470400648CED /* Moments.json */,
-			);
-			path = TestData;
 			sourceTree = "<group>";
 		};
 		C2D7CA161F72470400648CED /* ScannerViewController */ = {
@@ -3155,12 +3135,27 @@
 			children = (
 				C284AEA31FF24DB600075E59 /* TLKitExtension.h */,
 				C284AE9F1FF24DAD00075E59 /* Shortcut */,
-				C23EE3C81F738E500069885F /* Frameworks */,
 				C2D7C8B01F72464A00648CED /* Base */,
 				C2D7C8F61F7246CC00648CED /* Utilities */,
 				C292D3381F7A54AB007EB0A6 /* TLNetwork */,
 			);
 			path = TLKitExtensions;
+			sourceTree = "<group>";
+		};
+		C2ECC77B2049433E00D3D7AB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C2ECC77C2049433E00D3D7AB /* TestData */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C2ECC77C2049433E00D3D7AB /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				C2ECC77D2049433E00D3D7AB /* Moments.json */,
+			);
+			path = TestData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3278,6 +3273,7 @@
 				C2D7CB6F1F72470400648CED /* Discover.xcassets in Resources */,
 				C29C6B332004BA1E0058ED75 /* NewFriends.xcassets in Resources */,
 				C2D7CB9B1F72470400648CED /* Launch.xcassets in Resources */,
+				C2ECC77E2049433F00D3D7AB /* Moments.json in Resources */,
 				C2D7CBB81F72470500648CED /* Mine.xcassets in Resources */,
 				C2D7CB571F72470400648CED /* Conversation.xcassets in Resources */,
 				C284AE9B1FF2498400075E59 /* AddMenu.xcassets in Resources */,
@@ -3286,7 +3282,6 @@
 				C284AE991FF247BA00075E59 /* Localizable.strings in Resources */,
 				C2D7CB4B1F72470400648CED /* SystemEmoji.json in Resources */,
 				C2D7CB4A1F72470400648CED /* FaceEmoji.json in Resources */,
-				C2D7CB701F72470400648CED /* Moments.json in Resources */,
 				C249DB512003ABF500702FA4 /* Friends.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3394,7 +3389,6 @@
 				C2D7CBBB1F72470500648CED /* TLAboutHeaderView.m in Sources */,
 				C2D7CB721F72470400648CED /* TLScannerButton.m in Sources */,
 				C29C6A94200494DD0058ED75 /* TLUserDetailViewController.m in Sources */,
-				C25E316720413A5D0086B65B /* ZZBaseViewChainModel+Fix.m in Sources */,
 				C249DBBD2003AE5800702FA4 /* TLExpressionSearchResultViewController.m in Sources */,
 				C2D7CC211F726D4900648CED /* TLUserChatSetting.m in Sources */,
 				C2D7CB481F72470400648CED /* TLChatViewController.m in Sources */,

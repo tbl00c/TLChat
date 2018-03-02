@@ -1,18 +1,19 @@
 # TLChat
-高仿微信，iOSAppTemplate代码重构。
 
-<img src="./Screenshot/1.PNG" width = "375" height = "667" alt="screenshot1" align=center />  <img src="./Screenshot/2.PNG" width = "375" height = "667" alt="screenshot1" align=center />
+高仿微信，iOSAppTemplate代码重构。此版本TLChat基于[TLKit](https://github.com/tbl00c/TLKit)、 [ZZFLEX](https://github.com/tbl00c/ZZFLEX)实现.
 
-<img src="./Screenshot/3.PNG" width = "375" height = "667" alt="screenshot1" align=center /> <img src="./Screenshot/5.PNG" width = "375" height = "667" alt="screenshot1" align=center />
+<img src="./Screenshot/1.png" width = "375" height = "667" alt="screenshot1" align=center />  <img src="./Screenshot/2.png" width = "375" height = "667" alt="screenshot1" align=center />
 
-<img src="./Screenshot/4.PNG" width = "375" height = "667" alt="screenshot1" align=center /> <img src="./Screenshot/6.PNG" width = "375" height = "667" alt="screenshot1" align=center />
+<img src="./Screenshot/3.png" width = "375" height = "667" alt="screenshot1" align=center /> <img src="./Screenshot/5.png" width = "375" height = "667" alt="screenshot1" align=center />
+
+<img src="./Screenshot/4.png" width = "375" height = "667" alt="screenshot1" align=center /> <img src="./Screenshot/6.png" width = "375" height = "667" alt="screenshot1" align=center />
 
 ## 近期计划
 近期将对项目结构进行整理，将在代码层面的实现整个项目模块化，主要包含：
 
 * 主要控制类逻辑整理；
 * 主要列表使用ZZFLEX重构、以增加其拓展性；
-* ZZFLEX对UIKit的一层封装，主要包含一个数据驱动的列表框架、和UIKit中常用控件的链式拓展，ZZFLEX相关资料正在整理中，将于近期开源；
+* ZZFLEX对UIKit的一层封装，主要包含一个数据驱动的列表框架、和UIKit中常用控件的链式拓展，ZZFLEX相关资料正在整理中，目前已经开源；
 * iOS11适配；
 * 其它功能完善点。
 

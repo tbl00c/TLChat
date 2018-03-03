@@ -8,19 +8,11 @@
 
 #import "TLChatBaseViewController.h"
 
-@interface TLChatBaseViewController (Proxy)
+@interface TLChatBaseViewController (Proxy) <TLMessageManagerChatVCDelegate>
 
 /**
  *  发送消息
  */
 - (void)sendMessage:(TLMessage *)message;
-
-
-/**
- *  接收到消息
- *
- *  临时写法
- */
-- (void)receivedMessage:(TLMessage *)message;
 
 @end

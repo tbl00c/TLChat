@@ -19,6 +19,8 @@
 {
     [super loadView];
     
+    [[TLMessageManager sharedInstance] setMessageDelegate:self];
+    
     [self.view addSubview:self.messageDisplayView];
     [self.view addSubview:self.chatBar];
     
@@ -125,25 +127,6 @@
     message.imagePath = imageName;
     message.imageSize = image.size;
     [self sendMessage:message];
-    if ([self.partner chat_userType] == TLChatUserTypeUser) {
-        TLImageMessage *message1 = [[TLImageMessage alloc] init];
-        message1.fromUser = self.partner;
-        message1.ownerTyper = TLMessageOwnerTypeFriend;
-        message1.imagePath = imageName;
-        message1.imageSize = image.size;
-        [self receivedMessage:message1];
-    }
-    else {
-        for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
-            TLImageMessage *message1 = [[TLImageMessage alloc] init];
-            message1.friendID = [user chat_userID];
-            message1.fromUser = user;
-            message1.ownerTyper = TLMessageOwnerTypeFriend;
-            message1.imagePath = imageName;
-            message1.imageSize = image.size;
-            [self receivedMessage:message1];
-        }
-    }
 }
 
 #pragma mark - # Private Methods

@@ -44,28 +44,11 @@
     }];
 }
 
-- (void)receivedMessage:(TLMessage *)message
+- (void)didReceivedMessage:(TLMessage *)message;
 {
-    message.userID = [TLUserHelper sharedHelper].userID;
-    if ([self.partner chat_userType] == TLChatUserTypeUser) {
-        message.partnerType = TLPartnerTypeUser;
-        message.friendID = [self.partner chat_userID];
+    if ([message.userID isEqualToString:self.user.chat_userID]) {
+        [self addToShowMessage:message];    // 添加到列表
     }
-    else if ([self.partner chat_userType] == TLChatUserTypeGroup) {
-        message.partnerType = TLPartnerTypeGroup;
-        message.groupID = [self.partner chat_userID];
-    }
-    message.ownerTyper = TLMessageOwnerTypeFriend;
-    message.date = [NSDate date];
-    [self addToShowMessage:message];    // 添加到列表
-    
-    [[TLMessageManager sharedInstance] sendMessage:message progress:^(TLMessage * message, CGFloat pregress) {
-        
-    } success:^(TLMessage * message) {
-        NSLog(@"send success");
-    } failure:^(TLMessage * message) {
-        NSLog(@"send failure");
-    }];
 }
 
 @end

@@ -3820,7 +3820,7 @@
 					"-Wno-ambiguous-macro",
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3885,7 +3885,7 @@
 					"-Wno-ambiguous-macro",
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tbl00c.TLChat.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

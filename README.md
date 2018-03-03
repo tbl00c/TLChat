@@ -2,11 +2,11 @@
 
 高仿微信，iOSAppTemplate代码重构。此版本TLChat基于[TLKit](https://github.com/tbl00c/TLKit)、 [ZZFLEX](https://github.com/tbl00c/ZZFLEX)实现.
 
-<img src="./Screenshot/1.png" width = "375" height = "667" alt="screenshot1" align=center />  <img src="./Screenshot/2.png" width = "375" height = "667" alt="screenshot1" align=center />
+<img src="./Screenshot/1.png" width = "375" height = "667" alt="screenshot1" align=center />  <img src="./Screenshot/2.png" width = "375" height = "667" alt="screenshot2" align=center />
 
-<img src="./Screenshot/3.png" width = "375" height = "667" alt="screenshot1" align=center /> <img src="./Screenshot/5.png" width = "375" height = "667" alt="screenshot1" align=center />
+<img src="./Screenshot/3.png" width = "375" height = "667" alt="screenshot3" align=center />  <img src="./Screenshot/5.png" width = "375" height = "667" alt="screenshot4" align=center />
 
-<img src="./Screenshot/4.png" width = "375" height = "667" alt="screenshot1" align=center /> <img src="./Screenshot/6.png" width = "375" height = "667" alt="screenshot1" align=center />
+<img src="./Screenshot/4.png" width = "375" height = "667" alt="screenshot4" align=center />b <img src="./Screenshot/6.png" width = "375" height = "667" alt="screenshot5" align=center />
 
 ## 近期计划
 近期将对项目结构进行整理，将在代码层面的实现整个项目模块化，主要包含：

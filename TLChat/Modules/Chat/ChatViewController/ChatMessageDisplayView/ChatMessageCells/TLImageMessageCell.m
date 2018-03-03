@@ -43,6 +43,7 @@
     }
     else {
         [self.msgImageView setThumbnailPath:nil highDefinitionImageURL:[message imagePath]];
+        [self.msgImageView tt_setImageWithURL:[NSURL URLWithString:[message imageURL]]];
     }
 
     if (lastOwnType != message.ownerTyper) {

@@ -32,7 +32,7 @@
         _sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         _sessionConfiguration.timeoutIntervalForRequest = TLNetworkRequestTimeoutInterval;
         
-        _requestSerializerType = TLRequestSerializerTypeHTTP;
+        _requestSerializerType = TLRequestSerializerTypeJSON;
         _responseSerializerType = TLResponseSerializerTypeJSON;
         
         _headerField = @{@"content-type" : @"text/html",

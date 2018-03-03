@@ -10,4 +10,6 @@
 
 @protocol TLMessageManagerChatVCDelegate <NSObject>
 
+- (void)didReceivedMessage:(TLMessage *)message;
+
 @end

@@ -22,11 +22,29 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
     TLUserDetailVCSectionTypeFunction,
 };
 
+@interface TLUserDetailViewController ()
+
+/// 用户id
+@property (nonatomic, strong, readonly) NSString *userId;
+/// 用户数据模型
+@property (nonatomic, strong) TLUser *userModel;
+
+@end
+
 @implementation TLUserDetailViewController
+
+- (instancetype)initWithUserId:(NSString *)userId
+{
+    if (self = [super init]) {
+        _userId = userId;
+    }
+    return self;
+}
 
 - (instancetype)initWithUserModel:(TLUser *)userModel
 {
     if (self = [super init]) {
+        _userId = userModel.userID;
         _userModel = userModel;
     }
     return self;
@@ -53,6 +71,18 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
 {
     [super viewDidLoad];
     
+    [self requestUserDataWithUserId:self.userId];
+}
+
+#pragma mark - # Request
+- (void)requestUserDataWithUserId:(NSString *)userId
+{
+    if (self.userModel) {
+        [self loadUIWithUserModel:self.userModel];
+    }
+    
+    // 请求完整的数据模型
+    _userModel = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:userId];
     [self loadUIWithUserModel:self.userModel];
 }
 

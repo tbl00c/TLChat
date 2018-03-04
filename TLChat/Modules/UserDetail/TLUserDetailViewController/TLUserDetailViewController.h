@@ -11,9 +11,8 @@
 @class TLUser;
 @interface TLUserDetailViewController : ZZFlexibleLayoutViewController
 
-@property (nonatomic, strong, readonly) TLUser *userModel;
-
+- (instancetype)initWithUserId:(NSString *)userId;
 - (instancetype)initWithUserModel:(TLUser *)userModel;
-- (instancetype)init  __attribute__((unavailable("请使用 initWithUserModel:")));
+- (instancetype)init  __attribute__((unavailable("请使用 initWithUserId: 或 initWithUserModel:")));
 
 @end

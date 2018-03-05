@@ -9,6 +9,7 @@
 #import "TLMomentsViewController.h"
 #import "TLUserDetailViewController.h"
 #import <MWPhotoBrowser/MWPhotoBrowser.h>
+#import "TLWebViewController.h"
 
 #import "TLMomentHeaderCell.h"
 #import "TLMomentImagesCell.h"
@@ -110,6 +111,12 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
     [browser setCurrentPhotoIndex:index];
     UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
     [self presentViewController:broserNavC animated:NO completion:nil];
+}
+
+- (void)momentViewWithModel:(TLMoment *)moment jumpToUrl:(NSString *)url
+{
+    TLWebViewController *webVC = [[TLWebViewController alloc] initWithUrl:url];
+    PushVC(webVC);
 }
 
 @end

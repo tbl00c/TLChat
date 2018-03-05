@@ -55,7 +55,7 @@
     // 好友圈
     self.addSection(TLDiscoverSectionTagMoments).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
     TLMenuItem *moments = createMenuItem(@"discover_album", LOCSTR(@"朋友圈"));
-    [moments setRightIconURL:@"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg" withRightIconBadge:YES];
+    [moments setRightIconURL:@"http://i01.pic.sogou.com/23112449ac395e72" withRightIconBadge:YES];
     self.addCell(NAME_DISCOVER_MENU_CELL).toSection(TLDiscoverSectionTagMoments).withDataModel(moments).viewTag(TLDiscoverCellTagMoments);
     
     // 功能

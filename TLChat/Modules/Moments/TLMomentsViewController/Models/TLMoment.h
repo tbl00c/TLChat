@@ -10,18 +10,8 @@
 #import "TLMomentDetail.h"
 #import "TLMomentExtension.h"
 
-
-@interface TLMomentFrame : NSObject
-
-@property (nonatomic, assign) CGFloat height;
-
-@property (nonatomic, assign) CGFloat heightDetail;
-
-@property (nonatomic, assign) CGFloat heightExtension;
-
-@end
-
-
+@class TLMomentLinkModel;
+@class TLMomentFrame;
 
 @interface TLMoment : NSObject
 
@@ -29,7 +19,15 @@
 
 @property (nonatomic, strong) TLUser *user;
 
-@property (nonatomic, strong) NSDate *date;
+/// 发布时间
+@property (nonatomic, strong) NSString *date;
+@property (nonatomic, strong, readonly) NSString *showDate;
+
+/// 来源
+@property (nonatomic, strong) NSString *source;
+
+/// 跳转链接（位置、app url等）
+@property (nonatomic, strong) TLMomentLinkModel *link;
 
 /// 详细内容
 @property (nonatomic, strong) TLMomentDetail *detail;
@@ -40,6 +38,26 @@
 @property (nonatomic, strong) TLMomentExtension *extension;
 
 @property (nonatomic, strong) TLMomentFrame *momentFrame;
+
+@end
+
+
+@interface TLMomentLinkModel : NSObject
+
+@property (nonatomic, strong) NSString *title;
+
+@property (nonatomic, strong) NSString *jumpUrl;
+
+@end
+
+
+@interface TLMomentFrame : NSObject
+
+@property (nonatomic, assign) CGFloat height;
+
+@property (nonatomic, assign) CGFloat heightDetail;
+
+@property (nonatomic, assign) CGFloat heightExtension;
 
 @end
 

@@ -12,6 +12,42 @@
 
 @implementation TLMoment
 
+- (void)setDate:(NSString *)date
+{
+    _date = date;
+    _showDate = [self momBabayMomentPublishTimeFromInterval:date];
+}
+
+- (NSString *)momBabayMomentPublishTimeFromInterval:(NSString *)timeInterval
+{
+    NSTimeInterval late = [timeInterval longLongValue];
+    NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+    NSString *timeString = @"";
+    
+    NSTimeInterval cha = now - late;  //秒
+    if (cha < 60) {
+        timeString = @"刚刚";
+    }
+    else if (cha / 3600 < 1 && cha > 60) {
+        int mm = cha / 60;
+        timeString = [NSString stringWithFormat:@"%d分钟前", mm];
+    }
+    else if (cha / 3600 >= 1 && cha/86400 < 1) {
+        int hh = cha / 3600;
+        timeString = [NSString stringWithFormat:@"%d小时前", hh];
+    }
+    else if (cha / 86400 >= 1 && cha/31536000 < 1) {
+        int dd = cha / 86400;
+        timeString = [NSString stringWithFormat:@"%d天前", dd];
+    }
+    else if (cha / 31536000 >= 1) {
+        int yy = cha / 31536000;
+        timeString = [NSString stringWithFormat:@"%d年前", yy];
+    }
+    
+    return timeString;
+}
+
 #pragma mark - # Getter
 - (TLMomentFrame *)momentFrame
 {
@@ -22,6 +58,9 @@
         if (self.hasExtension) {
             _momentFrame.height += 10;
             _momentFrame.height += _momentFrame.heightExtension = self.extension.extensionFrame.height;   // 拓展高度
+        }
+        if (self.link) {
+            _momentFrame.height += 25;
         }
     }
     return _momentFrame;
@@ -37,5 +76,9 @@
 
 
 @implementation TLMomentFrame
+
+@end
+
+@implementation TLMomentLinkModel
 
 @end

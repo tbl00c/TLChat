@@ -10,20 +10,12 @@
 
 @class TLMoment;
 @class TLUser;
-@protocol TLMomentMultiImageViewDelegate <NSObject>
+@protocol TLMomentViewDelegate <NSObject>
 
 - (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index;
 
-@end
-
-
-@protocol TLMomentDetailViewDelegate <TLMomentMultiImageViewDelegate>
-
-@end
-
-
-@protocol TLMomentViewDelegate <TLMomentDetailViewDelegate>
-
 - (void)momentViewWithModel:(TLMoment *)moment didClickUser:(TLUser *)user;
+
+- (void)momentViewWithModel:(TLMoment *)moment jumpToUrl:(NSString *)url;
 
 @end

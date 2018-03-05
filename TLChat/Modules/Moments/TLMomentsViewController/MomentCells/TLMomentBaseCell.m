@@ -21,6 +21,8 @@
 /// 点赞&评论
 @property (nonatomic, strong) TLMomentExtensionView *extensionView;
 
+/// 链接
+@property (nonatomic, strong) UIButton *linkButton;
 /// 时间
 @property (nonatomic, strong) UILabel *dateLabel;
 /// 来源
@@ -89,9 +91,11 @@
     }];
     
     // 时间
-    [self.dateLabel setText:@"1小时前"];
+    [self.dateLabel setText:moment.showDate];
     // 来源
-    [self.originLabel setText:@"微博"];
+    [self.originLabel setText:moment.source];
+    // 链接
+    self.linkButton.zz_make.title(moment.link.title).hidden(moment.link.title.length == 0);
 }
 
 #pragma mark - # UI
@@ -181,6 +185,24 @@
     .masonry(^ (MASConstraintMaker *make) {
         make.left.mas_equalTo(self.dateLabel.mas_right).mas_offset(10);
         make.centerY.mas_equalTo(self.dateLabel);
+    })
+    .view;
+    
+    // 链接
+    self.linkButton = self.contentView.addButton(3010)
+    .backgroundColor([UIColor clearColor]).backgroundColorHL([UIColor lightGrayColor])
+    .titleFont([UIFont systemFontOfSize:13.0f]).titleColor([UIColor colorBlueMoment])
+    .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
+        @strongify(self);
+        if (self.delegate && [self.delegate respondsToSelector:@selector(momentViewWithModel:jumpToUrl:)]) {
+            [self.delegate momentViewWithModel:self.moment jumpToUrl:self.moment.link.jumpUrl];
+        }
+    })
+    .masonry(^ (MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.nameView);
+        make.right.mas_lessThanOrEqualTo(-10);
+        make.bottom.mas_equalTo(self.dateLabel.mas_top).mas_offset(-6);
+        make.height.mas_equalTo(20);
     })
     .view;
 }

@@ -7,13 +7,15 @@
 //
 
 #import "TLMomentsViewController.h"
-#import "TLMomentViewDelegate.h"
-#import "TLMomentDetailViewController.h"
+#import "TLUserDetailViewController.h"
 #import <MWPhotoBrowser/MWPhotoBrowser.h>
+
 #import "TLMomentHeaderCell.h"
 #import "TLMomentImagesCell.h"
 #import "TLUserHelper.h"
 #import "TLMomentsProxy.h"
+
+
 
 typedef NS_ENUM(NSInteger, TLMomentsVCSectionType) {
     TLMomentsVCSectionTypeHeader,
@@ -26,7 +28,7 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 };
 
 
-@interface TLMomentsViewController ()
+@interface TLMomentsViewController () <TLMomentViewDelegate>
 
 @property (nonatomic, assign) NSInteger pageIndex;
 
@@ -90,6 +92,12 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 
 #pragma mark - # Delegate
 //MARK: TLMomentViewDelegate
+- (void)momentViewWithModel:(TLMoment *)moment didClickUser:(TLUser *)user
+{
+    TLUserDetailViewController *userDatailVC = [[TLUserDetailViewController alloc] initWithUserModel:user];
+    PushVC(userDatailVC);
+}
+
 - (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index
 {
     NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:images.count];

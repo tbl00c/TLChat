@@ -88,8 +88,8 @@
 {
     if (_commentFrame == nil) {
         _commentFrame = [[TLMomentCommentFrame alloc] init];
-        YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREEN_WIDTH - 86, MAXFLOAT) text:self.attrContent];
-        _commentFrame.height = layout.textBoundingSize.height + 4;
+        YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREEN_WIDTH - 96, MAXFLOAT) text:self.attrContent];
+        _commentFrame.height = layout.textBoundingSize.height + 2;
     }
     return _commentFrame;
 }

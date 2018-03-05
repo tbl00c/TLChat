@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TLMoment;
+@class TLUser;
 @protocol TLMomentMultiImageViewDelegate <NSObject>
 
 - (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index;
@@ -21,5 +23,7 @@
 
 
 @protocol TLMomentViewDelegate <TLMomentDetailViewDelegate>
+
+- (void)momentViewWithModel:(TLMoment *)moment didClickUser:(TLUser *)user;
 
 @end

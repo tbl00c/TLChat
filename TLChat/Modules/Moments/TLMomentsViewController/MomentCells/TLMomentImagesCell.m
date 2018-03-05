@@ -7,11 +7,11 @@
 //
 
 #import "TLMomentImagesCell.h"
-#import "TLMomentImageView.h"
+#import "TLMomentDetailImagesView.h"
 
 @interface TLMomentImagesCell ()
 
-@property (nonatomic, strong) TLMomentImageView *momentView;
+@property (nonatomic, strong) TLMomentDetailImagesView *imagesView;
 
 @end
 
@@ -20,9 +20,16 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        [self.contentView addSubview:self.momentView];
-        [self.momentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(self.contentView);
+        @weakify(self);
+        self.imagesView = [[TLMomentDetailImagesView alloc] initWithImageSelectedAction:^(NSArray *images, NSInteger index) {
+            @strongify(self);
+            if (self.delegate && [self.delegate respondsToSelector:@selector(momentViewClickImage:atIndex:)]) {
+                [self.delegate momentViewClickImage:images atIndex:index];
+            }
+        }];
+        [self.detailContainer addSubview:self.imagesView];
+        [self.imagesView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
         }];
     }
     return self;
@@ -31,22 +38,11 @@
 - (void)setMoment:(TLMoment *)moment
 {
     [super setMoment:moment];
-    [self.momentView setMoment:moment];
-}
-
-- (void)setDelegate:(id<TLMomentViewDelegate>)delegate
-{
-    [super setDelegate:delegate];
-    [self.momentView setDelegate:delegate];
-}
-
-#pragma mark - # Getter
-- (TLMomentImageView *)momentView
-{
-    if (_momentView == nil) {
-        _momentView = [[TLMomentImageView alloc] init];
-    }
-    return _momentView;
+    
+    [self.imagesView setImages:moment.detail.images];
+    [self.detailContainer mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(moment.detail.detailFrame.heightImages);
+    }];
 }
 
 @end

@@ -16,4 +16,6 @@
 
 @property (nonatomic, strong) TLMoment *moment;
 
+@property (nonatomic, strong) UIView *detailContainer;
+
 @end

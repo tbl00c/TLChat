@@ -27,6 +27,7 @@
 - (void)setViewDataModel:(TLMomentComment *)dataModel
 {
     [self.label setAttributedText:dataModel.attrContent];
+    [self.label sizeToFit];
     @weakify(self);
     [dataModel setUserClickAction:^(TLUser *user) {
         @strongify(self);
@@ -48,7 +49,7 @@
         [self setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:self.label];
         [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(self.contentView).mas_offset(UIEdgeInsetsMake(2, 8, 2, 8));
+            make.edges.mas_equalTo(UIEdgeInsetsMake(1.5, 8, 0.5, 8));
         }];
     }
     return self;
@@ -63,6 +64,5 @@
     }
     return _label;
 }
-
 
 @end

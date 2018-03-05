@@ -6,8 +6,14 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLMomentDetailTextView.h"
+#import <UIKit/UIKit.h>
 
-@interface TLMomentDetailImagesView : TLMomentDetailTextView
+@interface TLMomentDetailImagesView : UIView
+
+@property (nonatomic, copy) void (^imageSelectedAction)(NSArray *images, NSInteger index);
+
+@property (nonatomic, strong) NSArray *images;
+
+- (instancetype)initWithImageSelectedAction:(void (^)(NSArray *images, NSInteger index))imageSelectedAction;
 
 @end

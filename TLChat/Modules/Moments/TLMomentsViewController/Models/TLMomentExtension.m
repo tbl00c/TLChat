@@ -90,7 +90,7 @@
 {
     CGFloat height = 0.0f;
     if (self.likedFriends.count > 0) {
-        YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREEN_WIDTH - 86, MAXFLOAT) text:self.attrLikedFriendsName];
+        YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREEN_WIDTH - 96, MAXFLOAT) text:self.attrLikedFriendsName];
         height = layout.textBoundingSize.height + 10;
     }
     return height;

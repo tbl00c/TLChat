@@ -34,6 +34,8 @@
 /// 详细内容
 @property (nonatomic, strong) TLMomentDetail *detail;
 
+/// 是否有赞和评论
+@property (nonatomic, assign, readonly) BOOL hasExtension;
 /// 附加（评论，赞）
 @property (nonatomic, strong) TLMomentExtension *extension;
 

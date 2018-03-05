@@ -2,15 +2,12 @@
 //  TLMomentDetailViewController.h
 //  TLChat
 //
-//  Created by 李伯坤 on 16/4/23.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 李伯坤 on 2018/3/5.
+//  Copyright © 2018年 李伯坤. All rights reserved.
 //
 
-#import "TLViewController.h"
-#import "TLMoment.h"
+#import <ZZFLEX/ZZFlexibleLayoutFramework.h>
 
-@interface TLMomentDetailViewController : TLViewController
-
-@property (nonatomic, strong) TLMoment *moment;
+@interface TLMomentDetailViewController : ZZFlexibleLayoutViewController
 
 @end

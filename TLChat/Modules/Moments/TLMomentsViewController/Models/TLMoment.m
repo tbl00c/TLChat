@@ -8,21 +8,9 @@
 
 #import "TLMoment.h"
 
-#define     HEIGHT_MOMENT_DEFAULT       86.0f
+#define     HEIGHT_MOMENT_DEFAULT       78.0f
 
 @implementation TLMoment
-
-- (id)init
-{
-    if (self = [super init]) {
-        [TLMoment mj_setupObjectClassInArray:^NSDictionary *{
-            return @{ @"user" : @"TLUser",
-                      @"detail" : @"TLMomentDetail",
-                      @"extension" : @"TLMomentExtension"};
-        }];
-    }
-    return self;
-}
 
 #pragma mark - # Getter
 - (TLMomentFrame *)momentFrame
@@ -31,9 +19,18 @@
         _momentFrame = [[TLMomentFrame alloc] init];
         _momentFrame.height = HEIGHT_MOMENT_DEFAULT;
         _momentFrame.height += _momentFrame.heightDetail = self.detail.detailFrame.height;  // 正文高度
-        _momentFrame.height += _momentFrame.heightExtension = self.extension.extensionFrame.height;   // 拓展高度
+        if (self.hasExtension) {
+            _momentFrame.height += 10;
+            _momentFrame.height += _momentFrame.heightExtension = self.extension.extensionFrame.height;   // 拓展高度
+        }
     }
     return _momentFrame;
+}
+
+- (BOOL)hasExtension
+{
+    BOOL hasExtension = self.extension.likedFriends.count > 0 || self.extension.comments.count > 0;
+    return hasExtension;
 }
 
 @end

@@ -6,11 +6,12 @@
 
 <img src="./Screenshot/3.PNG" width = "375" height = "667" alt="screenshot3" align=center />  <img src="./Screenshot/5.png" width = "375" height = "667" alt="screenshot4" align=center />
 
-<img src="./Screenshot/4.png" width = "375" height = "667" alt="screenshot4" align=center />b <img src="./Screenshot/6.png" width = "375" height = "667" alt="screenshot5" align=center />
+<img src="./Screenshot/4.png" width = "375" height = "667" alt="screenshot4" align=center /> <img src="./Screenshot/6.png" width = "375" height = "667" alt="screenshot5" align=center />
 
 ## 近期计划
 近期将对项目结构进行整理，将在代码层面的实现整个项目模块化，主要包含：
 
+* 聊天界面重构，逻辑独立；
 * 主要控制类逻辑整理；
 * 主要列表使用ZZFLEX重构、以增加其拓展性；
 * ZZFLEX对UIKit的一层封装，主要包含一个数据驱动的列表框架、和UIKit中常用控件的链式拓展，ZZFLEX相关资料正在整理中，目前已经开源；

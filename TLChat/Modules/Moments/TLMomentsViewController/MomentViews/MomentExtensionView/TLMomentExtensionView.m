@@ -8,13 +8,22 @@
 //
 
 #import "TLMomentExtensionView.h"
-#import "TLMomentExtensionView+TableView.h"
+#import "TLUserDetailViewController.h"
+#import "TLMomentExtensionCommentCell.h"
+#import "TLMomentExtensionLikedCell.h"
 
 #define     EDGE_HEADER     5.0f
+
+typedef NS_ENUM(NSInteger, TLMomentExtensionSectionType) {
+    TLMomentExtensionSectionTypeLike,
+    TLMomentExtensionSectionTypeComment,
+};
 
 @interface TLMomentExtensionView ()
 
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) ZZFLEXAngel *angel;
 
 @end
 
@@ -24,14 +33,18 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setBackgroundColor:[UIColor clearColor]];
-        [self addSubview:self.tableView];
-        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        self.tableView = self.addTableView(1)
+        .backgroundColor([UIColor colorGrayForMoment]).separatorStyle(UITableViewCellSeparatorStyleNone)
+        .scrollsToTop(NO).scrollEnabled(NO)
+        .masonry(^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self).mas_offset(EDGE_HEADER);
             make.left.and.right.mas_equalTo(self);
             make.bottom.mas_equalTo(self).priorityLow();
-        }];
+        })
+        .view;
         
-        [self registerCellForTableView:self.tableView];
+        self.angel = [[ZZFLEXAngel alloc] initWithHostView:self.tableView];
     }
     return self;
 }
@@ -39,9 +52,42 @@
 - (void)setExtension:(TLMomentExtension *)extension
 {
     _extension = extension;
+    
+    @weakify(self);
+    self.angel.clear();
+    
+    // 点赞
+    self.angel.addSection(TLMomentExtensionSectionTypeLike);
+    if (extension.likedFriends.count > 0) {
+        self.angel.addCell(@"TLMomentExtensionLikedCell").toSection(TLMomentExtensionSectionTypeLike).withDataModel(self.extension)
+        .eventAction(^ id(TLMELikedCellEventType eventType, id data) {
+            @strongify(self);
+            if (eventType == TLMELikedCellEventTypeClickUser) {
+                TLUserDetailViewController *userDetailVC = [[TLUserDetailViewController alloc] initWithUserModel:data];
+                PushVC(userDetailVC);
+            }
+            return nil;
+        });
+    }
+    
+    // 评论
+    self.angel.addSection(TLMomentExtensionSectionTypeComment);
+    if (extension.comments.count > 0) {
+        self.angel.addCells(@"TLMomentExtensionCommentCell").toSection(TLMomentExtensionSectionTypeComment).withDataModelArray(self.extension.comments)
+        .eventAction(^ id(TLMECommentCellEventType eventType, id data) {
+            @strongify(self);
+            if (eventType == TLMECommentCellEventTypeUserClick) {
+                TLUserDetailViewController *userDetailVC = [[TLUserDetailViewController alloc] initWithUserModel:data];
+                PushVC(userDetailVC);
+            }
+            return nil;
+        });
+    }
+    
     [self.tableView reloadData];
 }
 
+#pragma mark - # Private Methods
 - (void)drawRect:(CGRect)rect
 {
     CGFloat startX = 20;
@@ -58,19 +104,5 @@
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 
-#pragma mark - # Getter
-- (UITableView *)tableView
-{
-    if (_tableView == nil) {
-        _tableView = [[UITableView alloc] init];
-        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        [_tableView setBackgroundColor:[UIColor colorGrayForMoment]];
-        [_tableView setDelegate:self];
-        [_tableView setDataSource:self];
-        [_tableView setScrollsToTop:NO];
-        [_tableView setScrollEnabled:NO];
-    }
-    return _tableView;
-}
 
 @end

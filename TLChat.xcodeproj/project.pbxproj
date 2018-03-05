@@ -60,6 +60,7 @@
 		C259CE881FF2283E0058FD6E /* UINavigationController+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = C259CE861FF2283D0058FD6E /* UINavigationController+TLChat.m */; };
 		C259CE901FF2290D0058FD6E /* TLExpressionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C259CE8A1FF2290D0058FD6E /* TLExpressionHelper.m */; };
 		C259CE911FF2290D0058FD6E /* TLDBExpressionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C259CE8D1FF2290D0058FD6E /* TLDBExpressionStore.m */; };
+		C269EC04204CE915007B6B11 /* Moments.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C269EC03204CE915007B6B11 /* Moments.xcassets */; };
 		C27A498A1FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C27A49891FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m */; };
 		C27A498D1FFDCE4500EA5FD5 /* TLExpressionDetailSeperatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C27A498C1FFDCE4500EA5FD5 /* TLExpressionDetailSeperatorCell.m */; };
 		C284AE981FF247BA00075E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C284AE941FF247B900075E59 /* InfoPlist.strings */; };
@@ -84,7 +85,6 @@
 		C292D32D1F7A4B8B007EB0A6 /* TLMomentMultiImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D30A1F7A4B58007EB0A6 /* TLMomentMultiImageView.m */; };
 		C292D32E1F7A4B8F007EB0A6 /* TLMomentExtensionCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D30D1F7A4B58007EB0A6 /* TLMomentExtensionCommentCell.m */; };
 		C292D32F1F7A4B92007EB0A6 /* TLMomentExtensionLikedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D30F1F7A4B58007EB0A6 /* TLMomentExtensionLikedCell.m */; };
-		C292D3301F7A4B95007EB0A6 /* TLMomentExtensionView+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D3111F7A4B58007EB0A6 /* TLMomentExtensionView+TableView.m */; };
 		C292D3311F7A4B98007EB0A6 /* TLMomentExtensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D3131F7A4B58007EB0A6 /* TLMomentExtensionView.m */; };
 		C292D3321F7A4B9B007EB0A6 /* TLMomentBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D3151F7A4B58007EB0A6 /* TLMomentBaseView.m */; };
 		C292D3331F7A4B9E007EB0A6 /* TLMomentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C292D3171F7A4B58007EB0A6 /* TLMomentImageView.m */; };
@@ -422,6 +422,7 @@
 		C259CE8D1FF2290D0058FD6E /* TLDBExpressionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBExpressionStore.m; sourceTree = "<group>"; };
 		C259CE8E1FF2290D0058FD6E /* TLDBExpressionSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBExpressionSQL.h; sourceTree = "<group>"; };
 		C259CE8F1FF2290D0058FD6E /* TLDBExpressionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBExpressionStore.h; sourceTree = "<group>"; };
+		C269EC03204CE915007B6B11 /* Moments.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Moments.xcassets; sourceTree = "<group>"; };
 		C26EBE331FFE20A200B7C360 /* TLSearchResultControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLSearchResultControllerProtocol.h; sourceTree = "<group>"; };
 		C27A49881FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLExpressionDetailBannerCell.h; sourceTree = "<group>"; };
 		C27A49891FFDC59C00EA5FD5 /* TLExpressionDetailBannerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLExpressionDetailBannerCell.m; sourceTree = "<group>"; };
@@ -472,8 +473,6 @@
 		C292D30D1F7A4B58007EB0A6 /* TLMomentExtensionCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMomentExtensionCommentCell.m; sourceTree = "<group>"; };
 		C292D30E1F7A4B58007EB0A6 /* TLMomentExtensionLikedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMomentExtensionLikedCell.h; sourceTree = "<group>"; };
 		C292D30F1F7A4B58007EB0A6 /* TLMomentExtensionLikedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMomentExtensionLikedCell.m; sourceTree = "<group>"; };
-		C292D3101F7A4B58007EB0A6 /* TLMomentExtensionView+TableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TLMomentExtensionView+TableView.h"; sourceTree = "<group>"; };
-		C292D3111F7A4B58007EB0A6 /* TLMomentExtensionView+TableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TLMomentExtensionView+TableView.m"; sourceTree = "<group>"; };
 		C292D3121F7A4B58007EB0A6 /* TLMomentExtensionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMomentExtensionView.h; sourceTree = "<group>"; };
 		C292D3131F7A4B58007EB0A6 /* TLMomentExtensionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMomentExtensionView.m; sourceTree = "<group>"; };
 		C292D3141F7A4B58007EB0A6 /* TLMomentBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMomentBaseView.h; sourceTree = "<group>"; };
@@ -1403,10 +1402,10 @@
 			children = (
 				C292D2F21F7A4B58007EB0A6 /* TLMoment.h */,
 				C292D2F31F7A4B58007EB0A6 /* TLMoment.m */,
-				C292D2F41F7A4B58007EB0A6 /* TLMomentComment.h */,
-				C292D2F51F7A4B58007EB0A6 /* TLMomentComment.m */,
 				C292D2F61F7A4B58007EB0A6 /* TLMomentDetail.h */,
 				C292D2F71F7A4B58007EB0A6 /* TLMomentDetail.m */,
+				C292D2F41F7A4B58007EB0A6 /* TLMomentComment.h */,
+				C292D2F51F7A4B58007EB0A6 /* TLMomentComment.m */,
 				C292D2F81F7A4B58007EB0A6 /* TLMomentExtension.h */,
 				C292D2F91F7A4B58007EB0A6 /* TLMomentExtension.m */,
 			);
@@ -1462,8 +1461,6 @@
 				C292D30D1F7A4B58007EB0A6 /* TLMomentExtensionCommentCell.m */,
 				C292D30E1F7A4B58007EB0A6 /* TLMomentExtensionLikedCell.h */,
 				C292D30F1F7A4B58007EB0A6 /* TLMomentExtensionLikedCell.m */,
-				C292D3101F7A4B58007EB0A6 /* TLMomentExtensionView+TableView.h */,
-				C292D3111F7A4B58007EB0A6 /* TLMomentExtensionView+TableView.m */,
 				C292D3121F7A4B58007EB0A6 /* TLMomentExtensionView.h */,
 				C292D3131F7A4B58007EB0A6 /* TLMomentExtensionView.m */,
 			);
@@ -3146,6 +3143,7 @@
 			isa = PBXGroup;
 			children = (
 				C2ECC77C2049433E00D3D7AB /* TestData */,
+				C269EC03204CE915007B6B11 /* Moments.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -3277,6 +3275,7 @@
 				C2D7CBB81F72470500648CED /* Mine.xcassets in Resources */,
 				C2D7CB571F72470400648CED /* Conversation.xcassets in Resources */,
 				C284AE9B1FF2498400075E59 /* AddMenu.xcassets in Resources */,
+				C269EC04204CE915007B6B11 /* Moments.xcassets in Resources */,
 				C249DB4F2003ABF500702FA4 /* FriendList.json in Resources */,
 				C249DB502003ABF500702FA4 /* FriendGroupList.json in Resources */,
 				C284AE991FF247BA00075E59 /* Localizable.strings in Resources */,
@@ -3399,7 +3398,6 @@
 				C2D7CBC71F72470500648CED /* TLNewMessageSettingViewController.m in Sources */,
 				C2D674C01FFC785E00FAA24D /* TLUploadRequest.m in Sources */,
 				C24993361FFB663A00F69B16 /* UIView+TLEmpty.m in Sources */,
-				C292D3301F7A4B95007EB0A6 /* TLMomentExtensionView+TableView.m in Sources */,
 				C29C6A8A200494DD0058ED75 /* TLFriendDetailSettingViewController.m in Sources */,
 				C243B65A1F7A5B7C0059A886 /* TLNetworkSerializer.m in Sources */,
 				C249DB472003AA3F00702FA4 /* TLContactsSearchResultViewController.m in Sources */,

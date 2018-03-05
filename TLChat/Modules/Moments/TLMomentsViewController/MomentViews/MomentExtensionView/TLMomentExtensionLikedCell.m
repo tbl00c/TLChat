@@ -8,16 +8,45 @@
 //
 
 #import "TLMomentExtensionLikedCell.h"
+#import <YYText.h>
+#import "TLMomentExtension.h"
 #import "TLUser.h"
 
 @interface TLMomentExtensionLikedCell ()
 
-@property (nonatomic, strong) UILabel *label;
+@property (nonatomic, assign) BOOL showBottomLine;
+
+@property (nonatomic, strong) YYLabel *label;
 
 @end
 
 @implementation TLMomentExtensionLikedCell
 
+#pragma mark - # ZZFlexibleLayoutViewProtocol
++ (CGFloat)viewHeightByDataModel:(TLMomentExtension *)dataModel
+{
+    return dataModel.extensionFrame.heightLiked;
+}
+
+- (void)setViewDataModel:(TLMomentExtension *)dataModel
+{
+    self.showBottomLine = dataModel.comments.count > 0;
+    [self.label setAttributedText:dataModel.attrLikedFriendsName];
+    @weakify(self);
+    [dataModel setLikeUserClickAction:^(TLUser *user) {
+        @strongify(self);
+        if (self.eventAction) {
+            self.eventAction(TLMELikedCellEventTypeClickUser, user);
+        }
+    }];
+}
+
+- (void)setViewEventAction:(id (^)(NSInteger, id))eventAction
+{
+    self.eventAction = eventAction;
+}
+
+#pragma mark - # Cell
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -29,19 +58,6 @@
         }];
     }
     return self;
-}
-
-- (void)setLikedFriends:(NSArray *)likedFriends
-{
-    _likedFriends = likedFriends;
-    NSMutableString *str = [[NSMutableString alloc] init];
-    for (TLUser *user in likedFriends) {
-        [str appendString:user.showName];
-        if (likedFriends.lastObject != user) {
-            [str appendString:@", "];
-        }
-    }
-    [self.label setText:str];
 }
 
 - (void)layoutSubviews
@@ -57,12 +73,11 @@
 }
 
 #pragma mark - # Getter
-- (UILabel *)label
+- (YYLabel *)label
 {
     if (_label == nil) {
-        _label = [[UILabel alloc] init];
-        [_label setFont:[UIFont boldSystemFontOfSize:14.0]];
-        [_label setTextColor:[UIColor colorBlueMoment]];
+        _label = [[YYLabel alloc] init];
+        [_label setNumberOfLines:0];
     }
     return _label;
 }

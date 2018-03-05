@@ -133,6 +133,7 @@ PODS:
   - TLKit/TLShortcut (0.0.21)
   - TLTabBarController (0.0.6)
   - UMengAnalytics (3.6.6)
+  - YYText (1.0.7)
   - ZZFLEX (0.0.2)
 
 DEPENDENCIES:
@@ -149,6 +150,7 @@ DEPENDENCIES:
   - TLKit (from `https://github.com/tbl00c/TLKit.git`, tag `0.0.21`)
   - TLTabBarController (from `https://github.com/tbl00c/TLTabBarController.git`, tag `0.0.6`)
   - UMengAnalytics (~> 3.6.6)
+  - YYText (~> 1.0.7)
   - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`, tag `0.0.2`)
 
 EXTERNAL SOURCES:
@@ -196,8 +198,9 @@ SPEC CHECKSUMS:
   TLKit: 413f6e5f9fa4b4d4dec3f4a39dcd8ee0c64174f9
   TLTabBarController: 6e91813f0ae019e8cd2ae35d6f4f6315085f7c44
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   ZZFLEX: ffcec569746c2fc018ec6e21f950fb956b438935
 
-PODFILE CHECKSUM: 6d6820d374b08d8371ceaeb382fda58113a4ffd5
+PODFILE CHECKSUM: 2931bd85674c7081e2992da22ee8c5d2d88115d2
 
 COCOAPODS: 1.2.1

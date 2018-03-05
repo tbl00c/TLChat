@@ -8,7 +8,7 @@
 
 #import "TLMoment.h"
 
-#define     HEIGHT_MOMENT_DEFAULT       76.0f
+#define     HEIGHT_MOMENT_DEFAULT       86.0f
 
 @implementation TLMoment
 

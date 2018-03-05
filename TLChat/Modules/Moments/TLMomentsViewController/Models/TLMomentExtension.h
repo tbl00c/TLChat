@@ -23,9 +23,11 @@
 
 @interface TLMomentExtension : NSObject
 
-@property (nonatomic, strong) NSMutableArray *likedFriends;
+@property (nonatomic, strong) NSArray *likedFriends;
+@property (nonatomic, strong, readonly) NSAttributedString *attrLikedFriendsName;
+@property (nonatomic, copy) void (^likeUserClickAction)(TLUser *user);
 
-@property (nonatomic, strong) NSMutableArray *comments;
+@property (nonatomic, strong) NSArray<TLMomentComment *> *comments;
 
 @property (nonatomic, strong) TLMomentExtensionFrame *extensionFrame;
 

@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TLMomentComment.h"
 
-@interface TLMomentExtensionCommentCell : UITableViewCell
+typedef NS_ENUM(NSInteger, TLMECommentCellEventType) {
+    TLMECommentCellEventTypeUserClick,
+};
 
-@property (nonatomic, strong) TLMomentComment *comment;
+@interface TLMomentExtensionCommentCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
+
+@property (nonatomic, copy) id (^eventAction)(TLMECommentCellEventType, id);
 
 @end

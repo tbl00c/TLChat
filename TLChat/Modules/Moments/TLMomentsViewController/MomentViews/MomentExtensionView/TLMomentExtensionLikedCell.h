@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TLMomentExtensionLikedCell : UITableViewCell
+typedef NS_ENUM(NSInteger, TLMELikedCellEventType) {
+    TLMELikedCellEventTypeClickUser,
+};
 
-@property (nonatomic, assign) BOOL showBottomLine;
+@interface TLMomentExtensionLikedCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
 
-@property (nonatomic, strong) NSArray *likedFriends;
+@property (nonatomic, copy) id (^eventAction)(TLMELikedCellEventType, id);
 
 @end

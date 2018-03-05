@@ -31,4 +31,5 @@ target :TLChat do
     pod 'CocoaLumberjack', '~> 3.3.0'
     pod 'MWPhotoBrowser', '~> 2.1.2'
 #    pod 'WCDB', '~> 1.0.5'
+    pod 'YYText', '~> 1.0.7'
 end

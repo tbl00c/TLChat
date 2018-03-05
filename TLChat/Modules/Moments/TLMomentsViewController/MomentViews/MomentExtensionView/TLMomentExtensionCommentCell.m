@@ -7,16 +7,41 @@
 //
 
 #import "TLMomentExtensionCommentCell.h"
+#import <YYText.h>
 
 @interface TLMomentExtensionCommentCell ()
 
-@property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) YYLabel *label;
 
 @end
 
 
 @implementation TLMomentExtensionCommentCell
 
+#pragma mark - # ZZFlexibleLayoutViewProtocol
++ (CGFloat)viewHeightByDataModel:(TLMomentComment *)dataModel
+{
+    return dataModel.commentFrame.height;
+}
+
+- (void)setViewDataModel:(TLMomentComment *)dataModel
+{
+    [self.label setAttributedText:dataModel.attrContent];
+    @weakify(self);
+    [dataModel setUserClickAction:^(TLUser *user) {
+        @strongify(self);
+        if (self.eventAction) {
+            self.eventAction(TLMECommentCellEventTypeUserClick, user);
+        }
+    }];
+}
+
+- (void)setViewEventAction:(id (^)(NSInteger, id))eventAction
+{
+    self.eventAction = eventAction;
+}
+
+#pragma mark - # Cell
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -29,29 +54,12 @@
     return self;
 }
 
-- (void)setComment:(TLMomentComment *)comment
-{
-    _comment = comment;
-    NSMutableString *str = [[NSMutableString alloc] init];
-    if (comment.user && !(comment.toUser && [comment.toUser.userID isEqualToString:comment.user.userID])) {
-        [str appendString:comment.user.showName];
-        if (comment.toUser) {
-            [str appendFormat:@"回复%@: ", comment.toUser.showName];
-        }
-        else {
-            [str appendString:@": "];
-        }
-    }
-    [str appendString:comment.content];
-    [self.label setText:str];
-}
-
 #pragma mark - # Getter
-- (UILabel *)label
+- (YYLabel *)label
 {
     if (_label == nil) {
-        _label = [[UILabel alloc] init];
-        [_label setFont:[UIFont systemFontOfSize:14.0]];
+        _label = [[YYLabel alloc] init];
+        [_label setNumberOfLines:0];
     }
     return _label;
 }

@@ -15,6 +15,18 @@
                  "http://i03.pictn.sogoucdn.com/08d08497ec723c1f",
                  ],
      },
+     "extension" : {
+        "likedFriends" : [
+                          { "userID" : "1002", "nikeName" : "陈美嘉", "avatarURL" : "http://i04.pic.sogou.com/d44a3766422d4930"},
+                          { "userID" : "1005", "nikeName" : "林宛瑜", "avatarURL" : "http://i02.pic.sogou.com/1c8975319bdc6963"},
+                          { "userID" : "1003", "nikeName" : "关谷神奇", "avatarURL" : "http://i04.pic.sogou.com/8c4442016e69ca3b"},
+                          { "userID" : "1006", "nikeName" : "陆展博", "avatarURL" : "http://i01.pic.sogou.com/ce745becc4aa8316"},
+                          { "userID" : "1007", "nikeName" : "吕子乔", "avatarURL" : "http://i04.pic.sogou.com/67394a74f3f4ef2d"},
+                          { "userID" : "1009", "nikeName" : "秦羽墨", "avatarURL" : "http://i02.pictn.sogoucdn.com/07a80d4a1444afac"},
+                          { "userID" : "1010", "nikeName" : "唐悠悠", "avatarURL" : "http://i02.pic.sogou.com/78e94af7aca623b0"},
+                          { "userID" : "1011", "nikeName" : "张伟", "avatarURL" : "http://i02.pic.sogou.com/628f3f0836407f9e"},
+                       ],
+        }
     },
     {
         "momentID" : "m1008",
@@ -42,7 +54,7 @@
                 },
                 {
                     "user" : { "userID" : "1011", "nikeName" : "张伟", "avatarURL" : "http://i02.pic.sogou.com/628f3f0836407f9e"},
-                    "content" : "😀😀😀",
+                    "content" : "那年我在缅甸，因为赌石，我把护照都压上了，结果还是输了，赌石的地方在缅甸的诺瓦达卡村，无奈之下我决定铤而走险，越境回国，可惜被缅甸边防军发现了，并且向我开枪射击，我左脚中弹，一瘸一拐的奔着祖国的方向一步一步的挪，左脚的疼痛让我难以忍受，当时身边好多树木我都没扶，就扶你！",
                 },
                 {
                     "user" : { "userID" : "1006", "nikeName" : "陆展博", "avatarURL" : "http://i01.pic.sogou.com/ce745becc4aa8316"},

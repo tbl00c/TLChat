@@ -58,7 +58,7 @@
 {
     [super layoutSubviews];
     
-    self.addSeparator(TLSeparatorPositionBottom).beginAt(15).length(SCREEN_WIDTH - 15);
+    self.addSeparator(ZZSeparatorPositionBottom).beginAt(15).length(SCREEN_WIDTH - 15);
 }
 
 @end

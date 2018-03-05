@@ -50,10 +50,10 @@ TLContactsItemModel *createContactsItemModelWithTag(NSInteger tag, NSString *pat
 - (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == count - 1) {
-        self.removeSeparator(TLSeparatorPositionBottom);
+        self.removeSeparator(ZZSeparatorPositionBottom);
     }
     else {
-        self.addSeparator(TLSeparatorPositionBottom).beginAt(10);
+        self.addSeparator(ZZSeparatorPositionBottom).beginAt(10);
     }
 }
 

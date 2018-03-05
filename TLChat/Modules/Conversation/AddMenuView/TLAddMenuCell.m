@@ -35,7 +35,7 @@
 {
     [super layoutSubviews];
     
-    self.addSeparator(TLSeparatorPositionBottom).beginAt(15).endAt(-15).color([UIColor colorGrayLine]);
+    self.addSeparator(ZZSeparatorPositionBottom).beginAt(15).endAt(-15).color([UIColor colorGrayLine]);
 }
 
 - (void)setItem:(TLAddMenuItem *)item

@@ -38,7 +38,7 @@
 {
     [super layoutSubviews];
     
-    self.addSeparator(TLSeparatorPositionBottom);
+    self.addSeparator(ZZSeparatorPositionBottom);
 }
 
 #pragma mark - # Private Methods

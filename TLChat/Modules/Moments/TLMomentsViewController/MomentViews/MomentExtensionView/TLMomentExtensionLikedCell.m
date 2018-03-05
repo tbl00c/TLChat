@@ -49,10 +49,10 @@
     [super layoutSubviews];
     
     if (self.showBottomLine) {
-        self.addSeparator(TLSeparatorPositionBottom);
+        self.addSeparator(ZZSeparatorPositionBottom);
     }
     else {
-        self.removeSeparator(TLSeparatorPositionBottom);
+        self.removeSeparator(ZZSeparatorPositionBottom);
     }
 }
 

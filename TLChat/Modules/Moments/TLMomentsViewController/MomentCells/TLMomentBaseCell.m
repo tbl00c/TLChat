@@ -40,7 +40,7 @@
 {
     [super layoutSubviews];
     
-    self.addSeparator(TLSeparatorPositionBottom);
+    self.addSeparator(ZZSeparatorPositionBottom);
 }
 
 @end

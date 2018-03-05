@@ -46,7 +46,7 @@
 
 - (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
-    self.addSeparator(TLSeparatorPositionBottom).beginAt(15);
+    self.addSeparator(ZZSeparatorPositionBottom).beginAt(15);
 }
 
 #pragma mark - # Public Methods

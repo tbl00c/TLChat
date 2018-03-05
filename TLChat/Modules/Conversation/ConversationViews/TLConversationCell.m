@@ -64,10 +64,10 @@
     [super drawRect:rect];
     
     if (self.bottomSeperatorStyle == TLConversationCellSeperatorStyleDefault) {
-        self.addSeparator(TLSeparatorPositionBottom).beginAt(15);
+        self.addSeparator(ZZSeparatorPositionBottom).beginAt(15);
     }
     else {
-        self.addSeparator(TLSeparatorPositionBottom);
+        self.addSeparator(ZZSeparatorPositionBottom);
     }
 }
 

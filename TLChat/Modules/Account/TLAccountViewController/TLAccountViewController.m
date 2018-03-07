@@ -20,12 +20,6 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
     TLAccountButtonTypeTest,
 };
 
-@interface TLAccountViewController ()
-
-@property (nonatomic, strong) UIImageView *imageView;
-
-@end
-
 @implementation TLAccountViewController
 
 - (void)loadView {
@@ -41,21 +35,19 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
             launchImageName = dict[@"UILaunchImageName"];
         }
     }
-    [self.imageView setImage:[UIImage imageNamed:launchImageName]];
-    [self.view addSubview:self.imageView];
-    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    self.view.addImageView(1).image(TLImage(launchImageName))
+    .masonry(^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
-    }];
+    });
    
     UIButton *(^createButton)(NSString *title, UIColor *bgColor, NSInteger tag) = ^UIButton *(NSString *title, UIColor *bgColor, NSInteger tag) {
-        UIButton *button = [[UIButton alloc] init];
-        [button setTag:tag];
-        [button setTitle:title forState:UIControlStateNormal];
-        [button setBackgroundColor:bgColor];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:19]];
+        UIButton *button = UIButton.zz_create(tag)
+        .backgroundColor(bgColor)
+        .title(title).titleFont([UIFont systemFontOfSize:19])
+        .cornerRadius(5.0f)
+        .view;
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [button.layer setMasksToBounds:YES];
-        [button.layer setCornerRadius:5.0f];
         return button;
     };
     
@@ -89,7 +81,6 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
         make.height.mas_equalTo(HEIGHT_BUTTON);
     }];
 }
-
 
 #pragma mark - # Event Response
 - (void)buttonClicked:(UIButton *)sender
@@ -125,17 +116,5 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
         }
     }
 }
-
-
-#pragma mark - # Getter
-- (UIImageView *)imageView
-{
-    if (!_imageView) {
-        _imageView = [[UIImageView alloc] init];
-    }
-    return _imageView;
-}
-
-
 
 @end

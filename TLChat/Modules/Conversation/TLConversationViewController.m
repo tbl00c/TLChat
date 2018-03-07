@@ -51,6 +51,7 @@
 - (void)loadView
 {
     [super loadView];
+    [self p_setNavTitleWithStatusString:nil];
     
     // 初始化界面视图控件
     [self p_loadUI];

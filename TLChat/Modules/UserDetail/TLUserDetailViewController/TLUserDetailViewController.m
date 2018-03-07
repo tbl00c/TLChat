@@ -141,7 +141,7 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
     self.addCell(@"TLUserDetailTitleCell").toSection(TLUserDetailVCSectionTypeDetailInfo).withDataModel(LOCSTR(@"更多"));
     
     // 功能
-    self.addSection(TLUserDetailVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 20, 0));
+    self.addSection(TLUserDetailVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
     // 发消息
     self.addCell(@"TLUserDetailChatButtonCell").toSection(TLUserDetailVCSectionTypeFunction).withDataModel(LOCSTR(@"发消息")).eventAction(^ id(NSInteger eventType, id data) {
         @strongify(self);

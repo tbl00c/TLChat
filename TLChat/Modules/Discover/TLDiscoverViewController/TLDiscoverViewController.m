@@ -169,7 +169,7 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
     // 小程序
     {
         NSInteger sectionTag = TLDiscoverSectionTagProgram;
-        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 30, 0));
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
         TLMenuItem *program = createMenuItem(@"discover_app", LOCSTR(@"小程序"));
         self.addCell(CELL_MENU_ITEM).toSection(sectionTag).withDataModel(program).selectedAction(^ (id data) {
             @strongify(self);

@@ -77,7 +77,7 @@ typedef NS_ENUM(NSInteger, TLShakeSettingVCSectionType) {
     // 消息
     {
         NSInteger sectionTag = TLShakeSettingVCSectionTypeMessage;
-        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
         
         // 摇一摇消息
         self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"摇一摇消息")).selectedAction(^ (id data) {

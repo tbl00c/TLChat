@@ -100,13 +100,11 @@ static TLChatViewController *chatVC;
 - (void)rightBarButtonDown:(UINavigationBar *)sender
 {
     if ([self.partner chat_userType] == TLChatUserTypeUser) {
-        TLChatDetailViewController *chatDetailVC = [[TLChatDetailViewController alloc] init];
-        [chatDetailVC setUser:(TLUser *)self.partner];
+        TLChatDetailViewController *chatDetailVC = [[TLChatDetailViewController alloc] initWithUserModel:(TLUser *)self.partner];
         PushVC(chatDetailVC);
     }
     else if ([self.partner chat_userType] == TLChatUserTypeGroup) {
-        TLChatGroupDetailViewController *chatGroupDetailVC = [[TLChatGroupDetailViewController alloc] init];
-        [chatGroupDetailVC setGroup:(TLGroup *)self.partner];
+        TLChatGroupDetailViewController *chatGroupDetailVC = [[TLChatGroupDetailViewController alloc] initWithGroupModel:(TLGroup *)self.partner];
         PushVC(chatGroupDetailVC);
     }
 }

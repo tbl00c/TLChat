@@ -13,6 +13,7 @@
 #import "TLCommonSettingViewController.h"
 #import "TLAboutViewController.h"
 #import "TLWebViewController.h"
+#import "TLSettingItem.h"
 
 typedef NS_ENUM(NSInteger, TLSettingVCSectionType) {
     TLSettingVCSectionTypeAccount,
@@ -91,7 +92,7 @@ typedef NS_ENUM(NSInteger, TLSettingVCSectionType) {
     
     {
         NSInteger sectionTag = TLSettingVCSectionTypeExit;
-        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
         self.addCell(CELL_ST_ITEM_BUTTON).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"退出登录")).selectedAction(^ (id data) {
             TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:@"退出后不会删除任何历史数据，下次登录依然可以使用本账号。" clickAction:^(NSInteger buttonIndex) {
                 
@@ -102,8 +103,5 @@ typedef NS_ENUM(NSInteger, TLSettingVCSectionType) {
     
     [self reloadView];
 }
-
-
-
 
 @end

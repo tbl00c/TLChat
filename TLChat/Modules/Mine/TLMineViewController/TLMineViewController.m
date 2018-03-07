@@ -112,7 +112,7 @@ typedef NS_ENUM(NSInteger, TLMineSectionTag) {
     // 设置
     {
         NSInteger sectionTag = TLMineSectionTagSetting;
-        self.addSection(TLMineSectionTagSetting).sectionInsets(UIEdgeInsetsMake(20, 0, 30, 0));
+        self.addSection(TLMineSectionTagSetting).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
         TLMenuItem *setting = createMenuItem(@"mine_setting", LOCSTR(@"设置"));
         self.addCell(CELL_MENU_ITEM).toSection(TLMineSectionTagSetting).withDataModel(setting).selectedAction(^ (id data) {
             @strongify(self);

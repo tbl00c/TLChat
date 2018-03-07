@@ -117,7 +117,7 @@ typedef NS_ENUM(NSInteger, TLUserSettingVCSectionType) {
     // 删除
     {
         NSInteger sectionTag = TLUserSettingVCSectionTypeDelete;
-        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
 
         self.addCell(@"TLSettingItemDeleteButtonCell").toSection(sectionTag).withDataModel(TLCreateSettingItem(@"删除")).eventAction(^ id(NSInteger eventType, id data) {
             @strongify(self);

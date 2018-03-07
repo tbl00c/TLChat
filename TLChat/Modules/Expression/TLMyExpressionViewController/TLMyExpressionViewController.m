@@ -57,10 +57,10 @@ typedef NS_ENUM(NSInteger, TLMyExpressionVCSectionType) {
             PushVC(detailVC);
         });
         
-        self.addSection(TLMyExpressionVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+        self.addSection(TLMyExpressionVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
     }
     else {
-        self.addSection(TLMyExpressionVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+        self.addSection(TLMyExpressionVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(15, 0, 30, 0));
     }
     
     // 添加的表情

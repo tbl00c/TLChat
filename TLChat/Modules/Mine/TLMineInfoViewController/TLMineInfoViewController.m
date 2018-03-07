@@ -78,7 +78,7 @@ typedef NS_ENUM(NSInteger, TLMineInfoVCSectionType) {
     
     {
         NSInteger sectionTag = TLMineInfoVCSectionTypeMore;
-        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
         
         // 我的地址
         self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"我的地址")).selectedAction(^ (id data) {

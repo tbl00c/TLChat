@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TLSettingGroup.h"
 #import "TLExpressionGroupModel.h"
 
 @interface TLExpressionHelper : NSObject

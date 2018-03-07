@@ -162,7 +162,6 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
     // 语音聊天
     if (![userModel.userID isEqualToString:[TLUserHelper sharedHelper].userID]) {
         self.addCell(@"TLUserDetailViewChatButtonCell").toSection(TLUserDetailVCSectionTypeFunction).withDataModel(LOCSTR(@"视频聊天")).eventAction(^ id(NSInteger eventType, id data) {
-            @strongify(self);
             [TLUIUtility showInfoHint:@"暂未实现"];
             return nil;
         });

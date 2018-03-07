@@ -24,9 +24,9 @@ TLUserDetailKVModel *createUserDetailKVModel(NSString *title, id data)
 
 @implementation TLUserDetailBaseKVCell
 
-+ (CGSize)viewSizeByDataModel:(id)dataModel
++ (CGFloat)viewHeightByDataModel:(id)dataModel
 {
-    return CGSizeMake(SCREEN_WIDTH, 44);
+    return 44.0f;
 }
 
 - (void)setViewDataModel:(TLUserDetailKVModel *)dataModel

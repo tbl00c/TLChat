@@ -35,10 +35,10 @@
 @implementation TLMomentBaseCell
 
 #pragma mark - # Protocol
-+ (CGSize)viewSizeByDataModel:(TLMoment *)dataModel
++ (CGFloat)viewHeightByDataModel:(TLMoment *)dataModel
 {
     CGFloat height = dataModel.momentFrame.height;
-    return CGSizeMake(SCREEN_WIDTH, height);
+    return height;
 }
 
 - (void)setViewDataModel:(id)dataModel

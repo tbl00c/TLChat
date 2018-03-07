@@ -16,9 +16,9 @@
 
 @implementation TLUserDetailChatButtonCell
 
-+ (CGSize)viewSizeByDataModel:(id)dataModel
++ (CGFloat)viewHeightByDataModel:(id)dataModel
 {
-    return CGSizeMake(SCREEN_WIDTH, 62);
+    return 62.0f;
 }
 
 - (void)setViewDataModel:(id)dataModel

@@ -26,9 +26,9 @@
 @implementation TLMomentHeaderCell
 
 #pragma mark - # Protocol
-+ (CGSize)viewSizeByDataModel:(id)dataModel
++ (CGFloat)viewHeightByDataModel:(id)dataModel
 {
-    return CGSizeMake(SCREEN_WIDTH, 260.0f);
+    return 260.0f;
 }
 
 - (void)setViewDataModel:(id)dataModel

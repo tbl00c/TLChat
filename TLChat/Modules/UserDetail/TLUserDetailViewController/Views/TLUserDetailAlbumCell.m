@@ -20,9 +20,9 @@
 
 @implementation TLUserDetailAlbumCell
 
-+ (CGSize)viewSizeByDataModel:(id)dataModel
++ (CGFloat)viewHeightByDataModel:(id)dataModel
 {
-    return CGSizeMake(SCREEN_WIDTH, 90);
+    return 90.0f;
 }
 
 - (void)setViewDataModel:(TLUserDetailKVModel *)dataModel

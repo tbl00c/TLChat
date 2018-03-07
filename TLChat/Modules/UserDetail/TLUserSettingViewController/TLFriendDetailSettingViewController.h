@@ -6,10 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLSettingViewController.h"
+#import "TLBaseSettingViewController.h"
 
 @class TLUser;
-@interface TLFriendDetailSettingViewController : TLSettingViewController
+@interface TLFriendDetailSettingViewController : TLBaseSettingViewController
 
 @property (nonatomic, strong, readonly) TLUser *userModel;
 

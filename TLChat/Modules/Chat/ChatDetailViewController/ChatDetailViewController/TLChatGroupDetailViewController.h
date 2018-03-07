@@ -6,10 +6,10 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLSettingViewController.h"
+#import "TLBaseSettingViewController.h"
 #import "TLGroup.h"
 
-@interface TLChatGroupDetailViewController : TLSettingViewController
+@interface TLChatGroupDetailViewController : TLBaseSettingViewController
 
 @property (nonatomic, strong) TLGroup *group;
 

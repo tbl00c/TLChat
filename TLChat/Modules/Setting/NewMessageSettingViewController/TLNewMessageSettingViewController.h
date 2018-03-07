@@ -6,8 +6,8 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLSettingViewController.h"
+#import "TLBaseSettingViewController.h"
 
-@interface TLNewMessageSettingViewController : TLSettingViewController
+@interface TLNewMessageSettingViewController : TLBaseSettingViewController
 
 @end

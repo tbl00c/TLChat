@@ -6,9 +6,9 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLSettingViewController.h"
+#import "TLBaseSettingViewController.h"
 
-@interface TLChatBackgroundSettingViewController : TLSettingViewController
+@interface TLChatBackgroundSettingViewController : TLBaseSettingViewController
 
 /**
  *  若为nil则全局设置，否则只给对应好友设置

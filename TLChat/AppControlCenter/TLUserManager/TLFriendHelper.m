@@ -11,6 +11,8 @@
 #import "TLDBGroupStore.h"
 #import "TLGroup+CreateAvatar.h"
 #import "TLUserHelper.h"
+#import "TLMessageManager+MessageRecord.h"
+#import "TLChatNotificationKey.h"
 
 static TLFriendHelper *friendHelper = nil;
 
@@ -74,6 +76,15 @@ static TLFriendHelper *friendHelper = nil;
         }
     }
     return nil;
+}
+
+- (BOOL)deleteFriendByUserId:(NSString *)userID
+{
+    BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByPartnerID:userID];
+    if (ok) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
+    }
+    return ok;
 }
 
 #pragma mark - Private Methods -

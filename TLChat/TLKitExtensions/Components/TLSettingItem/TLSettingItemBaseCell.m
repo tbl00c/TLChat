@@ -42,7 +42,6 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setBackgroundColor:[UIColor whiteColor]];
-        [self setSelectedBackgrounColor:[UIColor colorGrayLine]];
         
         // 箭头
         self.arrowView = self.addImageView(10)
@@ -61,6 +60,7 @@
 {
     _item = item;
     
+    [self setSelectedBackgrounColor:item.disableHighlight ? nil : [UIColor colorGrayLine]];
     [self.arrowView setHidden:!item.showDisclosureIndicator];
 }
 

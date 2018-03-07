@@ -10,7 +10,7 @@
 
 @implementation TLSettingItem
 
-+ (TLSettingItem *) createItemWithTitle:(NSString *)title
++ (TLSettingItem *)createItemWithTitle:(NSString *)title
 {
     TLSettingItem *item = [[TLSettingItem alloc] init];
     item.title = title;

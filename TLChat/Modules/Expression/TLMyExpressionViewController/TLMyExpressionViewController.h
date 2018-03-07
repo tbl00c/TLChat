@@ -6,8 +6,8 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import "TLBaseSettingViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface TLMyExpressionViewController : TLBaseSettingViewController
+@interface TLMyExpressionViewController : ZZFlexibleLayoutViewController
 
 @end

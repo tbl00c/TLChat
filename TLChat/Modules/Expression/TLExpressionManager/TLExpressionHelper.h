@@ -42,13 +42,6 @@
  */
 - (BOOL)deleteExpressionGroupByID:(NSString *)groupID;
 
-/**
- *  表情包是否被其他用户使用
- *
- *  用来判断是否可删除表情包文件
- */
-- (BOOL)didExpressionGroupAlwaysInUsed:(NSString *)groupID;
-
 - (void)updateExpressionGroupModelsStatus:(NSArray *)groupModelArray;
 
 
@@ -58,11 +51,5 @@
                                  success:(void (^)(TLExpressionGroupModel *group))success
                                  failure:(void (^)(TLExpressionGroupModel *group, NSString *error))failure;
 
-
-#pragma mark - 列表用
-/**
- *  列表数据 — 我的表情
- */
-- (NSMutableArray *)myExpressionListData;
 
 @end

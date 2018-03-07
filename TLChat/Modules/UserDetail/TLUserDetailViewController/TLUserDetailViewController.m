@@ -7,8 +7,8 @@
 //
 
 #import "TLUserDetailViewController.h"
-#import "TLFriendDetailSettingViewController.h"
-#import "TLFriendHelper+Detail.h"
+#import "TLUserSettingViewController.h"
+#import "TLFriendHelper.h"
 #import "TLUserDetailBaseKVCell.h"
 #import "TLChatViewController.h"
 #import "TLLaunchManager.h"
@@ -62,7 +62,7 @@ typedef NS_ENUM(NSInteger, TLUserDetailVCSectionType) {
     @weakify(self);
     [self addRightBarButtonWithImage:TLImage(@"nav_more") actionBlick:^{
         @strongify(self);
-        TLFriendDetailSettingViewController *detailSetiingVC = [[TLFriendDetailSettingViewController alloc] initWithUserModel:self.userModel];
+        TLUserSettingViewController *detailSetiingVC = [[TLUserSettingViewController alloc] initWithUserModel:self.userModel];
         PushVC(detailSetiingVC);
     }];
 }

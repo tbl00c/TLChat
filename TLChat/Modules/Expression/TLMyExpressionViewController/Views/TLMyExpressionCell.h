@@ -6,7 +6,7 @@
 //  Copyright © 2016年 李伯坤. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TLSettingItemBaseCell.h"
 #import "TLExpressionGroupModel.h"
 
 @protocol TLMyExpressionCellDelegate <NSObject>
@@ -15,7 +15,7 @@
 
 @end
 
-@interface TLMyExpressionCell : UITableViewCell
+@interface TLMyExpressionCell : TLSettingItemBaseCell
 
 @property (nonatomic, assign) id<TLMyExpressionCellDelegate>delegate;
 

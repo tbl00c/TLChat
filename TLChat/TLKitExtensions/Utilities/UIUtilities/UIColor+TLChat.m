@@ -83,4 +83,13 @@
 }
 
 
+#pragma mark - #
++ (UIColor *)colorRedForButton {
+    return RGBColor(228, 68, 71);
+}
+
++ (UIColor *)colorRedForButtonHL {
+    return RGBColor(205, 62, 64);
+}
+
 @end

@@ -8,67 +8,108 @@
 
 #import "TLShakeSettingViewController.h"
 #import "NSFileManager+TLChat.h"
+#import "TLSettingItem.h"
+
+typedef NS_ENUM(NSInteger, TLShakeSettingVCSectionType) {
+    TLShakeSettingVCSectionTypeUI,
+    TLShakeSettingVCSectionTypeHistory,
+    TLShakeSettingVCSectionTypeMessage,
+};
 
 @implementation TLShakeSettingViewController
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];
-    [self.navigationItem setTitle:LOCSTR(@"摇一摇设置")];
+    [super loadView];
+    [self.view setBackgroundColor:[UIColor colorGrayBG]];
+    [self setTitle:LOCSTR(@"摇一摇设置")];
     
-    [self p_initShakeSettingData];
+    [self loadShakeSettingUI];
 }
 
-#pragma mark - # Delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - # UI
+- (void)loadShakeSettingUI
 {
-    TLSettingItem *item = [self.data[indexPath.section] objectAtIndex:indexPath.row];
-    if ([item.title isEqualToString:@"使用默认背景图片"]) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Shake_Image_Path"];
-        [TLUIUtility showAlertWithTitle:@"已恢复默认背景图"];
+    @weakify(self);
+    self.clear();
+    
+    // UI
+    {
+        NSInteger sectionTag = TLShakeSettingVCSectionTypeUI;
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+        
+        // 默认背景图
+        self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"使用默认背景图片")).selectedAction(^ (id data) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Shake_Image_Path"];
+            [TLUIUtility showAlertWithTitle:@"已恢复默认背景图"];
+        });
+        
+        // 换张背景图
+        self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"换张背景图片")).selectedAction(^ (id data) {
+            @strongify(self);
+            [self p_changeShakeBGImage];
+        });
+        
+        // 音效
+        TLSettingItem *voiceItem = TLCreateSettingItem(@"音效");
+        self.addCell(CELL_ST_ITEM_SWITCH).toSection(sectionTag).withDataModel(voiceItem).eventAction(^ id(NSInteger eventType, id data) {
+            
+            return nil;
+        });
     }
-    else if ([item.title isEqualToString:@"换张背景图片"]) {
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-        [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-        [imagePickerController setAllowsEditing:YES];
-        [self presentViewController:imagePickerController animated:YES completion:nil];
-        [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
-            [imagePickerController dismissViewControllerAnimated:YES completion:^{
-                UIImage *image = [x objectForKey:UIImagePickerControllerEditedImage];
-                if (image == nil) {
-                    image = [x objectForKey:UIImagePickerControllerOriginalImage];
-                }
-                NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
-                NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
-                NSString *imagePath = [NSFileManager pathUserSettingImage:imageName];
-                [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
-                [[NSUserDefaults standardUserDefaults] setObject:imageName forKey:@"Shake_Image_Path"];
-            }];
-        } completed:^{
-            [imagePickerController dismissViewControllerAnimated:YES completion:nil];
-        }];
+    
+    // 历史
+    {
+        NSInteger sectionTag = TLShakeSettingVCSectionTypeHistory;
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+        
+        // 打招呼的人
+        self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"打招呼的人")).selectedAction(^ (id data) {
+
+        });
+        
+        // 摇到的历史
+        self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"摇到的历史")).selectedAction(^ (id data) {
+
+        });
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    // 消息
+    {
+        NSInteger sectionTag = TLShakeSettingVCSectionTypeMessage;
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
+        
+        // 摇一摇消息
+        self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"摇一摇消息")).selectedAction(^ (id data) {
+
+        });
+    }
+    
+    [self reloadView];
 }
 
 #pragma mark - # Private Methods
-- (void)p_initShakeSettingData
+- (void)p_changeShakeBGImage
 {
-    TLSettingItem *item1 = TLCreateSettingItem(@"使用默认背景图片");
-    item1.showDisclosureIndicator = NO;
-    TLSettingItem *item2 = TLCreateSettingItem(@"换张背景图片");
-    TLSettingItem *item3 = TLCreateSettingItem(@"音效");
-    item3.type = TLSettingItemTypeSwitch;
-    TLSettingGroup *group1 = TLCreateSettingGroup(nil, nil, (@[item1, item2, item3]));
-    
-    TLSettingItem *item5 = TLCreateSettingItem(@"打招呼的人");
-    TLSettingItem *item6 = TLCreateSettingItem(@"摇到的历史");
-    TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[item5, item6]));
-    
-    TLSettingItem *item7 = TLCreateSettingItem(@"摇一摇消息");
-    TLSettingGroup *group3 = TLCreateSettingGroup(nil, nil, (@[item7]));
-    
-    self.data = @[group1, group2, group3].mutableCopy;
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [imagePickerController setAllowsEditing:YES];
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+    [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
+        [imagePickerController dismissViewControllerAnimated:YES completion:^{
+            UIImage *image = [x objectForKey:UIImagePickerControllerEditedImage];
+            if (image == nil) {
+                image = [x objectForKey:UIImagePickerControllerOriginalImage];
+            }
+            NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
+            NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
+            NSString *imagePath = [NSFileManager pathUserSettingImage:imageName];
+            [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
+            [[NSUserDefaults standardUserDefaults] setObject:imageName forKey:@"Shake_Image_Path"];
+        }];
+    } completed:^{
+        [imagePickerController dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 @end

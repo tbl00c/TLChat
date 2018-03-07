@@ -45,4 +45,6 @@
 
 - (TLGroup *)getGroupInfoByGroupID:(NSString *)groupID;
 
+- (BOOL)deleteFriendByUserId:(NSString *)userID;
+
 @end

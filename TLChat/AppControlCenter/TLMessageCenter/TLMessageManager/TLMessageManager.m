@@ -33,11 +33,53 @@ static TLMessageManager *messageManager;
             success:(void (^)(TLMessage *))success
             failure:(void (^)(TLMessage *))failure
 {
+    // 图灵机器人
+    [self p_sendMessageToReboot:message];
+    
+    BOOL ok = [self.messageStore addMessage:message];
+    if (!ok) {
+        DDLogError(@"存储Message到DB失败");
+    }
+    else {      // 存储到conversation
+        ok = [self addConversationByMessage:message];
+        if (!ok) {
+            DDLogError(@"存储Conversation到DB失败");
+        }
+    }
+}
+
+#pragma mark - # Private
+- (void)p_sendMessageToReboot:(TLMessage *)message
+{
     if (message.messageType == TLMessageTypeText) {
+        // 聊天的用户
+        TLUser *user;
+        if (message.partnerType == TLPartnerTypeGroup) {
+            TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:message.groupID];
+            NSInteger index = arc4random() % group.count;
+            user = group.users[index];
+        }
+        else {
+            user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:message.friendID];
+        }
+        
         NSString *text = [message.content objectForKey:@"text"];
+        NSString *apiKey = ({
+            NSString *key;
+            if ([user.userID isEqualToString:@"1001"]) {   // 曾小贤
+                key = @"00916307c7b24533a23d6115224540f3";
+            }
+            else if ([user.userID isEqualToString:@"1002"]) {   // 陈美嘉
+                key = @"5f5f8d7d613f4d81a6ff354cb428ccbc";
+            }
+            else {
+                key = @"44eb0b4ab0a640f192bd469551a7c03e";
+            }
+            key;
+        });
         NSDictionary *json = @{@"reqType" : @"0",
                                @"userInfo" : @{
-                                       @"apiKey" : @"44eb0b4ab0a640f192bd469551a7c03e",
+                                       @"apiKey" : apiKey,
                                        @"userId" : @"100454",
                                        },
                                @"perception" : @{
@@ -49,20 +91,8 @@ static TLMessageManager *messageManager;
         NSString *url = @"http://openapi.tuling123.com/openapi/api/v2";
         TLBaseRequest *request = [TLBaseRequest requestWithMethod:TLRequestMethodPOST url:url parameters:json];
         [request startRequestWithSuccessAction:^(TLResponse *response) {
-            if (success) {
-                success(message);
-            }
             NSDictionary *json = response.responseObject;
             NSArray *results = [json objectForKey:@"results"];
-            TLUser *user;
-            if (message.partnerType == TLPartnerTypeGroup) {
-                TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:message.groupID];
-                NSInteger index = arc4random() % group.count;
-                user = group.users[index];
-            }
-            else {
-                user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:message.friendID];
-            }
             for (NSDictionary *item in results) {
                 NSDictionary *values = [item objectForKey:@"values"];
                 if (values[@"text"]) {
@@ -74,7 +104,7 @@ static TLMessageManager *messageManager;
                     textMessage.userID = message.userID;
                     textMessage.date = [NSDate date];
                     textMessage.friendID = user.userID;
-                    textMessage.fromUser = user;
+                    textMessage.fromUser = (id <TLChatUserProtocol>)user;
                     textMessage.groupID = message.groupID;
                     [self.messageStore addMessage:textMessage];
                     if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
@@ -90,7 +120,7 @@ static TLMessageManager *messageManager;
                     imageMessage.userID = message.userID;
                     imageMessage.friendID = user.userID;
                     imageMessage.date = [NSDate date];
-                    imageMessage.fromUser = user;
+                    imageMessage.fromUser = (id <TLChatUserProtocol>)user;
                     imageMessage.imageSize = CGSizeMake(120, 120);
                     imageMessage.groupID = message.groupID;
                     [self.messageStore addMessage:imageMessage];
@@ -99,27 +129,11 @@ static TLMessageManager *messageManager;
                     }
                 }
             }
-        } failureAction:^(TLResponse *response) {
-            if (failure) {
-                failure(message);
-            }
-        }];
-    }
-    
-    
-    BOOL ok = [self.messageStore addMessage:message];
-    if (!ok) {
-        DDLogError(@"存储Message到DB失败");
-    }
-    else {      // 存储到conversation
-        ok = [self addConversationByMessage:message];
-        if (!ok) {
-            DDLogError(@"存储Conversation到DB失败");
-        }
+        } failureAction:nil];
     }
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getters
 - (TLDBMessageStore *)messageStore
 {
     if (_messageStore == nil) {

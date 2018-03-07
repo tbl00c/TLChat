@@ -92,7 +92,7 @@ typedef NS_ENUM(NSInteger, TLSettingVCSectionType) {
     {
         NSInteger sectionTag = TLSettingVCSectionTypeExit;
         self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
-        self.addCell(@"TLSettingItemButtonCell").toSection(sectionTag).withDataModel(TLCreateSettingItem(@"退出登录")).selectedAction(^ (id data) {
+        self.addCell(CELL_ST_ITEM_BUTTON).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"退出登录")).selectedAction(^ (id data) {
             TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:@"退出后不会删除任何历史数据，下次登录依然可以使用本账号。" clickAction:^(NSInteger buttonIndex) {
                 
             } cancelButtonTitle:LOCSTR(@"取消") destructiveButtonTitle:LOCSTR(@"退出登录") otherButtonTitles:nil];

@@ -11,22 +11,25 @@
 #import "TLExpressionHelper.h"
 #import "TLMyExpressionCell.h"
 
-@interface TLMyExpressionViewController () <TLMyExpressionCellDelegate>
+typedef NS_ENUM(NSInteger, TLMyExpressionVCSectionType) {
+    TLMyExpressionVCSectionTypeMine,
+    TLMyExpressionVCSectionTypeFunction,
+};
 
-@property (nonatomic, strong) TLExpressionHelper *helper;
+@interface TLMyExpressionViewController () <TLMyExpressionCellDelegate>
 
 @end
 
 @implementation TLMyExpressionViewController
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];
-    [self.navigationItem setTitle:LOCSTR(@"我的表情")];
+    [super loadView];
+    [self setTitle:LOCSTR(@"我的表情")];
+    [self.view setBackgroundColor:[UIColor colorGrayBG]];
     
     @weakify(self);
     [self addRightBarButtonWithTitle:LOCSTR(@"排序") actionBlick:^{
-        
     }];
     
     if (self.navigationController.rootViewController == self) {
@@ -36,75 +39,53 @@
         }];
     }
     
-    [self.tableView registerClass:[TLMyExpressionCell class] forCellReuseIdentifier:@"TLMyExpressionCell"];
-    
-    self.helper = [TLExpressionHelper sharedHelper];
-    self.data = [self.helper myExpressionListData];
+    [self loadMyExpressionVCUI];
 }
 
-#pragma mark - Delegate
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - # UI
+- (void)loadMyExpressionVCUI
 {
-    TLSettingGroup *group = self.data[indexPath.section];
-    if (group.headerTitle) {    // 有标题的就是表情组
-        TLExpressionGroupModel *emojiGroup = [group objectAtIndex:indexPath.row];
-        TLMyExpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMyExpressionCell"];
-        [cell setGroup:emojiGroup];
-        [cell setDelegate:self];
-        return cell;
+    @weakify(self);
+    self.clear();
+    
+    NSArray *expArray = [TLExpressionHelper sharedHelper].userEmojiGroups;
+    if (expArray.count > 0) {
+        self.addSection(TLMyExpressionVCSectionTypeMine).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+        self.addCells(@"TLMyExpressionCell").toSection(TLMyExpressionVCSectionTypeMine).withDataModelArray(expArray).selectedAction(^ (id data) {
+            @strongify(self);
+            TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] initWithGroupModel:data];
+            PushVC(detailVC);
+        });
+        
+        self.addSection(TLMyExpressionVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 0, 0));
     }
     else {
-        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        self.addSection(TLMyExpressionVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
     }
+    
+    // 添加的表情
+    self.addCell(CELL_ST_ITEM_NORMAL).toSection(TLMyExpressionVCSectionTypeFunction).withDataModel(TLCreateSettingItem(@"添加的表情")).selectedAction(^ (id data) {
+
+    });
+    
+    // 购买的表情
+    self.addCell(CELL_ST_ITEM_NORMAL).toSection(TLMyExpressionVCSectionTypeFunction).withDataModel(TLCreateSettingItem(@"购买的表情")).selectedAction(^ (id data) {
+
+    });
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TLSettingGroup *group = self.data[indexPath.section];
-    if (group.headerTitle) {
-        return 50.0f;
-    }
-    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TLSettingGroup *group = self.data[indexPath.section];
-    if (group.headerTitle) {    // 有标题的就是表情组
-        TLExpressionGroupModel *emojiGroup = [group objectAtIndex:indexPath.row];
-        TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] initWithGroupModel:emojiGroup];
-        PushVC(detailVC);
-    }
-    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
-
+#pragma mark - # Delegate
 //MARK: TLMyExpressionCellDelegate
 - (void)myExpressionCellDeleteButtonDown:(TLExpressionGroupModel *)group
 {
-    BOOL ok = [self.helper deleteExpressionGroupByID:group.gId];
+    BOOL ok = [[TLExpressionHelper sharedHelper] deleteExpressionGroupByID:group.gId];
     if (ok) {
-        BOOL canDeleteFile = ![self.helper didExpressionGroupAlwaysInUsed:group.gId];
-        if (canDeleteFile) {
-            NSError *error;
-            ok = [[NSFileManager defaultManager] removeItemAtPath:group.path error:&error];
-            if (!ok) {
-                DDLogError(@"删除表情文件失败\n路径:%@\n原因:%@", group.path, [error description]);
-            }
+        self.deleteCell.byDataModel(group);
+        if (self.sectionForTag(TLMyExpressionVCSectionTypeMine).dataModelArray.count == 0) {
+            self.deleteSection(TLMyExpressionVCSectionTypeMine);
+            self.sectionForTag(TLMyExpressionVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
         }
-        
-        NSInteger row = [self.data[0] indexOfObject:group];
-        [self.data[0] removeObject:group];
-        if ([self.data[0] count] == 0) {
-            [self.data removeObjectAtIndex:0];
-            [self.tableView beginUpdates];
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [self.tableView endUpdates];
-        }
-        else {
-            [self.tableView beginUpdates];
-            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-            [self.tableView endUpdates];
-        }
+        [self reloadView];
     }
     else {
         [TLUIUtility showErrorHint:@"表情包删除失败"];

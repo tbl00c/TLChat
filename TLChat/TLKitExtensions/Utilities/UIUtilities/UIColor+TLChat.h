@@ -41,5 +41,9 @@
 + (UIColor *)colorBlackForAddMenu;
 + (UIColor *)colorBlackForAddMenuHL;
 
+#pragma mark - 红色
++ (UIColor *)colorRedForButton;
++ (UIColor *)colorRedForButtonHL;
+
 
 @end

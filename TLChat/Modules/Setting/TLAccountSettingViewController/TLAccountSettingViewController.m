@@ -48,6 +48,8 @@ typedef NS_ENUM(NSInteger, TLAccountSettingVCSectionType) {
         }
         else {
             nameItem.subTitle = LOCSTR(@"未设置");
+            nameItem.showDisclosureIndicator = YES;
+            nameItem.disableHighlight = NO;
         }
         self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(nameItem).selectedAction(^ (TLSettingItem *data) {
 
@@ -65,7 +67,23 @@ typedef NS_ENUM(NSInteger, TLAccountSettingVCSectionType) {
             
         }
         self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(phoneItem).selectedAction(^ (TLSettingItem *data) {
-
+            @strongify(self);
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"手机号" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            __block UITextField *phoneTextField;
+            [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+                phoneTextField = textField;
+                [textField setKeyboardType:UIKeyboardTypePhonePad];
+                [textField setPlaceholder:@"请输入手机号"];
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            [alertController addAction:cancelAction];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                @strongify(self);
+                [TLUserHelper sharedHelper].user.detailInfo.phoneNumber = phoneTextField.text;
+                [self loadAccountSettingUI];
+            }];
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
         });
     }
     
@@ -119,6 +137,8 @@ typedef NS_ENUM(NSInteger, TLAccountSettingVCSectionType) {
         
         self.setFooter(VIEW_ST_FOOTER).toSection(sectionTag).withDataModel(LOCSTR(@"如果遇到账号信息泄露、忘记密码、诈骗等账号问题，可前往微信安全中心。"));
     }
+    
+    [self reloadView];
 }
 
 @end

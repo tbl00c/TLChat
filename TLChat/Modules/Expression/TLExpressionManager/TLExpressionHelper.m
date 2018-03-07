@@ -49,9 +49,19 @@
 
 - (BOOL)deleteExpressionGroupByID:(NSString *)groupID
 {
+    TLExpressionGroupModel *groupModel = [self emojiGroupByID:groupID];
     BOOL ok = [self.store deleteExpressionGroupByID:groupID forUid:[TLUserHelper sharedHelper].userID];
     if (ok) {       // 通知表情键盘
         [[TLEmojiKBHelper sharedKBHelper] updateEmojiGroupData];
+        
+        BOOL canDeleteFile = ![self didExpressionGroupAlwaysInUsed:groupID];
+        if (canDeleteFile) {
+            NSError *error;
+            ok = [[NSFileManager defaultManager] removeItemAtPath:groupModel.path error:&error];
+            if (!ok) {
+                DDLogError(@"删除表情文件失败\n路径:%@\n原因:%@", groupModel.path, [error description]);
+            }
+        }
     }
     return ok;
 }
@@ -133,23 +143,6 @@
         _store = [[TLDBExpressionStore alloc] init];
     }
     return _store;
-}
-
-- (NSMutableArray *)myExpressionListData
-{
-    NSMutableArray *data = [[NSMutableArray alloc] init];
-    NSMutableArray *myEmojiGroups = [NSMutableArray arrayWithArray:[self.store expressionGroupsByUid:[TLUserHelper sharedHelper].userID]];
-    if (myEmojiGroups.count > 0) {
-        TLSettingGroup *group1 = TLCreateSettingGroup(LOCSTR(@"聊天面板中的表情"), nil, myEmojiGroups);
-        [data addObject:group1];
-    }
-    
-    TLSettingItem *userEmojis = TLCreateSettingItem(LOCSTR(@"添加的表情"));
-    TLSettingItem *buyedEmojis = TLCreateSettingItem(LOCSTR(@"购买的表情"));
-    TLSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[userEmojis, buyedEmojis]));
-    [data addObject:group2];
-    
-    return data;
 }
 
 - (TLExpressionGroupModel *)defaultFaceGroup

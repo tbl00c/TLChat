@@ -54,8 +54,8 @@
 {
     self.titleLabel = self.contentView.addLabel(1)
     .masonry(^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.contentView);
-        make.left.mas_equalTo(self.contentView).mas_offset(15);
+        make.centerY.mas_equalTo(0);
+        make.left.mas_equalTo(15);
     })
     .view;
 
@@ -71,7 +71,7 @@
     self.rightImageView = self.addImageView(3)
     .masonry(^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.rightLabel.mas_left).mas_offset(-2);
-        make.centerY.mas_equalTo(self.contentView);
+        make.centerY.mas_equalTo(0);
     })
     .view;
     

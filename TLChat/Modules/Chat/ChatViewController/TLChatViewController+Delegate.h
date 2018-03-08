@@ -8,6 +8,6 @@
 
 #import "TLChatViewController.h"
 
-@interface TLChatViewController (Delegate)
+@interface TLChatViewController (Delegate) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end

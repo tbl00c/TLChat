@@ -25,7 +25,10 @@
 - (void)launchInWindow:(UIWindow *)window
 {
     // 友盟统计
-    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:APP_CHANNEL];
+    [[UMAnalyticsConfig sharedInstance] setAppKey:UMENG_APPKEY];
+    [[UMAnalyticsConfig sharedInstance] setEPolicy:BATCH];
+    [[UMAnalyticsConfig sharedInstance] setChannelId:APP_CHANNEL];
+    [MobClick startWithConfigure:[UMAnalyticsConfig sharedInstance]];
 
     // Mob SMS
     //    [SMSSDK registerApp:MOB_SMS_APPKEY withSecret:MOB_SMS_SECRET];

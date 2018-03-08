@@ -33,13 +33,6 @@ PODS:
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
-  - ReactiveCocoa (2.5):
-    - ReactiveCocoa/UI (= 2.5)
-  - ReactiveCocoa/Core (2.5):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.5)
-  - ReactiveCocoa/UI (2.5):
-    - ReactiveCocoa/Core
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -132,7 +125,10 @@ PODS:
     - TLKit/TLCategories/UIKit/UIWindow
   - TLKit/TLShortcut (0.0.21)
   - TLTabBarController (0.0.6)
-  - UMengAnalytics (3.6.6)
+  - UMengAnalytics (4.2.4)
+  - WCDB (1.0.6):
+    - WCDB/sqlcipher (= 1.0.6)
+  - WCDB/sqlcipher (1.0.6)
   - YYText (1.0.7)
   - ZZFLEX (0.0.2)
 
@@ -143,13 +139,13 @@ DEPENDENCIES:
   - JZNavigationExtension (from `https://github.com/tbl00c/JZNavigationExtension.git`, tag `4.0`)
   - Masonry (~> 1.1.0)
   - MJExtension (~> 3.0.13)
-  - MJRefresh (~> 3.1.15)
+  - MJRefresh (~> 3.1.15.3)
   - MWPhotoBrowser (~> 2.1.2)
-  - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.7)
   - TLKit (from `https://github.com/tbl00c/TLKit.git`, tag `0.0.21`)
   - TLTabBarController (from `https://github.com/tbl00c/TLTabBarController.git`, tag `0.0.6`)
-  - UMengAnalytics (~> 3.6.6)
+  - UMengAnalytics (~> 4.2.4)
+  - WCDB (~> 1.0.6)
   - YYText (~> 1.0.7)
   - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`, tag `0.0.2`)
 
@@ -192,15 +188,15 @@ SPEC CHECKSUMS:
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
-  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TLKit: 413f6e5f9fa4b4d4dec3f4a39dcd8ee0c64174f9
   TLTabBarController: 6e91813f0ae019e8cd2ae35d6f4f6315085f7c44
-  UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
+  UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
+  WCDB: 4d2926bf695b2e00d785b50afd32c2dcc8cbbd98
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   ZZFLEX: ffcec569746c2fc018ec6e21f950fb956b438935
 
-PODFILE CHECKSUM: 2931bd85674c7081e2992da22ee8c5d2d88115d2
+PODFILE CHECKSUM: 2ca54f3845982e6b1975ce51c290ef6ce68b5833
 
 COCOAPODS: 1.2.1

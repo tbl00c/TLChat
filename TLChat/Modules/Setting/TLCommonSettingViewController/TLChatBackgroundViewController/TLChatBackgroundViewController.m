@@ -18,6 +18,10 @@ typedef NS_ENUM(NSInteger, TLChatBackgroundVCSectionType) {
     TLChatBackgroundVCSectionTypeFunction,
 };
 
+@interface TLChatBackgroundViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@end
+
 @implementation TLChatBackgroundViewController
 
 - (void)loadView
@@ -83,44 +87,34 @@ typedef NS_ENUM(NSInteger, TLChatBackgroundVCSectionType) {
     [self reloadView];
 }
 
+#pragma mark - # Delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [self p_setChatBackgroundImage:image];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - # Private Methods
 - (void)p_selectFromAlbum
 {
-    @weakify(self);
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    
+    [imagePickerController setDelegate:self];
     [self presentViewController:imagePickerController animated:YES completion:nil];
-    [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
-        [imagePickerController dismissViewControllerAnimated:YES completion:^{
-            @strongify(self);
-            UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
-            [self p_setChatBackgroundImage:image];
-        }];
-    } completed:^{
-        [imagePickerController dismissViewControllerAnimated:YES completion:nil];
-    }];
 }
 
 - (void)p_takePhoto
 {
     @weakify(self);
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    [imagePickerController setDelegate:self];
     if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [TLUIUtility showAlertWithTitle:@"错误" message:@"相机初始化失败"];
     }
     else {
         [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
         [self presentViewController:imagePickerController animated:YES completion:nil];
-        [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
-            [imagePickerController dismissViewControllerAnimated:YES completion:^{
-                @strongify(self);
-                UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
-                [self p_setChatBackgroundImage:image];
-            }];
-        } completed:^{
-            [imagePickerController dismissViewControllerAnimated:YES completion:nil];
-        }];
     }
 }
 

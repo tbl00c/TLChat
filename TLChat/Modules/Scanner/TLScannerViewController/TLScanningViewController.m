@@ -14,7 +14,7 @@
 
 #define     HEIGHT_BOTTOM_VIEW      82
 
-@interface TLScanningViewController () <TLScannerDelegate>
+@interface TLScanningViewController () <TLScannerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, assign) TLScannerType curType;
 
@@ -56,7 +56,7 @@
     [self.bottomView setHidden:disableFunctionBar];
 }
 
-#pragma mark - TLScannerDelegate -
+#pragma mark - # Delegate
 - (void)scannerViewControllerInitSuccess:(TLScannerViewController *)scannerVC
 {
     [self scannerButtonDown:self.qrButton];    // 初始化
@@ -74,7 +74,26 @@
     [self p_analysisQRAnswer:ansStr];
 }
 
-#pragma mark - Event Response -
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [TLUIUtility showLoading:@"扫描中，请稍候"];
+    [TLScannerViewController scannerQRCodeFromImage:image ans:^(NSString *ansStr) {
+        [TLUIUtility hiddenLoading];
+        if (ansStr == nil) {
+            [TLUIUtility showAlertWithTitle:@"扫描失败" message:@"请换张图片，或换个设备重试~" cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
+                [self.scanVC startCodeReading];
+            }];
+        }
+        else {
+            [self p_analysisQRAnswer:ansStr];
+        }
+    }];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - # Event Response
 - (void)scannerButtonDown:(TLScannerButton *)sender
 {
     if (sender.isSelected) {
@@ -114,27 +133,9 @@
 {
     [self.scanVC stopCodeReading];
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    [imagePickerController setDelegate:self];
     [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [self presentViewController:imagePickerController animated:YES completion:nil];
-    [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
-        [imagePickerController dismissViewControllerAnimated:YES completion:^{
-            UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
-            [TLUIUtility showLoading:@"扫描中，请稍候"];
-            [TLScannerViewController scannerQRCodeFromImage:image ans:^(NSString *ansStr) {
-                [TLUIUtility hiddenLoading];
-                if (ansStr == nil) {
-                    [TLUIUtility showAlertWithTitle:@"扫描失败" message:@"请换张图片，或换个设备重试~" cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
-                        [self.scanVC startCodeReading];
-                    }];
-                }
-                else {
-                    [self p_analysisQRAnswer:ansStr];
-                }
-            }];
-        }];
-    } completed:^{
-        [imagePickerController dismissViewControllerAnimated:YES completion:nil];
-    }];
 }
 
 - (void)myQRButtonDown
@@ -143,7 +144,7 @@
     PushVC(myQRCodeVC);
 }
 
-#pragma mark - Private Methods -
+#pragma mark - # Private Methods
 - (void)p_analysisQRAnswer:(NSString *)ansStr
 {
     if ([ansStr hasPrefix:@"http"]) {
@@ -198,7 +199,7 @@
     }];
 }
 
-#pragma mark - Getter -
+#pragma mark - # Getters
 - (TLScannerViewController *)scanVC
 {
     if (_scanVC == nil) {

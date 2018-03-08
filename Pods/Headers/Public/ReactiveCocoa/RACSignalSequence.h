@@ -1,1 +1,0 @@
-../../../ReactiveCocoa/ReactiveCocoa/RACSignalSequence.h

@@ -1,0 +1,1 @@
+../../../WCDB/objc/WCDB/interface/transaction/WCTTransaction+Private.h

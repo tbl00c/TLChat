@@ -1,0 +1,1 @@
+../../../WCDB/objc/WCDB/abstract/foreign_key.hpp

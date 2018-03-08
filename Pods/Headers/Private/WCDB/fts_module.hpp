@@ -1,0 +1,1 @@
+../../../WCDB/objc/WCDB/abstract/fts_module.hpp

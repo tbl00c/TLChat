@@ -22,11 +22,6 @@
     });
 }
 
-- (void)addVoiceRecordingMessage:(TLMessage *)message
-{
-    message.date = [NSDate date];
-}
-
 - (void)resetChatTVC
 {
     [self.messageDisplayView resetMessageView];

@@ -1,0 +1,1 @@
+../../../WCDB/objc/WCDB/interface/chaincall/WCTDelete.h

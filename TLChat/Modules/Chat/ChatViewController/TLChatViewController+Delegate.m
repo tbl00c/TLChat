@@ -19,7 +19,7 @@
 
 @implementation TLChatViewController (Delegate)
 
-#pragma mark - Delegate -
+#pragma mark - # Delegate
 //MARK: TLMoreKeyboardDelegate
 - (void)moreKeyboard:(id)keyboard didSelectedFunctionItem:(TLMoreKeyboardItem *)funcItem
 {
@@ -37,16 +37,8 @@
         else {
             [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         }
+        [imagePickerController setDelegate:self];
         [self presentViewController:imagePickerController animated:YES completion:nil];
-        __weak typeof(self) weakSelf = self;
-        [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
-            [imagePickerController dismissViewControllerAnimated:YES completion:^{
-                UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
-                [weakSelf sendImageMessage:image];
-            }];
-        } completed:^{
-            [imagePickerController dismissViewControllerAnimated:YES completion:nil];
-        }];
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"选中”%@“ 按钮", funcItem.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
@@ -98,4 +90,13 @@
     UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
     [self presentViewController:broserNavC animated:NO completion:nil];
 }
+
+//MARK: UIImagePickerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [self sendImageMessage:image];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

@@ -16,6 +16,10 @@ typedef NS_ENUM(NSInteger, TLShakeSettingVCSectionType) {
     TLShakeSettingVCSectionTypeMessage,
 };
 
+@interface TLShakeSettingViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@end
+
 @implementation TLShakeSettingViewController
 
 - (void)loadView
@@ -88,28 +92,29 @@ typedef NS_ENUM(NSInteger, TLShakeSettingVCSectionType) {
     [self reloadView];
 }
 
+#pragma mark - # Delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    if (image == nil) {
+        image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+    NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
+    NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
+    NSString *imagePath = [NSFileManager pathUserSettingImage:imageName];
+    [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:imageName forKey:@"Shake_Image_Path"];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - # Private Methods
 - (void)p_changeShakeBGImage
 {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [imagePickerController setAllowsEditing:YES];
+    [imagePickerController setDelegate:self];
     [self presentViewController:imagePickerController animated:YES completion:nil];
-    [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
-        [imagePickerController dismissViewControllerAnimated:YES completion:^{
-            UIImage *image = [x objectForKey:UIImagePickerControllerEditedImage];
-            if (image == nil) {
-                image = [x objectForKey:UIImagePickerControllerOriginalImage];
-            }
-            NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
-            NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
-            NSString *imagePath = [NSFileManager pathUserSettingImage:imageName];
-            [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
-            [[NSUserDefaults standardUserDefaults] setObject:imageName forKey:@"Shake_Image_Path"];
-        }];
-    } completed:^{
-        [imagePickerController dismissViewControllerAnimated:YES completion:nil];
-    }];
 }
 
 @end

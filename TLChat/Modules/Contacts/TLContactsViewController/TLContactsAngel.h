@@ -6,7 +6,7 @@
 //  Copyright © 2018年 李伯坤. All rights reserved.
 //
 
-#import <ZZFLEX/ZZFlexibleLayoutFramework.h>
+#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, TLContactsVCSectionType) {
     TLContactsVCSectionTypeFuncation = -1,

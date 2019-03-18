@@ -83,7 +83,7 @@
 }
 
 
-#pragma mark - #
+#pragma mark - # 红色
 + (UIColor *)colorRedForButton {
     return RGBColor(228, 68, 71);
 }

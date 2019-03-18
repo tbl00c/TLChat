@@ -76,7 +76,7 @@
         return;
     }
     [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view).mas_offset(-keyboardFrame.size.height);
+        make.bottom.mas_equalTo(self.view).mas_offset(MIN(-keyboardFrame.size.height, -SAFEAREA_INSETS_BOTTOM));
     }];
     [self.view layoutIfNeeded];
     [self.messageDisplayView scrollToBottomWithAnimation:YES];
@@ -91,7 +91,7 @@
         return;
     }
     [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view).mas_offset(-SAFEAREA_INSETS_BOTTOM);
     }];
     [self.view layoutIfNeeded];
 }
@@ -234,7 +234,7 @@
 - (void)chatKeyboard:(id)keyboard didChangeHeight:(CGFloat)height
 {
     [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view).mas_offset(-height);
+        make.bottom.mas_equalTo(self.view).mas_offset(MIN(-height, -SAFEAREA_INSETS_BOTTOM));
     }];
     [self.view layoutIfNeeded];
     [self.messageDisplayView scrollToBottomWithAnimation:YES];

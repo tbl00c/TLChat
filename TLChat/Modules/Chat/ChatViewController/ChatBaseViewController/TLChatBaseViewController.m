@@ -23,6 +23,13 @@
     
     [self.view addSubview:self.messageDisplayView];
     [self.view addSubview:self.chatBar];
+    if (SAFEAREA_INSETS_BOTTOM > 0) {
+        self.view.addView(1001).backgroundColor(self.chatBar.backgroundColor)
+        .masonry(^ (MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(self.chatBar.mas_bottom);
+        });
+    }
     
     [self p_addMasonry];
 }
@@ -137,8 +144,9 @@
         make.bottom.mas_equalTo(self.chatBar.mas_top);
     }];
     [self.chatBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.bottom.mas_equalTo(self.view);
-        make.height.mas_greaterThanOrEqualTo(TABBAR_HEIGHT);
+        make.left.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view).mas_offset(-SAFEAREA_INSETS_BOTTOM);
+        make.height.mas_greaterThanOrEqualTo(44);
     }];
     [self.view layoutIfNeeded];
 }

@@ -56,7 +56,7 @@
         [self.avatarButton setImage:[UIImage imageNamed:path] forState:UIControlStateNormal];
     }
     else {
-        [self.avatarButton tt_setImageWithURL:TLURL([message.fromUser chat_avatarURL]) forState:UIControlStateNormal];
+        [self.avatarButton tt_setImageWithURL:TLURL([message.fromUser chat_avatarURL]) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     
     // 时间

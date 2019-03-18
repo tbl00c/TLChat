@@ -1,1 +1,1 @@
-../../../ZZFLEX/ZZFlexibleLayoutFramework/ZZFLEXAngel/Private/ZZFLEXAngel+Private.h
+../../../ZZFLEX/ZZFLEX/ZZFLEXAngel/Private/ZZFLEXAngel+Private.h

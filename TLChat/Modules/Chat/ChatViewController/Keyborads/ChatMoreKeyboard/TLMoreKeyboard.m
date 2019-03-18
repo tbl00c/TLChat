@@ -38,7 +38,7 @@ static TLMoreKeyboard *moreKB;
 
 - (CGFloat)keyboardHeight
 {
-    return HEIGHT_CHAT_KEYBOARD;
+    return HEIGHT_CHAT_KEYBOARD + SAFEAREA_INSETS_BOTTOM;
 }
 
 #pragma mark - # Public Methods
@@ -67,12 +67,12 @@ static TLMoreKeyboard *moreKB;
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self);
         make.left.and.right.mas_equalTo(self);
-        make.bottom.mas_equalTo(-25);
+        make.height.mas_equalTo(190);
     }];
     [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self);
         make.height.mas_equalTo(20);
-        make.bottom.mas_equalTo(-2);
+        make.bottom.mas_equalTo(-2 - SAFEAREA_INSETS_BOTTOM);
     }];
 }
 

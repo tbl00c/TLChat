@@ -129,7 +129,9 @@ static TLMessageManager *messageManager;
                     }
                 }
             }
-        } failureAction:nil];
+        } failureAction:^(TLResponse *response) {
+            NSLog(@"failure");
+        }];
     }
 }
 

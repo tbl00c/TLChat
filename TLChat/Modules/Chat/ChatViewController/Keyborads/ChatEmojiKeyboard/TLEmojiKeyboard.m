@@ -69,7 +69,8 @@ static TLEmojiKeyboard *emojiKB;
         make.height.mas_equalTo(20);
     }];
     [self.groupControl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.bottom.mas_equalTo(self);
+        make.left.and.right.mas_equalTo(self);
+        make.bottom.mas_equalTo(-SAFEAREA_INSETS_BOTTOM);
         make.height.mas_equalTo(37);
     }];
 }

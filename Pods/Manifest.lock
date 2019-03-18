@@ -130,7 +130,7 @@ PODS:
     - WCDB/sqlcipher (= 1.0.6)
   - WCDB/sqlcipher (1.0.6)
   - YYText (1.0.7)
-  - ZZFLEX (0.0.2)
+  - ZZFLEX (0.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -147,12 +147,12 @@ DEPENDENCIES:
   - UMengAnalytics (~> 4.2.4)
   - WCDB (~> 1.0.6)
   - YYText (~> 1.0.7)
-  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`, tag `0.0.2`)
+  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`, tag `0.2.0`)
 
 EXTERNAL SOURCES:
   JZNavigationExtension:
     :git: https://github.com/tbl00c/JZNavigationExtension.git
-    :tag: '4.0'
+    :tag: 4.0
   TLKit:
     :git: https://github.com/tbl00c/TLKit.git
     :tag: 0.0.21
@@ -161,12 +161,12 @@ EXTERNAL SOURCES:
     :tag: 0.0.6
   ZZFLEX:
     :git: https://github.com/tbl00c/ZZFLEX.git
-    :tag: 0.0.2
+    :tag: 0.2.0
 
 CHECKOUT OPTIONS:
   JZNavigationExtension:
     :git: https://github.com/tbl00c/JZNavigationExtension.git
-    :tag: '4.0'
+    :tag: 4.0
   TLKit:
     :git: https://github.com/tbl00c/TLKit.git
     :tag: 0.0.21
@@ -175,7 +175,7 @@ CHECKOUT OPTIONS:
     :tag: 0.0.6
   ZZFLEX:
     :git: https://github.com/tbl00c/ZZFLEX.git
-    :tag: 0.0.2
+    :tag: 0.2.0
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -195,8 +195,8 @@ SPEC CHECKSUMS:
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   WCDB: 4d2926bf695b2e00d785b50afd32c2dcc8cbbd98
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  ZZFLEX: ffcec569746c2fc018ec6e21f950fb956b438935
+  ZZFLEX: 48ad9faf261c9589a3d16d44a701219ad41883b8
 
-PODFILE CHECKSUM: 2ca54f3845982e6b1975ce51c290ef6ce68b5833
+PODFILE CHECKSUM: 6e6e84cf2ccdeaac82df027383a775bb618b8f2b
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0

@@ -105,7 +105,7 @@
 #pragma mark - # ZZKeyboardProtocol
 - (CGFloat)keyboardHeight
 {
-    return HEIGHT_CHAT_KEYBOARD;
+    return HEIGHT_CHAT_KEYBOARD + SAFEAREA_INSETS_BOTTOM;
 }
 
 

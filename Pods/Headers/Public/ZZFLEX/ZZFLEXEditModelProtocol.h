@@ -1,1 +1,1 @@
-../../../ZZFLEX/ZZFlexibleLayoutFramework/ZZFLEXEditExtension/ZZFLEXEditModelProtocol.h
+../../../ZZFLEX/ZZFLEX/ZZFLEXEditExtension/ZZFLEXEditModelProtocol.h

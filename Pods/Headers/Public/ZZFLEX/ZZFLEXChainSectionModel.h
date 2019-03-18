@@ -1,1 +1,1 @@
-../../../ZZFLEX/ZZFlexibleLayoutFramework/ZZFLEXAngel/ChainModels/ZZFLEXChainSectionModel.h
+../../../ZZFLEX/ZZFLEX/ZZFLEXAngel/ChainModels/ZZFLEXChainSectionModel.h

@@ -32,6 +32,7 @@
         NSString  *ansStr = nil;
         if (ciImage) {
             CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:[CIContext contextWithOptions:nil] options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+            
             NSArray *features = [detector featuresInImage:ciImage];
             if (features.count) {
                 for (CIFeature *feature in features) {

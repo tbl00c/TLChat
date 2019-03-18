@@ -1,1 +1,1 @@
-../../../ZZFLEX/ZZFlexibleLayoutFramework/ZZFLEXAngel/Private/ZZFLEXAngel+UICollectionView.h
+../../../ZZFLEX/ZZFLEX/ZZFLEXAngel/Private/ZZFLEXAngel+UICollectionView.h

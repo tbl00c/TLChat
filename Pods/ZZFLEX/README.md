@@ -1,5 +1,7 @@
 # ZZFLEX
 
+<img src="./Screenshot/zz_logo.png" />
+
 一个完善的iOS UI敏捷开发框架，基于UIKit，包含常用控件的链式API拓展、一个数据驱动的列表框架、一个事件处理队列。
 
 ![Travis](https://img.shields.io/travis/tbl00c/ZZFLEX.svg) ![CocoaPods](https://img.shields.io/cocoapods/v/ZZFLEX.svg) ![license MIT](https://img.shields.io/github/license/tbl00c/ZZFLEX.svg) ![platofrm](https://img.shields.io/badge/platform-ios-lightgrey.svg)

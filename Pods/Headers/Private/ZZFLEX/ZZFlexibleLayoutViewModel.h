@@ -1,1 +1,1 @@
-../../../ZZFLEX/ZZFlexibleLayoutFramework/ZZFLEXAngel/ViewModels/ZZFlexibleLayoutViewModel.h
+../../../ZZFLEX/ZZFLEX/ZZFLEXAngel/ViewModels/ZZFlexibleLayoutViewModel.h

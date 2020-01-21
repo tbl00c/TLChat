@@ -46,7 +46,7 @@
     [self setConversation:dataModel];
 }
 
-- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     self.bottomSeperatorStyle = (indexPath.row == count - 1 ? TLConversationCellSeperatorStyleFill : TLConversationCellSeperatorStyleDefault);
 }
@@ -152,7 +152,7 @@
     // 头像
     self.avatarView = self.contentView.addImageView(1001)
     .cornerRadius(3.0f)
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.top.mas_equalTo(10);
         make.bottom.mas_equalTo(- 10);
@@ -165,7 +165,7 @@
     // 时间
     self.timeLabel = self.contentView.addLabel(2001)
     .font([UIFont fontConversationTime]).textColor([UIColor colorTextGray1])
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.top.mas_equalTo(self.avatarView).mas_offset(2);
         make.right.mas_equalTo(self.contentView).mas_offset(-9.5);
     })
@@ -175,7 +175,7 @@
     // 用户名
     self.nameLabel = self.contentView.addLabel(1002)
     .font([UIFont fontConversationUsername])
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
         make.top.mas_equalTo(self.avatarView).mas_offset(1.5);
         make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5);
@@ -186,7 +186,7 @@
     // 免打扰标识
     self.remindImageView = self.contentView.addImageView(2002)
     .alpha(0.4)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.right.mas_equalTo(self.timeLabel);
         make.bottom.mas_equalTo(self.avatarView);
     })
@@ -197,7 +197,7 @@
     self.detailLabel = self.contentView.addLabel(3)
     .font([UIFont fontConversationDetail])
     .textColor([UIColor colorTextGray])
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.top.mas_equalTo(self.nameLabel.mas_bottom).mas_offset(4);
         make.left.mas_equalTo(self.nameLabel);
         make.right.mas_lessThanOrEqualTo(self.remindImageView.mas_left);

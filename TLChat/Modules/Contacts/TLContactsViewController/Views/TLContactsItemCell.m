@@ -47,7 +47,7 @@ TLContactsItemModel *createContactsItemModelWithTag(NSInteger tag, NSString *pat
     [self setModel:dataModel];
 }
 
-- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == count - 1) {
         self.removeSeparator(ZZSeparatorPositionBottom);
@@ -102,7 +102,7 @@ TLContactsItemModel *createContactsItemModelWithTag(NSInteger tag, NSString *pat
 {
     // 头像
     self.avatarView = self.contentView.addImageView(1)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.top.mas_equalTo(10);
         make.bottom.mas_equalTo(-10);
     })
@@ -114,7 +114,7 @@ TLContactsItemModel *createContactsItemModelWithTag(NSInteger tag, NSString *pat
     // 昵称
     self.nameLabel = self.contentView.addLabel(2)
     .font([UIFont systemFontOfSize:17.0f])
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
         make.centerY.mas_equalTo(self.avatarView);
         make.right.mas_lessThanOrEqualTo(-20);
@@ -125,7 +125,7 @@ TLContactsItemModel *createContactsItemModelWithTag(NSInteger tag, NSString *pat
     self.subTitleLabel = self.contentView.addLabel(3)
     .font([UIFont systemFontOfSize:14.0f])
     .textColor([UIColor grayColor])
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.nameLabel);
         make.top.mas_equalTo(self.nameLabel.mas_bottom).mas_offset(2);
         make.right.mas_lessThanOrEqualTo(-20);

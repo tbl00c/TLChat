@@ -22,7 +22,12 @@
 /// 请求队列元素个数
 @property (nonatomic, assign, readonly) NSInteger requestCount;
 
+@property (nonatomic, assign, readonly) CGFloat progress;
+
 - (void)addRequestModel:(ZZFLEXRequestModel *)model;
+
+- (void)runAllRequestsWithProgressAction:(void (^)(CGFloat progress))progressAction
+                          completeAction:(void (^)(NSArray *data, NSInteger successCount, NSInteger failureCount))completeAction;
 
 - (void)runAllRequestsWithCompleteAction:(void (^)(NSArray *data, NSInteger successCount, NSInteger failureCount))completeAction;
 

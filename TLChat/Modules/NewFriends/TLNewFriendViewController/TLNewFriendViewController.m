@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, TLNewFriendVCSectionType) {
     
     self.tableViewAngel.addSection(TLNewFriendVCSectionTypeFuncation);
     TLNewFriendFuncationModel *model = createNewFriendFuncationModel(@"newFriend_contacts", LOCSTR(@"添加手机联系人"));
-    self.tableViewAngel.addCell(@"TLNewFriendFuncationCell").toSection(TLNewFriendVCSectionTypeFuncation).withDataModel(model).selectedAction(^(id data){
+    self.tableViewAngel.addCell([TLNewFriendFuncationCell class]).toSection(TLNewFriendVCSectionTypeFuncation).withDataModel(model).selectedAction(^(id data){
         TLMobileContactsViewController *contactsVC = [[TLMobileContactsViewController alloc] init];
         PushVC(contactsVC);
     });
@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, TLNewFriendVCSectionType) {
     self.tableView = self.view.addTableView(1)
     .backgroundColor([UIColor whiteColor]).separatorStyle(UITableViewCellSeparatorStyleNone)
     .tableHeaderView(self.searchController.searchBar).tableFooterView([UIView new])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     })
     .view;

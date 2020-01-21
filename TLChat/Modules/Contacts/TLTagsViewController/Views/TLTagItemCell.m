@@ -27,7 +27,7 @@
     [self.titleLabel setText:[NSString stringWithFormat:@"%@(%ld)", dataModel.groupName, dataModel.users.count]];
 }
 
-- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == 0) {
         self.addSeparator(ZZSeparatorPositionTop);
@@ -47,7 +47,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.titleLabel = self.contentView.addLabel(1).font([UIFont systemFontOfSize:15.0f])
-        .masonry(^(MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.right.mas_lessThanOrEqualTo(-15);
             make.centerY.mas_equalTo(0);

@@ -39,7 +39,7 @@
 - (void)p_initSettingItemSwitchCellSubviews
 {
     self.titleLabel = self.contentView.addLabel(1)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
         make.left.mas_equalTo(15);
         make.right.mas_lessThanOrEqualTo(-80);
@@ -47,7 +47,7 @@
     .view;
     
     self.switchControl = self.contentView.addSwitch(2)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
         make.right.mas_lessThanOrEqualTo(-15);
     })

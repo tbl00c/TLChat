@@ -28,7 +28,7 @@
     if (self = [super initWithFrame:frame]) {
         self.phoneButton = self.detailContentView.addButton(1)
         .titleColor([UIColor colorBlueMoment]).titleFont([UIFont systemFontOfSize:16])
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.top.bottom.mas_equalTo(0);
         })
         .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {

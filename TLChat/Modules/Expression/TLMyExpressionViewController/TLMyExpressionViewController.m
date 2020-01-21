@@ -10,6 +10,7 @@
 #import "TLExpressionDetailViewController.h"
 #import "TLExpressionHelper.h"
 #import "TLMyExpressionCell.h"
+#import "TLSettingItemTemplate.h"
 
 typedef NS_ENUM(NSInteger, TLMyExpressionVCSectionType) {
     TLMyExpressionVCSectionTypeMine,
@@ -51,7 +52,7 @@ typedef NS_ENUM(NSInteger, TLMyExpressionVCSectionType) {
     NSArray *expArray = [TLExpressionHelper sharedHelper].userEmojiGroups;
     if (expArray.count > 0) {
         self.addSection(TLMyExpressionVCSectionTypeMine).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
-        self.addCells(@"TLMyExpressionCell").toSection(TLMyExpressionVCSectionTypeMine).withDataModelArray(expArray).selectedAction(^ (id data) {
+        self.addCells([TLMyExpressionCell class]).toSection(TLMyExpressionVCSectionTypeMine).withDataModelArray(expArray).selectedAction(^ (id data) {
             @strongify(self);
             TLExpressionDetailViewController *detailVC = [[TLExpressionDetailViewController alloc] initWithGroupModel:data];
             PushVC(detailVC);

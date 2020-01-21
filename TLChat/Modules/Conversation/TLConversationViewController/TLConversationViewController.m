@@ -19,6 +19,9 @@
 #import "TLChatViewController+Conversation.h"
 #import "TLUserDetailViewController.h"
 
+#import "TLConversationCell.h"
+#import "TLConversationNoNetCell.h"
+
 @interface TLConversationViewController () <TLMessageManagerConvVCDelegate>
 {
     TLNetworkStatusManager *networkStatusManger;
@@ -112,7 +115,7 @@
     .tableHeaderView(self.searchController.searchBar)
     .tableFooterView([UIView new])
     .separatorStyle(UITableViewCellSeparatorStyleNone)
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     })
     .view;
@@ -120,7 +123,7 @@
     // 顶部logo
     self.tableView.addImageView(1001)
     .image(TLImage(@"conv_wechat_icon"))
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.tableView);
         make.bottom.mas_equalTo(self.tableView.mas_top).mas_offset(-35);
     });
@@ -165,7 +168,7 @@
 {
     @weakify(self);
     self.listAngel.sectionForTag(TLConversationSectionTagConv).clear();
-    self.listAngel.addCells(@"TLConversationCell").toSection(TLConversationSectionTagConv).withDataModelArray(data).selectedAction(^ (TLConversation *conversation) {
+    self.listAngel.addCells([TLConversationCell class]).toSection(TLConversationSectionTagConv).withDataModelArray(data).selectedAction(^ (TLConversation *conversation) {
         @strongify(self);
         [conversation setUnreadCount:0];
         [self.listAngel reloadBadge];
@@ -187,7 +190,7 @@
         self.listAngel.sectionForTag(TLConversationSectionTagAlert).clear();
         if (status == TLNetworkStatusNone) {
             [self.navigationItem setTitle:LOCSTR(@"未连接")];
-            self.listAngel.addCell(@"TLConversationNoNetCell").toSection(TLConversationSectionTagAlert).viewTag(TLConversationCellTagNoNet);
+            self.listAngel.addCell([TLConversationNoNetCell class]).toSection(TLConversationSectionTagAlert).viewTag(TLConversationCellTagNoNet);
         }
         else {
             [self p_setNavTitleWithStatusString:nil];

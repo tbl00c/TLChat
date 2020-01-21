@@ -16,6 +16,7 @@
  获取实际展示大小
  */
 - (CGSize)visableSizeForHostView:(__kindof UIView *)hostView;
+- (CGSize)visableSizeForHostView:(__kindof UIView *)hostView sectionEdge:(UIEdgeInsets)sectionEdge;
 
 /**
  执行配置方法

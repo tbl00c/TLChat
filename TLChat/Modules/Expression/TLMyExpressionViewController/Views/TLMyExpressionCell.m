@@ -60,7 +60,7 @@
     @weakify(self);
     
     self.iconView = self.contentView.addImageView(1)
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(15.0f);
         make.centerY.mas_equalTo(0);
         make.width.and.height.mas_equalTo(35);
@@ -77,7 +77,7 @@
             [self.delegate myExpressionCellDeleteButtonDown:self.group];
         }
     })
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(50, 30));
         make.right.mas_equalTo(-15);
         make.centerY.mas_equalTo(0);
@@ -85,7 +85,7 @@
     .view;
     
     self.titleLabel = self.addLabel(3)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
         make.left.mas_equalTo(self.iconView.mas_right).mas_offset(10.0f);
         make.right.mas_lessThanOrEqualTo(deleteButton.mas_left).mas_offset(-15.0f);

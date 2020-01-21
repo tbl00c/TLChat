@@ -8,6 +8,7 @@
 
 #import "TLSettingItemDeleteButtonCell.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 
 @interface TLSettingItemDeleteButtonCell ()
 
@@ -29,7 +30,7 @@
 
 - (void)setViewDataModel:(TLSettingItem *)dataModel
 {
-    self.button.zz_make.title(dataModel.title);
+    self.button.zz_setup.title(dataModel.title);
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -41,7 +42,7 @@
         .backgroundColor([UIColor colorRedForButton]).titleColor([UIColor whiteColor]).titleFont([UIFont systemFontOfSize:18])
         .backgroundColorHL([UIColor colorRedForButtonHL]).titleColorHL([[UIColor whiteColor] colorWithAlphaComponent:0.7])
         .cornerRadius(5).borderWidth(1).borderColor([UIColor colorGrayLine].CGColor)
-        .masonry(^(MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
             make.top.mas_equalTo(0);

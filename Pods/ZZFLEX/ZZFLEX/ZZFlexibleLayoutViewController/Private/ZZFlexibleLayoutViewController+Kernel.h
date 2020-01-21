@@ -11,11 +11,6 @@
 #import "ZZFlexibleLayoutViewModel.h"
 #import "ZZFlexibleLayoutSectionModel.h"
 
-#define     CELL_SEPEARTOR          @"ZZFlexibleLayoutSeperatorCell"
-
-void RegisterCollectionViewCell(UICollectionView *collectionView, NSString *cellName);
-void RegisterCollectionViewReusableView(UICollectionView *collectionView, NSString *kind, NSString *viewName);
-
 @class ZZFlexibleLayoutSectionModel;
 @interface ZZFlexibleLayoutViewController (Kernel) <
 UICollectionViewDataSource,

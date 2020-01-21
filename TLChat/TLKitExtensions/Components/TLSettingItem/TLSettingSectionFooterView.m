@@ -37,7 +37,7 @@
         self.titleLabel = self.addLabel(1)
         .font([UIFont systemFontOfSize:14]).textColor([UIColor grayColor])
         .numberOfLines(0)
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
             make.top.mas_equalTo(8);

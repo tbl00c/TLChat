@@ -58,7 +58,7 @@
     self.tableView = self.view.addTableView(1)
     .backgroundColor([UIColor whiteColor]).separatorStyle(UITableViewCellSeparatorStyleNone)
     .tableHeaderView(self.searchController.searchBar).tableFooterView([UIView new])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     })
     .view;

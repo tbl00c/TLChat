@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define     CELL_MENU_ITEM     @"TLMenuItemCell"
+#define     CELL_MENU_ITEM     [TLMenuItemCell class]
 
 @interface TLMenuItem : NSObject
 

@@ -25,7 +25,7 @@
     [self setMenuItem:dataModel];
 }
 
-- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == 0) {
         self.addSeparator(ZZSeparatorPositionTop);
@@ -117,7 +117,7 @@
 {
     // icon
     self.iconView = self.addImageView(1)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(15.0f);
         make.centerY.mas_equalTo(0);
         make.size.mas_equalTo(25.0f);
@@ -126,7 +126,7 @@
     
     // 标题
     self.titleLabel = self.addLabel(2)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
         make.left.mas_equalTo(self.iconView.mas_right).mas_offset(15.0f);
         make.right.mas_lessThanOrEqualTo(-15.0f);
@@ -144,7 +144,7 @@
     // 箭头
     self.arrowView = self.addImageView(10)
     .image(TLImage(@"right_arrow"))
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
         make.size.mas_equalTo(CGSizeMake(8, 13));
         make.right.mas_equalTo(-15);
@@ -162,7 +162,7 @@
     // 描述
     self.detailLabel = self.addLabel(4)
     .font([UIFont systemFontOfSize:14.0f]).textColor([UIColor grayColor])
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_greaterThanOrEqualTo(self.badgeView.mas_right).mas_offset(15);
         make.right.mas_equalTo(self.arrowView.mas_left).mas_offset(-WIDTH_ICON_RIGHT - EGDE_RIGHT_IMAGE - EGDE_SUB_TITLE);
         make.centerY.mas_equalTo(self.iconView);

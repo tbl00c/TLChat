@@ -13,7 +13,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.button.zz_make.backgroundColor([UIColor whiteColor]).titleColor([UIColor blackColor])
+        self.button.zz_setup.backgroundColor([UIColor whiteColor]).titleColor([UIColor blackColor])
         .backgroundColorHL([UIColor lightGrayColor]).titleColorHL([[UIColor blackColor] colorWithAlphaComponent:0.7]);
     }
     return self;

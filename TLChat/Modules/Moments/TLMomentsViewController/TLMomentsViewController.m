@@ -75,7 +75,7 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
     // 头图
     self.addSection(TLMomentsVCSectionTypeHeader);
     TLUser *user = [TLUserHelper sharedHelper].user;
-    self.addCell(@"TLMomentHeaderCell").toSection(TLMomentsVCSectionTypeHeader).withDataModel(user);
+    self.addCell([TLMomentHeaderCell class]).toSection(TLMomentsVCSectionTypeHeader).withDataModel(user);
     
     // 列表
     self.addSection(TLMomentsVCSectionTypeItems);
@@ -84,10 +84,10 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 - (void)addMomentsData:(NSArray *)momentsData postion:(TLMomentsVCNewDataPosition)position
 {
     if (position == TLMomentsVCSectionTypeHeader) {
-        self.insertCells(@"TLMomentImagesCell").toIndex(0).toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
+        self.insertCells([TLMomentImagesCell class]).toIndex(0).toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
     }
     else {
-        self.addCells(@"TLMomentImagesCell").toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
+        self.addCells([TLMomentImagesCell class]).toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
     }
 }
 

@@ -36,7 +36,7 @@
     if (self = [super initWithFrame:frame]) {
         self.titleLabel = self.addLabel(1).numberOfLines(0)
         .font([UIFont systemFontOfSize:14]).textColor([UIColor grayColor])
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
             make.bottom.mas_equalTo(-6);

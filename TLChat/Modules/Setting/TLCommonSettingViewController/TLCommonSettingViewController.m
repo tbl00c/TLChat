@@ -14,6 +14,7 @@
 
 #import "TLMessageManager.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 #import "TLChatNotificationKey.h"
 
 typedef NS_ENUM(NSInteger, TLCommonSettingVCSectionType) {

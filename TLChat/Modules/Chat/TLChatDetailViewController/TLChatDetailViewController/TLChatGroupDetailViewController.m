@@ -16,6 +16,7 @@
 #import "TLUserGroupCell.h"
 #import "TLChatNotificationKey.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 
 typedef NS_ENUM(NSInteger, TLChatGroupDetailVCSectionType) {
     TLChatGroupDetailVCSectionTypeUsers,
@@ -65,7 +66,7 @@ typedef NS_ENUM(NSInteger, TLChatGroupDetailVCSectionType) {
         NSInteger sectionTag = TLChatGroupDetailVCSectionTypeUsers;
         self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
         
-        self.addCell(@"TLUserGroupCell").toSection(sectionTag).withDataModel(self.group.users).eventAction(^ id(TLUserGroupCellEventType eventType, id data) {
+        self.addCell([TLUserGroupCell class]).toSection(sectionTag).withDataModel(self.group.users).eventAction(^ id(TLUserGroupCellEventType eventType, id data) {
             @strongify(self);
             if (eventType == TLUserGroupCellEventTypeClickUser) {
                 TLUserDetailViewController *userDetailVC = [[TLUserDetailViewController alloc] initWithUserModel:data];
@@ -228,7 +229,7 @@ typedef NS_ENUM(NSInteger, TLChatGroupDetailVCSectionType) {
         NSInteger sectionTag = TLChatGroupDetailVCSectionTypeExit;
         self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
         
-        self.addCell(@"TLSettingItemDeleteButtonCell").toSection(sectionTag).withDataModel(TLCreateSettingItem(@"删除并退出")).selectedAction(^ (id data) {
+        self.addCell([TLSettingItemDeleteButtonCell class]).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"删除并退出")).selectedAction(^ (id data) {
             
         });
     }

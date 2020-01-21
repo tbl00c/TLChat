@@ -33,7 +33,7 @@
     if (self = [super initWithFrame:frame]) {
         self.titleLabel = self.addLabel(1000)
         .font([UIFont systemFontOfSize:17.0f]).textColor([UIColor grayColor])
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.centerX.mas_equalTo(0);
             make.width.mas_lessThanOrEqualTo(self).mas_offset(-30);
             make.bottom.mas_equalTo(-13);
@@ -41,7 +41,7 @@
         .view;
         
         self.addImageView(1001).image(TLImage(@"AppLogo"))
-        .masonry(^(MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.top.mas_equalTo(20);
             make.centerX.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(73, 64));

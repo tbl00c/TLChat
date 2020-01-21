@@ -38,7 +38,7 @@
         self.imageView = self.addImageView(1)
         .clipsToBounds(YES)
         .contentMode(UIViewContentModeScaleAspectFill)
-        .masonry(^(MASConstraintMaker *make){
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make){
             make.edges.mas_equalTo(0);
         })
         .view;

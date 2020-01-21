@@ -9,6 +9,7 @@
 #import "TLContactsSearchResultViewController.h"
 #import "TLContactsItemCell.h"
 #import "TLFriendHelper.h"
+#import "TLContactsHeaderView.h"
 
 @interface TLContactsSearchResultViewController ()
 
@@ -31,7 +32,7 @@
     .backgroundColor([UIColor colorGrayBG]).separatorStyle(UITableViewCellSeparatorStyleNone)
     .tableFooterView([UIView new])
     .estimatedRowHeight(0).estimatedSectionFooterHeight(0).estimatedSectionHeaderHeight(0)
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     })
     .view;
@@ -49,6 +50,7 @@
 //MARK: UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
+    @weakify(self);
     TLContactsItemModel *(^createContactsItemModelWithUserModel)(TLUser *userModel) = ^TLContactsItemModel *(TLUser *userModel){
         TLContactsItemModel *model = createContactsItemModel(userModel.avatarPath, userModel.avatarURL, userModel.showName, userModel.detailInfo.remarkInfo, userModel);
         return model;
@@ -68,8 +70,9 @@
     self.tableViewAngel.clear();
     if (data.count > 0) {
         self.tableViewAngel.addSection(0);
-        self.tableViewAngel.setHeader(@"TLContactsHeaderView").toSection(0).withDataModel(@"联系人");
-        self.tableViewAngel.addCells(@"TLContactsItemCell").toSection(0).withDataModelArray(data).selectedAction(^ (TLContactsItemModel *model) {
+        self.tableViewAngel.setHeader([TLContactsHeaderView class]).toSection(0).withDataModel(@"联系人");
+        self.tableViewAngel.addCells([TLContactsItemCell class]).toSection(0).withDataModelArray(data).selectedAction(^ (TLContactsItemModel *model) {
+            @strongify(self);
             if (self.itemSelectedAction) {
                 self.itemSelectedAction(self, model.userInfo);
             }

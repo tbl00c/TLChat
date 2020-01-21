@@ -36,7 +36,7 @@ TLUserDetailKVModel *createUserDetailKVModel(NSString *title, id data)
     [self setSelectedBackgrounColor:dataModel.selectable ? [UIColor colorGrayLine] : nil];
 }
 
-- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == 0) {
         self.addSeparator(ZZSeparatorPositionTop);
@@ -57,7 +57,7 @@ TLUserDetailKVModel *createUserDetailKVModel(NSString *title, id data)
         
         self.titleLabel = self.contentView.addLabel(1)
         .font([UIFont systemFontOfSize:16])
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.centerY.mas_equalTo(0);
             make.width.mas_equalTo(80);
@@ -66,7 +66,7 @@ TLUserDetailKVModel *createUserDetailKVModel(NSString *title, id data)
         
         self.arrowView = self.contentView.addImageView(2)
         .image([UIImage imageNamed:@"right_arrow"])
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(8, 13));
             make.right.mas_equalTo(-15);
@@ -74,7 +74,7 @@ TLUserDetailKVModel *createUserDetailKVModel(NSString *title, id data)
         .view;
         
         self.detailContentView = self.contentView.addView(3)
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.mas_equalTo(self.titleLabel.mas_right);
             make.right.mas_equalTo(self.arrowView.mas_left);
             make.top.bottom.mas_equalTo(0);

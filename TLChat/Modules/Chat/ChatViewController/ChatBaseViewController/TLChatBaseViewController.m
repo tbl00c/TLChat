@@ -25,7 +25,7 @@
     [self.view addSubview:self.chatBar];
     if (SAFEAREA_INSETS_BOTTOM > 0) {
         self.view.addView(1001).backgroundColor(self.chatBar.backgroundColor)
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(0);
             make.top.mas_equalTo(self.chatBar.mas_bottom);
         });

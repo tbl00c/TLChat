@@ -10,6 +10,9 @@
 #import "TLImageExpressionDisplayView.h"
 #import "TLExpressionGroupModel+DetailRequest.h"
 #import "TLExpressionDetailItemCell.h"
+#import "TLExpressionDetailBannerCell.h"
+#import "TLExpressionDetailInfoCell.h"
+#import "TLExpressionDetailSeperatorCell.h"
 
 typedef NS_ENUM(NSInteger, TLExpressionDetailVCSectionType) {
     TLExpressionDetailVCSectionTypeHeader,
@@ -158,12 +161,12 @@ typedef NS_ENUM(NSInteger, TLExpressionDetailVCSectionType) {
     if (self.groupModel) {
         // banner
         if (self.groupModel.bannerURL.length > 0) {
-            self.addCell(@"TLExpressionDetailBannerCell").toSection(TLExpressionDetailVCSectionTypeHeader).withDataModel(self.groupModel.bannerURL);
+            self.addCell([TLExpressionDetailBannerCell class]).toSection(TLExpressionDetailVCSectionTypeHeader).withDataModel(self.groupModel.bannerURL);
         }
         // 介绍
-        self.addCell(@"TLExpressionDetailInfoCell").toSection(TLExpressionDetailVCSectionTypeHeader).withDataModel(self.groupModel);
+        self.addCell([TLExpressionDetailInfoCell class]).toSection(TLExpressionDetailVCSectionTypeHeader).withDataModel(self.groupModel);
         // 分割线
-        self.addCell(@"TLExpressionDetailSeperatorCell").toSection(TLExpressionDetailVCSectionTypeHeader);
+        self.addCell([TLExpressionDetailSeperatorCell class]).toSection(TLExpressionDetailVCSectionTypeHeader);
         [self reloadView];
     }
 }
@@ -185,7 +188,7 @@ typedef NS_ENUM(NSInteger, TLExpressionDetailVCSectionType) {
 - (void)p_showExpressionItemsWithData:(NSArray *)data
 {
     // 表情
-    self.addCells(@"TLExpressionDetailItemCell").toSection(TLExpressionDetailVCSectionTypeItems).withDataModelArray(data);
+    self.addCells([TLExpressionDetailItemCell class]).toSection(TLExpressionDetailVCSectionTypeItems).withDataModelArray(data);
     [self reloadView];
 }
 

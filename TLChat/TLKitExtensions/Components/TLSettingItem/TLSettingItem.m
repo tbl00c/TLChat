@@ -7,6 +7,7 @@
 //
 
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 
 @implementation TLSettingItem
 

@@ -8,13 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define     CELL_ST_ITEM_NORMAL                 @"TLSettingItemNormalCell"
-#define     CELL_ST_ITEM_BUTTON                 @"TLSettingItemButtonCell"
-#define     CELL_ST_ITEM_SWITCH                 @"TLSettingItemSwitchCell"
-#define     VIEW_ST_HEADER                      @"TLSettingSectionHeaderView"
-#define     VIEW_ST_FOOTER                      @"TLSettingSectionFooterView"
-
-
 #define     TLCreateSettingItem(title)          [TLSettingItem createItemWithTitle:title]
 
 typedef NS_ENUM(NSInteger, TLSettingItemType) {

@@ -13,6 +13,7 @@
 #import "TLLaunchManager.h"
 #import "TLChatViewController.h"
 #import "TLGroup+ChatModel.h"
+#import "TLGroupItemCell.h"
 
 typedef NS_ENUM(NSInteger, TLGroupVCSectionType) {
     TLGroupVCSectionTypeItems,
@@ -41,7 +42,7 @@ typedef NS_ENUM(NSInteger, TLGroupVCSectionType) {
     self.tableView = self.view.addTableView(1)
     .backgroundColor([UIColor colorGrayBG]).separatorStyle(UITableViewCellSeparatorStyleNone)
     .tableFooterView(self.footerLabel)
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     })
     .view;;
@@ -70,7 +71,7 @@ typedef NS_ENUM(NSInteger, TLGroupVCSectionType) {
         [self.tableView setTableHeaderView:self.searchController.searchBar];
         [self.footerLabel setText:[NSString stringWithFormat:@"%ld%@", data.count, LOCSTR(@"个群聊")]];
         self.tableViewAngel.addSection(TLGroupVCSectionTypeItems);
-        self.tableViewAngel.addCells(@"TLGroupItemCell").toSection(TLGroupVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (TLGroup *group) {
+        self.tableViewAngel.addCells([TLGroupItemCell class]).toSection(TLGroupVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (TLGroup *group) {
             @strongify(self);
             [self.navigationController popToRootViewControllerAnimated:NO];
             TLChatViewController *chatVC = [[TLChatViewController alloc] initWithGroupId:group.groupID];

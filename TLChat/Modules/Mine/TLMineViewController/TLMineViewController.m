@@ -15,6 +15,9 @@
 #import "TLExpressionViewController.h"
 #import "TLSettingViewController.h"
 
+#import "TLMineHeaderCell.h"
+#import "TLMenuItemCell.h"
+
 typedef NS_ENUM(NSInteger, TLMineSectionTag) {
     TLMineSectionTagUserInfo,
     TLMineSectionTagWallet,
@@ -61,7 +64,7 @@ typedef NS_ENUM(NSInteger, TLMineSectionTag) {
     {
         NSInteger sectionTag = TLMineSectionTagUserInfo;
         self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
-        self.addCell(@"TLMineHeaderCell").toSection(sectionTag).withDataModel(user).selectedAction(^ (id data) {
+        self.addCell([TLMineHeaderCell class]).toSection(sectionTag).withDataModel(user).selectedAction(^ (id data) {
             @strongify(self);
             TLMineInfoViewController *mineInfoVC = [[TLMineInfoViewController alloc] init];
             PushVC(mineInfoVC);
@@ -129,14 +132,12 @@ typedef NS_ENUM(NSInteger, TLMineSectionTag) {
 {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSString *badgeValue;
-        NSArray *data = [self allDataModelArray];
-        for (NSArray *section in data) {
-            for (id item in section) {
-                if ([item isKindOfClass:[TLMenuItem class]]) {
-                    if ([(TLMenuItem *)item badge] || [(TLMenuItem *)item showRightIconBadge]) {
-                        badgeValue = @"";
-                        break;
-                    }
+        NSArray *data = self.dataModelArray.all();
+        for (id item in data) {
+            if ([item isKindOfClass:[TLMenuItem class]]) {
+                if ([(TLMenuItem *)item badge] || [(TLMenuItem *)item showRightIconBadge]) {
+                    badgeValue = @"";
+                    break;
                 }
             }
         }

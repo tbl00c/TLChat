@@ -1,0 +1,1 @@
+../../../ZZFLEX/ZZFLEX/ZZFLEXFoundationExtension/FoundationChainModels/ZZMutableAttributeStringChainModel.h

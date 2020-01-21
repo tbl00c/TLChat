@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, TLMomentExtensionSectionType) {
         self.tableView = self.addTableView(1)
         .backgroundColor([UIColor colorGrayForMoment]).separatorStyle(UITableViewCellSeparatorStyleNone)
         .scrollsToTop(NO).scrollEnabled(NO)
-        .masonry(^(MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.top.mas_equalTo(self).mas_offset(EDGE_HEADER);
             make.left.and.right.mas_equalTo(self);
             make.bottom.mas_equalTo(self).priorityLow();
@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, TLMomentExtensionSectionType) {
     // 点赞
     self.angel.addSection(TLMomentExtensionSectionTypeLike);
     if (extension.likedFriends.count > 0) {
-        self.angel.addCell(@"TLMomentExtensionLikedCell").toSection(TLMomentExtensionSectionTypeLike).withDataModel(self.extension)
+        self.angel.addCell([TLMomentExtensionLikedCell class]).toSection(TLMomentExtensionSectionTypeLike).withDataModel(self.extension)
         .eventAction(^ id(TLMELikedCellEventType eventType, id data) {
             @strongify(self);
             if (eventType == TLMELikedCellEventTypeClickUser) {
@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger, TLMomentExtensionSectionType) {
     // 评论
     self.angel.addSection(TLMomentExtensionSectionTypeComment);
     if (extension.comments.count > 0) {
-        self.angel.addCells(@"TLMomentExtensionCommentCell").toSection(TLMomentExtensionSectionTypeComment).withDataModelArray(self.extension.comments)
+        self.angel.addCells([TLMomentExtensionCommentCell class]).toSection(TLMomentExtensionSectionTypeComment).withDataModelArray(self.extension.comments)
         .eventAction(^ id(TLMECommentCellEventType eventType, id data) {
             @strongify(self);
             if (eventType == TLMECommentCellEventTypeUserClick) {

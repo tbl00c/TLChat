@@ -30,7 +30,7 @@
     [self setGroup:dataModel];
 }
 
-- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == count - 1) {
         self.addSeparator(ZZSeparatorPositionBottom);
@@ -64,7 +64,7 @@
 - (void)p_initUI
 {
     self.avatarView = self.contentView.addImageView(1)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.top.left.mas_equalTo(10);
         make.bottom.mas_equalTo(-10);
     })
@@ -75,7 +75,7 @@
     
     self.nameLabel = self.contentView.addLabel(2)
     .font([UIFont systemFontOfSize:17.0f])
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
         make.centerY.mas_equalTo(self.avatarView);
         make.right.mas_lessThanOrEqualTo(-20);

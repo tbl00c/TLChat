@@ -13,6 +13,9 @@
 #import "TLExpressionHelper.h"
 #import "TLExpressionChosenAngel.h"
 #import "TLExpressionDetailViewController.h"
+#import "TLExpressionBannerCell.h"
+#import "TLExpressionTitleView.h"
+#import "TLExpressionItemCell.h"
 
 typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
     TLExpressionChosenSectionTypeBanner,
@@ -100,7 +103,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
 {
     /// 初始化列表
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    self.tableView.zz_make.backgroundColor([UIColor whiteColor])
+    self.tableView.zz_setup.backgroundColor([UIColor whiteColor])
     .separatorStyle(UITableViewCellSeparatorStyleNone)
     .tableHeaderView(self.searchController.searchBar)
     .tableFooterView([UIView new])
@@ -147,7 +150,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
         if (!self) return;
         self.tableViewAngel.sectionForTag(TLExpressionChosenSectionTypeBanner).clear();
         if (requestModel.success) {
-            self.tableViewAngel.addCell(@"TLExpressionBannerCell").toSection(requestModel.tag).withDataModel(requestModel.data).eventAction(^id (NSInteger eventType, id data) {
+            self.tableViewAngel.addCell([TLExpressionBannerCell class]).toSection(requestModel.tag).withDataModel(requestModel.data).eventAction(^id (NSInteger eventType, id data) {
                 @strongify(self);
                 [self didSelectedExpressionGroup:data];
                 return nil;
@@ -175,9 +178,9 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
         if (!self) return;
         self.tableViewAngel.sectionForTag(requestModel.tag).clear();
         if (requestModel.success) {
-            self.tableViewAngel.setHeader(@"TLExpressionTitleView").withDataModel(LOCSTR(@"推荐表情")).toSection(requestModel.tag);
+            self.tableViewAngel.setHeader([TLExpressionTitleView class]).withDataModel(LOCSTR(@"推荐表情")).toSection(requestModel.tag);
             [[TLExpressionHelper sharedHelper] updateExpressionGroupModelsStatus:requestModel.data];
-            self.tableViewAngel.addCells(@"TLExpressionItemCell").withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
+            self.tableViewAngel.addCells([TLExpressionItemCell class]).withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
                 @strongify(self);
                 [self didSelectedExpressionGroup:data];
             });
@@ -209,7 +212,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
             if (pageIndex == 1) {
                 self.tableViewAngel.sectionForTag(requestModel.tag).clear();
                 if ([requestModel.data count] > 0) {
-                    self.tableViewAngel.setHeader(@"TLExpressionTitleView").withDataModel(LOCSTR(@"更多精选")).toSection(requestModel.tag);
+                    self.tableViewAngel.setHeader([TLExpressionTitleView class]).withDataModel(LOCSTR(@"更多精选")).toSection(requestModel.tag);
                 }
                 
                 [self.tableView tt_addLoadMoreFooterWithAction:^{
@@ -220,7 +223,7 @@ typedef NS_ENUM(NSInteger, TLExpressionChosenSectionType) {
             
             if ([requestModel.data count] > 0) {
                 [[TLExpressionHelper sharedHelper] updateExpressionGroupModelsStatus:requestModel.data];
-                self.tableViewAngel.addCells(@"TLExpressionItemCell").withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
+                self.tableViewAngel.addCells([TLExpressionItemCell class]).withDataModelArray(requestModel.data).toSection(requestModel.tag).selectedAction(^ (id data) {
                     @strongify(self);
                     [self didSelectedExpressionGroup:data];
                 });

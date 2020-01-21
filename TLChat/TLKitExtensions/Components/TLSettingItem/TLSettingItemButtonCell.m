@@ -22,7 +22,7 @@
         [self.arrowView setHidden:YES];
         
         self.titleLabel = self.contentView.addLabel(1)
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.center.mas_equalTo(0);
             make.width.mas_lessThanOrEqualTo(self.contentView);
         })

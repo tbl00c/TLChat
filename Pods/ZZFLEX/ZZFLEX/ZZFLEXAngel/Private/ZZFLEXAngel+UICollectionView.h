@@ -7,11 +7,12 @@
 //
 
 #import "ZZFLEXAngel.h"
+#import "ZZFlexibleLayoutFlowLayout.h"
 
 @interface ZZFLEXAngel (UICollectionView) <
 UICollectionViewDataSource,
 UICollectionViewDelegate,
-UICollectionViewDelegateFlowLayout
+ZZFlexibleLayoutFlowLayoutDelegate      // 继承自 UICollectionViewDelegateFlowLayout
 >
 
 @end

@@ -9,6 +9,7 @@
 #import "TLExpressionSearchResultViewController.h"
 #import "TLExpressionDetailViewController.h"
 #import "TLExpressionGroupModel+SearchRequest.h"
+#import "TLExpressionItemCell.h"
 
 #define         HEGIHT_EXPCELL      80
 
@@ -36,7 +37,7 @@ typedef NS_ENUM(NSInteger, TLExpressionSearchVCSectionType) {
     .tableHeaderView([UIView new])
     .separatorStyle(UITableViewCellSeparatorStyleNone)
     .estimatedRowHeight(0).estimatedSectionFooterHeight(0).estimatedSectionHeaderHeight(0)
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     })
     .view;
@@ -106,7 +107,7 @@ typedef NS_ENUM(NSInteger, TLExpressionSearchVCSectionType) {
 {
     @weakify(self);
     self.tableViewAngel.sectionForTag(TLExpressionSearchVCSectionTypeItems).clear();
-    self.tableViewAngel.addCells(@"TLExpressionItemCell").toSection(TLExpressionSearchVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (TLExpressionGroupModel *model) {
+    self.tableViewAngel.addCells([TLExpressionItemCell class]).toSection(TLExpressionSearchVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (TLExpressionGroupModel *model) {
         @strongify(self);
         if (self.itemClickAction) {
             self.itemClickAction(self, model);

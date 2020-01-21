@@ -36,22 +36,7 @@
     if (!self.viewClass) {
         return nil;
     }
-    UITableViewHeaderFooterView<ZZFlexibleLayoutViewProtocol> *view = nil;
-    view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.className];
-    
-    if ([view respondsToSelector:@selector(setViewDataModel:)]) {
-        [view setViewDataModel:self.dataModel];
-    }
-    if ([view respondsToSelector:@selector(setViewEventAction:)]) {
-        [view setViewEventAction:self.eventAction];
-    }
-    if ([view respondsToSelector:@selector(setViewDelegate:)]) {
-        [view setViewDelegate:self.delegate ? self.delegate : pageController];
-    }
-    if ([view respondsToSelector:@selector(viewIndexPath:sectionItemCount:)]) {
-        [view viewIndexPath:nil sectionItemCount:section];
-    }
-    [view setTag:self.viewTag];
+    UITableViewHeaderFooterView<ZZFlexibleLayoutViewProtocol> *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.className];
     [self excuteConfigActionForPageControler:pageController hostView:tableView itemView:view sectionCount:section indexPath:[NSIndexPath indexPathForRow:0 inSection:section]];
     return view;
 }

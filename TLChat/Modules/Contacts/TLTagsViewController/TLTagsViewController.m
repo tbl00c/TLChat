@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, TLTagsVCSectionType) {
     self.tableView = self.view.addTableView(1)
     .backgroundColor([UIColor whiteColor]).separatorStyle(UITableViewCellSeparatorStyleNone)
     .tableFooterView([UIView new])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     })
     .view;
@@ -62,7 +62,7 @@ typedef NS_ENUM(NSInteger, TLTagsVCSectionType) {
     }
     else {
         self.tableViewAngel.addSection(TLTagsVCSectionTypeItems);
-        self.tableViewAngel.addCells(@"TLTagItemCell").toSection(TLTagsVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (id data) {
+        self.tableViewAngel.addCells([TLTagItemCell class]).toSection(TLTagsVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (id data) {
             
         });
     }

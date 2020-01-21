@@ -41,7 +41,7 @@
     self.eventAction = eventAction;
 }
 
-- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == 0) {
         self.addSeparator(ZZSeparatorPositionTop);
@@ -100,7 +100,7 @@
             self.eventAction(0, self.userModel);
         }
     })
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(14);
         make.top.mas_equalTo(12);
         make.bottom.mas_equalTo(-12);
@@ -114,7 +114,7 @@
     // 用户昵称
     self.shownameLabel = self.contentView.addLabel(2)
     .font([UIFont systemFontOfSize:17.0f])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(MINE_SPACE_Y);
         make.top.mas_equalTo(self.avatarView.mas_top).mas_offset(3);
     })
@@ -125,7 +125,7 @@
     self.usernameLabel = self.contentView.addLabel(3)
     .font([UIFont systemFontOfSize:14.0f])
     .textColor([UIColor grayColor])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.shownameLabel);
         make.top.mas_equalTo(self.shownameLabel.mas_bottom).mas_offset(5);
     })
@@ -135,7 +135,7 @@
     self.nikenameLabel = self.contentView.addLabel(4)
     .textColor([UIColor grayColor])
     .font([UIFont systemFontOfSize:14.0f])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.shownameLabel);
         make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(3);
     })

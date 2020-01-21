@@ -129,7 +129,8 @@ PODS:
     - WCDB/sqlcipher (= 1.0.6)
   - WCDB/sqlcipher (1.0.6)
   - YYText (1.0.7)
-  - ZZFLEX (0.2.0)
+  - ZZFLEX (1.0):
+    - Masonry
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -146,7 +147,7 @@ DEPENDENCIES:
   - UMengAnalytics (~> 4.2.4)
   - WCDB (~> 1.0.6)
   - YYText (~> 1.0.7)
-  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`, tag `0.2.0`)
+  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`)
 
 SPEC REPOS:
   trunk:
@@ -176,7 +177,6 @@ EXTERNAL SOURCES:
     :tag: 0.0.6
   ZZFLEX:
     :git: https://github.com/tbl00c/ZZFLEX.git
-    :tag: 0.2.0
 
 CHECKOUT OPTIONS:
   JZNavigationExtension:
@@ -189,8 +189,8 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tbl00c/TLTabBarController.git
     :tag: 0.0.6
   ZZFLEX:
+    :commit: da7bc35e7e4fb7d92860bd2d56d22603c852b85d
     :git: https://github.com/tbl00c/ZZFLEX.git
-    :tag: 0.2.0
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -210,8 +210,8 @@ SPEC CHECKSUMS:
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   WCDB: 4d2926bf695b2e00d785b50afd32c2dcc8cbbd98
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  ZZFLEX: 48ad9faf261c9589a3d16d44a701219ad41883b8
+  ZZFLEX: 6fe8d2dc973495b32a7fe79cb4b00a5b8fb845c8
 
-PODFILE CHECKSUM: 61b5de0e569565509787b782cbca36a060adb8db
+PODFILE CHECKSUM: 7f2ab77a083bf264b49f4d532be5bf033782fba2
 
 COCOAPODS: 1.8.4

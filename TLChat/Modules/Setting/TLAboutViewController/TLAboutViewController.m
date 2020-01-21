@@ -10,6 +10,9 @@
 #import "TLWebViewController.h"
 #import "TLAppConfig.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
+#import "TLAboutHeaderView.h"
+#import "TLAboutFooterView.h"
 
 typedef NS_ENUM(NSInteger, TLAboutVCSectionType) {
     TLAboutVCSectionTypeItems,
@@ -26,7 +29,7 @@ typedef NS_ENUM(NSInteger, TLAboutVCSectionType) {
 - (void)loadView
 {
     [super loadView];
-    [self.navigationItem setTitle:LOCSTR(@"关于微信")];
+    [self.navigationItem setTitle:LOCSTR(@"关于TLChat")];
     [self.collectionView setBackgroundColor:[UIColor colorGrayBG]];
     
     self.addSection(TLAboutVCSectionTypeItems);
@@ -38,7 +41,7 @@ typedef NS_ENUM(NSInteger, TLAboutVCSectionType) {
 {
     [super viewWillLayoutSubviews];
     
-    self.setFooter(@"TLAboutFooterView").toSection(TLAboutVCSectionTypeItems).withDataModel(@([self p_footerHeight]));
+    self.setFooter([TLAboutFooterView class]).toSection(TLAboutVCSectionTypeItems).withDataModel(@([self p_footerHeight]));
 }
 
 #pragma mark - # UI
@@ -50,7 +53,7 @@ typedef NS_ENUM(NSInteger, TLAboutVCSectionType) {
         
         // header
         NSString *versionInfo = [NSString stringWithFormat:@"TLChat %@", [TLAppConfig sharedConfig].version];
-        self.setHeader(@"TLAboutHeaderView").toSection(sectionTag).withDataModel(versionInfo);
+        self.setHeader([TLAboutHeaderView class]).toSection(sectionTag).withDataModel(versionInfo);
         
         // 评分
         self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"去评分")).selectedAction(^ (id data) {
@@ -70,7 +73,7 @@ typedef NS_ENUM(NSInteger, TLAboutVCSectionType) {
         });
         
         // footer
-        self.setFooter(@"TLAboutFooterView").toSection(sectionTag).withDataModel(@([self p_footerHeight]));
+        self.setFooter([TLAboutFooterView class]).toSection(sectionTag).withDataModel(@([self p_footerHeight]));
     }
     
     [self reloadView];

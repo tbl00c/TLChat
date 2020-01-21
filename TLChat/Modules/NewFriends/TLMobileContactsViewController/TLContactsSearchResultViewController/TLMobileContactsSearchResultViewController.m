@@ -28,7 +28,7 @@
     .backgroundColor([UIColor colorGrayBG]).separatorStyle(UITableViewCellSeparatorStyleNone)
     .tableFooterView([UIView new])
     .estimatedRowHeight(0).estimatedSectionFooterHeight(0).estimatedSectionHeaderHeight(0)
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     })
     .view;
@@ -40,7 +40,7 @@
 {
     self.tableViewAngel.clear();
     self.tableViewAngel.addSection(0);
-    self.tableViewAngel.addCells(@"TLMobileContactsItemCell").toSection(0).withDataModelArray(data).selectedAction(^ (id data) {
+    self.tableViewAngel.addCells([TLMobileContactsItemCell class]).toSection(0).withDataModelArray(data).selectedAction(^ (id data) {
  
     });
     [self.tableView reloadData];

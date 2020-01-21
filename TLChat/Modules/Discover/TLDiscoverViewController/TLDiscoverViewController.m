@@ -15,6 +15,7 @@
 #import "TLGameViewController.h"
 
 #import "TLMenuItem.h"
+#import "TLMenuItemCell.h"
 
 typedef NS_ENUM(NSInteger, TLDiscoverSectionTag) {
     TLDiscoverSectionTagMoments,
@@ -186,17 +187,16 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
 {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSString *badgeValue;
-        NSArray *data = [self allDataModelArray];
-        for (NSArray *section in data) {
-            for (id item in section) {
-                if ([item isKindOfClass:[TLMenuItem class]]) {
-                    if ([(TLMenuItem *)item badge] || [(TLMenuItem *)item showRightIconBadge]) {
-                        badgeValue = @"";
-                        break;
-                    }
+        NSArray *data = self.dataModelArray.all();
+        for (id item in data) {
+            if ([item isKindOfClass:[TLMenuItem class]]) {
+                if ([(TLMenuItem *)item badge] || [(TLMenuItem *)item showRightIconBadge]) {
+                    badgeValue = @"";
+                    break;
                 }
             }
         }
+    
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tabBarItem setBadgeValue:badgeValue];
         });

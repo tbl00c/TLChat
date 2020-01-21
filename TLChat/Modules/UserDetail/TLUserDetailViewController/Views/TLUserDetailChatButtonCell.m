@@ -39,7 +39,7 @@
         .backgroundColor([UIColor colorGreenDefault]).titleColor([UIColor whiteColor]).titleFont([UIFont systemFontOfSize:18])
         .backgroundColorHL([UIColor colorGreenHL]).titleColorHL([[UIColor whiteColor] colorWithAlphaComponent:0.7])
         .cornerRadius(5).borderWidth(1).borderColor([UIColor colorGrayLine].CGColor)
-        .masonry(^(MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
             make.top.mas_equalTo(0);

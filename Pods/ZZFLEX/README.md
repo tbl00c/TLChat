@@ -1,7 +1,5 @@
 # ZZFLEX
 
-<img src="./Screenshot/zz_logo.png" />
-
 一个完善的iOS UI敏捷开发框架，基于UIKit，包含常用控件的链式API拓展、一个数据驱动的列表框架、一个事件处理队列。
 
 ![Travis](https://img.shields.io/travis/tbl00c/ZZFLEX.svg) ![CocoaPods](https://img.shields.io/cocoapods/v/ZZFLEX.svg) ![license MIT](https://img.shields.io/github/license/tbl00c/ZZFLEX.svg) ![platofrm](https://img.shields.io/badge/platform-ios-lightgrey.svg)
@@ -9,11 +7,64 @@
 
 <img src="./Screenshot/1.gif" width = "375" height = "667" alt="screenshot1" />  <img src="./Screenshot/2.gif" width = "375" height = "667" alt="screenshot1" />
 
+## 更新
+
+### 1.0 [重大更新，[升级攻略](./UpdateTo1.0.md)]
+
+1、addCell时，类型由类名字符串变更为class；
+
+```objective-c
+self.addCell([ACell class]).toSection(sectionTag)
+```
+
+2、ZZFLEXViewExtension新增圆角支持;
+
+```objective-c
+self.setCornor(ZZCornerPositionAll).radius(cornorRadius);
+```
+
+3、UICollectionView支持卡片类型支持（设置sectionEdge后，在cell中根据位置设置圆角即可）；
+
+4、ZZFLEXViewExtension中Masonry设置方法，加增view参数，便于设置与自身关系；
+
+```objective-c
+UIImageView *imageView = self.addImageView(0)
+.masonry(^ (UIView *senderView, MASConstraintMaker *make) {
+    make.top.left.bottom.mas_equalTo(0);
+    make.height.mas_equalTo(senderView);
+})
+.view;
+```
+
+5、新增ZZFLEXFoundationExtension，支持NSAttributeString的链式调用;
+
+```objective-c
+NSAttributedString *attrTitle = NSMutableAttributedString.zz_create(@"Hello world").font([UIFont boldSystemFontOfSize:17]).foregroundColor([UIColor redColor]).object;
+```
+
+6、ZZFLEXViewExtension中```zz_make```属性更名为```zz_setup```;
+
+7、ZZFlexibleLayoutViewProtocol中，cell位置通知方法名变给为
+
+```objective-c
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count;
+```
+
+8、ZZFLEXRequestQueue支持progress；
+
+9、强依赖Masonry；
+
+10、ZZFlexibleLayoutViewController重构，使用ZZFlexAngel核心逻辑；
+
+11、更多逻辑性能优化、BUG修复；
+
+[更多更新记录](./update.md)
+
 ## 如何使用
 
 ##### 1、直接导入方式
 
-将项目下载到本地后，把ZZFlexibleLayoutFramework拖入到你的项目中，即可正常使用。
+将项目下载到本地后，把ZZFLEX拖入到你的项目中，即可正常使用。
 
 ##### 2、CocoaPods方式
 
@@ -41,7 +92,7 @@ UIView+ZZFLEX是使用***Objective-C的泛型***实现的，可以无视继承�
 如需对控件的属性进行编辑，可以这样写：
 
 ```
-button.zz_make.frame(CGRectMake(0, 0, 100, 40)).title(@"hi").titleColor(@"how are u");
+button.zz_setup.frame(CGRectMake(0, 0, 100, 40)).title(@"hi").titleColor(@"how are u");
 ```
 
 如需单独创建一个控件，不添加到视图上：
@@ -50,7 +101,7 @@ button.zz_make.frame(CGRectMake(0, 0, 100, 40)).title(@"hi").titleColor(@"how ar
 UIButton *button = UIButton.zz_create(1001).title(@"hello").titleHL(@"world").view;
 ```
 
-你可以能会发现，在添加视图的时候，ZZFLEX会强制为视图添加一个tag，这样做的初衷是方便定位，此外如果你需要做一些用户行为统计及类似的功能，你或许会更感谢这种做法。
+会发现，在添加视图的时候，ZZFLEX会强制为视图添加一个tag，这样做的初衷是方便定位，此外如果你需要做一些用户行为统计及类似的功能，你或许会更感谢这种做法。
 
 目前，UIView+ZZFLEX已添加链式API的控件有：
 
@@ -84,7 +135,7 @@ cell/view实现这个协议的目的和好处有两个：
 ***
 
 目前主要支持的功能:
- 
+
 | | 添加 | 插入 | 获取 | 批量添加 | 批量插入 | 批量获取 | 编辑 | 删除 | 清空子数据 | 更新高度 |
 |:-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | section | ✔️ | ✔️ | ✔️ | | | | ✔️ | ✔️ | ✔️ | ✔️ |
@@ -116,6 +167,13 @@ ZZFLEXAngel是ZZFlexibleLayoutViewController核心思想和设计提炼而成的
 ZZFLEXRequestQueue的核心思想是“将一次数据请求的过程封装成对象”，它可以保证在此业务场景下，按队列顺序加载展示UI。
 
 详见Demo。
+
+## ZZUIHelpler 已支持自动生成ZZFLEX代码
+
+<img src="./Screenshot/ZZUIHelper.png" alt="ZZUIHelper" /> 
+
+#### 详见 <https://github.com/tbl00c/ZZUIHelper>
+
 
 ## 其他
 

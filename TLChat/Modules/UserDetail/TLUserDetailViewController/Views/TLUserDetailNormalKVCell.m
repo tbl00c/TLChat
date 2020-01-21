@@ -28,7 +28,7 @@
     if (self = [super initWithFrame:frame]) {
         self.detailLabel = self.detailContentView.addLabel(1001)
         .font([UIFont systemFontOfSize:16])
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.edges.mas_equalTo(0);
         })
         .view;

@@ -26,7 +26,7 @@
     [self.titleLabel setText:dataModel];
 }
 
-- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == 0) {
         self.addSeparator(ZZSeparatorPositionTop);
@@ -48,7 +48,7 @@
         
         UIImageView *arrowView = self.contentView.addImageView(2)
         .image([UIImage imageNamed:@"right_arrow"])
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(8, 13));
             make.right.mas_equalTo(-15);
@@ -57,7 +57,7 @@
         
         self.titleLabel = self.contentView.addLabel(1)
         .font([UIFont systemFontOfSize:16])
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.centerY.mas_equalTo(0);
             make.right.mas_lessThanOrEqualTo(arrowView.mas_left).mas_offset(-15);

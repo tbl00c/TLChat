@@ -10,6 +10,7 @@
 #import "TLWebViewController.h"
 #import "TLUserHelper.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 
 typedef NS_ENUM(NSInteger, TLAccountSettingVCSectionType) {
     TLAccountSettingVCSectionTypeAccount,

@@ -8,6 +8,7 @@
 
 #import "TLPrivacySettingViewController.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 
 typedef NS_ENUM(NSInteger, TLPrivacySettingVCSectionType) {
     TLPrivacySettingVCSectionTypeVerify,

@@ -21,7 +21,7 @@
         self.addLabel(1).numberOfLines(0).textAlignment(NSTextAlignmentCenter)
         .text(@"高仿微信 仅供学习\nhttps://github.com/tbl00c/TLChat")
         .font([UIFont systemFontOfSize:12.0f]).textColor([UIColor grayColor])
-        .masonry(^(MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.centerX.mas_equalTo(0);
             make.bottom.mas_equalTo(-10);
             make.width.mas_lessThanOrEqualTo(self).mas_offset(-30);

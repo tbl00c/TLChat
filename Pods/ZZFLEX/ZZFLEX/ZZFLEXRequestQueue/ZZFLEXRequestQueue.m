@@ -71,10 +71,10 @@ static NSMutableArray *__zz_flex_req_array;
 /// 某次执行过程中提前完成的请求
 @property (nonatomic, strong) NSMutableDictionary *completeDic;
 
+@property (nonatomic, copy) void (^progressAction)(CGFloat progress);
 @property (nonatomic, copy) void (^completeAction)(NSArray *data, NSInteger successCount, NSInteger failureCount);
 
 @property (nonatomic, assign) NSInteger successCount;
-
 @property (nonatomic, assign) NSInteger failureCount;
 
 @property (nonatomic, assign) NSInteger pageIndex;
@@ -83,7 +83,7 @@ static NSMutableArray *__zz_flex_req_array;
 
 @implementation ZZFLEXRequestQueue
 
-+ (void)load
++ (void)initialize
 {
     __zz_flex_req_array = [[NSMutableArray alloc] init];
 }
@@ -96,9 +96,10 @@ static NSMutableArray *__zz_flex_req_array;
 - (void)addRequestModel:(ZZFLEXRequestModel *)model
 {
 #if DEBUG
+    NSAssert(model, @"添加的requestModel不能为nil");
     NSAssert(_isRuning == NO, @"请求队列正在运行期间，不能追加model。");
 #else
-    if (_isRuning) {
+    if (_isRuning || !model) {
         return;
     }
 #endif
@@ -109,6 +110,11 @@ static NSMutableArray *__zz_flex_req_array;
 
 - (void)runAllRequestsWithCompleteAction:(void (^)(NSArray *, NSInteger, NSInteger))completeAction
 {
+    [self runAllRequestsWithProgressAction:nil completeAction:completeAction];
+}
+
+- (void)runAllRequestsWithProgressAction:(void (^)(CGFloat))progressAction completeAction:(void (^)(NSArray *, NSInteger, NSInteger))completeAction
+{
     if (_isRuning) {
         NSLog(@"[ZZFLEX][WARNING]队列正在执行中...");
         return;
@@ -118,6 +124,7 @@ static NSMutableArray *__zz_flex_req_array;
     self.failureCount = 0;
     self.recData = self.queueData.copy;
     self.completeDic = [[NSMutableDictionary alloc] init];
+    self.progressAction = progressAction;
     self.completeAction = completeAction;
     if (self.queueData.count > 0) {
         if (![__zz_flex_req_array containsObject:self]) {
@@ -134,7 +141,8 @@ static NSMutableArray *__zz_flex_req_array;
 
 - (void)p_startRequestRunLoop
 {
-    for (ZZFLEXRequestModel *model in self.queueData) {
+    NSArray *queueData = self.queueData.copy;
+    for (ZZFLEXRequestModel *model in queueData) {
         [model executeRequestMethod];
     }
 }
@@ -159,6 +167,10 @@ static NSMutableArray *__zz_flex_req_array;
     }
     self.successCount += model.success ? 1 : 0;
     self.failureCount += model.success ? 0 : 1;
+    _progress = (CGFloat)(self.successCount + self.failureCount) / self.recData.count;
+    if (self.progressAction) {
+        self.progressAction(self.progress);
+    }
     // 当前Model不在队头，加入等待队列
     if (model.tag != [self.queueData.firstObject tag]) {
         [self.completeDic setValue:@"1" forKey:@(model.hash).stringValue];

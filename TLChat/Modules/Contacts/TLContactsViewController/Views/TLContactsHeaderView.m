@@ -36,7 +36,7 @@
         self.titleLabel = self.contentView.addLabel(1)
         .font([UIFont systemFontOfSize:15])
         .textColor([UIColor grayColor])
-        .masonry(^ (MASConstraintMaker *make){
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make){
             make.left.mas_equalTo(10);
             make.centerY.mas_equalTo(0);
             make.right.mas_lessThanOrEqualTo(-15);

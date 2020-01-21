@@ -14,6 +14,7 @@
 #import "TLUserGroupCell.h"
 #import "TLChatNotificationKey.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 
 typedef NS_ENUM(NSInteger, TLChatDetailVCSectionType) {
     TLChatDetailVCSectionTypeUsers,
@@ -54,7 +55,7 @@ typedef NS_ENUM(NSInteger, TLChatDetailVCSectionType) {
         NSInteger sectionTag = TLChatDetailVCSectionTypeUsers;
         self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
         
-        self.addCell(@"TLUserGroupCell").toSection(sectionTag).withDataModel(@[self.user]).eventAction(^ id(TLUserGroupCellEventType eventType, id data) {
+        self.addCell([TLUserGroupCell class]).toSection(sectionTag).withDataModel(@[self.user]).eventAction(^ id(TLUserGroupCellEventType eventType, id data) {
             @strongify(self);
             if (eventType == TLUserGroupCellEventTypeClickUser) {
                 TLUserDetailViewController *userDetailVC = [[TLUserDetailViewController alloc] initWithUserModel:data];

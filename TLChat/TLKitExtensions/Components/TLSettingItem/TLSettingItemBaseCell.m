@@ -21,7 +21,7 @@
     [self setItem:dataModel];
 }
 
-- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
+- (void)onViewPositionUpdatedWithIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == 0) {
         self.addSeparator(ZZSeparatorPositionTop);
@@ -46,7 +46,7 @@
         // 箭头
         self.arrowView = self.addImageView(10)
         .image(TLImage(@"right_arrow"))
-        .masonry(^(MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(8, 13));
             make.right.mas_equalTo(-15);

@@ -44,7 +44,7 @@
         .backgroundColor([UIColor whiteColor])
         .clipsToBounds(YES)
         .font([UIFont systemFontOfSize:17])
-        .masonry(^(MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.right.mas_lessThanOrEqualTo(-15);
             make.bottom.mas_equalTo(-12);

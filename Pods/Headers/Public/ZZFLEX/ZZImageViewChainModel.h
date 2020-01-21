@@ -1,1 +1,1 @@
-../../../ZZFLEX/ZZFLEX/ZZFLEXViewExtension/ViewsChainModels/ZZImageViewChainModel.h
+../../../ZZFLEX/ZZFLEX/ZZFLEXViewExtension/UIView+ZZFLEX/ViewsChainModels/ZZImageViewChainModel.h

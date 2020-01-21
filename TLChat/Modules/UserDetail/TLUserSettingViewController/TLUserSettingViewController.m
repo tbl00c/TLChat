@@ -8,6 +8,7 @@
 
 #import "TLUserSettingViewController.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 #import "TLUserHelper.h"
 #import "TLFriendHelper.h"
 
@@ -119,7 +120,7 @@ typedef NS_ENUM(NSInteger, TLUserSettingVCSectionType) {
         NSInteger sectionTag = TLUserSettingVCSectionTypeDelete;
         self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
 
-        self.addCell(@"TLSettingItemDeleteButtonCell").toSection(sectionTag).withDataModel(TLCreateSettingItem(@"删除")).eventAction(^ id(NSInteger eventType, id data) {
+        self.addCell([TLSettingItemDeleteButtonCell class]).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"删除")).eventAction(^ id(NSInteger eventType, id data) {
             @strongify(self);
             TLActionSheet *actionSheet = [[TLActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"将联系人“%@”删除，同时删除与该联系人的聊天记录", self.userModel.showName] clickAction:^(NSInteger buttonIndex) {
                 @strongify(self);

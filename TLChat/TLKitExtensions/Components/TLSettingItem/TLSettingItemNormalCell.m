@@ -53,7 +53,7 @@
 - (void)p_initSettingItemSubviews
 {
     self.titleLabel = self.contentView.addLabel(1)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
         make.left.mas_equalTo(15);
     })
@@ -61,7 +61,7 @@
 
     self.rightLabel = self.contentView.addLabel(2)
     .textColor([UIColor grayColor]).font([UIFont systemFontOfSize:15.0f])
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.right.mas_equalTo(-30);
         make.centerY.mas_equalTo(self.titleLabel);
         make.left.mas_greaterThanOrEqualTo(self.titleLabel.mas_right).mas_offset(20);
@@ -69,7 +69,7 @@
     .view;
     
     self.rightImageView = self.addImageView(3)
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.right.mas_equalTo(self.rightLabel.mas_left).mas_offset(-2);
         make.centerY.mas_equalTo(0);
     })

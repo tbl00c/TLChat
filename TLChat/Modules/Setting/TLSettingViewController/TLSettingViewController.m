@@ -14,6 +14,7 @@
 #import "TLAboutViewController.h"
 #import "TLWebViewController.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 
 typedef NS_ENUM(NSInteger, TLSettingVCSectionType) {
     TLSettingVCSectionTypeAccount,
@@ -82,8 +83,8 @@ typedef NS_ENUM(NSInteger, TLSettingVCSectionType) {
             TLWebViewController *webVC = [[TLWebViewController alloc] initWithUrl:@"https://github.com/tbl00c/TLChat/issues"];
             PushVC(webVC);
         });
-        // 关于微信
-        self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"关于微信")).selectedAction(^ (id data) {
+        // 关于TLChat
+        self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"关于TLChat")).selectedAction(^ (id data) {
             @strongify(self);
             TLAboutViewController *aboutVC = [[TLAboutViewController alloc] init];
             PushVC(aboutVC);

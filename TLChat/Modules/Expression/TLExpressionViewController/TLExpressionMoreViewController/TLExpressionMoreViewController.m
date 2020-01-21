@@ -9,6 +9,8 @@
 #import "TLExpressionMoreViewController.h"
 #import "TLExpressionDetailViewController.h"
 #import "TLExpressionGroupModel+MoreRequest.h"
+#import "TLExpressionMoreSearchCell.h"
+#import "TLExpressionMoreCell.h"
 
 typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
     TLExpressionMoreSectionTypeSearch,
@@ -31,7 +33,7 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
     @weakify(self);
     // 搜索
     self.addSection(TLExpressionMoreSectionTypeSearch);
-    self.addCell(@"TLExpressionMoreSearchCell").toSection(TLExpressionMoreSectionTypeSearch).eventAction(^ id(NSInteger eventType, id data) {
+    self.addCell([TLExpressionMoreSearchCell class]).toSection(TLExpressionMoreSectionTypeSearch).eventAction(^ id(NSInteger eventType, id data) {
         @strongify(self);
         [self didSelectedExpressionGroup:data];
         return nil;
@@ -54,7 +56,7 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
 
 - (void)requestDataIfNeed
 {
-    if ([self dataModelArrayForSection:TLExpressionMoreSectionTypeExprs].count == 0) {
+    if (self.sectionForTag(TLExpressionMoreSectionTypeExprs).dataModelArray.count == 0) {
         [TLUIUtility showLoading:nil];
         [self requestExpressionMoreDataWithPageIndex:1];
     }
@@ -80,7 +82,7 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
         @strongify(self);
         [TLUIUtility hiddenLoading];
         if (pageIndex == 1) {
-            [self deleteAllItemsForSection:TLExpressionMoreSectionTypeExprs];
+            self.sectionForTag(TLExpressionMoreSectionTypeExprs).clearItems();
         }
         if (successData.count > 0) {
             if (pageIndex == 1) {
@@ -89,7 +91,7 @@ typedef NS_ENUM(NSInteger, TLExpressionMoreSectionType) {
                     [self requestExpressionMoreDataWithPageIndex:self.pageIndex + 1];
                 }];
             }
-            self.addCells(@"TLExpressionMoreCell").withDataModelArray(successData).toSection(TLExpressionMoreSectionTypeExprs).selectedAction(^ (id data) {
+            self.addCells([TLExpressionMoreCell class]).withDataModelArray(successData).toSection(TLExpressionMoreSectionTypeExprs).selectedAction(^ (id data) {
                 @strongify(self);
                 [self didSelectedExpressionGroup:data];
             });

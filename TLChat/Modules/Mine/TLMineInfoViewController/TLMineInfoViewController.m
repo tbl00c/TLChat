@@ -10,6 +10,8 @@
 #import "TLMyQRCodeViewController.h"
 #import "TLUserHelper.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
+#import "TLMineInfoAvatarCell.h"
 
 typedef NS_ENUM(NSInteger, TLMineInfoVCSectionType) {
     TLMineInfoVCSectionTypeBase,
@@ -42,7 +44,7 @@ typedef NS_ENUM(NSInteger, TLMineInfoVCSectionType) {
         // 头像
         TLSettingItem *avatar = TLCreateSettingItem(@"头像");
         avatar.rightImageURL = userInfo.avatarURL;
-        self.addCell(@"TLMineInfoAvatarCell").toSection(sectionTag).withDataModel(avatar).selectedAction(^ (id data) {
+        self.addCell([TLMineInfoAvatarCell class]).toSection(sectionTag).withDataModel(avatar).selectedAction(^ (id data) {
             
         });
         

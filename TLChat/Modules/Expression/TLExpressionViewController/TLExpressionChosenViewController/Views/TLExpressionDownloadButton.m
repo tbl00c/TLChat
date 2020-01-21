@@ -32,7 +32,7 @@
         @weakify(self);
         self.downloadButton = self.addButton(2)
         .titleFont([UIFont systemFontOfSize:14.0f])
-        .masonry(^ (MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.edges.mas_equalTo(0);
         })
         .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
@@ -52,17 +52,17 @@
 {
     _status = status;
     if (status == TLExpressionDownloadButtonStatusNet) {
-        self.downloadButton.zz_make.title(LOCSTR(@"下载")).titleColor([UIColor colorGreenDefault]).userInteractionEnabled(YES);
+        self.downloadButton.zz_setup.title(LOCSTR(@"下载")).titleColor([UIColor colorGreenDefault]).userInteractionEnabled(YES);
         [self.layer setBorderColor:[UIColor colorGreenDefault].CGColor];
         [self.progressView setHidden:YES];
     }
     else if (status == TLExpressionDownloadButtonStatusDownloaded) {
-        self.downloadButton.zz_make.title(LOCSTR(@"已下载")).titleColor([UIColor colorGrayLine]).userInteractionEnabled(NO);
+        self.downloadButton.zz_setup.title(LOCSTR(@"已下载")).titleColor([UIColor colorGrayLine]).userInteractionEnabled(NO);
         [self.layer setBorderColor:[UIColor colorGrayLine].CGColor];
         [self.progressView setHidden:YES];
     }
     else {
-        self.downloadButton.zz_make.title(LOCSTR(@"下载中")).titleColor([UIColor whiteColor]).userInteractionEnabled(NO);
+        self.downloadButton.zz_setup.title(LOCSTR(@"下载中")).titleColor([UIColor whiteColor]).userInteractionEnabled(NO);
         [self.layer setBorderColor:[UIColor colorGreenDefault].CGColor];
         [self.progressView setHidden:NO];
     }

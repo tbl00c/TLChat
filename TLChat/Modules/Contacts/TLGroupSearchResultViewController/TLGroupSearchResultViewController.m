@@ -9,6 +9,7 @@
 #import "TLGroupSearchResultViewController.h"
 #import "TLChatViewController.h"
 #import "TLFriendHelper.h"
+#import "TLGroupItemCell.h"
 
 typedef NS_ENUM(NSInteger, TLGroupSearchResultVCSectionType) {
     TLGroupSearchResultVCSectionTypeItems,
@@ -45,7 +46,7 @@ typedef NS_ENUM(NSInteger, TLGroupSearchResultVCSectionType) {
     self.tableView = self.view.addTableView(1)
     .backgroundColor([UIColor colorGrayBG]).separatorStyle(UITableViewCellSeparatorStyleNone)
     .tableFooterView([UIView new])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     })
     .view;;
@@ -65,7 +66,7 @@ typedef NS_ENUM(NSInteger, TLGroupSearchResultVCSectionType) {
     @weakify(self);
     self.tableViewAngel.clear();
     self.tableViewAngel.addSection(TLGroupSearchResultVCSectionTypeItems);
-    self.tableViewAngel.addCells(@"TLGroupItemCell").toSection(TLGroupSearchResultVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (TLGroup *group) {
+    self.tableViewAngel.addCells([TLGroupItemCell class]).toSection(TLGroupSearchResultVCSectionTypeItems).withDataModelArray(data).selectedAction(^ (TLGroup *group) {
         @strongify(self);
         TLChatViewController *chatVC = [[TLChatViewController alloc] initWithGroupId:group.groupID];
         if (self.jumpAction) {

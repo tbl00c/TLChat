@@ -69,7 +69,7 @@
     // 头像
     [self.avatarView tt_setImageWithURL:TLURL(moment.user.avatarURL) forState:UIControlStateNormal placeholderImage:TLImage(DEFAULT_AVATAR_PATH)];
     // 用户名
-    self.nameView.zz_make.title(moment.user.showName);
+    self.nameView.zz_setup.title(moment.user.showName);
     // 正文
     [self.titleLabel setText:moment.detail.text];
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -95,7 +95,7 @@
     // 来源
     [self.originLabel setText:moment.source];
     // 链接
-    self.linkButton.zz_make.title(moment.link.title).hidden(moment.link.title.length == 0);
+    self.linkButton.zz_setup.title(moment.link.title).hidden(moment.link.title.length == 0);
 }
 
 #pragma mark - # UI
@@ -109,7 +109,7 @@
         @strongify(self);
         [self e_didClickUser];
     })
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.top.mas_equalTo(15);
         make.size.mas_equalTo(40);
     })
@@ -123,7 +123,7 @@
         @strongify(self);
         [self e_didClickUser];
     })
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.top.mas_equalTo(self.avatarView);
         make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
         make.right.mas_lessThanOrEqualTo(-10);
@@ -134,7 +134,7 @@
     // 正文
     self.titleLabel = self.contentView.addLabel(1011)
     .font([UIFont systemFontOfSize:15.0f]).numberOfLines(0)
-    .masonry (^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.top.mas_equalTo(self.nameView.mas_bottom).mas_offset(6);
         make.left.mas_equalTo(self.nameView);
         make.right.mas_lessThanOrEqualTo(-15);
@@ -142,7 +142,7 @@
     .view;
     
     self.detailContainer = self.contentView.addView(1020)
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.top.mas_equalTo(self.titleLabel.mas_bottom);
         make.left.mas_equalTo(self.nameView);
         make.right.mas_equalTo(-15);
@@ -163,7 +163,7 @@
     .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
         
     })
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.right.mas_equalTo(-12);
         make.size.mas_equalTo(CGSizeMake(25, 25));
         make.bottom.mas_equalTo(self.extensionView.mas_top);
@@ -173,7 +173,7 @@
     // 时间
     self.dateLabel = self.contentView.addLabel(3001)
     .font([UIFont systemFontOfSize:12.0f]).textColor([UIColor grayColor])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.nameView);
         make.centerY.mas_equalTo(self.moreButton);
     })
@@ -182,7 +182,7 @@
     // 来源
     self.originLabel = self.contentView.addLabel(3002)
     .font([UIFont systemFontOfSize:12.0f]).textColor([UIColor grayColor])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.dateLabel.mas_right).mas_offset(10);
         make.centerY.mas_equalTo(self.dateLabel);
     })
@@ -198,7 +198,7 @@
             [self.delegate momentViewWithModel:self.moment jumpToUrl:self.moment.link.jumpUrl];
         }
     })
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.left.mas_equalTo(self.nameView);
         make.right.mas_lessThanOrEqualTo(-10);
         make.bottom.mas_equalTo(self.dateLabel.mas_top).mas_offset(-6);

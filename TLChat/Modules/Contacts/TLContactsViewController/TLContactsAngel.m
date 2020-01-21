@@ -11,6 +11,7 @@
 #import <ZZFLEX/ZZFlexibleLayoutSectionModel.h>
 #import "TLUserGroup.h"
 #import "TLContactsItemCell.h"
+#import "TLContactsHeaderView.h"
 
 #import "TLNewFriendViewController.h"
 #import "TLGroupViewController.h"
@@ -50,7 +51,7 @@
         TLContactsItemModel *tagModel = createContactsItemModelWithTag(TLContactsVCCellTypeTag, @"friends_tag", nil, LOCSTR(@"标签"), nil, nil);
         TLContactsItemModel *publicModel = createContactsItemModelWithTag(TLContactsVCCellTypePublic, @"friends_public", nil, LOCSTR(@"公众号"), nil, nil);
         NSArray *funcationData = @[newModel, groupModel, tagModel, publicModel];
-        self.addCells(NSStringFromClass([TLContactsItemCell class])).toSection(TLContactsVCSectionTypeFuncation).withDataModelArray(funcationData).selectedAction(^ (TLContactsItemModel *model) {
+        self.addCells([TLContactsItemCell class]).toSection(TLContactsVCSectionTypeFuncation).withDataModelArray(funcationData).selectedAction(^ (TLContactsItemModel *model) {
             @strongify(self);
             if (model.tag == TLContactsVCCellTypeNew) {
                 TLNewFriendViewController *newFriendVC = [[TLNewFriendViewController alloc] init];
@@ -81,14 +82,14 @@
     for (TLUserGroup *group in contactsData) {
         NSInteger sectionTag = group.tag;
         self.addSection(sectionTag);
-        self.setHeader(@"TLContactsHeaderView").toSection(sectionTag).withDataModel(group.groupName);
+        self.setHeader([TLContactsHeaderView class]).toSection(sectionTag).withDataModel(group.groupName);
         
         NSMutableArray *data = [[NSMutableArray alloc]initWithCapacity:group.users.count];
         for (TLUser *user in group.users) {
             TLContactsItemModel *newModel = createContactsItemModelWithUserModel(user);
             [data addObject:newModel];
         }
-        self.addCells(NSStringFromClass([TLContactsItemCell class])).toSection(sectionTag).withDataModelArray(data).selectedAction(^ (TLContactsItemModel *data) {
+        self.addCells([TLContactsItemCell class]).toSection(sectionTag).withDataModelArray(data).selectedAction(^ (TLContactsItemModel *data) {
             @strongify(self);
             TLUser *user = data.userInfo;
             TLUserDetailViewController *detailVC = [[TLUserDetailViewController alloc] initWithUserModel:user];

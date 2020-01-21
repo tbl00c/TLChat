@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
     }
     
     self.view.addImageView(1).image(TLImage(launchImageName))
-    .masonry(^(MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     });
    

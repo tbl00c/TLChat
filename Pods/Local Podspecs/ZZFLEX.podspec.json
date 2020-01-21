@@ -1,6 +1,6 @@
 {
   "name": "ZZFLEX",
-  "version": "0.2.0",
+  "version": "1.0",
   "platforms": {
     "ios": "8.0"
   },
@@ -16,7 +16,12 @@
   },
   "source": {
     "git": "https://github.com/tbl00c/ZZFLEX.git",
-    "tag": "0.2.0"
+    "tag": "1.0"
+  },
+  "dependencies": {
+    "Masonry": [
+
+    ]
   },
   "requires_arc": true,
   "source_files": "ZZFLEX/**/*.{h,m,mm}"

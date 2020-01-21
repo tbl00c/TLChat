@@ -33,7 +33,7 @@
     if (self = [super initWithFrame:frame]) {
         self.imageView = self.contentView.addImageView(1)
         .cornerRadius(3.0f)
-        .masonry(^(MASConstraintMaker *make) {
+        .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
             make.edges.mas_equalTo(self.contentView);
         })
         .view;

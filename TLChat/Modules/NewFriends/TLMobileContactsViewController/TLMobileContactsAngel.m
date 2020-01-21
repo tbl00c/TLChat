@@ -8,6 +8,8 @@
 
 #import "TLMobileContactsAngel.h"
 #import "TLUserGroup.h"
+#import "TLContactsHeaderView.h"
+#import "TLMobileContactsItemCell.h"
 
 @interface TLMobileContactsAngel ()
 
@@ -26,8 +28,8 @@
     for (TLUserGroup *group in contactsData) {
         NSInteger sectionTag = group.tag;
         self.addSection(sectionTag);
-        self.setHeader(@"TLContactsHeaderView").toSection(sectionTag).withDataModel(group.groupName);
-        self.addCells(@"TLMobileContactsItemCell").toSection(sectionTag).withDataModelArray(group.users).selectedAction(^ (id data) {
+        self.setHeader([TLContactsHeaderView class]).toSection(sectionTag).withDataModel(group.groupName);
+        self.addCells([TLMobileContactsItemCell class]).toSection(sectionTag).withDataModelArray(group.users).selectedAction(^ (id data) {
         });
     }
 }

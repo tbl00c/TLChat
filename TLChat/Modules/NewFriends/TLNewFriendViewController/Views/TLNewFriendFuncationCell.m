@@ -65,7 +65,7 @@ TLNewFriendFuncationModel *createNewFriendFuncationModel(NSString *icon, NSStrin
 - (void)p_initUI
 {
     self.iconView = self.contentView.addImageView(1)
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.top.mas_equalTo(10);
         make.centerX.mas_equalTo(0);
         make.size.mas_equalTo(36);
@@ -75,7 +75,7 @@ TLNewFriendFuncationModel *createNewFriendFuncationModel(NSString *icon, NSStrin
     self.nameLabel = self.contentView.addLabel(2)
     .font([UIFont systemFontOfSize:12])
     .textColor([UIColor grayColor])
-    .masonry(^ (MASConstraintMaker *make) {
+    .masonry(^ (__kindof UIView *senderView, MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-10);
         make.centerX.mas_equalTo(0);
         make.width.mas_lessThanOrEqualTo(self.contentView).mas_offset(-30);

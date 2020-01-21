@@ -18,7 +18,6 @@
 
 #import <TLKit/TLKit.h>
 #import <ZZFLEX/ZZFLEX.h>
-#import <ZZFLEX/ZZFlexibleLayoutViewProtocol.h>
 
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 

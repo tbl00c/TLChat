@@ -551,6 +551,7 @@
 		C292D36D1F7A54AB007EB0A6 /* UIButton+TLWebImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TLWebImage.m"; sourceTree = "<group>"; };
 		C292D36E1F7A54AB007EB0A6 /* UIImageView+TLWebImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+TLWebImage.h"; sourceTree = "<group>"; };
 		C292D36F1F7A54AB007EB0A6 /* UIImageView+TLWebImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+TLWebImage.m"; sourceTree = "<group>"; };
+		C29C49C723D6D1DC0022D415 /* TLSettingItemTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLSettingItemTemplate.h; sourceTree = "<group>"; };
 		C29C6A2420048D8A0058ED75 /* TLGroupItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGroupItemCell.m; sourceTree = "<group>"; };
 		C29C6A2520048D8A0058ED75 /* TLGroupItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLGroupItemCell.h; sourceTree = "<group>"; };
 		C29C6A2820048E360058ED75 /* TLGroupSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGroupSearchResultViewController.m; sourceTree = "<group>"; };
@@ -1467,6 +1468,7 @@
 				C2531ACB204E43CA00D27C99 /* TLSettingItemButtonCell.m */,
 				C2EE32C4204FC8D500467298 /* TLSettingItemSwitchCell.h */,
 				C2EE32C5204FC8D500467298 /* TLSettingItemSwitchCell.m */,
+				C29C49C723D6D1DC0022D415 /* TLSettingItemTemplate.h */,
 			);
 			path = TLSettingItem;
 			sourceTree = "<group>";

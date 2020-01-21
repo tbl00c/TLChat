@@ -11,6 +11,7 @@
 #import "TLChatNotificationKey.h"
 #import "NSFileManager+TLChat.h"
 #import "TLSettingItem.h"
+#import "TLSettingItemTemplate.h"
 
 typedef NS_ENUM(NSInteger, TLChatBackgroundVCSectionType) {
     TLChatBackgroundVCSectionTypeDefault,

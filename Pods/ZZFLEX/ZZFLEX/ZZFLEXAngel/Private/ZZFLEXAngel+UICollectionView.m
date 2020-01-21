@@ -61,8 +61,9 @@
 //MARK: ZZFlexibleLayoutFlowLayoutDelegate
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
     ZZFlexibleLayoutViewModel *viewModel = [self viewModelAtIndexPath:indexPath];
-    CGSize size = [viewModel visableSizeForHostView:collectionView];
+    CGSize size = [viewModel visableSizeForHostView:collectionView sectionEdge:sectionModel.sectionInsets];
     return size;
 }
 
@@ -70,7 +71,7 @@
 {
     ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
     ZZFlexibleLayoutViewModel *viewModel = sectionModel.headerViewModel;
-    CGSize size = [viewModel visableSizeForHostView:collectionView];
+    CGSize size = [viewModel visableSizeForHostView:collectionView sectionEdge:sectionModel.sectionInsets];
     return size;
 }
 
@@ -78,7 +79,7 @@
 {
     ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
     ZZFlexibleLayoutViewModel *viewModel = sectionModel.footerViewModel;
-    CGSize size = [viewModel visableSizeForHostView:collectionView];
+    CGSize size = [viewModel visableSizeForHostView:collectionView sectionEdge:sectionModel.sectionInsets];
     return size;
 }
 
@@ -100,10 +101,21 @@
     return sectionModel.sectionInsets;
 }
 
+#pragma mark - # ZZFlexibleLayoutFlowLayout
 - (UIColor *)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout colorForSectionAtIndex:(NSInteger)section
 {
     ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
     return sectionModel.backgroundColor ? sectionModel.backgroundColor : collectionView.backgroundColor;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didSectionHeaderPinToVisibleBounds:(NSInteger)section
+{
+    return NO;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didSectionFooterPinToVisibleBounds:(NSInteger)section
+{
+    return NO;
 }
 
 @end

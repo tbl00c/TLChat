@@ -1,0 +1,1 @@
+../../../WCDB/sqlcipher/ext/fts3/fts3.h

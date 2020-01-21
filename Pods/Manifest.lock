@@ -1,0 +1,217 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - CocoaLumberjack (3.3.0):
+    - CocoaLumberjack/Default (= 3.3.0)
+    - CocoaLumberjack/Extensions (= 3.3.0)
+  - CocoaLumberjack/Default (3.3.0)
+  - CocoaLumberjack/Extensions (3.3.0):
+    - CocoaLumberjack/Default
+  - DACircularProgress (2.3.1)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - JZNavigationExtension (4.0)
+  - Masonry (1.1.0)
+  - MBProgressHUD (0.9.2)
+  - MJExtension (3.0.13)
+  - MJRefresh (3.1.15.3)
+  - MWPhotoBrowser (2.1.2):
+    - DACircularProgress (~> 2.3)
+    - MBProgressHUD (~> 0.9)
+    - "SDWebImage (!= 3.7.2, ~> 3.7)"
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.2.5)
+  - TLKit (0.0.28):
+    - TLKit/TLCategories (= 0.0.28)
+    - TLKit/TLFunctional (= 0.0.28)
+    - TLKit/TLShortcut (= 0.0.28)
+  - TLKit/TLCategories (0.0.28):
+    - TLKit/TLCategories/Foundation (= 0.0.28)
+    - TLKit/TLCategories/UIKit (= 0.0.28)
+  - TLKit/TLCategories/Foundation (0.0.28):
+    - TLKit/TLCategories/Foundation/NSArray (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSBundle (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSData (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSDate (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSDictionary (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSFileManager (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSMutableArray (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSMutableDictionary (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSNotificationCenter (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSObject (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSString (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSTimer (= 0.0.28)
+    - TLKit/TLCategories/Foundation/NSURL (= 0.0.28)
+  - TLKit/TLCategories/Foundation/NSArray (0.0.28)
+  - TLKit/TLCategories/Foundation/NSBundle (0.0.28)
+  - TLKit/TLCategories/Foundation/NSData (0.0.28)
+  - TLKit/TLCategories/Foundation/NSDate (0.0.28)
+  - TLKit/TLCategories/Foundation/NSDictionary (0.0.28)
+  - TLKit/TLCategories/Foundation/NSFileManager (0.0.28)
+  - TLKit/TLCategories/Foundation/NSMutableArray (0.0.28)
+  - TLKit/TLCategories/Foundation/NSMutableDictionary (0.0.28)
+  - TLKit/TLCategories/Foundation/NSNotificationCenter (0.0.28)
+  - TLKit/TLCategories/Foundation/NSObject (0.0.28)
+  - TLKit/TLCategories/Foundation/NSString (0.0.28):
+    - TLKit/TLCategories/Foundation/NSData
+  - TLKit/TLCategories/Foundation/NSTimer (0.0.28)
+  - TLKit/TLCategories/Foundation/NSURL (0.0.28)
+  - TLKit/TLCategories/UIKit (0.0.28):
+    - TLKit/TLCategories/UIKit/UIAlertView (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UIBarButtonItem (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UIButton (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UICollectionViewCell (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UIColor (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UIControl (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UIImage (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UINavigationBar (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UINavigationController (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UINavigationItem (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UIScrollView (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UITabBarController (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UITextField (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UITextView (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UIView (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UIViewController (= 0.0.28)
+    - TLKit/TLCategories/UIKit/UIWindow (= 0.0.28)
+  - TLKit/TLCategories/UIKit/UIAlertView (0.0.28)
+  - TLKit/TLCategories/UIKit/UIBarButtonItem (0.0.28)
+  - TLKit/TLCategories/UIKit/UIButton (0.0.28):
+    - TLKit/TLCategories/UIKit/UIImage
+  - TLKit/TLCategories/UIKit/UICollectionViewCell (0.0.28)
+  - TLKit/TLCategories/UIKit/UIColor (0.0.28)
+  - TLKit/TLCategories/UIKit/UIControl (0.0.28)
+  - TLKit/TLCategories/UIKit/UIImage (0.0.28)
+  - TLKit/TLCategories/UIKit/UINavigationBar (0.0.28)
+  - TLKit/TLCategories/UIKit/UINavigationController (0.0.28)
+  - TLKit/TLCategories/UIKit/UINavigationItem (0.0.28):
+    - TLKit/TLCategories/UIKit/UIBarButtonItem
+  - TLKit/TLCategories/UIKit/UIScrollView (0.0.28)
+  - TLKit/TLCategories/UIKit/UITabBarController (0.0.28)
+  - TLKit/TLCategories/UIKit/UITextField (0.0.28)
+  - TLKit/TLCategories/UIKit/UITextView (0.0.28)
+  - TLKit/TLCategories/UIKit/UIView (0.0.28):
+    - TLKit/TLCategories/Foundation/NSObject
+    - TLKit/TLShortcut
+  - TLKit/TLCategories/UIKit/UIViewController (0.0.28):
+    - TLKit/TLCategories/UIKit/UIBarButtonItem
+    - TLKit/TLCategories/UIKit/UINavigationController
+    - TLKit/TLCategories/UIKit/UIView
+  - TLKit/TLCategories/UIKit/UIWindow (0.0.28)
+  - TLKit/TLFunctional (0.0.28):
+    - TLKit/TLFunctional/TLActionSheet (= 0.0.28)
+    - TLKit/TLFunctional/TLUIUtility (= 0.0.28)
+  - TLKit/TLFunctional/TLActionSheet (0.0.28)
+  - TLKit/TLFunctional/TLUIUtility (0.0.28):
+    - SVProgressHUD (~> 2.2.5)
+    - TLKit/TLCategories/UIKit/UIAlertView
+    - TLKit/TLCategories/UIKit/UIWindow
+  - TLKit/TLShortcut (0.0.28)
+  - TLTabBarController (0.0.6)
+  - UMengAnalytics (4.2.4)
+  - WCDB (1.0.6):
+    - WCDB/sqlcipher (= 1.0.6)
+  - WCDB/sqlcipher (1.0.6)
+  - YYText (1.0.7)
+  - ZZFLEX (0.2.0)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
+  - CocoaLumberjack (~> 3.3.0)
+  - FMDB (~> 2.7.2)
+  - JZNavigationExtension (from `https://github.com/tbl00c/JZNavigationExtension.git`, tag `4.0`)
+  - Masonry (~> 1.1.0)
+  - MJExtension (~> 3.0.13)
+  - MJRefresh (~> 3.1.15.3)
+  - MWPhotoBrowser (~> 2.1.2)
+  - SDWebImage (~> 3.7)
+  - TLKit (from `https://github.com/tbl00c/TLKit.git`)
+  - TLTabBarController (from `https://github.com/tbl00c/TLTabBarController.git`, tag `0.0.6`)
+  - UMengAnalytics (~> 4.2.4)
+  - WCDB (~> 1.0.6)
+  - YYText (~> 1.0.7)
+  - ZZFLEX (from `https://github.com/tbl00c/ZZFLEX.git`, tag `0.2.0`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - CocoaLumberjack
+    - DACircularProgress
+    - FMDB
+    - Masonry
+    - MBProgressHUD
+    - MJExtension
+    - MJRefresh
+    - MWPhotoBrowser
+    - SDWebImage
+    - SVProgressHUD
+    - UMengAnalytics
+    - WCDB
+    - YYText
+
+EXTERNAL SOURCES:
+  JZNavigationExtension:
+    :git: https://github.com/tbl00c/JZNavigationExtension.git
+    :tag: '4.0'
+  TLKit:
+    :git: https://github.com/tbl00c/TLKit.git
+  TLTabBarController:
+    :git: https://github.com/tbl00c/TLTabBarController.git
+    :tag: 0.0.6
+  ZZFLEX:
+    :git: https://github.com/tbl00c/ZZFLEX.git
+    :tag: 0.2.0
+
+CHECKOUT OPTIONS:
+  JZNavigationExtension:
+    :git: https://github.com/tbl00c/JZNavigationExtension.git
+    :tag: '4.0'
+  TLKit:
+    :commit: 8563432863cf296bc9d8326a25d152e57a8e49bd
+    :git: https://github.com/tbl00c/TLKit.git
+  TLTabBarController:
+    :git: https://github.com/tbl00c/TLTabBarController.git
+    :tag: 0.0.6
+  ZZFLEX:
+    :git: https://github.com/tbl00c/ZZFLEX.git
+    :tag: 0.2.0
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CocoaLumberjack: 3c8c74683302f9012bb168e1c4b7ae3c0b558431
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  JZNavigationExtension: 0eada2d9158259bbb3152d13fbcf58b7d2dd3d01
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TLKit: 29fdba0f2adff5ce34cedadff3e71eb44a1ff925
+  TLTabBarController: 6e91813f0ae019e8cd2ae35d6f4f6315085f7c44
+  UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
+  WCDB: 4d2926bf695b2e00d785b50afd32c2dcc8cbbd98
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
+  ZZFLEX: 48ad9faf261c9589a3d16d44a701219ad41883b8
+
+PODFILE CHECKSUM: 61b5de0e569565509787b782cbca36a060adb8db
+
+COCOAPODS: 1.8.4

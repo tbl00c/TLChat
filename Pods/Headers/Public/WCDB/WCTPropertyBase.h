@@ -1,0 +1,1 @@
+../../../WCDB/objc/WCDB/interface/orm/coding/WCTPropertyBase.h

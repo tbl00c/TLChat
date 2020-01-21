@@ -1,0 +1,86 @@
+/* 
+  Localizable.strings
+  TLChat
+
+  Created by 李伯坤 on 2017/7/17.
+  Copyright © 2017年 李伯坤. All rights reserved.
+*/
+
+
+// --- TLChat ---
+"微信" = "TLChat";
+"微信(未连接)" = "Disconnected";
+"搜索" = "Search";
+"未连接" = "Disconnected";
+"当前网络不可用，请检查你的网络设置" = "Network disconnected, Check network settings";
+"发起群聊" = "New Chat";
+"收付款" = "Money";
+
+
+// --- Contacts ---
+"通讯录" = "Contacts";
+"新的朋友" = "New Friends";
+"群聊" = "Group Chat";
+"标签" = "Tags";
+"公众号" = "Official Accounts";
+"位联系人" = " Contact(s)";
+"个群聊" = " Group(s)";
+"你可通过群聊中的“保存到通讯录”选项，将其保存在这里" = "Save here by enabling \"Save to Contacts\" in the group";
+"添加朋友" = "Add Contacts";
+"添加手机联系人" = "Mobile Contacts";
+"通讯录朋友" = "Mobile Contacts";
+"微信号/手机号" = "WeChatID/Phone";
+
+
+// --- Discover ---
+"发现" = "Discover";
+"朋友圈" = "Moments";
+"扫一扫" = "Scan QR Code";
+"摇一摇" = "Shake";
+"看一看" = "Top Stories";
+"搜一搜" = "Search";
+"附近的人" = "People Nearby";
+"漂流瓶" = "Message in a Bottle";
+"购物" = "Shopping";
+"游戏" = "Games";
+"小程序" = "Mini Program";
+
+// --- Mine ---
+"我" = "Me";
+"钱包" = "Wallet";
+"收藏" = "Favorites";
+"相册" = "My Posts";
+"卡包" = "Cards & Offers";
+"表情" = "Sticker Gallery";
+"设置" = "Settings";
+"微信号" = "WeChatID";
+
+// --- User Detail ---
+"详细资料" = "Profile";
+"昵称" = "Nickname";
+"设置备注和标签" = "Set Remark and Tag";
+"标签" = "Tags";
+"电话号码" = "Mobile";
+"地区" = "Region";
+"个人相册" = "Album";
+"更多" = "More";
+"发消息" = "Messages";
+"视频聊天" = "Free Call";;
+
+// --- Expression ---
+"精选表情" = "Top Picks";
+"更多表情" = "More";
+"推荐表情" = "Hot";
+"更多精选" = "See Also";
+"热门排行" = "Top Stickers";
+"搜索表情" = "Search Stickers";
+"长按表情可预览" = "Hold sticker to preview";
+"下载" = "Get";
+"下载中" = "Downloading";
+"已下载" = "Downloaded";
+"我的表情" = "My Stickers";
+"排序" = "Sort";
+"聊天面板中的表情" = "Stickers on the chat page";
+"添加的表情" = "Custom";
+"购买的表情" = "Purchased";
+"移除" = "Remove";

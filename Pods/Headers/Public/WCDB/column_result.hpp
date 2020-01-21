@@ -1,0 +1,1 @@
+../../../WCDB/objc/WCDB/abstract/column_result.hpp

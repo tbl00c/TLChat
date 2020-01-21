@@ -1,0 +1,234 @@
+[
+    {
+        "userID" : "1001",
+        "username" : "ZXX_24K",
+        "nikeName" : "小贤",
+        "avatarURL" : "http://img.duoziwang.com/2018/06/2017123107132717.png",
+        "remarkName" : "曾小贤",
+        "detailInfo": {
+            "location" : "福建 福州",
+            "phoneNumber" : "15757575757",
+            "tags" : [
+                "爱情公寓",
+                "电台",
+            ],
+            "albumArray" : [
+                "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2700901674,862811596&fm=26&gp=0.jpg",
+                "http://i03.pic.sogou.com/bfcc9ac6f2c9b545",
+                "http://img5.iqilu.com/c/u/2013/1029/1383022781256.jpg",
+                "http://i01.pic.sogou.com/e50e4e61aff6e602",
+            ],
+        },
+    },
+    {
+        "userID" : "1002",
+        "username" : "meijia_18",
+        "nikeName" : "陈美嘉",
+        "avatarURL" : "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2282660917,1535914781&fm=26&gp=0.jpg",
+        "detailInfo": {
+            "location" : "山东 济南",
+            "phoneNumber" : "18666778899",
+            "tags" : [
+               "爱情公寓",
+            ],
+            "albumArray" : [
+                "http://img.pcgames.com.cn/images/upload/upc/tx/gamephotolib/1511/30/c0/15910450_1448868302015_medium.jpg",
+                "http://img.qqzhi.com/uploads/2018-12-11/060310909.jpg",
+                "http://i03.pic.sogou.com/60dd39a1e76e82cd",
+                "http://i04.pic.sogou.com/8b12fc46f8d16077",
+            ],
+        },
+    },
+    {
+        "userID" : "1003",
+        "nikeName" : "关谷神奇",
+        "avatarURL" : "http://p0.so.qhmsg.com/t01537cd6cf929d8895.jpg",
+        "remarkName" : "关谷神奇",
+        "detailInfo": {
+            "location" : "日本 横滨",
+            "phoneNumber" : "18686961006",
+            "tags" : [
+               "爱情公寓",
+            ],
+            "albumArray" : [
+                "http://i02.pictn.sogoucdn.com/7678125e3ed95a1c",
+                "http://i04.pictn.sogoucdn.com/81469ed28c679fb7",
+                "http://i02.pictn.sogoucdn.com/96a46f8d5cecca5d",
+                "http://i04.pictn.sogoucdn.com/88815325bd800004",
+            ],
+        },
+    },
+    {
+        "userID" : "1004",
+        "username" : "1fei",
+        "nikeName" : "一菲",
+        "avatarURL" : "http://img3.a0bi.com/upload/ttq/20140718/1405654634409.jpg",
+        "remarkName" : "胡一菲",
+        "detailInfo": {
+            "location" : "辽宁 大连",
+            "phoneNumber" : "110",
+            "tags" : [
+               "爱情公寓",
+            ],
+            "albumArray" : [
+                "http://img02.sogoucdn.com/app/a/100520093/b17c8f01e57d5969-d3492e1ab3bea685-ca5441f39da4e75932303f49be7987fd.jpg",
+                "http://img02.sogoucdn.com/app/a/100520093/30c40e020f63f81f-85679ec6a342f6f1-60256a24cb0f76b03ea04faf9b925ddf.jpg",
+                "http://i03.pictn.sogoucdn.com/4fb6237f20340c06",
+                "http://i03.pictn.sogoucdn.com/ce183a35c16c4101",
+                "http://i02.pictn.sogoucdn.com/6dc380cb6d1c2fca",
+                "http://i01.pictn.sogoucdn.com/d202eef52f7955ac",
+            ],
+        },
+    },
+    {
+        "userID" : "1005",
+        "username" : "wayu",
+        "nikeName" : "宛瑜",
+        "avatarURL" : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1710230485,3087236315&fm=26&gp=0.jpg",
+        "remarkName" : "林宛瑜",
+        "detailInfo": {
+            "location" : "山东 淄博",
+            "phoneNumber" : "12311220033",
+            "tags" : [
+                "爱情公寓",
+                "老乡",
+            ],
+            "albumArray" : [
+                "http://i04.pic.sogou.com/d0f92cd2081f0be5",
+                "http://i02.pic.sogou.com/f06042dd51117d30",
+                "http://i03.pic.sogou.com/02cb6b3c3b3f9c4f",
+                "http://i01.pic.sogou.com/d17979e53fd9d351",
+            ],
+        },
+    },
+    {
+         "userID" : "1006",
+         "username" : "ZB1024",
+         "nikeName" : "陆展博",
+         "avatarURL" : "http://diy.qqjay.com/u2/2012/0815/7074aa9d16ddd4d8ee277fd9f67ddcc4.jpg",
+         "remarkName" : "陆展博",
+         "detailInfo": {
+             "location" : "上海",
+             "phoneNumber" : "18810242048",
+             "tags" : [
+                       "爱情公寓",
+                       ],
+             "albumArray" : [
+                             "http://i01.pic.sogou.com/ebf93d5567e23a1f",
+                             "http://i02.pic.sogou.com/2ca5989564b8c483",
+                             "http://i01.pic.sogou.com/a2ca3e5fd9f2d0c8",
+                             "http://i02.pic.sogou.com/7a63b0308b3f1c95",
+                             ],
+         },
+     },
+    {
+        "userID" : "1007",
+        "username" : "xiaobu",
+        "nikeName" : "吕小布",
+        "avatarURL" : "http://tx.haiqq.com/uploads/allimg/150410/1F4215245-9.jpg",
+        "remarkName" : "吕子乔",
+        "detailInfo": {
+            "location" : "山西 大同",
+            "phoneNumber" : "16612345666",
+            "tags" : [
+                "爱情公寓",
+            ],
+            "albumArray" : [
+                "http://i01.pic.sogou.com/17353a35493e0420",
+                "http://i01.pic.sogou.com/e2c0fc914df8872b",
+                "http://i02.pic.sogou.com/09830383ddcbbf5b",
+                "http://i02.pic.sogou.com/8d09ee745c8a939b",
+            ],
+        },
+    },
+    {
+        "userID" : "1008",
+        "username" : "nuolan",
+        "nikeName" : "诺澜",
+        "avatarURL" : "http://jf258.com/uploads/2014-08-30/001509222.jpg",
+        "remarkName" : "诺澜",
+        "detailInfo": {
+            "location" : "山西 大同",
+            "phoneNumber" : "16666666666",
+            "tags" : [
+               "电台",
+            ],
+            "albumArray" : [
+                "http://img03.sogoucdn.com/app/a/100520093/ca86e620b9e623ff-e7ae36db714776c0-b0a8842487e873b174f711bfa8592d8f.jpg",
+                "http://i01.pictn.sogoucdn.com/08c412a3969b607c",
+                "http://i03.pictn.sogoucdn.com/001c90ef030d1600",
+                "http://i01.pictn.sogoucdn.com/798e0269945e2896",
+            ],
+        },
+    },
+    {
+         "userID" : "1009",
+         "username" : "momo1101",
+         "nikeName" : "momo",
+         "avatarURL" : "http://i02.pictn.sogoucdn.com/07a80d4a1444afac",
+         "remarkName" : "秦羽墨",
+         "detailInfo": {
+             "location" : "吉林 长春",
+             "phoneNumber" : "17322330666",
+             "tags" : [
+                       "爱情公寓",
+                       ],
+             "albumArray" : [
+                             "http://i02.pictn.sogoucdn.com/a529ad876d494c3c",
+                             "http://i03.pictn.sogoucdn.com/785964836d02df2a",
+                             "http://i01.pictn.sogoucdn.com/ccdcbd5aca999a1a",
+                             "http://i03.pictn.sogoucdn.com/83d8ee62156d6330",
+                             ],
+        },
+    },
+    {
+         "userID" : "1010",
+         "username" : "TangYY",
+         "nikeName" : "悠悠",
+         "avatarURL" : "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2539066213,1535057728&fm=15&gp=0.jpg",
+         "remarkName" : "唐悠悠",
+         "detailInfo": {
+             "location" : "山西 大同",
+             "phoneNumber" : "18966770099",
+             "tags" : [
+                       "爱情公寓",
+                       ],
+             "albumArray" : [
+                             "http://i03.pictn.sogoucdn.com/abafde3027136f61",
+                             "http://i04.pictn.sogoucdn.com/4606f69ede68aa33",
+                             "http://i02.pictn.sogoucdn.com/b95f1d821af30abe",
+                             ],
+         },
+     },
+     {
+         "userID" : "1011",
+         "username" : "ZW200",
+         "avatarURL" : "http://img.duoziwang.com/2016/11/23/16203034934.jpg",
+         "remarkName" : "张伟",
+         "detailInfo": {
+             "location" : "辽宁 鞍山",
+             "tags" : [
+                       "爱情公寓",
+                       ],
+             "albumArray" : [
+                             "http://i02.pic.sogou.com/e8a25bb940184612",
+                             "http://i03.pic.sogou.com/e7b0080d89d968ea",
+                             "http://i02.pic.sogou.com/1ea29aaeb2ac2e4d",
+                             "http://i03.pic.sogou.com/226e8f299dcb335b",
+                             ],
+         },
+     },
+     {
+         "userID" : "1012",
+         "username" : "lisaR",
+         "nikeName" : "榕小榕",
+         "avatarURL" : "http://e.hiphotos.baidu.com/zhidao/pic/item/cdbf6c81800a19d828eaa74c31fa828ba71e4689.jpg",
+         "remarkName" : "Lisa榕",
+         "detailInfo": {
+             "location" : "辽宁 沈阳",
+             "tags" : [
+                       "电台",
+                       ],
+        },
+     },
+ ]

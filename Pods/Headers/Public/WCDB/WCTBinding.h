@@ -1,0 +1,1 @@
+../../../WCDB/objc/WCDB/interface/orm/binding/WCTBinding.h

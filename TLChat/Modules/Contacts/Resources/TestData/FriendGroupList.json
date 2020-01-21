@@ -1,0 +1,91 @@
+[
+    {
+        "groupID" : "1001001",
+        "groupName" : "爱情公寓",
+        "users" : [
+                   {
+                   "userID" : "1001",
+                   "username" : "ZXX_24K",
+                   "nikeName" : "小贤",
+                   "avatarURL" : "http://i01.pic.sogou.com/23112449ac395e72",
+                   "remarkName" : "曾小贤",
+                   },
+                   {
+                   "userID" : "1002",
+                   "username" : "meijia_18",
+                   "nikeName" : "陈美嘉",
+                   "avatarURL" : "http://i04.pic.sogou.com/d44a3766422d4930",
+                   "remarkName" : "陈美嘉",
+                    },
+                   {
+                   "userID" : "1003",
+                   "username" : "lian001",
+                   "nikeName" : "关谷神奇",
+                   "avatarURL" : "http://i04.pic.sogou.com/8c4442016e69ca3b",
+                   "remarkName" : "关谷神奇",
+                   },
+                   {
+                   "userID" : "1004",
+                   "username" : "1fei",
+                   "nikeName" : "一菲",
+                   "avatarURL" : "http://i03.pic.sogou.com/2aa3723788cc99ac",
+                   "remarkName" : "胡一菲",
+                   },
+                   {
+                   "userID" : "1005",
+                   "username" : "wayu",
+                   "nikeName" : "宛瑜",
+                   "avatarURL" : "http://i02.pic.sogou.com/1c8975319bdc6963",
+                   "remarkName" : "林宛瑜",
+                   },
+                   {
+                   "userID" : "1006",
+                   "username" : "ZB1024",
+                   "nikeName" : "陆展博",
+                   "avatarURL" : "http://i01.pic.sogou.com/ce745becc4aa8316",
+                   "remarkName" : "陆展博"
+                   },
+                   {
+                   "userID" : "1007",
+                   "username" : "xiaobu",
+                   "nikeName" : "吕小布",
+                   "avatarURL" : "http://i04.pic.sogou.com/67394a74f3f4ef2d",
+                   "remarkName" : "吕子乔",
+                   },
+                   {
+                   "userID" : "1010",
+                   "username" : "TangYY",
+                   "nikeName" : "悠悠",
+                   "avatarURL" : "http://i02.pic.sogou.com/78e94af7aca623b0",
+                   "remarkName" : "唐悠悠",
+                   },
+        ],
+    },
+    {
+     "groupID" : "1001004",
+     "groupName" : "广播电台",
+     "users" : [
+                {
+                "userID" : "1001",
+                "username" : "ZXX_24K",
+                "nikeName" : "小贤",
+                "avatarURL" : "http://i01.pic.sogou.com/23112449ac395e72",
+                "remarkName" : "曾小贤",
+                },
+                {
+                "userID" : "1008",
+                "username" : "nuolan",
+                "nikeName" : "诺澜",
+                "avatarURL" : "http://jf258.com/uploads/2014-08-30/001509222.jpg",
+                "remarkName" : "诺澜",
+                },
+                {
+                "userID" : "1012",
+                "username" : "lisaR",
+                "nikeName" : "榕小榕",
+                "avatarURL" : "http://i01.pic.sogou.com/78f4a0d62119eca0",
+                "remarkName" : "Lisa榕",
+                }
+                ],
+     },
+]

@@ -10,6 +10,7 @@
 #define TLFunctional_h
 
 #import "TLActionSheet.h"
+#import "TLAlertView.h"
 //#import "TLBadge.h"
 #import "TLUIUtility.h"
 

@@ -11,6 +11,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "UIWindow+Extensions.h"
 #import "UIAlertView+ActionBlocks.h"
+#import "TLAlertView.h"
 
 static UILabel *hLabel = nil;
 
@@ -77,7 +78,7 @@ static UILabel *hLabel = nil;
 
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
 {
-    [self showAlertWithTitle:title message:message cancelButtonTitle:nil];
+    [self showAlertWithTitle:title message:message cancelButtonTitle:@"确定"];
 }
 
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
@@ -92,44 +93,24 @@ static UILabel *hLabel = nil;
 
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles actionHandler:(void (^)(NSInteger buttonIndex))actionHandler
 {
-    cancelButtonTitle = cancelButtonTitle ? cancelButtonTitle : @"确定";
-    if (([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending)) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-        
-        __weak typeof(alertController) weakController = alertController;
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            NSInteger index = [weakController.actions indexOfObject:action];
-            if (actionHandler) {
-                actionHandler(index);
-            }
-        }];
-        [alertController addAction:cancelAction];
-        
-        for (NSString *title in otherButtonTitles) {
-            UIAlertAction *action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                if (actionHandler) {
-                    NSInteger index = [weakController.actions indexOfObject:action];
-                    actionHandler(index);
-                }
-            }];
-            [alertController addAction:action];
+    TLAlertViewItemClickAction clickAction = ^(TLAlertView *actionSheet, TLAlertViewItem *item, NSInteger index) {
+        if (actionHandler) {
+            actionHandler(index);
         }
-        
-        UIViewController *curVC = [(UIWindow *)[UIApplication sharedApplication].keyWindow visibleViewController];
-        [curVC presentViewController:alertController animated:YES completion:nil];
-    }
-    else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message actionBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (actionHandler) {
-                actionHandler(buttonIndex);
-            }
-        } cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
-    
-        for (NSString *title in otherButtonTitles) {
-            [alertView addButtonWithTitle:title];
+    };
+    TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:title message:message];
+    if (cancelButtonTitle.length > 0) {
+        if (otherButtonTitles.count == 0) {
+            [alertView addItemWithTitle:cancelButtonTitle clickAction:nil];
         }
-        [alertView show];
+        else {
+            [alertView addCancelItemTitle:cancelButtonTitle clickAction:clickAction];
+        }
     }
+    for (NSString *title in otherButtonTitles) {
+        [alertView addItemWithTitle:title clickAction:clickAction];
+    }
+    [alertView show];
 }
 
 @end

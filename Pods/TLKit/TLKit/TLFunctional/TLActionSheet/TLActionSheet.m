@@ -1,405 +1,568 @@
 //
 //  TLActionSheet.m
-//  TLChat
+//  TLKit
 //
-//  Created by 李伯坤 on 16/5/1.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 李伯坤 on 2020/1/26.
 //
 
 #import "TLActionSheet.h"
-#import "UIImage+Color.h"
+#import "TLActionSheetAppearance.h"
 
-#define     TITLE_FONT_SIZE             13.0f
-#define     BUTTON_FONT_SIZE            17.0f
-#define     HEIGHT_BUTTON               52.0f
-#define     SPACE_MIDDEL                8.0f
-#define     SPACE_TITLE_LEFT            22.0f
-#define     SPACE_TITLE_TOP             20.0f
+#define     TLAS_SPACE_TITLE_LEFT            22.0f
+#define     TLAS_SPACE_TITLE_TOP             20.0f
+#define     TLAS_SPACE_MIDDEL                8.0f
+#define     TLAS_MAX_TABLEVIEW_HEIGHT        self.frame.size.height * 0.6
 
-#define     COLOR_BACKGROUND            [UIColor colorWithWhite:0.0 alpha:0.4]
-#define     COLOR_DESTRUCTIVE_TITLE     [UIColor redColor]
-#define     COLOR_TABLEVIEW_BG          [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:244.0/255.0 alpha:1.0]
-#define     COLOR_SEPERATOR             [UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0]
-
+#pragma mark - # TLActionSheetItem
 @implementation TLActionSheetItem
+
+- (instancetype)initWithTitle:(NSString *)title clickAction:(TLActionSheetItemClickAction)clickAction
+{
+    return [self initWithTitle:title message:nil clickAction:clickAction];
+}
+
+- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message clickAction:(TLActionSheetItemClickAction)clickAction
+{
+    if (self = [super init]) {
+        self.title = title;
+        self.message = message;
+        self.clickAction = clickAction;
+    }
+    return self;
+}
 
 @end
 
-@interface TLActionSheet() <UITableViewDataSource, UITableViewDelegate>
+#pragma mark - # TLActionSheetItemCell
+@interface TLActionSheetItemCell : UITableViewCell
+
+@property (nonatomic, strong) TLActionSheetItem *item;
+
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *messageLabel;
+@property (nonatomic, strong) UIView *customView;
+@property (nonatomic, strong) UIView *seperatorView;
+
+@property (nonatomic, assign) BOOL showSeperator;
+
+@end
+
+@implementation TLActionSheetItemCell
+
++ (CGFloat)heightForItem:(TLActionSheetItem *)item
 {
-    NSInteger tableViewButtonCount;
+    if (item.type == TLActionSheetItemTypeCustom) {
+        return item.customView.frame.size.height;
+    }
+    TLActionSheetAppearance *appearance = [TLActionSheetAppearance appearance];
+    CGFloat height = appearance.itemHeight;
+    if (item.message.length > 0) {
+        height += 6;
+    }
+    return height;
 }
 
-@property (nonatomic, strong) NSString *title;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setSelectedBackgroundView:[UIView new]];
+        
+        {
+            UILabel *label = [[UILabel alloc] init];
+            [label setTextAlignment:NSTextAlignmentCenter];
+            [self.contentView addSubview:label];
+            self.titleLabel = label;
+        }
+        {
+            UILabel *label = [[UILabel alloc] init];
+            [label setTextAlignment:NSTextAlignmentCenter];
+            [self.contentView addSubview:label];
+            self.messageLabel = label;
+        }
+        {
+            CGFloat height = 1.0 / [UIScreen mainScreen].scale;
+            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, height)];
+            [lineView setBackgroundColor:[TLActionSheetAppearance appearance].separatorColor];
+            [self.contentView addSubview:lineView];
+            self.seperatorView = lineView;
+        }
+    }
+    return self;
+}
 
-@property (nonatomic, strong) NSString *cancelButtonTitle;
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (self.item.type != TLActionSheetItemTypeCustom) {
+        if (self.titleLabel.frame.size.width > self.frame.size.width) {
+            [self.titleLabel setFrame:CGRectMake(0, 0, self.frame.size.width, self.titleLabel.frame.size.height)];
+        }
+        if (self.messageLabel.frame.size.width > self.frame.size.width) {
+            [self.messageLabel setFrame:CGRectMake(0, 0, self.frame.size.width, self.messageLabel.frame.size.height)];
+        }
+        [self.titleLabel setCenter:self.contentView.center];
+        [self.messageLabel setCenter:self.contentView.center];
+        if (self.titleLabel.text.length > 0 && self.messageLabel.text.length > 0) {
+            [self.titleLabel setFrame:CGRectMake(self.titleLabel.frame.origin.x, 10, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height)];
+            [self.messageLabel setFrame:CGRectMake(self.messageLabel.frame.origin.x, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 3, self.messageLabel.frame.size.width, self.messageLabel.frame.size.height)];
+        }
+    }
+    else {
+        [self.customView setCenter:self.contentView.center];
+    }
+    if (self.showSeperator) {
+        [self.seperatorView setFrame:CGRectMake(0, self.frame.size.height - self.seperatorView.frame.size.height, self.frame.size.width, self.seperatorView.frame.size.height)];
+    }
+}
 
-@property (nonatomic, strong) NSString *destructiveButtonTitle;
+- (void)setItem:(TLActionSheetItem *)item
+{
+    _item = item;
+    
+    TLActionSheetAppearance *appearance = [TLActionSheetAppearance appearance];
+    [self setBackgroundColor:item.backgroundColor ? item.backgroundColor : appearance.itemBackgroundColor];
+    [self.selectedBackgroundView setBackgroundColor:item.selectedBackgroundColor ? item.selectedBackgroundColor : appearance.separatorColor];
+    
+    {
+        [self.titleLabel setHidden:YES];
+        [self.titleLabel setFont:item.titleFont ? item.titleFont : appearance.itemTitleFont];
+        [self.titleLabel setText:item.title];
+        CGSize size = [self.titleLabel sizeThatFits:CGSizeMake(MAXFLOAT, MAXFLOAT)];
+        [self.titleLabel setFrame:CGRectMake(0, 0, size.width, size.height)];
+    }
+    
+    {
+        [self.messageLabel setHidden:YES];
+        [self.messageLabel setFont:item.messageFont ? item.messageFont : appearance.itemMessageFont];
+        [self.messageLabel setText:item.message];
+        CGSize size = [self.messageLabel sizeThatFits:CGSizeMake(MAXFLOAT, MAXFLOAT)];
+        [self.messageLabel setFrame:CGRectMake(0, 0, size.width, size.height)];
+    }
+    
+    if (self.customView) {
+        [self.customView removeFromSuperview];
+        self.customView = nil;
+    }
+    
+    if (item.type == TLActionSheetItemTypeNormal) {
+        [self.titleLabel setHidden:NO];
+        [self.titleLabel setTextColor:item.titleColor ? item.titleColor : appearance.itemTitleColor];
+        if (item.message.length > 0) {
+            [self.messageLabel setTextColor:item.messageColor ? item.messageColor : appearance.itemMessageColor];
+            [self.messageLabel setHidden:NO];
+        }
+    }
+    else if (item.type == TLActionSheetItemTypeDestructive) {
+        [self.titleLabel setHidden:NO];
+        [self.titleLabel setTextColor:item.titleColor ? item.titleColor : appearance.destructiveItemTitleColor];;
+        if (item.message.length > 0) {
+            [self.messageLabel setTextColor:item.messageColor ? item.messageColor : appearance.destructiveItemMessageColor];
+            [self.messageLabel setHidden:NO];
+        }
+    }
+    else if (item.type == TLActionSheetItemTypeCustom) {
+        self.customView = item.customView;
+        [self.contentView addSubview:self.customView];
+    }
+}
 
-/// 遮罩
-@property (nonatomic, strong) UIButton *shadowView;
+- (void)setShowSeperator:(BOOL)showSeperator
+{
+    _showSeperator = showSeperator;
+    if (showSeperator) {
+        [self.seperatorView setHidden:NO];
+        [self.seperatorView setBackgroundColor:[TLActionSheetAppearance appearance].separatorColor];
+    }
+    else {
+        [self.seperatorView setHidden:YES];
+    }
+}
 
-/// 弹窗
-@property (nonatomic, strong) UIView *actionSheetView;
-/// 顶部视图
+@end
+
+#pragma mark - # TLActionSheet
+@interface TLActionSheet () <UITableViewDelegate, UITableViewDataSource>
+{
+    NSMutableArray *_items;
+}
+
+@property (nonatomic, strong) UIControl *shadowView;
 @property (nonatomic, strong) UIView *headerView;
-/// 选项
+@property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITableView *tableView;
-/// 按钮
 @property (nonatomic, strong) UIButton *cancelButton;
 
-@property (nonatomic, strong) UILabel *headerTitleLabel;
+@property (nonatomic, strong) TLActionSheetItem *cancelItem;
 
 @end
 
 @implementation TLActionSheet
 
-- (id)initWithTitle:(NSString *)title clickAction:(void (^)(NSInteger buttonIndex))clickAction cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...
+- (instancetype)initWithTitle:(NSString *)title
+{
+    return [self initWithTitle:title items:nil];
+}
+
+- (instancetype)initWithTitle:(NSString *)title items:(NSArray<TLActionSheetItem *> *)items
 {
     if (self = [self initWithFrame:CGRectZero]) {
-        [self setTitle:title];
-        [self setClickAction:clickAction];
-        [self setCancelButtonTitle:cancelButtonTitle];
-        [self setDestructiveButtonTitle:destructiveButtonTitle];
-        
-        va_list list;
-        if (otherButtonTitles) {
-            _otherButtonTitles = [[NSMutableArray alloc] initWithCapacity:0];
-            [_otherButtonTitles addObject:otherButtonTitles];
-            
-            va_start(list, otherButtonTitles);
-            NSString *otherTitle = va_arg(list, id);
-            while (otherTitle) {
-                [_otherButtonTitles addObject:otherTitle];
-                otherTitle = va_arg(list, id);
-            }
+        _title = title;
+        if (items.count > 0) {
+            [_items addObjectsFromArray:items];
         }
-        
-        [self _resetActionSheetUI];
     }
     return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    if (self = [super initWithFrame:[UIScreen mainScreen].bounds]) {
-        [self addSubview:self.shadowView];
-        [self addSubview:self.actionSheetView];
-        [self.actionSheetView addSubview:self.headerView];
-        [self.actionSheetView addSubview:self.tableView];
-        [self.actionSheetView addSubview:self.cancelButton];
-        [self.shadowView setFrame:self.bounds];
+    if (self = [super initWithFrame:frame]) {
+        _items = [[NSMutableArray alloc] init];
+        _cancelItem = [[TLActionSheetItem alloc] initWithTitle:@"取消" clickAction:nil];
+        
+        [self _initActionSheet];
     }
     return self;
 }
 
-- (void)setOtherButtonTitles:(NSMutableArray *)otherButtonTitles
+#pragma mark - # API
+- (void)addItemWithTitle:(NSString *)title clickAction:(TLActionSheetItemClickAction)clickAction
 {
-    _otherButtonTitles = otherButtonTitles;
-    
-    [self _resetActionSheetUI];
+    [self addItemWithTitle:title message:nil clickAction:clickAction];
 }
 
-- (void)setCustomHeaderView:(UIView *)customHeaderView
+- (void)addItemWithTitle:(NSString *)title message:(NSString *)message clickAction:(TLActionSheetItemClickAction)clickAction;
 {
-    _customHeaderView = customHeaderView;
-    
-    [self _resetActionSheetUI];
+    TLActionSheetItem *item = [[TLActionSheetItem alloc] initWithTitle:title message:message clickAction:clickAction];
+    [self addItem:item];
 }
 
-#pragma mark - # Public Methods
+- (void)setCancelItemTitle:(NSString *)title clickAction:(TLActionSheetItemClickAction)clickAction;
+{
+    [self.cancelItem setTitle:title];
+    [self.cancelItem setClickAction:clickAction];
+}
+
+- (void)addDestructiveItemWithTitle:(NSString *)title clickAction:(TLActionSheetItemClickAction)clickAction
+{
+    TLActionSheetItem *item = [[TLActionSheetItem alloc] initWithTitle:title message:nil clickAction:clickAction];
+    [item setType:TLActionSheetItemTypeDestructive];
+    [self addItem:item];
+}
+
+- (void)addCustomViewItem:(UIView *)customView clickAction:(TLActionSheetItemClickAction)clickAction
+{
+    TLActionSheetItem *item = [[TLActionSheetItem alloc] initWithTitle:nil clickAction:clickAction];
+    [item setType:TLActionSheetItemTypeCustom];
+    [item setCustomView:customView];
+    [self addItem:item];
+}
+
+- (void)addItem:(TLActionSheetItem *)item
+{
+    [_items addObject:item];
+}
+
 - (void)show
 {
-    [self showInView:[UIApplication sharedApplication].delegate.window];
+    [self showInView:nil];
 }
 
 - (void)showInView:(UIView *)view
 {
-    if (view == nil) {
-        view = [UIApplication sharedApplication].delegate.window;
+    // 父视图
+    if (!view) {
+        view = [UIApplication sharedApplication].keyWindow;
     }
-    [view addSubview:self];
     
-    CGRect rect = CGRectMake(0, self.frame.size.height - self.actionSheetView.frame.size.height, self.frame.size.width, self.actionSheetView.frame.size.height);
+    // 重置视图
+    [self setFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
+    [self _resetActionSheet];
+    
+    // 遮罩
+    [self.shadowView setFrame:view.bounds];
+    [self.shadowView removeFromSuperview];
+    [view addSubview:_shadowView];
+    
+    // 弹窗
+    [self removeFromSuperview];
+    [view addSubview:self];
+    CGRect originRect = CGRectMake(0, view.frame.size.height + self.frame.size.height, self.frame.size.width, self.frame.size.height);
+    [self setFrame:originRect];
+    
+    // 显示
     [self.shadowView setBackgroundColor:[UIColor clearColor]];
-    [self.actionSheetView setFrame:CGRectMake(0,
-                                              self.frame.size.height,
-                                              self.actionSheetView.frame.size.width,
-                                              self.actionSheetView.frame.size.height)];
+    CGRect targetRect = CGRectMake(0, view.frame.size.height - self.frame.size.height, originRect.size.width, originRect.size.height);
     [UIView animateWithDuration:0.2 animations:^{
-        [self.actionSheetView setFrame:rect];
-        [self.shadowView setBackgroundColor:COLOR_BACKGROUND];
+        [self setFrame:targetRect];
+        [self.shadowView setBackgroundColor:[TLActionSheetAppearance appearance].shadowColor];
     }];
 }
 
 - (void)dismiss
 {
-    [self dismissWithClickedButtonIndex:self.cancelButtonIndex animated:YES];
+    CGRect targetRect = CGRectMake(0, _shadowView.frame.size.height + self.frame.size.height, self.frame.size.width, self.frame.size.height);
+    [UIView animateWithDuration:0.2 animations:^{
+        [self setFrame:targetRect];
+        [self.shadowView setBackgroundColor:[UIColor clearColor]];
+    } completion:^(BOOL finished) {
+        [self.shadowView removeFromSuperview];
+        [self removeFromSuperview];
+    }];
 }
 
-- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex
+#pragma mark - # Event
+- (void)excuteCancelAction
 {
-    buttonIndex -= self.destructiveButtonTitle ? 1 : 0;
-    if (buttonIndex == -1) {
-        return self.destructiveButtonTitle;
+    [self dismiss];
+    if (self.cancelItem.clickAction) {
+        self.cancelItem.clickAction(self, self.cancelItem, self.items.count);
     }
-    else if (buttonIndex >= 0 &&  buttonIndex < _otherButtonTitles.count) {
-        return _otherButtonTitles[buttonIndex];
-    }
-    else if (buttonIndex == _otherButtonTitles.count) {
-        return self.cancelButtonTitle;
-    }
-    return nil;
-}
-
-#pragma mark - # Event Response
-- (void)didTapBackground:(id)sender
-{
-    [self cancelButtonClicked:sender];
-}
-
-- (void)cancelButtonClicked:(id)sender
-{
-    if (self.clickAction) {
-        self.clickAction(self.cancelButtonIndex);
-        self.clickAction = nil;
-    }
-    [self dismissWithClickedButtonIndex:self.cancelButtonIndex animated:YES];
 }
 
 #pragma mark - # Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return tableViewButtonCount;
+    return self.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"TLActionSheetCell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TLActionSheetCell"];
-        [cell.textLabel setFont:[UIFont systemFontOfSize:BUTTON_FONT_SIZE]];
-        [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+    TLActionSheetItem *item = indexPath.row < self.items.count ? [self.items objectAtIndex:indexPath.row] : nil;
+    TLActionSheetItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLActionSheetItemCell" forIndexPath:indexPath];
+    [cell setItem:item];
+    [cell setShowSeperator:indexPath.row < self.items.count - 1];
+    if (item.configAction) {
+        item.configAction(self, cell.contentView, item, indexPath.row - 1);
     }
-    
-    if (self.destructiveButtonTitle) {
-        if (indexPath.row == 0) {
-            [cell.textLabel setTextColor:COLOR_DESTRUCTIVE_TITLE];
-            [cell.textLabel setText:self.destructiveButtonTitle];
-        }
-        else {
-            [cell.textLabel setTextColor:[UIColor blackColor]];
-            [cell.textLabel setText:_otherButtonTitles[indexPath.row - 1]];
-        }
-    }
-    else {
-        [cell.textLabel setTextColor:[UIColor blackColor]];
-        [cell.textLabel setText:_otherButtonTitles[indexPath.row]];
-    }
-    
-    if (self.cellConfigAction) {
-        self.cellConfigAction(cell, cell.textLabel.text);
-    }
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.clickAction) {
-        self.clickAction(indexPath.row);
-        self.clickAction = nil;
+    TLActionSheetItem *item = indexPath.row < self.items.count ? [self.items objectAtIndex:indexPath.row] : nil;
+    if (item.clickAction) {
+        item.clickAction(self, item, indexPath.row);
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self dismissWithClickedButtonIndex:indexPath.row animated:YES];
+    [self dismiss];
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIEdgeInsets edgeInset = UIEdgeInsetsZero;
-    if ((self.destructiveButtonTitle && indexPath.row >= _otherButtonTitles.count) || (!self.destructiveButtonTitle && indexPath.row >= _otherButtonTitles.count - 1)) {
-        edgeInset = UIEdgeInsetsMake(0, 0, 0, self.frame.size.width);
-    }
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:edgeInset];
-    }
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
+    TLActionSheetItem *item = indexPath.row < self.items.count ? [self.items objectAtIndex:indexPath.row] : nil;
+    CGFloat height = [TLActionSheetItemCell heightForItem:item];
+    return height;
 }
 
-#pragma mark - # Private Methods
-- (void)_resetActionSheetUI
+#pragma mark - # Private
+- (void)_initActionSheet
 {
-    tableViewButtonCount = _otherButtonTitles.count + (self.destructiveButtonTitle ? 1 : 0);
-    _numberOfButtons = tableViewButtonCount + (self.cancelButtonTitle ? 1 : 0);
-    _destructiveButtonIndex = (self.destructiveButtonTitle ? 0 : -1);
-    _cancelButtonIndex = (self.cancelButtonTitle ? _otherButtonTitles.count + (self.destructiveButtonTitle ? 1 : 0) : -1);
-    
-    // 顶部视图
+    // 遮罩
     {
-        // 移除旧视图
+        UIControl *view = [[UIControl alloc] init];
+        [view addTarget:self action:@selector(excuteCancelAction) forControlEvents:UIControlEventTouchUpInside];
+        self.shadowView = view;
+    }
+    
+    // header
+    {
+        UIView *view = [[UIView alloc] init];
+        [self addSubview:view];
+        self.headerView = view;
+
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(TLAS_SPACE_TITLE_LEFT, TLAS_SPACE_TITLE_TOP, 0, 0)];
+        [label setNumberOfLines:0];
+        [label setTextAlignment:NSTextAlignmentCenter];
+        self.titleLabel = label;
+    }
+    
+    // 列表
+    {
+        UITableView *tableView = [[UITableView alloc] init];
+        [tableView setBackgroundColor:[UIColor clearColor]];
+        [tableView setTableFooterView:[UIView new]];
+        [tableView setDataSource:self];
+        [tableView setDelegate:self];
+        [tableView setBounces:NO];
+        [tableView setScrollEnabled:NO];
+        [tableView setScrollsToTop:NO];
+        [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+            [tableView setSeparatorInset:UIEdgeInsetsZero];
+        }
+        if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+            [tableView setLayoutMargins:UIEdgeInsetsZero];
+        }
+        [self addSubview:tableView];
+        [tableView registerClass:[TLActionSheetItemCell class] forCellReuseIdentifier:@"TLActionSheetItemCell"];
+        self.tableView = tableView;
+    }
+    
+    // 取消按钮
+    {
+        UIButton *button = [[UIButton alloc] init];
+        [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+        [button addTarget:self action:@selector(excuteCancelAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:button];
+        self.cancelButton = button;
+    }
+    
+}
+
+- (void)_resetActionSheet
+{
+    CGFloat y = 0;
+    CGFloat width = self.frame.size.width;
+    
+    TLActionSheetAppearance *appearance = [TLActionSheetAppearance appearance];
+    
+    [self setBackgroundColor:appearance.backgroundColor];
+    
+    // 遮罩
+    [self.shadowView setBackgroundColor:appearance.shadowColor];
+    
+    // header
+    {
+        [self.headerView setHidden:YES];
+        [self.headerView setBackgroundColor:appearance.itemBackgroundColor];
         while (self.headerView.subviews.count > 0) {
-            [self.headerView.subviews.firstObject removeFromSuperview];
+            [self.titleLabel.subviews.firstObject removeFromSuperview];
         }
         
-        // 添加新视图
         if (self.customHeaderView) {
+            [self.headerView setHidden:NO];
+            [self.customHeaderView removeFromSuperview];
+            [self.customHeaderView setFrame:self.customHeaderView.bounds];
+            
+            [self.headerView setFrame:self.customHeaderView.bounds];
             [self.headerView addSubview:self.customHeaderView];
-            [self.headerView setFrame:CGRectMake(0, 0, self.frame.size.width, self.customHeaderView.frame.size.height)];
         }
         else if (self.title.length > 0) {
-            [self.headerTitleLabel removeFromSuperview];
-            [self.headerTitleLabel setFrame:CGRectMake(SPACE_TITLE_LEFT, SPACE_TITLE_TOP, self.frame.size.width - SPACE_TITLE_LEFT * 2, 0)];
-            [self.headerTitleLabel setText:self.title];
-            CGFloat hightTitle = [self.headerTitleLabel sizeThatFits:CGSizeMake(self.headerTitleLabel.frame.size.width, MAXFLOAT)].height;
-            [self.headerTitleLabel setFrame:CGRectMake(self.headerTitleLabel.frame.origin.x, self.headerTitleLabel.frame.origin.y, self.headerTitleLabel.frame.size.width, hightTitle)];
+            [self.headerView setHidden:NO];
+            [self.titleLabel setTextColor:appearance.headerTitleColor];
+            [self.titleLabel setFont:appearance.headerTitleFont];
+            [self.titleLabel setText:self.title];
+            CGFloat labelWidth = width - TLAS_SPACE_TITLE_LEFT * 2;
+            CGFloat labelHeight = [self.titleLabel sizeThatFits:CGSizeMake(labelWidth, MAXFLOAT)].height;
+            [self.titleLabel setFrame:CGRectMake(TLAS_SPACE_TITLE_LEFT, TLAS_SPACE_TITLE_TOP, labelWidth, labelHeight)];
             
-            CGFloat hightHeader = hightTitle + SPACE_TITLE_TOP * 2;
-            [self.headerView setFrame:CGRectMake(0, 0, self.frame.size.width, hightHeader)];
-            [self.headerView addSubview:self.headerTitleLabel];
-        }
-        else {
-            [self.headerView setFrame:CGRectMake(0, 0, self.frame.size.width, 0)];
+            CGFloat headerHeight = labelHeight + TLAS_SPACE_TITLE_TOP * 2;
+            [self.headerView setFrame:CGRectMake(0, 0, width, headerHeight)];
+            [self.headerView addSubview:self.titleLabel];
         }
         
-        // 添加分割线
-        if (self.destructiveButtonTitle || tableViewButtonCount > 0) {
-            CGFloat height = 1.0 / [UIScreen mainScreen].scale;
-            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerView.frame.size.height - height, self.frame.size.width, height)];
-            [lineView setBackgroundColor:COLOR_SEPERATOR];
-            [self.headerView addSubview:lineView];
+        if (!self.headerView.hidden) {
+            y += self.headerView.frame.size.height;
+            // 添加分割线
+            if (self.items.count > 0) {
+                CGFloat height = 1.0 / [UIScreen mainScreen].scale;
+                UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerView.frame.size.height - height, self.frame.size.width, height)];
+                [lineView setBackgroundColor:appearance.separatorColor];
+                [self.headerView addSubview:lineView];
+            }
         }
     }
     
-    // 按钮列表
+    // items
     {
-        NSInteger tableHeight = tableViewButtonCount * HEIGHT_BUTTON;
-        [self.tableView setBounces:NO];
-        CGFloat maxHeight = (self.frame.size.height - self.headerView.frame.size.height - SPACE_MIDDEL - HEIGHT_BUTTON) * 0.6;
-        if (tableHeight > maxHeight) {
-            [self.tableView setBounces:YES];
-            tableHeight = maxHeight;
+        CGFloat tableViewHeight = 0;
+        for (TLActionSheetItem *item in self.items) {
+            tableViewHeight += [TLActionSheetItemCell heightForItem:item];
         }
-        [self.tableView setFrame:CGRectMake(0, self.headerView.frame.size.height, self.frame.size.width, tableHeight)];
+        [self.tableView setScrollEnabled:NO];
+        if (tableViewHeight > TLAS_MAX_TABLEVIEW_HEIGHT) {
+            tableViewHeight = TLAS_MAX_TABLEVIEW_HEIGHT;
+            [self.tableView setScrollEnabled:YES];
+        }
+        [self.tableView setFrame:CGRectMake(0, y, width, tableViewHeight)];
+        [self.tableView reloadData];
+        y += tableViewHeight;
     }
     
+    y += TLAS_SPACE_MIDDEL;
     
-   
-    // 取消按钮
+    // button
     {
         UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
         if (@available(iOS 11.0, *)) {
             edgeInsets = [UIApplication sharedApplication].keyWindow.safeAreaInsets;
         }
-        NSInteger height = edgeInsets.bottom + HEIGHT_BUTTON;
-        [self.cancelButton setTitle:self.cancelButtonTitle ? self.cancelButtonTitle : @"取消" forState:UIControlStateNormal];
-        CGFloat y = self.tableView.frame.origin.y + self.tableView.frame.size.height + SPACE_MIDDEL;
-        [self.cancelButton setFrame:CGRectMake(0, y, self.frame.size.width, height)];
+        [self.cancelButton setFrame:CGRectMake(0, y, width, appearance.itemHeight + edgeInsets.bottom)];
+        [self.cancelButton setTitle:self.cancelItem.title forState:UIControlStateNormal];
+        [self.cancelButton setBackgroundColor:appearance.itemBackgroundColor];
+        [self.cancelButton setTitleColor:appearance.cancelItemTitleColor forState:UIControlStateNormal];
+        [self.cancelButton.titleLabel setFont:appearance.itemTitleFont];
         [self.cancelButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, edgeInsets.bottom, 0)];
+        [self.cancelButton setBackgroundImage:[self _imageWithColor:appearance.separatorColor] forState:UIControlStateHighlighted];
+        y += self.cancelButton.frame.size.height;
     }
     
-    // 整体视图
+    // 圆角
     {
-        CGFloat height = self.cancelButton.frame.origin.y + self.cancelButton.frame.size.height;
-        [self.actionSheetView setFrame:CGRectMake(0, self.frame.size.height - height, self.frame.size.width, height)];
-        
-        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:self.actionSheetView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:(CGSize){10}];
+        [self setFrame:CGRectMake(0, 0, self.frame.size.width, y)];
+        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:(CGSize){10}];
         CAShapeLayer *shapeLayer = [CAShapeLayer layer];
         shapeLayer.path = bezierPath.CGPath;
-        self.actionSheetView.layer.mask = shapeLayer;
+        self.layer.mask = shapeLayer;
     }
 }
 
-- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated
+- (UIImage *)_imageWithColor:(UIColor *)color
 {
-    if (animated) {
-        CGRect rect = CGRectMake(0, self.frame.size.height, self.frame.size.width, self.actionSheetView.frame.size.height);
-        [UIView animateWithDuration:0.2 animations:^{
-            [self.actionSheetView setFrame:rect];
-            [self.shadowView setBackgroundColor:[UIColor clearColor]];
-        } completion:^(BOOL finished) {
-            [self removeFromSuperview];
-        }];
-    }
-    else {
-        [self removeFromSuperview];
-    }
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return theImage;
 }
 
-#pragma mark - # Getter 
-- (UIButton *)shadowView
+- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex
 {
-    if (_shadowView == nil) {
-        _shadowView = [[UIButton alloc] init];
-        [_shadowView addTarget:self action:@selector(didTapBackground:) forControlEvents:UIControlEventTouchUpInside];
+    if (buttonIndex == self.items.count) {
+        return self.cancelItem.title;
     }
-    return _shadowView;
+    else if (buttonIndex < self.items.count) {
+        TLActionSheetItem *item = [self.items objectAtIndex:buttonIndex];
+        return item.title;
+    }
+    return nil;
 }
 
-- (UIView *)actionSheetView
+#pragma mark - # 旧版本兼容
+- (id)initWithTitle:(NSString *)title clickAction:(void (^)(NSInteger buttonIndex))clickAction cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...
 {
-    if (_actionSheetView == nil) {
-        _actionSheetView = [[UIView alloc] init];
-        [_actionSheetView setBackgroundColor:COLOR_TABLEVIEW_BG];
-    }
-    return _actionSheetView;
-}
-
-- (UIView *)headerView
-{
-    if (!_headerView) {
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 0)];
-        [_headerView setBackgroundColor:[UIColor whiteColor]];
-    }
-    return  _headerView;
-}
-
-- (UITableView *)tableView
-{
-    if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 0)];
-        [_tableView setRowHeight:HEIGHT_BUTTON];
-        [_tableView setBackgroundColor:COLOR_TABLEVIEW_BG];
-        [_tableView setSeparatorColor:COLOR_SEPERATOR];
-        [_tableView setTableFooterView:[UIView new]];
-        [_tableView setDataSource:self];
-        [_tableView setDelegate:self];
-        [_tableView setBounces:NO];
-        if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-            [_tableView setSeparatorInset:UIEdgeInsetsZero];
+    [self setClickAction:clickAction];
+    [self setCancelItemTitle:cancelButtonTitle clickAction:nil];
+    if (self = [self initWithTitle:title]) {
+        __weak typeof(self) weakSelf = self;
+        TLActionSheetItemClickAction clickAction = ^(TLActionSheet *actionSheet, TLActionSheetItem *item, NSInteger index) {
+            if (weakSelf.clickAction) {
+                weakSelf.clickAction(index);
+            }
+        };
+        
+        if (otherButtonTitles) {
+            va_list list;
+            va_start(list, otherButtonTitles);
+            NSString *title = va_arg(list, id);
+            while (title.length > 0) {
+               [self addItemWithTitle:title clickAction:clickAction];
+               title = va_arg(list, id);
+            }
+            va_end(list);
         }
-        if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-            [_tableView setLayoutMargins:UIEdgeInsetsZero];
+       
+        if (destructiveButtonTitle.length > 0) {
+            [self addDestructiveItemWithTitle:destructiveButtonTitle clickAction:clickAction];
         }
     }
-    return _tableView;
-}
-
-- (UIButton *)cancelButton
-{
-    if (_cancelButton == nil) {
-        _cancelButton = [[UIButton alloc] init];
-        [_cancelButton setBackgroundColor:[UIColor whiteColor]];
-        [_cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_cancelButton.titleLabel setFont:[UIFont systemFontOfSize:BUTTON_FONT_SIZE]];
-        [_cancelButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
-        [_cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [_cancelButton setBackgroundImage:[UIImage imageWithColor:COLOR_SEPERATOR] forState:UIControlStateHighlighted];
-    }
-    return _cancelButton;
-}
-
-- (UILabel *)headerTitleLabel
-{
-    if (_headerTitleLabel == nil) {
-        _headerTitleLabel = [[UILabel alloc] init];
-        [_headerTitleLabel setTextColor:[UIColor grayColor]];
-        [_headerTitleLabel setFont:[UIFont systemFontOfSize:TITLE_FONT_SIZE]];
-        [_headerTitleLabel setNumberOfLines:0];
-        [_headerTitleLabel setTextAlignment:NSTextAlignmentCenter];
-    }
-    return _headerTitleLabel;
+    
+    return self;
 }
 
 @end

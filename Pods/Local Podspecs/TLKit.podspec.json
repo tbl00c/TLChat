@@ -35,6 +35,10 @@
           "source_files": "TLKit/TLFunctional/TLActionSheet/*.{h,m}"
         },
         {
+          "name": "TLAlertView",
+          "source_files": "TLKit/TLFunctional/TLAlertView/*.{h,m}"
+        },
+        {
           "name": "TLUIUtility",
           "source_files": "TLKit/TLFunctional/TLUIUtility/*.{h,m}",
           "dependencies": {

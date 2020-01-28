@@ -116,8 +116,10 @@ PODS:
   - TLKit/TLCategories/UIKit/UIWindow (0.0.28)
   - TLKit/TLFunctional (0.0.28):
     - TLKit/TLFunctional/TLActionSheet (= 0.0.28)
+    - TLKit/TLFunctional/TLAlertView (= 0.0.28)
     - TLKit/TLFunctional/TLUIUtility (= 0.0.28)
   - TLKit/TLFunctional/TLActionSheet (0.0.28)
+  - TLKit/TLFunctional/TLAlertView (0.0.28)
   - TLKit/TLFunctional/TLUIUtility (0.0.28):
     - SVProgressHUD (~> 2.2.5)
     - TLKit/TLCategories/UIKit/UIAlertView
@@ -183,7 +185,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tbl00c/JZNavigationExtension.git
     :tag: '4.0'
   TLKit:
-    :commit: 8563432863cf296bc9d8326a25d152e57a8e49bd
+    :commit: a998f76b1630cbceccad264869f2bff1e94523f5
     :git: https://github.com/tbl00c/TLKit.git
   TLTabBarController:
     :git: https://github.com/tbl00c/TLTabBarController.git
@@ -205,7 +207,7 @@ SPEC CHECKSUMS:
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  TLKit: 29fdba0f2adff5ce34cedadff3e71eb44a1ff925
+  TLKit: 9ef399f654bc7b6bef9d678378c0743ff04fd72e
   TLTabBarController: 6e91813f0ae019e8cd2ae35d6f4f6315085f7c44
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   WCDB: 4d2926bf695b2e00d785b50afd32c2dcc8cbbd98

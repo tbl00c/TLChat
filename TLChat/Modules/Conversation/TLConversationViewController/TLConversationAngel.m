@@ -85,7 +85,7 @@
     // 从数据库中删除
     BOOL ok = [[TLMessageManager sharedInstance] deleteConversationByPartnerID:conversation.partnerID];
     if (!ok) {
-        [TLUIUtility showAlertWithTitle:@"错误" message:@"从数据库中删除会话信息失败"];
+        [TLAlertView showAlertWithTitle:@"错误" message:@"从数据库中删除会话信息失败"];
         return;
     }
     

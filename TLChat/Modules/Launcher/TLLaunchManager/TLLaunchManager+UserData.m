@@ -18,7 +18,7 @@
     NSNumber *lastRunDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastRunDate"];
     
     if (lastRunDate == nil) {
-        [TLUIUtility showAlertWithTitle:@"提示" message:@"首次启动App，是否随机下载两组个性表情包，稍候也可在“我的”-“表情”中选择下载。" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] actionHandler:^(NSInteger buttonIndex) {
+        [TLAlertView showAlertWithTitle:@"提示" message:@"首次启动App，是否随机下载两组个性表情包，稍候也可在“我的”-“表情”中选择下载。" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] actionHandler:^(NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 [self downloadDefaultExpression];
             }
@@ -30,7 +30,7 @@
     NSLog(@"今天第%ld次进入", (long)sponsorStatus.integerValue);
     if ([date isSameDay:[NSDate date]]) {
         if (sponsorStatus.integerValue == 3) {
-            [TLUIUtility showAlertWithTitle:nil message:@"如果此份源码对您有足够大帮助，您可以小额赞助我，以激励我继续维护，做得更好。" cancelButtonTitle:@"不了" otherButtonTitles:@[@"小额赞助"] actionHandler:^(NSInteger buttonIndex) {
+            [TLAlertView showAlertWithTitle:nil message:@"如果此份源码对您有足够大帮助，您可以小额赞助我，以激励我继续维护，做得更好。" cancelButtonTitle:@"不了" otherButtonTitles:@[@"小额赞助"] actionHandler:^(NSInteger buttonIndex) {
                 if (buttonIndex == 1) {
                     TLWalletViewController *walletVC = [[TLWalletViewController alloc] init];
                     [walletVC setHidesBottomBarWhenPushed:YES];

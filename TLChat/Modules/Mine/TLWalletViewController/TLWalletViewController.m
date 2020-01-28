@@ -85,10 +85,10 @@
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
-        [TLUIUtility showAlertWithTitle:@"保存失败" message:[NSString stringWithFormat:@"%@", [error description]]];
+        [TLAlertView showAlertWithTitle:@"保存失败" message:[NSString stringWithFormat:@"%@", [error description]]];
     }
     else {
-        [TLUIUtility showAlertWithTitle:@"保存成功" message:@"谢谢" cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
+        [TLAlertView showAlertWithTitle:@"保存成功" message:@"谢谢" cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
             [MobClick event:EVENT_WALLET_QR_SAVE];
         }];
     }

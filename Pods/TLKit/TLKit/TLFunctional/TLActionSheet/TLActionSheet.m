@@ -549,10 +549,13 @@
         if (otherButtonTitles) {
             va_list list;
             va_start(list, otherButtonTitles);
+            if (otherButtonTitles) {
+                [self addItemWithTitle:otherButtonTitles clickAction:clickAction];
+            }
             NSString *title = va_arg(list, id);
             while (title.length > 0) {
-               [self addItemWithTitle:title clickAction:clickAction];
-               title = va_arg(list, id);
+                [self addItemWithTitle:title clickAction:clickAction];
+                title = va_arg(list, id);
             }
             va_end(list);
         }

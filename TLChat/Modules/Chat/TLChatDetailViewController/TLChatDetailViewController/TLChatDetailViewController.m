@@ -62,7 +62,7 @@ typedef NS_ENUM(NSInteger, TLChatDetailVCSectionType) {
                 PushVC(userDetailVC);
             }
             else if (eventType == TLUserGroupCellEventTypeAdd) {
-                [TLUIUtility showAlertWithTitle:@"提示" message:@"添加讨论组成员"];
+                [TLAlertView showAlertWithTitle:@"提示" message:@"添加讨论组成员"];
             }
             return nil;
         });;
@@ -137,7 +137,7 @@ typedef NS_ENUM(NSInteger, TLChatDetailVCSectionType) {
                 if (buttonIndex == 0) {
                     BOOL ok = [[TLMessageManager sharedInstance] deleteMessagesByPartnerID:self.user.userID];
                     if (!ok) {
-                        [TLUIUtility showAlertWithTitle:@"错误" message:@"清空聊天记录失败"];
+                        [TLAlertView showAlertWithTitle:@"错误" message:@"清空聊天记录失败"];
                     }
                     else {
                         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];

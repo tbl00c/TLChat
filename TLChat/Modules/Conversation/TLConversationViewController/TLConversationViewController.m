@@ -236,7 +236,7 @@
                 PushVC(vc);
             }
             else {
-                [TLUIUtility showAlertWithTitle:item.title message:@"功能暂未实现"];
+                [TLAlertView showAlertWithTitle:item.title message:@"功能暂未实现"];
             }
         }];
     }

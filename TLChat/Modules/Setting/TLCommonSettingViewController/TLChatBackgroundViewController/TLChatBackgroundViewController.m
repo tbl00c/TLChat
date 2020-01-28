@@ -111,7 +111,7 @@ typedef NS_ENUM(NSInteger, TLChatBackgroundVCSectionType) {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     [imagePickerController setDelegate:self];
     if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        [TLUIUtility showAlertWithTitle:@"错误" message:@"相机初始化失败"];
+        [TLAlertView showAlertWithTitle:@"错误" message:@"相机初始化失败"];
     }
     else {
         [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];

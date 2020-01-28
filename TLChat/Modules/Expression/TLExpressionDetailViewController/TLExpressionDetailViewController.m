@@ -143,7 +143,7 @@ typedef NS_ENUM(NSInteger, TLExpressionDetailVCSectionType) {
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
-        [TLUIUtility showAlertWithTitle:@"错误" message:[NSString stringWithFormat:@"保存图片到系统相册失败\n%@", [error description]]];
+        [TLAlertView showAlertWithTitle:@"错误" message:[NSString stringWithFormat:@"保存图片到系统相册失败\n%@", [error description]]];
     }
     else {
         [TLUIUtility showSuccessHint:@"已保存到系统相册"];

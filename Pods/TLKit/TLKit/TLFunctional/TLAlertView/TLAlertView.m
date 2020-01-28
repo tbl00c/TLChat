@@ -530,5 +530,42 @@ typedef NS_ENUM(NSInteger, TLAlertViewItemCellSeperatorType) {
     [self setFrame:CGRectMake(0, 0, width, y)];
 }
 
+#pragma mark - 兼容旧版本API
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    [self showAlertWithTitle:title message:message cancelButtonTitle:@"确定"];
+}
+
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
+{
+    [self showAlertWithTitle:title message:message cancelButtonTitle:cancelButtonTitle actionHandler:nil];
+}
+
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle actionHandler:(void (^)(NSInteger buttonIndex))actionHandler
+{
+    [self showAlertWithTitle:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil actionHandler:actionHandler];
+}
+
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles actionHandler:(void (^)(NSInteger buttonIndex))actionHandler
+{
+    TLAlertViewItemClickAction clickAction = ^(TLAlertView *alertView, TLAlertViewItem *item, NSInteger index) {
+        if (actionHandler) {
+            actionHandler(index);
+        }
+    };
+    TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:title message:message];
+    if (cancelButtonTitle) {
+        if (otherButtonTitles.count > 0) {
+            [alertView addCancelItemTitle:cancelButtonTitle clickAction:clickAction];
+        }
+        else {
+            [alertView addItemWithTitle:cancelButtonTitle clickAction:clickAction];
+        }
+    }
+    for (NSString *title in otherButtonTitles) {
+        [alertView addItemWithTitle:title clickAction:clickAction];
+    }
+    [alertView show];
+}
 
 @end

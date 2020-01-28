@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, TLShakeSettingVCSectionType) {
         // 默认背景图
         self.addCell(CELL_ST_ITEM_NORMAL).toSection(sectionTag).withDataModel(TLCreateSettingItem(@"使用默认背景图片")).selectedAction(^ (id data) {
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Shake_Image_Path"];
-            [TLUIUtility showAlertWithTitle:@"已恢复默认背景图"];
+            [TLAlertView showAlertWithTitle:@"已恢复默认背景图" message:nil];
         });
         
         // 换张背景图

@@ -185,7 +185,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tbl00c/JZNavigationExtension.git
     :tag: '4.0'
   TLKit:
-    :commit: a998f76b1630cbceccad264869f2bff1e94523f5
+    :commit: 9ce656fa5eb43336043fafde983c56c4f8ef632d
     :git: https://github.com/tbl00c/TLKit.git
   TLTabBarController:
     :git: https://github.com/tbl00c/TLTabBarController.git

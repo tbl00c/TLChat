@@ -171,7 +171,7 @@
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [TLAlertView showAlertWithTitle:nil message:[error description]];
+    [TLAlertView showWithTitle:nil message:[error description]];
 }
 
 // 页面跳转处理

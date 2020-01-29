@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSMutableDictionary/NSMutableDictionary+SafeAccess.h
+../../../TLKit/TLKit/Classes/TLCategories/Foundation/NSMutableDictionary/NSMutableDictionary+SafeAccess.h

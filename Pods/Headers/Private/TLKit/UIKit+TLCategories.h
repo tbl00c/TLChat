@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UIKit+TLCategories.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UIKit+TLCategories.h

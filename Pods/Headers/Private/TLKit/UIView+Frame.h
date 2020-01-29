@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UIView/UIView+Frame.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UIView/UIView+Frame.h

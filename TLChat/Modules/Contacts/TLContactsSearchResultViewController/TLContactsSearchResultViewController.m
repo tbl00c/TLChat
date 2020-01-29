@@ -84,7 +84,7 @@
 //MARK: UISearchBarDelegate
 - (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
 {
-    [TLAlertView showAlertWithTitle:@"语音搜索按钮" message:nil];
+    [TLAlertView showWithTitle:@"语音搜索按钮" message:nil];
 }
 
 @end

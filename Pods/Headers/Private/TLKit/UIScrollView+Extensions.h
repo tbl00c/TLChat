@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UIScrollView/UIScrollView+Extensions.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UIScrollView/UIScrollView+Extensions.h

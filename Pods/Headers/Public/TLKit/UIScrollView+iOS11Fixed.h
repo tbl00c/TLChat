@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UIScrollView/UIScrollView+iOS11Fixed.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UIScrollView/UIScrollView+iOS11Fixed.h

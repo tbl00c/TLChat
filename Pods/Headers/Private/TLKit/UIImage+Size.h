@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UIImage/UIImage+Size.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UIImage/UIImage+Size.h

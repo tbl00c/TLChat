@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSArray/NSArray+SafeAccess.h
+../../../TLKit/TLKit/Classes/TLCategories/Foundation/NSArray/NSArray+SafeAccess.h

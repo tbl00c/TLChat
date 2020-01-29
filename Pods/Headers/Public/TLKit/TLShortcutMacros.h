@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLShortcut/TLShortcutMacros.h
+../../../TLKit/TLKit/Classes/TLShortcut/TLShortcutMacros.h

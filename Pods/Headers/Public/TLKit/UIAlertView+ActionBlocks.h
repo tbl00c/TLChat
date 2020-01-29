@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UIAlertView/UIAlertView+ActionBlocks.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UIAlertView/UIAlertView+ActionBlocks.h

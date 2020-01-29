@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UIViewController/UIViewController+NavBar.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UIViewController/UIViewController+NavBar.h

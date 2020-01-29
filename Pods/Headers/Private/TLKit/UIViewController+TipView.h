@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UIViewController/UIViewController+TipView.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UIViewController/UIViewController+TipView.h

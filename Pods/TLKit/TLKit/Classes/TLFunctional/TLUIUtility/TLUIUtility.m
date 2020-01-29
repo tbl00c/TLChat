@@ -9,7 +9,6 @@
 
 #import "TLUIUtility.h"
 #import <SVProgressHUD/SVProgressHUD.h>
-#import "UIWindow+Extensions.h"
 
 static UILabel *hLabel = nil;
 

@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSFileManager/NSFileManager+Paths.h
+../../../TLKit/TLKit/Classes/TLCategories/Foundation/NSFileManager/NSFileManager+Paths.h

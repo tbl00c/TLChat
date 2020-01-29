@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSObject/NSObject+Reflection.h
+../../../TLKit/TLKit/Classes/TLCategories/Foundation/NSObject/NSObject+Reflection.h

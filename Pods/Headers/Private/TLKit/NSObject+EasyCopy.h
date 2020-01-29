@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSObject/NSObject+EasyCopy.h
+../../../TLKit/TLKit/Classes/TLCategories/Foundation/NSObject/NSObject+EasyCopy.h

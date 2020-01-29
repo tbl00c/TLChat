@@ -37,94 +37,91 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.2.5)
-  - TLKit (0.0.28):
-    - TLKit/TLCategories (= 0.0.28)
-    - TLKit/TLFunctional (= 0.0.28)
-    - TLKit/TLShortcut (= 0.0.28)
-  - TLKit/TLCategories (0.0.28):
-    - TLKit/TLCategories/Foundation (= 0.0.28)
-    - TLKit/TLCategories/UIKit (= 0.0.28)
-  - TLKit/TLCategories/Foundation (0.0.28):
-    - TLKit/TLCategories/Foundation/NSArray (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSBundle (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSData (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSDate (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSDictionary (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSFileManager (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSMutableArray (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSMutableDictionary (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSNotificationCenter (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSObject (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSString (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSTimer (= 0.0.28)
-    - TLKit/TLCategories/Foundation/NSURL (= 0.0.28)
-  - TLKit/TLCategories/Foundation/NSArray (0.0.28)
-  - TLKit/TLCategories/Foundation/NSBundle (0.0.28)
-  - TLKit/TLCategories/Foundation/NSData (0.0.28)
-  - TLKit/TLCategories/Foundation/NSDate (0.0.28)
-  - TLKit/TLCategories/Foundation/NSDictionary (0.0.28)
-  - TLKit/TLCategories/Foundation/NSFileManager (0.0.28)
-  - TLKit/TLCategories/Foundation/NSMutableArray (0.0.28)
-  - TLKit/TLCategories/Foundation/NSMutableDictionary (0.0.28)
-  - TLKit/TLCategories/Foundation/NSNotificationCenter (0.0.28)
-  - TLKit/TLCategories/Foundation/NSObject (0.0.28)
-  - TLKit/TLCategories/Foundation/NSString (0.0.28):
+  - TLKit (1.0):
+    - TLKit/TLCategories (= 1.0)
+    - TLKit/TLFunctional (= 1.0)
+    - TLKit/TLShortcut (= 1.0)
+  - TLKit/TLCategories (1.0):
+    - TLKit/TLCategories/Foundation (= 1.0)
+    - TLKit/TLCategories/UIKit (= 1.0)
+  - TLKit/TLCategories/Foundation (1.0):
+    - TLKit/TLCategories/Foundation/NSArray (= 1.0)
+    - TLKit/TLCategories/Foundation/NSBundle (= 1.0)
+    - TLKit/TLCategories/Foundation/NSData (= 1.0)
+    - TLKit/TLCategories/Foundation/NSDate (= 1.0)
+    - TLKit/TLCategories/Foundation/NSDictionary (= 1.0)
+    - TLKit/TLCategories/Foundation/NSFileManager (= 1.0)
+    - TLKit/TLCategories/Foundation/NSMutableArray (= 1.0)
+    - TLKit/TLCategories/Foundation/NSMutableDictionary (= 1.0)
+    - TLKit/TLCategories/Foundation/NSNotificationCenter (= 1.0)
+    - TLKit/TLCategories/Foundation/NSObject (= 1.0)
+    - TLKit/TLCategories/Foundation/NSString (= 1.0)
+    - TLKit/TLCategories/Foundation/NSTimer (= 1.0)
+    - TLKit/TLCategories/Foundation/NSURL (= 1.0)
+  - TLKit/TLCategories/Foundation/NSArray (1.0)
+  - TLKit/TLCategories/Foundation/NSBundle (1.0)
+  - TLKit/TLCategories/Foundation/NSData (1.0)
+  - TLKit/TLCategories/Foundation/NSDate (1.0)
+  - TLKit/TLCategories/Foundation/NSDictionary (1.0)
+  - TLKit/TLCategories/Foundation/NSFileManager (1.0)
+  - TLKit/TLCategories/Foundation/NSMutableArray (1.0)
+  - TLKit/TLCategories/Foundation/NSMutableDictionary (1.0)
+  - TLKit/TLCategories/Foundation/NSNotificationCenter (1.0)
+  - TLKit/TLCategories/Foundation/NSObject (1.0)
+  - TLKit/TLCategories/Foundation/NSString (1.0):
     - TLKit/TLCategories/Foundation/NSData
-  - TLKit/TLCategories/Foundation/NSTimer (0.0.28)
-  - TLKit/TLCategories/Foundation/NSURL (0.0.28)
-  - TLKit/TLCategories/UIKit (0.0.28):
-    - TLKit/TLCategories/UIKit/UIAlertView (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UIBarButtonItem (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UIButton (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UICollectionViewCell (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UIColor (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UIControl (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UIImage (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UINavigationBar (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UINavigationController (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UINavigationItem (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UIScrollView (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UITabBarController (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UITextField (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UITextView (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UIView (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UIViewController (= 0.0.28)
-    - TLKit/TLCategories/UIKit/UIWindow (= 0.0.28)
-  - TLKit/TLCategories/UIKit/UIAlertView (0.0.28)
-  - TLKit/TLCategories/UIKit/UIBarButtonItem (0.0.28)
-  - TLKit/TLCategories/UIKit/UIButton (0.0.28):
-    - TLKit/TLCategories/UIKit/UIImage
-  - TLKit/TLCategories/UIKit/UICollectionViewCell (0.0.28)
-  - TLKit/TLCategories/UIKit/UIColor (0.0.28)
-  - TLKit/TLCategories/UIKit/UIControl (0.0.28)
-  - TLKit/TLCategories/UIKit/UIImage (0.0.28)
-  - TLKit/TLCategories/UIKit/UINavigationBar (0.0.28)
-  - TLKit/TLCategories/UIKit/UINavigationController (0.0.28)
-  - TLKit/TLCategories/UIKit/UINavigationItem (0.0.28):
+  - TLKit/TLCategories/Foundation/NSTimer (1.0)
+  - TLKit/TLCategories/Foundation/NSURL (1.0)
+  - TLKit/TLCategories/UIKit (1.0):
+    - TLKit/TLCategories/UIKit/UIAlertView (= 1.0)
+    - TLKit/TLCategories/UIKit/UIBarButtonItem (= 1.0)
+    - TLKit/TLCategories/UIKit/UIButton (= 1.0)
+    - TLKit/TLCategories/UIKit/UICollectionViewCell (= 1.0)
+    - TLKit/TLCategories/UIKit/UIColor (= 1.0)
+    - TLKit/TLCategories/UIKit/UIControl (= 1.0)
+    - TLKit/TLCategories/UIKit/UIImage (= 1.0)
+    - TLKit/TLCategories/UIKit/UINavigationBar (= 1.0)
+    - TLKit/TLCategories/UIKit/UINavigationController (= 1.0)
+    - TLKit/TLCategories/UIKit/UINavigationItem (= 1.0)
+    - TLKit/TLCategories/UIKit/UIScrollView (= 1.0)
+    - TLKit/TLCategories/UIKit/UITabBarController (= 1.0)
+    - TLKit/TLCategories/UIKit/UITextField (= 1.0)
+    - TLKit/TLCategories/UIKit/UITextView (= 1.0)
+    - TLKit/TLCategories/UIKit/UIView (= 1.0)
+    - TLKit/TLCategories/UIKit/UIViewController (= 1.0)
+    - TLKit/TLCategories/UIKit/UIWindow (= 1.0)
+  - TLKit/TLCategories/UIKit/UIAlertView (1.0)
+  - TLKit/TLCategories/UIKit/UIBarButtonItem (1.0)
+  - TLKit/TLCategories/UIKit/UIButton (1.0)
+  - TLKit/TLCategories/UIKit/UICollectionViewCell (1.0)
+  - TLKit/TLCategories/UIKit/UIColor (1.0)
+  - TLKit/TLCategories/UIKit/UIControl (1.0)
+  - TLKit/TLCategories/UIKit/UIImage (1.0)
+  - TLKit/TLCategories/UIKit/UINavigationBar (1.0)
+  - TLKit/TLCategories/UIKit/UINavigationController (1.0)
+  - TLKit/TLCategories/UIKit/UINavigationItem (1.0):
     - TLKit/TLCategories/UIKit/UIBarButtonItem
-  - TLKit/TLCategories/UIKit/UIScrollView (0.0.28)
-  - TLKit/TLCategories/UIKit/UITabBarController (0.0.28)
-  - TLKit/TLCategories/UIKit/UITextField (0.0.28)
-  - TLKit/TLCategories/UIKit/UITextView (0.0.28)
-  - TLKit/TLCategories/UIKit/UIView (0.0.28):
+  - TLKit/TLCategories/UIKit/UIScrollView (1.0)
+  - TLKit/TLCategories/UIKit/UITabBarController (1.0)
+  - TLKit/TLCategories/UIKit/UITextField (1.0)
+  - TLKit/TLCategories/UIKit/UITextView (1.0)
+  - TLKit/TLCategories/UIKit/UIView (1.0):
     - TLKit/TLCategories/Foundation/NSObject
     - TLKit/TLShortcut
-  - TLKit/TLCategories/UIKit/UIViewController (0.0.28):
+  - TLKit/TLCategories/UIKit/UIViewController (1.0):
     - TLKit/TLCategories/UIKit/UIBarButtonItem
     - TLKit/TLCategories/UIKit/UINavigationController
     - TLKit/TLCategories/UIKit/UIView
-  - TLKit/TLCategories/UIKit/UIWindow (0.0.28)
-  - TLKit/TLFunctional (0.0.28):
-    - TLKit/TLFunctional/TLActionSheet (= 0.0.28)
-    - TLKit/TLFunctional/TLAlertView (= 0.0.28)
-    - TLKit/TLFunctional/TLUIUtility (= 0.0.28)
-  - TLKit/TLFunctional/TLActionSheet (0.0.28)
-  - TLKit/TLFunctional/TLAlertView (0.0.28)
-  - TLKit/TLFunctional/TLUIUtility (0.0.28):
+  - TLKit/TLCategories/UIKit/UIWindow (1.0)
+  - TLKit/TLFunctional (1.0):
+    - TLKit/TLFunctional/TLActionSheet (= 1.0)
+    - TLKit/TLFunctional/TLAlertView (= 1.0)
+    - TLKit/TLFunctional/TLUIUtility (= 1.0)
+  - TLKit/TLFunctional/TLActionSheet (1.0)
+  - TLKit/TLFunctional/TLAlertView (1.0)
+  - TLKit/TLFunctional/TLUIUtility (1.0):
     - SVProgressHUD (~> 2.2.5)
-    - TLKit/TLCategories/UIKit/UIAlertView
-    - TLKit/TLCategories/UIKit/UIWindow
-  - TLKit/TLShortcut (0.0.28)
+  - TLKit/TLShortcut (1.0)
   - TLTabBarController (0.0.6)
   - UMengAnalytics (4.2.4)
   - WCDB (1.0.6):
@@ -185,7 +182,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tbl00c/JZNavigationExtension.git
     :tag: '4.0'
   TLKit:
-    :commit: 9ce656fa5eb43336043fafde983c56c4f8ef632d
+    :commit: 1607ab0e303a200f998a28d28ebdf46ef6e231aa
     :git: https://github.com/tbl00c/TLKit.git
   TLTabBarController:
     :git: https://github.com/tbl00c/TLTabBarController.git
@@ -207,7 +204,7 @@ SPEC CHECKSUMS:
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  TLKit: 9ef399f654bc7b6bef9d678378c0743ff04fd72e
+  TLKit: eb37f75aee7a5b8ca40ebd8e6f1355a4fc23a052
   TLTabBarController: 6e91813f0ae019e8cd2ae35d6f4f6315085f7c44
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   WCDB: 4d2926bf695b2e00d785b50afd32c2dcc8cbbd98

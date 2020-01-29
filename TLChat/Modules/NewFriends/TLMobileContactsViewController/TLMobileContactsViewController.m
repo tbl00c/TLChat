@@ -81,7 +81,7 @@
         [MobClick event:EVENT_GET_CONTACTS];
     } failed:^{
         [TLUIUtility hiddenLoading];
-        [TLAlertView showAlertWithTitle:@"错误" message:@"未成功获取到通讯录信息"];
+        [TLAlertView showWithTitle:@"错误" message:@"未成功获取到通讯录信息"];
     }];
 }
 

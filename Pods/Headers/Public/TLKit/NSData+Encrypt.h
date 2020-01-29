@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSData/NSData+Encrypt.h
+../../../TLKit/TLKit/Classes/TLCategories/Foundation/NSData/NSData+Encrypt.h

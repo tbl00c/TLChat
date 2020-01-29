@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UITextView/UITextView+Select.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UITextView/UITextView+Select.h

@@ -64,7 +64,7 @@
 
 - (void)scannerViewController:(TLScannerViewController *)scannerVC initFailed:(NSString *)errorString
 {
-    [TLAlertView showAlertWithTitle:@"错误" message:errorString cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
+    [TLAlertView showWithTitle:@"错误" message:errorString cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
         [self.navigationController popViewControllerAnimated:YES];
     }];
 }
@@ -81,7 +81,7 @@
     [TLScannerViewController scannerQRCodeFromImage:image ans:^(NSString *ansStr) {
         [TLUIUtility hiddenLoading];
         if (ansStr == nil) {
-            [TLAlertView showAlertWithTitle:@"扫描失败" message:@"请换张图片，或换个设备重试~" cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
+            [TLAlertView showWithTitle:@"扫描失败" message:@"请换张图片，或换个设备重试~" cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
                 [self.scanVC startCodeReading];
             }];
         }
@@ -158,7 +158,7 @@
         });
     }
     else {
-        [TLAlertView showAlertWithTitle:@"扫描结果" message:ansStr cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
+        [TLAlertView showWithTitle:@"扫描结果" message:ansStr cancelButtonTitle:@"确定" otherButtonTitles:nil actionHandler:^(NSInteger buttonIndex) {
             [self.scanVC startCodeReading];
         }];
     }

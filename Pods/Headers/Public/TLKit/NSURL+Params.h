@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSURL/NSURL+Params.h
+../../../TLKit/TLKit/Classes/TLCategories/Foundation/NSURL/NSURL+Params.h

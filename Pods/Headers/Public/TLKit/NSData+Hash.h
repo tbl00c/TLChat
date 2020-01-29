@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSData/NSData+Hash.h
+../../../TLKit/TLKit/Classes/TLCategories/Foundation/NSData/NSData+Hash.h

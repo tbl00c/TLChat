@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLFunctional/TLAlertView/TLAlertViewAppearance.h
+../../../TLKit/TLKit/Classes/TLFunctional/TLAlertView/TLAlertViewAppearance.h

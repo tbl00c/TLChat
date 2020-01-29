@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/Foundation/NSString/NSString+PinYin.h
+../../../TLKit/TLKit/Classes/TLCategories/Foundation/NSString/NSString+PinYin.h

@@ -1,1 +1,1 @@
-../../../TLKit/TLKit/TLCategories/UIKit/UITabBarController/UITabBarController+TLPush.h
+../../../TLKit/TLKit/Classes/TLCategories/UIKit/UITabBarController/UITabBarController+TLPush.h
